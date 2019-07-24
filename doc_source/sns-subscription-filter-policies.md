@@ -37,8 +37,8 @@ Because this message includes attributes, any topic subscription that includes a
    "Message": "message-body-with-transaction-details",
    "Timestamp": "2019-11-03T23:28:01.631Z",
    "SignatureVersion": "4",                                                                                                                                                                                                  ",
-   "Signature": signature,
-   "UnsubscribeURL": unsubscribe-url,
+   "Signature": "signature",
+   "UnsubscribeURL": "unsubscribe-url",
    "MessageAttributes": {
       "customer_interests": {
          "Type": "String.Array",

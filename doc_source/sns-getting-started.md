@@ -158,5 +158,5 @@ Now that you've created a topic and a subscription and learned how to send messa
 + [Deploy and test the AWS Event Fork Pipelines sample application](sns-tutorial-deploy-test-fork-pipelines-sample-application.md)\.
 + [Learn about message filtering\.](sns-message-filtering.md)
 + Learn how to interact with Amazon SNS programmatically by exploring the [AWS Developer Center](https://aws.amazon.com/developer/)\.
-+ Learn about keeping an eye on costs and resources in the [Monitoring and Logging Amazon SNS Topics](sns-monitoring-logging.md) section\.
++ Learn about keeping an eye on costs and resources in the [Monitoring, Logging, and Troubleshooting Amazon SNS Topics](sns-monitoring-logging-troubleshooting.md) section\.
 + Learn about protecting your data and access to it in the [Security](sns-security.md) section\.

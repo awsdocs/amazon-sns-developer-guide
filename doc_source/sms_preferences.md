@@ -78,7 +78,7 @@ public static void setDefaultSmsAttributes(AmazonSNSClient snsClient) {
 }
 ```
 
-This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the limit, submit an [SNS Text Messaging case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns-text-messaging) with AWS Support\. For **New limit value**, enter your desired monthly spend limit\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend limit increase\. Typically, AWS Support processes your case within 2 business days\. Depending on the spend limit you request and the complexity of your case, AWS Support might require an additional 3 \- 5 days to ensure that your request can be processed\.
+This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the limit, submit an [SNS Text Messaging case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns-text-messaging) with AWS Support\. For **New limit value**, enter your desired monthly spend limit\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend limit increase\. The AWS Support team provides an initial response to your request within 24 hours\.
 
 To verify that the attributes were set correctly, the example prints the result of the `getSMSAttributes` method\. When you run this example, the attributes are displayed in the console output window of your IDE:
 
@@ -124,7 +124,7 @@ public static void SetDefaultSmsAttributes(AmazonSimpleNotificationServiceClient
 }
 ```
 
-This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the limit, submit an [SNS Text Messaging case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns-text-messaging) with AWS Support\. For **New limit value**, enter your desired monthly spend limit\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend limit increase\. Typically, AWS Support processes your case within 2 business days\. Depending on the spend limit you request and the complexity of your case, AWS Support might require an additional 3 \- 5 days to ensure that your request can be processed\.
+This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the limit, submit an [SNS Text Messaging case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns-text-messaging) with AWS Support\. For **New limit value**, enter your desired monthly spend limit\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend limit increase\. The AWS Support team provides an initial response to your request within 24 hours\.
 
 To verify that the attributes were set correctly, the example prints the result of the `GetSMSAttributes` method\. When you run this example, the attributes are displayed in the console output window of your IDE:
 
