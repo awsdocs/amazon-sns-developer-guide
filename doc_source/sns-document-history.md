@@ -5,7 +5,8 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
-| August 8, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
+| July 26, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
+| July 24, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | July 19, 2019 | Corrected the following statement throughout this guide: The AWS Support team provides an initial response to your request within 24 hours\. | 
 | July 16, 2019 | In addition to HTML, PDF, and Kindle, the Amazon Simple Notification Service Developer Guide is available on GitHub\. To leave feedback, choose the GitHub icon in the upper right\-hand corner\.![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sns/latest/dg/images/amazon-sns-github.png) | 
 | July 11, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 

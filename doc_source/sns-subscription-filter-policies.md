@@ -21,13 +21,13 @@ A subscription accepts a message under the following conditions:
 
 ## Example Message with Attributes<a name="example-message-with-attributes"></a>
 
-The following example shows a message payload sent by an Amazon SNS topic that publishes customer transactions\. The message includes attributes that describe the transaction:
+The following example shows a message payload sent by an Amazon SNS topic that publishes customer transactions\. The `MessageAttributes` field includes attributes that describe the transaction:
 + Customer's interests
 + Store name
 + Event state
 + Purchase price in USD
 
-Because this message includes attributes, any topic subscription that includes a filter policy can selectively accept or reject the message\.
+Because this message includes the `MessageAttributes` field, any topic subscription that includes a filter policy can selectively accept or reject the message\.
 
 ```
 {
