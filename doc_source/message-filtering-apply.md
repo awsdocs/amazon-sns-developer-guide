@@ -106,7 +106,7 @@ To apply a filter policy using AWS CloudFormation, use a JSON or YAML template t
 
 1. Choose **Create Stack**\.
 
-1. On the **Select Template** page, choose **Upload a template to Amazon S3**, select the file, and choose **Next**\.
+1. On the **Select Template** page, choose **Upload a template to Amazon S3**, choose the file, and choose **Next**\.
 
 1. On the **Specify Details** page, do the following:
 

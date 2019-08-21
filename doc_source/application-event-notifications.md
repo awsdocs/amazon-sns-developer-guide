@@ -25,9 +25,9 @@ You can associate any attribute with an application which can then receive these
 To send application event notifications, you specify a topic to receive the notifications for each type of event\. As Amazon SNS sends the notifications, the topic can route them to endpoints that will take programmatic action\.
 
 **Important**  
-High\-volume applications will create a large number of application event notifications \(e\.g\., tens of thousands\), which will overwhelm endpoints meant for human use, such as email addresses, phone numbers, and mobile applications\. Consider the following guidelines when you send application event notifications to a topic:  
+High\-volume applications will create a large number of application event notifications \(for example, tens of thousands\), which will overwhelm endpoints meant for human use, such as email addresses, phone numbers, and mobile applications\. Consider the following guidelines when you send application event notifications to a topic:  
 Each topic that receives notifications should contain only subscriptions for programmatic endpoints, such as HTTP or HTTPS endpoints, Amazon SQS queues, or AWS Lambda functions\.
-To reduce the amount of processing that is triggered by the notifications, limit each topic's subscriptions to a small number \(e\.g\., five or fewer\)\.
+To reduce the amount of processing that is triggered by the notifications, limit each topic's subscriptions to a small number \(for example, five or fewer\)\.
 
 You can send application event notifications using the Amazon SNS console, the AWS Command Line Interface \(AWS CLI\), or the AWS SDKs\. 
 
@@ -37,7 +37,7 @@ You can send application event notifications using the Amazon SNS console, the A
 
 1. On the navigation panel, choose **Mobile**, **Push notifications**\.
 
-1. On the **Mobile push notifications** page, in the the **Platform applications** section, select an application and then choose **Edit**\.
+1. On the **Mobile push notifications** page, in the the **Platform applications** section, choose an application and then choose **Edit**\.
 
 1. Expand the **Event notifications** section\.
 

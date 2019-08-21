@@ -1,6 +1,6 @@
 # Using Amazon SNS for System\-to\-System Messaging with an HTTP/S Endpoint as a Subscriber<a name="sns-http-https-endpoint-as-subscriber"></a>
 
-You can use [Amazon SNS](https://aws.amazon.com/sns/) to send notification messages to one or more HTTP or HTTPS endpoints\. When you subscribe an endpoint to a topic, you can publish a notification to the topic and Amazon SNS sends an HTTP POST request delivering the contents of the notification to the subscribed endpoint\. When you subscribe the endpoint, you select whether Amazon SNS uses HTTP or HTTPS to send the POST request to the endpoint\. If you use HTTPS, then you can take advantage of the support in Amazon SNS for the following: 
+You can use [Amazon SNS](https://aws.amazon.com/sns/) to send notification messages to one or more HTTP or HTTPS endpoints\. When you subscribe an endpoint to a topic, you can publish a notification to the topic and Amazon SNS sends an HTTP POST request delivering the contents of the notification to the subscribed endpoint\. When you subscribe the endpoint, you choose whether Amazon SNS uses HTTP or HTTPS to send the POST request to the endpoint\. If you use HTTPS, then you can take advantage of the support in Amazon SNS for the following: 
 + **Server Name Indication \(SNI\)**—This allows Amazon SNS to support HTTPS endpoints that require SNI, such as a server requiring multiple certificates for hosting multiple domains\. For more information about SNI, see [Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)\.
 + **Basic and Digest Access Authentication**—This allows you to specify a username and password in the HTTPS URL for the HTTP POST request, such as `https://user:password@domain.com` or `https://user@domain.com` The username and password are encrypted over the SSL connection established when using HTTPS\. Only the domain name is sent in plaintext\. For more information about Basic and Digest Access Authentication, see [RFC\-2617](http://www.rfc-editor.org/info/rfc2617)\.
 **Note**  
@@ -148,9 +148,9 @@ To send messages to an HTTP or HTTPS endpoint through a topic, you must subscrib
 
 **To subscribe an HTTP or HTTPS endpoint to a topic using the Amazon SNS console**
 
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. On the navigation panel, choose **Topics** and then select the topic\.
+1. On the navigation panel, choose **Topics** and then choose the topic\.
 
 1. Choose the **Other actions** drop\-down list and select **Subscribe to topic**\.
 
@@ -229,7 +229,7 @@ If you followed [Step 1](#SendMessageToHttp.prepare), the code that you deployed
 
 1. Using the credentials of the AWS account or IAM user with permission to publish to the topic, sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/](https://console.aws.amazon.com/sns/)\.
 
-1. On the navigation panel, choose **Topics** and then select a topic\.
+1. On the navigation panel, choose **Topics** and then choose a topic\.
 
 1. Choose the **Publish to topic** button\.
 

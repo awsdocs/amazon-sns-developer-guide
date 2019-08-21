@@ -119,21 +119,21 @@ The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions 
 
 ```
 {
-   "Version": "2012-10-17",
-      "Statement": [{
-         "Effect": "Allow",
-         "Action": [
-            "kms:GenerateDataKey",
-            "kms:Decrypt"
-         ],
-         "Resource": "arn:aws:kms:us-east-2:123456789012:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-         }, {
-         "Effect": "Allow",
-         "Action": [
-            "sns:Publish"
-         ],
-         "Resource": "arn:aws:sns:*:123456789012:MyTopic"
-      }]
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": [
+      "kms:GenerateDataKey",
+      "kms:Decrypt"
+    ],
+    "Resource": "arn:aws:kms:us-east-2:123456789012:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+  }, {
+    "Effect": "Allow",
+    "Action": [
+      "sns:Publish"
+    ],
+    "Resource": "arn:aws:sns:*:123456789012:MyTopic"
+  }]
 }
 ```
 
@@ -150,18 +150,18 @@ Currently, CloudWatch alarms don't work with Amazon SNS encrypted topics\. For i
 
    ```
    {
-      "Version": "2012-10-17",
-         "Statement": [{
-            "Effect": "Allow",
-            "Principal": {
-               "Service": "service.amazonaws.com"
-            },
-            "Action": [
-               "kms:GenerateDataKey*",
-               "kms:Decrypt"
-            ],
-            "Resource": "*"
-          }]
+     "Version": "2012-10-17",
+     "Statement": [{
+       "Effect": "Allow",
+       "Principal": {
+         "Service": "service.amazonaws.com"
+       },
+       "Action": [
+         "kms:GenerateDataKey*",
+         "kms:Decrypt"
+       ],
+       "Resource": "*"
+     }]
    }
    ```    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html)

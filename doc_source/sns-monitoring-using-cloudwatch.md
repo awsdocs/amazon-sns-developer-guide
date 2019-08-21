@@ -2,7 +2,7 @@
 
 Amazon SNS and CloudWatch are integrated so you can collect, view, and analyze metrics for every active Amazon SNS notification\. Once you have configured CloudWatch for Amazon SNS, you can gain better insight into the performance of your Amazon SNS topics, push notifications, and SMS deliveries\. For example, you can set an alarm to send you an email notification if a specified threshold is met for an Amazon SNS metric, such as `NumberOfNotificationsFailed`\. For a list of all the metrics that Amazon SNS sends to CloudWatch, see [Amazon SNS Metrics](#SNS_metricscollected)\. For more information about Amazon SNS push notifications, see [Using Amazon SNS for User Notifications with a Mobile Application as a Subscriber \(Mobile Push\)](sns-mobile-application-as-subscriber.md) 
 
-The metrics you configure with CloudWatch for your Amazon SNS topics are automatically collected and pushed to CloudWatch every five minutes\. These metrics are gathered on all topics that meet the CloudWatch guidelines for being active\. A topic is considered active by CloudWatch for up to six hours from the last activity \(i\.e\., any API call\) on the topic\. 
+The metrics you configure with CloudWatch for your Amazon SNS topics are automatically collected and pushed to CloudWatch every five minutes\. These metrics are gathered on all topics that meet the CloudWatch guidelines for being active\. A topic is considered active by CloudWatch for up to six hours from the last activity \(that is, any API call\) on the topic\. 
 
 **Note**  
 There is no charge for the Amazon SNS metrics reported in CloudWatch; they are provided as part of the Amazon SNS service\.
@@ -17,7 +17,7 @@ You can monitor metrics for Amazon SNS using the CloudWatch console, CloudWatch'
 
 1. Choose **View Metrics**\.
 
-1. From the **Viewing** drop\-down menu select either **SNS: Topic Metrics**, **SNS: Push Notifications by Application**, **SNS: Push Notifications by Application and Platform**, or **SNS: Push Notifications by Platform** to show the available metrics\.
+1. For **Viewing**, choose either **SNS: Topic Metrics**, **SNS: Push Notifications by Application**, **SNS: Push Notifications by Application and Platform**, or **SNS: Push Notifications by Platform** to show the available metrics\.
 
 1. Choose a specific item to see more detail, such as a graph of the data collected\. For example, the following graph of the selected metric, **NumberOfMessagesPublished**, shows the average number of published Amazon SNS messages for a five\-minute period throughout the time range of 6 hours\.   
 ![\[\]](http://docs.aws.amazon.com/sns/latest/dg/images/sns-cloudwatch-metric.png)
@@ -42,7 +42,7 @@ CloudWatch also allows you to set alarms when a threshold is met for a metric\. 
 
 1. Fill in the **Name**, **Description**, **Threshold**, and **Time** values for the metric, and then choose **Continue**\. 
 
-1. Choose **Alarm** as the alarm state\. If you want CloudWatch to send you an email when the alarm state is reached, either select a preexisting Amazon SNS topic or choose **Create New Email Topic**\. If you choose **Create New Email Topic**, you can set the name and email addresses for a new topic\. This list will be saved and appear in the drop\-down box for future alarms\. Choose **Continue**\. 
+1. Choose **Alarm** as the alarm state\. If you want CloudWatch to send you an email when the alarm state is reached, choose either an existing Amazon SNS topic or choose **Create New Email Topic**\. If you choose **Create New Email Topic**, you can set the name and email addresses for a new topic\. This list will be saved and appear in the drop\-down box for future alarms\. Choose **Continue**\. 
 **Note**  
 If you use **Create New Email Topic** to create a new Amazon SNS topic, the email addresses must be verified before they will receive notifications\. Emails are sent only when the alarm enters an alarm state\. If this alarm state change happens before the email addresses are verified, they will not receive a notification\. 
 

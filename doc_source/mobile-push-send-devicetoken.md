@@ -41,7 +41,7 @@ APBTKzPGlCyT6E6oOfpdwLpcRNxQp5vCPFiFeru9oZylc22HvZSwQTDgmmw9WdNlXMerUPxmpX0w1,"D
 
 1. Choose **Apps**, choose your app, and then choose **Add Endpoints**\. 
 
-1. Choose **Migrate existing tokens over to AWS**, choose **Choose File**, select your CSV file, and then choose **Add Endpoints**\. 
+1. Choose **Migrate existing tokens over to AWS**, choose **Choose File**, choose your CSV file, and then choose **Add Endpoints**\. 
 
 **To upload several tokens using the `CreatePlatformEndpoint` API**
 

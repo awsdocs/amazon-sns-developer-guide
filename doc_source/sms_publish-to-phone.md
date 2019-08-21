@@ -21,7 +21,7 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 
 ## Sending a Message \(Console\)<a name="sms_publish_console"></a>
 
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
 1. In the console menu, set the region selector to a [region that supports SMS messaging](sms_supported-countries.md)\.
 

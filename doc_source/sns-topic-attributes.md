@@ -23,7 +23,7 @@ Amazon SNS provides support to log the delivery status of notification messages 
 
 1. On the navigation panel, choose **Topics**\.
 
-1. On the **Topics** page, select a topic and then choose **Edit**\.
+1. On the **Topics** page, choose a topic and then choose **Edit**\.
 
 1. On the **Edit *MyTopic*** page, expand the **Delivery status logging** section\.
 

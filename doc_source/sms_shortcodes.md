@@ -18,13 +18,13 @@ For pricing information, see [Worldwide SMS Pricing](https://aws.amazon.com/sns/
 
 1. Choose **Create case**\.
 
-1. For **Regarding**, select **Service Limit Increase**\.
+1. For **Regarding**, choose **Service Limit Increase**\.
 
-1. For **Limit Type**, select **SNS Text Messaging**\.
+1. For **Limit Type**, choose **SNS Text Messaging**\.
 
-1. For **Resource Type**, select **Dedicated SMS Short Codes for US destinations**\.
+1. For **Resource Type**, choose **Dedicated SMS Short Codes for US destinations**\.
 
-1. For **Limit**, select the option that most closely resembles your use case\.
+1. For **Limit**, choose the option that most closely resembles your use case\.
 
 1. For **New limit value**, specify how many short codes you want to reserve \(typically, this value is `1`\)\.
 

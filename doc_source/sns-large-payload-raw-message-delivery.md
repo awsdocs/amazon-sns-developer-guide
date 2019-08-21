@@ -12,9 +12,9 @@ To enable raw message delivery using one of the AWS SDKs, you must use the `SetS
 
 1. On the navigation panel, choose **Topics**\.
 
-1. On the **Topics** page, select a topic subscribed an Amazon SQS or HTTP/S endpoint\.
+1. On the **Topics** page, choose a topic subscribed an Amazon SQS or HTTP/S endpoint\.
 
-1. On the ***MyTopic*** page, in the **Subscription** section, select a subscription and choose **Edit**\.
+1. On the ***MyTopic*** page, in the **Subscription** section, choose a subscription and choose **Edit**\.
 
 1. On the **Edit *EXAMPLE1\-23bc\-4567\-d890\-ef12g3hij456*** page, in the **Details** section, choose **Enable raw message delivery**\.
 

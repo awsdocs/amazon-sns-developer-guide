@@ -27,7 +27,7 @@ The following tutorial shows how you can use the AWS Management Console, the AWS
 **Note**  
 To see a list of the topics in the current AWS account, choose the **Topic ARN** field\.
 
-   1. For **Protocol**, select an endpoint type, for example **Email**\.
+   1. For **Protocol**, choose an endpoint type, for example **Email**\.
 
    1. For **Endpoint**, enter an email address that can receive notifications, for example:
 

@@ -57,11 +57,11 @@ To get the topic ARN, you can use the Amazon SNS console, the `[sns\-get\-topic\
 
 **To get the topic ARN from the Amazon SNS console**
 
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. On the navigation panel, select the topic whose ARN you want to get\.
+1. On the navigation panel, choose the topic whose ARN you want to get\.
 
-1. From the **Topic Details** pane, copy the **Topic ARN** value so that you can use it to give permission for the Amazon SNS topic to send messages to the queue\.
+1. From the **Topic Details** section, copy the **Topic ARN** value so that you can use it to give permission for the Amazon SNS topic to send messages to the queue\.
 
 ## Step 2: Give Permission to the Amazon SNS Topic to Send Messages to the Amazon SQS Queue<a name="SendMessageToSQS.sqs.permissions"></a>
 
@@ -77,9 +77,9 @@ To set a policy on a queue, you can use the Amazon SQS console or the [SetQueueA
 
 1. Select the box for the queue whose policy you want to set, choose the **Permissions** tab, and then choose **Add a Permission**\.
 
-1. In the **Add a Permission** dialog box, select **Allow** for **Effect**, select **Everybody \(\*\)** for **Principal**, and then select **SendMessage** from the **Actions** drop\-down\.
+1. In the **Add a Permission** dialog box, select **Allow** for **Effect**, choose **Everybody \(\*\)** for **Principal**, and then select **SendMessage** from the **Actions** drop\-down\.
 
-1. Add a condition that allows the action for the topic\. Choose **Add Conditions \(optional\)**, select **ArnEquals** for **Condition**, select **aws:SourceArn** for **Key**, and paste in the topic ARN for **Value**\. Choose **Add Condition**\. The new condition should appear at the bottom of the box \(you may have to scroll down to see this\)\.
+1. Add a condition that allows the action for the topic\. Choose **Add Conditions \(optional\)**, choose **ArnEquals** for **Condition**, choose **aws:SourceArn** for **Key**, and paste in the topic ARN for **Value**\. Choose **Add Condition**\. The new condition should appear at the bottom of the box \(you may have to scroll down to see this\)\.
 
 1. Choose **Add Permission**\.
 
@@ -232,7 +232,7 @@ You can test a topic's queue subscriptions by publishing to the topic and viewin
 
 1. Using the credentials of the AWS account or IAM user with permission to publish to the topic, sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/](https://console.aws.amazon.com/sns/)\.
 
-1. On the navigation panel, select the topic and choose **Publish to Topic**\.
+1. On the navigation panel, choose the topic and choose **Publish to Topic**\.
 
 1. In the **Subject** box, enter a subject \(for example, **Testing publish to queue**\) in the **Message** box, enter some text \(for example, **Hello world\!**\), and choose **Publish Message**\. The following message appears: Your message has been successfully published\.
 
@@ -242,7 +242,7 @@ You can test a topic's queue subscriptions by publishing to the topic and viewin
 
 1. Check the box for the queue that is subscribed to the topic\.
 
-1. From the **Queue Action** drop\-down, select **View/Delete Messages** and choose **Start Polling for Messages**\. A message with a type of **Notification** appears\. 
+1. From the **Queue Action** drop\-down, choose **View/Delete Messages** and choose **Start Polling for Messages**\. A message with a type of **Notification** appears\. 
 
 1. In the **Body** column, choose **More Details**\. The **Message Details** box contains a JSON document that contains the subject and message that you published to the topic\. The message looks similar to the following JSON document\.
 

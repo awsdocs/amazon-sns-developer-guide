@@ -52,9 +52,9 @@ If you set different TTL values \(one in message attributes and another in the m
 
 1. On the navigation panel, choose **Mobile**, **Push notifications**\.
 
-1. On the **Mobile push notifications** page, in the **Platform applications** section, select an application\.
+1. On the **Mobile push notifications** page, in the **Platform applications** section, choose an application\.
 
-1. On the ***MyApplication*** page, in the **Endpoints** section, select an application endpoint and then choose **Publish message**\.
+1. On the ***MyApplication*** page, in the **Endpoints** section, choose an application endpoint and then choose **Publish message**\.
 
 1. In the **Message details** section, enter the TTL \(the number of seconds that the push notification service has to deliver the message to the endpoint\)\.
 

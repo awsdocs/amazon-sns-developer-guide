@@ -85,7 +85,7 @@ The stack for this tutorial includes the following resources:
 
 1. Choose **Create Stack**\.
 
-1. On the **Select Template** page, choose **Upload a template to Amazon S3**, select the file, and choose **Next**\.
+1. On the **Select Template** page, choose **Upload a template to Amazon S3**, choose the file, and choose **Next**\.
 
 1. On the **Specify Details** page, specify stack and key names:
 
@@ -102,7 +102,7 @@ The stack for this tutorial includes the following resources:
 
 1. On the **Review** page, verify the stack details\.
 
-1. Under **Capabilities**, select the check box that acknowledges that AWS CloudFormation might create IAM resources with custom names\.
+1. Under **Capabilities**, acknowledge that AWS CloudFormation might create IAM resources with custom names\.
 
 1. Choose **Create**\.
 
@@ -182,12 +182,12 @@ Note that the instance still lacks access to other AWS services and endpoints on
 1. For **VPC**, choose the VPC that has the name **VPCE\-Tutorial\-VPC**\.  
 ![\[The VPC menu on the Create Endpoint page.\]](http://docs.aws.amazon.com/sns/latest/dg/images/vpce-tutorial-create-endpoint-vpc.png)
 
-1. For **Subnets**, select the subnet that has *VPCE\-Tutorial\-Subnet* in the subnet ID\.  
+1. For **Subnets**, choose the subnet that has *VPCE\-Tutorial\-Subnet* in the subnet ID\.  
 ![\[The subnets on the Create Endpoints page.\]](http://docs.aws.amazon.com/sns/latest/dg/images/vpce-tutorial-create-endpoint-subnet.png)
 
 1. For **Enable Private DNS Name**, select **Enable for this endpoint**\.
 
-1. For **Security group**, choose **Select security group**, and select the one named **VPCE\-Tutorial\-SecurityGroup**\.  
+1. For **Security group**, choose **Select security group**, and choose **VPCE\-Tutorial\-SecurityGroup**\.  
 ![\[The security groups on the Create Endpoints page.\]](http://docs.aws.amazon.com/sns/latest/dg/images/vpce-tutorial-create-endpoint-security-group.png)
 
 1. Choose **Create endpoint**\. The Amazon VPC console confirms that a VPC endpoint was created\.  
@@ -214,9 +214,9 @@ Now that your VPC includes an endpoint for Amazon SNS, you can log in to the Ama
 
    ```
    $ aws sns publish --region aws-region --topic-arn sns-topic-arn --message "Hello"
-   	    {
-   	        "MessageId": "5b111270-d169-5be6-9042-410dfc9e86de"
-   	    }
+   {
+       "MessageId": "5b111270-d169-5be6-9042-410dfc9e86de"
+   }
    ```
 
 ## Step 6: Verify Your Message Deliveries<a name="sns-vpc-tutorial-verify"></a>

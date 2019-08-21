@@ -5,7 +5,7 @@ The following list gives information specific to the Amazon SNS implementation o
 + Each policy must have a unique policy `Id`
 + Each statement in a policy must have a unique statement `sid`
 
-## Amazon SNS Policy Limits<a name="w3aac28b7c11b7"></a>
+## Amazon SNS Policy Limits<a name="sns-policy-limits"></a>
 
 The following table lists the maximum limits for policy information\.
 
@@ -36,8 +36,8 @@ Amazon SNS supports the actions shown in the following table\.
 ## Amazon SNS Keys<a name="sns_aspen_keys"></a>
 
 Amazon SNS uses the following service\-specific keys\. You can use these in policies that restrict access to `Subscribe` requests\.
-+ **sns:Endpoint—**The URL, email address, or ARN from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](sns-using-identity-based-policies.md#ExamplePolicies_SNS)\) to restrict access to specific endpoints \(e\.g\., \*@example\.com\)\.
-+ **sns:Protocol—**The `protocol` value from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](sns-using-identity-based-policies.md#ExamplePolicies_SNS)\) to restrict publication to specific delivery protocols \(e\.g\., https\)\.
++ **sns:Endpoint—**The URL, email address, or ARN from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](sns-using-identity-based-policies.md#sns-example-policies)\) to restrict access to specific endpoints \(for example, \*@example\.com\)\.
++ **sns:Protocol—**The `protocol` value from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](sns-using-identity-based-policies.md#sns-example-policies)\) to restrict publication to specific delivery protocols \(for example, https\)\.
 
 **Important**  
 When you use a policy to control access by sns:Endpoint, be aware that DNS issues might affect the endpoint's name resolution in the future\.

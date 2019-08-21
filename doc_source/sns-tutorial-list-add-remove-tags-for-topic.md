@@ -15,7 +15,7 @@ Currently, tag\-based access control isn't available\.
 
 1. On the navigation panel, choose **Topics**\.
 
-1. On the **Topics** page, select a topic and choose **Edit**\.
+1. On the **Topics** page, choose a topic and choose **Edit**\.
 
 1. Expand the **Tags** section\.
 

@@ -15,7 +15,7 @@ Amazon Simple Notification Service \(Amazon SNS\) provides support to log the de
 
 ## Configuring Message Delivery Status Attributes Using the AWS Management Console<a name="sns-msg-console"></a>
 
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
 1. On the navigation panel, choose **Apps**, and then choose the app containing the endpoints for which you want receive CloudWatch Logs\.
 

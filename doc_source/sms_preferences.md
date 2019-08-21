@@ -20,7 +20,7 @@ These preferences take effect for every SMS message that you send from your acco
 
 1. On the **Edit text messaging preferences** page, in the **Details** section, do the following:
 
-   1. For **Default message type**, select one of the following:
+   1. For **Default message type**, choose one of the following:
       + **Promotional** \(default\) – Non\-critical messages \(for example, marketing\)\. Amazon SNS optimizes message delivery to incur the lowest cost\.
       + **Transactional** – Critical messages that support customer transactions, such as one\-time passcodes for multi\-factor authentication\. Amazon SNS optimizes message delivery to achieve the highest reliability\.
 

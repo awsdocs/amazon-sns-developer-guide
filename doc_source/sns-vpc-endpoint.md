@@ -29,7 +29,7 @@ After you create an endpoint for Amazon SNS, you can publish messages from your 
 
    Where:
    + *ec2\-key\-pair\.pem* is the file that contains the key pair that Amazon EC2 provided when you created the instance\.
-   + *instance\-hostname* is the public hostname of the instance\. To get the hostname in the [Amazon EC2 console](https://console.aws.amazon.com/ec2): Choose **Instances**, select your instance, and find the value for **Public DNS \(IPv4\)**\.
+   + *instance\-hostname* is the public hostname of the instance\. To get the hostname in the [Amazon EC2 console](https://console.aws.amazon.com/ec2): Choose **Instances**, choose your instance, and find the value for **Public DNS \(IPv4\)**\.
 
 1. From your instance, use the Amazon SNS [https://docs.aws.amazon.com/cli/latest/reference/sns/publish.html](https://docs.aws.amazon.com/cli/latest/reference/sns/publish.html) command with the AWS CLI\. You can send a simple message to a topic with the following command:
 

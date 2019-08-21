@@ -12,7 +12,7 @@ You can publish a single SMS message to many phone numbers at once by subscribin
 
 Complete the following steps if you don't already have a topic to which you want to send SMS messages\.
 
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
 1. In the console menu, set the region selector to a [region that supports SMS messaging](sms_supported-countries.md)\.
 

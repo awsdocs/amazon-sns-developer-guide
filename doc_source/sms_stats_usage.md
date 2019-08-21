@@ -35,7 +35,7 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 1. Choose **Create**\.
 
-1. In the **All Buckets** table, select the bucket and choose **Properties**\.
+1. In the **All Buckets** table, choose the bucket and choose **Properties**\.
 
 1. In the **Permissions** section, choose **Add bucket policy**\.
 

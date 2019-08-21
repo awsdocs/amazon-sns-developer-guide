@@ -5,21 +5,21 @@
 + [Amazon SNS ARNs](#SNS_ARN_Format)
 + [Amazon SNS Actions](#UsingWithSNS_Actions)
 + [Amazon SNS Keys](#keys)
-+ [Example Policies for Amazon SNS](#ExamplePolicies_SNS)
-+ [Using Temporary Security Credentials](#UsingTemporarySecurityCredentials_SNS)
++ [Example Policies for Amazon SNS](#sns-example-policies)
++ [Using Temporary Security Credentials](#sns-using-temporary-credentials)
 
 Amazon Simple Notification Service integrates with AWS Identity and Access Management \(IAM\) so that you can specify which Amazon SNS actions a user in your AWS account can perform with Amazon SNS resources\. You can specify a particular topic in the policy\. For example, you could use variables when creating an IAM policy that gives certain users in your organization permission to use the `Publish` action with specific topics in your AWS account\. For more information, see [Policy Variables](https://docs.aws.amazon.com/IAM/latest/UserGuide/PolicyVariables.html) in the *Using IAM* guide\.
 
 **Important**  
 Using Amazon SNS with IAM doesn't change how you use Amazon SNS\. There are no changes to Amazon SNS actions, and no new Amazon SNS actions related to users and access control\.
 
-For examples of policies that cover Amazon SNS actions and resources, see [Example Policies for Amazon SNS](#ExamplePolicies_SNS)\.
+For examples of policies that cover Amazon SNS actions and resources, see [Example Policies for Amazon SNS](#sns-example-policies)\.
 
 ## IAM and Amazon SNS Policies Together<a name="iam-and-sns-policies"></a>
 
 You use an IAM policy to restrict your users' access to Amazon SNS actions and topics\. An IAM policy can restrict access only to users within your AWS account, not to other AWS accounts\.
 
-You use an Amazon SNS policy with a particular topic to restrict who can work with that topic \(e\.g\., who can publish messages to it, who can subscribe to it, etc\.\)\. Amazon SNS policies can give access to other AWS accounts, or to users within your own AWS account\.
+You use an Amazon SNS policy with a particular topic to restrict who can work with that topic \(for example, who can publish messages to it, who can subscribe to it, etc\.\)\. Amazon SNS policies can give access to other AWS accounts, or to users within your own AWS account\.
 
 To give your users permissions for your Amazon SNS topics, you can use IAM policies, Amazon SNS policies, or both\. For the most part, you can achieve the same results with either\. For example, the following diagram shows an IAM policy and an Amazon SNS policy that are equivalent\. The IAM policy allows the Amazon SNS `Subscribe` action for the topic called topic\_xyz in your AWS account\. The IAM policy is attached to the users Bob and Susan \(which means that Bob and Susan have the permissions stated in the policy\)\. The Amazon SNS policy likewise gives Bob and Susan permission to access `Subscribe` for topic\_xyz\.
 
@@ -43,7 +43,7 @@ In this example, we build on example 1 \(where Bob has two policies that apply t
 
 ![\[The "Deny" policy overrides the Amazon SNS policy\]](http://docs.aws.amazon.com/sns/latest/dg/images/SNS_DenyOverride.png)
 
-For examples of policies that cover Amazon SNS actions and resources, see [Example Policies for Amazon SNS](#ExamplePolicies_SNS)\. For more information about writing Amazon SNS policies, go to the [technical documentation for Amazon SNS](http://aws.amazon.com/documentation/sns/)\.
+For examples of policies that cover Amazon SNS actions and resources, see [Example Policies for Amazon SNS](#sns-example-policies)\. For more information about writing Amazon SNS policies, go to the [technical documentation for Amazon SNS](http://aws.amazon.com/documentation/sns/)\.
 
 ## Amazon SNS ARNs<a name="SNS_ARN_Format"></a>
 
@@ -90,10 +90,10 @@ Amazon SNS implements the following AWS\-wide policy keys, plus some service\-sp
 For a list of condition keys supported by each AWS service, see [Actions, Resources, and Condition Keys for AWS Services](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html) in the *IAM User Guide*\. For a list of condition keys that can be used in multiple AWS services, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html) in the *IAM User Guide*\.
 
 Amazon SNS uses the following service\-specific keys\. Use these keys in policies that restrict access to `Subscribe` requests\.
-+ **sns:Endpoint—**The URL, email address, or ARN from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](#ExamplePolicies_SNS)\) to restrict access to specific endpoints \(e\.g\., \*@yourcompany\.com\)\.
-+ **sns:Protocol—**The `protocol` value from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](#ExamplePolicies_SNS)\) to restrict publication to specific delivery protocols \(e\.g\., https\)\.
++ **sns:Endpoint—**The URL, email address, or ARN from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](#sns-example-policies)\) to restrict access to specific endpoints \(for example, \*@yourcompany\.com\)\.
++ **sns:Protocol—**The `protocol` value from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](#sns-example-policies)\) to restrict publication to specific delivery protocols \(for example, https\)\.
 
-## Example Policies for Amazon SNS<a name="ExamplePolicies_SNS"></a>
+## Example Policies for Amazon SNS<a name="sns-example-policies"></a>
 
 This section shows several simple policies for controlling user access to Amazon SNS\.
 
@@ -105,14 +105,13 @@ In this example, we create a policy that gives access to `CreateTopic`, `ListTop
 
 ```
 {
-		   "Version":"2012-10-17",
-		   "Statement":[{
-		      "Effect":"Allow",
-		      "Action":["sns:CreateTopic","sns:ListTopics","sns:SetTopicAttributes","sns:DeleteTopic"],
-		      "Resource":"*"
-		      }
-		   ]
-		}
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": ["sns:CreateTopic", "sns:ListTopics", "sns:SetTopicAttributes", "sns:DeleteTopic"],
+    "Resource": "*"
+  }]
+}
 ```
 
 **Example 2: Allow the IT group to publish messages to a particular topic**  
@@ -120,14 +119,13 @@ In this example, we create a group for IT, and assign a policy that gives access
 
 ```
 {
-		   "Version":"2012-10-17",
-		   "Statement":[{
-		      "Effect":"Allow",
-		      "Action":"sns:Publish",
-		      "Resource":"arn:aws:sns:*:123456789012:topic_xyz"
-		      }
-		   ]
-		}
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": "sns:Publish",
+    "Resource": "arn:aws:sns:*:123456789012:MyTopic"
+  }]
+}
 ```
 
 **Example 3: Give users in the AWS account ability to subscribe to topics**  
@@ -135,22 +133,21 @@ In this example, we create a policy that gives access to the `Subscribe`action, 
 
 ```
 {
-		   "Version":"2012-10-17",
-		   "Statement":[{
-		      "Effect":"Allow",
-		      "Action":["sns:Subscribe"],
-		      "Resource":"*",
-		      "Condition":{
-		         "StringLike": {
-					"SNS:Endpoint":"*@yourcompany.com"
-					},
-				 "StringEquals":{
-		            "sns:Protocol":"email"            
-		            }
-		         }
-		      }
-		   ]
-		}
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": ["sns:Subscribe"],
+    "Resource": "*",
+    "Condition": {
+      "StringLike": {
+        "SNS:Endpoint": "*@example.com"
+      },
+      "StringEquals": {
+        "sns:Protocol": "email"
+      }
+    }
+  }]
+}
 ```
 
 **Example 4: Allow a partner to publish messages to a particular topic**  
@@ -161,22 +158,22 @@ We also want to prevent the WidgetCo group from doing anything else with topics,
 
 ```
 {
-		   "Version":"2012-10-17",
-		   "Statement":[{
-		         "Effect":"Allow",
-		         "Action":"sns:Publish",
-		         "Resource":"arn:aws:sns:*:123456789012:WidgetPartnerTopic"
-		      },
-		      {
-		         "Effect":"Deny",
-		         "NotAction":"sns:Publish",
-		         "NotResource":"arn:aws:sns:*:123456789012:WidgetPartnerTopic"
-		      }
-		   ]
-		}
+  "Version": "2012-10-17",
+  "Statement": [{
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:*:123456789012:WidgetPartnerTopic"
+    },
+    {
+      "Effect": "Deny",
+      "NotAction": "sns:Publish",
+      "NotResource": "arn:aws:sns:*:123456789012:WidgetPartnerTopic"
+    }
+  ]
+}
 ```
 
-## Using Temporary Security Credentials<a name="UsingTemporarySecurityCredentials_SNS"></a>
+## Using Temporary Security Credentials<a name="sns-using-temporary-credentials"></a>
 
  In addition to creating IAM users with their own security credentials, IAM also enables you to grant temporary security credentials to any user allowing this user to access your AWS services and resources\. You can manage users who have AWS accounts; these users are IAM users\. You can also manage users for your system who do not have AWS accounts; these users are called federated users\. Additionally, "users" can also be applications that you create to access your AWS resources\. 
 
@@ -188,13 +185,13 @@ We also want to prevent the WidgetCo group from doing anything else with topics,
  The following example demonstrates how to obtain temporary security credentials to authenticate an Amazon SNS request\.   
 
 ```
-		http://sns.us-east-1.amazonaws.com/
-		?Name=My-Topic
-		&Action=CreateTopic
-		&Signature=gfzIF53exFVdpSNb8AiwN3Lv%2FNYXh6S%2Br3yySK70oX4%3D
-		&SignatureVersion=2
-		&SignatureMethod=HmacSHA256
-		&Timestamp=2010-03-31T12%3A00%3A00.000Z
-		&SecurityToken=SecurityTokenValue
-		&AWSAccessKeyId=Access Key ID provided by AWS Security Token Service
+http://sns.us-east-1.amazonaws.com/
+?Name=My-Topic
+&Action=CreateTopic
+&Signature=gfzIF53exFVdpSNb8AiwN3Lv%2FNYXh6S%2Br3yySK70oX4%3D
+&SignatureVersion=2
+&SignatureMethod=HmacSHA256
+&Timestamp=2010-03-31T12%3A00%3A00.000Z
+&SecurityToken=SecurityTokenValue
+&AWSAccessKeyId=Access Key ID provided by AWS Security Token Service
 ```

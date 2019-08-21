@@ -17,7 +17,7 @@ The following tutorial shows how to enable, disable, and configure SSE for an ex
 
 1. On the navigation panel, choose **Topics**\.
 
-1. On the **Topics** page, select a topic and choose **Actions**, **Edit**\.
+1. On the **Topics** page, choose a topic and choose **Actions**, **Edit**\.
 
 1. Expand the **Encryption** section and do the following: 
 
@@ -34,7 +34,7 @@ Ask the owner of the CMK to grant you these permissions\. For more information, 
 Keep the following in mind:  
 The first time you use the AWS Management Console to specify the AWS managed CMK for Amazon SNS for a topic, AWS KMS creates the AWS managed CMK for Amazon SNS\.
 Alternatively, the first time you use the `Publish` action on a topic with SSE enabled, AWS KMS creates the AWS managed CMK for Amazon SNS\.
-      + To use a custom CMK from your AWS account, choose the **Customer master key \(CMK\)** field and then select the custom CMK from the list\.
+      + To use a custom CMK from your AWS account, choose the **Customer master key \(CMK\)** field and then choose the custom CMK from the list\.
 **Note**  
 For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*
       + To use a custom CMK ARN from your AWS account or from another AWS account, enter it into the **Customer master key \(CMK\)** field\.

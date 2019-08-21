@@ -14,9 +14,9 @@ The following tutorial shows how you can enable SSE for an Amazon SNS topic to w
 
 1. On the **Add tags** page, choose **Next**\.
 
-1. On the **Define key administrative permissions** page, in the **Key administrators** section, select an IAM role or an IAM user and then choose **Next**\.
+1. On the **Define key administrative permissions** page, in the **Key administrators** section, choose an IAM role or an IAM user and then choose **Next**\.
 
-1. On the **Define key usage permissions** page, in the **This account** section, select an IAM role or an IAM user and then choose **Next**\.
+1. On the **Define key usage permissions** page, in the **This account** section, choose an IAM role or an IAM user and then choose **Next**\.
 
 1. On the **Review and edit key policy** page, add the following statement to the key policy, and then choose **Finish**\.
 
@@ -88,7 +88,7 @@ Your new encrypted topic appears in the list of topics\.
 
    Your new encrypted queues appear in the list of queues\.
 
-1. On the Amazon SQS console, select `MyEncryptedQueue1` and `MyEncryptedQueue2` and then choose **Queue Actions**, **Subscribe Queues to SNS Topic**\.
+1. On the Amazon SQS console, choose `MyEncryptedQueue1` and `MyEncryptedQueue2` and then choose **Queue Actions**, **Subscribe Queues to SNS Topic**\.
 
 1. In the **Subscribe to a Topic** dialog box, for **Choose a Topic** select **MyEncryptedTopic**, and then choose **Subscribe**\.
 
@@ -102,7 +102,7 @@ Your new encrypted topic appears in the list of topics\.
 
 1. On the navigation panel, choose **Topics**\.
 
-1. From the list of topics, select **MyEncryptedTopic** and then choose **Publish message**\.
+1. From the list of topics, choose **MyEncryptedTopic** and then choose **Publish message**\.
 
 1. On the **Publish a message** page, do the following:
 
@@ -118,7 +118,7 @@ Your message is published to your subscribed encrypted queues\.
 
 1. Sign in to the [Amazon SQS console](https://console.aws.amazon.com/sqs/)\.
 
-1. From the list of queues, select **MyEncryptedQueue1** and then choose **Queue Actions**, **View/Delete Messages**\.
+1. From the list of queues, choose **MyEncryptedQueue1** and then choose **Queue Actions**, **View/Delete Messages**\.
 
 1. On the **View/Delete Messages in MyEncryptedQueue1** page, choose **Start polling for messages**\.
 

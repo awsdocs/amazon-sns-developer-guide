@@ -6,6 +6,6 @@
 + [Architectural Overview](AccessPolicyLanguage_ArchitecturalOverview.md)
 + [Using the Access Policy Language](AccessPolicyLanguage_OverallFlow.md)
 + [Evaluation Logic](AccessPolicyLanguage_EvaluationLogic.md)
-+ [Example Cases for Amazon SNS Access Control](AccessPolicyLanguage_UseCases_Sns.md)
++ [Example Cases for Amazon SNS Access Control](sns-access-policy-use-cases.md)
 
 This section describes basic concepts you need to understand to use the access policy language to write policies\. It also describes the general process for how access control works with the access policy language, and how policies are evaluated\.

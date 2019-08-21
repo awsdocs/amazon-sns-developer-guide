@@ -96,7 +96,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Architectural Overview](AccessPolicyLanguage_ArchitecturalOverview.md)
          + [Using the Access Policy Language](AccessPolicyLanguage_OverallFlow.md)
          + [Evaluation Logic](AccessPolicyLanguage_EvaluationLogic.md)
-         + [Example Cases for Amazon SNS Access Control](AccessPolicyLanguage_UseCases_Sns.md)
+         + [Example Cases for Amazon SNS Access Control](sns-access-policy-use-cases.md)
       + [Special Information for Amazon SNS Policies](AccessPolicyLanguage_SpecialInfo.md)
       + [Controlling User Access to Your AWS Account](sns-using-identity-based-policies.md)
    + [Protecting Amazon SNS Data Using Server-Side Encryption (SSE) and AWS KMS](sns-server-side-encryption.md)

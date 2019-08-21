@@ -25,7 +25,7 @@ You can use delivery policies to control not only the total number of retries, b
 
 1. **[Pre\-Backoff Phase](#delivery-policy-pre-backoff-phase)—**The pre\-backoff phase follows the immediate retry phase\. Use this phase to create a set of retries that occur before a backoff function applies to the retries\. Use the **Minimum delay retries** setting to specify the number of retries in the Pre\-Backoff Phase\. You can control the time delay between retries in this phase using the **Minimum delay** setting\. 
 
-1. **[Backoff Phase](#delivery-policy-backoff-phase)—**This phase is called the backoff phase because you can control the delay between retries in this phase using the retry backoff function\. Set the **Minimum delay** and the **Maximum delay**, and then select a **Retry backoff function** to define how quickly the delay increases from the minimum delay to the maximum delay\.
+1. **[Backoff Phase](#delivery-policy-backoff-phase)—**This phase is called the backoff phase because you can control the delay between retries in this phase using the retry backoff function\. Set the **Minimum delay** and the **Maximum delay**, and then choose a **Retry backoff function** to define how quickly the delay increases from the minimum delay to the maximum delay\.
 
 1. **[Post\-Backoff Phase](#delivery-policy-post-backoff-phase)—**The post\-backoff phase follows the backoff phase\. Use the **Maximum delay retries** setting to specify the number of retries in the post\-backoff phase\. You can control the time delay between retries in this phase using the **Maximum delay** setting\. 
 
@@ -40,7 +40,7 @@ To see how the retry backoff function affects the time delay between retries, yo
 The maximum lifetime of a message in the system is one hour\. This one hour limit cannot be extended by a delivery policy\.
 
 **Note**  
-Only HTTP and HTTPS subscription types are supported by delivery policies\. Support for other Amazon SNS subscription types \(e\.g\., email, Amazon SQS, and SMS\) is not currently available\. 
+Only HTTP and HTTPS subscription types are supported by delivery policies\. Support for other Amazon SNS subscription types \(for example, email, Amazon SQS, and SMS\) is not currently available\. 
 
 ## Applying Delivery Policies to Topics and Subscriptions<a name="delivery-policy-topic-subscription"></a>
 
@@ -58,33 +58,19 @@ In some cases, you might want to ignore all subscription delivery policies so th
 
 ## Setting the Maximum Receive Rate<a name="delivery-policy-maximum-receive-rate"></a>
 
-You can set the maximum number of messages per second that Amazon SNS sends to a subscribed endpoint by setting the **Maximum receive rate** setting\. Amazon SNS holds messages that are awaiting delivery for up to an hour\. Messages held for more than an hour are discarded\.
-+ To set a maximum receive rate that applies to all of a topic's subscriptions, apply the setting at the topic level using the **Edit Topic Delivery Policy** dialog box\. For more information, see [To set the maximum receive rate for a topic](#to-set-max-receive-rate-topic)\. 
-+ To set a maximum receive rate that applies to a specific subscription, apply the setting at the subscription level using the **Edit Subscription Delivery Policy** dialog box\. For more information, see [To set the maximum receive rate for a subscription](#to-set-max-receive-rate-subscription)\.<a name="to-set-max-receive-rate-topic"></a>
+You can set the maximum number of messages per second that Amazon SNS sends to a subscribed endpoint\. Amazon SNS holds messages that are awaiting delivery for up to an hour\. After an hour, Amazon SNS discards the messages\.<a name="to-set-max-receive-rate-topic"></a>
 
 **To set the maximum receive rate for a topic**
 
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. On the navigation panel, choose **Topics** and then select the topic\.
+1. On the navigation panel, choose **Topics** and then chose the name of a topic\.
 
-1. Choose the **Other actions** drop\-down list and select **Edit topic delivery policy**\.
+1. On the ***MyTopic*** page, choose the **Edit**\.
 
-1. In the **Maximum receive rate** box, type an integer value \(e\.g\., `2`\)\. 
+1. On the **Edit *MyTopic*** page, expand the **Delivery retry policy \(HTTP/S\)** section and specify the **Maximum retry rate**\.
 
-1. Choose **Update policy** to save your changes\.<a name="to-set-max-receive-rate-subscription"></a>
-
-**To set the maximum receive rate for a subscription**
-
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
-
-1. On the navigation panel, choose **Topics** and then select a topic ARN\.
-
-1. In the **Topic Details** pane, select a subscription and choose **Edit topic delivery policy**\. 
-
-1. In the **Maximum receive rate** box, type an integer value \(e\.g\., `2`\)\. 
-
-1. Choose **Update policy** to save your changes\.
+1. Choose **Save changes**\.
 
 ## Immediate Retry Phase<a name="delivery-policy-immediate-retry-phase"></a>
 
@@ -92,11 +78,11 @@ The immediate retry phase occurs directly after the initial delivery attempt\. T
 
 **To set the number of retries in the immediate retry phase**
 
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. On the navigation panel, choose **Topics** and then select a topic ARN\.
+1. On the navigation panel, choose **Topics** and then choose a topic ARN\.
 
-1. In the **Topic Details** pane, select **Edit topic delivery policy** from the **Other topic actions** drop\-down list\. 
+1. In the **Topic Details** section, choose **Edit topic delivery policy** from the **Other topic actions** drop\-down list\. 
 
 1. In the **Retries with no delay** box, type an integer value\. 
 
@@ -108,11 +94,11 @@ The pre\-backoff phase follows the immediate retry phase\. Use this phase if you
 
 **To set the number of retries in the pre\-backoff phase**
 
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. On the navigation panel, choose **Topics** and then select a topic ARN\.
+1. On the navigation panel, choose **Topics** and then choose a topic ARN\.
 
-1. In the **Topic Details** pane, select **Edit topic delivery policy** from the **Other topic actions** drop\-down list\. 
+1. In the **Topic Details** section, choose **Edit topic delivery policy** from the **Other topic actions** drop\-down list\. 
 
 1. In the **Minimum delay retries** box, type an integer value\. 
 
@@ -150,11 +136,11 @@ The post\-backoff phase is the final phase\. Use this phase if you want to creat
 
 **To set the number of retries in the post\-backoff phase**
 
-1. Sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. On the navigation panel, choose **Topics** and then select a topic ARN\.
+1. On the navigation panel, choose **Topics** and then choose a topic ARN\.
 
-1. In the **Topic Details** pane, select **Edit topic delivery policy** from the **Other topic actions** drop\-down list\. 
+1. In the **Topic Details** section, choose **Edit topic delivery policy** from the **Other topic actions** drop\-down list\. 
 
 1. In the **Maximum delay retries** box, type an integer value\. 
 

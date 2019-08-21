@@ -22,7 +22,7 @@ The *issuer* is the person who writes a policy to grant permissions for a resour
 
 ## Principal<a name="principal"></a>
 
-The *principal* is the person or persons who receive the permission in the policy\. The principal is A in the statement "A has permission to do B to C where D applies\." In a policy, you can set the principal to "anyone" \(i\.e\., you can specify a wildcard to represent all people\)\. You might do this, for example, if you don't want to restrict access based on the actual identity of the requester, but instead on some other identifying characteristic such as the requester's IP address\.
+The *principal* is the person or persons who receive the permission in the policy\. The principal is A in the statement "A has permission to do B to C where D applies\." In a policy, you can set the principal to "anyone" \(that is, you can specify a wildcard to represent all people\)\. You might do this, for example, if you don't want to restrict access based on the actual identity of the requester, but instead on some other identifying characteristic such as the requester's IP address\.
 
 ## Action<a name="action"></a>
 
@@ -35,12 +35,12 @@ The *resource* is the object the principal is requesting access to\. The resourc
 ## Conditions and Keys<a name="conditions"></a>
 
 The *conditions* are any restrictions or details about the permission\. The condition is D in the statement "A has permission to do B to C where D applies\." The part of the policy that specifies the conditions can be the most detailed and complex of all the parts\. Typical conditions are related to:
-+ Date and time \(e\.g\., the request must arrive before a specific day\)
-+ IP address \(e\.g\., the requester's IP address must be part of a particular CIDR range\)
++ Date and time \(for example, the request must arrive before a specific day\)
++ IP address \(for example, the requester's IP address must be part of a particular CIDR range\)
 
 A *key* is the specific characteristic that is the basis for access restriction\. For example, the date and time of request\.
 
-You use both *conditions* and *keys* together to express the restriction\. The easiest way to understand how you actually implement a restriction is with an example: If you want to restrict access to before May 30, 2010, you use the condition called `DateLessThan`\. You use the key called `aws:CurrentTime` and set it to the value `2010-05-30T00:00:00Z`\. AWS defines the conditions and keys you can use\. The AWS service itself \(e\.g\., Amazon SQS or Amazon SNS\) might also define service\-specific keys\. For more information, see [Special Information for Amazon SNS Policies](AccessPolicyLanguage_SpecialInfo.md)\.
+You use both *conditions* and *keys* together to express the restriction\. The easiest way to understand how you actually implement a restriction is with an example: If you want to restrict access to before May 30, 2010, you use the condition called `DateLessThan`\. You use the key called `aws:CurrentTime` and set it to the value `2010-05-30T00:00:00Z`\. AWS defines the conditions and keys you can use\. The AWS service itself \(for example, Amazon SQS or Amazon SNS\) might also define service\-specific keys\. For more information, see [Special Information for Amazon SNS Policies](AccessPolicyLanguage_SpecialInfo.md)\.
 
 ## Requester<a name="requester"></a>
 

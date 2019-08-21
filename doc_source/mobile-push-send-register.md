@@ -1,6 +1,6 @@
 # Register Your Mobile App with AWS<a name="mobile-push-send-register"></a>
 
- For Amazon SNS to send notification messages to mobile endpoints, whether it is direct or with subscriptions to a topic, you first need to register the app with AWS\. To register your mobile app with AWS, enter a name to represent your app, select the platform that will be supported, and provide your credentials for the notification service platform\. After the app is registered with AWS, the next step is to create an endpoint for the app and mobile device\. The endpoint is then used by Amazon SNS for sending notification messages to the app and device\. 
+ For Amazon SNS to send notification messages to mobile endpoints, whether it is direct or with subscriptions to a topic, you first need to register the app with AWS\. To register your mobile app with AWS, enter a name to represent your app, choose the platform that will be supported, and provide your credentials for the notification service platform\. After the app is registered with AWS, the next step is to create an endpoint for the app and mobile device\. The endpoint is then used by Amazon SNS for sending notification messages to the app and device\. 
 
 **To register your mobile app with AWS**
 
@@ -12,7 +12,7 @@
 
    App names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, hyphens, and periods, and must be between 1 and 256 characters long\.
 
-1. In the **Push notification platform** box, select the platform that the app is registered with and then enter the appropriate credentials\. 
+1. In the **Push notification platform** box, choose the platform that the app is registered with and then enter the appropriate credentials\. 
 **Note**  
  If you are using one of the APNS platforms, then you can select **Choose file** to upload the \.p12 file \(exported from Keychain Access\) to Amazon SNS\.
 

@@ -29,7 +29,7 @@ When the queue owner creates the subscription, the subscription does not require
 
 **To set the policy**
 
-1. Choose **Topics** and select your topic's ARN\.
+1. Choose **Topics** and choose your topic's ARN\.
 
 1. On the **Topic details: MyTopic** page, choose **Other topic actions**, **Edit topic policy**\.
 
@@ -45,13 +45,13 @@ After this policy has been set on MyTopic, a user can log in to the Amazon SNS c
 
 1. Make sure you have set `sqs:SendMessage` permission on the queue so that it can receive messages from the topic\. For more information, see [Step 2: Give Permission to the Amazon SNS Topic to Send Messages to the Amazon SQS Queue](sns-sqs-as-subscriber.md#SendMessageToSQS.sqs.permissions)\.
 
-1. On the navigation panel, select the **SNS Dashboard**\.
+1. On the navigation panel, choose the **SNS Dashboard**\.
 
 1. In the **Dashboard**, in the **Additional Actions** section, choose **Create New Subscription**\. 
 
 1. In the **Topic ARN** box, enter the ARN for the topic\.
 
-1. For **Protocol**, select **Amazon SQS**\.
+1. For **Protocol**, choose **Amazon SQS**\.
 
 1. In the **Endpoint** box, enter the ARN for the queue\. 
 
@@ -83,7 +83,7 @@ When the user calls the `Subscribe` action, a message of type `SubscriptionConfi
 
 1. Select the queue that has a pending subscription to the topic\.
 
-1. From the **Queue Action** drop\-down, select **View/Delete Messages** and choose **Start Polling for Messages**\. A message with a type of **SubscriptionConfirmation** appears\. 
+1. From the **Queue Action** drop\-down, choose **View/Delete Messages** and choose **Start Polling for Messages**\. A message with a type of **SubscriptionConfirmation** appears\. 
 
 1. In the **Body** column, choose **More Details**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sns/latest/dg/images/sqs-confirm0.png)
