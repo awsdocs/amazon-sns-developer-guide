@@ -2,6 +2,20 @@
 
 With [Amazon SNS](https://aws.amazon.com/sns/), you have the ability to send push notification messages directly to apps on mobile devices\. Push notification messages sent to a mobile endpoint can appear in the mobile app as message alerts, badge updates, or even sound alerts\. 
 
+**Important**  
+Currently, you can create mobile applications only in the following Regions:  
+US East \(N\. Virginia\)
+US West \(N\. California\)
+US West \(Oregon\)
+Asia Pacific \(Mumbai\)
+Asia Pacific \(Seoul\)
+Asia Pacific \(Singapore\)
+Asia Pacific \(Sydney\)
+Asia Pacific \(Tokyo\)
+EU \(Frankfurt\)
+EU \(Ireland\)
+South America \(São Paulo\)
+
 ## How User Notifications Work<a name="SNSMobilePushOverview"></a>
 
 You send push notification messages to both mobile devices and desktops using one of the following supported push notification services: 
