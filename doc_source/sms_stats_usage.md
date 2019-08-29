@@ -4,7 +4,7 @@ You can monitor your SMS deliveries by subscribing to daily usage reports from A
 
 **Topics**
 + [Daily Usage Report Information](#daily_usage_info)
-+ [Subscribing to Daily Usage Reports](#daily_usage_subscribe)
++ [Subscribing to Daily Usage Reports](#subscribe-to-daily-usage-reports)
 
 ## Daily Usage Report Information<a name="daily_usage_info"></a>
 
@@ -21,7 +21,7 @@ The usage report includes the following information for each SMS message that yo
 + Part number \(a message is split into multiple parts if it is too long for a single message\)
 + Total number of parts
 
-## Subscribing to Daily Usage Reports<a name="daily_usage_subscribe"></a>
+## Subscribing to Daily Usage Reports<a name="subscribe-to-daily-usage-reports"></a>
 
 To subscribe to daily usage reports, you must create an Amazon S3 bucket with the appropriate permissions\.
 
@@ -51,15 +51,11 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 1. On the navigation panel, choose **Text messaging \(SMS\)**\.
 
-1. On the **Text messaging \(SMS\)** page, choose **Manage text messaging preferences**\.
+1. On the **Text messaging \(SMS\)** page, in the **Text messaging preferences** section, choose **Edit**\.
 
-1. On the **Text messaging preferences** page, for **Reports storage**, type the name of the Amazon S3 bucket that will receive the daily SMS usage reports\.
+1. On the **Edit text messaging preferences** page, in the **Details** section, specify the **Amazon S3 bucket name for usage reports**\.
 
-1. Choose **Update preferences**\.
-
-For information about the other options on the **Text messaging preferences** page, see [Setting SMS Messaging Preferences Using the AWS Management Console](sms_preferences.md#sms_preferences_console)\.
-
-After you subscribe to daily usage reports, you can view the reports in the Amazon S3 console\. You can also go to the **Text messaging \(SMS\)** page in the Amazon SNS console and choose the **Usage** button\.
+1. Choose **Save changes**\.
 
 ### Example Bucket Policy<a name="example_bucket_policy"></a>
 

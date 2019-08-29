@@ -4,7 +4,7 @@
 + [Grant AWS Account Access to a Topic](#sns-grant-aws-account-access-to-topic)
 + [Limit Subscriptions to HTTPS](#sns-limit-subscriptions-to-https)
 + [Publish Messages to an Amazon SQS Queue](#sns-publish-messages-to-sqs-queue)
-+ [Allow Any AWS Resource to Publish to a Topic](#sns-allow-any-aws-resource-to-public-to-topic)
++ [Allow Any AWS Resource to Publish to a Topic](#sns-allow-any-aws-resource-to-publish-to-topic)
 + [Allow an Amazon S3 Bucket to Publish to a Topic](#sns-allow-s3-bucket-to-publish-to-topic)
 + [Allow a CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
 
@@ -96,7 +96,7 @@ This policy uses the `aws:SourceArn` condition to restrict access to the queue b
 
 The preceding policy is an example of the Amazon SQS policy you could write and add to a specific queue\. It would grant Amazon SNS and other AWS products access\. Amazon SNS gives a default policy to all newly created topics\. The default policy gives all other AWS products access to your topic\. This default policy uses an `aws:SourceArn` condition to ensure that AWS products access your topic only on behalf of AWS resources you own\.
 
-## Allow Any AWS Resource to Publish to a Topic<a name="sns-allow-any-aws-resource-to-public-to-topic"></a>
+## Allow Any AWS Resource to Publish to a Topic<a name="sns-allow-any-aws-resource-to-publish-to-topic"></a>
 
 In this case, you want to configure a topic's policy so that another AWS account's resource \(for example, Amazon S3 bucket, Amazon EC2 instance, or Amazon SQS queue\) can publish to your topic\. This example assumes that you write your own policy and then use the `SetTopicAttributes` action to set the topic's `Policy` attribute to your new policy\.
 
@@ -114,7 +114,7 @@ In the following example statement, the topic owner in these policies is 1111\-2
     "Resource": "arn:aws:sns:us-east-1:111122223333:MyTopic",
     "Condition": {
       "StringEquals": {
-        "AWS:SourceAccount": "444455556666"
+        "AWS:SourceOwner": "444455556666"
       }
     }
   }]

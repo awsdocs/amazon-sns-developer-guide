@@ -12,7 +12,7 @@ These preferences take effect for every SMS message that you send from your acco
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. Choose a [region that supports SMS messaging](sms_supported-countries.md)\.
+1. Choose a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
 1. On the navigation panel, choose **Mobile**, **Text messaging \(SMS\)**\.
 

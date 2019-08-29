@@ -83,7 +83,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Viewing Daily SMS Usage Reports](sms_stats_usage.md)
       + [Managing Phone Numbers and SMS Subscriptions](sms_manage.md)
       + [Reserving a Dedicated Short Code for SMS Messaging](sms_shortcodes.md)
-      + [Supported Regions and Countries](sms_supported-countries.md)
+      + [Supported Regions and Countries](sns-supported-regions-countries.md)
 + [Monitoring, Logging, and Troubleshooting Amazon SNS Topics](sns-monitoring-logging-troubleshooting.md)
    + [Monitoring Amazon SNS Topics Using CloudWatch](sns-monitoring-using-cloudwatch.md)
    + [Logging Amazon Simple Notification Service API Calls Using AWS CloudTrail](sns-logging-using-cloudtrail.md)

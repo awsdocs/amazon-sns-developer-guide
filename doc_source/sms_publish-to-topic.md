@@ -14,7 +14,7 @@ Complete the following steps if you don't already have a topic to which you want
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. In the console menu, set the region selector to a [region that supports SMS messaging](sms_supported-countries.md)\.
+1. In the console menu, set the region selector to a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
 1. On the navigation panel, choose **Topics**\.
 

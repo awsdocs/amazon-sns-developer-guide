@@ -6,7 +6,7 @@ You can [set SMS preferences](sms_preferences.md) for your AWS account to tailor
 
 Where required by local laws and regulations \(such as the US and Canada\), SMS recipients can [opt out](sms_manage.md#sms_manage_optout), which means that they choose to stop receiving SMS messages from your AWS account\. After a recipient opts out, you can, with limitations, opt in the phone number again so that you can resume sending messages to it\.
 
-Amazon SNS supports SMS messaging in several regions, and you can send messages to more than 200 countries and regions\. For more information, see [Supported Regions and Countries](sms_supported-countries.md)\.
+Amazon SNS supports SMS messaging in several regions, and you can send messages to more than 200 countries and regions\. For more information, see [Supported Regions and Countries](sns-supported-regions-countries.md)\.
 
 **Topics**
 + [Setting SMS Messaging Preferences](sms_preferences.md)
@@ -15,4 +15,4 @@ Amazon SNS supports SMS messaging in several regions, and you can send messages 
 + [Monitoring SMS Activity](sms_stats.md)
 + [Managing Phone Numbers and SMS Subscriptions](sms_manage.md)
 + [Reserving a Dedicated Short Code for SMS Messaging](sms_shortcodes.md)
-+ [Supported Regions and Countries](sms_supported-countries.md)
++ [Supported Regions and Countries](sns-supported-regions-countries.md)

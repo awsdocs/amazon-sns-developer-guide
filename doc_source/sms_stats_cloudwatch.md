@@ -4,7 +4,7 @@ You can use Amazon CloudWatch and Amazon CloudWatch Logs to monitor your SMS mes
 
 **Topics**
 + [Viewing Amazon CloudWatch Metrics](#sms_stats_cloudwatch_metrics)
-+ [Viewing CloudWatch Logs](#sms_stats_cloudwatch_logs)
++ [Viewing CloudWatch Logs](#sns-viewing-cloudwatch-logs)
 + [Example Log for Successful SMS Delivery](#sms_stats_example_log_success)
 + [Example Log for Failed SMS Delivery](#sms_stats_example_log_failed)
 + [SMS Delivery Failure Reasons](#sms_stats_delivery_fail_reasons)
@@ -15,7 +15,7 @@ Amazon SNS automatically collects metrics about your SMS message deliveries and 
 
 For information about monitoring CloudWatch metrics, setting CloudWatch alarms, and the types of metrics available, see [Monitoring Amazon SNS Topics Using CloudWatch](sns-monitoring-using-cloudwatch.md)\.
 
-## Viewing CloudWatch Logs<a name="sms_stats_cloudwatch_logs"></a>
+## Viewing CloudWatch Logs<a name="sns-viewing-cloudwatch-logs"></a>
 
 You can collect information about successful and unsuccessful SMS message deliveries by enabling Amazon SNS to write to Amazon CloudWatch Logs\. For each SMS message that you send, Amazon SNS will write a log that includes the message price, the success or failure status, the reason for failure \(if the message failed\), the message dwell time, and other information\.
 
@@ -23,23 +23,25 @@ You can collect information about successful and unsuccessful SMS message delive
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. In the console menu, set the region selector to a [region that supports SMS messaging](sms_supported-countries.md)\.
+1. In the console menu, set the region selector to a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
 1. On the navigation panel, choose **Text messaging \(SMS\)**\.
 
-1. On the **Text messaging \(SMS\)** page, choose **Manage text messaging preferences**\.
+1. On the **Text messaging \(SMS\)** page, in the **Text messaging preferences** section, choose **Edit**\.
 
-1. On the **Text messaging preferences** page, for **IAM role for CloudWatch Logs access**, create an IAM role that allows Amazon SNS to write logs for SMS deliveries in CloudWatch Logs:
+1. On the **Edit text messaging preferences** page, in the **Delivery status logging** section, do the following:
 
-   1. Choose **Create IAM role**\.
+   1. For **Success sample rate** specify the percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs\.
+
+      For example, to write logs only for failed deliveries, set this value to 0\. To write logs for 10% of your successful deliveries, set it to 10\. If you don't specify a percentage, Amazon SNS writes logs for all successful deliveries\.
+
+   1. Choose **Create new service role**\.
+
+   1. Choose **Create new roles**\.
 
    1. On the **SNS is requesting permission to use resources in your account** page, choose **Allow**\.
 
-1. For **Default percentage of success to sample**, specify the percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs\. For example, to write logs only for failed deliveries, set this value to 0\. To write logs for 10% of your successful deliveries, set it to 10\. If you don't specify a percentage, Amazon SNS writes logs for all successful deliveries\.
-
-1. Choose **Update preferences**\.
-
-For information about the other options on the **Text messaging preferences** page, see [Setting SMS Messaging Preferences Using the AWS Management Console](sms_preferences.md#sms_preferences_console)\.
+1. Choose **Save changes**\.
 
 ## Example Log for Successful SMS Delivery<a name="sms_stats_example_log_success"></a>
 

@@ -23,7 +23,7 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. In the console menu, set the region selector to a [region that supports SMS messaging](sms_supported-countries.md)\.
+1. In the console menu, set the region selector to a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
 1. On the navigation panel, choose **Text messaging \(SMS\)**\.
 
@@ -43,7 +43,7 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 
 1. \(Optional\) For **Sender ID**, type a custom ID that contains up to 11 alphanumeric characters, including at least one letter and no spaces\. The sender ID is displayed as the message sender on the receiving device\. For example, you can use your business brand to make the message source easier to recognize\.
 
-   Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and Countries](sms_supported-countries.md)\.
+   Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and Countries](sns-supported-regions-countries.md)\.
 
    If you do not specify a sender ID, the message will display a long code as the sender ID in supported countries or regions\. For countries and regions that require an alphabetic sender ID, the message displays *NOTICE* as the sender ID\. 
 
@@ -57,7 +57,7 @@ To send an SMS message using one of the AWS SDKs, use the action in that SDK tha
 
 `AWS.SNS.SMS.SenderID`  
 A custom ID that contains up to 11 alphanumeric characters, including at least one letter and no spaces\. The sender ID is displayed as the message sender on the receiving device\. For example, you can use your business brand to make the message source easier to recognize\.  
-Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and Countries](sms_supported-countries.md)\.  
+Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and Countries](sns-supported-regions-countries.md)\.  
 If you do not specify a sender ID, the message will display a long code as the sender ID in supported countries and regions\. For countries or regions that require an alphabetic sender ID, the message displays *NOTICE* as the sender ID\.  
 This message\-level attribute overrides the account\-level attribute `DefaultSenderID`, which you set using the `SetSMSAttributes` request\.
 
