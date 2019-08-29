@@ -31,9 +31,11 @@ You can collect information about successful and unsuccessful SMS message delive
 
 1. On the **Edit text messaging preferences** page, in the **Delivery status logging** section, do the following:
 
-   1. For **Success sample rate** specify the percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs\.
+   1. For **Success sample rate**, specify the percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs\. For example:
+      + To write logs only for failed deliveries, set this value to 0\.
+      + To write logs for 10% of your successful deliveries, set it to 10\.
 
-      For example, to write logs only for failed deliveries, set this value to 0\. To write logs for 10% of your successful deliveries, set it to 10\. If you don't specify a percentage, Amazon SNS writes logs for all successful deliveries\.
+      If you don't specify a percentage, Amazon SNS writes logs for all successful deliveries\.
 
    1. Choose **Create new service role**\.
 
