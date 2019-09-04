@@ -34,7 +34,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Bahrain | BH | Yes |  | 
 | Bangladesh | BD |  |  | 
 | Barbados | BB | Yes |  | 
-| Belarus | BY | Yes\[[1](#sms-support-note-1)\] |  | 
+| Belarus | BY | Yes[1](#sms-support-note-1) |  | 
 | Belgium | BE |  | Yes | 
 | Belize | BZ | Yes |  | 
 | Benin | BJ | Yes |  | 
@@ -71,7 +71,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Dominican Republic | DO |  |  | 
 | East Timor | TL |  |  | 
 | Ecuador | EC |  |  | 
-| Egypt | EG | Yes\[[1](#sms-support-note-1)\] |  | 
+| Egypt | EG | Yes[1](#sms-support-note-1) |  | 
 | El Salvador | SV |  |  | 
 | Equatorial Guinea | GQ | Yes |  | 
 | Estonia | EE | Yes | Yes | 
@@ -101,7 +101,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Hong Kong | HK | Yes | Yes | 
 | Hungary | HU |  | Yes | 
 | Iceland | IS | Yes |  | 
-| India | IN | Yes\[[1](#sms-support-note-1)\] | Yes | 
+| India | IN | Yes[1](#sms-support-note-1) | Yes | 
 | Indonesia | ID |  | Yes | 
 | Iraq | IQ |  |  | 
 | Ireland | IE | Yes | Yes | 
@@ -109,8 +109,8 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Italy | IT | Yes | Yes | 
 | Ivory Coast | CI |  |  | 
 | Jamaica | JM | Yes |  | 
-| Japan | JP | Yes\[[2](#sms-support-note-2)\] | Yes | 
-| Jordan | JO | Yes\[[1](#sms-support-note-1)\] |  | 
+| Japan | JP | Yes[2](#sms-support-note-2) | Yes | 
+| Jordan | JO | Yes[1](#sms-support-note-1) |  | 
 | Kazakhstan | KZ |  |  | 
 | Kenya | KE |  |  | 
 | Kiribati | KI |  |  | 
@@ -126,7 +126,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Lithuania | LT | Yes | Yes | 
 | Luxembourg | LU | Yes |  | 
 | Macau | MO | Yes |  | 
-| Macedonia | MK | Yes |  | 
+| FYROM Macedonia | MK | Yes |  | 
 | Madagascar | MG | Yes |  | 
 | Malawi | MW | Yes |  | 
 | Malaysia | MY |  | Yes | 
@@ -167,18 +167,18 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Poland | PL | Yes | Yes | 
 | Portugal | PT | Yes | Yes | 
 | Puerto Rico | PR |  | Yes | 
-| Qatar | QA | Yes\[[1](#sms-support-note-1)\] |  | 
+| Qatar | QA | Yes[1](#sms-support-note-1) |  | 
 | Republic of the Congo | CG |  |  | 
 | Reunion Island | RE | Yes |  | 
 | Romania | RO |  | Yes | 
-| Russia | RU | Yes\[[1](#sms-support-note-1)\] | Yes | 
+| Russia | RU | Yes[1](#sms-support-note-1) | Yes | 
 | Rwanda | RW | Yes |  | 
 | Saint Kitts and Nevis | KN |  |  | 
 | Saint Lucia | LC |  |  | 
 | Saint Vincent and the Grenadines | VC |  |  | 
 | Samoa | WS | Yes |  | 
 | Sao Tome and Principe | ST | Yes |  | 
-| Saudi Arabia | SA | Yes\[[1](#sms-support-note-1)\] |  | 
+| Saudi Arabia | SA | Yes[1](#sms-support-note-1) |  | 
 | Senegal | SN | Yes |  | 
 | Serbia | RS | Yes |  | 
 | Seychelles | SC | Yes |  | 
@@ -200,7 +200,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Taiwan | TW |  | Yes | 
 | Tajikistan | TJ | Yes |  | 
 | Tanzania | TZ |  |  | 
-| Thailand | TH | Yes\[[1](#sms-support-note-1)\] | Yes | 
+| Thailand | TH | Yes[1](#sms-support-note-1) | Yes | 
 | Togo | TG | Yes |  | 
 | Tonga | TO | Yes |  | 
 | Trinidad and Tobago | TT | Yes |  | 
@@ -210,7 +210,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Turks and Caicos Islands | TC | Yes |  | 
 | Uganda | UG | Yes |  | 
 | Ukraine | UA | Yes | Yes | 
-| United Arab Emirates | AE | Yes\[[1](#sms-support-note-1)\] |  | 
+| United Arab Emirates | AE | Yes[1](#sms-support-note-1) |  | 
 | United Kingdom | GB | Yes | Yes | 
 | United States | US |  | Yes | 
 | Uruguay | UY |  |  | 
@@ -226,7 +226,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 
 **Notes**
 
-1. <a name="sms-support-note-1"></a>Senders are required to use a pre\-registered alphabetic sender ID\. To request a sender ID from AWS Support, request sender IDs\. Some countries require senders to meet specific requirements or abide by certain restrictions in order to obtain approval\. In these cases, AWS Support may contact you for additional information after you submit your sender ID request\.
+1. <a name="sms-support-note-1"></a>Senders are required to use a pre\-registered alphabetic sender ID\. To request a sender ID from AWS Support, file a support request\. Some countries require senders to meet specific requirements or abide by certain restrictions in order to obtain approval\. In these cases, AWS Support may contact you for additional information after you submit your sender ID request\.
 
 1. <a name="sms-support-note-2"></a>All carriers in Japan except KDDI support sender ID\.
 
