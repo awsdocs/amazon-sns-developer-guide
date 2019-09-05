@@ -74,9 +74,9 @@ Amazon Simple Notification Service sends the following dimensions to CloudWatch\
 
 |  Dimension  |  Description  | 
 | --- | --- | 
-|  Application  |  Filters on application objects, which represent an app and device registered with one of the supported push notification services, such as APNS and FCM\.  | 
-|  Application,Platform  |  Filters on application and platform objects, where the platform objects are for the supported push notification services, such as APNS and FCM\.  | 
+|  Application  |  Filters on application objects, which represent an app and device registered with one of the supported push notification services, such as APNs and FCM\.  | 
+|  Application,Platform  |  Filters on application and platform objects, where the platform objects are for the supported push notification services, such as APNs and FCM\.  | 
 | Country |  Filters on the destination country or region of an SMS message\. The country or region is represented by its ISO 3166\-1 alpha\-2 code\.  | 
-|  Platform  |  Filters on platform objects for the push notification services, such as APNS and FCM\.  | 
+|  Platform  |  Filters on platform objects for the push notification services, such as APNs and FCM\.  | 
 |  TopicName  |  Filters on Amazon SNS topic names\.  | 
 | SMSType |  Filters on the message type of SMS message\. Can be *promotional* or *transactional*\.  | 

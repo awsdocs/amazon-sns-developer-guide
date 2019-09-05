@@ -14,7 +14,7 @@
 
 1. In the **Push notification platform** box, choose the platform that the app is registered with and then enter the appropriate credentials\. 
 **Note**  
- If you are using one of the APNS platforms, then you can select **Choose file** to upload the \.p12 file \(exported from Keychain Access\) to Amazon SNS\.
+ If you are using one of the APNs platforms, then you can select **Choose file** to upload the \.p12 file \(exported from Keychain Access\) to Amazon SNS\.
 
 1. After you have entered this information, then choose **Add New App**\. 
 

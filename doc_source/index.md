@@ -67,7 +67,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Create a Platform Endpoint and Manage Device Tokens](mobile-platform-endpoint.md)
          + [Send a Direct Message to a Mobile Device](mobile-push-send-directmobile.md)
          + [Send Messages to Mobile Devices Subscribed to a Topic](mobile-push-send-topicmobile.md)
-         + [Send Custom, Platform-Specific Payloads to Mobile Devices](mobile-push-send-custommessage.md)
+         + [Send Custom Platform-Specific Payloads to Mobile Devices](sns-send-custom-platform-specific-payloads-mobile-devices.md)
       + [Using Amazon SNS Application Attributes for Message Delivery Status](sns-msg-status.md)
       + [Application Event Notifications](application-event-notifications.md)
       + [Using the Amazon SNS Time To Live (TTL) Message Attribute for Mobile Push Notifications](sns-ttl.md)

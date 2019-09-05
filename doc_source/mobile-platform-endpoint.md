@@ -320,7 +320,7 @@ Especially for FCM endpoints, you may think it is best to store the first device
 
 ### Re\-Enabling a Platform Endpoint Associated with an Invalid Device Token<a name="mobile-platform-endpoint-problems-invalid"></a>
 
-When a mobile platform \(such as APNS or FCM\) informs Amazon SNS that the device token used in the publish request was invalid, Amazon SNS disables the platform endpoint associated with that device token\. Amazon SNS will then reject subsequent publishes to that device token\. While you may think it is best to simply re\-enable the platform endpoint and keep publishing, in most situations doing this will not work: the messages that are published do not get delivered and the platform endpoint becomes disabled again soon afterward\.
+When a mobile platform \(such as APNs or FCM\) informs Amazon SNS that the device token used in the publish request was invalid, Amazon SNS disables the platform endpoint associated with that device token\. Amazon SNS will then reject subsequent publishes to that device token\. While you may think it is best to simply re\-enable the platform endpoint and keep publishing, in most situations doing this will not work: the messages that are published do not get delivered and the platform endpoint becomes disabled again soon afterward\.
 
 This is because the device token associated with the platform endpoint is genuinely invalid\. Deliveries to it cannot succeed because it no longer corresponds to any installed app\. The next time it is published to, the mobile platform will again inform Amazon SNS that the device token is invalid, and Amazon SNS will again disable the platform endpoint\.
 

@@ -1,13 +1,13 @@
 # Using Amazon SNS Mobile Push APIs<a name="mobile-push-api"></a>
 
-To use the Amazon SNS mobile push APIs, you must first meet the prerequisites for the push notification service, such as Apple Push Notification Service \(APNS\) and Firebase Cloud Messaging \(FCM\)\. For more information about the prerequisites, see [Prerequisites](sns-mobile-application-as-subscriber.md#SNSMobilePushPrereq)\. 
+To use the Amazon SNS mobile push APIs, you must first meet the prerequisites for the push notification service, such as Apple Push Notification Service \(APNs\) and Firebase Cloud Messaging \(FCM\)\. For more information about the prerequisites, see [Prerequisites](sns-mobile-application-as-subscriber.md#SNSMobilePushPrereq)\. 
 
  To send a push notification message to a mobile app and device using the APIs, you must first use the `CreatePlatformApplication` action, which returns a `PlatformApplicationArn` attribute\. The `PlatformApplicationArn` attribute is then used by `CreatePlatformEndpoint`, which returns an `EndpointArn` attribute\. You can then use the `EndpointArn` attribute with the `Publish` action to send a notification message to a mobile app and device, or you could use the `EndpointArn` attribute with the `Subscribe` action for subscription to a topic\. For more information, see [Process Overview](sns-mobile-application-as-subscriber.md#mobile-push-pseudo)\.
 
 The Amazon SNS mobile push APIs are as follows: 
 
 `[CreatePlatformApplication](https://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html)`  
-Creates a platform application object for one of the supported push notification services, such as APNS and FCM, to which devices and mobile apps may register\. Returns a `PlatformApplicationArn` attribute, which is used by the `CreatePlatformEndpoint` action\.
+Creates a platform application object for one of the supported push notification services, such as APNs and FCM, to which devices and mobile apps may register\. Returns a `PlatformApplicationArn` attribute, which is used by the `CreatePlatformEndpoint` action\.
 
 `[CreatePlatformEndpoint](https://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformEndpoint.html)`  
 Creates an endpoint for a device and mobile app on one of the supported push notification services\. `CreatePlatformEndpoint` uses the `PlatformApplicationArn` attribute returned from the `CreatePlatformApplication` action\. The `EndpointArn` attribute, which is returned when using `CreatePlatformEndpoint`, is then used with the `Publish` action to send a notification message to a mobile app and device\. 

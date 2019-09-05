@@ -5,7 +5,8 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
-| August 29, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
+| September 5, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
+| August 29, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | August 26, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | August 19, 2019 | Added the [Allow a CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account](sns-access-policy-use-cases.md#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account) section\. | 
 | August 16, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
@@ -59,5 +60,5 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 | October 9, 2014 | Added the [Process Overview](sns-mobile-application-as-subscriber.md#mobile-push-pseudo) section\.  | 
 | July 10, 2014 | Added the [Using the Amazon SNS Time To Live \(TTL\) Message Attribute for Mobile Push Notifications](sns-ttl.md) section\. | 
 | April 23, 2014 | Added a section about using the AWS SDK for Java with Amazon SNS\. | 
-| December 17, 2013 | Added the [Send Custom, Platform\-Specific Payloads to Mobile Devices](mobile-push-send-custommessage.md) section\.  | 
+| December 17, 2013 | Added the [Send Custom Platform\-Specific Payloads to Mobile Devices](sns-send-custom-platform-specific-payloads-mobile-devices.md) section\.  | 
 | May 1, 2013 | This is the first release of the Amazon Simple Notification Service Developer Guide\. | 

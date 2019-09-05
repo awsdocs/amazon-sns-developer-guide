@@ -20,13 +20,13 @@ South America \(São Paulo\)
 
 You send push notification messages to both mobile devices and desktops using one of the following supported push notification services: 
 + Amazon Device Messaging \(ADM\)
-+ Apple Push Notification Service \(APNS\) for both iOS and Mac OS X
++ Apple Push Notification Service \(APNs\) for both iOS and Mac OS X
 + Baidu Cloud Push \(Baidu\)
 + Firebase Cloud Messaging \(FCM\)
 + Microsoft Push Notification Service for Windows Phone \(MPNS\)
 + Windows Push Notification Services \(WNS\)
 
-Push notification services, such as APNS and FCM, maintain a connection with each app and associated mobile device registered to use their service\. When an app and mobile device register, the push notification service returns a device token\. Amazon SNS uses the device token to create a mobile endpoint, to which it can send direct push notification messages\. In order for Amazon SNS to communicate with the different push notification services, you submit your push notification service credentials to Amazon SNS to be used on your behalf\. For more information, see [Process Overview](#mobile-push-pseudo) 
+Push notification services, such as APNs and FCM, maintain a connection with each app and associated mobile device registered to use their service\. When an app and mobile device register, the push notification service returns a device token\. Amazon SNS uses the device token to create a mobile endpoint, to which it can send direct push notification messages\. In order for Amazon SNS to communicate with the different push notification services, you submit your push notification service credentials to Amazon SNS to be used on your behalf\. For more information, see [Process Overview](#mobile-push-pseudo) 
 
  In addition to sending direct push notification messages, you can also use Amazon SNS to send messages to mobile endpoints subscribed to a topic\. The concept is the same as subscribing other endpoint types, such as Amazon SQS, HTTP/S, email, and SMS, to a topic, as described in [What is Amazon Simple Notification Service?](welcome.md)\. The difference is that Amazon SNS communicates using the push notification services in order for the subscribed mobile endpoints to receive push notification messages sent to the topic\. The following figure shows a mobile endpoint as a subscriber to an Amazon SNS topic\. The mobile endpoint communicates using push notification services where the other endpoints do not\. 
 
@@ -35,7 +35,7 @@ Push notification services, such as APNS and FCM, maintain a connection with eac
 ## Prerequisites<a name="SNSMobilePushPrereq"></a>
 
 To begin using Amazon SNS mobile push notifications, you need the following:
-+ A set of credentials for connecting to one of the supported push notification services: ADM, APNS, Baidu, FCM, MPNS, or WNS\.
++ A set of credentials for connecting to one of the supported push notification services: ADM, APNs, Baidu, FCM, MPNS, or WNS\.
 + A device token or registration ID for the mobile app and device\.
 + Amazon SNS configured to send push notification messages to the mobile endpoints\.
 + A mobile app that is registered and configured to use one of the supported push notification services\.
@@ -44,7 +44,7 @@ To begin using Amazon SNS mobile push notifications, you need the following:
 
 The exact form the credentials take differs between mobile platforms, but in every case, these credentials must be submitted while making a connection to the platform\. One set of credentials is issued for each mobile app, and it must be used to send a message to any instance of that app\. 
 
-The specific names will vary depending on which push notification service is being used\. For example, when using APNS as the push notification service, you need a *device token*\. Alternatively, when using FCM, the device token equivalent is called a *registration ID*\. The *device token* or *registration ID* is a string that is sent to the application by the operating system of the mobile device\. It uniquely identifies an instance of a mobile app running on a particular mobile device and can be thought of as unique identifiers of this app\-device pair\. 
+The specific names will vary depending on which push notification service is being used\. For example, when using APNs as the push notification service, you need a *device token*\. Alternatively, when using FCM, the device token equivalent is called a *registration ID*\. The *device token* or *registration ID* is a string that is sent to the application by the operating system of the mobile device\. It uniquely identifies an instance of a mobile app running on a particular mobile device and can be thought of as unique identifiers of this app\-device pair\. 
 
 Amazon SNS stores the credentials \(plus a few other settings\) as a platform application resource\. The device tokens \(again with some extra settings\) are represented as objects called platform endpoints\. Each platform endpoint belongs to one specific platform application, and every platform endpoint can be communicated with using the credentials that are stored in its corresponding platform application\.
 

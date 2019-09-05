@@ -2,7 +2,7 @@
 
 Amazon Simple Notification Service \(Amazon SNS\) provides support for setting a *Time To Live \(TTL\)* message attribute for mobile push notifications messages\. This is in addition to the existing capability of setting TTL within the Amazon SNS message body for the mobile push notification services that support this, such as Amazon Device Messaging \(ADM\) and Firebase Cloud Messaging \(FCM\)\.
 
-The TTL message attribute is used to specify expiration metadata about a message\. This allows you to specify the amount of time that the push notification service, such as Apple Push Notification Service \(APNS\) or FCM, has to deliver the message to the endpoint\. If for some reason \(such as the mobile device has been turned off\) the message is not deliverable within the specified TTL, then the message will be dropped and no further attempts to deliver it will be made\. To specify TTL within message attributes, you can use the AWS Management Console, AWS software development kits \(SDKs\), or query API\. 
+The TTL message attribute is used to specify expiration metadata about a message\. This allows you to specify the amount of time that the push notification service, such as Apple Push Notification Service \(APNs\) or FCM, has to deliver the message to the endpoint\. If for some reason \(such as the mobile device has been turned off\) the message is not deliverable within the specified TTL, then the message will be dropped and no further attempts to deliver it will be made\. To specify TTL within message attributes, you can use the AWS Management Console, AWS software development kits \(SDKs\), or query API\. 
 
 **Topics**
 + [TTL Message Attributes for Push Notification Services](#sns-ttl-msg-attrib)
@@ -20,8 +20,8 @@ The following is a list of the TTL message attributes for push notification serv
 | Push Notification Service | TTL Message Attribute | 
 | --- | --- | 
 | Amazon Device Messaging \(ADM\) | AWS\.SNS\.MOBILE\.ADM\.TTL | 
-| Apple Push Notification Service \(APNS\) | AWS\.SNS\.MOBILE\.APNS\.TTL | 
-| Apple Push Notification Service Sandbox \(APNS\_SANDBOX\) | AWS\.SNS\.MOBILE\.APNS\_SANDBOX\.TTL | 
+| Apple Push Notification Service \(APNs\) | AWS\.SNS\.MOBILE\.APNS\.TTL | 
+| Apple Push Notification Service Sandbox \(APNs\_SANDBOX\) | AWS\.SNS\.MOBILE\.APNS\_SANDBOX\.TTL | 
 | Baidu Cloud Push \(Baidu\) | AWS\.SNS\.MOBILE\.BAIDU\.TTL | 
 | Firebase Cloud Messaging \(FCM\) | AWS\.SNS\.MOBILE\.FCM\.TTL | 
 | Windows Push Notification Services \(WNS\) | AWS\.SNS\.MOBILE\.WNS\.TTL | 
@@ -30,7 +30,7 @@ Each of the push notification services handle TTL differently\. Amazon SNS provi
 
  TTL is relative to the publish time\. Before handing off a push notification message to a specific push notification service, Amazon SNS computes the dwell time \(the time between the publish timestamp and just before handing off to a push notification service\) for the push notification and passes the remaining TTL to the specific push notification service\. If TTL is shorter than the dwell time, Amazon SNS won't attempt to publish\. 
 
-If you specify a TTL for a push notification message, then the TTL value must be a positive integer, unless the value of `0` has a specific meaning for the push notification service—such as with APNS and FCM\. If the TTL value is set to `0` and the push notification service does not have a specific meaning for `0`, then Amazon SNS will drop the message\. For more information about the TTL parameter set to `0` when using APNS, see *Table A\-3 Item identifiers for remote notifications* in the [Binary Provider API](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/BinaryProviderAPI.html) documentation\.
+If you specify a TTL for a push notification message, then the TTL value must be a positive integer, unless the value of `0` has a specific meaning for the push notification service—such as with APNs and FCM\. If the TTL value is set to `0` and the push notification service does not have a specific meaning for `0`, then Amazon SNS will drop the message\. For more information about the TTL parameter set to `0` when using APNs, see *Table A\-3 Item identifiers for remote notifications* in the [Binary Provider API](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/BinaryProviderAPI.html) documentation\.
 
 ## Precedence Order for Determining TTL<a name="sns-ttl-precedence"></a>
 
