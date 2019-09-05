@@ -5,7 +5,6 @@ The following table lists Amazon SNS feature releases and improvements\. For cha
 
 | Date | Feature Release | 
 | --- | --- | 
-| September 5, 2019 | Amazon SNS supports the apns\-push\-type header field for mobile notifications sent through APNs\. For more information, see [Sending Messages to APNs as Background Notifications](sns-send-custom-platform-specific-payloads-mobile-devices.md#mobile-push-send-message-apns-background-notification)\. | 
 | July 24, 2019 | You can troubleshoot messages passing through Amazon SNS topics using AWS X\-Ray\. For more information, see [Troubleshooting Amazon Simple Notification Service Topics Using AWS X\-Ray](sns-troubleshooting-using-x-ray.md) section\.  | 
 | July 5, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-release-notes.html)  | 
 | May 16, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-release-notes.html)  | 

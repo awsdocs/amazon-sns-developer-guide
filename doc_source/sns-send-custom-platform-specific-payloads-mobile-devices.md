@@ -46,22 +46,3 @@ one of the notification platforms.",
   "ADM": "{ \"data\": { \"message\": \"Check out these awesome deals!\",\"url\":\"www.amazon.com\" }}" 
 }
 ```
-
-## Sending Messages to APNs as Background Notifications<a name="mobile-push-send-message-apns-background-notification"></a>
-
-Amazon SNS sets the `apns-push-type` APNs header to `alert` or `background` depending on the `content-available` field in your APNs JSON payload configuration\. For more information, see [Pushing Background Updates to Your App](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app) in the APNs documentation\.
-+ An `alert` APNs notification informs your users by displaying an alert message, playing a sound, or adding a badge to your application’s icon\.
-+ A `background` APNs notification wakes up or instructs your application to act upon the content of the notification, without informing the user\.
-
-**Important**  
-If Amazon SNS sends a raw configuration object for APNs, you must specify the appropriate `content-available` field within the configuration object\.
-
-The following is an example raw configuration object\.
-
-```
-{
-  "APNS": "{\"aps\":{\"content-available\":1},\"Foo1\":\"\Bar\",\"Foo2\":123}"
-}
-```
-
-In this example, Amazon SNS sets the `apns-push-type` APNs header to `alert` for the message\. When Amazon SNS detects that `content-available` is set to `1`, it sets the header to `background.`
