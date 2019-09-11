@@ -108,7 +108,7 @@ If any mismatches occur, the policy rejects the message\.
 When you create a filter policy, keep the following constraints in mind:
 + For the `String` data type, the attribute comparison between policy and message is case\-sensitive\.
 + A numeric policy attribute can have a value from \-109 to 109, with 5 digits of accuracy after the decimal point\.
-+ The total combination of values must not exceed 100\. Calculate the total combination by multiplying the number of values in each array\.
++ The total combination of values must not exceed 150\. Calculate the total combination by multiplying the number of values in each array\.
 
   Consider the following policy:
 
