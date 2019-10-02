@@ -5,8 +5,8 @@ You can use Amazon CloudWatch and Amazon CloudWatch Logs to monitor your SMS mes
 **Topics**
 + [Viewing Amazon CloudWatch Metrics](#sms_stats_cloudwatch_metrics)
 + [Viewing CloudWatch Logs](#sns-viewing-cloudwatch-logs)
-+ [Example Log for Successful SMS Delivery](#sms_stats_example_log_success)
-+ [Example Log for Failed SMS Delivery](#sms_stats_example_log_failed)
++ [Example Log for Successful SMS Delivery](#example-log-successful-sms-delivery)
++ [Example Log for Failed SMS Delivery](#example-log-failed-sms-delivery)
 + [SMS Delivery Failure Reasons](#sms_stats_delivery_fail_reasons)
 
 ## Viewing Amazon CloudWatch Metrics<a name="sms_stats_cloudwatch_metrics"></a>
@@ -45,7 +45,7 @@ You can collect information about successful and unsuccessful SMS message delive
 
 1. Choose **Save changes**\.
 
-## Example Log for Successful SMS Delivery<a name="sms_stats_example_log_success"></a>
+## Example Log for Successful SMS Delivery<a name="example-log-successful-sms-delivery"></a>
 
 The delivery status log for a successful SMS delivery will resemble the following example:
 
@@ -58,7 +58,7 @@ The delivery status log for a successful SMS delivery will resemble the followin
     "delivery": {
         "phoneCarrier": "My Phone Carrier",
         "mnc": 270,
-        "destination": "+1XXX5550100”,
+        "destination": "+1XXX5550100",
         "priceInUSD": 0.00645,
         "smsType": "Transactional",
         "mcc": 310,
@@ -70,7 +70,7 @@ The delivery status log for a successful SMS delivery will resemble the followin
 }
 ```
 
-## Example Log for Failed SMS Delivery<a name="sms_stats_example_log_failed"></a>
+## Example Log for Failed SMS Delivery<a name="example-log-failed-sms-delivery"></a>
 
 The delivery status log for a failed SMS delivery will resemble the following example:
 
@@ -82,7 +82,7 @@ The delivery status log for a failed SMS delivery will resemble the following ex
     },
     "delivery": {
         "mnc": 0,
-        "destination": "+1XXX5550100”,
+        "destination": "+1XXX5550100",
         "priceInUSD": 0.00645,
         "smsType": "Transactional",
         "mcc": 0,

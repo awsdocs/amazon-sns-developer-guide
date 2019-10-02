@@ -1,6 +1,6 @@
 # Using Amazon SNS Mobile Push<a name="mobile-push-send"></a>
 
- This section describes how to use the AWS Management Console with the information described in [Prerequisites](sns-mobile-application-as-subscriber.md#SNSMobilePushPrereq) to register your mobile app with AWS, add device tokens \(also referred to as registration IDs\), send a direct message to a mobile device, and send a message to mobile devices subscribed to an Amazon SNS topic\.
+ This section describes how to use the AWS Management Console with the information described in [Prerequisites for Amazon SNS User Notifications](sns-prerequisites-for-mobile-push-notifications.md) to register your mobile app with AWS, add device tokens \(also referred to as registration IDs\), send a direct message to a mobile device, and send a message to mobile devices subscribed to an Amazon SNS topic\.
 
 **Topics**
 + [Register Your Mobile App with AWS](mobile-push-send-register.md)

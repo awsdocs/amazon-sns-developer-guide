@@ -49,12 +49,13 @@ one of the notification platforms.",
 
 ## Sending Messages to APNs as Background Notifications<a name="mobile-push-send-message-apns-background-notification"></a>
 
-Amazon SNS sets the `apns-push-type` APNs header to `alert` or `background` depending on the `content-available` field in your APNs JSON payload configuration\. For more information, see [Pushing Background Updates to Your App](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app) in the APNs documentation\.
+Amazon SNS sets the `apns-push-type` APNs header to `alert` or `background` depending on the `content-available` key in your APNs JSON payload configuration\. For more information, see [Pushing Background Updates to Your App](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app) in the APNs documentation\.
 + An `alert` APNs notification informs your users by displaying an alert message, playing a sound, or adding a badge to your application’s icon\.
 + A `background` APNs notification wakes up or instructs your application to act upon the content of the notification, without informing the user\.
 
 **Important**  
-If Amazon SNS sends a raw configuration object for APNs, you must specify the appropriate `content-available` field within the configuration object\.
+If Amazon SNS sends a raw configuration object for APNs as a background\-only notification, you must include the `content-available` key in the `aps` dictionary and set the value to `1`\.  
+Although you can include custom keys, the `aps` dictionary must not contain any keys that trigger user interactions \(for example, alerts, badges, or sounds\)\.
 If the value of the `content-available` field isn’t an integer or a Boolean, the notification defaults to `alert`\.
 
 The following is an example raw configuration object\.
@@ -65,4 +66,4 @@ The following is an example raw configuration object\.
 }
 ```
 
-In this example, Amazon SNS sets the `apns-push-type` APNs header to `alert` for the message\. When Amazon SNS detects that `content-available` is set to `1`, it sets the header to `background.`
+In this example, Amazon SNS sets the `apns-push-type` APNs header for the message to `background`\. When Amazon SNS detects that the `apn` dictionary contains the `content-available` key set to `1`—and doesn't contain any other keys that can trigger user interactions—it sets the header to `background`\.

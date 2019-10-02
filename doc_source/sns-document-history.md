@@ -5,6 +5,8 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
+| October 3, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
+| September 23, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | September 10, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | August 29, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | August 26, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
@@ -57,7 +59,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 | April 9, 2015 | Added the [Amazon SNS Message Delivery Status](sns-topic-attributes.md) section\.  | 
 | February 5, 2015 | Added the [Using Amazon SNS Application Attributes for Message Delivery Status](sns-msg-status.md) section\. | 
 | October 9, 2014 | Added the [Logging Amazon Simple Notification Service API Calls Using AWS CloudTrail](sns-logging-using-cloudtrail.md) section\. | 
-| October 9, 2014 | Added the [Process Overview](sns-mobile-application-as-subscriber.md#mobile-push-pseudo) section\.  | 
+| October 9, 2014 | Added the [User Notification Process Overview](sns-user-notifications-process-overview.md) section\.  | 
 | July 10, 2014 | Added the [Using the Amazon SNS Time To Live \(TTL\) Message Attribute for Mobile Push Notifications](sns-ttl.md) section\. | 
 | April 23, 2014 | Added a section about using the AWS SDK for Java with Amazon SNS\. | 
 | December 17, 2013 | Added the [Send Custom Platform\-Specific Payloads to Mobile Devices](sns-send-custom-platform-specific-payloads-mobile-devices.md) section\.  | 

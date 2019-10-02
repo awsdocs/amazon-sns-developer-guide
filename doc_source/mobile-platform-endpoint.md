@@ -1,6 +1,6 @@
 # Create a Platform Endpoint and Manage Device Tokens<a name="mobile-platform-endpoint"></a>
 
-When an app and mobile device register with a push notification service, the push notification service returns a device token\. Amazon SNS uses the device token to create a mobile endpoint, to which it can send direct push notification messages\. For more information, see [Prerequisites](sns-mobile-application-as-subscriber.md#SNSMobilePushPrereq) and [Process Overview](sns-mobile-application-as-subscriber.md#mobile-push-pseudo)\.
+When an app and mobile device register with a push notification service, the push notification service returns a device token\. Amazon SNS uses the device token to create a mobile endpoint, to which it can send direct push notification messages\. For more information, see [Prerequisites for Amazon SNS User Notifications](sns-prerequisites-for-mobile-push-notifications.md) and [User Notification Process Overview](sns-user-notifications-process-overview.md)\.
 
 This section describes the recommended approach for creating a platform endpoint and managing device tokens\.
 
