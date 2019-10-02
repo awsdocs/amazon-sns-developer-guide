@@ -139,7 +139,10 @@ The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions 
 
 ### Enable Compatibility between Event Sources from AWS Services and Encrypted Topics<a name="compatibility-with-aws-services"></a>
 
-Several AWS services publish events to Amazon SNS topics\. To allow these event sources to work with encrypted topics, you must perform the following steps:
+Several AWS services publish events to Amazon SNS topics\. To allow these event sources to work with encrypted topics, you must perform the following steps\.
+
+**Note**  
+Currently, CloudWatch alarms don't work with Amazon SNS encrypted topics\. For information about publishing alarms to unencrypted topics, see [Using Amazon CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/) in the *Amazon CloudWatch User Guide*\.
 
 1. [Create a customer master key \(CMK\)\.](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-keys-console)
 
