@@ -2,7 +2,7 @@
 
 1. [Obtain the credentials and device token](sns-prerequisites-for-mobile-push-notifications.md) for the mobile platforms that you want to support\.
 
-1. Use the credentials to create a platform application object \(`PlatformApplicationArn`\) usingaa Amazon SNS\. For more information, see [Create a Platform Endpoint and Manage Device Tokens](mobile-platform-endpoint.md)\.
+1. Use the credentials to create a platform application object \(`PlatformApplicationArn`\) using Amazon SNS\. For more information, see [Create a Platform Endpoint and Manage Device Tokens](mobile-platform-endpoint.md)\.
 
 1. Use the returned credentials to request a device token for your mobile app and device from the mobile platforms\. The token you receive represents your mobile app and device\.
 
