@@ -134,7 +134,9 @@ For details about the format of the `Notification` message, see [HTTP/HTTPS Head
 
 1. Make sure that your endpoint responds to the HTTP POST message from Amazon SNS with the appropriate status code\. The connection will time out in 15 seconds\. If your endpoint does not respond before the connection times out or if your endpoint returns a status code outside the range of 200–4*xx*, Amazon SNS will consider the delivery of the message as a failed attempt\.
 
-1. Make sure that your code can handle message delivery retries from Amazon SNS\. If Amazon SNS doesn't receive a successful response from your endpoint, it attempts to deliver the message again\. This applies to all messages, including the subscription confirmation message\. By default, if the initial delivery of the message fails, Amazon SNS attempts up to three retries with a delay between failed attempts set at 20 seconds\. Note that the message request times out at 15 seconds\. This means that if the message delivery failure was caused by a timeout, Amazon SNS will retry approximately 35 seconds after the previous delivery attempt\. If you don't like the default delivery policy, you can set a different delivery policy on the endpoint\.
+1. Make sure that your code can handle message delivery retries from Amazon SNS\. If Amazon SNS doesn't receive a successful response from your endpoint, it attempts to deliver the message again\. This applies to all messages, including the subscription confirmation message\. By default, if the initial delivery of the message fails, Amazon SNS attempts up to three retries with a delay between failed attempts set at 20 seconds\.
+**Note**  
+The message request times out ater 15 seconds\. This means that, if the message delivery failure is caused by a timeout, Amazon SNS retries for approximately 35 seconds after the previous delivery attempt\. You can set a different delivery policy for the endpoint\.
 
    To be clear, Amazon SNS attempts to retry only after a delivery `x-amz-sns-message-id` header field\. By comparing the IDs of the messages you have processed with incoming messages, you can determine whether the message is a retry attempt\.
 

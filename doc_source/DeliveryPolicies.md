@@ -14,7 +14,9 @@ Amazon SNS attempts a retry only after a failed delivery attempt\. Amazon SNS co
 + HTTP status codes 100 to 101 and 500 to 599 \(inclusive\)\.
 **Note**  
 Amazon SNS considers HTTP status codes 400 to 499 to indicate permanent delivery failure\.
-+ A request timeout \(15 seconds\)\. Note that if a request timeout occurs, the next retry will occur at the specified interval after the timeout\. For example, if the retry interval is 20 seconds and a request times out, the start of the next request will be 35 seconds after the start of the request that timed out\.
++ A request timeout \(15 seconds\)\.
+**Note**  
+If a request timeout occurs, the next retry occurs at the specified interval after the timeout\. For example, if the retry interval is 20 seconds and a request times out, the start of the next request is 35 seconds after the start of the request that timed out\.
 + Any connection error such as connection timeout, endpoint unreachable, bad SSL certificate, etc\.
 
 You can use delivery policies to control not only the total number of retries, but also the time delay between each retry\. You can specify up to 100 total retries distributed among four discrete phases\. The maximum lifetime of a message in the system is one hour\. This one hour limit cannot be extended by a delivery policy\.

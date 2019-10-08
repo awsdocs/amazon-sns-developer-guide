@@ -71,7 +71,8 @@ In this use case, you want to publish messages from your topic to your Amazon SQ
 
 Again, you'll need to know how to write your own policy because the Amazon SQS `AddPermission` action doesn't create policy statements with conditions\.
 
-Note that the example presented below is an Amazon SQS policy \(controlling access to your queue\), not an Amazon SNS policy \(controlling access to your topic\)\. The actions are Amazon SQS actions, and the resource is the Amazon Resource Name \(ARN\) of the queue\. You can determine the queue's ARN by retrieving the queue's `QueueArn` attribute with the `GetQueueAttributes` action\.
+**Note**  
+The example presented below is an Amazon SQS policy \(controlling access to your queue\), not an Amazon SNS policy \(controlling access to your topic\)\. The actions are Amazon SQS actions, and the resource is the Amazon Resource Name \(ARN\) of the queue\. You can determine the queue's ARN by retrieving the queue's `QueueArn` attribute with the `GetQueueAttributes` action\.
 
 ```
 {
@@ -102,6 +103,9 @@ In this case, you want to configure a topic's policy so that another AWS account
 
 In the following example statement, the topic owner in these policies is 1111\-2222\-3333 and the AWS resource owner is 4444\-5555\-6666\. The example gives the AWS account ID 4444\-5555\-6666 the ability to publish to My\-Topic from any AWS resource owned by the account\.
 
+**Note**  
+If you publish messages directly \(rather than having an AWS resource publish messages on your behalf\), a policy in which you specify an empty `Principal` *and *use `AWS:SourceAccount` as a condition will not work\.
+
 ```
 {
   "Version": "2012-10-17",
@@ -114,7 +118,7 @@ In the following example statement, the topic owner in these policies is 1111\-2
     "Resource": "arn:aws:sns:us-east-1:111122223333:MyTopic",
     "Condition": {
       "StringEquals": {
-        "AWS:SourceOwner": "444455556666"
+        "AWS:SourceAccount": "444455556666"
       }
     }
   }]

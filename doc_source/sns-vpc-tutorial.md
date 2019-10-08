@@ -163,7 +163,8 @@ At this point in the tutorial, the publish attempt fails\. In a later step, afte
 
 To connect the VPC to Amazon SNS, you define an interface VPC endpoint\. After you add the endpoint, you can log in to the Amazon EC2 instance in your VPC, and from there you can use the Amazon SNS API\. You can publish messages to the topic, and the messages are published privately\. They stay within the AWS network, and they don't travel the public internet\.
 
-Note that the instance still lacks access to other AWS services and endpoints on the internet\.
+**Note**  
+The instance still lacks access to other AWS services and endpoints on the internet\.
 
 **To create the endpoint**
 
