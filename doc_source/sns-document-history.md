@@ -5,7 +5,6 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
-| October 18, 2019 | Clarified the information regarding CloudWatch in the [Enable Compatibility between Event Sources from AWS Services and Encrypted Topics](sns-server-side-encryption.md#compatibility-with-aws-services) section\. | 
 | October 8, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | October 3, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | September 23, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
