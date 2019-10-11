@@ -277,10 +277,10 @@ For detailed instructions on publishing a message with attributes to an Amazon S
    message.AddAttribute("encrypted", encryptedVal);
    
    // Publish the message.
-   message.Publish(snsClient, topicArn);
+   String msgId = message.Publish(snsClient, topicArn);
    
    // Print the MessageId of the published message.
-   Console.WriteLine("MessageId: " + publishResponse.MessageId);
+   Console.WriteLine("MessageId: " + msgId);
    ```
 
 1. Compile and run your code\.

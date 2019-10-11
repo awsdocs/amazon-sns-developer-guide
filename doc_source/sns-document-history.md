@@ -5,6 +5,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
+| October 10, 2019 | Fixed the code excerpt that initializes and uses the SNSMessageAttributeClass in the [To Publish a Message with Attributes to an Amazon SNS Topic Using the AWS SDK for \.NET](sns-tutorial-publish-message-with-attributes.md#publish-message-with-attributes-aws-dot-net)\. | 
 | October 8, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | October 3, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | September 23, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
