@@ -6,7 +6,7 @@ Amazon SNS and Amazon SQS let you send and receive large payloads \(from 64 to 2
 To send large payloads, you must use an AWS SDK that supports Signature Version 4\.
 
 To avoid having Amazon SQS and HTTP/S endpoints process the JSON formatting of messages, Amazon SNS also allows raw message delivery:
-+ When you enable raw message delivery for an Amazon SQS endpoint, any Amazon SNS metadata is stripped from the published message and the message is sent as\-is\.
++ When you enable raw message delivery for an Amazon SQS endpoint, any Amazon SNS metadata is stripped from the published message and the message is sent as is\.
 + When you enable raw message delivery for HTTP/S endpoints, the HTTP header `x-amz-sns-rawdelivery` with its value set to `true` is added to the message, indicating that the message has been published without JSON formatting\.
 
 To enable raw message delivery using an AWS SDK, you must use the `SetSubscriptionAttribute` API action and set the value of the `RawMessageDelivery` attribute to `true`\.
