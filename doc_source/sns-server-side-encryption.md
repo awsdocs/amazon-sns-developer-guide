@@ -144,9 +144,9 @@ Several AWS services publish events to Amazon SNS topics\. To allow these event 
 **Note**  
 Currently, CloudWatch alarms don't work with Amazon SNS encrypted topics\. For information about publishing alarms to unencrypted topics, see [Using Amazon CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/) in the *Amazon CloudWatch User Guide*\.
 
-1. [Create a customer master key \(CMK\)\.](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-keys-console)
+1. Use the AWS managed CMK for Amazon SNS\.
 
-1. To allow the AWS service feature to have the `kms:GenerateDataKey*` and `kms:Decrypt` permissions, add the following statement to the policy of the CMK using the correct service principal\.
+1. To allow the AWS service to have the `kms:GenerateDataKey*` and `kms:Decrypt` permissions, add the following statement to the CMK policy\.
 
    ```
    {

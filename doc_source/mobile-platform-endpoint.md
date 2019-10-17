@@ -278,7 +278,7 @@ class RegistrationExample
                 // The platform endpoint already exists for this token, but with
                 // additional custom data that createEndpoint doesn't want to overwrite.
                 // Just use the existing platform endpoint.
-                endpoint = m[0].Groups[1].Value;
+                endpointArn = m[0].Groups[1].Value;
             }
             else
             {

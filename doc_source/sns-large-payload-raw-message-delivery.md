@@ -1,10 +1,15 @@
 # Amazon SNS Large Payload and Raw Message Delivery<a name="sns-large-payload-raw-message-delivery"></a>
 
-Amazon SNS \(and Amazon SQS\) allows you to send large payload messages \(from 64 to 256 kilobytes in size\)\. To send large payloads, you must use an AWS SDK that supports Signature Version 4\.
+Amazon SNS and Amazon SQS let you send and receive large payloads \(from 64 to 256 kilobytes in size\)\.
 
-In addition to sending large payloads, with Amazon SNS you can now enable raw message delivery for messages delivered to either Amazon SQS endpoints or HTTP/S endpoints\. This eliminates the need for the endpoints to process JSON formatting, which is created for the Amazon SNS metadata when raw message delivery is not selected\. For example when enabling raw message delivery for an Amazon SQS endpoint, the Amazon SNS metadata is not included and the published message is delivered to the subscribed Amazon SQS endpoint as is\. When enabling raw message delivery for HTTP/S endpoints, the messages will contain an additional HTTP header `x-amz-sns-rawdelivery` with a value of `true` to indicate that the message is being published raw instead of with JSON formatting\. This enables those endpoints to understand what is being delivered and enables easier transition for subscriptions from JSON to raw delivery\. 
+**Note**  
+To send large payloads, you must use an AWS SDK that supports Signature Version 4\.
 
-To enable raw message delivery using one of the AWS SDKs, you must use the `SetSubscriptionAttribute` action and configure the `RawMessageDelivery` attribute with a value of `true`\. The default value is `false`\. 
+To avoid having Amazon SQS and HTTP/S endpoints process the JSON formatting of messages, Amazon SNS also allows raw message delivery:
++ When you enable raw message delivery for an Amazon SQS endpoint, any Amazon SNS metadata is stripped from the published message and the message is sent as\-is\.
++ When you enable raw message delivery for HTTP/S endpoints, the HTTP header `x-amz-sns-rawdelivery` with its value set to `true` is added to the message, indicating that the message has been published without JSON formatting\.
+
+To enable raw message delivery using an AWS SDK, you must use the `SetSubscriptionAttribute` API action and set the value of the `RawMessageDelivery` attribute to `true`\.
 
 ## Enabling Raw Message Delivery Using the AWS Management Console<a name="raw-message-console"></a>
 

@@ -6,8 +6,7 @@ Message attributes are optional and separate fromâ€”but are sent together withâ€
 
 For information about sending messages with attributes using the AWS Management Console or the AWS SDK for Java, see the [Tutorial: Publishing a Message with Attributes to an Amazon SNS Topic](sns-tutorial-publish-message-with-attributes.md) tutorial\.
 
-**Important**  
-To use message attributes with Amazon SQS endpoints, you must set subscription attribute `Raw Message Delivery` to `True`\. For more information about raw message delivery, see [Amazon SNS Large Payload and Raw Message Delivery](sns-large-payload-raw-message-delivery.md)\.  
+**Note**  
 Message attributes are sent only when the message structure is String, not JSON\.
 
 You can also use message attributes to help structure the push notification message for mobile endpoints\. In this scenario, the message attributes are used only to help structure the push notification message\. The attributes are not delivered to the endpoint as they are when sending messages with message attributes to Amazon SQS endpoints\.
