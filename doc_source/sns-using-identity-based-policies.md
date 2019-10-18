@@ -56,10 +56,10 @@ arn:aws:sns:region:account_ID:topic_name
 For more information about ARNs, go to [ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html#Identifiers_ARNs) in *IAM User Guide*\.
 
 **Example**  
-Following is an ARN for a topic named my\_topic in the us\-east\-1 region, belonging to AWS account 123456789012\.   
+Following is an ARN for a topic named my\_topic in the us\-east\-2 region, belonging to AWS account 123456789012\.   
 
 ```
-arn:aws:sns:us-east-1:123456789012:my_topic
+arn:aws:sns:us-east-2:123456789012:my_topic
 ```
 
 **Example**  
@@ -185,7 +185,7 @@ We also want to prevent the WidgetCo group from doing anything else with topics,
  The following example demonstrates how to obtain temporary security credentials to authenticate an Amazon SNS request\.   
 
 ```
-http://sns.us-east-1.amazonaws.com/
+http://sns.us-east-2.amazonaws.com/
 ?Name=My-Topic
 &Action=CreateTopic
 &Signature=gfzIF53exFVdpSNb8AiwN3Lv%2FNYXh6S%2Br3yySK70oX4%3D

@@ -48,7 +48,7 @@ The following example is a string to sign for a `Notification`\.
        Timestamp
        2012-06-05T04:37:04.321Z
        TopicArn
-       arn:aws:sns:us-east-1:123456789012:s4-MySNSTopic-1G1WEFCOXTC0P
+       arn:aws:sns:us-east-2:123456789012:s4-MySNSTopic-1G1WEFCOXTC0P
        Type
        Notification
    ```  

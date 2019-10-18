@@ -52,7 +52,7 @@ After you configure message delivery status attributes for an application endpoi
         "token": "Examplei7fFachkJ1xjlqT64RaBkcGHochmf1VQAr9k-IBJtKjp7fedYPzEwT_Pq3Tu0lroqro1cwWJUvgkcPPYcaXCpPWmG3Bqn-wiqIEzp5zZ7y_jsM0PKPxKhddCzx6paEsyay9Zn3D4wNUJb8m6HXrBf9dqaEw",
         "attempts": 1,
         "providerResponse": "{\"multicast_id\":5138139752481671853,\"success\":1,\"failure\":0,\"canonical_ids\":0,\"results\":[{\"message_id\":\"0:1422313659698010%d6ba8edff9fd7ecd\"}]}",
-        "destination": "arn:aws:sns:us-east-1:111122223333:endpoint/FCM/FCMPushApp/c23e42de-3699-3639-84dd-65f84474629d"
+        "destination": "arn:aws:sns:us-east-2:111122223333:endpoint/FCM/FCMPushApp/c23e42de-3699-3639-84dd-65f84474629d"
     }
 }
 ```
@@ -72,7 +72,7 @@ After you configure message delivery status attributes for an application endpoi
         "token": "examp1e29z6j5c4df46f809505189c4c83fjcgf7f6257e98542d2jt3395kj73",
         "attempts": 1,
         "providerResponse": "NotificationErrorResponse(command=8, status=InvalidToken, id=1, cause=null)",
-        "destination": "arn:aws:sns:us-east-1:111122223333:endpoint/APNS_SANDBOX/APNSPushApp/986cb8a1-4f6b-34b1-9a1b-d9e9cb553944"
+        "destination": "arn:aws:sns:us-east-2:111122223333:endpoint/APNS_SANDBOX/APNSPushApp/986cb8a1-4f6b-34b1-9a1b-d9e9cb553944"
     }
 }
 ```

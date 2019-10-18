@@ -47,16 +47,42 @@ one of the notification platforms.",
 }
 ```
 
-## Sending Messages to APNs as Background Notifications<a name="mobile-push-send-message-apns-background-notification"></a>
+## Sending Messages to APNs as Alert or Background Notifications<a name="mobile-push-send-message-apns-background-notification"></a>
 
-Amazon SNS sets the `apns-push-type` APNs header to `alert` or `background` depending on the `content-available` key in your APNs JSON payload configuration\. For more information, see [Pushing Background Updates to Your App](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app) in the APNs documentation\.
-+ An `alert` APNs notification informs your users by displaying an alert message, playing a sound, or adding a badge to your application’s icon\.
+Amazon SNS can send messages to APNs as `alert` or `background` notifications \(for more information, see [Pushing Background Updates to Your App](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app) in the APNs documentation\)\.
++ An `alert` APNs notification informs the user by displaying an alert message, playing a sound, or adding a badge to your application’s icon\.
 + A `background` APNs notification wakes up or instructs your application to act upon the content of the notification, without informing the user\.
 
+### Specifying Custom APNs Header Values<a name="specify-custom-header-value"></a>
+
+We recommend specifying custom values for the `AWS.SNS.MOBILE.APNS.PUSH_TYPE` [reserved message attribute](sns-message-attributes.md#sns-attrib-mobile-reserved) using the Amazon SNS `Publish` API action, AWS SDKs, or the AWS CLI\. The following CLI example sets `content-available` to `1` and `apns-push-type` to `background` for the specified topic\. 
+
+```
+aws sns publish \
+--endpoint-url https://sns.us-east-1.amazonaws.com \
+--target-arn arn:aws:sns:us-east-1:123456789012:endpoint/APNS_PLATFORM/MYAPP/1234a567-bc89-012d-3e45-6fg7h890123i \
+--message '{"APNS_PLATFORM":"{\"aps\":{\"content-available\":1}}"}' \
+--message-attributes '{ \
+  "AWS.SNS.MOBILE.APNS.TOPIC":{"DataType":"String","StringValue":"com.amazon.mobile.messaging.myapp"}, \
+  "AWS.SNS.MOBILE.APNS.PRIORITY":{"DataType":"String","StringValue":"10"}}', \
+  "AWS.SNS.MOBILE.APNS.PUSH_TYPE":{"DataType":"String","StringValue":"background"} \
+--message-structure json
+```
+
+### Inferring the APNs Push Type Header from the Payload<a name="inferring-push-type-header-from-payload"></a>
+
+If you don't set the `apns-push-type` APNs header, Amazon SNS sets header to `alert` or `background` depending on the `content-available` key in the `aps` dictionary of your JSON\-formatted APNs payload configuration\.
+
+**Note**  
+Amazon SNS is able to infer only `alert` or `background` headers, although the `apns-push-type` header can be set to other values\.
++ `apns-push-type` is set to `alert`
+  + If the `aps` dictionary contains `content-available` set to `1` and *one or more keys* that trigger user interactions\.
+  + If the `aps` dictionary contains `content-available` set to `0` *or* if the `content-available` key is absent\.
+  + If the value of the `content-available` key isn’t an integer or a Boolean\.
++ `apns-push-type` is set to `background`
+  + If the `aps` dictionary *only* contains `content-available` set to `1` and *no other keys* that trigger user interactions\.
 **Important**  
-If Amazon SNS sends a raw configuration object for APNs as a background\-only notification, you must include the `content-available` key in the `aps` dictionary and set the value to `1`\.  
-Although you can include custom keys, the `aps` dictionary must not contain any keys that trigger user interactions \(for example, alerts, badges, or sounds\)\.
-If the value of the `content-available` field isn’t an integer or a Boolean, the notification defaults to `alert`\.
+If Amazon SNS sends a raw configuration object for APNs as a background\-only notification, you must include `content-available` set to `1` in the `aps` dictionary\. Although you can include custom keys, the `aps` dictionary must not contain any keys that trigger user interactions \(for example, alerts, badges, or sounds\)\.
 
 The following is an example raw configuration object\.
 

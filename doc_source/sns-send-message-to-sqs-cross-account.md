@@ -21,7 +21,7 @@ When the queue owner creates the subscription, the subscription does not require
             "AWS":"111122223333"
           },
           "Action":"sns:Subscribe",
-          "Resource":"arn:aws:sns:us-east-1:123456789012:MyTopic"
+          "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
         }
       ]
     }
@@ -62,7 +62,7 @@ After this policy has been set on MyTopic, a user can log in to the Amazon SNS c
  The user can also use the access key and secret key for the AWS account 111122223333 to issue the `sns-subscribe` command or call the `[Subscribe](https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html)` API action to subscribe an Amazon SQS queue to MyTopic in the account 123456789012\. The following `[sns\-subscribe](https://docs.aws.amazon.com/cli/latest/reference/sns/subscribe.html)` CLI command subscribes the queue MyQ from account 111122223333 to the topic MyTopic in account 123456789012\.
 
 ```
-aws sns subscribe --topic-arn arn:aws:sns:us-east-1:123456789012:MyTopic --protocol sqs --notification-endpoint arn:aws:sqs:us-east-1:111122223333:MyQ
+aws sns subscribe --topic-arn arn:aws:sns:us-east-2:123456789012:MyTopic --protocol sqs --notification-endpoint arn:aws:sqs:us-east-2:111122223333:MyQ
 ```
 
 **Note**  

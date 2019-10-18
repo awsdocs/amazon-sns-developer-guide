@@ -94,10 +94,10 @@ If you wanted to create the policy document yourself, you would create a policy 
          "Effect":"Allow",
          "Principal":"*",
          "Action":"sqs:SendMessage",
-         "Resource":"arn:aws:sqs:us-east-1:123456789012:MyQueue",
+         "Resource":"arn:aws:sqs:us-east-2:123456789012:MyQueue",
          "Condition":{
            "ArnEquals":{
-             "aws:SourceArn":"arn:aws:sns:us-east-1:123456789012:MyTopic"
+             "aws:SourceArn":"arn:aws:sns:us-east-2:123456789012:MyTopic"
            }
          }
       }]
@@ -151,7 +151,7 @@ If you added the following policy to an IAM user or group, you would give that u
           "Sid": "AllowPublishToMyTopic",
           "Effect": "Allow",
           "Action": "sns:Publish",
-          "Resource": "arn:aws:sns:us-east-1:123456789012:MyTopic"
+          "Resource": "arn:aws:sns:us-east-2:123456789012:MyTopic"
       }]
     }
 ```
@@ -169,8 +169,8 @@ If you added the following policy to an IAM user or group, you would give that u
             "sqs:DeleteMessage"
           ],
           "Resource":[
-            "arn:aws:sns:us-east-1:123456789012:MyQueue1",
-            "arn:aws:sns:us-east-1:123456789012:MyQueue2"
+            "arn:aws:sns:us-east-2:123456789012:MyQueue1",
+            "arn:aws:sns:us-east-2:123456789012:MyQueue2"
           ]
       }]
     }
@@ -196,7 +196,7 @@ If you added the following policy to a topic MyTopic in account 123456789012, yo
            "AWS":"111122223333"
          },
          "Action":"sns:Publish",
-         "Resource":"arn:aws:sns:us-east-1:123456789012:MyTopic"
+         "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
       }]
     }
 ```
@@ -218,7 +218,7 @@ If you added the following policy to a queue MyQueue in account 123456789012, yo
            "sqs:ReceiveMessage"
          ],
          "Resource":[
-           "arn:aws:sns:us-east-1:123456789012:MyQueue"
+           "arn:aws:sns:us-east-2:123456789012:MyQueue"
          ]
       }]
     }

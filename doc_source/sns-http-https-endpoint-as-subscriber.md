@@ -191,7 +191,7 @@ If you added the following policy to an IAM user or group, you would give that u
           "Sid":"AllowPublishToMyTopic",
           "Effect":"Allow",
           "Action":"sns:Publish",
-          "Resource":"arn:aws:sns:us-east-1:123456789012:MyTopic"
+          "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
         }
       ]
     }
@@ -215,7 +215,7 @@ If you added the following policy to a topic MyTopic in account 123456789012, yo
             "AWS":"111122223333"
           },
           "Action":"sns:Publish",
-          "Resource":"arn:aws:sns:us-east-1:123456789012:MyTopic"
+          "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
         }
       ]
     }

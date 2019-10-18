@@ -16,7 +16,7 @@ Let's say you have a topic in the Amazon SNS system\. In the simplest case, you 
 
 You can do this using the Amazon SNS API action `AddPermission`\. It takes a topic, a list of AWS account IDs, a list of actions, and a label, and automatically creates a new statement in the topic's access control policy\. In this case, you don't write a policy yourself, because Amazon SNS automatically generates the new policy statement for you\. You can remove the policy statement later by calling `RemovePermission` with its label\.
 
-For example, if you called `AddPermission` on the topic arn:aws:sns:us\-east\-1:444455556666:MyTopic, with AWS account ID 1111\-2222\-3333, the `Publish` action, and the label `give-1234-publish`, Amazon SNS would generate and insert the following access control policy statement:
+For example, if you called `AddPermission` on the topic arn:aws:sns:us\-east\-2:444455556666:MyTopic, with AWS account ID 1111\-2222\-3333, the `Publish` action, and the label `give-1234-publish`, Amazon SNS would generate and insert the following access control policy statement:
 
 ```
 {
@@ -29,7 +29,7 @@ For example, if you called `AddPermission` on the topic arn:aws:sns:us\-east\-1:
       "AWS": "111122223333"
     },
     "Action": ["sns:Publish"],
-    "Resource": "arn:aws:sns:us-east-1:444455556666:MyTopic"
+    "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic"
   }]
 }
 ```
@@ -55,7 +55,7 @@ The following example of a full policy gives the AWS account ID 1111\-2222\-3333
       "AWS": "111122223333"
     },
     "Action": ["sns:Subscribe"],
-    "Resource": "arn:aws:sns:us-east-1:444455556666:MyTopic",
+    "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
     "Condition": {
       "StringEquals": {
         "sns:Protocol": "https"
@@ -83,17 +83,17 @@ The example presented below is an Amazon SQS policy \(controlling access to your
     "Effect": "Allow",
     "Principal": "*",
     "Action": ["sqs:SendMessage"],
-    "Resource": "arn:aws:sqs:us-east-1:444455556666:MyQueue",
+    "Resource": "arn:aws:sqs:us-east-2:444455556666:MyQueue",
     "Condition": {
       "ArnEquals": {
-        "aws:SourceArn": "arn:aws:sns:us-east-1:444455556666:MyTopic"
+        "aws:SourceArn": "arn:aws:sns:us-east-2:444455556666:MyTopic"
       }
     }
   }]
 }
 ```
 
-This policy uses the `aws:SourceArn` condition to restrict access to the queue based on the source of the message being sent to the queue\. You can use this type of policy to allow Amazon SNS to send messages to your queue only if the messages are coming from one of your own topics\. In this case, you specify a particular one of your topics, whose ARN is arn:aws:sns:us\-east\-1:444455556666:MyTopic\.
+This policy uses the `aws:SourceArn` condition to restrict access to the queue based on the source of the message being sent to the queue\. You can use this type of policy to allow Amazon SNS to send messages to your queue only if the messages are coming from one of your own topics\. In this case, you specify a particular one of your topics, whose ARN is arn:aws:sns:us\-east\-2:444455556666:MyTopic\.
 
 The preceding policy is an example of the Amazon SQS policy you could write and add to a specific queue\. It would grant Amazon SNS and other AWS products access\. Amazon SNS gives a default policy to all newly created topics\. The default policy gives all other AWS products access to your topic\. This default policy uses an `aws:SourceArn` condition to ensure that AWS products access your topic only on behalf of AWS resources you own\.
 
@@ -115,7 +115,7 @@ If you publish messages directly \(rather than having an AWS resource publish me
     "Effect": "Allow",
     "Principal": "*",
     "Action": "sns:Publish",
-    "Resource": "arn:aws:sns:us-east-1:111122223333:MyTopic",
+    "Resource": "arn:aws:sns:us-east-2:111122223333:MyTopic",
     "Condition": {
       "StringEquals": {
         "AWS:SourceAccount": "444455556666"
@@ -142,7 +142,7 @@ The following example statement uses the `ArnLike` condition to make sure the AR
     "Effect": "Allow",
     "Principal": "*",
     "Action": "sns:Publish",
-    "Resource": "arn:aws:sns:us-east-1:111122223333:MyTopic",
+    "Resource": "arn:aws:sns:us-east-2:111122223333:MyTopic",
     "Condition": {
       "StringEquals": {
         "AWS:SourceAccount": "444455556666"
@@ -166,10 +166,10 @@ In this case, the CloudWatch alarm in account `111122223333` is allowed to publi
     "Effect": "Allow",
     "Principal": "*",
     "Action": "SNS:Publish",
-    "Resource": "arn:aws:sns:us-east-1:444455556666:MyTopic",
+    "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
     "Condition": {
       "ArnLike": {
-        "aws:SourceArn": "arn:aws:cloudwatch:us-east-1:111122223333:alarm:MyAlarm"
+        "aws:SourceArn": "arn:aws:cloudwatch:us-east-2:111122223333:alarm:MyAlarm"
       }
     }
   }]

@@ -79,7 +79,7 @@ publishRequest.setMessageAttributes(messageAttributes);
 String message = "{\"title\":\"Test_Title\",\"description\":\"Test_Description\"}";
 publishRequest.setMessage(message);
 publishRequest.setMessageStructure("json");
-publishRequest.setTargetArn("arn:aws:sns:us-east-1:999999999999:endpoint/BAIDU/TestApp/318fc7b3-bc53-3d63-ac42-e359468ac730");
+publishRequest.setTargetArn("arn:aws:sns:us-east-2:999999999999:endpoint/BAIDU/TestApp/318fc7b3-bc53-3d63-ac42-e359468ac730");
 PublishResult publishResult = snsClient.publish(publishRequest);
 ```
 

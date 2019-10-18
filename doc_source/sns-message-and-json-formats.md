@@ -54,7 +54,7 @@ The subscription confirmation message is a POST message with a message body that
 A string that describes the message\. For subscription confirmation, this string looks like this:  
 
 ```
-You have chosen to subscribe to the topic arn:aws:sns:us-east-1:123456789012:MyTopic.\nTo confirm the subscription, visit the SubscribeURL included in this message.
+You have chosen to subscribe to the topic arn:aws:sns:us-east-2:123456789012:MyTopic.\nTo confirm the subscription, visit the SubscribeURL included in this message.
 ```
 
 **`MessageId`**  
@@ -184,7 +184,7 @@ The unsubscribe confirmation message is a POST message with a message body that 
 A string that describes the message\. For unsubscribe confirmation, this string looks like this:  
 
 ```
-You have chosen to deactivate subscription arn:aws:sns:us-east-1:123456789012:MyTopic:2bcfbf39-05c3-41de-beaa-fcfcc21c8f55.\nTo cancel this operation and restore the subscription, visit the SubscribeURL included in this message.
+You have chosen to deactivate subscription arn:aws:sns:us-east-2:123456789012:MyTopic:2bcfbf39-05c3-41de-beaa-fcfcc21c8f55.\nTo cancel this operation and restore the subscription, visit the SubscribeURL included in this message.
 ```
 
 **`MessageId`**  
@@ -247,9 +247,9 @@ User-Agent: Amazon Simple Notification Service Agent
 If you send a request to the SetSubscriptionAttributes action and set the AttributeName parameter to a value of `DeliveryPolicy`, the value of the AttributeValue parameter must be a valid JSON object\. For example, the following example sets the delivery policy to 5 total retries\.
 
 ```
-http://sns.us-east-1.amazonaws.com/
+http://sns.us-east-2.amazonaws.com/
 ?Action=SetSubscriptionAttributes
-&SubscriptionArn=arn%3Aaws%3Asns%3Aus-east-1%3A123456789012%3AMy-Topic%3A80289ba6-0fd4-4079-afb4-ce8c8260f0ca
+&SubscriptionArn=arn%3Aaws%3Asns%3Aus-east-2%3A123456789012%3AMy-Topic%3A80289ba6-0fd4-4079-afb4-ce8c8260f0ca
 &AttributeName=DeliveryPolicy
 &AttributeValue={"healthyRetryPolicy":{"numRetries":5}}
 ...
@@ -279,9 +279,9 @@ For more information about the SetSubscriptionAttribute action, go to [SetSubscr
 If you send a request to the SetTopicAttributes action and set the AttributeName parameter to a value of `DeliveryPolicy`, the value of the AttributeValue parameter must be a valid JSON object\. For example, the following example sets the delivery policy to 5 total retries\.
 
 ```
-http://sns.us-east-1.amazonaws.com/
+http://sns.us-east-2.amazonaws.com/
 ?Action=SetTopicAttributes
-&TopicArn=arn%3Aaws%3Asns%3Aus-east-1%3A123456789012%3AMy-Topic
+&TopicArn=arn%3Aaws%3Asns%3Aus-east-2%3A123456789012%3AMy-Topic
 &AttributeName=DeliveryPolicy
 &AttributeValue={"http":{"defaultHealthyRetryPolicy":{"numRetries":5}}}
 ...
