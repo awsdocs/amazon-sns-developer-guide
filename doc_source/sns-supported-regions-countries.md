@@ -126,7 +126,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Lithuania | LT | Yes | Yes | 
 | Luxembourg | LU | Yes |  | 
 | Macau | MO | Yes |  | 
-| FYROM Macedonia | MK | Yes |  | 
+| Former Yugoslav Republic of Macedonia | MK | Yes |  | 
 | Madagascar | MG | Yes |  | 
 | Malawi | MW | Yes |  | 
 | Malaysia | MY |  | Yes | 
@@ -226,8 +226,6 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 
 **Notes**
 
-1. <a name="sms-support-note-1"></a>Senders are required to use a pre\-registered alphabetic sender ID\. To request a sender ID from AWS Support, file a support request\. Some countries require senders to meet specific requirements or abide by certain restrictions in order to obtain approval\. In these cases, AWS Support may contact you for additional information after you submit your sender ID request\.
+1. <a name="sms-support-note-1"></a>Senders are required to use a pre\-registered alphabetic sender ID\. To request a sender ID from AWS Support, file a support request\. Some countries require senders to meet specific requirements or abide by certain restrictions in order to obtain approval\. In these cases, AWS Support might contact you for additional information after you submit your sender ID request\.
 
 1. <a name="sms-support-note-2"></a>All carriers in Japan except KDDI support sender ID\.
-
-1. <a name="sms-support-note-3"></a>Jawwal is the only carrier in the Palestinian Territories that supports alphabetic sender IDs\.
