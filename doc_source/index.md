@@ -56,7 +56,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Using Amazon SNS for System-to-System Messaging with an HTTP/S Endpoint as a Subscriber](sns-http-https-endpoint-as-subscriber.md)
       + [Setting Amazon SNS Delivery Retry Policies for HTTP/HTTPS Endpoints](DeliveryPolicies.md)
       + [Certificate Authorities (CA) Recognized by Amazon SNS for HTTPS Endpoints](SendMessageToHttp.https.ca.md)
-      + [Verifying the Signatures of Amazon SNS Messages](SendMessageToHttp.verify.signature.md)
+      + [Verifying the Signatures of Amazon SNS Messages](sns-verify-signature-of-message.md)
       + [Example Code for an Amazon SNS Endpoint Java Servlet](SendMessageToHttp.example.java.md)
    + [Using Amazon SNS for System-to-System Messaging with AWS Event Fork Pipelines as a Subscriber](sns-fork-pipeline-as-subscriber.md)
 + [Using Amazon SNS for User Notifications](sns-user-notifications.md)

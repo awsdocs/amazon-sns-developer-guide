@@ -48,7 +48,7 @@ After you subscribe an HTTP/HTTPS endpoint, Amazon SNS sends a subscription conf
 **Note**  
 Amazon SNS doesn'tsend notifications to this endpoint until the subscription is confirmed
 
-The subscription confirmation message is a POST message with a message body that contains a JSON document with the following name/value pairs\.
+The subscription confirmation message is a POST message with a message body that contains a JSON document with the following name\-value pairs\.
 
 **`Message`**  
 A string that describes the message\. For subscription confirmation, this string looks like this:  
@@ -113,7 +113,7 @@ User-Agent: Amazon Simple Notification Service Agent
 
 ## HTTP/HTTPS Notification JSON Format<a name="http-notification-json"></a>
 
-When Amazon SNS sends a notification to a subscribed HTTP or HTTPS endpoint, the POST message sent to the endpoint has a message body that contains a JSON document with the following name/value pairs\.
+When Amazon SNS sends a notification to a subscribed HTTP or HTTPS endpoint, the POST message sent to the endpoint has a message body that contains a JSON document with the following name\-value pairs\.
 
 **`Message`**  
 The Message value specified when the notification was published to the topic\.
@@ -132,7 +132,7 @@ The URL to the certificate that was used to sign the message\.
 
 **`Subject`**  
 The Subject parameter specified when the notification was published to the topic\.  
-This is an optional parameter\. If no Subject was specified, then this name/value pair does not appear in this JSON document\.
+This is an optional parameter\. If no Subject was specified, then this name\-value pair does not appear in this JSON document\.
 
 **`Timestamp`**  
 The time \(GMT\) when the notification was published\.
@@ -178,7 +178,7 @@ User-Agent: Amazon Simple Notification Service Agent
 
 After an HTTP/HTTPS endpoint is unsubscribed from a topic, Amazon SNS sends an unsubscribe confirmation message to the endpoint\.
 
-The unsubscribe confirmation message is a POST message with a message body that contains a JSON document with the following name/value pairs\.
+The unsubscribe confirmation message is a POST message with a message body that contains a JSON document with the following name\-value pairs\.
 
 **`Message`**  
 A string that describes the message\. For unsubscribe confirmation, this string looks like this:  

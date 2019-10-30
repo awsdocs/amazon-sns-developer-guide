@@ -1,4 +1,4 @@
-# Verifying the Signatures of Amazon SNS Messages<a name="SendMessageToHttp.verify.signature"></a>
+# Verifying the Signatures of Amazon SNS Messages<a name="sns-verify-signature-of-message"></a>
 
 You should verify the authenticity of a notification, subscription confirmation, or unsubscribe confirmation message sent by Amazon SNS\. Using information contained in the Amazon SNS message, your endpoint can recreate the string to sign and the signature so that you can verify the contents of the message by matching the signature you recreated from the message contents with the signature that Amazon SNS sent with the message\.
 
@@ -12,7 +12,7 @@ For example code for a Java servlet that handles Amazon SNS messages see [Exampl
 
 **To verify the signature of an Amazon SNS message when using HTTP query\-based requests**
 
-1. Extract the name/value pairs from the JSON document in the body of the HTTP POST request that Amazon SNS sent to your endpoint\. You'll be using the values of some of the name/value pairs to create the string to sign\. When you are verifying the signature of an Amazon SNS message, it is critical that you convert the escaped control characters to their original character representations in the `Message` and `Subject` values\. These values must be in their original forms when you use them as part of the string to sign\. For information about how to parse the JSON document, see [Step 1: Make Sure Your Endpoint is Ready to Process Amazon SNS Messages](sns-http-https-endpoint-as-subscriber.md#SendMessageToHttp.prepare)\. 
+1. Extract the name\-value pairs from the JSON document in the body of the HTTP POST request that Amazon SNS sent to your endpoint\. You'll be using the values of some of the name\-value pairs to create the string to sign\. When you are verifying the signature of an Amazon SNS message, it is critical that you convert the escaped control characters to their original character representations in the `Message` and `Subject` values\. These values must be in their original forms when you use them as part of the string to sign\. For information about how to parse the JSON document, see [Step 1: Make Sure Your Endpoint is Ready to Process Amazon SNS Messages](sns-http-https-endpoint-as-subscriber.md#SendMessageToHttp.prepare)\. 
 
    The `SignatureVersion` tells you the signature version\. From the signature version, you can determine the requirements for how to generate the signature\. For Amazon SNS notifications, Amazon SNS currently supports signature version 1\. This section provides the steps for creating a signature using signature version 1\. 
 
@@ -22,65 +22,65 @@ For example code for a Java servlet that handles Amazon SNS messages see [Exampl
 
 1. Determine the message type\. The format of the string to sign depends on the message type, which is specified by the `Type` value\.
 
-1. Create the string to sign\. The string to sign is a newline character–delimited list of specific name/value pairs from the message\. Each name/value pair is represented with the name first followed by a newline character, followed by the value, and ending with a newline character\. The name/value pairs must be listed in byte\-sort order\.
+1. Create the string to sign\. The string to sign is a newline character–delimited list of specific name\-value pairs from the message\. Each name\-value pair is represented with the name first followed by a newline character, followed by the value, and ending with a newline character\. The name\-value pairs must be listed in byte\-sort order\.
 
-   Depending on the message type, the string to sign must have the following name/value pairs\.  
+   Depending on the message type, the string to sign must have the following name\-value pairs\.  
 **Notification**  
-Notification messages must contain the following name/value pairs:  
+Notification messages must contain the following name\-value pairs:  
 
    ```
    Message
-       MessageId
-       Subject (if included in the message)
-       Timestamp
-       TopicArn
-       Type
+   MessageId
+   Subject (if included in the message)
+   Timestamp
+   TopicArn
+   Type
    ```
 The following example is a string to sign for a `Notification`\.  
 
    ```
    Message
-       My Test Message
-       MessageId
-       4d4dc071-ddbf-465d-bba8-08f81c89da64
-       Subject
-       My subject
-       Timestamp
-       2012-06-05T04:37:04.321Z
-       TopicArn
-       arn:aws:sns:us-east-2:123456789012:s4-MySNSTopic-1G1WEFCOXTC0P
-       Type
-       Notification
+   My Test Message
+   MessageId
+   4d4dc071-ddbf-465d-bba8-08f81c89da64
+   Subject
+   My subject
+   Timestamp
+   2019-01-31T04:37:04.321Z
+   TopicArn
+   arn:aws:sns:us-east-2:123456789012:s4-MySNSTopic-1G1WEFCOXTC0P
+   Type
+   Notification
    ```  
 **SubscriptionConfirmation and UnsubscribeConfirmation**  
-`SubscriptionConfirmation` and `UnsubscribeConfirmation` messages must contain the following name/value pairs:  
+`SubscriptionConfirmation` and `UnsubscribeConfirmation` messages must contain the following name\-value pairs:  
 
    ```
    Message
-       MessageId
-       SubscribeURL
-       Timestamp
-       Token
-       TopicArn
-       Type
+   MessageId
+   SubscribeURL
+   Timestamp
+   Token
+   TopicArn
+   Type
    ```
 The following example is a string to sign for a `SubscriptionConfirmation`\.  
 
    ```
    Message
-       My Test Message
-       MessageId
-       3d891288-136d-417f-bc05-901c108273ee
-       SubscribeURL
-       https://sns.us-west-2.amazonaws.com/?Action=ConfirmSubscription&TopicArn=arn:aws:sns:us-west-2:123456789012:s4-MySNSTopic-1G1WEFCOXTC0P&Token=2336412f37fb687f5d51e6e241d09c8058323f60b964268bfe08ce35640228c208a66d3621bd9f7b012918cfdcfe65e153df551f76df58ed147f1245e330ce77ceff06dedab9f051f7028657e6c42750bf64bc9ef711d494e9f7637b86e690779eb5568f72466806b246bd244fa9392b1bc01eeb1c5e420847a745b7aa4b0085
-       Timestamp
-       2012-06-03T19:25:13.719Z
-       Token
-       2336412f37fb687f5d51e6e241d09c8058323f60b964268bfe08ce35640228c208a66d3621bd9f7b012918cfdcfe65e153df551f76df58ed147f1245e330ce77ceff06dedab9f051f7028657e6c42750bf64bc9ef711d494e9f7637b86e690779eb5568f72466806b246bd244fa9392b1bc01eeb1c5e420847a745b7aa4b0085
-       TopicArn
-       arn:aws:sns:us-west-2:123456789012:s4-MySNSTopic-1G1WEFCOXTC0P
-       Type
-       SubscriptionConfirmation
+   My Test Message
+   MessageId
+   3d891288-136d-417f-bc05-901c108273ee
+   SubscribeURL
+   https://sns.us-east-2.amazonaws.com/?Action=ConfirmSubscription&TopicArn=arn:aws:sns:us-east-2:123456789012:s4-MySNSTopic-1G1WEFCOXTC0P&Token=233...
+   Timestamp
+   2019-01-31T19:25:13.719Z
+   Token
+   233...
+   TopicArn
+   arn:aws:sns:us-east-2:123456789012:s4-MySNSTopic-1G1WEFCOXTC0P
+   Type
+   SubscriptionConfirmation
    ```
 
 1. Decode the `Signature` value from Base64 format\. The message delivers the signature in the `Signature` value, which is encoded as Base64\. Before you compare the signature value with the signature you have calculated, make sure that you decode the `Signature` value from Base64 so that you compare the values using the same format\.

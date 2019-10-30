@@ -1,7 +1,7 @@
 # Example Code for an Amazon SNS Endpoint Java Servlet<a name="SendMessageToHttp.example.java"></a>
 
 **Important**  
-The following code snippets help you understand a Java servlet that processes Amazon SNS HTTP POST requests\. You should make sure that any portions of these snippets are suitable for your purposes before implementing them in your production environment\. For example, in a production environment to help prevent spoofing attacks, you should verify that the identity of the received Amazon SNS messages is from Amazon SNS\. You can do this by checking that the DNS Name value \(*DNS Name=sns\.us\-west\-2\.amazonaws\.com* in us\-west\-2; this will vary by region\) for the *Subject Alternative Name* field, as presented in the Amazon SNS Certificate, is the same for the received Amazon SNS messages\. For more information about verifying server identity, see section [3\.1\. Server Identity](http://tools.ietf.org/search/rfc2818) in *RFC 2818*\. Also see [Verifying the Signatures of Amazon SNS Messages](SendMessageToHttp.verify.signature.md)
+The following code snippets help you understand a Java servlet that processes Amazon SNS HTTP POST requests\. You should make sure that any portions of these snippets are suitable for your purposes before implementing them in your production environment\. For example, in a production environment to help prevent spoofing attacks, you should verify that the identity of the received Amazon SNS messages is from Amazon SNS\. You can do this by checking that the DNS Name value \(*DNS Name=sns\.us\-west\-2\.amazonaws\.com* in us\-west\-2; this will vary by region\) for the *Subject Alternative Name* field, as presented in the Amazon SNS Certificate, is the same for the received Amazon SNS messages\. For more information about verifying server identity, see section [3\.1\. Server Identity](http://tools.ietf.org/search/rfc2818) in *RFC 2818*\. Also see [Verifying the Signatures of Amazon SNS Messages](sns-verify-signature-of-message.md)
 
 The following method implements an example of a handler for HTTP POST requests from Amazon SNS in a Java servlet\.
 
@@ -17,7 +17,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     
         // Parse the JSON message in the message body
         // and hydrate a Message object with its contents
-        // so that we have easy access to the name/value pairs
+        // so that we have easy access to the name-value pairs
         // from the JSON message.
         Scanner scan = new Scanner(request.getInputStream());
         StringBuilder builder = new StringBuilder();
@@ -101,7 +101,7 @@ private static boolean isMessageSignatureValid(Message msg) {
     }
 ```
 
-The following example Java methods work together to create the string to sign for an Amazon SNS message\. The `getMessageBytesToSign` method calls the appropriate string\-to\-sign method based on the message type and runs the string to sign as a byte array\. The `buildNotificationStringToSign` and `buildSubscriptionStringToSign` methods create the string to sign based on the formats described in [Verifying the Signatures of Amazon SNS Messages](SendMessageToHttp.verify.signature.md)\.
+The following example Java methods work together to create the string to sign for an Amazon SNS message\. The `getMessageBytesToSign` method calls the appropriate string\-to\-sign method based on the message type and runs the string to sign as a byte array\. The `buildNotificationStringToSign` and `buildSubscriptionStringToSign` methods create the string to sign based on the formats described in [Verifying the Signatures of Amazon SNS Messages](sns-verify-signature-of-message.md)\.
 
 ```
 private static byte [] getMessageBytesToSign (Message msg) {
