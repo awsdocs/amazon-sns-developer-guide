@@ -89,7 +89,7 @@ After your subscription is created, you must confirm it\. Only HTTP/S endpoints,
    
    // Print the request ID for the SubscribeRequest action.
    Console.WriteLine("SubscribeRequest: " + subscribeResponse.ResponseMetadata.RequestId);
-   Console.WriteLine("CTo confirm the subscription, check your email.");
+   Console.WriteLine("To confirm the subscription, check your email.");
    ```
 
 1. Compile and run your code\.
