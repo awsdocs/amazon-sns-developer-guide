@@ -141,7 +141,7 @@ The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions 
 
 Several AWS services publish events to Amazon SNS topics\. To allow these event sources to work with encrypted topics, you must perform the following steps\.
 
-1. Use the AWS managed CMK for Amazon SNS\.
+1. Use a customer managed CMK\. For more information, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*\.
 
 1. To allow the AWS service to have the `kms:GenerateDataKey*` and `kms:Decrypt` permissions, add the following statement to the CMK policy\.
 
