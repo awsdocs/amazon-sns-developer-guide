@@ -1,6 +1,6 @@
 # Amazon SNS Message Attributes<a name="sns-message-attributes"></a>
 
-Amazon SNS supports delivery of message attributes which let you provide structured metadata items \(such as timestamps, geospatial data, signatures, and identifiers\) about the message\. Each message can have up to 10 attributes\.
+Amazon SNS supports delivery of message attributes, which let you provide structured metadata items \(such as timestamps, geospatial data, signatures, and identifiers\) about the message\. Each message can have up to 10 attributes\.
 
 Message attributes are optional and separate from—but are sent together with—the message body\. The receiver can use this information to decide how to handle the message without having to process the message body first\.
 

@@ -39,7 +39,7 @@ Amazon SNS provides support to log the delivery status of notification messages 
 
 1. Choose **Save changes**\.
 
-   You will can now view and parse the CloudWatch Logs containing the message delivery status\. For more information about using CloudWatch, see the [CloudWatch Documentation](https://aws.amazon.com/documentation/cloudwatch)\.
+   You can now view and parse the CloudWatch Logs containing the message delivery status\. For more information about using CloudWatch, see the [CloudWatch Documentation](https://aws.amazon.com/documentation/cloudwatch)\.
 
 ## Configuring Message Delivery Status Attributes for Topics Subscribed to Amazon SNS Endpoints Using the AWS SDKs<a name="msg-status-sdk"></a>
 

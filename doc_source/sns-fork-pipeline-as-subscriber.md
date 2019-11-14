@@ -12,21 +12,21 @@ For an AWS Event Fork Pipelines use case, see [](sns-tutorial-deploy-test-fork-p
 
 ## How AWS Event Fork Pipelines Works<a name="how-sns-fork-works"></a>
 
-AWS Event Fork Pipelines is a serverless design pattern\. However, it is also a suite of nested serverless applications based on AWS SAM \(which you can deploy directly from AWS SAR to your AWS account in order to enrich your event\-driven platforms\)\. You can deploy these nested applications individually, as your architecture requires\.
+AWS Event Fork Pipelines is a serverless design pattern\. However, it is also a suite of nested serverless applications based on AWS SAM \(which you can deploy directly from the AWS Serverless Application Repository \(AWS SAR\) to your AWS account in order to enrich your event\-driven platforms\)\. You can deploy these nested applications individually, as your architecture requires\.
 
 **Topics**
 + [The Event Storage and Backup Pipeline](#sns-fork-event-storage-and-backup-pipeline)
 + [The Event Search and Analytics Pipeline](#sns-fork-event-search-and-analytics-pipeline)
 + [The Event Replay Pipeline](#sns-fork-event-replay-pipeline)
 
-The following diagram shows an AWS Event Fork Pipelines application supplemented by three nested applications\. You can deploy any of the pipelines from the AWS Event Fork Pipelines suite on the AWS Serverless Application Repository independently, as your architecture requires\. 
+The following diagram shows an AWS Event Fork Pipelines application supplemented by three nested applications\. You can deploy any of the pipelines from the AWS Event Fork Pipelines suite on the AWS SAR independently, as your architecture requires\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sns/latest/dg/images/sns-fork-pipeline-as-subscriber-how-it-works.png)
 
 Each pipeline is subscribed to the same Amazon SNS topic, allowing itself to process events in parallel as these events are published to the topic\. Each pipeline is independent and can set its own [Subscription Filter Policy](sns-subscription-filter-policies.md)\. This allows a pipeline to process only a subset of the events that it is interested in \(rather than all events published to the topic\)\.
 
 **Note**  
-Because you place the three AWS Event Fork Pipelines alongside your regular event processing pipelines, \(possibly already subscribed to your Amazon SNS topic\), you don’t need to change any portion of your current message publisher to take advantage of AWS Event Fork Pipelines in your existing workloads\.
+Because you place the three AWS Event Fork Pipelines alongside your regular event processing pipelines \(possibly already subscribed to your Amazon SNS topic\), you don’t need to change any portion of your current message publisher to take advantage of AWS Event Fork Pipelines in your existing workloads\.
 
 ### The Event Storage and Backup Pipeline<a name="sns-fork-event-storage-and-backup-pipeline"></a>
 
@@ -63,9 +63,9 @@ By default, the replay function is disabled, not redriving your events\. If you 
 
 ## Deploying AWS Event Fork Pipelines<a name="deploying-sns-fork-pipelines"></a>
 
-The [AWS Event Fork Pipelines suite](https://serverlessrepo.aws.amazon.com/applications?query=aws-event-fork-pipelines) \(choose **Show apps that create custom IAM roles or resource policies**\) is available as a group of public applications in AWS SAR, from where you can deploy and test them manually using the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\. For information about deploying pipelines using the AWS Lambda console, see [Subscribing AWS Event Fork Pipelines to an Amazon SNS Topic](sns-tutorial-subscribe-event-fork-pipelines.md)\.
+The [AWS Event Fork Pipelines suite](https://serverlessrepo.aws.amazon.com/applications?query=aws-event-fork-pipelines) \(choose **Show apps that create custom IAM roles or resource policies**\) is available as a group of public applications in the AWS Serverless Application Repository, from where you can deploy and test them manually using the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\. For information about deploying pipelines using the AWS Lambda console, see [Subscribing AWS Event Fork Pipelines to an Amazon SNS Topic](sns-tutorial-subscribe-event-fork-pipelines.md)\.
 
-In a production scenario we recommend embedding AWS Event Fork Pipelines within your overall application's AWS SAM template\. The nested\-application feature lets you do this by adding an the resource `[AWS::Serverless::Application](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template.html#serverless-sam-template-application)` to your AWS SAM template, referencing the AWS SAR `ApplicationId` and the `SemanticVersion` of the nested application\.
+In a production scenario, we recommend embedding AWS Event Fork Pipelines within your overall application's AWS SAM template\. The nested\-application feature lets you do this by adding the resource `[AWS::Serverless::Application](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template.html#serverless-sam-template-application)` to your AWS SAM template, referencing the AWS SAR `ApplicationId` and the `SemanticVersion` of the nested application\.
 
 For example, you can use the Event Storage and Backup Pipeline as a nested application by adding the following YAML snippet to the `Resources` section of your AWS SAM template\.
 
@@ -84,4 +84,4 @@ Backup:
 When you specify parameter values, you can use AWS CloudFormation intrinsic functions to reference other resources in your template\. For example, in the YAML snippet above, the `TopicArn` parameter references the `[AWS::SNS::Topic](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic.html)` resource `MySNSTopic`, defined elsewhere in the AWS SAM template\. For more information, see the [Intrinsic Function Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html) in the *AWS CloudFormation User Guide*\.
 
 **Note**  
-The AWS Lambda console page for your AWS SAR application includes the **Copy as SAM Resource** button which copies the YAML required for nesting an AWS SAR app to the clipboard\.
+The AWS Lambda console page for your AWS SAR application includes the **Copy as SAM Resource** button, which copies the YAML required for nesting an AWS SAR application to the clipboard\.

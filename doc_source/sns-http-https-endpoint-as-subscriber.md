@@ -136,7 +136,7 @@ For details about the format of the `Notification` message, see [HTTP/HTTPS Head
 
 1. Make sure that your code can handle message delivery retries from Amazon SNS\. If Amazon SNS doesn't receive a successful response from your endpoint, it attempts to deliver the message again\. This applies to all messages, including the subscription confirmation message\. By default, if the initial delivery of the message fails, Amazon SNS attempts up to three retries with a delay between failed attempts set at 20 seconds\.
 **Note**  
-The message request times out ater 15 seconds\. This means that, if the message delivery failure is caused by a timeout, Amazon SNS retries for approximately 35 seconds after the previous delivery attempt\. You can set a different delivery policy for the endpoint\.
+The message request times out after 15 seconds\. This means that, if the message delivery failure is caused by a timeout, Amazon SNS retries for approximately 35 seconds after the previous delivery attempt\. You can set a different delivery policy for the endpoint\.
 
    To be clear, Amazon SNS attempts to retry only after a delivery `x-amz-sns-message-id` header field\. By comparing the IDs of the messages you have processed with incoming messages, you can determine whether the message is a retry attempt\.
 

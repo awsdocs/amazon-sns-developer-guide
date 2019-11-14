@@ -1,6 +1,6 @@
 # Tutorial: To Deploy and Subscribe the Event Search and Analytics Pipeline<a name="deploy-event-search-analytics-pipeline"></a>
 
-This tutorial shows how to deploy the [Event Search and Analytics Pipeline](sns-fork-pipeline-as-subscriber.md#sns-fork-event-search-and-analytics-pipeline) and subscribe it to an Amazon SNS topic\. This process automatically turns the SAM template associated with the pipeline into a AWS CloudFormation stack, and then deploys the stack into your AWS account\. This process also creates and configures the set of resources which comprise the Event Search and Analytics Pipeline, including the following:
+This tutorial shows how to deploy the [Event Search and Analytics Pipeline](sns-fork-pipeline-as-subscriber.md#sns-fork-event-search-and-analytics-pipeline) and subscribe it to an Amazon SNS topic\. This process automatically turns the AWS SAM template associated with the pipeline into an AWS CloudFormation stack, and then deploys the stack into your AWS account\. This process also creates and configures the set of resources that comprise the Event Search and Analytics Pipeline, including the following:
 + Amazon SQS queue
 + Lambda function
 + Kinesis Data Firehose delivery stream
@@ -37,7 +37,7 @@ For each deployment, the application name must be unique\. If you reuse an appli
       + `INFO` \(default\)
       + `WARNING`
 
-   1. \(Optional\) For **SearchDomainArn**, enter the ARN of the Amazon ES domain, a cluster which configures the needed compute and storage functionality\. If you don't enter a value, a new domain is created with the default configuration\.
+   1. \(Optional\) For **SearchDomainArn**, enter the ARN of the Amazon ES domain, a cluster that configures the needed compute and storage functionality\. If you don't enter a value, a new domain is created with the default configuration\.
 
    1. For **TopicArn**, enter the ARN of the Amazon SNS topic to which this instance of the fork pipeline is to be subscribed\.
 

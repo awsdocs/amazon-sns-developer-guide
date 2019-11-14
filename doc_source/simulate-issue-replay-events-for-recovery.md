@@ -98,4 +98,4 @@ It takes approximately 1 minute for the Amazon SQS event source trigger to becom
 
 1. To view the recovered attributes, return to the Amazon DynamoDB console\.
 
-1. To disable replay, return to the AWS Lambda console and disable the Amazon SQS event event source trigger for `ReplayFunction`\.
+1. To disable replay, return to the AWS Lambda console and disable the Amazon SQS event source trigger for `ReplayFunction`\.

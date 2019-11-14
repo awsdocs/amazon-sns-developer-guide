@@ -1,6 +1,6 @@
 # Tutorial: Creating an Amazon SNS Topic<a name="sns-tutorial-create-topic"></a>
 
-An Amazon SNS topic is a logical access point which acts as a *communication channel*\. A topic lets you group multiple *endpoints* \(such as AWS Lambda, Amazon SQS, HTTP/S, or an email address\)\.
+An Amazon SNS topic is a logical access point that acts as a *communication channel*\. A topic lets you group multiple *endpoints* \(such as AWS Lambda, Amazon SQS, HTTP/S, or an email address\)\.
 
 To broadcast the messages of a message\-producer system \(for example, an e\-commerce website\) working with multiple other services that require its messages \(for example, checkout and fulfillment systems\), you can create a topic for your producer system\.
 
@@ -43,7 +43,7 @@ For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.a
 
 1. \(Optional\) To configure access permissions for your topic, expand the **Access policy** section\. For more information, see [Authentication and Access Control for Amazon SNS](sns-authentication-and-access-control.md)\.
 
-1. \(Optional\) To configure how Amazon SNS retries failed message delivery attempts, expand the **Delivery retry policy \(HTTP/S\)** section\. For more information, see [Setting Amazon SNS Delivery Retry Policies for HTTP/HTTPS Endpoints](DeliveryPolicies.md)\.
+1. \(Optional\) To configure how Amazon SNS retries failed message delivery attempts, expand the **Delivery retry policy \(HTTP/S\)** section\. For more information, see [Message Delivery Retries](sns-message-delivery-retries.md)\.
 
 1. \(Optional\) To configure how Amazon SNS logs the delivery of messages to CloudWatch, expand the **Delivery status logging** section\. For more information, see [Amazon SNS Message Delivery Status](sns-topic-attributes.md)\.
 

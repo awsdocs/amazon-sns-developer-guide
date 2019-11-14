@@ -36,7 +36,7 @@ Because this message includes the `MessageAttributes` field, any topic subscript
    "TopicArn": "arn:aws:sns:us-east-2:123456789012:MyTopic",
    "Message": "message-body-with-transaction-details",
    "Timestamp": "2019-11-03T23:28:01.631Z",
-   "SignatureVersion": "4",                                                                                                                                                                                                  ",
+   "SignatureVersion": "4",
    "Signature": "signature",
    "UnsubscribeURL": "unsubscribe-url",
    "MessageAttributes": {

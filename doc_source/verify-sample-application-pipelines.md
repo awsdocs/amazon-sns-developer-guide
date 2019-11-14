@@ -24,7 +24,7 @@
 
 1. To download the file, choose **Actions**, **Open**\.
 
-1. The pipeline is configured with a Lambda function which sanitizes credit card information for compliance reasons\.
+1. The pipeline is configured with a Lambda function that sanitizes credit card information for compliance reasons\.
 
    To verify that the stored JSON payload doesn't contain any credit card information, decompress the file\.
 

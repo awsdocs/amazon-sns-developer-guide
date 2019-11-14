@@ -10,7 +10,7 @@ To invoke Lambda functions using Amazon SNS notifications, you need the followin
 + Lambda function
 + Amazon SNS topic
 
-For information about creating a Lambda function, see [Getting Started with AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)\. For information about creating a Amazon SNS topic, see [Create a Topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html)\.
+For information about creating a Lambda function, see [Getting Started with AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)\. For information about creating an Amazon SNS topic, see [Create a Topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html)\.
 
 ## Configuring Amazon SNS with Lambda Endpoints using the AWS Management Console<a name="lambda-console"></a>
 
@@ -32,4 +32,4 @@ For information about creating a Lambda function, see [Getting Started with AWS 
 
    1. Choose **Create subscription**\.
 
-When a message is published to an SNS topic that has a Lambda function subscribed to it, the Lambda function is invoked with the payload of the published message\. For information about how to create a sample message history store using SNS, Lambda, and Amazon DynamoDB, see the AWS Mobile Development blog [Invoking AWS Lambda functions via Amazon SNS](https://mobile.awsblog.com/post/Tx1VE917Z8J4UDY/Invoking-AWS-Lambda-functions-via-Amazon-SNS)\.
+When a message is published to an SNS topic that has a Lambda function subscribed to it, the Lambda function is invoked with the payload of the published message\. For information about how to create a sample message history store using Amazon SNS, Lambda, and Amazon DynamoDB, see the AWS Mobile Development blog [Invoking AWS Lambda functions via Amazon SNS](https://mobile.awsblog.com/post/Tx1VE917Z8J4UDY/Invoking-AWS-Lambda-functions-via-Amazon-SNS)\.

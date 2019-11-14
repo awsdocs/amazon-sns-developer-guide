@@ -5,6 +5,8 @@ This section provides information about Amazon SNS topic and message attributes\
 **Topics**
 + [Common Amazon SNS Scenarios](sns-common-scenarios.md)
 + [Amazon SNS Message Delivery Status](sns-topic-attributes.md)
++ [Message Delivery Retries](sns-message-delivery-retries.md)
++ [Amazon SNS Dead\-Letter Queues](sns-dead-letter-queues.md)
 + [Amazon SNS Message Attributes](sns-message-attributes.md)
 + [Message Filtering](sns-message-filtering.md)
 + [Amazon SNS Message and JSON Formats](sns-message-and-json-formats.md)
