@@ -14,40 +14,40 @@
 
    ```
    {
-      "id": 9917,
-      "date": "2019-03-26T21:11:10-08:00",
-      "status": "confirmed",
-      "customer": {
-         "id": 56999,
-         "name": "Marcia Oliveira",
-         "email": "marcia.oliveira@example.com"
-      },
-      "payment": {
-         "id": 3311,
-         "amount": 75.00,
-         "currency": "usd",
-         "method": "credit",
-         "card-network": "mastercard",
-         "card-number": "1234 5678 9012 3456",
-         "card-expiry": "12/2025",
-         "card-owner": "Marcia Oliveira",
-         "card-cvv": "321"
-      },
-      "shipping": {
-         "id": 9900,
-         "time": 20,
-         "unit": "days",
-         "method": "plane"
-      },
-      "items": [{
-         "id": 9993,
-         "product": 3120,
-         "name": "Hockey Stick",
-         "quantity": 1,
-         "price": 75.00,
-         "subtotal": 75.00
-      }]
-   }
+   	   "id": 9917,
+   	   "date": "2019-03-26T21:11:10-08:00",
+   	   "status": "confirmed",
+   	   "customer": {
+   	      "id": 56999,
+   	      "name": "Marcia Oliveira",
+   	      "email": "marcia.oliveira@example.com"
+   	   },
+   	   "payment": {
+   	      "id": 3311,
+   	      "amount": 75.00,
+   	      "currency": "usd",
+   	      "method": "credit",
+   	      "card-network": "mastercard",
+   	      "card-number": "1234 5678 9012 3456",
+   	      "card-expiry": "12/2025",
+   	      "card-owner": "Marcia Oliveira",
+   	      "card-cvv": "321"
+   	   },
+   	   "shipping": {
+   	      "id": 9900,
+   	      "time": 20,
+   	      "unit": "days",
+   	      "method": "plane"
+   	   },
+   	   "items": [{
+   	      "id": 9993,
+   	      "product": 3120,
+   	      "name": "Hockey Stick",
+   	      "quantity": 1,
+   	      "price": 75.00,
+   	      "subtotal": 75.00
+   	   }]
+   	}
    ```
 
 1. To send an HTTPS request to your API endpoint, pass the sample event payload as input by executing a `curl` command, for example:

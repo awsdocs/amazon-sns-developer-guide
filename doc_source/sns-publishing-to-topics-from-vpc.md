@@ -10,6 +10,5 @@ The information in this section is for users of Amazon VPC\. For more informatio
 VPC endpoints don't allow you to subscribe an Amazon SNS topic to a private IP address\.
 
 **Topics**
-+ [Tutorial: Publishing Amazon SNS Messages Privately from Amazon VPC](sns-vpc-tutorial.md)
 + [Creating an Amazon VPC Endpoint for Amazon SNS](sns-vpc-endpoint.md)
 + [Creating an Amazon VPC Endpoint Policy for Amazon SNS](sns-vpc-endpoint-policy.md)

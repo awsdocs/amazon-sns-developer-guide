@@ -30,8 +30,8 @@ The following JSON filter policy is set in the configuration for the Event Searc
 
 ```
 {
-   "amount": [{ "numeric": [ ">=", 100 ] }]
-}
+	   "amount": [{ "numeric": [ ">=", 100 ] }]
+	}
 ```
 
 Using the AWS Event Fork Pipelines pattern, the e\-commerce application owner can avoid the development overhead that often follows coding undifferentiating logic for event handling\. Instead, she can deploy AWS Event Fork Pipelines directly from the AWS Serverless Application Repository into her AWS account\.

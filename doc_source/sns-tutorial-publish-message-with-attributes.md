@@ -23,105 +23,105 @@ For detailed instructions on publishing a message with attributes to an Amazon S
 
    ```
    import com.amazonaws.services.sns.AmazonSNS;
-   import com.amazonaws.services.sns.model.MessageAttributeValue;
-   import com.amazonaws.services.sns.model.PublishRequest;
-   import com.amazonaws.services.sns.model.PublishResult;
-   
-   import java.util.ArrayList;
-   import java.util.HashMap;
-   import java.util.Map;
-   import java.util.stream.Collectors;
-   
-   public class SNSMessageAttributes {
-   
-       private String message;
-       private Map<String, MessageAttributeValue> messageAttributes;
-   
-       public SNSMessageAttributes(final String message) {
-           this.message = message;
-           messageAttributes = new HashMap<>();
-       }
-   
-       public String getMessage() {
-           return message;
-       }
-   
-       public void setMessage(final String message) {
-           this.message = message;
-       }
-   
-       public void addAttribute(final String attributeName, final String attributeValue) {
-           final MessageAttributeValue messageAttributeValue = new MessageAttributeValue()
-                   .withDataType("String")
-                   .withStringValue(attributeValue);
-           messageAttributes.put(attributeName, messageAttributeValue);
-       }
-   
-       public void addAttribute(final String attributeName, final ArrayList<?> attributeValues) {
-           String valuesString, delimiter = ", ", prefix = "[", suffix = "]";
-           if (attributeValues.get(0).getClass() == String.class) {
-               delimiter = "\", \"";
-               prefix = "[\"";
-               suffix = "\"]";
-           }
-           valuesString = attributeValues
-                   .stream()
-                   .map(Object::toString)
-                   .collect(Collectors.joining(delimiter, prefix, suffix));
-           final MessageAttributeValue messageAttributeValue = new MessageAttributeValue()
-                   .withDataType("String.Array")
-                   .withStringValue(valuesString);
-           messageAttributes.put(attributeName, messageAttributeValue);
-       }
-   
-       public void addAttribute(final String attributeName, final Number attributeValue) {
-           final MessageAttributeValue messageAttributeValue = new MessageAttributeValue()
-                   .withDataType("Number")
-                   .withStringValue(attributeValue.toString());
-           messageAttributes.put(attributeName, messageAttributeValue);
-       }
-   
-       public String publish(final AmazonSNS snsClient, final String topicArn) {
-           final PublishRequest request = new PublishRequest(topicArn, message)
-                   .withMessageAttributes(messageAttributes);
-           final PublishResult result = snsClient.publish(request);
-           return result.getMessageId();
-       }
-   }
+   	import com.amazonaws.services.sns.model.MessageAttributeValue;
+   	import com.amazonaws.services.sns.model.PublishRequest;
+   	import com.amazonaws.services.sns.model.PublishResult;
+   	
+   	import java.util.ArrayList;
+   	import java.util.HashMap;
+   	import java.util.Map;
+   	import java.util.stream.Collectors;
+   	
+   	public class SNSMessageAttributes {
+   	
+   	    private String message;
+   	    private Map<String, MessageAttributeValue> messageAttributes;
+   	
+   	    public SNSMessageAttributes(final String message) {
+   	        this.message = message;
+   	        messageAttributes = new HashMap<>();
+   	    }
+   	
+   	    public String getMessage() {
+   	        return message;
+   	    }
+   	
+   	    public void setMessage(final String message) {
+   	        this.message = message;
+   	    }
+   	
+   	    public void addAttribute(final String attributeName, final String attributeValue) {
+   	        final MessageAttributeValue messageAttributeValue = new MessageAttributeValue()
+   	                .withDataType("String")
+   	                .withStringValue(attributeValue);
+   	        messageAttributes.put(attributeName, messageAttributeValue);
+   	    }
+   	
+   	    public void addAttribute(final String attributeName, final ArrayList<?> attributeValues) {
+   	        String valuesString, delimiter = ", ", prefix = "[", suffix = "]";
+   	        if (attributeValues.get(0).getClass() == String.class) {
+   	            delimiter = "\", \"";
+   	            prefix = "[\"";
+   	            suffix = "\"]";
+   	        }
+   	        valuesString = attributeValues
+   	                .stream()
+   	                .map(Object::toString)
+   	                .collect(Collectors.joining(delimiter, prefix, suffix));
+   	        final MessageAttributeValue messageAttributeValue = new MessageAttributeValue()
+   	                .withDataType("String.Array")
+   	                .withStringValue(valuesString);
+   	        messageAttributes.put(attributeName, messageAttributeValue);
+   	    }
+   	
+   	    public void addAttribute(final String attributeName, final Number attributeValue) {
+   	        final MessageAttributeValue messageAttributeValue = new MessageAttributeValue()
+   	                .withDataType("Number")
+   	                .withStringValue(attributeValue.toString());
+   	        messageAttributes.put(attributeName, messageAttributeValue);
+   	    }
+   	
+   	    public String publish(final AmazonSNS snsClient, final String topicArn) {
+   	        final PublishRequest request = new PublishRequest(topicArn, message)
+   	                .withMessageAttributes(messageAttributes);
+   	        final PublishResult result = snsClient.publish(request);
+   	        return result.getMessageId();
+   	    }
+   	}
    ```
 
    The following code excerpt initializes and uses the example `SNSMessageAttributes` class\.
 
    ```
    // Initialize the example class.
-   final SNSMessageAttributes message = new SNSMessageAttributes(messageBody);
-   
-   // Add message attributes with string values.
-   message.addAttribute("store", "example_corp");
-   message.addAttribute("event", "order_placed");
-   
-   // Add a message attribute with a list of string values.
-   final ArrayList<String> interestsValues = new ArrayList<String>();
-   interestsValues.add("soccer");
-   interestsValues.add("rugby");
-   interestsValues.add("hockey");
-   message.addAttribute("customer_interests", interestsValues);
-   
-   // Add a message attribute with a numeric value.
-   message.addAttribute("price_usd", 1000);
-   
-   // Add a Boolean attribute for filtering using subscription filter policies.
-   // The class applies the String.Array data type to this attribute, allowing it
-   // to be evaluated by a filter policy.
-   final ArrayList<Boolean> encryptedVal = new ArrayList<Boolean>();
-   encryptedVal.add(false);
-   message.addAttribute("encrypted", encryptedVal);
-   
-   // Publish the message.
-   message.publish(snsClient, topicArn);
-   
-   // Print the MessageId of the message.
-   System.out.println("MessageId: " + publishResponse.getMessageId());
+   	final SNSMessageAttributes message = new SNSMessageAttributes(messageBody);
+   	
+   	// Add message attributes with string values.
+   	message.addAttribute("store", "example_corp");
+   	message.addAttribute("event", "order_placed");
+   	
+   	// Add a message attribute with a list of string values.
+   	final ArrayList<String> interestsValues = new ArrayList<String>();
+   	interestsValues.add("soccer");
+   	interestsValues.add("rugby");
+   	interestsValues.add("hockey");
+   	message.addAttribute("customer_interests", interestsValues);
+   	
+   	// Add a message attribute with a numeric value.
+   	message.addAttribute("price_usd", 1000);
+   	
+   	// Add a Boolean attribute for filtering using subscription filter policies.
+   	// The class applies the String.Array data type to this attribute, allowing it
+   	// to be evaluated by a filter policy.
+   	final ArrayList<Boolean> encryptedVal = new ArrayList<Boolean>();
+   	encryptedVal.add(false);
+   	message.addAttribute("encrypted", encryptedVal);
+   	
+   	// Publish the message.
+   	message.publish(snsClient, topicArn);
+   	
+   	// Print the MessageId of the message.
+   	System.out.println("MessageId: " + publishResponse.getMessageId());
    ```
 
 1. Compile and run your code\.
@@ -142,145 +142,145 @@ For detailed instructions on publishing a message with attributes to an Amazon S
 
    ```
    using System;
-   using System.Collections.Generic;
-   using Amazon.SimpleNotificationService;
-   using Amazon.SimpleNotificationService.Model;
-   
-   namespace SNSCreatePlatformEndpoint
-   {
-   
-       class SNSMessageAttributes
-       {
-   
-           private String message;
-           private Dictionary<String, MessageAttributeValue> messageAttributes;
-   
-           public SNSMessageAttributes(String message)
-           {
-               this.message = message;
-               messageAttributes = new Dictionary<string, MessageAttributeValue>();
-           }
-   
-           public string Message
-           {
-               get => this.message;
-               set => this.message = value;
-           }
-   
-           public void AddAttribute(String attributeName, String attributeValue)
-           {
-               messageAttributes[attributeName] = new MessageAttributeValue
-               {
-                   DataType = "String",
-                   StringValue = attributeValue
-               };
-           }
-   
-           public void AddAttribute(String attributeName, float attributeValue)
-           {
-               messageAttributes[attributeName] = new MessageAttributeValue
-               {
-                   DataType = "Number",
-                   StringValue = attributeValue.ToString()
-               };
-           }
-   
-           public void AddAttribute(String attributeName, int attributeValue)
-           {
-               messageAttributes[attributeName] = new MessageAttributeValue
-               {
-                   DataType = "Number",
-                   StringValue = attributeValue.ToString()
-               };
-           }
-   
-           public void AddAttribute(String attributeName, List<String> attributeValue)
-           {
-               String valueString = "[\"" + String.Join("\", \"", attributeValue.ToArray()) + "\"]";
-               messageAttributes[attributeName] = new MessageAttributeValue
-               {
-                   DataType = "String.Array",
-                   StringValue = valueString
-               };
-           }
-   
-           public void AddAttribute(String attributeName, List<float> attributeValue)
-           {
-               String valueString = "[" + String.Join(", ", attributeValue.ToArray()) + "]";
-               messageAttributes[attributeName] = new MessageAttributeValue
-               {
-                   DataType = "String.Array",
-                   StringValue = valueString
-               };
-           }
-   
-           public void AddAttribute(String attributeName, List<int> attributeValue)
-           {
-               String valueString = "[" + String.Join(", ", attributeValue.ToArray()) + "]";
-               messageAttributes[attributeName] = new MessageAttributeValue
-               {
-                   DataType = "String.Array",
-                   StringValue = valueString
-               };
-           }
-   
-           public void AddAttribute(String attributeName, List<Boolean> attributeValue)
-           {
-               String valueString = "[" + String.Join(", ", attributeValue.ToArray()) + "]";
-               messageAttributes[attributeName] = new MessageAttributeValue
-               {
-                   DataType = "String.Array",
-                   StringValue = valueString
-               };
-           }
-   
-           public String Publish(AmazonSimpleNotificationServiceClient snsClient, String topicArn)
-           {
-               PublishRequest request = new PublishRequest
-               {
-                   TopicArn = topicArn,
-                   MessageAttributes = messageAttributes,
-                   Message = message
-               };
-               PublishResponse result = snsClient.Publish(request);
-               return result.MessageId;
-           }
-       }
-   }
+   	using System.Collections.Generic;
+   	using Amazon.SimpleNotificationService;
+   	using Amazon.SimpleNotificationService.Model;
+   	
+   	namespace SNSCreatePlatformEndpoint
+   	{
+   	
+   	    class SNSMessageAttributes
+   	    {
+   	
+   	        private String message;
+   	        private Dictionary<String, MessageAttributeValue> messageAttributes;
+   	
+   	        public SNSMessageAttributes(String message)
+   	        {
+   	            this.message = message;
+   	            messageAttributes = new Dictionary<string, MessageAttributeValue>();
+   	        }
+   	
+   	        public string Message
+   	        {
+   	            get => this.message;
+   	            set => this.message = value;
+   	        }
+   	
+   	        public void AddAttribute(String attributeName, String attributeValue)
+   	        {
+   	            messageAttributes[attributeName] = new MessageAttributeValue
+   	            {
+   	                DataType = "String",
+   	                StringValue = attributeValue
+   	            };
+   	        }
+   	
+   	        public void AddAttribute(String attributeName, float attributeValue)
+   	        {
+   	            messageAttributes[attributeName] = new MessageAttributeValue
+   	            {
+   	                DataType = "Number",
+   	                StringValue = attributeValue.ToString()
+   	            };
+   	        }
+   	
+   	        public void AddAttribute(String attributeName, int attributeValue)
+   	        {
+   	            messageAttributes[attributeName] = new MessageAttributeValue
+   	            {
+   	                DataType = "Number",
+   	                StringValue = attributeValue.ToString()
+   	            };
+   	        }
+   	
+   	        public void AddAttribute(String attributeName, List<String> attributeValue)
+   	        {
+   	            String valueString = "[\"" + String.Join("\", \"", attributeValue.ToArray()) + "\"]";
+   	            messageAttributes[attributeName] = new MessageAttributeValue
+   	            {
+   	                DataType = "String.Array",
+   	                StringValue = valueString
+   	            };
+   	        }
+   	
+   	        public void AddAttribute(String attributeName, List<float> attributeValue)
+   	        {
+   	            String valueString = "[" + String.Join(", ", attributeValue.ToArray()) + "]";
+   	            messageAttributes[attributeName] = new MessageAttributeValue
+   	            {
+   	                DataType = "String.Array",
+   	                StringValue = valueString
+   	            };
+   	        }
+   	
+   	        public void AddAttribute(String attributeName, List<int> attributeValue)
+   	        {
+   	            String valueString = "[" + String.Join(", ", attributeValue.ToArray()) + "]";
+   	            messageAttributes[attributeName] = new MessageAttributeValue
+   	            {
+   	                DataType = "String.Array",
+   	                StringValue = valueString
+   	            };
+   	        }
+   	
+   	        public void AddAttribute(String attributeName, List<Boolean> attributeValue)
+   	        {
+   	            String valueString = "[" + String.Join(", ", attributeValue.ToArray()) + "]";
+   	            messageAttributes[attributeName] = new MessageAttributeValue
+   	            {
+   	                DataType = "String.Array",
+   	                StringValue = valueString
+   	            };
+   	        }
+   	
+   	        public String Publish(AmazonSimpleNotificationServiceClient snsClient, String topicArn)
+   	        {
+   	            PublishRequest request = new PublishRequest
+   	            {
+   	                TopicArn = topicArn,
+   	                MessageAttributes = messageAttributes,
+   	                Message = message
+   	            };
+   	            PublishResponse result = snsClient.Publish(request);
+   	            return result.MessageId;
+   	        }
+   	    }
+   	}
    ```
 
    The following code excerpt initializes and uses the example `SNSMessageAttributes` class\.
 
    ```
    // Initialize the example class.
-   SNSMessageAttributes message = new SNSMessageAttributes(messageBody);
-   
-   // Add message attributes with string values.
-   message.AddAttribute("store", "example_corp");
-   message.AddAttribute("event", "order_placed");
-   
-   // Add a message attribute with a list of string values.
-   List<String> interestsValues = new List<String>();
-   interestsValues.Add("soccer");
-   interestsValues.Add("rugby");
-   interestsValues.Add("hockey");
-   message.AddAttribute("customer_interests", interestsValues);
-   
-   // Add a message attribute with a numeric value.
-   message.AddAttribute("price_usd", 1000);
-   
-   // Add a Boolean attribute for filtering using subscription filter policies.
-   // The class applies a String.Array data type to this attribute, allowing it
-   // to be evaluated by a filter policy.
-   List<Boolean> encryptedVal = new List<Boolean>();
-   encryptedVal.Add(false);
-   message.AddAttribute("encrypted", encryptedVal);
-   
-   // Publish the message.
-   String msgId = message.Publish(snsClient, topicArn);
-   
-   // Print the MessageId of the published message.
-   Console.WriteLine("MessageId: " + msgId);
+   	SNSMessageAttributes message = new SNSMessageAttributes(messageBody);
+   	
+   	// Add message attributes with string values.
+   	message.AddAttribute("store", "example_corp");
+   	message.AddAttribute("event", "order_placed");
+   	
+   	// Add a message attribute with a list of string values.
+   	List<String> interestsValues = new List<String>();
+   	interestsValues.Add("soccer");
+   	interestsValues.Add("rugby");
+   	interestsValues.Add("hockey");
+   	message.AddAttribute("customer_interests", interestsValues);
+   	
+   	// Add a message attribute with a numeric value.
+   	message.AddAttribute("price_usd", 1000);
+   	
+   	// Add a Boolean attribute for filtering using subscription filter policies.
+   	// The class applies a String.Array data type to this attribute, allowing it
+   	// to be evaluated by a filter policy.
+   	List<Boolean> encryptedVal = new List<Boolean>();
+   	encryptedVal.Add(false);
+   	message.AddAttribute("encrypted", encryptedVal);
+   	
+   	// Publish the message.
+   	String msgId = message.Publish(snsClient, topicArn);
+   	
+   	// Print the MessageId of the published message.
+   	Console.WriteLine("MessageId: " + msgId);
    ```
 
 1. Compile and run your code\.

@@ -5,7 +5,7 @@ A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can 
 **Note**  
 The Amazon SNS subscription and Amazon SQS queue must be under the same AWS account and Region\.
 Currently, you can't use an Amazon SQS FIFO queue as a dead\-letter queue for an Amazon SNS subscription\.
-To use an encrypted Amazon SQS queue as a dead\-letter queue, you must use a custom CMK with a key policy that grants the Amazon SNS service principal access to AWS KMS API actions\. For more information, see [Protecting Amazon SNS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](sns-server-side-encryption.md) in this guide and [Protecting Amazon SQS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/) in the *Amazon Simple Queue Service Developer Guide*\.
+To use an encrypted Amazon SQS queue as a dead\-letter queue, you must use a custom CMK with a key policy that grants the Amazon SNS service principal access to AWS KMS API actions\. For more information, see [Protecting Amazon SNS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](sns-server-side-encryption.md) in this guide and [Protecting Amazon SQS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html) in the *Amazon Simple Queue Service Developer Guide*\.
 
 **Topics**
 + [Why Do Message Deliveries Fail?](#why-do-message-deliveries-fail)
@@ -32,7 +32,7 @@ Customer managed endpoints \(such as HTTP, SMTP, SMS, or mobile push\) can also 
 
 A dead\-letter queue is attached to an Amazon SNS subscription \(rather than a topic\) because message deliveries happen at the subscription level\. This lets you identify the original target endpoint for each message more easily\.
 
-A dead\-letter queue associated with an Amazon SNS subscription is an ordinary Amazon SQS queue\. For more information about the message retention period, see [Limits Related to Messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-messages) in the *Amazon Simple Queue Service Developer Guide*\. You can change the message retention period using the Amazon SQS `[SetMessageAttributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SetMessageAttributes.html)` API action\. To make your applications more resilient, we recommend setting the maximum retention period for dead\-letter queues to 14 days\.
+A dead\-letter queue associated with an Amazon SNS subscription is an ordinary Amazon SQS queue\. For more information about the message retention period, see [Limits Related to Messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-messages) in the *Amazon Simple Queue Service Developer Guide*\. You can change the message retention period using the Amazon SQS `[SetQueueAttributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SetQueueAttributes.html)` API action\. To make your applications more resilient, we recommend setting the maximum retention period for dead\-letter queues to 14 days\.
 
 ## How Are Messages Moved into a Dead\-Letter Queue?<a name="how-messages-moved-into-dead-letter-queue"></a>
 

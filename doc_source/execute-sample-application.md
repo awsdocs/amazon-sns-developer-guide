@@ -20,47 +20,47 @@
 
    ```
    {
-      "id": 15311,
-      "date": "2019-03-25T23:41:11-08:00",
-      "status": "confirmed",
-      "customer": {
-         "id": 65144,
-         "name": "John Doe",
-         "email": "john.doe@example.com"
-      },
-      "payment": {
-         "id": 2509,
-         "amount": 450.00,
-         "currency": "usd",
-         "method": "credit",
-         "card-network": "visa",
-         "card-number": "1234 5678 9012 3456",
-         "card-expiry": "10/2022",
-         "card-owner": "John Doe",
-         "card-cvv": "123"
-      },
-      "shipping": {
-         "id": 7600,
-         "time": 2,
-         "unit": "days",
-         "method": "courier"
-      },
-      "items": [{
-         "id": 6512,
-         "product": 8711,
-         "name": "Hockey Jersey - Large",
-         "quantity": 1,
-         "price": 400.00,
-         "subtotal": 400.00
-      }, {
-         "id": 9954,
-         "product": 7600,
-         "name": "Hockey Puck",
-         "quantity": 2,
-         "price": 25.00,
-         "subtotal": 50.00
-      }]
-   }
+   	   "id": 15311,
+   	   "date": "2019-03-25T23:41:11-08:00",
+   	   "status": "confirmed",
+   	   "customer": {
+   	      "id": 65144,
+   	      "name": "John Doe",
+   	      "email": "john.doe@example.com"
+   	   },
+   	   "payment": {
+   	      "id": 2509,
+   	      "amount": 450.00,
+   	      "currency": "usd",
+   	      "method": "credit",
+   	      "card-network": "visa",
+   	      "card-number": "1234 5678 9012 3456",
+   	      "card-expiry": "10/2022",
+   	      "card-owner": "John Doe",
+   	      "card-cvv": "123"
+   	   },
+   	   "shipping": {
+   	      "id": 7600,
+   	      "time": 2,
+   	      "unit": "days",
+   	      "method": "courier"
+   	   },
+   	   "items": [{
+   	      "id": 6512,
+   	      "product": 8711,
+   	      "name": "Hockey Jersey - Large",
+   	      "quantity": 1,
+   	      "price": 400.00,
+   	      "subtotal": 400.00
+   	   }, {
+   	      "id": 9954,
+   	      "product": 7600,
+   	      "name": "Hockey Puck",
+   	      "quantity": 2,
+   	      "price": 25.00,
+   	      "subtotal": 50.00
+   	   }]
+   	}
    ```
 
 1. To send an HTTPS request to your API endpoint, pass the sample event payload as input by executing a `curl` command, for example:

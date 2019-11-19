@@ -5,6 +5,8 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
+| November 19, 2019 | Updated the information for Japan in the [Supported Regions and Countries](sns-supported-regions-countries.md) section\. | 
+| November 18, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | November 14, 2019 | Added the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | November 12, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | November 8, 2019 | Revised the information in the [Enable Compatibility between Event Sources from AWS Services and Encrypted Topics](sns-server-side-encryption.md#compatibility-with-aws-services) section\. | 
