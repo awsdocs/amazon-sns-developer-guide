@@ -1,6 +1,6 @@
 # Special Information for Amazon SNS Policies<a name="AccessPolicyLanguage_SpecialInfo"></a>
 
-The following list gives information specific to the Amazon SNS implementation of access control:
+The following list grants information specific to the Amazon SNS implementation of access control:
 + Each policy must cover only a single topic \(when writing a policy, don't include statements that cover different topics\)
 + Each policy must have a unique policy `Id`
 + Each statement in a policy must have a unique statement `sid`

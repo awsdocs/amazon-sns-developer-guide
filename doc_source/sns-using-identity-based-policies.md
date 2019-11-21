@@ -8,7 +8,7 @@
 + [Example Policies for Amazon SNS](#sns-example-policies)
 + [Using Temporary Security Credentials](#sns-using-temporary-credentials)
 
-Amazon Simple Notification Service integrates with AWS Identity and Access Management \(IAM\) so that you can specify which Amazon SNS actions a user in your AWS account can perform with Amazon SNS resources\. You can specify a particular topic in the policy\. For example, you could use variables when creating an IAM policy that gives certain users in your organization permission to use the `Publish` action with specific topics in your AWS account\. For more information, see [Policy Variables](https://docs.aws.amazon.com/IAM/latest/UserGuide/PolicyVariables.html) in the *Using IAM* guide\.
+Amazon Simple Notification Service integrates with AWS Identity and Access Management \(IAM\) so that you can specify which Amazon SNS actions a user in your AWS account can perform with Amazon SNS resources\. You can specify a particular topic in the policy\. For example, you could use variables when creating an IAM policy that grants certain users in your organization permission to use the `Publish` action with specific topics in your AWS account\. For more information, see [Policy Variables](https://docs.aws.amazon.com/IAM/latest/UserGuide/PolicyVariables.html) in the *Using IAM* guide\.
 
 **Important**  
 Using Amazon SNS with IAM doesn't change how you use Amazon SNS\. There are no changes to Amazon SNS actions, and no new Amazon SNS actions related to users and access control\.
@@ -19,9 +19,9 @@ For examples of policies that cover Amazon SNS actions and resources, see [Examp
 
 You use an IAM policy to restrict your users' access to Amazon SNS actions and topics\. An IAM policy can restrict access only to users within your AWS account, not to other AWS accounts\.
 
-You use an Amazon SNS policy with a particular topic to restrict who can work with that topic \(for example, who can publish messages to it, who can subscribe to it, etc\.\)\. Amazon SNS policies can give access to other AWS accounts, or to users within your own AWS account\.
+You use an Amazon SNS policy with a particular topic to restrict who can work with that topic \(for example, who can publish messages to it, who can subscribe to it, etc\.\)\. Amazon SNS policies can grant access to other AWS accounts, or to users within your own AWS account\.
 
-To give your users permissions for your Amazon SNS topics, you can use IAM policies, Amazon SNS policies, or both\. For the most part, you can achieve the same results with either\. For example, the following diagram shows an IAM policy and an Amazon SNS policy that are equivalent\. The IAM policy allows the Amazon SNS `Subscribe` action for the topic called topic\_xyz in your AWS account\. The IAM policy is attached to the users Bob and Susan \(which means that Bob and Susan have the permissions stated in the policy\)\. The Amazon SNS policy likewise gives Bob and Susan permission to access `Subscribe` for topic\_xyz\.
+To grant your users permissions for your Amazon SNS topics, you can use IAM policies, Amazon SNS policies, or both\. For the most part, you can achieve the same results with either\. For example, the following diagram shows an IAM policy and an Amazon SNS policy that are equivalent\. The IAM policy allows the Amazon SNS `Subscribe` action for the topic called topic\_xyz in your AWS account\. The IAM policy is attached to the users Bob and Susan \(which means that Bob and Susan have the permissions stated in the policy\)\. The Amazon SNS policy likewise grants Bob and Susan permission to access `Subscribe` for topic\_xyz\.
 
 ![\[Equivalent IAM and Amazon SNS policies\]](http://docs.aws.amazon.com/sns/latest/dg/images/SNS_EquivalentPolicies.png)
 
@@ -33,7 +33,7 @@ There is one difference between AWS IAM and Amazon SNS policies: The Amazon SNS 
 It's up to you how you use both of the systems together to manage your permissions, based on your needs\. The following examples show how the two policy systems work together\.
 
 **Example 1**  
-In this example, both an IAM policy and an Amazon SNS policy apply to Bob\. The IAM policy gives him permission for `Subscribe` on any of the AWS account's topics, whereas the Amazon SNS policy gives him permission to use `Publish` on a specific topic \(topic\_xyz\)\. The following diagram illustrates the concept\.  
+In this example, both an IAM policy and an Amazon SNS policy apply to Bob\. The IAM policy grants him permission for `Subscribe` on any of the AWS account's topics, whereas the Amazon SNS policy grants him permission to use `Publish` on a specific topic \(topic\_xyz\)\. The following diagram illustrates the concept\.  
 
 ![\[IAM and Amazon SNS policies for Bob\]](http://docs.aws.amazon.com/sns/latest/dg/images/SNS_UnionOfPolicies.png)
 If Bob were to send a request to subscribe to any topic in the AWS account, the IAM policy would allow the action\. If Bob were to send a request to publish a message to topic\_xyz, the Amazon SNS policy would allow the action\.
@@ -101,7 +101,7 @@ This section shows several simple policies for controlling user access to Amazon
 In the future, Amazon SNS might add new actions that should logically be included in one of the following policies, based on the policy’s stated goals\. 
 
 **Example 1: Allow a group to create and manage topics**  
-In this example, we create a policy that gives access to `CreateTopic`, `ListTopics`, `SetTopicAttributes`, and `DeleteTopic`\.  
+In this example, we create a policy that grants access to `CreateTopic`, `ListTopics`, `SetTopicAttributes`, and `DeleteTopic`\.  
 
 ```
 {
@@ -115,7 +115,7 @@ In this example, we create a policy that gives access to `CreateTopic`, `ListTop
 ```
 
 **Example 2: Allow the IT group to publish messages to a particular topic**  
-In this example, we create a group for IT, and assign a policy that gives access to `Publish` on the specific topic of interest\.  
+In this example, we create a group for IT, and assign a policy that grants access to `Publish` on the specific topic of interest\.  
 
 ```
 {
@@ -129,7 +129,7 @@ In this example, we create a group for IT, and assign a policy that gives access
 ```
 
 **Example 3: Give users in the AWS account ability to subscribe to topics**  
-In this example, we create a policy that gives access to the `Subscribe`action, with string matching conditions for the `sns:Protocol` and `sns:Endpoint` policy keys\.  
+In this example, we create a policy that grants access to the `Subscribe`action, with string matching conditions for the `sns:Protocol` and `sns:Endpoint` policy keys\.  
 
 ```
 {
@@ -153,8 +153,8 @@ In this example, we create a policy that gives access to the `Subscribe`action, 
 **Example 4: Allow a partner to publish messages to a particular topic**  
 You can use an Amazon SNS policy or an IAM policy to allow a partner to publish to a specific topic\. If your partner has an AWS account, it might be easier to use an Amazon SNS policy\. However, anyone in the partner's company who possesses the AWS security credentials could publish messages to the topic\. This example assumes that you want to limit access to a particular person \(or application\)\. To do this you need to treat the partner like a user within your own company, and use a IAM policy instead of an Amazon SNS policy\.  
 For this example, we create a group called WidgetCo that represents the partner company; we create a user for the specific person \(or application\) at the partner company who needs access; and then we put the user in the group\.   
-We then attach a policy that gives the group `Publish` access on the specific topic named *WidgetPartnerTopic*\.   
-We also want to prevent the WidgetCo group from doing anything else with topics, so we add a statement that denies permission to any Amazon SNS actions other than `Publish` on any topics other than WidgetPartnerTopic\. This is necessary only if there's a broad policy elsewhere in the system that gives users wide access to Amazon SNS\.   
+We then attach a policy that grants the group `Publish` access on the specific topic named *WidgetPartnerTopic*\.   
+We also want to prevent the WidgetCo group from doing anything else with topics, so we add a statement that denies permission to any Amazon SNS actions other than `Publish` on any topics other than WidgetPartnerTopic\. This is necessary only if there's a broad policy elsewhere in the system that grants users wide access to Amazon SNS\.   
 
 ```
 {

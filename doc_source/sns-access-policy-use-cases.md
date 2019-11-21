@@ -8,7 +8,7 @@
 + [Allow an Amazon S3 Bucket to Publish to a Topic](#sns-allow-s3-bucket-to-publish-to-topic)
 + [Allow a CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
 
-This section gives a few examples of typical use cases for access control\.
+This section grants a few examples of typical use cases for access control\.
 
 ## Grant AWS Account Access to a Topic<a name="sns-grant-aws-account-access-to-topic"></a>
 
@@ -16,14 +16,14 @@ Let's say you have a topic in the Amazon SNS system\. In the simplest case, you 
 
 You can do this using the Amazon SNS API action `AddPermission`\. It takes a topic, a list of AWS account IDs, a list of actions, and a label, and automatically creates a new statement in the topic's access control policy\. In this case, you don't write a policy yourself, because Amazon SNS automatically generates the new policy statement for you\. You can remove the policy statement later by calling `RemovePermission` with its label\.
 
-For example, if you called `AddPermission` on the topic arn:aws:sns:us\-east\-2:444455556666:MyTopic, with AWS account ID 1111\-2222\-3333, the `Publish` action, and the label `give-1234-publish`, Amazon SNS would generate and insert the following access control policy statement:
+For example, if you called `AddPermission` on the topic arn:aws:sns:us\-east\-2:444455556666:MyTopic, with AWS account ID 1111\-2222\-3333, the `Publish` action, and the label `grant-1234-publish`, Amazon SNS would generate and insert the following access control policy statement:
 
 ```
 {
   "Version": "2012-10-17",
   "Id": "AWSAccountTopicAccess",
   "Statement": [{
-    "Sid": "give-1234-publish",
+    "Sid": "grant-1234-publish",
     "Effect": "Allow",
     "Principal": {
       "AWS": "111122223333"
@@ -42,7 +42,7 @@ In the following example, you limit the notification delivery protocol to HTTPS\
 
 You need to know how to write your own policy for the topic because the Amazon SNS `AddPermission` action doesn't let you specify a protocol restriction when granting someone access to your topic\. In this case, you would write your own policy, and then use the `SetTopicAttributes` action to set the topic's `Policy` attribute to your new policy\.
 
-The following example of a full policy gives the AWS account ID 1111\-2222\-3333 the ability to subscribe to notifications from a topic\.
+The following example of a full policy grants the AWS account ID 1111\-2222\-3333 the ability to subscribe to notifications from a topic\.
 
 ```
 {
@@ -95,13 +95,13 @@ The example presented below is an Amazon SQS policy \(controlling access to your
 
 This policy uses the `aws:SourceArn` condition to restrict access to the queue based on the source of the message being sent to the queue\. You can use this type of policy to allow Amazon SNS to send messages to your queue only if the messages are coming from one of your own topics\. In this case, you specify a particular one of your topics, whose ARN is arn:aws:sns:us\-east\-2:444455556666:MyTopic\.
 
-The preceding policy is an example of the Amazon SQS policy you could write and add to a specific queue\. It would grant Amazon SNS and other AWS products access\. Amazon SNS gives a default policy to all newly created topics\. The default policy gives all other AWS products access to your topic\. This default policy uses an `aws:SourceArn` condition to ensure that AWS products access your topic only on behalf of AWS resources you own\.
+The preceding policy is an example of the Amazon SQS policy you could write and add to a specific queue\. It would grant access to Amazon SNS and other AWS services\. Amazon SNS grants a default policy to all newly created topics\. The default policy grants access to your topic to all other AWS services\. This default policy uses an `aws:SourceArn` condition to ensure that AWS services access your topic only on behalf of AWS resources you own\.
 
 ## Allow Any AWS Resource to Publish to a Topic<a name="sns-allow-any-aws-resource-to-publish-to-topic"></a>
 
 In this case, you want to configure a topic's policy so that another AWS account's resource \(for example, Amazon S3 bucket, Amazon EC2 instance, or Amazon SQS queue\) can publish to your topic\. This example assumes that you write your own policy and then use the `SetTopicAttributes` action to set the topic's `Policy` attribute to your new policy\.
 
-In the following example statement, the topic owner in these policies is 1111\-2222\-3333 and the AWS resource owner is 4444\-5555\-6666\. The example gives the AWS account ID 4444\-5555\-6666 the ability to publish to My\-Topic from any AWS resource owned by the account\.
+In the following example statement, the topic owner in these policies is 1111\-2222\-3333 and the AWS resource owner is 4444\-5555\-6666\. The example grants the AWS account ID 4444\-5555\-6666 the ability to publish to My\-Topic from any AWS resource owned by the account\.
 
 **Note**  
 If you publish messages directly \(rather than having an AWS resource publish messages on your behalf\), a policy in which you specify an empty `Principal` *and *use `AWS:SourceAccount` as a condition will not work\.

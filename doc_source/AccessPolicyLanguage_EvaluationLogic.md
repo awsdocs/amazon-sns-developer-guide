@@ -1,6 +1,6 @@
 # Evaluation Logic<a name="AccessPolicyLanguage_EvaluationLogic"></a>
 
-The goal at evaluation time is to decide whether a given request should be allowed or denied\. The evaluation logic follows several basic rules:
+The goal at evaluation time is to decide whether a grantn request should be allowed or denied\. The evaluation logic follows several basic rules:
 + By default, all requests to use your resource coming from anyone but you are denied
 + An allow overrides any default denies
 + An explicit deny overrides any allows
