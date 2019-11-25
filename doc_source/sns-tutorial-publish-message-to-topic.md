@@ -56,6 +56,8 @@ The following tutorial shows how you can use the AWS Management Console, the AWS
         }
         ```
 
+        For more information, see [Send Custom Platform\-Specific Payloads to Mobile Devices](sns-send-custom-platform-specific-payloads-mobile-devices.md)\.
+
    1. In the **Message attributes** section, add any attributes that you want Amazon SNS to match with the subscription attribute `FilterPolicy` to decide whether the subscribed endpoint is interested in the published message\.
 
       1. Select an attribute **Type**, for example **String\.Array**\.

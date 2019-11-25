@@ -4,7 +4,7 @@ Amazon SNS is integrated with AWS CloudTrail, a service that provides a record o
 
 To learn more about CloudTrail, including how to configure and enable it, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\.
 
-## Amazon SNS Information in CloudTrail<a name="service-name-info-in-cloudtrail"></a>
+## Amazon SNS Information in CloudTrail<a name="sns-info-in-cloudtrail"></a>
 
 CloudTrail is enabled on your AWS account when you create the account\. When supported event activity occurs in Amazon SNS, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. For more information, see [Viewing Events with CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
 
@@ -25,9 +25,11 @@ Amazon SNS supports logging the following actions as events in CloudTrail log fi
 + `[DeleteTopic](https://docs.aws.amazon.com/sns/latest/api/API_DeleteTopic.html)`
 + `[GetEndpointAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetEndpointAttributes.html)`
 + `[GetPlatformApplicationAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetPlatformApplicationAttributes.html)`
++ `[GetSMSAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetSMSAttributes.html)`
 + `[GetSubscriptionAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetSubscriptionAttributes.html)`
 + `[GetTopicAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetTopicAttributes.html)`
 + `[ListEndpointsByPlatformApplication](https://docs.aws.amazon.com/sns/latest/api/API_ListEndpointsByPlatformApplication.html)`
++ `[ListPhoneNumbersOptedOut](https://docs.aws.amazon.com/sns/latest/api/API_ListPhoneNumbersOptedOut.html)`
 + `[ListPlatformApplications](https://docs.aws.amazon.com/sns/latest/api/API_ListPlatformApplications.html)`
 + `[ListSubscriptions](https://docs.aws.amazon.com/sns/latest/api/API_ListSubscriptions.html)`
 + `[ListSubscriptionsByTopic](https://docs.aws.amazon.com/sns/latest/api/API_ListSubscriptionsByTopic.html)`

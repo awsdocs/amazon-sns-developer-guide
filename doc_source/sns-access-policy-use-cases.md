@@ -7,6 +7,7 @@
 + [Allow Any AWS Resource to Publish to a Topic](#sns-allow-any-aws-resource-to-publish-to-topic)
 + [Allow an Amazon S3 Bucket to Publish to a Topic](#sns-allow-s3-bucket-to-publish-to-topic)
 + [Allow a CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
++ [Restrict Publication to an Amazon SNS Topic Only from a Specific VPC Endpoint](#sns-restrict-publication-only-from-specified-vpc-endpoint)
 
 This section grants a few examples of typical use cases for access control\.
 
@@ -170,6 +171,27 @@ In this case, the CloudWatch alarm in account `111122223333` is allowed to publi
     "Condition": {
       "ArnLike": {
         "aws:SourceArn": "arn:aws:cloudwatch:us-east-2:111122223333:alarm:MyAlarm"
+      }
+    }
+  }]
+}
+```
+
+## Restrict Publication to an Amazon SNS Topic Only from a Specific VPC Endpoint<a name="sns-restrict-publication-only-from-specified-vpc-endpoint"></a>
+
+In this case, the topic in account 444455556666 is allowed to publish only from the VPC endpoint with the ID `vpc-1ab2c34d`\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Deny",
+    "Principal": "*",
+    "Action": "SNS:Publish",
+    "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
+    "Condition": {
+      "StringNotEquals": {
+        "aws:sourceVpce": "vpc-1ab2c34d"
       }
     }
   }]

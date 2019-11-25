@@ -105,6 +105,8 @@ After your subscription is created, you must confirm it\. Only HTTP/S endpoints,
         }
         ```
 
+        For more information, see [Send Custom Platform\-Specific Payloads to Mobile Devices](sns-send-custom-platform-specific-payloads-mobile-devices.md)\.
+
    1. In the **Message attributes** section, add any attributes that you want Amazon SNS to match with the subscription attribute `FilterPolicy` to decide whether the subscribed endpoint is interested in the published message\.
 
       1. Select an attribute **Type**, for example **String\.Array**\.
