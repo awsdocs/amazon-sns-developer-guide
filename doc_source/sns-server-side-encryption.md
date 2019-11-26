@@ -119,7 +119,6 @@ The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions 
 
 ```
 {
-  "Version": "2012-10-17",
   "Statement": [{
     "Effect": "Allow",
     "Action": [
@@ -147,7 +146,6 @@ Several AWS services publish events to Amazon SNS topics\. To allow these event 
 
    ```
    {
-     "Version": "2012-10-17",
      "Statement": [{
        "Effect": "Allow",
        "Principal": {

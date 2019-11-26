@@ -12,19 +12,15 @@ When the queue owner creates the subscription, the subscription does not require
 
 ```
 {
-      "Version":"2012-10-17",
-      "Id":"MyTopicSubscribePolicy",
-      "Statement":[{
-          "Sid":"Allow-other-account-to-subscribe-to-topic",
-          "Effect":"Allow",
-          "Principal":{
-            "AWS":"111122223333"
-          },
-          "Action":"sns:Subscribe",
-          "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
-        }
-      ]
-    }
+  "Statement":[{
+    "Effect":"Allow",
+    "Principal":{
+      "AWS":"111122223333"
+    },
+    "Action":"sns:Subscribe",
+    "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
+  }]
+}
 ```
 
 **To set the policy**

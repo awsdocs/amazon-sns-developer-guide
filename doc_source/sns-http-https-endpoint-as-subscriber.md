@@ -186,15 +186,13 @@ If you added the following policy to an IAM user or group, you would give that u
 
 ```
 {
-      "Version":"2012-10-17",
-      "Statement":[{
-          "Sid":"AllowPublishToMyTopic",
-          "Effect":"Allow",
-          "Action":"sns:Publish",
-          "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
-        }
-      ]
-    }
+  "Statement":[{
+    "Sid":"AllowPublishToMyTopic",
+    "Effect":"Allow",
+    "Action":"sns:Publish",
+    "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
+  }]
+}
 ```
 
 The following example policy shows how to give another account permissions to a topic\.
@@ -206,19 +204,16 @@ If you added the following policy to a topic MyTopic in account 123456789012, yo
 
 ```
 {
-      "Version":"2012-10-17",
-      "Id":"MyTopicPolicy",
-      "Statement":[{
-          "Sid":"Allow-publish-to-topic",
-          "Effect":"Allow",
-          "Principal":{
-            "AWS":"111122223333"
-          },
-          "Action":"sns:Publish",
-          "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
-        }
-      ]
-    }
+  "Statement":[{
+    "Sid":"Allow-publish-to-topic",
+    "Effect":"Allow",
+      "Principal":{
+        "AWS":"111122223333"
+      },
+    "Action":"sns:Publish",
+    "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
+  }]
+}
 ```
 
 ## Step 6: Send messages to the HTTP/HTTPS endpoint<a name="SendMessageToHttp.publish"></a>

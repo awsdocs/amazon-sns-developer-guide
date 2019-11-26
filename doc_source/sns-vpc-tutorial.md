@@ -215,9 +215,10 @@ Now that your VPC includes an endpoint for Amazon SNS, you can log in to the Ama
 
    ```
    $ aws sns publish --region aws-region --topic-arn sns-topic-arn --message "Hello"
-   	{
-   	    "MessageId": "5b111270-d169-5be6-9042-410dfc9e86de"
-   	}
+   
+   {
+       "MessageId": "5b111270-d169-5be6-9042-410dfc9e86de"
+   }
    ```
 
 ## Step 6: Verify Your Message Deliveries<a name="sns-vpc-tutorial-verify"></a>

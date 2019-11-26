@@ -20,7 +20,6 @@ Before you begin any of the following tutorials, complete the following prerequi
 
    ```
    {
-     "Version": "2012-10-17",
      "Statement": [{
        "Effect": "Allow",
        "Principal": {

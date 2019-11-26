@@ -41,19 +41,19 @@ After you configure message delivery status attributes for an application endpoi
 
 ```
 {
-    "status": "SUCCESS",
-    "notification": {
-        "timestamp": "2015-01-26 23:07:39.54",
-        "messageId": "9655abe4-6ed6-5734-89f7-e6a6a42de02a"
-    },
-    "delivery": {
-        "statusCode": 200,
-        "dwellTimeMs": 65,
-        "token": "Examplei7fFachkJ1xjlqT64RaBkcGHochmf1VQAr9k-IBJtKjp7fedYPzEwT_Pq3Tu0lroqro1cwWJUvgkcPPYcaXCpPWmG3Bqn-wiqIEzp5zZ7y_jsM0PKPxKhddCzx6paEsyay9Zn3D4wNUJb8m6HXrBf9dqaEw",
-        "attempts": 1,
-        "providerResponse": "{\"multicast_id\":5138139752481671853,\"success\":1,\"failure\":0,\"canonical_ids\":0,\"results\":[{\"message_id\":\"0:1422313659698010%d6ba8edff9fd7ecd\"}]}",
-        "destination": "arn:aws:sns:us-east-2:111122223333:endpoint/FCM/FCMPushApp/c23e42de-3699-3639-84dd-65f84474629d"
-    }
+  "status": "SUCCESS",
+  "notification": {
+    "timestamp": "2015-01-26 23:07:39.54",
+    "messageId": "9655abe4-6ed6-5734-89f7-e6a6a42de02a"
+  },
+  "delivery": {
+    "statusCode": 200,
+    "dwellTimeMs": 65,
+    "token": "Examplei7fFachkJ1xjlqT64RaBkcGHochmf1VQAr9k-IBJtKjp7fedYPzEwT_Pq3Tu0lroqro1cwWJUvgkcPPYcaXCpPWmG3Bqn-wiqIEzp5zZ7y_jsM0PKPxKhddCzx6paEsyay9Zn3D4wNUJb8m6HXrBf9dqaEw",
+    "attempts": 1,
+    "providerResponse": "{\"multicast_id\":5138139752481671853,\"success\":1,\"failure\":0,\"canonical_ids\":0,\"results\":[{\"message_id\":\"0:1422313659698010%d6ba8edff9fd7ecd\"}]}",
+    "destination": "arn:aws:sns:us-east-2:111122223333:endpoint/FCM/FCMPushApp/c23e42de-3699-3639-84dd-65f84474629d"
+  }
 }
 ```
 
@@ -61,19 +61,19 @@ After you configure message delivery status attributes for an application endpoi
 
 ```
 {
-    "status": "FAILURE",
-    "notification": {
-        "timestamp": "2015-01-26 23:29:35.678",
-        "messageId": "c3ad79b0-8996-550a-8bfa-24f05989898f"
-    },
-    "delivery": {
-        "statusCode": 8,
-        "dwellTimeMs": 1451,
-        "token": "examp1e29z6j5c4df46f809505189c4c83fjcgf7f6257e98542d2jt3395kj73",
-        "attempts": 1,
-        "providerResponse": "NotificationErrorResponse(command=8, status=InvalidToken, id=1, cause=null)",
-        "destination": "arn:aws:sns:us-east-2:111122223333:endpoint/APNS_SANDBOX/APNSPushApp/986cb8a1-4f6b-34b1-9a1b-d9e9cb553944"
-    }
+  "status": "FAILURE",
+  "notification": {
+    "timestamp": "2015-01-26 23:29:35.678",
+    "messageId": "c3ad79b0-8996-550a-8bfa-24f05989898f"
+  },
+  "delivery": {
+    "statusCode": 8,
+    "dwellTimeMs": 1451,
+    "token": "examp1e29z6j5c4df46f80189c4c83fjcgf7f6257e98542d2jt3395kj73",
+    "attempts": 1,
+    "providerResponse": "NotificationErrorResponse(command=8, status=InvalidToken, id=1, cause=null)",
+    "destination": "arn:aws:sns:us-east-2:111122223333:endpoint/APNS_SANDBOX/APNSPushApp/986cb8a1-4f6b-34b1-9a1b-d9e9cb553944"
+  }
 }
 ```
 

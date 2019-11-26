@@ -87,21 +87,18 @@ If you wanted to create the policy document yourself, you would create a policy 
 
 ```
 {
-      "Version": "2012-10-17",
-      "Id": "MyQueuePolicy",
-      "Statement": [{
-         "Sid":"MySQSPolicy001",
-         "Effect":"Allow",
-         "Principal":"*",
-         "Action":"sqs:SendMessage",
-         "Resource":"arn:aws:sqs:us-east-2:123456789012:MyQueue",
-         "Condition":{
-           "ArnEquals":{
-             "aws:SourceArn":"arn:aws:sns:us-east-2:123456789012:MyTopic"
-           }
-         }
-      }]
+  "Statement": [{
+    "Effect":"Allow",
+    "Principal":"*",
+    "Action":"sqs:SendMessage",
+    "Resource":"arn:aws:sqs:us-east-2:123456789012:MyQueue",
+    "Condition":{
+      "ArnEquals":{
+        "aws:SourceArn":"arn:aws:sns:us-east-2:123456789012:MyTopic"
+      }
     }
+  }]
+}
 ```
 
 ## Step 3: Subscribe the Queue to the Amazon SNS Topic<a name="SendMessageToSQS.subscribe"></a>
@@ -146,34 +143,30 @@ If you added the following policy to an IAM user or group, you would give that u
 
 ```
 {
-      "Version": "2012-10-17",
-      "Statement": [{
-          "Sid": "AllowPublishToMyTopic",
-          "Effect": "Allow",
-          "Action": "sns:Publish",
-          "Resource": "arn:aws:sns:us-east-2:123456789012:MyTopic"
-      }]
-    }
+  "Statement": [{
+    "Effect": "Allow",
+    "Action": "sns:Publish",
+    "Resource": "arn:aws:sns:us-east-2:123456789012:MyTopic"
+  }]
+}
 ```
 
 If you added the following policy to an IAM user or group, you would give that user or members of that group permission to perform the `sqs:ReceiveMessage` and `sqs:DeleteMessage` actions on the queues MyQueue1 and MyQueue2\.
 
 ```
 {
-      "Version":"2012-10-17",
-      "Statement":[{
-          "Sid":"AllowReadDeleteMessageOnMyQueue",
-          "Effect":"Allow",
-          "Action":[
-            "sqs:ReceiveMessage",
-            "sqs:DeleteMessage"
-          ],
-          "Resource":[
-            "arn:aws:sns:us-east-2:123456789012:MyQueue1",
-            "arn:aws:sns:us-east-2:123456789012:MyQueue2"
-          ]
-      }]
-    }
+  "Statement":[{
+    "Effect":"Allow",
+    "Action":[
+      "sqs:ReceiveMessage",
+      "sqs:DeleteMessage"
+    ],
+    "Resource":[
+      "arn:aws:sns:us-east-2:123456789012:MyQueue1",
+      "arn:aws:sns:us-east-2:123456789012:MyQueue2"
+    ]
+  }]
+}
 ```
 
 ### Adding a Policy to a Topic or Queue<a name="SendMessageToSQS.iam.permissions.resource"></a>
@@ -187,41 +180,35 @@ If you added the following policy to a topic MyTopic in account 123456789012, yo
 
 ```
 {
-      "Version":"2012-10-17",
-      "Id":"MyTopicPolicy",
-      "Statement":[{
-         "Sid":"Allow-publish-to-topic",
-         "Effect":"Allow",
-         "Principal":{
-           "AWS":"111122223333"
-         },
-         "Action":"sns:Publish",
-         "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
-      }]
-    }
+  "Statement":[{
+    "Effect":"Allow",
+    "Principal":{
+      "AWS":"111122223333"
+    },
+    "Action":"sns:Publish",
+    "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
+  }]
+}
 ```
 
 If you added the following policy to a queue MyQueue in account 123456789012, you would give account 111122223333 permission to perform the `sqs:ReceiveMessage` and `sqs:DeleteMessage` actions on that queue\.
 
 ```
 {
-      "Version":"2012-10-17",
-      "Id":"MyQueuePolicy",
-      "Statement":[{
-         "Sid":"Allow-Processing-Of-Messages-for-Queue",
-         "Effect":"Allow",
-         "Principal":{
-           "AWS":"111122223333"
-         },
-         "Action":[
-           "sqs:DeleteMessage",
-           "sqs:ReceiveMessage"
-         ],
-         "Resource":[
-           "arn:aws:sns:us-east-2:123456789012:MyQueue"
-         ]
-      }]
-    }
+  "Statement":[{
+    "Effect":"Allow",
+    "Principal":{
+      "AWS":"111122223333"
+    },
+    "Action":[
+      "sqs:DeleteMessage",
+      "sqs:ReceiveMessage"
+    ],
+    "Resource":[
+      "arn:aws:sns:us-east-2:123456789012:MyQueue"
+    ]
+  }]
+}
 ```
 
 ## Step 5: Test the Topic's Queue Subscriptions<a name="SendMessageToSQS.test"></a>

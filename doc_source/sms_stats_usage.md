@@ -63,28 +63,23 @@ The following policy allows the Amazon SNS service principal to perform the `s3:
 
 ```
 {
-      "Version": "2012-10-17",
-      "Id": "sns-sms-daily-usage-policy",
-      "Statement": [
-            {
-                  "Sid": "AllowPutObject",
-                  "Effect": "Allow",
-                  "Principal": {
-                        "Service": "sns.amazonaws.com"
-                  },
-                  "Action": "s3:PutObject",
-                  "Resource": "arn:aws:s3:::my-s3-bucket/*"
-            },
-            {
-                  "Sid": "AllowGetBucketLocation",
-                  "Effect": "Allow",
-                  "Principal": {
-                        "Service": "sns.amazonaws.com"
-                  },
-                  "Action": "s3:GetBucketLocation",
-                  "Resource": "arn:aws:s3:::my-s3-bucket"
-            }
-      ]
+  "Statement": [{
+    "Sid": "AllowPutObject",
+    "Effect": "Allow",
+    "Principal": {
+      "Service": "sns.amazonaws.com"
+    },
+    "Action": "s3:PutObject",
+    "Resource": "arn:aws:s3:::my-s3-bucket/*"
+  }, {
+    "Sid": "AllowGetBucketLocation",
+    "Effect": "Allow",
+    "Principal": {
+      "Service": "sns.amazonaws.com"
+    },
+    "Action": "s3:GetBucketLocation",
+    "Resource": "arn:aws:s3:::my-s3-bucket"
+  }]
 }
 ```
 
@@ -105,5 +100,4 @@ PublishTimeUTC,MessageId,DestinationPhoneNumber,MessageType,DeliveryStatus,Price
 2016-05-10T03:00:29.476Z,96a298ac-1458-4825-a7eb-7330e0720b72,1XXX5550100,Promotional,Message has been accepted by phone carrier,0.90084,1,1
 2016-05-10T03:00:29.561Z,1e29d394-d7f4-4dc9-996e-26412032c344,1XXX5550100,Promotional,Message has been accepted by phone carrier,0.34322,1,1
 2016-05-10T03:00:30.769Z,98ba941c-afc7-4c51-ba2c-56c6570a6c08,1XXX5550100,Transactional,Message has been accepted by phone carrier,0.27815,1,1
-. . .
 ```

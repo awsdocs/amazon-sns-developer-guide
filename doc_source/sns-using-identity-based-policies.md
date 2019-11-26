@@ -47,7 +47,7 @@ For examples of policies that cover Amazon SNS actions and resources, see [Examp
 
 ## Amazon SNS ARNs<a name="SNS_ARN_Format"></a>
 
-For Amazon SNS, topics are the only resource type you can specify in a policy\. Following is the Amazon Resource Name \(ARN\) format for topics\.
+For Amazon SNS, topics are the only resource type you can specify in a policy\. The following is the Amazon Resource Name \(ARN\) format for topics\.
 
 ```
 arn:aws:sns:region:account_ID:topic_name
@@ -56,7 +56,7 @@ arn:aws:sns:region:account_ID:topic_name
 For more information about ARNs, go to [ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html#Identifiers_ARNs) in *IAM User Guide*\.
 
 **Example**  
-Following is an ARN for a topic named my\_topic in the us\-east\-2 region, belonging to AWS account 123456789012\.   
+The following is an ARN for a topic named my\_topic in the us\-east\-2 region, belonging to AWS account 123456789012\.   
 
 ```
 arn:aws:sns:us-east-2:123456789012:my_topic
@@ -105,7 +105,6 @@ In this example, we create a policy that grants access to `CreateTopic`, `ListTo
 
 ```
 {
-  "Version": "2012-10-17",
   "Statement": [{
     "Effect": "Allow",
     "Action": ["sns:CreateTopic", "sns:ListTopics", "sns:SetTopicAttributes", "sns:DeleteTopic"],
@@ -119,7 +118,6 @@ In this example, we create a group for IT, and assign a policy that grants acces
 
 ```
 {
-  "Version": "2012-10-17",
   "Statement": [{
     "Effect": "Allow",
     "Action": "sns:Publish",
@@ -133,7 +131,6 @@ In this example, we create a policy that grants access to the `Subscribe`action,
 
 ```
 {
-  "Version": "2012-10-17",
   "Statement": [{
     "Effect": "Allow",
     "Action": ["sns:Subscribe"],
@@ -158,7 +155,6 @@ We also want to prevent the WidgetCo group from doing anything else with topics,
 
 ```
 {
-  "Version": "2012-10-17",
   "Statement": [{
       "Effect": "Allow",
       "Action": "sns:Publish",

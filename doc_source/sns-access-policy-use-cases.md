@@ -6,7 +6,7 @@
 + [Publish Messages to an Amazon SQS Queue](#sns-publish-messages-to-sqs-queue)
 + [Allow Any AWS Resource to Publish to a Topic](#sns-allow-any-aws-resource-to-publish-to-topic)
 + [Allow an Amazon S3 Bucket to Publish to a Topic](#sns-allow-s3-bucket-to-publish-to-topic)
-+ [Allow a CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
++ [Allow Any CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
 + [Restrict Publication to an Amazon SNS Topic Only from a Specific VPC Endpoint](#sns-restrict-publication-only-from-specified-vpc-endpoint)
 
 This section grants a few examples of typical use cases for access control\.
@@ -21,8 +21,6 @@ For example, if you called `AddPermission` on the topic arn:aws:sns:us\-east\-2:
 
 ```
 {
-  "Version": "2012-10-17",
-  "Id": "AWSAccountTopicAccess",
   "Statement": [{
     "Sid": "grant-1234-publish",
     "Effect": "Allow",
@@ -47,8 +45,6 @@ The following example of a full policy grants the AWS account ID 1111\-2222\-333
 
 ```
 {
-  "Version": "2012-10-17",
-  "Id": "SomePolicyId",
   "Statement": [{
     "Sid": "Statement1",
     "Effect": "Allow",
@@ -77,8 +73,6 @@ The example presented below is an Amazon SQS policy \(controlling access to your
 
 ```
 {
-  "Version": "2012-10-17",
-  "Id": "MyQueuePolicy",
   "Statement": [{
     "Sid": "Allow-SNS-SendMessage",
     "Effect": "Allow",
@@ -109,10 +103,7 @@ If you publish messages directly \(rather than having an AWS resource publish me
 
 ```
 {
-  "Version": "2012-10-17",
-  "Id": "MyAWSPolicy",
   "Statement": [{
-    "Sid": "My-statement-id",
     "Effect": "Allow",
     "Principal": "*",
     "Action": "sns:Publish",
@@ -136,10 +127,7 @@ The following example statement uses the `ArnLike` condition to make sure the AR
 
 ```
 {
-  "Version": "2012-10-17",
-  "Id": "MyAWSPolicy",
   "Statement": [{
-    "Sid": "My-statement-id",
     "Effect": "Allow",
     "Principal": "*",
     "Action": "sns:Publish",
@@ -156,21 +144,22 @@ The following example statement uses the `ArnLike` condition to make sure the AR
 }
 ```
 
-## Allow a CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account<a name="sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account"></a>
+## Allow Any CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account<a name="sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account"></a>
 
-In this case, the CloudWatch alarm in account `111122223333` is allowed to publish to an Amazon SNS topic in account `444455556666`\.
+In this case, any CloudWatch alarms in account `111122223333` are allowed to publish to an Amazon SNS topic in account `444455556666`\.
 
 ```
 {
-  "Version": "2012-10-17",
   "Statement": [{
     "Effect": "Allow",
-    "Principal": "*",
+    "Principal": {
+      "AWS": "*"
+    },
     "Action": "SNS:Publish",
     "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
     "Condition": {
       "ArnLike": {
-        "aws:SourceArn": "arn:aws:cloudwatch:us-east-2:111122223333:alarm:MyAlarm"
+        "aws:SourceArn": "arn:aws:cloudwatch:us-east-2:111122223333:alarm:*"
       }
     }
   }]
@@ -183,7 +172,6 @@ In this case, the topic in account 444455556666 is allowed to publish only from 
 
 ```
 {
-  "Version": "2012-10-17",
   "Statement": [{
     "Effect": "Deny",
     "Principal": "*",
