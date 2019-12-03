@@ -42,6 +42,8 @@ For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.a
       + To use a custom CMK ARN from your AWS account or from another AWS account, enter it into the **Customer master key \(CMK\)** field\.
 
 1. \(Optional\) To configure access permissions for your topic, expand the **Access policy** section\. For more information, see [Authentication and Access Control for Amazon SNS](sns-authentication-and-access-control.md)\.
+**Important**  
+As a security precaution, Amazon SNS uses the `aws:sourceOwner` permission to limit access to the topic to the owner of the current AWS account\.
 
 1. \(Optional\) To configure how Amazon SNS retries failed message delivery attempts, expand the **Delivery retry policy \(HTTP/S\)** section\. For more information, see [Message Delivery Retries](sns-message-delivery-retries.md)\.
 
