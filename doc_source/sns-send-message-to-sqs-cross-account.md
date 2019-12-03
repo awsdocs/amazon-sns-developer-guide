@@ -8,61 +8,59 @@ You can publish a notification to an Amazon SNS topic with one or more subscript
 
 ## Queue Owner Creates Subscription<a name="SendMessageToSQS.cross.account.queueowner"></a>
 
-When the queue owner creates the subscription, the subscription does not require confirmation\. The queue starts receiving notifications from the topic as soon as the `Subscribe` action completes\. To enable the queue owner to subscribe to the topic owner's topic, the topic owner must give the queue owner's account permission to call the `Subscribe` action on the topic\. When added to the topic MyTopic in the account `123456789012`, the following policy gives the account `111122223333` permission to call `sns:Subscribe` on MyTopic in the account 123456789012\.
+When the queue owner creates a subscription, the subscription doesn't require confirmation\. The queue starts begins to receive notifications from the topic as soon as the `Subscribe` action completes\. To let the queue owner subscribe to the topic owner's topic, the topic owner must give the queue owner's account permission to call the `Subscribe` action on the topic\.
 
-```
-{
-  "Statement":[{
-    "Effect":"Allow",
-    "Principal":{
-      "AWS":"111122223333"
-    },
-    "Action":"sns:Subscribe",
-    "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
-  }]
-}
-```
+### Step 1: To Set the Topic Policy Using the AWS Management Console<a name="sns-tutorial-set-topic-policy"></a>
 
-**To set the policy**
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
 
-1. Choose **Topics** and choose your topic's ARN\.
+1. On the navigation panel, choose **Topics**\.
 
-1. On the **Topic details: MyTopic** page, choose **Other topic actions**, **Edit topic policy**\.
+1. Select a topic—for example, **MyTopic**—and then choose **Edit**\.
 
-1. In the **Edit topic policy** dialog box, choose **Advanced view**, enter the policy, and choose **Update**\.
+1. On the **Edit *MyTopic*** page, expand the **Access policy** section\.
 
-After this policy has been set on MyTopic, a user can log in to the Amazon SNS console with credentials for account 111122223333 to subscribe to the topic\.
+1. Enter the following policy:
 
-**To add an Amazon SQS queue subscription to a topic in another account using the Amazon SQS console**
+   ```
+   {
+     "Statement":[{
+       "Effect":"Allow",
+       "Principal":{
+         "AWS":"111122223333"
+       },
+       "Action":"sns:Subscribe",
+       "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
+     }]
+   }
+   ```
 
-1. Using the credentials of the AWS account containing the queue or an IAM user in that account, sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/](https://console.aws.amazon.com/sns/)\.
+   This policy gives account `111122223333` permission to call `sns:Subscribe` on `MyTopic` in account 123456789012\.
 
-1. Make sure you have the ARNs for both the topic and the queue\. You will need them when you create the subscription\.
+1. Choose **Save changes\.**
 
-1. Make sure you have set `sqs:SendMessage` permission on the queue so that it can receive messages from the topic\. For more information, see [Step 2: Give Permission to the Amazon SNS Topic to Send Messages to the Amazon SQS Queue](sns-sqs-as-subscriber.md#SendMessageToSQS.sqs.permissions)\.
+   A user with the credentials for account 111122223333 can subscribe to MyTopic\.
 
-1. On the navigation panel, choose the **SNS Dashboard**\.
+### Step 2: To Add an Amazon SQS Queue Subscription to a Topic in Another AWS Account Using the AWS Management Console<a name="sns-tutorial-add-sqs-subscription-to-sns-topic-another-account"></a>
 
-1. In the **Dashboard**, in the **Additional Actions** section, choose **Create New Subscription**\. 
+Before you begin, make sure you have the ARNs for your topic and queue and that you have [given permission to the topic to send messages to the queue](sns-sqs-as-subscriber.md#SendMessageToSQS.sqs.permissions)\.
 
-1. In the **Topic ARN** box, enter the ARN for the topic\.
+1. On the navigation panel, choose **Subscriptions**\.
 
-1. For **Protocol**, choose **Amazon SQS**\.
+1. On the **Subscriptions** page, choose **Create subscription**
 
-1. In the **Endpoint** box, enter the ARN for the queue\. 
+1. On the **Create subscription** page, in the **Details** section, do the following:
 
-1. Choose **Subscribe**\.
+   1. For **Topic ARN**, enter the ARN of the topic\.
 
-1. For the **Subscription request received\!** message, you'll notice text that says you must confirm the subscription\. Because you are the queue owner, the subscription does not need to be confirmed\. Choose **Close**\. You've completed the subscription process and notification messages published to the topic can now be sent to the queue\.
+   1. For **Protocol**, choose **Amazon SQS**\.
 
- The user can also use the access key and secret key for the AWS account 111122223333 to issue the `sns-subscribe` command or call the `[Subscribe](https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html)` API action to subscribe an Amazon SQS queue to MyTopic in the account 123456789012\. The following `[sns\-subscribe](https://docs.aws.amazon.com/cli/latest/reference/sns/subscribe.html)` CLI command subscribes the queue MyQ from account 111122223333 to the topic MyTopic in account 123456789012\.
+   1. For **Endtpoint**, enter the ARN of the queue\.
 
-```
-aws sns subscribe --topic-arn arn:aws:sns:us-east-2:123456789012:MyTopic --protocol sqs --notification-endpoint arn:aws:sqs:us-east-2:111122223333:MyQ
-```
-
+   1. Choose **Create subscription**\.
 **Note**  
-To be able to send, the queue must have permissions for Amazon SNS\.
+To be able to communicate with the service, the queue must have permissions for Amazon SNS\.
+Because you are the owner of the queue, you don't have to confirm the subscription\.
 
 ## User Who Does Not Own the Queue Creates Subscription<a name="SendMessageToSQS.cross.account.notqueueowner"></a>
 
