@@ -5,7 +5,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
-| December 3, 2019 |  Added the following statement to the [To Create a Topic Using the AWS Management ConsoleTo Create a Topic Using the AWS SDK for Java](sns-tutorial-create-topic.md#create-topic-aws-console) section:  As a security precaution, Amazon SNS uses the `aws:sourceOwner` permission to limit access to the topic to the owner of the current AWS account\.   | 
+| December 3, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | December 2, 2019 | Rewrote the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | November 26, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | November 25, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 

@@ -10,7 +10,7 @@ The following examples show a custom message for the FCM platform\.
 
 ```
 {
-  "FCM":"{\"data\":{\"message\":\"Check out these awesome deals!\",\"url\":\"www.amazon.com\"}}"
+  "GCM":"{\"data\":{\"message\":\"Check out these awesome deals!\",\"url\":\"www.amazon.com\"}}"
 }
 ```
 
@@ -22,7 +22,7 @@ The following example shows the inclusion of the FCM parameters `time_to_live` a
 
 ```
 {
-  "FCM":"{\"data\":{\"message\":\"Check out these awesome deals!\",\"url\":\"www.amazon.com\"},\"time_to_live\": 3600,\"collapse_key\":\"deals\"}"
+  "GCM":"{\"data\":{\"message\":\"Check out these awesome deals!\",\"url\":\"www.amazon.com\"},\"time_to_live\": 3600,\"collapse_key\":\"deals\"}"
 }
 ```
 
