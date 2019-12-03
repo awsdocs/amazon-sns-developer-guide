@@ -1,4 +1,4 @@
-# Example Code for an Amazon SNS Endpoint Java Servlet<a name="SendMessageToHttp.example.java"></a>
+# Example Code for an Amazon SNS Endpoint Java Servlet<a name="sns-example-code-endpoint-java-servlet"></a>
 
 **Important**  
 The following code snippets help you understand a Java servlet that processes Amazon SNS HTTP POST requests\. You should make sure that any portions of these snippets are suitable for your purposes before implementing them in your production environment\. For example, in a production environment to help prevent spoofing attacks, you should verify that the identity of the received Amazon SNS messages is from Amazon SNS\. You can do this by checking that the DNS Name value \(*DNS Name=sns\.us\-west\-2\.amazonaws\.com* in us\-west\-2; this will vary by Region\) for the *Subject Alternative Name* field, as presented in the Amazon SNS Certificate, is the same for the received Amazon SNS messages\. For more information about verifying server identity, see section [3\.1\. Server Identity](http://tools.ietf.org/search/rfc2818) in *RFC 2818*\. Also see [Verifying the Signatures of Amazon SNS Messages](sns-verify-signature-of-message.md)
@@ -84,18 +84,35 @@ The following example Java method creates a signature using information from a `
 private static boolean isMessageSignatureValid(Message msg) {
     try {
         URL url = new URL(msg.getSigningCertURL());
+        verifyMessageSignatureURL(msg, url);
+
         InputStream inStream = url.openStream();
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
-        X509Certificate cert = (X509Certificate)cf.generateCertificate(inStream);
+        X509Certificate cert = (X509Certificate) cf.generateCertificate(inStream);
         inStream.close();
 
         Signature sig = Signature.getInstance("SHA1withRSA");
         sig.initVerify(cert.getPublicKey());
         sig.update(getMessageBytesToSign(msg));
         return sig.verify(Base64.decodeBase64(msg.getSignature()));
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
         throw new SecurityException("Verify method failed.", e);
+    }
+}
+
+private static void verifyMessageSignatureURL(Message msg, URL endpoint) {
+    URI certUri = URI.create(msg.getSigningCertURL());
+
+    if (!"https".equals(certUri.getScheme())) {
+        throw new SecurityException("SigningCertURL was not using HTTPS: " + certUri.toString());
+    }
+
+    if (!endpoint.equals(certUri.getHost())) {
+        throw new SecurityException(
+                String.format("SigningCertUrl does not match expected endpoint. " +
+                                "Expected %s but received endpoint was %s.",
+                        endpoint, certUri.getHost()));
+
     }
 }
 ```

@@ -8,7 +8,7 @@ To help prevent spoofing attacks, you should do the following when verifying mes
 + Verify the certificate was received from Amazon SNS\.
 + When possible, use one of the supported AWS SDKs for Amazon SNS to validate and verify messages\. For example, with the AWS SDK for PHP you would use the `isValid` method from the `MessageValidator` class\.
 
-For example code for a Java servlet that handles Amazon SNS messages, see [Example Code for an Amazon SNS Endpoint Java Servlet](SendMessageToHttp.example.java.md)\.
+For example code for a Java servlet that handles Amazon SNS messages, see [Example Code for an Amazon SNS Endpoint Java Servlet](sns-example-code-endpoint-java-servlet.md)\.
 
 **To verify the signature of an Amazon SNS message when using HTTP query\-based requests**
 
