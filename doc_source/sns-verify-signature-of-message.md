@@ -14,7 +14,7 @@ For example code for a Java servlet that handles Amazon SNS messages, see [Examp
 
 1. Extract the name\-value pairs from the JSON document in the body of the HTTP POST request that Amazon SNS sent to your endpoint\. You'll be using the values of some of the name\-value pairs to create the string to sign\. When you are verifying the signature of an Amazon SNS message, it is critical that you convert the escaped control characters to their original character representations in the `Message` and `Subject` values\. These values must be in their original forms when you use them as part of the string to sign\. For information about how to parse the JSON document, see [Step 1: Make Sure Your Endpoint is Ready to Process Amazon SNS Messages](sns-http-https-endpoint-as-subscriber.md#SendMessageToHttp.prepare)\. 
 
-   The `SignatureVersion` tells you the signature version\. From the signature version, you can determine the requirements for how to generate the signature\. For Amazon SNS notifications, Amazon SNS currently supports signature version 1\. This section provides the steps for creating a signature using signature version 1\. 
+   The `SignatureVersion` tells you the signature version\. From the signature version, you can determine the requirements for how to generate the signature\. For Amazon SNS notifications, Amazon SNS currently supports signature version 1\. This section provides the steps for creating a signature using signature version 1\.
 
 1. Get the X509 certificate that Amazon SNS used to sign the message\. The `SigningCertURL` value points to the location of the X509 certificate used to create the digital signature for the message\. Retrieve the certificate from this location\. 
 

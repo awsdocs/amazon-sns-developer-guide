@@ -13,7 +13,7 @@ When you subscribe an Amazon SQS queue to an Amazon SNS topic, you can publish a
    "Message" : "Hello world!",
    "Timestamp" : "2012-03-29T05:12:16.901Z",
    "SignatureVersion" : "1",
-   "Signature" : "EXAMPLEnTrFPa37tnVO0FF9Iau3MGzjlJLRfySEoWz4uZHSj6ycK4ph71Zmdv0NtJ4dC/El9FOGp3VuvchpaTraNHWhhq/OsN1HVz20zxmF9b88R8GtqjfKB5woZZmz87HiM6CYDTo3l7LMwFT4VU7ELtyaBBafhPTg9O5CnKkg=",
+   "Signature" : "EXAMPLEnTrFPa3...",
    "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem",
    "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:123456789012:MyTopic:c7fe3a54-ab0e-4ec2-88e0-db410a0f2bee"
 }
@@ -235,17 +235,17 @@ You can test a topic's queue subscriptions by publishing to the topic and viewin
 
    ```
    {
-         "Type" : "Notification",
-         "MessageId" : "63a3f6b6-d533-4a47-aef9-fcf5cf758c76",
-         "TopicArn" : "arn:aws:sns:us-west-2:123456789012:MyTopic",
-         "Subject" : "Testing publish to subscribed queues",
-         "Message" : "Hello world!",
-         "Timestamp" : "2012-03-29T05:12:16.901Z",
-         "SignatureVersion" : "1",
-         "Signature" : "EXAMPLEnTrFPa37tnVO0FF9Iau3MGzjlJLRfySEoWz4uZHSj6ycK4ph71Zmdv0NtJ4dC/El9FOGp3VuvchpaTraNHWhhq/OsN1HVz20zxmF9b88R8GtqjfKB5woZZmz87HiM6CYDTo3l7LMwFT4VU7ELtyaBBafhPTg9O5CnKkg=",
-         "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem",
-         "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:123456789012:MyTopic:c7fe3a54-ab0e-4ec2-88e0-db410a0f2bee"
-       }
+     "Type" : "Notification",
+     "MessageId" : "63a3f6b6-d533-4a47-aef9-fcf5cf758c76",
+     "TopicArn" : "arn:aws:sns:us-west-2:123456789012:MyTopic",
+     "Subject" : "Testing publish to subscribed queues",
+     "Message" : "Hello world!",
+     "Timestamp" : "2012-03-29T05:12:16.901Z",
+     "SignatureVersion" : "1",
+     "Signature" : "EXAMPLEnTrFPa3...",
+     "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem",
+     "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:123456789012:MyTopic:c7fe3a54-ab0e-4ec2-88e0-db410a0f2bee"
+   }
    ```
 
 1. Choose **Close**\. You have successfully published to a topic that sends notification messages to a queue\.

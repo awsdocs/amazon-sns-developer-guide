@@ -109,8 +109,7 @@ String attribValue = "arn:aws:iam::123456789012:role/SNSSuccessFeedback";
 ```
 
 ```
-SetTopicAttributesRequest setTopicAttributesRequest = new SetTopicAttributesRequest
-{
+SetTopicAttributesRequest setTopicAttributesRequest = new SetTopicAttributesRequest {
     TopicArn = topicArn,
     AttributeName = attribName,
     AttributeValue = attribValue

@@ -20,18 +20,18 @@ POST / HTTP/1.1
     Connection: Keep-Alive
     User-Agent: Amazon Simple Notification Service Agent
     
-    {
-      "Type" : "Notification",
-      "MessageId" : "da41e39f-ea4d-435a-b922-c6aae3915ebe",
-      "TopicArn" : "arn:aws:sns:us-west-2:123456789012:MyTopic",
-      "Subject" : "test",
-      "Message" : "test message",
-      "Timestamp" : "2012-04-25T21:49:25.719Z",
-      "SignatureVersion" : "1",
-      "Signature" : "EXAMPLElDMXvB8r9R83tGoNn0ecwd5UjllzsvSvbItzfaMpN2nk5HVSw7XnOn/49IkxDKz8YrlH2qJXj2iZB0Zo2O71c4qQk1fMUDi3LGpij7RCW7AW9vYYsSqIKRnFS94ilu7NFhUzLiieYr4BKHpdTmdD6c0esKEYBpabxDSc=",
-      "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem",
-      "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:123456789012:MyTopic:2bcfbf39-05c3-41de-beaa-fcfcc21c8f55"
-    }
+{
+  "Type" : "Notification",
+  "MessageId" : "da41e39f-ea4d-435a-b922-c6aae3915ebe",
+  "TopicArn" : "arn:aws:sns:us-west-2:123456789012:MyTopic",
+  "Subject" : "test",
+  "Message" : "test message",
+  "Timestamp" : "2012-04-25T21:49:25.719Z",
+  "SignatureVersion" : "1",
+  "Signature" : "EXAMPLElDMXvB8r9R83tGoNn0ecwd5UjllzsvSvbItzfaMpN2nk5HVSw7XnOn/49IkxDKz8YrlH2qJXj2iZB0Zo2O71c4qQk1fMUDi3LGpij7RCW7AW9vYYsSqIKRnFS94ilu7NFhUzLiieYr4BKHpdTmdD6c0esKEYBpabxDSc=",
+  "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem",
+   "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:123456789012:MyTopic:2bcfbf39-05c3-41de-beaa-fcfcc21c8f55"
+}
 ```
 
 To enable an Amazon SNS topic to send messages to an HTTP or HTTPS endpoint, follow these steps:
@@ -69,18 +69,18 @@ Before you subscribe your HTTP or HTTPS endpoint to a topic, you must make sure 
        Connection: Keep-Alive
        User-Agent: Amazon Simple Notification Service Agent
        
-       {
-         "Type" : "SubscriptionConfirmation",
-         "MessageId" : "165545c9-2a5c-472c-8df2-7ff2be2b3b1b",
-         "Token" : "2336412f37fb687f5d51e6e241d09c805a5a57b30d712f794cc5f6a988666d92768dd60a747ba6f3beb71854e285d6ad02428b09ceece29417f1f02d609c582afbacc99c583a916b9981dd2728f4ae6fdb82efd087cc3b7849e05798d2d2785c03b0879594eeac82c01f235d0e717736",
-         "TopicArn" : "arn:aws:sns:us-west-2:123456789012:MyTopic",
-         "Message" : "You have chosen to subscribe to the topic arn:aws:sns:us-west-2:123456789012:MyTopic.\nTo confirm the subscription, visit the SubscribeURL included in this message.",
-         "SubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=ConfirmSubscription&TopicArn=arn:aws:sns:us-west-2:123456789012:MyTopic&Token=2336412f37fb687f5d51e6e241d09c805a5a57b30d712f794cc5f6a988666d92768dd60a747ba6f3beb71854e285d6ad02428b09ceece29417f1f02d609c582afbacc99c583a916b9981dd2728f4ae6fdb82efd087cc3b7849e05798d2d2785c03b0879594eeac82c01f235d0e717736",
-         "Timestamp" : "2012-04-26T20:45:04.751Z",
-         "SignatureVersion" : "1",
-         "Signature" : "EXAMPLEpH+DcEwjAPg8O9mY8dReBSwksfg2S7WKQcikcNKWLQjwu6A4VbeS0QHVCkhRS7fUQvi2egU3N858fiTDN6bkkOxYDVrY0Ad8L10Hs3zH81mtnPk5uvvolIC1CXGu43obcgFxeL3khZl8IKvO61GWB6jI9b5+gLPoBc1Q=",
-         "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem"
-       }
+   {
+     "Type" : "SubscriptionConfirmation",
+     "MessageId" : "165545c9-2a5c-472c-8df2-7ff2be2b3b1b",
+     "Token" : "2336412f37f...",
+     "TopicArn" : "arn:aws:sns:us-west-2:123456789012:MyTopic",
+     "Message" : "You have chosen to subscribe to the topic arn:aws:sns:us-west-2:123456789012:MyTopic.\nTo confirm the subscription, visit the SubscribeURL included in this message.",
+     "SubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=ConfirmSubscription&TopicArn=arn:aws:sns:us-west-2:123456789012:MyTopic&Token=2336412f37...",
+     "Timestamp" : "2012-04-26T20:45:04.751Z",
+     "SignatureVersion" : "1",
+     "Signature" : "EXAMPLEpH+...",
+     "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem"
+   }
    ```
 
 1. Your code should parse the JSON document in the body of the HTTP POST request to read the name\-value pairs that make up the Amazon SNS message\. Use a JSON parser that handles converting the escaped representation of control characters back to their ASCII character values \(for example, converting \\n to a newline character\)\. You can use an existing JSON parser such as the [Jackson JSON Processor](https://github.com/FasterXML/jackson) or write your own\. In order to send the text in the subject and message fields as valid JSON, Amazon SNS must convert some control characters to escaped representations that can be included in the JSON document\. When you receive the JSON document in the body of the POST request sent to your endpoint, you must convert the escaped characters back to their original character values if you want an exact representation of the original subject and messages published to the topic\. This is critical if you want to verify the signature of a notification because the signature uses the message and subject in their original forms as part of the string to sign\.
@@ -93,13 +93,13 @@ Read the value for `SubscribeURL` and visit that URL\. To confirm the subscripti
 
    ```
    <ConfirmSubscriptionResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
-         <ConfirmSubscriptionResult>
-           <SubscriptionArn>arn:aws:sns:us-west-2:123456789012:MyTopic:2bcfbf39-05c3-41de-beaa-fcfcc21c8f55</SubscriptionArn>
-         </ConfirmSubscriptionResult>
-         <ResponseMetadata>
-           <RequestId>075ecce8-8dac-11e1-bf80-f781d96e9307</RequestId>
-         </ResponseMetadata>
-       </ConfirmSubscriptionResponse>
+      <ConfirmSubscriptionResult>
+         <SubscriptionArn>arn:aws:sns:us-west-2:123456789012:MyTopic:2bcfbf39-05c3-41de-beaa-fcfcc21c8f55</SubscriptionArn>
+      </ConfirmSubscriptionResult>
+      <ResponseMetadata>
+         <RequestId>075ecce8-8dac-11e1-bf80-f781d96e9307</RequestId>
+      </ResponseMetadata>
+   </ConfirmSubscriptionResponse>
    ```
 As an alternative to visiting the `SubscribeURL`, you can confirm the subscription using the [ConfirmSubscription](https://docs.aws.amazon.com/sns/latest/api/API_ConfirmSubscription.html) action with the `Token` set to its corresponding value in the `SubscriptionConfirmation` message\. If you want to allow only the topic owner and subscription owner to be able to unsubscribe the endpoint, you call the `ConfirmSubscription` action with an AWS signature\.  
 **Notification**  
@@ -118,18 +118,18 @@ For details about the format of the `Notification` message, see [HTTP/HTTPS Head
        Connection: Keep-Alive
        User-Agent: Amazon Simple Notification Service Agent
        
-       {
-         "Type" : "Notification",
-         "MessageId" : "22b80b92-fdea-4c2c-8f9d-bdfb0c7bf324",
-         "TopicArn" : "arn:aws:sns:us-west-2:123456789012:MyTopic",
-         "Subject" : "My First Message",
-         "Message" : "Hello world!",
-         "Timestamp" : "2012-05-02T00:54:06.655Z",
-         "SignatureVersion" : "1",
-         "Signature" : "EXAMPLEw6JRNwm1LFQL4ICB0bnXrdB8ClRMTQFGBqwLpGbM78tJ4etTwC5zU7O3tS6tGpey3ejedNdOJ+1fkIp9F2/LmNVKb5aFlYq+9rk9ZiPph5YlLmWsDcyC5T+Sy9/umic5S0UQc2PEtgdpVBahwNOdMW4JPwk0kAJJztnc=",
-         "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem",
-         "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:123456789012:MyTopic:c9135db0-26c4-47ec-8998-413945fb5a96"
-       }
+   {
+     "Type" : "Notification",
+     "MessageId" : "22b80b92-fdea-4c2c-8f9d-bdfb0c7bf324",
+     "TopicArn" : "arn:aws:sns:us-west-2:123456789012:MyTopic",
+     "Subject" : "My First Message",
+     "Message" : "Hello world!",
+     "Timestamp" : "2012-05-02T00:54:06.655Z",
+     "SignatureVersion" : "1",
+     "Signature" : "EXAMPLEw6JRN...",
+     "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem",
+     "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:123456789012:MyTopic:c9135db0-26c4-47ec-8998-413945fb5a96"
+   }
    ```
 
 1. Make sure that your endpoint responds to the HTTP POST message from Amazon SNS with the appropriate status code\. The connection will time out in 15 seconds\. If your endpoint does not respond before the connection times out or if your endpoint returns a status code outside the range of 200–4*xx*, Amazon SNS will consider the delivery of the message as a failed attempt\.
