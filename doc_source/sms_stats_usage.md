@@ -91,7 +91,7 @@ After you subscribe to daily usage reports, each day, Amazon SNS puts a CSV file
 <my-s3-bucket>/SMSUsageReports/<region>/YYYY/MM/DD/00x.csv.gz
 ```
 
-Each file can contain up to 50,000 records\. If the records for a day exceed this limit, Amazon SNS will add multiple files\.
+Each file can contain up to 50,000 records\. If the records for a day exceed this quota, Amazon SNS will add multiple files\.
 
 The following shows an example report:
 

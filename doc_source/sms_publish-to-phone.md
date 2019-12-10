@@ -6,12 +6,12 @@ Subscribing phone numbers to a topic can be still useful if you want to publish 
 
 When you send a message, you can control whether the message is optimized for cost or reliable delivery, and you can specify a sender ID\. If you send the message programmatically using the Amazon SNS API or AWS SDKs, you can specify a maximum price for the message delivery\.
 
-Each SMS message can contain up to 140 bytes, and the character limit depends on the encoding scheme\. For example, an SMS message can contain:
+Each SMS message can contain up to 140 bytes, and the character quota depends on the encoding scheme\. For example, an SMS message can contain:
 + 160 GSM characters
 + 140 ASCII characters
 + 70 UCS\-2 characters
 
-If you publish a message that exceeds the size limit, Amazon SNS sends it as multiple messages, each fitting within the size limit\. Messages are not cut off in the middle of a word but on whole\-word boundaries\. The total size limit for a single SMS publish action is 1600 bytes\.
+If you publish a message that exceeds the size quota, Amazon SNS sends it as multiple messages, each fitting within the size quota\. Messages are not cut off in the middle of a word but on whole\-word boundaries\. The total size quota for a single SMS publish action is 1600 bytes\.
 
 When you send an SMS message, specify the phone number using the E\.164 format\. E\.164 is a standard for the phone number structure used for international telecommunication\. Phone numbers that follow this format can have a maximum of 15 digits, and they are prefixed with the plus character \(\+\) and the country code\. For example, a U\.S\. phone number in E\.164 format would appear as \+1XXX5550100\.
 
@@ -63,7 +63,7 @@ This message\-level attribute overrides the account\-level attribute `DefaultSen
 
 `AWS.SNS.SMS.MaxPrice`  
 The maximum amount in USD that you are willing to spend to send the SMS message\. Amazon SNS will not send the message if it determines that doing so would incur a cost that exceeds the maximum price\.  
-This attribute has no effect if your month\-to\-date SMS costs have already exceeded the limit set for the `MonthlySpendLimit` attribute, which you set using the `SetSMSAttributes` request\.  
+This attribute has no effect if your month\-to\-date SMS costs have already exceeded the quota set for the `MonthlySpendLimit` attribute, which you set using the `SetSMSAttributes` request\.  
 If you are sending the message to an Amazon SNS topic, the maximum price applies to each message delivery to each phone number that is subscribed to the topic\.
 
 `AWS.SNS.SMS.SMSType`  

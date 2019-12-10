@@ -43,7 +43,7 @@ For each deployment, the application name must be unique\. If you reuse an appli
 
    1. For **SearchIndexName**, enter the name of the Amazon ES index for event search and analytics\.
 **Note**  
-The following limits apply to index names:  
+The following quotas apply to index names:  
 Can't include uppercase letters
 Can't include the following characters: `\ / * ? " < > | ` , #`
 Can't begin with the following characters: `- + _`

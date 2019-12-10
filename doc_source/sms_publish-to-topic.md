@@ -56,7 +56,7 @@ When you publish a message to a topic, Amazon SNS attempts to deliver that messa
 
 1. For **Message**, type a message\.
 
-   For information about the size limits for SMS messages, see [Sending an SMS Message](sms_publish-to-phone.md)\.
+   For information about the size quotas for SMS messages, see [Sending an SMS Message](sms_publish-to-phone.md)\.
 
    If your topic has a display name, Amazon SNS adds it to the message, which increases the message length\. The display name length is the number of characters in the name plus two characters for the right angle bracket \(>\) and space that Amazon SNS adds\.
 

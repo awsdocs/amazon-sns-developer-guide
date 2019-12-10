@@ -5,12 +5,12 @@ The following list grants information specific to the Amazon SNS implementation 
 + Each policy must have a unique policy `Id`
 + Each statement in a policy must have a unique statement `sid`
 
-## Amazon SNS Policy Limits<a name="sns-policy-limits"></a>
+## Amazon SNS Policy Quotas<a name="sns-policy-quotas"></a>
 
-The following table lists the maximum limits for policy information\.
+The following table lists the maximum quotas for policy information\.
 
 
-| Name | Maximum Limit | 
+| Name | Maximum Quota | 
 | --- | --- | 
 |  Bytes  |  30 kb  | 
 |  Statements  |  100  | 

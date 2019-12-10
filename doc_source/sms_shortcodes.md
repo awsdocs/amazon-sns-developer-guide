@@ -8,7 +8,7 @@ Your dedicated short code is available exclusively to you, so others are unable 
 
 Amazon SNS can use your short code to message telephone numbers in the United States\. For other destinations, Amazon SNS assigns a long code or alphanumeric code as required\.
 
-A dedicated short code supports a higher delivery rate, which enables you send up to 100 SMS messages per second\. After you reserve a short code, you can request to increase this limit by submitting an [SNS Limit Increase case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\.
+A dedicated short code supports a higher delivery rate, which enables you send up to 100 SMS messages per second\. After you reserve a short code, you can request to increase this quota by submitting an [submitting a request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\.
 
 For pricing information, see [Worldwide SMS Pricing](https://aws.amazon.com/sns/sms-pricing/)\.
 

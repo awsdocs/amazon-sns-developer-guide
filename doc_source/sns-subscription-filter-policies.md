@@ -137,7 +137,7 @@ When you create a filter policy, keep the following constraints in mind:
 + When you use the Amazon SNS API, you must pass the JSON of the filter policy as a valid UTF\-8 string\.
 + A filter policy can have a maximum of 5 attribute names\.
 + The maximum size of a policy is 256 KB\.
-+ By default, you can have up to 200 filter policies per AWS account, per region\. To increase this limit, submit a [limit increase request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\.
++ By default, you can have up to 200 filter policies per AWS account, per region\. To increase this quota, submit a [quota increase request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\.
 
 ## Attribute String Value Matching<a name="string-value-matching"></a>
 

@@ -28,9 +28,9 @@ These preferences take effect for every SMS message that you send from your acco
 
    1. \(Optional\) For **Account spend limit**, enter the amount \(in USD\) that you want to spend on SMS messages each calendar month\.
 **Important**  
-By default, the spend limit is set to 1\.00 USD\. If you want to raise the service limit, submit an [SNS Text Messaging case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns-text-messaging) with AWS Support\.
-If the amount set in the console exceeds your service limit, Amazon SNS stops publishing SMS messages\.
-Because Amazon SNS is a distributed system, it stops sending SMS messages within minutes of the spend limit being exceeded\. During this interval, if you continue to send SMS messages, you might incur costs that exceed your limit\.
+By default, the spend quota is set to 1\.00 USD\. If you want to raise the service quota, [submit a request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\.
+If the amount set in the console exceeds your service quota, Amazon SNS stops publishing SMS messages\.
+Because Amazon SNS is a distributed system, it stops sending SMS messages within minutes of the spend quota being exceeded\. During this interval, if you continue to send SMS messages, you might incur costs that exceed your quota\.
 
 1. \(Optional\) For **Default sender ID**, enter a custom ID, such as your business brand, which is displayed as the sender of the receiving device\.
 **Note**  
@@ -44,7 +44,7 @@ The S3 bucket policy must grant write access to Amazon SNS\.
 
 ## Setting Preferences \(AWS SDKs\)<a name="sms_preferences_sdk"></a>
 
-To set your SMS preferences using one of AWS SDKs, use the action in that SDK that corresponds to the `SetSMSAttributes` request in the Amazon SNS API\. With this request, you assign values to the different SMS attributes, such as your monthly spend limit and your default SMS type \(promotional or transactional\)\. For all SMS attributes, see [SetSMSAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html) in the *Amazon Simple Notification Service API Reference*\.
+To set your SMS preferences using one of AWS SDKs, use the action in that SDK that corresponds to the `SetSMSAttributes` request in the Amazon SNS API\. With this request, you assign values to the different SMS attributes, such as your monthly spend quota and your default SMS type \(promotional or transactional\)\. For all SMS attributes, see [SetSMSAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html) in the *Amazon Simple Notification Service API Reference*\.
 
 The following examples show how to set SMS preferences using the Amazon SNS clients that are provided by the AWS SDKs\.
 
@@ -78,7 +78,7 @@ public static void setDefaultSmsAttributes(AmazonSNSClient snsClient) {
 }
 ```
 
-This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the limit, submit an [SNS Text Messaging case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns-text-messaging) with AWS Support\. For **New limit value**, enter your desired monthly spend limit\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend limit increase\. The AWS Support team provides an initial response to your request within 24 hours\.
+This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the quota, submit [submit a request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\. For **New limit value**, enter your desired monthly spend quota\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend quota increase\. The AWS Support team provides an initial response to your request within 24 hours\.
 
 To verify that the attributes were set correctly, the example prints the result of the `getSMSAttributes` method\. When you run this example, the attributes are displayed in the console output window of your IDE:
 
@@ -124,7 +124,7 @@ public static void SetDefaultSmsAttributes(AmazonSimpleNotificationServiceClient
 }
 ```
 
-This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the limit, submit an [SNS Text Messaging case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns-text-messaging) with AWS Support\. For **New limit value**, enter your desired monthly spend limit\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend limit increase\. The AWS Support team provides an initial response to your request within 24 hours\.
+This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the quota, [submit a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\. For **New limit value**, enter your desired monthly spend quota\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend quota increase\. The AWS Support team provides an initial response to your request within 24 hours\.
 
 To verify that the attributes were set correctly, the example prints the result of the `GetSMSAttributes` method\. When you run this example, the attributes are displayed in the console output window of your IDE:
 
