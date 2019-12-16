@@ -62,7 +62,6 @@ Amazon's trademarks and trade dress may not be used in
       + [Sending Amazon SNS Messages to an Amazon SQS Queue in a Different Account](sns-send-message-to-sqs-cross-account.md)
       + [Using an AWS CloudFormation Template to Create a Topic that Sends Messages to Amazon SQS Queues](SendMessageToSQS.cloudformation.md)
    + [Using Amazon SNS for System-to-System Messaging with an HTTP/S Endpoint as a Subscriber](sns-http-https-endpoint-as-subscriber.md)
-      + [Certificate Authorities (CA) Recognized by Amazon SNS for HTTPS Endpoints](SendMessageToHttp.https.ca.md)
       + [Verifying the Signatures of Amazon SNS Messages](sns-verify-signature-of-message.md)
       + [Example Code for an Amazon SNS Endpoint Java Servlet](sns-example-code-endpoint-java-servlet.md)
    + [Using Amazon SNS for System-to-System Messaging with AWS Event Fork Pipelines as a Subscriber](sns-fork-pipeline-as-subscriber.md)
