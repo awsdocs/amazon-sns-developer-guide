@@ -5,6 +5,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
+| December 16, 2019 | Rewrote the [View CloudWatch Metrics for Amazon SNS](sns-monitoring-using-cloudwatch.md#view-cloudwatch-metrics) section\. | 
 | December 3, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | December 2, 2019 | Rewrote the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | November 26, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 

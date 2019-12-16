@@ -7,26 +7,23 @@ The metrics you configure with CloudWatch for your Amazon SNS topics are automat
 **Note**  
 There is no charge for the Amazon SNS metrics reported in CloudWatch; they are provided as part of the Amazon SNS service\.
 
-## Access CloudWatch Metrics for Amazon SNS<a name="SNS_ViewMetrics"></a>
+## View CloudWatch Metrics for Amazon SNS<a name="view-cloudwatch-metrics"></a>
 
-You can monitor metrics for Amazon SNS using the CloudWatch console, CloudWatch's own command line interface \(CLI\), or programmatically using the CloudWatch API\. The following procedures show you how to access the metrics using these different options\. 
+You can monitor metrics for Amazon SNS using the CloudWatch console, CloudWatch's own command line interface \(CLI\), or programmatically using the CloudWatch API\. The following procedures show you how to access the metrics using the AWS Management Console\.
 
 **To view metrics using the CloudWatch console**
 
-1. Sign in to the AWS Management Console and open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
+1. Sign in to the [CloudWatch console](https://console.aws.amazon.com/cloudwatch)\.
 
-1. Choose **View Metrics**\.
+1. On the navigation panel, choose **Metrics**\.
 
-1. For **Viewing**, choose either **SNS: Topic Metrics**, **SNS: Push Notifications by Application**, **SNS: Push Notifications by Application and Platform**, or **SNS: Push Notifications by Platform** to show the available metrics\.
+1. On the **All metrics** tab, choose **SNS**, and then choose one of the following dimensions:
+   + **Country, SMS Type**
+   + **PhoneNumber**
+   + **Topic Metrics**
+   + **Metrics with no dimensions**
 
-1. Choose a specific item to see more detail, such as a graph of the data collected\. For example, the following graph of the selected metric, **NumberOfMessagesPublished**, shows the average number of published Amazon SNS messages for a five\-minute period throughout the time range of 6 hours\.   
-![\[\]](http://docs.aws.amazon.com/sns/latest/dg/images/sns-cloudwatch-metric.png)
-
-**To access metrics from the CloudWatch CLI**
-+ Call `[mon\-get\-stats](https://docs.aws.amazon.com/AmazonCloudWatch/latest/cli/cli-mon-get-stats.html)`\. You can learn more about this and other metrics\-related functions in the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
-
-**To access metrics from the CloudWatch API**
-+ Call `[GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)`\. You can learn more about this and other metrics\-related functions in the [Amazon CloudWatch API Reference](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/)\.
+1. To view more detail, choose a specific item\. For example, if you choose **Topic Metrics** and then choose **NumberOfMessagesPublished**, the average number of published Amazon SNS messages for a five\-minute period throughout the time range of 6 hours is displayed\.
 
 ## Set CloudWatch Alarms for Amazon SNS Metrics<a name="SNS_AlarmMetrics"></a>
 
