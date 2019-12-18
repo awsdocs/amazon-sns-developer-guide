@@ -1,6 +1,22 @@
-# Key Concepts<a name="AccessPolicyLanguage_KeyConcepts"></a>
+# Key Concepts<a name="sns-access-policy-language-key-concepts"></a>
 
 The following sections describe the concepts you need to understand to use the access policy language\. They're presented in a logical order, with the first terms you need to know at the top of the list\.
+
+**Topics**
++ [Permission](#permissions)
++ [Statement](#statement)
++ [Policy](#policy)
++ [Issuer](#issuer)
++ [Principal](#principal)
++ [Action](#action)
++ [Resource](#resource)
++ [Conditions and Keys](#conditions)
++ [Requester](#requester)
++ [Evaluation](#evaluation)
++ [Effect](#effect)
++ [Default Deny](#Define_SoftDeny)
++ [Allow](#allow)
++ [Explicit Deny](#Define_HardDeny)
 
 ## Permission<a name="permissions"></a>
 
@@ -40,7 +56,7 @@ The *conditions* are any restrictions or details about the permission\. The cond
 
 A *key* is the specific characteristic that is the basis for access restriction\. For example, the date and time of request\.
 
-You use both *conditions* and *keys* together to express the restriction\. The easiest way to understand how you actually implement a restriction is with an example: If you want to restrict access to before May 30, 2010, you use the condition called `DateLessThan`\. You use the key called `aws:CurrentTime` and set it to the value `2010-05-30T00:00:00Z`\. AWS defines the conditions and keys you can use\. The AWS service itself \(for example, Amazon SQS or Amazon SNS\) might also define service\-specific keys\. For more information, see [Special Information for Amazon SNS Policies](AccessPolicyLanguage_SpecialInfo.md)\.
+You use both *conditions* and *keys* together to express the restriction\. The easiest way to understand how you actually implement a restriction is with an example: If you want to restrict access to before May 30, 2010, you use the condition called `DateLessThan`\. You use the key called `aws:CurrentTime` and set it to the value `2010-05-30T00:00:00Z`\. AWS defines the conditions and keys you can use\. The AWS service itself \(for example, Amazon SQS or Amazon SNS\) might also define service\-specific keys\. For more information, see [Amazon SNS API Permissions: Actions and Resources Reference](sns-access-policy-language-api-permissions-reference.md)\.
 
 ## Requester<a name="requester"></a>
 
@@ -48,15 +64,15 @@ The *requester* is the person who sends a request to an AWS service and asks for
 
 ## Evaluation<a name="evaluation"></a>
 
-*Evaluation* is the process the AWS service uses to determine if an incoming request should be denied or allowed based on the applicable policies\. For information about the evaluation logic, see [Evaluation Logic](AccessPolicyLanguage_EvaluationLogic.md)\.
+*Evaluation* is the process the AWS service uses to determine if an incoming request should be denied or allowed based on the applicable policies\. For information about the evaluation logic, see [Evaluation Logic](sns-access-policy-language-evaluation-logic.md)\.
 
 ## Effect<a name="effect"></a>
 
 The *effect* is the result that you want a policy statement to return at evaluation time\. You specify this value when you write the statements in a policy, and the possible values are *deny* and *allow*\.
 
- For example, you could write a policy that has a statement that *denies* all requests that come from Antarctica \(effect=deny grantn that the request uses an IP address allocated to Antarctica\)\. Alternately, you could write a policy that has a statement that *allows* all requests that *don't* come from Antarctica \(effect=allow, grantn that the request doesn't come from Antarctica\)\. Although the two statements sound like they do the same thing, in the access policy language logic, they are different\. For more information, see [Evaluation Logic](AccessPolicyLanguage_EvaluationLogic.md)\.
+ For example, you could write a policy that has a statement that *denies* all requests that come from Antarctica \(effect=deny grantn that the request uses an IP address allocated to Antarctica\)\. Alternately, you could write a policy that has a statement that *allows* all requests that *don't* come from Antarctica \(effect=allow, grantn that the request doesn't come from Antarctica\)\. Although the two statements sound like they do the same thing, in the access policy language logic, they are different\. For more information, see [Evaluation Logic](sns-access-policy-language-evaluation-logic.md)\.
 
-Although there are only two possible values you can specify for the effect \(allow or deny\), there can be three different results at policy evaluation time: *default deny*, *allow*, or *explicit deny*\. For more information, see the following concepts and [Evaluation Logic](AccessPolicyLanguage_EvaluationLogic.md)\.
+Although there are only two possible values you can specify for the effect \(allow or deny\), there can be three different results at policy evaluation time: *default deny*, *allow*, or *explicit deny*\. For more information, see the following concepts and [Evaluation Logic](sns-access-policy-language-evaluation-logic.md)\.
 
 ## Default Deny<a name="Define_SoftDeny"></a>
 

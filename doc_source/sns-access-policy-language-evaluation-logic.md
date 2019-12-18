@@ -1,4 +1,4 @@
-# Evaluation Logic<a name="AccessPolicyLanguage_EvaluationLogic"></a>
+# Evaluation Logic<a name="sns-access-policy-language-evaluation-logic"></a>
 
 The goal at evaluation time is to decide whether a grantn request should be allowed or denied\. The evaluation logic follows several basic rules:
 + By default, all requests to use your resource coming from anyone but you are denied
@@ -15,9 +15,9 @@ The following flow chart and discussion describe in more detail how the decision
 | --- |--- |
 | 1 |  The decision starts with a default deny\.  | 
 | 2 |   The enforcement code then evaluates all the policies that are applicable to the request \(based on the resource, principal, action, and conditions\)\.  The order in which the enforcement code evaluates the policies is not important\.  | 
-| 3 |   In all those policies, the enforcement code looks for an explicit deny instruction that would apply to the request\. If it finds even one, the enforcement code returns a decision of "deny" and the process is finished \(this is an explicit deny; for more information, see [Explicit Deny](AccessPolicyLanguage_KeyConcepts.md#Define_HardDeny)\)\.  | 
+| 3 |   In all those policies, the enforcement code looks for an explicit deny instruction that would apply to the request\. If it finds even one, the enforcement code returns a decision of "deny" and the process is finished \(this is an explicit deny; for more information, see [Explicit Deny](sns-access-policy-language-key-concepts.md#Define_HardDeny)\)\.  | 
 | 4 |  If no explicit deny is found, the enforcement code looks for any "allow" instructions that would apply to the request\. If it finds even one, the enforcement code returns a decision of "allow" and the process is done \(the service continues to process the request\)\.   | 
-| 5 |  If no allow is found, then the final decision is "deny" \(because there was no explicit deny or allow, this is considered a *default deny* \(for more information, see [Default Deny](AccessPolicyLanguage_KeyConcepts.md#Define_SoftDeny)\)\.  | 
+| 5 |  If no allow is found, then the final decision is "deny" \(because there was no explicit deny or allow, this is considered a *default deny* \(for more information, see [Default Deny](sns-access-policy-language-key-concepts.md#Define_SoftDeny)\)\.  | 
 
 ## The Interplay of Explicit and Default Denials<a name="denials"></a>
 

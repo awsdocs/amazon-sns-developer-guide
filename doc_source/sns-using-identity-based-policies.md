@@ -1,12 +1,11 @@
-# Controlling User Access to Your AWS Account<a name="sns-using-identity-based-policies"></a>
+# Using Identity\-Based Policies with Amazon SQS<a name="sns-using-identity-based-policies"></a>
 
 **Topics**
 + [IAM and Amazon SNS Policies Together](#iam-and-sns-policies)
-+ [Amazon SNS ARNs](#SNS_ARN_Format)
-+ [Amazon SNS Actions](#UsingWithSNS_Actions)
-+ [Amazon SNS Keys](#keys)
++ [Amazon SNS Resource ARN Format](#sns-arn-format)
++ [Amazon SNS API Actions](#sns-api-actions)
++ [Amazon SNS Policy Keys](#sns-policy-keys)
 + [Example Policies for Amazon SNS](#sns-example-policies)
-+ [Using Temporary Security Credentials](#sns-using-temporary-credentials)
 
 Amazon Simple Notification Service integrates with AWS Identity and Access Management \(IAM\) so that you can specify which Amazon SNS actions a user in your AWS account can perform with Amazon SNS resources\. You can specify a particular topic in the policy\. For example, you could use variables when creating an IAM policy that grants certain users in your organization permission to use the `Publish` action with specific topics in your AWS account\. For more information, see [Policy Variables](https://docs.aws.amazon.com/IAM/latest/UserGuide/PolicyVariables.html) in the *Using IAM* guide\.
 
@@ -39,13 +38,13 @@ In this example, both an IAM policy and an Amazon SNS policy apply to Bob\. The 
 If Bob were to send a request to subscribe to any topic in the AWS account, the IAM policy would allow the action\. If Bob were to send a request to publish a message to topic\_xyz, the Amazon SNS policy would allow the action\.
 
 **Example 2**  
-In this example, we build on example 1 \(where Bob has two policies that apply to him\)\. Let's say that Bob publishes messages to topic\_xyz that he shouldn't have, so you want to entirely remove his ability to publish to topics\. The easiest thing to do is to add an IAM policy that denies him access to the `Publish` action on all topics\. This third policy overrides the Amazon SNS policy that originally gave him permission to publish to topic\_xyz, because an explicit deny always overrides an allow \(for more information about policy evaluation logic, see [Evaluation Logic](AccessPolicyLanguage_EvaluationLogic.md)\)\. The following diagram illustrates the concept\.  
+In this example, we build on example 1 \(where Bob has two policies that apply to him\)\. Let's say that Bob publishes messages to topic\_xyz that he shouldn't have, so you want to entirely remove his ability to publish to topics\. The easiest thing to do is to add an IAM policy that denies him access to the `Publish` action on all topics\. This third policy overrides the Amazon SNS policy that originally gave him permission to publish to topic\_xyz, because an explicit deny always overrides an allow \(for more information about policy evaluation logic, see [Evaluation Logic](sns-access-policy-language-evaluation-logic.md)\)\. The following diagram illustrates the concept\.  
 
 ![\[The "Deny" policy overrides the Amazon SNS policy\]](http://docs.aws.amazon.com/sns/latest/dg/images/SNS_DenyOverride.png)
 
 For examples of policies that cover Amazon SNS actions and resources, see [Example Policies for Amazon SNS](#sns-example-policies)\. For more information about writing Amazon SNS policies, go to the [technical documentation for Amazon SNS](http://aws.amazon.com/documentation/sns/)\.
 
-## Amazon SNS ARNs<a name="SNS_ARN_Format"></a>
+## Amazon SNS Resource ARN Format<a name="sns-arn-format"></a>
 
 For Amazon SNS, topics are the only resource type you can specify in a policy\. The following is the Amazon Resource Name \(ARN\) format for topics\.
 
@@ -77,13 +76,13 @@ arn:aws:sns:*:123456789012:bob_*
 
 As a convenience to you, when you create a topic, Amazon SNS returns the topic's ARN in the response\.
 
-## Amazon SNS Actions<a name="UsingWithSNS_Actions"></a>
+## Amazon SNS API Actions<a name="sns-api-actions"></a>
 
 In an IAM policy, you can specify any actions that Amazon SNS offers\. However, the `ConfirmSubscription` and `Unsubscribe` actions do not require authentication, which means that even if you specify those actions in a policy, IAM won't restrict users' access to those actions\.
 
 Each action you specify in a policy must be prefixed with the lowercase string `sns:`\. To specify all Amazon SNS actions, for example, you would use `sns:*`\. For a list of the actions, go to the [Amazon Simple Notification Service API Reference](https://docs.aws.amazon.com/sns/latest/api/)\. 
 
-## Amazon SNS Keys<a name="keys"></a>
+## Amazon SNS Policy Keys<a name="sns-policy-keys"></a>
 
 Amazon SNS implements the following AWS\-wide policy keys, plus some service\-specific keys\.
 
@@ -167,27 +166,4 @@ We also want to prevent the WidgetCo group from doing anything else with topics,
     }
   ]
 }
-```
-
-## Using Temporary Security Credentials<a name="sns-using-temporary-credentials"></a>
-
- In addition to creating IAM users with their own security credentials, IAM also enables you to grant temporary security credentials to any user allowing this user to access your AWS services and resources\. You can manage users who have AWS accounts; these users are IAM users\. You can also manage users for your system who do not have AWS accounts; these users are called federated users\. Additionally, "users" can also be applications that you create to access your AWS resources\. 
-
- You can use these temporary security credentials in making requests to Amazon SNS\. The API libraries compute the necessary signature value using those credentials to authenticate your request\. If you send requests using expired credentials Amazon SNS denies the request\. 
-
- For more information about IAM support for temporary security credentials, go to [Granting Temporary Access to Your AWS Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/TokenBasedAuth.html) in *Using IAM*\. 
-
-**Example Using Temporary Security Credentials to Authenticate an Amazon SNS Request**  
- The following example demonstrates how to obtain temporary security credentials to authenticate an Amazon SNS request\.   
-
-```
-http://sns.us-east-2.amazonaws.com/
-?Name=My-Topic
-&Action=CreateTopic
-&Signature=gfzIF53exFVdpSNb8AiwN3Lv%2FNYXh6S%2Br3yySK70oX4%3D
-&SignatureVersion=2
-&SignatureMethod=HmacSHA256
-&Timestamp=2010-03-31T12%3A00%3A00.000Z
-&SecurityToken=SecurityTokenValue
-&AWSAccessKeyId=Access Key ID provided by AWS Security Token Service
 ```

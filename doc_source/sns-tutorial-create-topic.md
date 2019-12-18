@@ -21,7 +21,7 @@ The first and most common Amazon SNS task is creating a topic\. The following tu
 
 1. In the **Create topic** section, enter a **Topic name**, for example *MyTopic*\.
 
-1. \(Optional\) Expand the **Encryption** section and do the following\. For more information, see [Protecting Amazon SNS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](sns-server-side-encryption.md)\.
+1. \(Optional\) Expand the **Encryption** section and do the following\. For more information, see [Encryption at Rest](sns-server-side-encryption.md)\.
 
    1. Choose **Enable encryption**\.
 
@@ -41,7 +41,7 @@ Alternatively, the first time you use the `Publish` action on a topic with SSE e
 For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*
       + To use a custom CMK ARN from your AWS account or from another AWS account, enter it into the **Customer master key \(CMK\)** field\.
 
-1. \(Optional\) To configure access permissions for your topic, expand the **Access policy** section\. For more information, see [Authentication and Access Control for Amazon SNS](sns-authentication-and-access-control.md)\.
+1. \(Optional\) To configure access permissions for your topic, expand the **Access policy** section\. For more information, see [Identity and Access Management in Amazon SNS](sns-authentication-and-access-control.md)\.
 **Important**  
 As a security precaution, Amazon SNS uses the `aws:sourceOwner` permission to limit access to the topic to the owner of the current AWS account\.
 

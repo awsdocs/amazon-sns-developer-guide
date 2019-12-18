@@ -174,7 +174,7 @@ By default, if the initial delivery of the message fails, Amazon SNS attempts up
 
 ## Step 5: Give users permissions to publish to the topic \(optional\)<a name="SendMessageToHttp.iam.permissions"></a>
 
-By default, the topic owner has permissions to publish the topic\. To enable other users or applications to publish to the topic, you should use AWS Identity and Access Management \(IAM\) to give publish permission to the topic\. For more information about giving permissions for Amazon SNS actions to IAM users, see [Controlling User Access to Your AWS Account](sns-using-identity-based-policies.md)\.
+By default, the topic owner has permissions to publish the topic\. To enable other users or applications to publish to the topic, you should use AWS Identity and Access Management \(IAM\) to give publish permission to the topic\. For more information about giving permissions for Amazon SNS actions to IAM users, see [Using Identity\-Based Policies with Amazon SQS](sns-using-identity-based-policies.md)\.
 
 There are two ways to control access to a topic:
 + Add a policy to an IAM user or group\. The simplest way to give users permissions to topics is to create a group and add the appropriate policy to the group and then add users to that group\. It's much easier to add and remove users from a group than to keep track of which policies you set on individual users\.

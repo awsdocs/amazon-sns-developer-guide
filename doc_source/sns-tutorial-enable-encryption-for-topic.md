@@ -1,6 +1,6 @@
 # Tutorial: Enabling Server\-Side Encryption \(SSE\) for an Amazon SNS Topic<a name="sns-tutorial-enable-encryption-for-topic"></a>
 
-You can enable server\-side encryption \(SSE\) for a topic to protect its data\. For more information about using SSE, see [Protecting Amazon SNS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](sns-server-side-encryption.md)\.
+You can enable server\-side encryption \(SSE\) for a topic to protect its data\. For more information about using SSE, see [Encryption at Rest](sns-server-side-encryption.md)\.
 
 **Important**  
 All requests to topics with SSE enabled must use HTTPS and [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\.
@@ -47,7 +47,7 @@ For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.a
 
 ## To Enable Server\-Side Encryption \(SSE\) for an Amazon SNS Topic Using the AWS SDK for Java<a name="enable-encryption-aws-java"></a>
 
-1. Configure AWS KMS key policies to allow encryption of topics and encryption and decryption of messages\. For more information, see [Configuring AWS KMS Permissions](sns-server-side-encryption.md#sns-what-permissions-for-sse)
+1. Configure AWS KMS key policies to allow encryption of topics and encryption and decryption of messages\. For more information, see [Configuring AWS KMS Permissions](sns-key-management.md#sns-what-permissions-for-sse)
 
 1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
 

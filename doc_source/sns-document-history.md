@@ -5,6 +5,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
+| December 18, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | December 16, 2019 | Rewrote the [View CloudWatch Metrics for Amazon SNS](sns-monitoring-using-cloudwatch.md#view-cloudwatch-metrics) section\. | 
 | December 3, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | December 2, 2019 | Rewrote the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
@@ -15,7 +16,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 | November 18, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | November 14, 2019 | Added the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | November 12, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
-| November 8, 2019 | Revised the information in the [Enable Compatibility between Event Sources from AWS Services and Encrypted Topics](sns-server-side-encryption.md#compatibility-with-aws-services) section\. | 
+| November 8, 2019 | Revised the information in the [Enable Compatibility between Event Sources from AWS Services and Encrypted Topics](sns-key-management.md#compatibility-with-aws-services) section\. | 
 | October 29, 2019 | Revised the information in the following sections:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | October 24, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | October 18, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
@@ -54,7 +55,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 | February 4, 2019 | Made a minor correction in the [Sending Amazon SNS Messages to an Amazon SQS Queue in a Different Account](sns-send-message-to-sqs-cross-account.md) section\. | 
 | January 30, 2019 | Clarified the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | December 12, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
-| November 20, 2018 | Revised the [Protecting Amazon SNS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](sns-server-side-encryption.md) section\. | 
+| November 20, 2018 | Revised the [Encryption at Rest](sns-server-side-encryption.md) section\. | 
 | October 25, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | October 8, 2018 | Corrected the example headers and requests in the [Amazon SNS Message and JSON Formats](sns-message-and-json-formats.md) section\. | 
 | October 5, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
@@ -63,7 +64,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 | September 17, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | September 13, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | September 12, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
-| September 6, 2018 | Corrected the information in the [Creating the Endpoint](sns-vpc-endpoint.md#sns-vpc-endpoint-create) section\. | 
+| September 6, 2018 | Corrected the information in the [Creating the Endpoint](sns-internetwork-traffic-privacy.md#sns-vpc-endpoint-create) section\. | 
 | September 5, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | September 4, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | August 30, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
