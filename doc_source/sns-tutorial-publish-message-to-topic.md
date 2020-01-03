@@ -4,6 +4,9 @@ After you [create a topic](sns-tutorial-create-topic.md) and [subscribe an endpo
 
 The following tutorial shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to publish a message to a topic\.
 
+**Important**  
+You can publish messages only to topics and endpoints in the same AWS Region\.
+
 **Topics**
 + [AWS Management Console](#publish-message-to-topic-aws-console)
 + [AWS SDK for Java](#publish-message-to-topic-aws-java)
