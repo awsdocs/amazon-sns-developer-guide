@@ -108,7 +108,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Using the Access Policy Language](sns-access-policy-language-using.md)
          + [Evaluation Logic](sns-access-policy-language-evaluation-logic.md)
          + [Example Cases for Amazon SNS Access Control](sns-access-policy-use-cases.md)
-      + [Using Identity-Based Policies with Amazon SQS](sns-using-identity-based-policies.md)
+      + [Using Identity-Based Policies with Amazon SNS](sns-using-identity-based-policies.md)
       + [Using Temporary Security Credentials with Amazon SNS](sns-using-temporary-credentials.md)
       + [Amazon SNS API Permissions: Actions and Resources Reference](sns-access-policy-language-api-permissions-reference.md)
    + [Logging and Monitoring in Amazon SNS](sns-logging-monitoring.md)

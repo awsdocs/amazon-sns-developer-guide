@@ -129,7 +129,7 @@ To send messages to a queue through a topic, you must subscribe the queue to the
 
 ## Step 4: Give Users Permissions to the Appropriate Topic and Queue Actions<a name="SendMessageToSQS.iam.permissions"></a>
 
-You should use AWS Identity and Access Management \(IAM\) to allow only appropriate users to publish to the Amazon SNS topic and to read/delete messages from the Amazon SQS queue\. For more information about controlling actions on topics and queues for IAM users, see [Using Identity\-Based Policies with Amazon SQS](sns-using-identity-based-policies.md), and [Controlling User Access to Your AWS Account ](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/UsingIAM.html) in the Amazon Simple Queue Service Developer Guide\.
+You should use AWS Identity and Access Management \(IAM\) to allow only appropriate users to publish to the Amazon SNS topic and to read/delete messages from the Amazon SQS queue\. For more information about controlling actions on topics and queues for IAM users, see [Using Identity\-Based Policies with Amazon SNS](sns-using-identity-based-policies.md), and [Controlling User Access to Your AWS Account ](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/UsingIAM.html) in the Amazon Simple Queue Service Developer Guide\.
 
 There are two ways to control access to a topic or queue:
 + [Add a policy to an IAM user or group](#SendMessageToSQS.iam.permissions.user)\. The simplest way to give users permissions to topics or queues is to create a group and add the appropriate policy to the group and then add users to that group\. It's much easier to add and remove users from a group than to keep track of which policies you set on individual users\.

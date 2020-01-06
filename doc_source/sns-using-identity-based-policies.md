@@ -1,4 +1,4 @@
-# Using Identity\-Based Policies with Amazon SQS<a name="sns-using-identity-based-policies"></a>
+# Using Identity\-Based Policies with Amazon SNS<a name="sns-using-identity-based-policies"></a>
 
 **Topics**
 + [IAM and Amazon SNS Policies Together](#iam-and-sns-policies)

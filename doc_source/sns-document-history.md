@@ -5,6 +5,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
+| January 6, 2019 | Made a minor correction in the [Using Identity\-Based Policies with Amazon SNS](sns-using-identity-based-policies.md) section\. | 
 | January 2, 2019 |  Added the following note throughout this guide:   You can publish messages only to topics and endpoints in the same AWS Region\.   | 
 | December 18, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | December 16, 2019 | Rewrote the [View CloudWatch Metrics for Amazon SNS](sns-monitoring-using-cloudwatch.md#view-cloudwatch-metrics) section\. | 

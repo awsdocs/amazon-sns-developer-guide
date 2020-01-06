@@ -6,7 +6,7 @@ Access to Amazon SNS requires credentials that AWS can use to authenticate your 
 + [Authentication](#authentication)
 + [Access Control](#access-control)
 + [Overview of Managing Access in Amazon SNS](sns-overview-of-managing-access.md)
-+ [Using Identity\-Based Policies with Amazon SQS](sns-using-identity-based-policies.md)
++ [Using Identity\-Based Policies with Amazon SNS](sns-using-identity-based-policies.md)
 + [Using Temporary Security Credentials with Amazon SNS](sns-using-temporary-credentials.md)
 + [Amazon SNS API Permissions: Actions and Resources Reference](sns-access-policy-language-api-permissions-reference.md)
 
