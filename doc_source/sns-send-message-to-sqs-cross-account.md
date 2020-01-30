@@ -8,7 +8,7 @@ You can publish a notification to an Amazon SNS topic with one or more subscript
 
 ## Queue Owner Creates Subscription<a name="SendMessageToSQS.cross.account.queueowner"></a>
 
-When the queue owner creates a subscription, the subscription doesn't require confirmation\. The queue starts begins to receive notifications from the topic as soon as the `Subscribe` action completes\. To let the queue owner subscribe to the topic owner's topic, the topic owner must give the queue owner's account permission to call the `Subscribe` action on the topic\.
+When the queue owner creates a subscription, the subscription doesn't require confirmation\. The queue begins to receive notifications from the topic as soon as the `Subscribe` action completes\. To let the queue owner subscribe to the topic owner's topic, the topic owner must give the queue owner's account permission to call the `Subscribe` action on the topic\.
 
 ### Step 1: To Set the Topic Policy Using the AWS Management Console<a name="sns-tutorial-set-topic-policy"></a>
 
