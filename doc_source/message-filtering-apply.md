@@ -23,7 +23,7 @@ You can apply a filter policy to an Amazon SNS subscription using the Amazon SNS
 To apply a filter policy with the AWS Command Line Interface \(AWS CLI\), use the [https://docs.aws.amazon.com/cli/latest/reference/sns/set-subscription-attributes.html](https://docs.aws.amazon.com/cli/latest/reference/sns/set-subscription-attributes.html) command, as shown in the following example: 
 
 ```
-$ aws sns set-subscription-attributes --subscription-arn arn:aws:sns: ... --attribute-name FilterPolicy --attribute-value '{\"store\":[\"example_corp\"],\"event\":[\"order_placed\"]}'
+$ aws sns set-subscription-attributes --subscription-arn arn:aws:sns: ... --attribute-name FilterPolicy --attribute-value "{\"store\":[\"example_corp\"],\"event\":[\"order_placed\"]}"
 ```
 
 For the `--attribute-name` option, specify `FilterPolicy`\. For `--attribute-value`, specify your JSON policy\. 
