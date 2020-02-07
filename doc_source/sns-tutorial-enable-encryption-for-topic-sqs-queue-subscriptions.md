@@ -22,17 +22,17 @@ The following tutorial shows how you can enable SSE for an Amazon SNS topic to w
 
    ```
    {
-   	    "Sid": "Allow Amazon SNS to use this key",
-   	    "Effect": "Allow",
-   	    "Principal": {
-   	        "Service": "sns.amazonaws.com"
-   	    },
-   	    "Action": [
-   	        "kms:Decrypt",
-   	        "kms:GenerateDataKey*"
-   	    ],
-   	    "Resource": "*"
-   	}
+       "Sid": "Allow Amazon SNS to use this key",
+       "Effect": "Allow",
+       "Principal": {
+           "Service": "sns.amazonaws.com"
+       },
+       "Action": [
+           "kms:Decrypt",
+           "kms:GenerateDataKey*"
+       ],
+       "Resource": "*"
+   }
    ```
 
 Your new custom CMK appears in the list of keys\.

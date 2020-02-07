@@ -55,17 +55,17 @@ arn:aws:sns:region:account_ID:topic_name
 For more information about ARNs, go to [ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html#Identifiers_ARNs) in *IAM User Guide*\.
 
 **Example**  
-The following is an ARN for a topic named my\_topic in the us\-east\-2 region, belonging to AWS account 123456789012\.   
+The following is an ARN for a topic named MyTopic in the us\-east\-2 region, belonging to AWS account 123456789012\.   
 
 ```
-arn:aws:sns:us-east-2:123456789012:my_topic
+arn:aws:sns:us-east-2:123456789012:MyTopic
 ```
 
 **Example**  
-If you had a topic named my\_topic in each of the different Regions that Amazon SNS supports, you could specify the topics with the following ARN\.   
+If you had a topic named MyTopic in each of the different Regions that Amazon SNS supports, you could specify the topics with the following ARN\.   
 
 ```
-arn:aws:sns:*:123456789012:my_topic
+arn:aws:sns:*:123456789012:MyTopic
 ```
 
 You can use \* and ? wildcards in the topic name\. For example, the following could refer to all the topics created by Bob that he has prefixed with `bob_`\.

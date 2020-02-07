@@ -60,84 +60,84 @@ The following example shows a CloudTrail log entry that demonstrates the `ListTo
 
 ```
 {
-      "Records": [
-        {
-          "eventVersion": "1.02",
-          "userIdentity": {
-           "type":"IAMUser",
-           "userName":"Bob"
-           "principalId": "EX_PRINCIPAL_ID",
-            "arn": "arn:aws:iam::123456789012:user/Bob",
-            "accountId": "123456789012",
-            "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
-          },
-          "eventTime": "2014-09-30T00:00:00Z",
-          "eventSource": "sns.amazonaws.com",
-          "eventName": "ListTopics",
-          "awsRegion": "us-west-2",
-          "sourceIPAddress": "127.0.0.1",
-          "userAgent": "aws-sdk-java/unknown-version",
-          "requestParameters": {
-            "nextToken": "ABCDEF1234567890EXAMPLE=="
-          },
-          "responseElements": null,
-          "requestID": "example1-b9bb-50fa-abdb-80f274981d60",
-          "eventID": "example0-09a3-47d6-a810-c5f9fd2534fe",
-          "eventType": "AwsApiCall",
-          "recipientAccountId": "123456789012"
-        },
-        {
-          "eventVersion": "1.02",
-          "userIdentity": {
-           "type":"IAMUser",
-           "userName":"Bob"
-           "principalId": "EX_PRINCIPAL_ID",
-            "arn": "arn:aws:iam::123456789012:user/Bob",
-            "accountId": "123456789012",
-            "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
-          },
-          "eventTime": "2014-09-30T00:00:00Z",
-          "eventSource": "sns.amazonaws.com",
-          "eventName": "CreateTopic",
-          "awsRegion": "us-west-2",
-          "sourceIPAddress": "127.0.0.1",
-          "userAgent": "aws-sdk-java/unknown-version",
-          "requestParameters": {
-            "name": "hello"
-          },
-          "responseElements": {
-            "topicArn": "arn:aws:sns:us-west-2:123456789012:hello-topic"
-          },
-          "requestID": "example7-5cd3-5323-8a00-f1889011fee9",
-          "eventID": "examplec-4f2f-4625-8378-130ac89660b1",
-          "eventType": "AwsApiCall",
-          "recipientAccountId": "123456789012"
-        },
-        {
-          "eventVersion": "1.02",
-          "userIdentity": {
-           "type":"IAMUser",
-           "userName":"Bob"
-           "principalId": "EX_PRINCIPAL_ID",
-            "arn": "arn:aws:iam::123456789012:user/Bob",
-            "accountId": "123456789012",
-            "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
-          },
-          "eventTime": "2014-09-30T00:00:00Z",
-          "eventSource": "sns.amazonaws.com",
-          "eventName": "DeleteTopic",
-          "awsRegion": "us-west-2",
-          "sourceIPAddress": "127.0.0.1",
-          "userAgent": "aws-sdk-java/unknown-version",
-          "requestParameters": {
-            "topicArn": "arn:aws:sns:us-west-2:123456789012:hello-topic"
-          },
-          "responseElements": null,
-          "requestID": "example5-4faa-51d5-aab2-803a8294388d",
-          "eventID": "example8-6443-4b4d-abfd-1b867280d964",
-          "eventType": "AwsApiCall",
-          "recipientAccountId": "123456789012"
-        },
-      ]
-    }
+  "Records": [
+    {
+      "eventVersion": "1.02",
+      "userIdentity": {
+       "type":"IAMUser",
+       "userName":"Bob"
+       "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:user/Bob",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+      },
+      "eventTime": "2014-09-30T00:00:00Z",
+      "eventSource": "sns.amazonaws.com",
+      "eventName": "ListTopics",
+      "awsRegion": "us-west-2",
+      "sourceIPAddress": "127.0.0.1",
+      "userAgent": "aws-sdk-java/unknown-version",
+      "requestParameters": {
+        "nextToken": "ABCDEF1234567890EXAMPLE=="
+      },
+      "responseElements": null,
+      "requestID": "example1-b9bb-50fa-abdb-80f274981d60",
+      "eventID": "example0-09a3-47d6-a810-c5f9fd2534fe",
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "123456789012"
+    },
+    {
+      "eventVersion": "1.02",
+      "userIdentity": {
+       "type":"IAMUser",
+       "userName":"Bob"
+       "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:user/Bob",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+      },
+      "eventTime": "2014-09-30T00:00:00Z",
+      "eventSource": "sns.amazonaws.com",
+      "eventName": "CreateTopic",
+      "awsRegion": "us-west-2",
+      "sourceIPAddress": "127.0.0.1",
+      "userAgent": "aws-sdk-java/unknown-version",
+      "requestParameters": {
+        "name": "hello"
+      },
+      "responseElements": {
+        "topicArn": "arn:aws:sns:us-west-2:123456789012:hello-topic"
+      },
+      "requestID": "example7-5cd3-5323-8a00-f1889011fee9",
+      "eventID": "examplec-4f2f-4625-8378-130ac89660b1",
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "123456789012"
+    },
+    {
+      "eventVersion": "1.02",
+      "userIdentity": {
+       "type":"IAMUser",
+       "userName":"Bob"
+       "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:user/Bob",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+      },
+      "eventTime": "2014-09-30T00:00:00Z",
+      "eventSource": "sns.amazonaws.com",
+      "eventName": "DeleteTopic",
+      "awsRegion": "us-west-2",
+      "sourceIPAddress": "127.0.0.1",
+      "userAgent": "aws-sdk-java/unknown-version",
+      "requestParameters": {
+        "topicArn": "arn:aws:sns:us-west-2:123456789012:hello-topic"
+      },
+      "responseElements": null,
+      "requestID": "example5-4faa-51d5-aab2-803a8294388d",
+      "eventID": "example8-6443-4b4d-abfd-1b867280d964",
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "123456789012"
+    },
+  ]
+}
 ```

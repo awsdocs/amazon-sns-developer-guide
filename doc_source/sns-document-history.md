@@ -5,6 +5,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
+| February 7, 2020 | Corrected the formatting of code examples throughout this guide\. | 
 | February 5, 2020 | Revised the information in the [AWS CLI](message-filtering-apply.md#message-filtering-apply-cli) section\. | 
 | January 6, 2020 | Made a minor correction in the [Using Identity\-Based Policies with Amazon SNS](sns-using-identity-based-policies.md) section\. | 
 | January 2, 2020 |  Added the following note throughout this guide:   You can publish messages only to topics and endpoints in the same AWS Region\.   | 

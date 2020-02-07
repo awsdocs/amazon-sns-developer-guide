@@ -150,20 +150,19 @@ In this case, any CloudWatch alarms in account `111122223333` are allowed to pub
 
 ```
 {
-  "Statement": [{
+ "Statement": [{
     "Effect": "Allow",
     "Principal": {
-      "AWS": "*"
+       "AWS": "*"
     },
     "Action": "SNS:Publish",
     "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
     "Condition": {
-      "ArnLike": {
-        "aws:SourceArn": "arn:aws:cloudwatch:us-east-2:111122223333:alarm:*"
-      }
+       "ArnLike": {
+          "aws:SourceArn": "arn:aws:cloudwatch:us-east-2:111122223333:alarm:*"
+       }
     }
-  }]
-}
+ }]
 ```
 
 ## Restrict Publication to an Amazon SNS Topic Only from a Specific VPC Endpoint<a name="sns-restrict-publication-only-from-specified-vpc-endpoint"></a>

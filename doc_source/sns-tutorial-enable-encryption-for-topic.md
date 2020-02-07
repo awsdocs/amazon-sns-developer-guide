@@ -65,14 +65,14 @@ Alternatively, the first time you use the `Publish` action on a topic with SSE e
 
    ```
    // Enable server-side encryption by specifying the alias ARN of the AWS managed CMK for Amazon SNS.
-   	final String kmsMasterKeyAlias = "arn:aws:kms:us-east-2:123456789012:alias/aws/sns";
-   	
-   	final SetTopicAttributesRequest setAttributesRequest = new SetTopicAttributesRequest()
-   	    .withTopicArn(topicArn)
-   	    .withAttributeName("KmsMasterKeyId")
-   	    .withAttributeValue(kmsMasterKeyAlias);           
-   	
-   	final SetTopicAttributesResponse setAttributesResponse = snsClient.setTopicAttributes(setAttributesRequest)
+   final String kmsMasterKeyAlias = "arn:aws:kms:us-east-2:123456789012:alias/aws/sns";
+   
+   final SetTopicAttributesRequest setAttributesRequest = new SetTopicAttributesRequest()
+       .withTopicArn(topicArn)
+       .withAttributeName("KmsMasterKeyId")
+       .withAttributeValue(kmsMasterKeyAlias);           
+   
+   final SetTopicAttributesResponse setAttributesResponse = snsClient.setTopicAttributes(setAttributesRequest)
    ```
 
    To disable server\-side encryption for an existing topic, set the `KmsMasterKeyId` attribute to an empty string using the `SetTopicAttributes` action\.
@@ -83,13 +83,13 @@ Alternatively, the first time you use the `Publish` action on a topic with SSE e
 
    ```
    final Map<String, String> attributes = new HashMap<String, String>();
-   	
-   	// Enable server-side encryption by specifying the alias ARN of the custom CMK.
-   	final String kmsMasterKeyAlias = "arn:aws:kms:us-east-2:123456789012:alias/MyAlias";
-   	attributes.put("KmsMasterKeyId", kmsMasterKeyAlias);
-   	 
-   	final CreateTopicRequest createRequest = new CreateTopicRequest("MyTopic")
-   	    .withAttributes(attributes);
-   	 
-   	final CreateTopicRespone createResponse = snsClient.createTopic(createRequest);
+   
+   // Enable server-side encryption by specifying the alias ARN of the custom CMK.
+   final String kmsMasterKeyAlias = "arn:aws:kms:us-east-2:123456789012:alias/MyAlias";
+   attributes.put("KmsMasterKeyId", kmsMasterKeyAlias);
+    
+   final CreateTopicRequest createRequest = new CreateTopicRequest("MyTopic")
+       .withAttributes(attributes);
+    
+   final CreateTopicRespone createResponse = snsClient.createTopic(createRequest);
    ```

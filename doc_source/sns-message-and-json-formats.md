@@ -239,7 +239,7 @@ User-Agent: Amazon Simple Notification Service Agent
   "SignatureVersion" : "1",
   "Signature" : "EXAMPLEHXgJm...",
   "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem"
-  }
+}
 ```
 
 ## SetSubscriptionAttributes Delivery Policy JSON Format<a name="set-sub-attributes-delivery-policy-json"></a>
