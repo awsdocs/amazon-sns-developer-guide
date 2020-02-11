@@ -14,5 +14,5 @@ Amazon SNS supports SMS messaging in several regions, and you can send messages 
 + [Sending an SMS Message to Multiple Phone Numbers](sms_publish-to-topic.md)
 + [Monitoring SMS Activity](sms_stats.md)
 + [Managing Phone Numbers and SMS Subscriptions](sms_manage.md)
-+ [Reserving a Dedicated Short Code for SMS Messaging](sms_shortcodes.md)
++ [Reserving a Dedicated Short Code for SMS Messaging](sqs-sms-short-codes.md)
 + [Supported Regions and Countries](sns-supported-regions-countries.md)

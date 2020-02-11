@@ -5,10 +5,11 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation Update | 
 | --- | --- | 
+| February 11, 2020 | Corrected the information in the [Reserving a Dedicated Short Code for SMS Messaging](sqs-sms-short-codes.md) section\. | 
 | February 7, 2020 | Corrected the formatting of code examples throughout this guide\. | 
 | February 5, 2020 | Revised the information in the [AWS CLI](message-filtering-apply.md#message-filtering-apply-cli) section\. | 
 | January 6, 2020 | Made a minor correction in the [Using Identity\-Based Policies with Amazon SNS](sns-using-identity-based-policies.md) section\. | 
-| January 2, 2020 |  Added the following note throughout this guide:   You can publish messages only to topics and endpoints in the same AWS Region\.   | 
+| January 2, 2020 | Added the following note throughout this guide:  You can publish messages only to topics and endpoints in the same AWS Region\.  | 
 | December 18, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | December 16, 2019 | Rewrote the [View CloudWatch Metrics for Amazon SNS](sns-monitoring-using-cloudwatch.md#view-cloudwatch-metrics) section\. | 
 | December 3, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
