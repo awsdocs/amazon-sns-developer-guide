@@ -71,7 +71,7 @@ The delivery policy is composed of a retry policy and a throttle policy\. In tot
 
 | Policy  | Description | Constraint | 
 | --- | --- | --- | 
-| minDelayTarget | The minimum delay for a retry\.**Unit:** Seconds | 0 to maximum delay**Default:** 20 | 
+| minDelayTarget | The minimum delay for a retry\.**Unit:** Seconds | 1 to maximum delay**Default:** 20 | 
 | maxDelayTarget | The maximum delay for a retry\.**Unit:** Seconds | Minimum delay to 3,600**Default:** 20 | 
 | numRetries | The total number of retries, including immediate, pre\-backoff, backoff, and post\-backoff retries\. | 0 to 100**Default:** 3 | 
 | numNoDelayRetries | The number of retries to be done immediately, with no delay between them\. | 0 or greater**Default:** 0 | 
