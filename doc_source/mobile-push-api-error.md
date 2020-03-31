@@ -1,9 +1,9 @@
-# API Errors for Amazon SNS Mobile Push<a name="mobile-push-api-error"></a>
+# API errors for Amazon SNS mobile push<a name="mobile-push-api-error"></a>
 
-Errors that are returned by the Amazon SNS APIs for mobile push are listed in the following table\. For more information about the Amazon SNS APIs for mobile push, see [Using Amazon SNS Mobile Push APIs](mobile-push-api.md)\.
+Errors that are returned by the Amazon SNS APIs for mobile push are listed in the following table\. For more information about the Amazon SNS APIs for mobile push, see [Using Amazon SNS mobile push APIs](mobile-push-api.md)\.
 
 
-| Error | Description | HTTPS Status Code | Action that Returns this Error | 
+| Error | Description | HTTPS status code | API Action | 
 | --- | --- | --- | --- | 
 | Application Name is null string | The required application name is set to null\. | 400 | `CreatePlatformApplication` | 
 | Platform Name is null string | The required platform name is set to null\. | 400 | `CreatePlatformApplication` | 

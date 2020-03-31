@@ -1,4 +1,4 @@
-# Using Temporary Security Credentials with Amazon SNS<a name="sns-using-temporary-credentials"></a>
+# Using temporary security credentials with Amazon SNS<a name="sns-using-temporary-credentials"></a>
 
  In addition to creating IAM users with their own security credentials, IAM also enables you to grant temporary security credentials to any user allowing this user to access your AWS services and resources\. You can manage users who have AWS accounts; these users are IAM users\. You can also manage users for your system who do not have AWS accounts; these users are called federated users\. Additionally, "users" can also be applications that you create to access your AWS resources\. 
 
@@ -6,7 +6,7 @@
 
  For more information about IAM support for temporary security credentials, go to [Granting Temporary Access to Your AWS Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/TokenBasedAuth.html) in *Using IAM*\. 
 
-**Example Using Temporary Security Credentials to Authenticate an Amazon SNS Request**  
+**Example Using temporary security credentials to authenticate an Amazon SNS request**  
  The following example demonstrates how to obtain temporary security credentials to authenticate an Amazon SNS request\.   
 
 ```

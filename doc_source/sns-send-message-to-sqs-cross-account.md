@@ -1,18 +1,18 @@
-# Sending Amazon SNS Messages to an Amazon SQS Queue in a Different Account<a name="sns-send-message-to-sqs-cross-account"></a>
+# Sending Amazon SNS messages to an Amazon SQS queue in a different account<a name="sns-send-message-to-sqs-cross-account"></a>
 
-You can publish a notification to an Amazon SNS topic with one or more subscriptions to Amazon SQS queues in another account\. You set up the topic and queues the same way you would if they were in the same account \(see [Using Amazon SNS for System\-to\-System Messaging with an Amazon SQS Queue as a Subscriber](sns-sqs-as-subscriber.md)\)\. The only difference is how you handle subscription confirmation, and that depends on how you subscribe the queue to the topic\.
+You can publish a notification to an Amazon SNS topic with one or more subscriptions to Amazon SQS queues in another account\. You set up the topic and queues the same way you would if they were in the same account \(see [Using Amazon SNS for system\-to\-system messaging with an Amazon SQS queue as a subscriber](sns-sqs-as-subscriber.md)\)\. The only difference is how you handle subscription confirmation, and that depends on how you subscribe the queue to the topic\.
 
 **Topics**
-+ [Queue Owner Creates Subscription](#SendMessageToSQS.cross.account.queueowner)
-+ [A User Who Does Not Own the Queue Creates Subscription](#SendMessageToSQS.cross.account.notqueueowner)
++ [Queue owner creates subscription](#SendMessageToSQS.cross.account.queueowner)
++ [A user who does not own the queue creates subscription](#SendMessageToSQS.cross.account.notqueueowner)
 
-## Queue Owner Creates Subscription<a name="SendMessageToSQS.cross.account.queueowner"></a>
+## Queue owner creates subscription<a name="SendMessageToSQS.cross.account.queueowner"></a>
 
-When the queue owner creates a subscription, the subscription doesn't require confirmation\. The queue begins to receive notifications from the topic as soon as the `Subscribe` action completes\. To let the queue owner subscribe to the topic owner's topic, the topic owner must give the queue owner's account permission to call the `Subscribe` action on the topic\.
+The account that created the Amazon SQS queue is the queue owner\. When the queue owner creates a subscription, the subscription doesn't require confirmation\. The queue begins to receive notifications from the topic as soon as the `Subscribe` action completes\. To let the queue owner subscribe to the topic owner's topic, the topic owner must give the queue owner's account permission to call the `Subscribe` action on the topic\.
 
-### Step 1: To Set the Topic Policy Using the AWS Management Console<a name="sns-tutorial-set-topic-policy"></a>
+### Step 1: To set the topic policy using the AWS Management Console<a name="sns-tutorial-set-topic-policy"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics**\.
 
@@ -41,7 +41,7 @@ When the queue owner creates a subscription, the subscription doesn't require co
 
    A user with the credentials for account 111122223333 can subscribe to MyTopic\.
 
-### Step 2: To Add an Amazon SQS Queue Subscription to a Topic in Another AWS Account Using the AWS Management Console<a name="sns-tutorial-add-sqs-subscription-to-sns-topic-another-account"></a>
+### Step 2: To add an Amazon SQS queue subscription to a topic in another AWS account using the AWS Management Console<a name="sns-tutorial-add-sqs-subscription-to-sns-topic-another-account"></a>
 
 Before you begin, make sure you have the ARNs for your topic and queue and that you have [given permission to the topic to send messages to the queue](sns-sqs-as-subscriber.md#SendMessageToSQS.sqs.permissions)\.
 
@@ -62,7 +62,7 @@ Before you begin, make sure you have the ARNs for your topic and queue and that 
 To be able to communicate with the service, the queue must have permissions for Amazon SNS\.
 Because you are the owner of the queue, you don't have to confirm the subscription\.
 
-## A User Who Does Not Own the Queue Creates Subscription<a name="SendMessageToSQS.cross.account.notqueueowner"></a>
+## A user who does not own the queue creates subscription<a name="SendMessageToSQS.cross.account.notqueueowner"></a>
 
 Any user who creates a subscription but isn't the owner of the queue must confirm the subscription\.
 
@@ -71,9 +71,9 @@ When you use the `Subscribe` action, Amazon SNS sends a subscription confirmatio
 To confirm the subscription, a user with permission to read messages from the queue must visit the subscription URL\. Until the subscription is confirmed, no notifications published to the topic are sent to the queue\. To confirm the subscription, you can use the Amazon SQS console or the `[ReceiveMessage](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Query_QueryReceiveMessage.html)` action\.
 
 **Note**  
-Before you subscribe an endpoint to the topic, make sure that the queue can receive messages from the topic by setting the `sqs:SendMessage` permission for the queue\. For more information, see [Step 2: Give Permission to the Amazon SNS Topic to Send Messages to the Amazon SQS Queue](sns-sqs-as-subscriber.md#SendMessageToSQS.sqs.permissions)\.
+Before you subscribe an endpoint to the topic, make sure that the queue can receive messages from the topic by setting the `sqs:SendMessage` permission for the queue\. For more information, see [Step 2: Give permission to the Amazon SNS topic to send messages to the Amazon SQS queue](sns-sqs-as-subscriber.md#SendMessageToSQS.sqs.permissions)\.
 
-### To Confirm a Subscription Using the AWS Management Console<a name="sns-tutorial-confirm-subscription-console"></a>
+### To confirm a subscription using the AWS Management Console<a name="sns-tutorial-confirm-subscription-console"></a>
 
 1. Sign in to the [Amazon SQS console](https://console.aws.amazon.com/sqs/)\.
 

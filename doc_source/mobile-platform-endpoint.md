@@ -1,16 +1,16 @@
-# Create a Platform Endpoint and Manage Device Tokens<a name="mobile-platform-endpoint"></a>
+# Create a platform endpoint and manage device tokens<a name="mobile-platform-endpoint"></a>
 
-When an app and mobile device register with a push notification service, the push notification service returns a device token\. Amazon SNS uses the device token to create a mobile endpoint, to which it can send direct push notification messages\. For more information, see [Prerequisites for Amazon SNS User Notifications](sns-prerequisites-for-mobile-push-notifications.md) and [User Notification Process Overview](sns-user-notifications-process-overview.md)\.
+When an app and mobile device register with a push notification service, the push notification service returns a device token\. Amazon SNS uses the device token to create a mobile endpoint, to which it can send direct push notification messages\. For more information, see [Prerequisites for Amazon SNS user notifications](sns-prerequisites-for-mobile-push-notifications.md) and [User notification process overview](sns-user-notifications-process-overview.md)\.
 
 This section describes the recommended approach for creating a platform endpoint and managing device tokens\.
 
 **Topics**
-+ [Create a Platform Endpoint](#mobile-platform-endpoint-create)
-+ [Pseudo Code](#mobile-platform-endpoint-pseudo-code)
-+ [AWS SDK Examples](#mobile-platform-endpoint-sdk-examples)
++ [Create a platform endpoint](#mobile-platform-endpoint-create)
++ [Pseudo code](#mobile-platform-endpoint-pseudo-code)
++ [AWS SDK examples](#mobile-platform-endpoint-sdk-examples)
 + [Troubleshooting](#mobile-platform-endpoint-problems)
 
-## Create a Platform Endpoint<a name="mobile-platform-endpoint-create"></a>
+## Create a platform endpoint<a name="mobile-platform-endpoint-create"></a>
 
 To push notifications to an app with Amazon SNS, that app's device token must first be registered with Amazon SNS by calling the create platform endpoint action\. This action takes the Amazon Resource Name \(ARN\) of the platform application and the device token as parameters and returns the ARN of the created platform endpoint\.
 
@@ -27,7 +27,7 @@ You should not call the create platform endpoint action immediately every time a
 
 1. Ensure the platform endpoint is enabled and ready to use\.
 
-## Pseudo Code<a name="mobile-platform-endpoint-pseudo-code"></a>
+## Pseudo code<a name="mobile-platform-endpoint-pseudo-code"></a>
 
 The following pseudo code describes a recommended practice for creating a working, current, enabled platform endpoint in a wide variety of starting conditions\. This approach works whether this is a first time the app is being registered or not, whether the platform endpoint for this app already exists, and whether the platform endpoint is enabled, has the correct device token, and so on\. It is safe to call it multiple times in a row, as it will not create duplicate platform endpoints or change an existing platform endpoint if it is already up to date and enabled\.
 
@@ -57,7 +57,7 @@ This approach can be used any time the app wants to register or re\-register its
 + There are two cases where it may call the create platform endpoint action\. It may be called at the very beginning, where the app does not know its own platform endpoint ARN, as happens during a first\-time registration\. It is also called if the initial get endpoint attributes action call fails with a not\-found exception, as would happen if the application knows its endpoint ARN but it was deleted\.
 +  The get endpoint attributes action is called to verify the platform endpoint's state even if the platform endpoint was just created\. This happens when the platform endpoint already exists but is disabled\. In this case, the create platform endpoint action succeeds but does not enable the platform endpoint, so you must double\-check the state of the platform endpoint before returning success\.
 
-## AWS SDK Examples<a name="mobile-platform-endpoint-sdk-examples"></a>
+## AWS SDK examples<a name="mobile-platform-endpoint-sdk-examples"></a>
 
 The following examples show how to implement the previous pseudo code using the Amazon SNS clients that are provided by the AWS SDKs\.
 
@@ -185,7 +185,7 @@ class RegistrationExample {
 
 An interesting thing to note about this implementation is how the `InvalidParameterException` is handled in the `createEndpoint` method\. Amazon SNS rejects create platform endpoint requests when an existing platform endpoint has the same device token and a non\-null `CustomUserData` field, because the alternative is to overwrite \(and therefore lose\) the `CustomUserData`\. The `createEndpoint` method in the preceding code captures the `InvalidParameterException` thrown by Amazon SNS, checks whether it was thrown for this particular reason, and if so, extracts the ARN of the existing platform endpoint from the exception\. This succeeds, since a platform endpoint with the correct device token exists\.
 
- For more information, see [Using Amazon SNS Mobile Push APIs](mobile-push-api.md)\.
+ For more information, see [Using Amazon SNS mobile push APIs](mobile-push-api.md)\.
 
 ------
 #### [ AWS SDK for \.NET ]
@@ -305,20 +305,20 @@ class RegistrationExample
 }
 ```
 
- For more information, see [Using Amazon SNS Mobile Push APIs](mobile-push-api.md)\.
+ For more information, see [Using Amazon SNS mobile push APIs](mobile-push-api.md)\.
 
 ------
 
 ## Troubleshooting<a name="mobile-platform-endpoint-problems"></a>
 
-### Repeatedly Calling Create Platform Endpoint with an Outdated Device Token<a name="mobile-platform-endpoint-problems-outdated"></a>
+### Repeatedly calling create platform endpoint with an outdated device token<a name="mobile-platform-endpoint-problems-outdated"></a>
 
 Especially for FCM endpoints, you may think it is best to store the first device token the application is issued and then call the create platform endpoint with that device token every time on application startup\. This may seem correct since it frees the app from having to manage the state of the device token and Amazon SNS will automatically update the device token to its latest value\. However, this solution has a number of serious issues:
 + Amazon SNS relies on feedback from FCM to update expired device tokens to new device tokens\. FCM retains information about old device tokens for some time, but not indefinitely\. Once FCM forgets about the connection between the old device token and the new device token, Amazon SNS will no longer be able to update the device token stored in the platform endpoint to its correct value; it will just disable the platform endpoint instead\.
 + The platform application will contain multiple platform endpoints corresponding to the same device token\.
 + Amazon SNS imposes a quota on the number of platform endpoints that can be created starting with the same device token\. Eventually, the creation of new endpoints will fail with an invalid parameter exception and the following error message: "This endpoint is already registered with a different token\."
 
-### Re\-Enabling a Platform Endpoint Associated with an Invalid Device Token<a name="mobile-platform-endpoint-problems-invalid"></a>
+### Re\-enabling a platform endpoint associated with an invalid device token<a name="mobile-platform-endpoint-problems-invalid"></a>
 
 When a mobile platform \(such as APNs or FCM\) informs Amazon SNS that the device token used in the publish request was invalid, Amazon SNS disables the platform endpoint associated with that device token\. Amazon SNS will then reject subsequent publishes to that device token\. While you may think it is best to simply re\-enable the platform endpoint and keep publishing, in most situations doing this will not work: the messages that are published do not get delivered and the platform endpoint becomes disabled again soon afterward\.
 

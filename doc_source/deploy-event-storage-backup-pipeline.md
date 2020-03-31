@@ -1,4 +1,4 @@
-# Tutorial: To Deploy and Subscribe the Event Storage and Backup Pipeline<a name="deploy-event-storage-backup-pipeline"></a>
+# Tutorial: To deploy and subscribe the event storage and backup pipeline<a name="deploy-event-storage-backup-pipeline"></a>
 
 This tutorial shows how to deploy the [Event Storage and Backup Pipeline](sns-fork-pipeline-as-subscriber.md#sns-fork-event-storage-and-backup-pipeline) and subscribe it to an Amazon SNS topic\. This process automatically turns the AWS SAM template associated with the pipeline into an AWS CloudFormation stack, and then deploys the stack into your AWS account\. This process also creates and configures the set of resources that comprise the Event Storage and Backup Pipeline, including the following:
 + Amazon SQS queue
@@ -10,7 +10,7 @@ For more information about configuring a stream with an S3 bucket as a destinati
 
 For more information about transforming events and about configuring event buffering, event compression, and event encryption, see [Creating an Amazon Kinesis Data Firehose Delivery Stream](https://docs.aws.amazon.com/firehose/latest/dev/basic-create.html) in the *Amazon Kinesis Data Firehose Developer Guide*\.
 
-For more information about filtering events, see [Amazon SNS Subscription Filter Policies](sns-subscription-filter-policies.md) in this guide\.
+For more information about filtering events, see [Amazon SNS subscription filter policies](sns-subscription-filter-policies.md) in this guide\.
 
 1. Sign in to the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\.
 

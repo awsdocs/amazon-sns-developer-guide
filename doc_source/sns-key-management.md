@@ -1,13 +1,13 @@
-# Key Management<a name="sns-key-management"></a>
+# Key management<a name="sns-key-management"></a>
 
 The following sections provide information about working with keys managed in AWS Key Management Service \(AWS KMS\)\.
 
 **Topics**
-+ [Estimating AWS KMS Costs](#sse-estimate-kms-usage-costs)
-+ [Configuring AWS KMS Permissions](#sns-what-permissions-for-sse)
-+ [AWS KMS Errors](#sse-troubleshooting-errors)
++ [Estimating AWS KMS costs](#sse-estimate-kms-usage-costs)
++ [Configuring AWS KMS permissions](#sns-what-permissions-for-sse)
++ [AWS KMS errors](#sse-troubleshooting-errors)
 
-## Estimating AWS KMS Costs<a name="sse-estimate-kms-usage-costs"></a>
+## Estimating AWS KMS costs<a name="sse-estimate-kms-usage-costs"></a>
 
 To predict costs and better understand your AWS bill, you might want to know how often Amazon SNS uses your customer master key \(CMK\)\.
 
@@ -28,7 +28,7 @@ R = B / D * (2 * P)
 
 The following are example calculations\. For exact pricing information, see [AWS Key Management Service Pricing](https://aws.amazon.com/kms/pricing/)\.
 
-### Example 1: Calculating the Number of AWS KMS API Calls for 1 Publisher and 1 Topic<a name="example-1-topic-1-publisher"></a>
+### Example 1: Calculating the number of AWS KMS API calls for 1 publisher and 1 topic<a name="example-1-topic-1-publisher"></a>
 
 This example assumes the following:
 + The billing period is January 1\-31 \(2,678,400 seconds\)\.
@@ -40,7 +40,7 @@ This example assumes the following:
 2,678,400 / 300 * (2 * 1) = 17,856
 ```
 
-### Example 2: Calculating the Number of AWS KMS API Calls for Multiple Publishers and 2 Topics<a name="example-2-topics-multiple-publishers"></a>
+### Example 2: Calculating the number of AWS KMS API calls for multiple publishers and 2 topics<a name="example-2-topics-multiple-publishers"></a>
 
 This example assumes the following:
 + The billing period is February 1\-28 \(2,419,200 seconds\)\.
@@ -53,7 +53,7 @@ This example assumes the following:
 (2,419,200 / 300 * (2 * 3)) + (2,419,200 / 300 * (2 * 5)) = 129,024
 ```
 
-## Configuring AWS KMS Permissions<a name="sns-what-permissions-for-sse"></a>
+## Configuring AWS KMS permissions<a name="sns-what-permissions-for-sse"></a>
 
 Before you can use SSE, you must configure AWS KMS key policies to allow encryption of topics and encryption and decryption of messages\. For examples and more information about AWS KMS permissions, see [AWS KMS API Permissions: Actions and Resources Reference](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html) in the *AWS Key Management Service Developer Guide*\.
 
@@ -65,7 +65,7 @@ You must also ensure that the key policies of the customer master key \(CMK\) al
 
 Alternatively, you can specify the required AWS KMS actions and CMK ARN in an IAM policy assigned to the principals that publish and subscribe to receive encrypted messages in Amazon SNS\. For more information, see [Managing Access to AWS KMS CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/control-access-overview.html#managing-access) in the *AWS Key Management Service Developer Guide*\.
 
-### Allow a User to Send Messages to a Topic with SSE<a name="send-to-encrypted-topic"></a>
+### Allow a user to send messages to a topic with SSE<a name="send-to-encrypted-topic"></a>
 
 The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions for the customer master key \(CMK\)\.
 
@@ -88,7 +88,7 @@ The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions 
 }
 ```
 
-### Enable Compatibility between Event Sources from AWS Services and Encrypted Topics<a name="compatibility-with-aws-services"></a>
+### Enable compatibility between event sources from AWS services and encrypted topics<a name="compatibility-with-aws-services"></a>
 
 Several AWS services publish events to Amazon SNS topics\. To allow these event sources to work with encrypted topics, you must perform the following steps\.
 
@@ -125,7 +125,7 @@ Some Amazon SNS event sources require you to provide an IAM role \(rather than t
 
 1. Provide the ARN of the encrypted topic to the event source\.
 
-## AWS KMS Errors<a name="sse-troubleshooting-errors"></a>
+## AWS KMS errors<a name="sse-troubleshooting-errors"></a>
 
 When you work with Amazon SNS and AWS KMS, you might encounter errors\. The following list describes the errors and possible troubleshooting solutions\.
 

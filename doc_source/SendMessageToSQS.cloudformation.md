@@ -1,14 +1,14 @@
-# Using an AWS CloudFormation Template to Create a Topic that Sends Messages to Amazon SQS Queues<a name="SendMessageToSQS.cloudformation"></a>
+# Using an AWS CloudFormation template to create a topic that sends messages to Amazon SQS queues<a name="SendMessageToSQS.cloudformation"></a>
 
 AWS CloudFormation enables you to use a template file to create and configure a collection of AWS resources together as a single unit\. This section has an example template that makes it easy to deploy topics that publish to queues\. The templates take care of the setup steps for you by creating two queues, creating a topic with subscriptions to the queues, adding a policy to the queues so that the topic can send messages to the queues, and creating IAM users and groups to control access to those resources\.
 
 For more information about deploying AWS resources using an AWS CloudFormation template, see [Get Started](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.Walkthrough.html) in the *AWS CloudFormation User Guide*\.
 
-## Using an AWS CloudFormation Template to Set Up Topics and Queues Within an AWS Account<a name="SendMessageToSQS.cloudformation.iam"></a>
+## Using an AWS CloudFormation template to set up topics and queues within an AWS account<a name="SendMessageToSQS.cloudformation.iam"></a>
 
 The example template creates an Amazon SNS topic that can send messages to two Amazon SQS queues with appropriate permissions for members of one IAM group to publish to the topic and another to read messages from the queues\. The template also creates IAM users that are added to each group\.
 
-You can download this template \([https://s3\.amazonaws\.com//cloudformation\-templates\-us\-east\-1/SNSToSQS\.template](https://s3.amazonaws.com//cloudformation-templates-us-east-1/SNSToSQS.template)\) from the [AWS CloudFormation Sample Templates page](http://aws.amazon.com/cloudformation/aws-cloudformation-templates/)\.
+You can download this template \([https://s3\.amazonaws\.com/cloudformation\-templates\-us\-east\-1/SNSToSQS\.template](https://s3.amazonaws.com/cloudformation-templates-us-east-1/SNSToSQS.template)\) from the [AWS CloudFormation Sample Templates page](http://aws.amazon.com/cloudformation/aws-cloudformation-templates/)\.
 
 MySNSTopic is set up to publish to two subscribed endpoints, which are two Amazon SQS queues \(MyQueue1 and MyQueue2\)\. MyPublishTopicGroup is an IAM group whose members have permission to publish to MySNSTopic using the [Publish](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) API action or [sns\-publish](https://docs.aws.amazon.com/cli/latest/reference/sns/publish.html) command\. The template creates the IAM users MyPublishUser and MyQueueUser and gives them login profiles and access keys\. The user who creates a stack with this template specifies the passwords for the login profiles as input parameters\. The template creates access keys for the two IAM users with MyPublishUserKey and MyQueueUserKey\. AddUserToMyPublishTopicGroup adds MyPublishUser to the MyPublishTopicGroup so that the user will have the permissions assigned to the group\.
 

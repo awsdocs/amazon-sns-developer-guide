@@ -1,4 +1,4 @@
-# Tutorial: Subscribing an Endpoint to an Amazon SNS Topic<a name="sns-tutorial-create-subscribe-endpoint-to-topic"></a>
+# Tutorial: Subscribing an endpoint to an Amazon SNS topic<a name="sns-tutorial-create-subscribe-endpoint-to-topic"></a>
 
 To receive messages published to [a topic](sns-tutorial-create-topic.md), you must *subscribe* an endpoint \(such as AWS Lambda, Amazon SQS, HTTP/S, or an email address\) to the topic\. When you subscribe an endpoint to a topic and confirm the subscription, the endpoint begins to receive messages published to the associated topic\.
 
@@ -9,9 +9,9 @@ The following tutorial shows how you can use the AWS Management Console, the AWS
 + [AWS SDK for Java](#create-subscribe-endpoint-to-topic-aws-java)
 + [AWS SDK for \.NET](#create-subscribe-endpoint-to-topic-aws-dot-net)
 
-## To Subscribe an Endpoint to an Amazon SNS Topic Using the AWS Management Console<a name="create-subscribe-endpoint-to-topic-aws-console"></a>
+## To subscribe an endpoint to an Amazon SNS topic using the AWS Management Console<a name="create-subscribe-endpoint-to-topic-aws-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Subscriptions**\.
 
@@ -47,7 +47,7 @@ After your subscription is created, you must confirm it\. Only HTTP/S endpoints,
 
 1. In your web browser, a subscription confirmation with your subscription ID is displayed\.
 
-## To Subscribe an Endpoint to an Amazon SNS Topic Using the AWS SDK for Java<a name="create-subscribe-endpoint-to-topic-aws-java"></a>
+## To subscribe an endpoint to an Amazon SNS topic using the AWS SDK for Java<a name="create-subscribe-endpoint-to-topic-aws-java"></a>
 
 1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
@@ -74,7 +74,7 @@ After your subscription is created, you must confirm it\. Only HTTP/S endpoints,
    To confirm the subscription, check your email.
    ```
 
-## To Subscribe an Endpoint to an Amazon SNS Topic Using the AWS SDK for \.NET<a name="create-subscribe-endpoint-to-topic-aws-dot-net"></a>
+## To subscribe an endpoint to an Amazon SNS topic using the AWS SDK for \.NET<a name="create-subscribe-endpoint-to-topic-aws-dot-net"></a>
 
 1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 

@@ -1,19 +1,19 @@
-# Viewing Amazon CloudWatch Metrics and Logs for SMS Deliveries<a name="sms_stats_cloudwatch"></a>
+# Viewing Amazon CloudWatch metrics and logs for SMS deliveries<a name="sms_stats_cloudwatch"></a>
 
 You can use Amazon CloudWatch and Amazon CloudWatch Logs to monitor your SMS message deliveries\.
 
 **Topics**
-+ [Viewing Amazon CloudWatch Metrics](#sms_stats_cloudwatch_metrics)
++ [Viewing Amazon CloudWatch metrics](#sms_stats_cloudwatch_metrics)
 + [Viewing CloudWatch Logs](#sns-viewing-cloudwatch-logs)
-+ [Example Log for Successful SMS Delivery](#example-log-successful-sms-delivery)
-+ [Example Log for Failed SMS Delivery](#example-log-failed-sms-delivery)
-+ [SMS Delivery Failure Reasons](#sms_stats_delivery_fail_reasons)
++ [Example log for successful SMS delivery](#example-log-successful-sms-delivery)
++ [Example log for failed SMS delivery](#example-log-failed-sms-delivery)
++ [SMS delivery failure reasons](#sms_stats_delivery_fail_reasons)
 
-## Viewing Amazon CloudWatch Metrics<a name="sms_stats_cloudwatch_metrics"></a>
+## Viewing Amazon CloudWatch metrics<a name="sms_stats_cloudwatch_metrics"></a>
 
 Amazon SNS automatically collects metrics about your SMS message deliveries and pushes them to Amazon CloudWatch\. You can use CloudWatch to monitor these metrics and create alarms to alert you when a metric crosses a threshold\. For example, you can monitor CloudWatch metrics to learn your SMS delivery rate and your month\-to\-date SMS charges\.
 
-For information about monitoring CloudWatch metrics, setting CloudWatch alarms, and the types of metrics available, see [Monitoring Amazon SNS Topics Using CloudWatch](sns-monitoring-using-cloudwatch.md)\.
+For information about monitoring CloudWatch metrics, setting CloudWatch alarms, and the types of metrics available, see [Monitoring Amazon SNS topics using CloudWatch](sns-monitoring-using-cloudwatch.md)\.
 
 ## Viewing CloudWatch Logs<a name="sns-viewing-cloudwatch-logs"></a>
 
@@ -21,7 +21,7 @@ You can collect information about successful and unsuccessful SMS message delive
 
 **To enable CloudWatch Logs for your SMS messages**
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. In the console menu, set the region selector to a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
@@ -45,7 +45,7 @@ You can collect information about successful and unsuccessful SMS message delive
 
 1. Choose **Save changes**\.
 
-## Example Log for Successful SMS Delivery<a name="example-log-successful-sms-delivery"></a>
+## Example log for successful SMS delivery<a name="example-log-successful-sms-delivery"></a>
 
 The delivery status log for a successful SMS delivery will resemble the following example:
 
@@ -70,7 +70,7 @@ The delivery status log for a successful SMS delivery will resemble the followin
 }
 ```
 
-## Example Log for Failed SMS Delivery<a name="example-log-failed-sms-delivery"></a>
+## Example log for failed SMS delivery<a name="example-log-failed-sms-delivery"></a>
 
 The delivery status log for a failed SMS delivery will resemble the following example:
 
@@ -94,7 +94,7 @@ The delivery status log for a failed SMS delivery will resemble the following ex
 }
 ```
 
-## SMS Delivery Failure Reasons<a name="sms_stats_delivery_fail_reasons"></a>
+## SMS delivery failure reasons<a name="sms_stats_delivery_fail_reasons"></a>
 
 The reason for a failure is provided with the `providerResponse` attribute\. SMS messages might fail to deliver for the following reasons:
 + Blocked as spam by phone carrier

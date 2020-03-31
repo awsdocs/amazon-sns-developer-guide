@@ -1,10 +1,10 @@
-# Send a Direct Message to a Mobile Device<a name="mobile-push-send-directmobile"></a>
+# Send a direct message to a mobile device<a name="mobile-push-send-directmobile"></a>
 
 You can send Amazon SNS push notification messages directly to an endpoint which represents an application on a mobile device\. 
 
 **To send a direct message**
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Mobile**, **Push notifications**\.
 

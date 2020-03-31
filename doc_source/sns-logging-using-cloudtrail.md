@@ -1,10 +1,10 @@
-# Logging Amazon Simple Notification Service API Calls Using AWS CloudTrail<a name="sns-logging-using-cloudtrail"></a>
+# Logging Amazon SNS API calls using CloudTrail<a name="sns-logging-using-cloudtrail"></a>
 
 Amazon SNS is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in Amazon SNS\. CloudTrail captures API calls for Amazon SNS as events\. The calls captured include calls from the Amazon SNS console and code calls to the Amazon SNS API operations\. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Amazon SNS\. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in **Event history**\. Using the information collected by CloudTrail, you can determine the request that was made to Amazon SNS, the IP address from which the request was made, who made the request, when it was made, and additional details\. 
 
 To learn more about CloudTrail, including how to configure and enable it, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\.
 
-## Amazon SNS Information in CloudTrail<a name="sns-info-in-cloudtrail"></a>
+## Amazon SNS information in CloudTrail<a name="sns-info-in-cloudtrail"></a>
 
 CloudTrail is enabled on your AWS account when you create the account\. When supported event activity occurs in Amazon SNS, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. For more information, see [Viewing Events with CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
 
@@ -37,6 +37,7 @@ Amazon SNS supports logging the following actions as events in CloudTrail log fi
 + `[RemovePermission](https://docs.aws.amazon.com/sns/latest/api/API_RemovePermission.html)`
 + `[SetEndpointAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html)`
 + `[SetPlatformApplicationAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)`
++ `[SetSMSAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html)`
 + `[SetSubscriptionAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html)`
 + `[SetTopicAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetTopicAttributes.html)`
 + `[Subscribe](https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html)`
@@ -52,7 +53,7 @@ Every event or log entry contains information about who generated the request\. 
 
 For more information, see the [CloudTrail userIdentity Element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
 
-## Example: Amazon SNS Log File Entries<a name="understanding-service-name-entries"></a>
+## Example: Amazon SNS log file entries<a name="understanding-service-name-entries"></a>
 
  A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket that you specify\. CloudTrail log files contain one or more log entries\. An event represents a single request from any source and includes information about the requested action, the date and time of the action, request parameters, and so on\. CloudTrail log files aren't an ordered stack trace of the public API calls, so they don't appear in any specific order\.
 

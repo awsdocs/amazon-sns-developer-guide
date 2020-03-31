@@ -1,4 +1,4 @@
-# Tutorial: Publishing a Message to an Amazon SNS Topic<a name="sns-tutorial-publish-message-to-topic"></a>
+# Tutorial: Publishing a message to an Amazon SNS topic<a name="sns-tutorial-publish-message-to-topic"></a>
 
 After you [create a topic](sns-tutorial-create-topic.md) and [subscribe an endpoint to it](sns-tutorial-create-subscribe-endpoint-to-topic.md), you can *publish* messages to a topic\. When the message is published, Amazon SNS attempts to deliver the message to every endpoint \(such as AWS Lambda, Amazon SQS, HTTP/S, or an email address\) subscribed to the topic\.
 
@@ -12,9 +12,9 @@ You can publish messages only to topics and endpoints in the same AWS Region\.
 + [AWS SDK for Java](#publish-message-to-topic-aws-java)
 + [AWS SDK for \.NET](#publish-message-to-topic-aws-dot-net)
 
-## To Publish a Message to an Amazon SNS Topic Using the AWS Management Console<a name="publish-message-to-topic-aws-console"></a>
+## To publish a message to an Amazon SNS topic using the AWS Management Console<a name="publish-message-to-topic-aws-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics**\.
 
@@ -32,7 +32,7 @@ You can publish messages only to topics and endpoints in the same AWS Region\.
       + Choose **Identical payload for all delivery protocols** and then enter the message, for example:
 
         ```
-        If you receive this message, publishing a message to an Amazon SNS topic works.
+        Publishing a message to an Amazon SNS topic.
         ```
       + Choose **Custom payload for each delivery protocol** and then use a JSON object to define the message to send to each protocol, for example:
 
@@ -59,7 +59,7 @@ You can publish messages only to topics and endpoints in the same AWS Region\.
         }
         ```
 
-        For more information, see [Send Custom Platform\-Specific Payloads to Mobile Devices](sns-send-custom-platform-specific-payloads-mobile-devices.md)\.
+        For more information, see [Send custom platform\-specific payloads to mobile devices](sns-send-custom-platform-specific-payloads-mobile-devices.md)\.
 
    1. In the **Message attributes** section, add any attributes that you want Amazon SNS to match with the subscription attribute `FilterPolicy` to decide whether the subscribed endpoint is interested in the published message\.
 
@@ -73,7 +73,7 @@ If the attribute type is **String\.Array**, enclose the array in square brackets
 
       If the attribute type is **String**, **String\.Array**, or **Number**, Amazon SNS evaluates the message attribute against a subscription's filter policy \(if present\) before sending the message to the subscription\.
 
-      For more information, see [Amazon SNS Message Attributes](sns-message-attributes.md)\.
+      For more information, see [Amazon SNS message attributes](sns-message-attributes.md)\.
 
    1. Choose **Publish message**\.
 
@@ -83,7 +83,7 @@ If the attribute type is **String\.Array**, enclose the array in square brackets
 
 1. In your email client, check the email address that you specified earlier and read the email from Amazon SNS\.
 
-## To Publish a Message to an Amazon SNS Topic Using the AWS SDK for Java<a name="publish-message-to-topic-aws-java"></a>
+## To publish a message to an Amazon SNS topic using the AWS SDK for Java<a name="publish-message-to-topic-aws-java"></a>
 
 1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
@@ -109,7 +109,7 @@ If the attribute type is **String\.Array**, enclose the array in square brackets
    MessageId: 1234a567-bc89-012d-3e45-6fg7h890123i
    ```
 
-## To Publish a Message to an Amazon SNS Topic Using the AWS SDK for \.NET<a name="publish-message-to-topic-aws-dot-net"></a>
+## To publish a message to an Amazon SNS topic using the AWS SDK for \.NET<a name="publish-message-to-topic-aws-dot-net"></a>
 
 1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 

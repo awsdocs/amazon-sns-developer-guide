@@ -1,14 +1,14 @@
-# Identity and Access Management in Amazon SNS<a name="sns-authentication-and-access-control"></a>
+# Identity and access management in Amazon SNS<a name="sns-authentication-and-access-control"></a>
 
 Access to Amazon SNS requires credentials that AWS can use to authenticate your requests\. These credentials must have permissions to access AWS resources, such an Amazon SNS topics and messages\. The following sections provide details on how you can use [AWS Identity and Access Management \(IAM\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) and Amazon SNS to help secure your resources by controlling access to them\. 
 
 **Topics**
 + [Authentication](#authentication)
-+ [Access Control](#access-control)
-+ [Overview of Managing Access in Amazon SNS](sns-overview-of-managing-access.md)
-+ [Using Identity\-Based Policies with Amazon SNS](sns-using-identity-based-policies.md)
-+ [Using Temporary Security Credentials with Amazon SNS](sns-using-temporary-credentials.md)
-+ [Amazon SNS API Permissions: Actions and Resources Reference](sns-access-policy-language-api-permissions-reference.md)
++ [Access control](#access-control)
++ [Overview of managing access in Amazon SNS](sns-overview-of-managing-access.md)
++ [Using identity\-based policies with Amazon SNS](sns-using-identity-based-policies.md)
++ [Using temporary security credentials with Amazon SNS](sns-using-temporary-credentials.md)
++ [Amazon SNS API permissions: Actions and resources reference](sns-access-policy-language-api-permissions-reference.md)
 
 ## Authentication<a name="authentication"></a>
 
@@ -32,7 +32,7 @@ You can access AWS as any of the following types of identities:
       
   + **Applications running on Amazon EC2** –  You can use an IAM role to manage temporary credentials for applications that are running on an EC2 instance and making AWS CLI or AWS API requests\. This is preferable to storing access keys within the EC2 instance\. To assign an AWS role to an EC2 instance and make it available to all of its applications, you create an instance profile that is attached to the instance\. An instance profile contains the role and enables programs that are running on the EC2 instance to get temporary credentials\. For more information, see [Using an IAM Role to Grant Permissions to Applications Running on Amazon EC2 Instances](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html) in the *IAM User Guide*\. 
 
-## Access Control<a name="access-control"></a>
+## Access control<a name="access-control"></a>
 
 Amazon SNS has its own resource\-based permissions system that uses policies written in the same language used for AWS Identity and Access Management \(IAM\) policies\. This means that you can achieve similar things with Amazon SNS policies and IAM policies\.
 

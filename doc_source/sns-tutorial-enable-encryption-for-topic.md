@@ -1,6 +1,6 @@
-# Tutorial: Enabling Server\-Side Encryption \(SSE\) for an Amazon SNS Topic<a name="sns-tutorial-enable-encryption-for-topic"></a>
+# Tutorial: Enabling server\-side encryption \(SSE\) for an Amazon SNS topic<a name="sns-tutorial-enable-encryption-for-topic"></a>
 
-You can enable server\-side encryption \(SSE\) for a topic to protect its data\. For more information about using SSE, see [Encryption at Rest](sns-server-side-encryption.md)\.
+You can enable server\-side encryption \(SSE\) for a topic to protect its data\. For more information about using SSE, see [Encryption at rest](sns-server-side-encryption.md)\.
 
 **Important**  
 All requests to topics with SSE enabled must use HTTPS and [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\.
@@ -11,9 +11,9 @@ The following tutorial shows how to enable, disable, and configure SSE for an ex
 + [AWS Management Console](#enable-encryption-console)
 + [AWS SDK for Java](#enable-encryption-aws-java)
 
-## To Enable Server\-Side Encryption \(SSE\) for an Amazon SNS Topic Using the AWS Management Console<a name="enable-encryption-console"></a>
+## To enable server\-side encryption \(SSE\) for an Amazon SNS topic using the AWS Management Console<a name="enable-encryption-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics**\.
 
@@ -23,7 +23,7 @@ The following tutorial shows how to enable, disable, and configure SSE for an ex
 
    1. Choose **Enable encryption**\.
 
-   1. Specify the customer master key \(CMK\)\. For more information, see [Key Terms](sns-server-side-encryption.md#sse-key-terms)\.
+   1. Specify the customer master key \(CMK\)\. For more information, see [Key terms](sns-server-side-encryption.md#sse-key-terms)\.
 
       For each CMK type, the **Description**, **Account**, and **CMK ARN** are displayed\.
 **Important**  
@@ -45,13 +45,13 @@ For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.a
 
    The topic's **Encryption** status, AWS **Account**, **Customer master key \(CMK\)**, **CMK ARN**, and **Description** are displayed on the **Encryption** tab\.
 
-## To Enable Server\-Side Encryption \(SSE\) for an Amazon SNS Topic Using the AWS SDK for Java<a name="enable-encryption-aws-java"></a>
+## To enable server\-side encryption \(SSE\) for an Amazon SNS topic using the AWS SDK for Java<a name="enable-encryption-aws-java"></a>
 
-1. Configure AWS KMS key policies to allow encryption of topics and encryption and decryption of messages\. For more information, see [Configuring AWS KMS Permissions](sns-key-management.md#sns-what-permissions-for-sse)
+1. Configure AWS KMS key policies to allow encryption of topics and encryption and decryption of messages\. For more information, see [Configuring AWS KMS permissions](sns-key-management.md#sns-what-permissions-for-sse)
 
 1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
-1. Obtain the customer master key \(CMK\) ID\. For more information, see [Key Terms](sns-server-side-encryption.md#sse-key-terms)\.
+1. Obtain the customer master key \(CMK\) ID\. For more information, see [Key terms](sns-server-side-encryption.md#sse-key-terms)\.
 **Note**  
 Keep the following in mind:  
 The first time you use the AWS Management Console to specify the AWS managed CMK for Amazon SNS for a topic, AWS KMS creates the AWS managed CMK for Amazon SNS\.

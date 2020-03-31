@@ -1,16 +1,16 @@
-# Setting SMS Messaging Preferences<a name="sms_preferences"></a>
+# Setting SMS messaging preferences<a name="sms_preferences"></a>
 
 Use Amazon SNS to specify preferences for SMS messaging, such as how your deliveries are optimized \(for cost or for reliable delivery\), your monthly spending limit, how message deliveries are logged, and whether to subscribe to daily SMS usage reports\.
 
-These preferences take effect for every SMS message that you send from your account, but you can override some of them when you send an individual message\. For more information, see [Sending an SMS Message](sms_publish-to-phone.md)\.
+These preferences take effect for every SMS message that you send from your account, but you can override some of them when you send an individual message\. For more information, see [Sending an SMS message](sms_publish-to-phone.md)\.
 
 **Topics**
-+ [Setting SMS Messaging Preferences Using the AWS Management Console](#sms_preferences_console)
-+ [Setting Preferences \(AWS SDKs\)](#sms_preferences_sdk)
++ [Setting SMS messaging preferences using the AWS Management Console](#sms_preferences_console)
++ [Setting preferences \(AWS SDKs\)](#sms_preferences_sdk)
 
-## Setting SMS Messaging Preferences Using the AWS Management Console<a name="sms_preferences_console"></a>
+## Setting SMS messaging preferences using the AWS Management Console<a name="sms_preferences_console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. Choose a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
@@ -42,7 +42,7 @@ The S3 bucket policy must grant write access to Amazon SNS\.
 
 1. Choose **Save changes**\.
 
-## Setting Preferences \(AWS SDKs\)<a name="sms_preferences_sdk"></a>
+## Setting preferences \(AWS SDKs\)<a name="sms_preferences_sdk"></a>
 
 To set your SMS preferences using one of AWS SDKs, use the action in that SDK that corresponds to the `SetSMSAttributes` request in the Amazon SNS API\. With this request, you assign values to the different SMS attributes, such as your monthly spend quota and your default SMS type \(promotional or transactional\)\. For all SMS attributes, see [SetSMSAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html) in the *Amazon Simple Notification Service API Reference*\.
 

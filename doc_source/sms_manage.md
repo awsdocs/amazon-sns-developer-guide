@@ -1,13 +1,13 @@
-# Managing Phone Numbers and SMS Subscriptions<a name="sms_manage"></a>
+# Managing phone numbers and SMS subscriptions<a name="sms_manage"></a>
 
 Amazon SNS provides several options for managing who receives SMS messages from your account\. With a limited frequency, you can opt in phone numbers that have opted out of receiving SMS messages from your account\. To stop sending messages to SMS subscriptions, you can remove subscriptions or the topics that publish to them\.
 
 **Topics**
-+ [Opting Out of Receiving SMS Messages](#sms_manage_optout)
-+ [Managing Phone Numbers and Subscriptions \(Console\)](#sms_manage_console)
-+ [Managing Phone Numbers and Subscriptions \(AWS SDKs\)](#sms_manage_sdk)
++ [Opting out of receiving SMS messages](#sms_manage_optout)
++ [Managing phone numbers and subscriptions \(console\)](#sms_manage_console)
++ [Managing phone numbers and subscriptions \(AWS SDKs\)](#sms_manage_sdk)
 
-## Opting Out of Receiving SMS Messages<a name="sms_manage_optout"></a>
+## Opting out of receiving SMS messages<a name="sms_manage_optout"></a>
 
 Where required by local laws and regulations \(such as the US and Canada\), SMS recipients can use their devices to opt out by replying to the message with any of the following: 
 + ARRET \(French\)
@@ -25,17 +25,17 @@ To opt out, the recipient must reply to the same long code or short code that Am
 
 If the phone number is subscribed to an Amazon SNS topic, opting out does not remove the subscription, but SMS messages will fail to deliver to that subscription unless you opt in the phone number\.
 
-## Managing Phone Numbers and Subscriptions \(Console\)<a name="sms_manage_console"></a>
+## Managing phone numbers and subscriptions \(console\)<a name="sms_manage_console"></a>
 
 You can use the Amazon SNS console to control which phone numbers receive SMS messages from your account\.
 
-### Opting in a Phone Number That Has Been Opted Out<a name="sms_manage_optout_console"></a>
+### Opting in a phone number that has been opted out<a name="sms_manage_optout_console"></a>
 
 You can view which phone numbers have been opted out of receiving SMS messages from your account, and you can opt in these phone numbers to resume sending messages to them\.
 
 You can opt in a phone number only once every 30 days\.
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. In the console menu, set the region selector to a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
@@ -45,7 +45,7 @@ You can opt in a phone number only once every 30 days\.
 
 1. Select the check box for the phone number that you want to opt in, and choose **Opt in**\. The phone number is no longer opted out and will receive SMS messages that you send to it\.
 
-### Deleting an SMS Subscription<a name="sms_manage_subscriptions_console"></a>
+### Deleting an SMS subscription<a name="sms_manage_subscriptions_console"></a>
 
 Delete an SMS subscription to stop sending SMS messages to that phone number when you publish to your topics\.
 
@@ -55,7 +55,7 @@ Delete an SMS subscription to stop sending SMS messages to that phone number whe
 
 1. In the **Delete** window, choose **Delete**\. Amazon SNS deletes the subscription and displays a success message\.
 
-### Deleting a Topic<a name="sms_manage_topic_console"></a>
+### Deleting a topic<a name="sms_manage_topic_console"></a>
 
 Delete a topic when you no longer want to publish messages to its subscribed endpoints\.
 
@@ -65,11 +65,11 @@ Delete a topic when you no longer want to publish messages to its subscribed end
 
 1. In the **Delete** window, choose **Delete**\. Amazon SNS deletes the topic and displays a success message\.
 
-## Managing Phone Numbers and Subscriptions \(AWS SDKs\)<a name="sms_manage_sdk"></a>
+## Managing phone numbers and subscriptions \(AWS SDKs\)<a name="sms_manage_sdk"></a>
 
 You can use the AWS SDKs to make programmatic requests to Amazon SNS and manage which phone numbers can receive SMS messages from your account\.
 
-### Viewing All Opted Out Phone Numbers<a name="sms_view_optout_sdk"></a>
+### Viewing all opted out phone numbers<a name="sms_view_optout_sdk"></a>
 
 To view all opted out phone numbers, submit a `ListPhoneNumbersOptedOut` request with the Amazon SNS API\.
 
@@ -130,7 +130,7 @@ public static void ListOptOut(AmazonSimpleNotificationServiceClient snsClient)
 
 Amazon SNS returns a paginated response, so this example repeats the request each time Amazon SNS returns a next token\. When you run this example, it displays a list of all opted out phone numbers in the console output window of your IDE\.
 
-### Checking Whether a Phone Number Is Opted Out<a name="sms_check_optout_sdk"></a>
+### Checking whether a phone number is opted out<a name="sms_check_optout_sdk"></a>
 
 To check whether a phone number is opted out, submit a `CheckIfPhoneNumberIsOptedOut` request with the Amazon SNS API\.
 
@@ -170,7 +170,7 @@ false
 
 ------
 
-### Opting In a Phone Number That Has Been Opted Out<a name="sms_manage_optin_sdk"></a>
+### Opting in a phone number that has been opted out<a name="sms_manage_optin_sdk"></a>
 
 To opt in a phone number, submit an `OptInPhoneNumber` request with the Amazon SNS API\.
 
@@ -198,7 +198,7 @@ snsClient.OptInPhoneNumber(new OptInPhoneNumberRequest { PhoneNumber = phoneNumb
 
 You can opt in a phone number only once every 30 days\.
 
-### Deleting an SMS Subscription<a name="sms_manage_subscriptions_sdk"></a>
+### Deleting an SMS subscription<a name="sms_manage_subscriptions_sdk"></a>
 
 To delete an SMS subscription from an Amazon SNS topic, get the subscription ARN by submitting a `ListSubscriptions` request with the Amazon SNS API, and then pass the ARN to an `Unsubscribe` request\.
 
@@ -238,7 +238,7 @@ snsClient.Unsubscribe(subscriptionArn);
 
 ------
 
-### Deleting a Topic<a name="sms_manage_topic_sdk"></a>
+### Deleting a topic<a name="sms_manage_topic_sdk"></a>
 
 To delete a topic and all of its subscriptions, get the topic ARN by submitting a `ListTopics` request with the Amazon SNS API, and then pass the ARN to the `DeleteTopic` request\.
 

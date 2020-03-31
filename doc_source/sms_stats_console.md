@@ -1,8 +1,8 @@
-# Viewing SMS Delivery Statistics<a name="sms_stats_console"></a>
+# Viewing SMS delivery statistics<a name="sms_stats_console"></a>
 
 You can use the Amazon SNS console to view statistics about your recent SMS deliveries\.
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. In the console menu, set the region selector to a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
@@ -13,4 +13,4 @@ You can use the Amazon SNS console to view statistics about your recent SMS deli
    + Sent \(number of delivery attempts\)
    + Failed \(number of delivery failures\)
 
-On this page, you can also choose the **Usage** button to go to the Amazon S3 bucket where you store your daily usage reports\. For more information, see [Viewing Daily SMS Usage Reports](sms_stats_usage.md)\.
+On this page, you can also choose the **Usage** button to go to the Amazon S3 bucket where you store your daily usage reports\. For more information, see [Viewing daily SMS usage reports](sms_stats_usage.md)\.

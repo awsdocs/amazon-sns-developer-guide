@@ -1,8 +1,8 @@
-# Sending an SMS Message<a name="sms_publish-to-phone"></a>
+# Sending an SMS message<a name="sms_publish-to-phone"></a>
 
 You can use Amazon SNS to send SMS messages to SMS\-enabled devices\. You can publish messages directly to the phone numbers for these devices, and you do not need to subscribe the phone numbers to an Amazon SNS topic\. 
 
-Subscribing phone numbers to a topic can be still useful if you want to publish each message to multiple phone numbers at once\. For steps on how to publish an SMS message to a topic, see [Sending an SMS Message to Multiple Phone Numbers](sms_publish-to-topic.md)\.
+Subscribing phone numbers to a topic can be still useful if you want to publish each message to multiple phone numbers at once\. For steps on how to publish an SMS message to a topic, see [Sending an SMS message to multiple phone numbers](sms_publish-to-topic.md)\.
 
 When you send a message, you can control whether the message is optimized for cost or reliable delivery, and you can specify a sender ID\. If you send the message programmatically using the Amazon SNS API or AWS SDKs, you can specify a maximum price for the message delivery\.
 
@@ -16,12 +16,12 @@ If you publish a message that exceeds the size quota, Amazon SNS sends it as mul
 When you send an SMS message, specify the phone number using the E\.164 format\. E\.164 is a standard for the phone number structure used for international telecommunication\. Phone numbers that follow this format can have a maximum of 15 digits, and they are prefixed with the plus character \(\+\) and the country code\. For example, a U\.S\. phone number in E\.164 format would appear as \+1XXX5550100\.
 
 **Topics**
-+ [Sending a Message \(Console\)](#sms_publish_console)
-+ [Sending a Message \(AWS SDKs\)](#sms_publish_sdk)
++ [Sending a message \(console\)](#sms_publish_console)
++ [Sending a message \(AWS SDKs\)](#sms_publish_sdk)
 
-## Sending a Message \(Console\)<a name="sms_publish_console"></a>
+## Sending a message \(console\)<a name="sms_publish_console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. In the console menu, set the region selector to a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
@@ -43,7 +43,7 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 
 1. \(Optional\) For **Sender ID**, type a custom ID that contains up to 11 alphanumeric characters, including at least one letter and no spaces\. The sender ID is displayed as the message sender on the receiving device\. For example, you can use your business brand to make the message source easier to recognize\.
 
-   Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and Countries](sns-supported-regions-countries.md)\.
+   Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and countries](sns-supported-regions-countries.md)\.
 
    If you do not specify a sender ID, the message will display a long code as the sender ID in supported countries or regions\. For countries and regions that require an alphabetic sender ID, the message displays *NOTICE* as the sender ID\. 
 
@@ -51,13 +51,13 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 
 1. Choose **Send text message**\.
 
-## Sending a Message \(AWS SDKs\)<a name="sms_publish_sdk"></a>
+## Sending a message \(AWS SDKs\)<a name="sms_publish_sdk"></a>
 
 To send an SMS message using one of the AWS SDKs, use the action in that SDK that corresponds to the `Publish` request in the Amazon SNS API\. With this request, you can send an SMS message directly to a phone number\. You can also use the `MessageAttributes` parameter to set values for the following attribute names:
 
 `AWS.SNS.SMS.SenderID`  
 A custom ID that contains up to 11 alphanumeric characters, including at least one letter and no spaces\. The sender ID is displayed as the message sender on the receiving device\. For example, you can use your business brand to make the message source easier to recognize\.  
-Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and Countries](sns-supported-regions-countries.md)\.  
+Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and countries](sns-supported-regions-countries.md)\.  
 If you do not specify a sender ID, the message will display a long code as the sender ID in supported countries and regions\. For countries or regions that require an alphabetic sender ID, the message displays *NOTICE* as the sender ID\.  
 This message\-level attribute overrides the account\-level attribute `DefaultSenderID`, which you set using the `SetSMSAttributes` request\.
 
@@ -72,7 +72,7 @@ The type of message that you are sending:
 + `Transactional` – Critical messages that support customer transactions, such as one\-time passcodes for multi\-factor authentication\. Amazon SNS optimizes the message delivery to achieve the highest reliability\.
 This message\-level attribute overrides the account\-level attribute `DefaultSMSType`, which you set using the `SetSMSAttributes` request\.
 
-### \(Optional\) Setting Message Attributes<a name="sms_attributes_sdks"></a>
+### \(Optional\) Setting message attributes<a name="sms_attributes_sdks"></a>
 
 The following examples show how to set message attributes using the Amazon SNS clients that are provided by the AWS SDKs\.
 
@@ -115,7 +115,7 @@ pubRequest.MessageAttributes["AWS.SNS.SMS.SMSType"] =
 
 ------
 
-### Sending a Message<a name="sms_publish_sdks"></a>
+### Sending a message<a name="sms_publish_sdks"></a>
 
 The following examples show how to send a message using the Amazon SNS clients that are provided by the AWS SDKs\.
 

@@ -1,4 +1,4 @@
-# Step 2: To Execute the Sample Application<a name="execute-sample-application"></a>
+# Step 2: To execute the sample application<a name="execute-sample-application"></a>
 
 1. In the AWS Lambda console, on the navigation panel, choose **Applications**\.
 

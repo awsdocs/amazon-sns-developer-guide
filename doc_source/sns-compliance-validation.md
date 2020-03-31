@@ -1,4 +1,4 @@
-# Compliance Validation for Amazon SNS<a name="sns-compliance-validation"></a>
+# Compliance validation for Amazon SNS<a name="sns-compliance-validation"></a>
 
 Third\-party auditors assess the security and compliance of Amazon SNS as part of multiple AWS compliance programs, including the Health Insurance Portability and Accountability Act \(HIPAA\)\.
 

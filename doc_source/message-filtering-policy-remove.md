@@ -1,10 +1,10 @@
-# Tutorial: Removing a Subscription Filter Policy<a name="message-filtering-policy-remove"></a>
+# Tutorial: Removing a subscription filter policy<a name="message-filtering-policy-remove"></a>
 
 To stop filtering the messages that are sent to a subscription, remove the subscription's filter policy by overwriting it with an empty JSON body\. After you remove the policy, the subscription accepts every message that's published to it\.
 
 ## AWS Management Console<a name="message-filtering-policy-remove-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Subscriptions**\.
 

@@ -1,4 +1,4 @@
-# Subscription Filter Policies as Java Collections<a name="subscription-filter-policies-as-java-collections"></a>
+# Subscription filter policies as Java collections<a name="subscription-filter-policies-as-java-collections"></a>
 
 To provide a subscription filter policy to the Amazon SNS client using the AWS SDK for Java, you must pass it as a string using the following process:
 
@@ -8,13 +8,13 @@ To provide a subscription filter policy to the Amazon SNS client using the AWS S
 
 1. Pass the string to the Amazon SNS client\.
 
-## Working Java Example<a name="subscription-filter-policies-working-java-example"></a>
+## Working Java example<a name="subscription-filter-policies-working-java-example"></a>
 
 The following example Java code demonstrates the process of providing the subscription filter policy to the Amazon SNS client\.
 
 ```
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.

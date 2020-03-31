@@ -1,13 +1,13 @@
-# Setting Up Access for Amazon SNS<a name="sns-setting-up"></a>
+# Setting up access for Amazon SNS<a name="sns-setting-up"></a>
 
 Before you can use Amazon SNS, you must complete the following steps\.
 
 **Topics**
 + [Create an AWS Account and an IAM Administrator User](#create-aws-account)
 + [Create an IAM User and Get Your AWS Credentials](#create-iam-user)
-+ [Next Steps](#next-steps-setting-up)
++ [Next steps](#next-steps-setting-up)
 
-## Step 1: Create an AWS Account and an IAM Administrator User<a name="create-aws-account"></a>
+## Step 1: Create an AWS account and an IAM administrator user<a name="create-aws-account"></a>
 
 To access any AWS service, you must first create an [AWS account](https://aws.amazon.com/)\. This is an Amazon account that can use AWS products\. You can use your AWS account to view your activity and usage reports and to manage authentication and access\.
 
@@ -19,7 +19,7 @@ To access any AWS service, you must first create an [AWS account](https://aws.am
 
 1. When you finish creating your AWS account, follow the instructions in the *IAM User Guide* to [create your first IAM administrator user and group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)\.
 
-## Step 2: Create an IAM User and Get Your AWS Credentials<a name="create-iam-user"></a>
+## Step 2: Create an IAM user and get your AWS credentials<a name="create-iam-user"></a>
 
 To avoid using your IAM administrator user for Amazon SNS operations, it is a best practice to create an IAM user for each person who needs administrative access to Amazon SNS\.
 
@@ -55,6 +55,6 @@ You can view or download your secret access key *only* when you create your cred
 
 1. To download your credentials, choose **Download \.csv**\. Keep this file in a secure location\.
 
-## Next Steps<a name="next-steps-setting-up"></a>
+## Next steps<a name="next-steps-setting-up"></a>
 
 Now that you're prepared to work with Amazon SNS, [get started](sns-getting-started.md) by creating a topic, creating a subscription for the topic, publishing a message to the topic, and deleting the subscription and topic\.

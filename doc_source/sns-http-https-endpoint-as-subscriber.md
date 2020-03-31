@@ -1,4 +1,4 @@
-# Using Amazon SNS for System\-to\-System Messaging with an HTTP/S Endpoint as a Subscriber<a name="sns-http-https-endpoint-as-subscriber"></a>
+# Using Amazon SNS for system\-to\-system messaging with an HTTP/s endpoint as a subscriber<a name="sns-http-https-endpoint-as-subscriber"></a>
 
 You can use [Amazon SNS](https://aws.amazon.com/sns/) to send notification messages to one or more HTTP or HTTPS endpoints\. When you subscribe an endpoint to a topic, you can publish a notification to the topic and Amazon SNS sends an HTTP POST request delivering the contents of the notification to the subscribed endpoint\. When you subscribe the endpoint, you choose whether Amazon SNS uses HTTP or HTTPS to send the POST request to the endpoint\. If you use HTTPS, then you can take advantage of the support in Amazon SNS for the following: 
 + **Server Name Indication \(SNI\)**—This allows Amazon SNS to support HTTPS endpoints that require SNI, such as a server requiring multiple certificates for hosting multiple domains\. For more information about SNI, see [Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)\.
@@ -6,7 +6,7 @@ You can use [Amazon SNS](https://aws.amazon.com/sns/) to send notification messa
 **Note**  
  The client service must be able to support the `HTTP/1.1 401 Unauthorized` header response
 
-The request contains the subject and message that were published to the topic along with metadata about the notification in a JSON document\. The request will look similar to the following HTTP POST request\. For details about the HTTP header and the JSON format of the request body, see [HTTP/HTTPS Headers](sns-message-and-json-formats.md#http-header) and [HTTP/HTTPS Notification JSON Format](sns-message-and-json-formats.md#http-notification-json)\. 
+The request contains the subject and message that were published to the topic along with metadata about the notification in a JSON document\. The request will look similar to the following HTTP POST request\. For details about the HTTP header and the JSON format of the request body, see [HTTP/HTTPS headers](sns-message-and-json-formats.md#http-header) and [HTTP/HTTPS notification JSON format](sns-message-and-json-formats.md#http-notification-json)\. 
 
 ```
 POST / HTTP/1.1
@@ -36,9 +36,9 @@ POST / HTTP/1.1
 
 To enable an Amazon SNS topic to send messages to an HTTP or HTTPS endpoint, follow these steps:
 
-[Step 1: Make Sure Your Endpoint is Ready to Process Amazon SNS Messages](#SendMessageToHttp.prepare)
+[Step 1: Make sure your endpoint is ready to process Amazon SNS messages](#SendMessageToHttp.prepare)
 
-[Step 2: Subscribe the HTTP/HTTPS Endpoint to the Amazon SNS Topic](#SendMessageToHttp.subscribe)
+[Step 2: Subscribe the HTTP/HTTPS endpoint to the Amazon SNS topic](#SendMessageToHttp.subscribe)
 
 [Step 3: Confirm the subscription](#SendMessageToHttp.confirm)
 
@@ -48,7 +48,7 @@ To enable an Amazon SNS topic to send messages to an HTTP or HTTPS endpoint, fol
 
 [Step 6: Send messages to the HTTP/HTTPS endpoint](#SendMessageToHttp.publish)
 
-## Step 1: Make Sure Your Endpoint is Ready to Process Amazon SNS Messages<a name="SendMessageToHttp.prepare"></a>
+## Step 1: Make sure your endpoint is ready to process Amazon SNS messages<a name="SendMessageToHttp.prepare"></a>
 
 Before you subscribe your HTTP or HTTPS endpoint to a topic, you must make sure that the HTTP or HTTPS endpoint has the capability to handle the HTTP POST requests that Amazon SNS uses to send the subscription confirmation and notification messages\. Usually, this means creating and deploying a web application \(for example, a Java servlet if your endpoint host is running Linux with Apache and Tomcat\) that processes the HTTP requests from Amazon SNS\. When you subscribe an HTTP endpoint, Amazon SNS sends it a subscription confirmation request\. Your endpoint must be prepared to receive and process this request when you create the subscription because Amazon SNS sends this request at that time\. Amazon SNS will not send notifications to the endpoint until you confirm the subscription\. Once you confirm the subscription, Amazon SNS will send notifications to the endpoint when a publish action is performed on the subscribed topic\.
 
@@ -56,7 +56,7 @@ Before you subscribe your HTTP or HTTPS endpoint to a topic, you must make sure 
 
 1. Your code should read the HTTP headers of the HTTP POST requests that Amazon SNS sends to your endpoint\. Your code should look for the header field `x-amz-sns-message-type`, which tells you the type of message that Amazon SNS has sent to you\. By looking at the header, you can determine the message type without having to parse the body of the HTTP request\. There are two types that you need to handle: `SubscriptionConfirmation` and `Notification`\. The `UnsubscribeConfirmation` message is used only when the subscription is deleted from the topic\.
 
-   For details about the HTTP header, see [HTTP/HTTPS Headers](sns-message-and-json-formats.md#http-header)\. The following HTTP POST request is an example of a subscription confirmation message\.
+   For details about the HTTP header, see [HTTP/HTTPS headers](sns-message-and-json-formats.md#http-header)\. The following HTTP POST request is an example of a subscription confirmation message\.
 
    ```
    POST / HTTP/1.1
@@ -85,11 +85,11 @@ Before you subscribe your HTTP or HTTPS endpoint to a topic, you must make sure 
 
 1. Your code should parse the JSON document in the body of the HTTP POST request to read the name\-value pairs that make up the Amazon SNS message\. Use a JSON parser that handles converting the escaped representation of control characters back to their ASCII character values \(for example, converting \\n to a newline character\)\. You can use an existing JSON parser such as the [Jackson JSON Processor](https://github.com/FasterXML/jackson) or write your own\. In order to send the text in the subject and message fields as valid JSON, Amazon SNS must convert some control characters to escaped representations that can be included in the JSON document\. When you receive the JSON document in the body of the POST request sent to your endpoint, you must convert the escaped characters back to their original character values if you want an exact representation of the original subject and messages published to the topic\. This is critical if you want to verify the signature of a notification because the signature uses the message and subject in their original forms as part of the string to sign\.
 
-1. Your code should verify the authenticity of a notification, subscription confirmation, or unsubscribe confirmation message sent by Amazon SNS\. Using information contained in the Amazon SNS message, your endpoint can recreate the signature so that you can verify the contents of the message by matching your signature with the signature that Amazon SNS sent with the message\. For more information about verifying the signature of a message, see [Verifying the Signatures of Amazon SNS Messages](sns-verify-signature-of-message.md)\.
+1. Your code should verify the authenticity of a notification, subscription confirmation, or unsubscribe confirmation message sent by Amazon SNS\. Using information contained in the Amazon SNS message, your endpoint can recreate the signature so that you can verify the contents of the message by matching your signature with the signature that Amazon SNS sent with the message\. For more information about verifying the signature of a message, see [Verifying the signatures of Amazon SNS messages](sns-verify-signature-of-message.md)\.
 
 1. Based on the type specified by the header field `x-amz-sns-message-type`, your code should read the JSON document contained in the body of the HTTP request and process the message\. Here are the guidelines for handling the two primary types of messages:  
 **SubscriptionConfirmation**  
-Read the value for `SubscribeURL` and visit that URL\. To confirm the subscription and start receiving notifications at the endpoint, you must visit the `SubscribeURL`URL \(for example, by sending an HTTP GET request to the URL\)\. See the example HTTP request in the previous step to see what the `SubscribeURL` looks like\. For more information about the format of the `SubscriptionConfirmation` message, see [HTTP/HTTPS Subscription Confirmation JSON Format](sns-message-and-json-formats.md#http-subscription-confirmation-json)\. When you visit the URL, you will get back a response that looks like the following XML document\. The document returns the subscription ARN for the endpoint within the `ConfirmSubscriptionResult` element\.  
+Read the value for `SubscribeURL` and visit that URL\. To confirm the subscription and start receiving notifications at the endpoint, you must visit the `SubscribeURL`URL \(for example, by sending an HTTP GET request to the URL\)\. See the example HTTP request in the previous step to see what the `SubscribeURL` looks like\. For more information about the format of the `SubscriptionConfirmation` message, see [HTTP/HTTPS subscription confirmation JSON format](sns-message-and-json-formats.md#http-subscription-confirmation-json)\. When you visit the URL, you will get back a response that looks like the following XML document\. The document returns the subscription ARN for the endpoint within the `ConfirmSubscriptionResult` element\.  
 
    ```
    <ConfirmSubscriptionResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
@@ -104,7 +104,7 @@ Read the value for `SubscribeURL` and visit that URL\. To confirm the subscripti
 As an alternative to visiting the `SubscribeURL`, you can confirm the subscription using the [ConfirmSubscription](https://docs.aws.amazon.com/sns/latest/api/API_ConfirmSubscription.html) action with the `Token` set to its corresponding value in the `SubscriptionConfirmation` message\. If you want to allow only the topic owner and subscription owner to be able to unsubscribe the endpoint, you call the `ConfirmSubscription` action with an AWS signature\.  
 **Notification**  
 Read the values for `Subject` and `Message` to get the notification information that was published to the topic\.  
-For details about the format of the `Notification` message, see [HTTP/HTTPS Headers](sns-message-and-json-formats.md#http-header)\. The following HTTP POST request is an example of a notification message sent to the endpoint example\.com\.  
+For details about the format of the `Notification` message, see [HTTP/HTTPS headers](sns-message-and-json-formats.md#http-header)\. The following HTTP POST request is an example of a notification message sent to the endpoint example\.com\.  
 
    ```
    POST / HTTP/1.1
@@ -144,13 +144,13 @@ The message request times out after 15 seconds\. This means that, if the message
 
 1. Deploy the code that you have created to receive Amazon SNS messages\. When you subscribe the endpoint, the endpoint must be ready to receive at least the subscription confirmation message\.
 
-## Step 2: Subscribe the HTTP/HTTPS Endpoint to the Amazon SNS Topic<a name="SendMessageToHttp.subscribe"></a>
+## Step 2: Subscribe the HTTP/HTTPS endpoint to the Amazon SNS topic<a name="SendMessageToHttp.subscribe"></a>
 
 To send messages to an HTTP or HTTPS endpoint through a topic, you must subscribe the endpoint to the Amazon SNS topic\. You specify the endpoint using its URL\. To subscribe to a topic, you can use the Amazon SNS console, the [sns\-subscribe](https://docs.aws.amazon.com/cli/latest/reference/sns/subscribe.html) command, or the [Subscribe](https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html) API action\. Before you start, make sure you have the URL for the endpoint that you want to subscribe and that your endpoint is prepared to receive the confirmation and notification messages as described in Step 1\.
 
 **To subscribe an HTTP or HTTPS endpoint to a topic using the Amazon SNS console**
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics** and then choose the topic\.
 
@@ -174,7 +174,7 @@ By default, if the initial delivery of the message fails, Amazon SNS attempts up
 
 ## Step 5: Give users permissions to publish to the topic \(optional\)<a name="SendMessageToHttp.iam.permissions"></a>
 
-By default, the topic owner has permissions to publish the topic\. To enable other users or applications to publish to the topic, you should use AWS Identity and Access Management \(IAM\) to give publish permission to the topic\. For more information about giving permissions for Amazon SNS actions to IAM users, see [Using Identity\-Based Policies with Amazon SNS](sns-using-identity-based-policies.md)\.
+By default, the topic owner has permissions to publish the topic\. To enable other users or applications to publish to the topic, you should use AWS Identity and Access Management \(IAM\) to give publish permission to the topic\. For more information about giving permissions for Amazon SNS actions to IAM users, see [Using identity\-based policies with Amazon SNS](sns-using-identity-based-policies.md)\.
 
 There are two ways to control access to a topic:
 + Add a policy to an IAM user or group\. The simplest way to give users permissions to topics is to create a group and add the appropriate policy to the group and then add users to that group\. It's much easier to add and remove users from a group than to keep track of which policies you set on individual users\.
@@ -224,7 +224,7 @@ If you followed [Step 1](#SendMessageToHttp.prepare), the code that you deployed
 
 **To publish to a topic using the Amazon SNS console**
 
-1. Using the credentials of the AWS account or IAM user with permission to publish to the topic, sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/](https://console.aws.amazon.com/sns/)\.
+1. Using the credentials of the AWS account or IAM user with permission to publish to the topic, sign in to the AWS Management Console and open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics** and then choose a topic\.
 

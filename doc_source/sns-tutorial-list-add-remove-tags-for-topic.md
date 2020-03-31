@@ -1,6 +1,6 @@
-# Tutorial: Listing, Adding, and Removing Tags for an Amazon SNS Topic<a name="sns-tutorial-list-add-remove-tags-for-topic"></a>
+# Tutorial: Listing, adding, and removing tags for an Amazon SNS topic<a name="sns-tutorial-list-add-remove-tags-for-topic"></a>
 
-You can track your Amazon SNS resources \(for example, for cost allocation\) by adding, removing, and listing metadata tags for Amazon SNS topics\. The following tutorial shows how to add, update, and remove tags for a topic using the AWS Management Console and the AWS SDK for Java\. For more information, see [Amazon SNS Tags](sns-tags.md)\.
+You can track your Amazon SNS resources \(for example, for cost allocation\) by adding, removing, and listing metadata tags for Amazon SNS topics\. The following tutorial shows how to add, update, and remove tags for a topic using the AWS Management Console and the AWS SDK for Java\. For more information, see [Amazon SNS tags](sns-tags.md)\.
 
 **Topics**
 + [AWS Management Console](#add-update-remove-tags-for-topic-aws-console)
@@ -9,9 +9,9 @@ You can track your Amazon SNS resources \(for example, for cost allocation\) by 
 **Note**  
 Currently, tag\-based access control isn't available\.
 
-## To List, Add, and Remove, Metadata Tags for an Amazon SNS Topic Using the AWS Management Console<a name="add-update-remove-tags-for-topic-aws-console"></a>
+## To list, add, and remove, metadata tags for an Amazon SNS topic using the AWS Management Console<a name="add-update-remove-tags-for-topic-aws-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics**\.
 
@@ -27,7 +27,7 @@ Currently, tag\-based access control isn't available\.
 
 1. Choose **Save changes**
 
-## To List, Add, and Remove Metadata Tags for an Amazon SNS Topic using the AWS SDK for Java\.<a name="add-update-remove-tags-for-topic-aws-java"></a>
+## To list, add, and remove metadata tags for an Amazon SNS topic using the AWS SDK for Java\.<a name="add-update-remove-tags-for-topic-aws-java"></a>
 
 1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
 

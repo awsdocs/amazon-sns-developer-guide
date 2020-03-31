@@ -1,4 +1,4 @@
-# Tutorial: Deleting an Amazon SNS Subscription and Topic<a name="sns-tutorial-delete-subscription-topic"></a>
+# Tutorial: Deleting an Amazon SNS subscription and topic<a name="sns-tutorial-delete-subscription-topic"></a>
 
 When you no longer need a subscription or topic, you must first unsubscribe from the topic before you can delete the topic\.
 
@@ -9,9 +9,9 @@ The following tutorial shows how you can use the AWS Management Console, the AWS
 + [AWS SDK for Java](#delete-subscription-topic-aws-java)
 + [AWS SDK for \.NET](#delete-subscription-topic-aws-dot-net)
 
-## To Delete an Amazon SNS Subscription and Topic Using the AWS Management Console<a name="delete-subscription-topic-aws-console"></a>
+## To delete an Amazon SNS subscription and topic using the AWS Management Console<a name="delete-subscription-topic-aws-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Subscriptions**\.
 
@@ -33,7 +33,7 @@ When you delete a topic, you also delete all subscriptions to the topic\.
 
    The topic is deleted\.
 
-## To Delete an Amazon SNS Subscription and Topic Using the AWS SDK for Java<a name="delete-subscription-topic-aws-java"></a>
+## To delete an Amazon SNS subscription and topic using the AWS SDK for Java<a name="delete-subscription-topic-aws-java"></a>
 
 1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
@@ -60,7 +60,7 @@ When you delete a topic, you also delete all subscriptions to the topic\.
    DeleteTopicRequest: 1234a567-bc89-012d-3e45-6fg7h890123i
    ```
 
-## To Delete an Amazon SNS Subscription and Topic Using the AWS SDK for \.NET<a name="delete-subscription-topic-aws-dot-net"></a>
+## To delete an Amazon SNS subscription and topic using the AWS SDK for \.NET<a name="delete-subscription-topic-aws-dot-net"></a>
 
 1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 

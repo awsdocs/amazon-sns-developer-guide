@@ -1,18 +1,18 @@
-# Sending an SMS Message to Multiple Phone Numbers<a name="sms_publish-to-topic"></a>
+# Sending an SMS message to multiple phone numbers<a name="sms_publish-to-topic"></a>
 
 You can publish a single SMS message to many phone numbers at once by subscribing those phone numbers to a topic\. A topic is a communication channel to which you can add subscribers and then publish messages to all of those subscribers\. A subscriber will receive all messages published to the topic until you cancel the subscription or the subscriber opts out of receiving SMS messages from your account\.
 
 **Topics**
-+ [Sending a Message to a Topic \(Console\)](#sms_publish-to-topic_console)
-+ [Sending a Message to a Topic \(AWS SDKs\)](#sms_publish-to-topic_sdk)
++ [Sending a message to a topic \(console\)](#sms_publish-to-topic_console)
++ [Sending a message to a topic \(AWS SDKs\)](#sms_publish-to-topic_sdk)
 
-## Sending a Message to a Topic \(Console\)<a name="sms_publish-to-topic_console"></a>
+## Sending a message to a topic \(console\)<a name="sms_publish-to-topic_console"></a>
 
 **To create a topic**
 
 Complete the following steps if you don't already have a topic to which you want to send SMS messages\.
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. In the console menu, set the region selector to a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
@@ -56,13 +56,13 @@ When you publish a message to a topic, Amazon SNS attempts to deliver that messa
 
 1. For **Message**, type a message\.
 
-   For information about the size quotas for SMS messages, see [Sending an SMS Message](sms_publish-to-phone.md)\.
+   For information about the size quotas for SMS messages, see [Sending an SMS message](sms_publish-to-phone.md)\.
 
    If your topic has a display name, Amazon SNS adds it to the message, which increases the message length\. The display name length is the number of characters in the name plus two characters for the right angle bracket \(>\) and space that Amazon SNS adds\.
 
 1. Choose **Publish message**\. Amazon SNS sends the SMS message and displays a success message\.
 
-## Sending a Message to a Topic \(AWS SDKs\)<a name="sms_publish-to-topic_sdk"></a>
+## Sending a message to a topic \(AWS SDKs\)<a name="sms_publish-to-topic_sdk"></a>
 
 To send an SMS message to a topic using one of AWS SDKs, use the actions in that SDK that correspond to the following requests in the Amazon SNS API:
 
@@ -74,9 +74,9 @@ Subscribes a phone number to a topic\.
 
 `Publish`  
 Sends a message to each phone number subscribed to a topic\.   
-You can use the `MessageAttributes` parameter to set several attributes for the message \(for example, the maximum price\)\. For more information, see [Sending a Message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)\.
+You can use the `MessageAttributes` parameter to set several attributes for the message \(for example, the maximum price\)\. For more information, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)\.
 
-### Creating a Topic<a name="sms_create_topic_sdks"></a>
+### Creating a topic<a name="sms_create_topic_sdks"></a>
 
 The following examples show how to create a topic using the Amazon SNS clients that are provided by the AWS SDKs\.
 
@@ -142,7 +142,7 @@ CreateTopicRequest - 93f7fc90-f131-5ca3-ab18-b741fef918b5
 
 ------
 
-### Adding an SMS Subscription to Your Topic<a name="sms_add_subscription_sdks"></a>
+### Adding an SMS subscription to your topic<a name="sms_add_subscription_sdks"></a>
 
 The following examples show how to add an SMS subscription to a topic using the Amazon SNS clients that are provided by the AWS SDKs\.
 
@@ -224,7 +224,7 @@ SubscribeRequest - f38fe925-8093-5bd4-9c19-a7c7625de38c
 
 ------
 
-### \(Optional\) Setting Message Attributes<a name="sms_set_attributes_sdks"></a>
+### \(Optional\) Setting message attributes<a name="sms_set_attributes_sdks"></a>
 
 The following examples show how to set message attributes using the Amazon SNS clients that are provided by the AWS SDKs\.
 
@@ -247,7 +247,7 @@ smsAttributes.put("AWS.SNS.SMS.SMSType", new MessageAttributeValue()
         .withDataType("String"));
 ```
 
-For more information about message attributes, see [Sending a Message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)
+For more information about message attributes, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)
 
 When you send an SMS message, you will apply your attributes to the `PublishRequest` object\.
 
@@ -266,13 +266,13 @@ pubRequest.MessageAttributes["AWS.SNS.SMS.SMSType"] =
     new MessageAttributeValue { StringValue = "Promotional", DataType = "String" };
 ```
 
-For more information about message attributes, see [Sending a Message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)
+For more information about message attributes, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)
 
 When you send an SMS message, you will apply your attributes to the `PublishRequest` object\.
 
 ------
 
-### Publishing a Message to Your Topic<a name="sms_publish_to_topic_sdks"></a>
+### Publishing a message to your topic<a name="sms_publish_to_topic_sdks"></a>
 
 The following examples show how to publish a message to a topic using the Amazon SNS clients that are provided by the AWS SDKs\.
 

@@ -1,4 +1,4 @@
-# Amazon SNS Message Delivery Status<a name="sns-topic-attributes"></a>
+# Amazon SNS message delivery status<a name="sns-topic-attributes"></a>
 
 Amazon SNS provides support to log the delivery status of notification messages sent to topics with the following Amazon SNS endpoints: 
 + Application
@@ -14,12 +14,12 @@ Amazon SNS provides support to log the delivery status of notification messages 
  To configure topic attributes for message delivery status, you can use the AWS Management Console, AWS software development kits \(SDKs\), or query API\. 
 
 **Topics**
-+ [Configuring Delivery Status Logging Using the AWS Management Console](#topics-attrib)
-+ [Configuring Message Delivery Status Attributes for Topics Subscribed to Amazon SNS Endpoints Using the AWS SDKs](#msg-status-sdk)
++ [Configuring delivery status logging using the AWS Management Console](#topics-attrib)
++ [Configuring message delivery status attributes for topics subscribed to Amazon SNS endpoints using the AWS SDKs](#msg-status-sdk)
 
-## Configuring Delivery Status Logging Using the AWS Management Console<a name="topics-attrib"></a>
+## Configuring delivery status logging using the AWS Management Console<a name="topics-attrib"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics**\.
 
@@ -41,11 +41,11 @@ Amazon SNS provides support to log the delivery status of notification messages 
 
    You can now view and parse the CloudWatch Logs containing the message delivery status\. For more information about using CloudWatch, see the [CloudWatch Documentation](https://aws.amazon.com/documentation/cloudwatch)\.
 
-## Configuring Message Delivery Status Attributes for Topics Subscribed to Amazon SNS Endpoints Using the AWS SDKs<a name="msg-status-sdk"></a>
+## Configuring message delivery status attributes for topics subscribed to Amazon SNS endpoints using the AWS SDKs<a name="msg-status-sdk"></a>
 
 The [AWS SDKs](https://aws.amazon.com/tools/) provide APIs in several languages for using message delivery status attributes with Amazon SNS\. 
 
-### Topic Attributes<a name="topic-attributes"></a>
+### Topic attributes<a name="topic-attributes"></a>
 
 You can use the following topic attribute name values for message delivery status:
 
@@ -73,7 +73,7 @@ In addition to being able to configure topic attributes for message delivery sta
 
  The `<ENDPOINT>SuccessFeedbackRoleArn` and `<ENDPOINT>FailureFeedbackRoleArn` attributes are used to give Amazon SNS write access to use CloudWatch Logs on your behalf\. The `<ENDPOINT>SuccessFeedbackSampleRate` attribute is for specifying the sample rate percentage \(0\-100\) of successfully delivered messages\. After you configure the `<ENDPOINT>FailureFeedbackRoleArn` attribute, then all failed message deliveries generate CloudWatch Logs\. 
 
-### AWS SDK examples to Configure Topic Attributes<a name="topic-attributes-sdks"></a>
+### AWS SDK examples to configure topic attributes<a name="topic-attributes-sdks"></a>
 
 The following examples show how to configure topic attributes using the Amazon SNS clients that are provided by the AWS SDKs\.
 

@@ -1,23 +1,23 @@
-# Using the Amazon SNS Time To Live \(TTL\) Message Attribute for Mobile Push Notifications<a name="sns-ttl"></a>
+# Using the Amazon SNS time to live \(TTL\) message attribute for mobile push notifications<a name="sns-ttl"></a>
 
 Amazon Simple Notification Service \(Amazon SNS\) provides support for setting a *Time To Live \(TTL\)* message attribute for mobile push notifications messages\. This is in addition to the existing capability of setting TTL within the Amazon SNS message body for the mobile push notification services that support this, such as Amazon Device Messaging \(ADM\) and Firebase Cloud Messaging \(FCM\)\.
 
 The TTL message attribute is used to specify expiration metadata about a message\. This allows you to specify the amount of time that the push notification service, such as Apple Push Notification Service \(APNs\) or FCM, has to deliver the message to the endpoint\. If for some reason \(such as the mobile device has been turned off\) the message is not deliverable within the specified TTL, then the message will be dropped and no further attempts to deliver it will be made\. To specify TTL within message attributes, you can use the AWS Management Console, AWS software development kits \(SDKs\), or query API\. 
 
 **Topics**
-+ [TTL Message Attributes for Push Notification Services](#sns-ttl-msg-attrib)
-+ [Precedence Order for Determining TTL](#sns-ttl-precedence)
-+ [Specifying TTL Using the AWS Management Console](#sns-ttl-console)
++ [TTL message attributes for push notification services](#sns-ttl-msg-attrib)
++ [Precedence order for determining TTL](#sns-ttl-precedence)
++ [Specifying TTL using the AWS Management Console](#sns-ttl-console)
 + [Specifying TTL with the AWS SDKs](#sns-ttl-sdk)
 
-## TTL Message Attributes for Push Notification Services<a name="sns-ttl-msg-attrib"></a>
+## TTL message attributes for push notification services<a name="sns-ttl-msg-attrib"></a>
 
 The following is a list of the TTL message attributes for push notification services that you can use to set when using the AWS SDKs or query API:
 
 
 ****  
 
-| Push Notification Service | TTL Message Attribute | 
+| Push notification service | TTL message attribute | 
 | --- | --- | 
 | Amazon Device Messaging \(ADM\) | AWS\.SNS\.MOBILE\.ADM\.TTL | 
 | Apple Push Notification Service \(APNs\) | AWS\.SNS\.MOBILE\.APNS\.TTL | 
@@ -32,7 +32,7 @@ Each of the push notification services handle TTL differently\. Amazon SNS provi
 
 If you specify a TTL for a push notification message, then the TTL value must be a positive integer, unless the value of `0` has a specific meaning for the push notification service—such as with APNs and FCM\. If the TTL value is set to `0` and the push notification service does not have a specific meaning for `0`, then Amazon SNS will drop the message\. For more information about the TTL parameter set to `0` when using APNs, see *Table A\-3 Item identifiers for remote notifications* in the [Binary Provider API](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/BinaryProviderAPI.html) documentation\.
 
-## Precedence Order for Determining TTL<a name="sns-ttl-precedence"></a>
+## Precedence order for determining TTL<a name="sns-ttl-precedence"></a>
 
 The precedence that Amazon SNS uses to determine the TTL for a push notification message is based on the following order, where the lowest number has the highest priority: 
 
@@ -46,9 +46,9 @@ The precedence that Amazon SNS uses to determine the TTL for a push notification
 
 If you set different TTL values \(one in message attributes and another in the message body\) for the same message, then Amazon SNS will modify the TTL in the message body to match the TTL specified in the message attribute\.
 
-## Specifying TTL Using the AWS Management Console<a name="sns-ttl-console"></a>
+## Specifying TTL using the AWS Management Console<a name="sns-ttl-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Mobile**, **Push notifications**\.
 
@@ -83,4 +83,4 @@ publishRequest.setTargetArn("arn:aws:sns:us-east-2:999999999999:endpoint/BAIDU/T
 PublishResult publishResult = snsClient.publish(publishRequest);
 ```
 
-For more information about using message attributes with Amazon SNS, see [Amazon SNS Message Attributes](sns-message-attributes.md)\. 
+For more information about using message attributes with Amazon SNS, see [Amazon SNS message attributes](sns-message-attributes.md)\. 

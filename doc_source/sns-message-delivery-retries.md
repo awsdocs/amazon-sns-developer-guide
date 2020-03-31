@@ -1,8 +1,8 @@
-# Message Delivery Retries<a name="sns-message-delivery-retries"></a>
+# Message delivery retries<a name="sns-message-delivery-retries"></a>
 
-Amazon SNS defines a *delivery policy* for each delivery protocol\. The delivery policy defines how Amazon SNS retries the delivery of messages when server\-side errors occur \(when the system that hosts the subscribed endpoint becomes unavailable\)\. When the delivery policy is exhausted, Amazon SNS stops retrying the delivery and discards the message—unless a dead\-letter queue is attached to the subscription\. For more information, see [Amazon SNS Dead\-Letter Queues](sns-dead-letter-queues.md)\.
+Amazon SNS defines a *delivery policy* for each delivery protocol\. The delivery policy defines how Amazon SNS retries the delivery of messages when server\-side errors occur \(when the system that hosts the subscribed endpoint becomes unavailable\)\. When the delivery policy is exhausted, Amazon SNS stops retrying the delivery and discards the message—unless a dead\-letter queue is attached to the subscription\. For more information, see [Amazon SNS dead\-letter queues](sns-dead-letter-queues.md)\.
 
-## Delivery Protocols and Policies<a name="delivery-policies-for-protocols"></a>
+## Delivery protocols and policies<a name="delivery-policies-for-protocols"></a>
 
 **Note**  
 Except for HTTP/S, you can't change Amazon SNS\-defined delivery policies\. Other delivery protocols don't support custom delivery policies\.
@@ -10,7 +10,7 @@ Amazon SNS applies jittering to delivery retries\. For more information, see the
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html)
 
-## Delivery Policy Stages<a name="delivery-policy-stages"></a>
+## Delivery policy stages<a name="delivery-policy-stages"></a>
 
 The following diagram shows the phases of a delivery policy\.
 
@@ -26,7 +26,7 @@ Each delivery policy is comprised of four phases\.
 
 1. **Post\-Backoff Phase** – This phase follows the backoff phase\. It specifies a number of retries and the amount of delay between them\. This is the final phase\.
 
-## Creating a Delivery Policy<a name="creating-delivery-policy"></a>
+## Creating a delivery policy<a name="creating-delivery-policy"></a>
 
 You can use a delivery policy and its four phases to define how Amazon SNS retries the delivery of messages to HTTP/S endpoints\. Amazon SNS lets you override the default retry policy for HTTP endpoints when you might, for example, want to customize the policy based your HTTP server's capacity\.
 
@@ -71,7 +71,7 @@ The delivery policy is composed of a retry policy and a throttle policy\. In tot
 
 | Policy  | Description | Constraint | 
 | --- | --- | --- | 
-| minDelayTarget | The minimum delay for a retry\.**Unit:** Seconds | 0 to maximum delay**Default:** 20 | 
+| minDelayTarget | The minimum delay for a retry\.**Unit:** Seconds | 1 to maximum delay**Default:** 20 | 
 | maxDelayTarget | The maximum delay for a retry\.**Unit:** Seconds | Minimum delay to 3,600**Default:** 20 | 
 | numRetries | The total number of retries, including immediate, pre\-backoff, backoff, and post\-backoff retries\. | 0 to 100**Default:** 3 | 
 | numNoDelayRetries | The number of retries to be done immediately, with no delay between them\. | 0 or greater**Default:** 0 | 

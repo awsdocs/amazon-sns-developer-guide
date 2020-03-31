@@ -1,6 +1,6 @@
-# Step 4: To Simulate an Issue and Replay Events for Recovery<a name="simulate-issue-replay-events-for-recovery"></a>
+# Step 4: To simulate an issue and replay events for recovery<a name="simulate-issue-replay-events-for-recovery"></a>
 
-## Step 1: To Enable the Simulated Issue and Send a Second API Request<a name="enable-simulated-issue-send-second-api-request"></a>
+## Step 1: To enable the simulated issue and send a second API request<a name="enable-simulated-issue-send-second-api-request"></a>
 
 1. Sign in to the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\.
 
@@ -62,7 +62,7 @@
    { }
    ```
 
-## Step 2: To Verify Simulated Data Corruption<a name="verify-simulated-data-corruption"></a>
+## Step 2: To verify simulated data corruption<a name="verify-simulated-data-corruption"></a>
 
 1. Sign in to the [Amazon DynamoDB console](https://console.aws.amazon.com/dynamodb/)\.
 
@@ -74,7 +74,7 @@
 
    The stored attributes are displayed, some marked as **CORRUPTED\!**
 
-## Step 3: To Disable the Simulated Issue<a name="disable-simulated-issue"></a>
+## Step 3: To disable the simulated issue<a name="disable-simulated-issue"></a>
 
 1. Sign in to the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\.
 
@@ -84,7 +84,7 @@
 
 1. On the **fork\-example\-ecommerce\-*my\-app*\-CheckoutFunction\-*ABCDEF*\.\.\.** page, in the **Environment variables** section, set the **BUG\_ENABLED** variable to **false** and then choose **Save**\.
 
-## Step 4: To Enable Replay to Recover from the Issue<a name="enable-replay-recover-from-simulated-issue"></a>
+## Step 4: To enable replay to recover from the issue<a name="enable-replay-recover-from-simulated-issue"></a>
 
 1. In the AWS Lambda console, on the navigation panel, choose **Functions**\.
 

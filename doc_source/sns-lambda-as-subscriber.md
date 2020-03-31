@@ -1,8 +1,8 @@
-# Using Amazon SNS for System\-to\-System Messaging with an AWS Lambda Function as a Subscriber<a name="sns-lambda-as-subscriber"></a>
+# Using Amazon SNS for system\-to\-system messaging with an AWS Lambda function as a subscriber<a name="sns-lambda-as-subscriber"></a>
 
 Amazon SNS and AWS Lambda are integrated so you can invoke Lambda functions with Amazon SNS notifications\. When a message is published to an SNS topic that has a Lambda function subscribed to it, the Lambda function is invoked with the payload of the published message\. The Lambda function receives the message payload as an input parameter and can manipulate the information in the message, publish the message to other SNS topics, or send the message to other AWS services\. 
 
-In addition, Amazon SNS also supports message delivery status attributes for message notifications sent to Lambda endpoints\. For more information, see [Amazon SNS Message Delivery Status](sns-topic-attributes.md)\. 
+In addition, Amazon SNS also supports message delivery status attributes for message notifications sent to Lambda endpoints\. For more information, see [Amazon SNS message delivery status](sns-topic-attributes.md)\. 
 
 ## Prerequisites<a name="lambda-prereq"></a>
 
@@ -12,9 +12,9 @@ To invoke Lambda functions using Amazon SNS notifications, you need the followin
 
 For information about creating a Lambda function, see [Getting Started with AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)\. For information about creating an Amazon SNS topic, see [Create a Topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html)\.
 
-## Configuring Amazon SNS with Lambda Endpoints using the AWS Management Console<a name="lambda-console"></a>
+## Configuring Amazon SNS with Lambda endpoints using the AWS Management Console<a name="lambda-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics**\.
 

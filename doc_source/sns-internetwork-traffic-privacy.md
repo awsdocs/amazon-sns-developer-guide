@@ -1,4 +1,4 @@
-# Internetwork Traffic Privacy<a name="sns-internetwork-traffic-privacy"></a>
+# Internetwork traffic privacy<a name="sns-internetwork-traffic-privacy"></a>
 
 An Amazon Virtual Private Cloud \(Amazon VPC\) endpoint for Amazon SNS is a logical entity within a VPC that allows connectivity only to Amazon SNS\. The VPC routes requests to Amazon SNS and routes responses back to the VPC\. The following sections provide information about working with VPC endpoints and creating VPC endpoint policies\.
 
@@ -12,16 +12,16 @@ The information in this section is for users of Amazon VPC\. For more informatio
 VPC endpoints don't allow you to subscribe an Amazon SNS topic to a private IP address\.
 
 **Topics**
-+ [Creating an Amazon VPC Endpoint for Amazon SNS](#sns-vpc-endpoint)
-+ [Creating an Amazon VPC Endpoint Policy for Amazon SNS](#sns-vpc-endpoint-policy)
++ [Creating an Amazon VPC endpoint for Amazon SNS](#sns-vpc-endpoint)
++ [Creating an Amazon VPC endpoint policy for Amazon SNS](#sns-vpc-endpoint-policy)
 
-## Creating an Amazon VPC Endpoint for Amazon SNS<a name="sns-vpc-endpoint"></a>
+## Creating an Amazon VPC endpoint for Amazon SNS<a name="sns-vpc-endpoint"></a>
 
 To publish messages to your Amazon SNS topics from an Amazon VPC, create an interface VPC endpoint\. Then, you can publish messages to your topics while keeping the traffic within the network that you manage with the VPC\.
 
-Use the following information to create the endpoint and test the connection between your VPC and Amazon SNS\. Or, for a walkthrough that helps you start from scratch, see [Tutorial: Publishing Amazon SNS Messages Privately from Amazon VPC](sns-vpc-tutorial.md)\.
+Use the following information to create the endpoint and test the connection between your VPC and Amazon SNS\. Or, for a walkthrough that helps you start from scratch, see [Tutorial: Publishing Amazon SNS messages privately from Amazon VPC](sns-vpc-tutorial.md)\.
 
-### Creating the Endpoint<a name="sns-vpc-endpoint-create"></a>
+### Creating the endpoint<a name="sns-vpc-endpoint-create"></a>
 
 You can create an Amazon SNS endpoint in your VPC using the AWS Management Console, the AWS CLI, an AWS SDK, the Amazon SNS API, or AWS CloudFormation\.
 
@@ -32,7 +32,7 @@ When you create an endpoint, specify Amazon SNS as the service that you want you
 
 For information about creating and configuring an endpoint using AWS CloudFormation, see the [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html) resource in the *AWS CloudFormation User Guide*\.
 
-### Testing the Connection Between Your VPC and Amazon SNS<a name="sns-vpc-publish"></a>
+### Testing the connection between your VPC and Amazon SNS<a name="sns-vpc-publish"></a>
 
 After you create an endpoint for Amazon SNS, you can publish messages from your VPC to your Amazon SNS topics\. To test this connection, do the following:
 
@@ -56,7 +56,7 @@ After you create an endpoint for Amazon SNS, you can publish messages from your 
 
    Where:
    + *aws\-region* is the AWS Region that the topic is located in\.
-   + *sns\-topic\-arn* is the Amazon Resource Name \(ARN\) of the topic\. To get the ARN from the [Amazon SNS console](https://console.aws.amazon.com/sns): Choose **Topics**, find your topic, and find the value in the **ARN** column\.
+   + *sns\-topic\-arn* is the Amazon Resource Name \(ARN\) of the topic\. To get the ARN from the [Amazon SNS console](https://console.aws.amazon.com/sns/home): Choose **Topics**, find your topic, and find the value in the **ARN** column\.
 
    If the message is successfully received by Amazon SNS, the terminal prints a message ID, like the following:
 
@@ -66,7 +66,7 @@ After you create an endpoint for Amazon SNS, you can publish messages from your 
    }
    ```
 
-## Creating an Amazon VPC Endpoint Policy for Amazon SNS<a name="sns-vpc-endpoint-policy"></a>
+## Creating an Amazon VPC endpoint policy for Amazon SNS<a name="sns-vpc-endpoint-policy"></a>
 
 You can create a policy for Amazon VPC endpoints for Amazon SNS in which you specify the following:
 + The principal that can perform actions\.

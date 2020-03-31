@@ -1,8 +1,8 @@
-# Tutorial: To Deploy and Subscribe the Event Replay Pipeline<a name="deploy-event-replay-pipeline"></a>
+# Tutorial: To deploy and subscribe the event replay pipeline<a name="deploy-event-replay-pipeline"></a>
 
 This tutorial shows how to deploy the [Event Replay Pipeline](sns-fork-pipeline-as-subscriber.md#sns-fork-event-replay-pipeline) and subscribe it to an Amazon SNS topic\. This process automatically turns the AWS SAM template associated with the pipeline into an AWS CloudFormation stack, and then deploys the stack into your AWS account\. This process also creates and configures the set of resources that comprise the Event Replay Pipeline, including an Amazon SQS queue and a Lambda function\.
 
-For more information about filtering events, see [Amazon SNS Subscription Filter Policies](sns-subscription-filter-policies.md) in this guide\.
+For more information about filtering events, see [Amazon SNS subscription filter policies](sns-subscription-filter-policies.md) in this guide\.
 
 1. Sign in to the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\.
 

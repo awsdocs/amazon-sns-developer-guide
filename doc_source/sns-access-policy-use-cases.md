@@ -1,17 +1,17 @@
-# Example Cases for Amazon SNS Access Control<a name="sns-access-policy-use-cases"></a>
+# Example cases for Amazon SNS access control<a name="sns-access-policy-use-cases"></a>
 
 **Topics**
-+ [Grant AWS Account Access to a Topic](#sns-grant-aws-account-access-to-topic)
-+ [Limit Subscriptions to HTTPS](#sns-limit-subscriptions-to-https)
-+ [Publish Messages to an Amazon SQS Queue](#sns-publish-messages-to-sqs-queue)
-+ [Allow Any AWS Resource to Publish to a Topic](#sns-allow-any-aws-resource-to-publish-to-topic)
-+ [Allow an Amazon S3 Bucket to Publish to a Topic](#sns-allow-s3-bucket-to-publish-to-topic)
-+ [Allow Any CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
-+ [Restrict Publication to an Amazon SNS Topic Only from a Specific VPC Endpoint](#sns-restrict-publication-only-from-specified-vpc-endpoint)
++ [Grant AWS account access to a topic](#sns-grant-aws-account-access-to-topic)
++ [Limit subscriptions to HTTPS](#sns-limit-subscriptions-to-https)
++ [Publish messages to an Amazon SQS queue](#sns-publish-messages-to-sqs-queue)
++ [Allow any AWS resource to publish to a topic](#sns-allow-any-aws-resource-to-publish-to-topic)
++ [Allow an Amazon S3 bucket to publish to a topic](#sns-allow-s3-bucket-to-publish-to-topic)
++ [Allow any CloudWatch alarm in an AWS account to publish to an Amazon SNS topic in a different AWS account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
++ [Restrict publication to an Amazon SNS topic only from a specific VPC endpoint](#sns-restrict-publication-only-from-specified-vpc-endpoint)
 
 This section grants a few examples of typical use cases for access control\.
 
-## Grant AWS Account Access to a Topic<a name="sns-grant-aws-account-access-to-topic"></a>
+## Grant AWS account access to a topic<a name="sns-grant-aws-account-access-to-topic"></a>
 
 Let's say you have a topic in the Amazon SNS system\. In the simplest case, you want to allow one or more AWS accounts access to a specific topic action \(for example, Publish\)\.
 
@@ -35,7 +35,7 @@ For example, if you called `AddPermission` on the topic arn:aws:sns:us\-east\-2:
 
 Once this statement is added, the user with AWS account 1111\-2222\-3333 can publish messages to the topic\.
 
-## Limit Subscriptions to HTTPS<a name="sns-limit-subscriptions-to-https"></a>
+## Limit subscriptions to HTTPS<a name="sns-limit-subscriptions-to-https"></a>
 
 In the following example, you limit the notification delivery protocol to HTTPS\.
 
@@ -62,7 +62,7 @@ The following example of a full policy grants the AWS account ID 1111\-2222\-333
 }
 ```
 
-## Publish Messages to an Amazon SQS Queue<a name="sns-publish-messages-to-sqs-queue"></a>
+## Publish messages to an Amazon SQS queue<a name="sns-publish-messages-to-sqs-queue"></a>
 
 In this use case, you want to publish messages from your topic to your Amazon SQS queue\. Like Amazon SNS, Amazon SQS uses Amazon's access control policy language\. To allow Amazon SNS to send messages, you'll need to use the Amazon SQS action `SetQueueAttributes` to set a policy on the queue\.
 
@@ -92,7 +92,7 @@ This policy uses the `aws:SourceArn` condition to restrict access to the queue b
 
 The preceding policy is an example of the Amazon SQS policy you could write and add to a specific queue\. It would grant access to Amazon SNS and other AWS services\. Amazon SNS grants a default policy to all newly created topics\. The default policy grants access to your topic to all other AWS services\. This default policy uses an `aws:SourceArn` condition to ensure that AWS services access your topic only on behalf of AWS resources you own\.
 
-## Allow Any AWS Resource to Publish to a Topic<a name="sns-allow-any-aws-resource-to-publish-to-topic"></a>
+## Allow any AWS resource to publish to a topic<a name="sns-allow-any-aws-resource-to-publish-to-topic"></a>
 
 In this case, you want to configure a topic's policy so that another AWS account's resource \(for example, Amazon S3 bucket, Amazon EC2 instance, or Amazon SQS queue\) can publish to your topic\. This example assumes that you write your own policy and then use the `SetTopicAttributes` action to set the topic's `Policy` attribute to your new policy\.
 
@@ -117,7 +117,7 @@ If you publish messages directly \(rather than having an AWS resource publish me
 }
 ```
 
-## Allow an Amazon S3 Bucket to Publish to a Topic<a name="sns-allow-s3-bucket-to-publish-to-topic"></a>
+## Allow an Amazon S3 bucket to publish to a topic<a name="sns-allow-s3-bucket-to-publish-to-topic"></a>
 
 In this case, you want to configure a topic's policy so that another AWS account's Amazon S3 bucket can publish to your topic\. For more information about publishing notifications from Amazon S3, go to [Setting Up Notifications of Bucket Events](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)\. 
 
@@ -144,7 +144,7 @@ The following example statement uses the `ArnLike` condition to make sure the AR
 }
 ```
 
-## Allow Any CloudWatch Alarm in an AWS Account to Publish to an Amazon SNS Topic in a Different AWS Account<a name="sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account"></a>
+## Allow any CloudWatch alarm in an AWS account to publish to an Amazon SNS topic in a different AWS account<a name="sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account"></a>
 
 In this case, any CloudWatch alarms in account `111122223333` are allowed to publish to an Amazon SNS topic in account `444455556666`\.
 
@@ -165,7 +165,7 @@ In this case, any CloudWatch alarms in account `111122223333` are allowed to pub
  }]
 ```
 
-## Restrict Publication to an Amazon SNS Topic Only from a Specific VPC Endpoint<a name="sns-restrict-publication-only-from-specified-vpc-endpoint"></a>
+## Restrict publication to an Amazon SNS topic only from a specific VPC endpoint<a name="sns-restrict-publication-only-from-specified-vpc-endpoint"></a>
 
 In this case, the topic in account 444455556666 is allowed to publish only from the VPC endpoint with the ID `vpc-1ab2c34d`\.
 

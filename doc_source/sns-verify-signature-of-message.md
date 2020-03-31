@@ -1,4 +1,4 @@
-# Verifying the Signatures of Amazon SNS Messages<a name="sns-verify-signature-of-message"></a>
+# Verifying the signatures of Amazon SNS messages<a name="sns-verify-signature-of-message"></a>
 
 You should verify the authenticity of a notification, subscription confirmation, or unsubscribe confirmation message sent by Amazon SNS\. Using information contained in the Amazon SNS message, your endpoint can recreate the string to sign and the signature so that you can verify the contents of the message by matching the signature you recreated from the message contents with the signature that Amazon SNS sent with the message\.
 
@@ -8,11 +8,11 @@ To help prevent spoofing attacks, you should do the following when verifying mes
 + Verify the certificate was received from Amazon SNS\.
 + When possible, use one of the supported AWS SDKs for Amazon SNS to validate and verify messages\. For example, with the AWS SDK for PHP you would use the `isValid` method from the `MessageValidator` class\.
 
-For example code for a Java servlet that handles Amazon SNS messages, see [Example Code for an Amazon SNS Endpoint Java Servlet](sns-example-code-endpoint-java-servlet.md)\.
+For example code for a Java servlet that handles Amazon SNS messages, see [Example code for an Amazon SNS endpoint Java servlet](sns-example-code-endpoint-java-servlet.md)\.
 
 **To verify the signature of an Amazon SNS message when using HTTP query\-based requests**
 
-1. Extract the name\-value pairs from the JSON document in the body of the HTTP POST request that Amazon SNS sent to your endpoint\. You'll be using the values of some of the name\-value pairs to create the string to sign\. When you are verifying the signature of an Amazon SNS message, it is critical that you convert the escaped control characters to their original character representations in the `Message` and `Subject` values\. These values must be in their original forms when you use them as part of the string to sign\. For information about how to parse the JSON document, see [Step 1: Make Sure Your Endpoint is Ready to Process Amazon SNS Messages](sns-http-https-endpoint-as-subscriber.md#SendMessageToHttp.prepare)\. 
+1. Extract the name\-value pairs from the JSON document in the body of the HTTP POST request that Amazon SNS sent to your endpoint\. You'll be using the values of some of the name\-value pairs to create the string to sign\. When you are verifying the signature of an Amazon SNS message, it is critical that you convert the escaped control characters to their original character representations in the `Message` and `Subject` values\. These values must be in their original forms when you use them as part of the string to sign\. For information about how to parse the JSON document, see [Step 1: Make sure your endpoint is ready to process Amazon SNS messages](sns-http-https-endpoint-as-subscriber.md#SendMessageToHttp.prepare)\. 
 
    The `SignatureVersion` tells you the signature version\. From the signature version, you can determine the requirements for how to generate the signature\. For Amazon SNS notifications, Amazon SNS currently supports signature version 1\. This section provides the steps for creating a signature using signature version 1\.
 

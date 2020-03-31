@@ -1,17 +1,17 @@
-# Application Event Notifications<a name="application-event-notifications"></a>
+# Application event notifications<a name="application-event-notifications"></a>
 
 Amazon SNS provides support to trigger notifications when certain application events occur\. You can then take some programmatic action on that event\. Your application must include support for a push notification service such as Apple Push Notification Service \(APNs\), Firebase Cloud Messaging \(FCM\), and Windows Push Notification Services \(WNS\)\. You set application event notifications using the Amazon SNS console, AWS CLI, or the AWS SDKs\.
 
 **Topics**
-+ [Available Application Events](#application-event-notifications-events)
-+ [Sending Mobile Push Notifications](#application-event-notifications-howto-set)
++ [Available application events](#application-event-notifications-events)
++ [Sending mobile push notifications](#application-event-notifications-howto-set)
 
-## Available Application Events<a name="application-event-notifications-events"></a>
+## Available application events<a name="application-event-notifications-events"></a>
 
 Application event notifications track when individual platform endpoints are created, deleted, and updated, as well as delivery failures\. The following are the attribute names for the application events\.
 
 
-| Attribute Name | Notification Trigger | 
+| Attribute name | Notification trigger | 
 | --- | --- | 
 | EventEndpointCreated | A new platform endpoint is added to your application\. | 
 | EventEndpointDeleted | Any platform endpoint associated with your application is deleted\. | 
@@ -20,7 +20,7 @@ Application event notifications track when individual platform endpoints are cre
 
 You can associate any attribute with an application which can then receive these event notifications\. 
 
-## Sending Mobile Push Notifications<a name="application-event-notifications-howto-set"></a>
+## Sending mobile push notifications<a name="application-event-notifications-howto-set"></a>
 
 To send application event notifications, you specify a topic to receive the notifications for each type of event\. As Amazon SNS sends the notifications, the topic can route them to endpoints that will take programmatic action\.
 
@@ -33,7 +33,7 @@ You can send application event notifications using the Amazon SNS console, the A
 
 ### AWS Management Console<a name="application-event-notifications-howto-set-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Mobile**, **Push notifications**\.
 

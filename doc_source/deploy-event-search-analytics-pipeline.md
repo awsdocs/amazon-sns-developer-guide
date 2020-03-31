@@ -1,4 +1,4 @@
-# Tutorial: To Deploy and Subscribe the Event Search and Analytics Pipeline<a name="deploy-event-search-analytics-pipeline"></a>
+# Tutorial: To deploy and subscribe the event search and analytics pipeline<a name="deploy-event-search-analytics-pipeline"></a>
 
 This tutorial shows how to deploy the [Event Search and Analytics Pipeline](sns-fork-pipeline-as-subscriber.md#sns-fork-event-search-and-analytics-pipeline) and subscribe it to an Amazon SNS topic\. This process automatically turns the AWS SAM template associated with the pipeline into an AWS CloudFormation stack, and then deploys the stack into your AWS account\. This process also creates and configures the set of resources that comprise the Event Search and Analytics Pipeline, including the following:
 + Amazon SQS queue
@@ -11,7 +11,7 @@ For more information about configuring a stream with an index as a destination, 
 
 For more information about transforming events and about configuring event buffering, event compression, and event encryption, see [Creating an Amazon Kinesis Data Firehose Delivery Stream](https://docs.aws.amazon.com/firehose/latest/dev/basic-create.html) in the *Amazon Kinesis Data Firehose Developer Guide*\.
 
-For more information about filtering events, see [Amazon SNS Subscription Filter Policies](sns-subscription-filter-policies.md) in this guide\.
+For more information about filtering events, see [Amazon SNS subscription filter policies](sns-subscription-filter-policies.md) in this guide\.
 
 1. Sign in to the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\.
 

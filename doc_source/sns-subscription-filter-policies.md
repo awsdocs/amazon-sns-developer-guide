@@ -1,6 +1,6 @@
-# Amazon SNS Subscription Filter Policies<a name="sns-subscription-filter-policies"></a>
+# Amazon SNS subscription filter policies<a name="sns-subscription-filter-policies"></a>
 
-A subscription filter policy allows you to specify attribute names and assign a list of values to each attribute name\. For more information, see [Amazon SNS Message Filtering](sns-message-filtering.md)\.
+A subscription filter policy allows you to specify attribute names and assign a list of values to each attribute name\. For more information, see [Amazon SNS message filtering](sns-message-filtering.md)\.
 
 When Amazon SNS evaluates message attributes against the subscription filter policy, it ignores message attributes that aren't specified in the policy\.
 
@@ -11,15 +11,15 @@ A subscription accepts a message under the following conditions:
   + the message attributes
 
 **Topics**
-+ [Example Message with Attributes](#example-message-with-attributes)
-+ [Example Filter Policies](#example-filter-policies)
-+ [Filter Policy Constraints](#subscription-filter-policy-constraints)
++ [Example message with attributes](#example-message-with-attributes)
++ [Example filter policies](#example-filter-policies)
++ [Filter policy constraints](#subscription-filter-policy-constraints)
 + [Attribute String Value Matching (Whitelisting, Blacklisting, and Prefix Matching)](#string-value-matching)
 + [Attribute Numeric Value Matching (Whitelisting, Blacklisting, and Range Matching)](#numeric-value-matching)
-+ [Attribute Key Matching](#attribute-key-matching)
-+ [AND/OR Logic](#and-or-logic)
++ [Attribute key matching](#attribute-key-matching)
++ [AND/OR logic](#and-or-logic)
 
-## Example Message with Attributes<a name="example-message-with-attributes"></a>
+## Example message with attributes<a name="example-message-with-attributes"></a>
 
 The following example shows a message payload sent by an Amazon SNS topic that publishes customer transactions\. The `MessageAttributes` field includes attributes that describe the transaction:
 + Customer's interests
@@ -60,13 +60,13 @@ Because this message includes the `MessageAttributes` field, any topic subscript
 }
 ```
 
-For information about applying attributes to a message, see [Amazon SNS Message Attributes](sns-message-attributes.md)\.
+For information about applying attributes to a message, see [Amazon SNS message attributes](sns-message-attributes.md)\.
 
-## Example Filter Policies<a name="example-filter-policies"></a>
+## Example filter policies<a name="example-filter-policies"></a>
 
 The following filter policies accept or reject messages based on their attribute names and values\.
 
-### A Policy that Accepts Messages<a name="policy-accepts-messages"></a>
+### A policy that accepts messages<a name="policy-accepts-messages"></a>
 
 The attributes in the following subscription filter policy match the attributes assigned to the example message\.
 
@@ -85,7 +85,7 @@ If any single attribute in this policy doesn't match an attribute assigned to th
 }
 ```
 
-### A Policy that Rejects Messages<a name="policy-rejects-messages"></a>
+### A policy that rejects messages<a name="policy-rejects-messages"></a>
 
 The following subscription filter policy has multiple mismatches between its attributes and the attributes assigned to the example message\. Because the `encrypted` attribute name isn't present in the message attributes, this policy attribute causes the message to be rejected regardless of the value assigned to it\.
 
@@ -103,7 +103,7 @@ If any mismatches occur, the policy rejects the message\.
 }
 ```
 
-## Filter Policy Constraints<a name="subscription-filter-policy-constraints"></a>
+## Filter policy constraints<a name="subscription-filter-policy-constraints"></a>
 
 When you create a filter policy, keep the following constraints in mind:
 + For the `String` data type, the attribute comparison between policy and message is case\-sensitive\.
@@ -139,13 +139,13 @@ When you create a filter policy, keep the following constraints in mind:
 + The maximum size of a policy is 256 KB\.
 + By default, you can have up to 200 filter policies per AWS account, per region\. To increase this quota, submit a [quota increase request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\.
 
-## Attribute String Value Matching<a name="string-value-matching"></a>
+## Attribute string value matching<a name="string-value-matching"></a>
 
 You can use string values to match message attributes and filter messages\. String values are enclosed in double quotation marks in the JSON policy\.
 
 You can use the following string operations to match message attributes\.
 
-### Exact Matching \(Whitelisting\)<a name="string-exact-matching-whitelisting"></a>
+### Exact matching \(whitelisting\)<a name="string-exact-matching-whitelisting"></a>
 
 Exact matching occurs when a policy attribute value matches one or more message attribute values\.
 
@@ -171,7 +171,7 @@ However, it doesn't match the following message attribute:
 "customer_interests": {"Type": "String", "Value": "baseball"}
 ```
 
-### Anything\-But Matching \(Blacklisting\)<a name="string-anything-but-matching-blacklisting"></a>
+### Anything\-but matching \(blacklisting\)<a name="string-anything-but-matching-blacklisting"></a>
 
 When a policy attribute value includes the keyword `anything-but`, it matches any message attribute that *doesn't* include any of the policy attribute values\.
 
@@ -203,7 +203,7 @@ However, it doesn't match the following message attribute:
 "customer_interests": {"Type": "String", "Value": "rugby"}
 ```
 
-### Prefix Matching<a name="string-prefix-matching"></a>
+### Prefix matching<a name="string-prefix-matching"></a>
 
 When a policy attribute includes the keyword `prefix`, it matches any message attribute value that begins with the specified characters\.
 
@@ -229,11 +229,11 @@ However, it doesn't match the following message attribute:
 "customer_interests": {"Type": "String", "Value": "rugby"}
 ```
 
-## Attribute Numeric Value Matching<a name="numeric-value-matching"></a>
+## Attribute numeric value matching<a name="numeric-value-matching"></a>
 
 You can use numeric values to match message attributes and filter messages\. Numeric values aren't enclosed in double quotation marks in the JSON policy\. You can use the following numeric operations to match message attributes\.
 
-### Exact Matching \(Whitelisting\)<a name="numeric-exact-matching-whitelisting"></a>
+### Exact matching \(whitelisting\)<a name="numeric-exact-matching-whitelisting"></a>
 
 When a policy attribute value includes the keyword `numeric` and the operator `=`, it matches any message attribute that has the same name and an equal numeric value\.
 
@@ -253,7 +253,7 @@ It matches either of the following message attributes:
 "price_usd": {"Type": "Number", "Value": 3.015e2}
 ```
 
-### Anything\-But Matching \(Blacklisting\)<a name="numeric-anything-but-matching-blacklisting"></a>
+### Anything\-but matching \(blacklisting\)<a name="numeric-anything-but-matching-blacklisting"></a>
 
 When a policy attribute value includes the keyword `anything-but`, it matches any message attribute that *doesn't* include any of the policy attribute values\.
 
@@ -285,7 +285,7 @@ However, it doesn't match the following message attribute:
 "price": {"Type": "Number", "Value": 100}
 ```
 
-### Value Range Matching<a name="numeric-value-range-matching"></a>
+### Value range matching<a name="numeric-value-range-matching"></a>
 
 In addition to the operator `=`, a numeric policy attribute can include the following operators: `<`, `<=`, `>`, and `>=`\.
 
@@ -305,7 +305,7 @@ Consider another message attribute:
 
 It matches any message attributes with positive numbers up to and including 150\.
 
-## Attribute Key Matching<a name="attribute-key-matching"></a>
+## Attribute key matching<a name="attribute-key-matching"></a>
 
 You can use the `exists` operator to check whether an incoming message has an attribute whose key is listed in the filter policy\.
 
@@ -315,7 +315,7 @@ Consider the following policy attribute:
 "store": [{"exists": true}]
 ```
 
-It matches any message with at least the `store` attribute key, such as the following:
+It matches any message that contains the `store` attribute key, such as the following:
 
 ```
 "store": "fans"
@@ -328,11 +328,13 @@ However, it doesn't match any message *without* the `store` attribute key, such 
 "customer_interests": ["baseball", "basketball"]
 ```
 
-## AND/OR Logic<a name="and-or-logic"></a>
+Note: You cannot use the `exists` operator to match messages in which an attribute does not exist\. Filtering will NOT match any messages if you set `[{"exists": false}]`\. 
+
+## AND/OR logic<a name="and-or-logic"></a>
 
 You can use operations that include AND/OR logic to match message attributes\.
 
-### AND Logic<a name="and-logic"></a>
+### AND logic<a name="and-logic"></a>
 
 You can apply AND logic using multiple attribute names\.
 
@@ -347,7 +349,7 @@ Consider the following policy:
 
 It matches any message attributes with the value of `customer_interests` set to `rugby` *and* the value of `price_usd` set to a number larger than 100\.
 
-### OR Logic<a name="or-logic"></a>
+### OR logic<a name="or-logic"></a>
 
 You can apply OR logic by assigning multiple values to an attribute name\.
 

@@ -1,20 +1,20 @@
-# Using Identity\-Based Policies with Amazon SNS<a name="sns-using-identity-based-policies"></a>
+# Using identity\-based policies with Amazon SNS<a name="sns-using-identity-based-policies"></a>
 
 **Topics**
-+ [IAM and Amazon SNS Policies Together](#iam-and-sns-policies)
-+ [Amazon SNS Resource ARN Format](#sns-arn-format)
-+ [Amazon SNS API Actions](#sns-api-actions)
-+ [Amazon SNS Policy Keys](#sns-policy-keys)
-+ [Example Policies for Amazon SNS](#sns-example-policies)
++ [IAM and Amazon SNS policies together](#iam-and-sns-policies)
++ [Amazon SNS resource ARN format](#sns-arn-format)
++ [Amazon SNS API actions](#sns-api-actions)
++ [Amazon SNS policy keys](#sns-policy-keys)
++ [Example policies for Amazon SNS](#sns-example-policies)
 
 Amazon Simple Notification Service integrates with AWS Identity and Access Management \(IAM\) so that you can specify which Amazon SNS actions a user in your AWS account can perform with Amazon SNS resources\. You can specify a particular topic in the policy\. For example, you could use variables when creating an IAM policy that grants certain users in your organization permission to use the `Publish` action with specific topics in your AWS account\. For more information, see [Policy Variables](https://docs.aws.amazon.com/IAM/latest/UserGuide/PolicyVariables.html) in the *Using IAM* guide\.
 
 **Important**  
 Using Amazon SNS with IAM doesn't change how you use Amazon SNS\. There are no changes to Amazon SNS actions, and no new Amazon SNS actions related to users and access control\.
 
-For examples of policies that cover Amazon SNS actions and resources, see [Example Policies for Amazon SNS](#sns-example-policies)\.
+For examples of policies that cover Amazon SNS actions and resources, see [Example policies for Amazon SNS](#sns-example-policies)\.
 
-## IAM and Amazon SNS Policies Together<a name="iam-and-sns-policies"></a>
+## IAM and Amazon SNS policies together<a name="iam-and-sns-policies"></a>
 
 You use an IAM policy to restrict your users' access to Amazon SNS actions and topics\. An IAM policy can restrict access only to users within your AWS account, not to other AWS accounts\.
 
@@ -38,13 +38,13 @@ In this example, both an IAM policy and an Amazon SNS policy apply to Bob\. The 
 If Bob were to send a request to subscribe to any topic in the AWS account, the IAM policy would allow the action\. If Bob were to send a request to publish a message to topic\_xyz, the Amazon SNS policy would allow the action\.
 
 **Example 2**  
-In this example, we build on example 1 \(where Bob has two policies that apply to him\)\. Let's say that Bob publishes messages to topic\_xyz that he shouldn't have, so you want to entirely remove his ability to publish to topics\. The easiest thing to do is to add an IAM policy that denies him access to the `Publish` action on all topics\. This third policy overrides the Amazon SNS policy that originally gave him permission to publish to topic\_xyz, because an explicit deny always overrides an allow \(for more information about policy evaluation logic, see [Evaluation Logic](sns-access-policy-language-evaluation-logic.md)\)\. The following diagram illustrates the concept\.  
+In this example, we build on example 1 \(where Bob has two policies that apply to him\)\. Let's say that Bob publishes messages to topic\_xyz that he shouldn't have, so you want to entirely remove his ability to publish to topics\. The easiest thing to do is to add an IAM policy that denies him access to the `Publish` action on all topics\. This third policy overrides the Amazon SNS policy that originally gave him permission to publish to topic\_xyz, because an explicit deny always overrides an allow \(for more information about policy evaluation logic, see [Evaluation logic](sns-access-policy-language-evaluation-logic.md)\)\. The following diagram illustrates the concept\.  
 
 ![\[The "Deny" policy overrides the Amazon SNS policy\]](http://docs.aws.amazon.com/sns/latest/dg/images/SNS_DenyOverride.png)
 
-For examples of policies that cover Amazon SNS actions and resources, see [Example Policies for Amazon SNS](#sns-example-policies)\. For more information about writing Amazon SNS policies, go to the [technical documentation for Amazon SNS](http://aws.amazon.com/documentation/sns/)\.
+For examples of policies that cover Amazon SNS actions and resources, see [Example policies for Amazon SNS](#sns-example-policies)\. For more information about writing Amazon SNS policies, go to the [technical documentation for Amazon SNS](http://aws.amazon.com/documentation/sns/)\.
 
-## Amazon SNS Resource ARN Format<a name="sns-arn-format"></a>
+## Amazon SNS resource ARN format<a name="sns-arn-format"></a>
 
 For Amazon SNS, topics are the only resource type you can specify in a policy\. The following is the Amazon Resource Name \(ARN\) format for topics\.
 
@@ -76,23 +76,23 @@ arn:aws:sns:*:123456789012:bob_*
 
 As a convenience to you, when you create a topic, Amazon SNS returns the topic's ARN in the response\.
 
-## Amazon SNS API Actions<a name="sns-api-actions"></a>
+## Amazon SNS API actions<a name="sns-api-actions"></a>
 
 In an IAM policy, you can specify any actions that Amazon SNS offers\. However, the `ConfirmSubscription` and `Unsubscribe` actions do not require authentication, which means that even if you specify those actions in a policy, IAM won't restrict users' access to those actions\.
 
 Each action you specify in a policy must be prefixed with the lowercase string `sns:`\. To specify all Amazon SNS actions, for example, you would use `sns:*`\. For a list of the actions, go to the [Amazon Simple Notification Service API Reference](https://docs.aws.amazon.com/sns/latest/api/)\. 
 
-## Amazon SNS Policy Keys<a name="sns-policy-keys"></a>
+## Amazon SNS policy keys<a name="sns-policy-keys"></a>
 
 Amazon SNS implements the following AWS\-wide policy keys, plus some service\-specific keys\.
 
 For a list of condition keys supported by each AWS service, see [Actions, Resources, and Condition Keys for AWS Services](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html) in the *IAM User Guide*\. For a list of condition keys that can be used in multiple AWS services, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html) in the *IAM User Guide*\.
 
 Amazon SNS uses the following service\-specific keys\. Use these keys in policies that restrict access to `Subscribe` requests\.
-+ **sns:Endpoint—**The URL, email address, or ARN from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](#sns-example-policies)\) to restrict access to specific endpoints \(for example, \*@yourcompany\.com\)\.
-+ **sns:Protocol—**The `protocol` value from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example Policies for Amazon SNS](#sns-example-policies)\) to restrict publication to specific delivery protocols \(for example, https\)\.
++ **sns:endpoint—**The URL, email address, or ARN from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example policies for Amazon SNS](#sns-example-policies)\) to restrict access to specific endpoints \(for example, \*@yourcompany\.com\)\.
++ **sns:protocol—**The `protocol` value from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example policies for Amazon SNS](#sns-example-policies)\) to restrict publication to specific delivery protocols \(for example, https\)\.
 
-## Example Policies for Amazon SNS<a name="sns-example-policies"></a>
+## Example policies for Amazon SNS<a name="sns-example-policies"></a>
 
 This section shows several simple policies for controlling user access to Amazon SNS\.
 

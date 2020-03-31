@@ -1,4 +1,4 @@
-# Amazon SNS Large Payload and Raw Message Delivery<a name="sns-large-payload-raw-message-delivery"></a>
+# Amazon SNS large payload and raw message delivery<a name="sns-large-payload-raw-message-delivery"></a>
 
 Amazon SNS and Amazon SQS let you send and receive large payloads \(from 64 to 256 kilobytes in size\)\.
 
@@ -11,9 +11,9 @@ To avoid having Amazon SQS and HTTP/S endpoints process the JSON formatting of m
 
 To enable raw message delivery using an AWS SDK, you must use the `SetSubscriptionAttribute` API action and set the value of the `RawMessageDelivery` attribute to `true`\.
 
-## Enabling Raw Message Delivery Using the AWS Management Console<a name="raw-message-console"></a>
+## Enabling raw message delivery using the AWS Management Console<a name="raw-message-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics**\.
 

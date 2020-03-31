@@ -1,4 +1,4 @@
-# Reserving a Dedicated Short Code for SMS Messaging<a name="sqs-sms-short-codes"></a>
+# Reserving a dedicated short code for SMS messaging<a name="sqs-sms-short-codes"></a>
 
 To send SMS messages using a persistent short code, you can reserve a dedicated short code that is assigned to your account and available exclusively to you\.
 

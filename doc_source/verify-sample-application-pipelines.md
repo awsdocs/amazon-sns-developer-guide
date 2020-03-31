@@ -1,6 +1,6 @@
-# Step 3: To Verify the Execution of the Sample Application and Its Pipelines<a name="verify-sample-application-pipelines"></a>
+# Step 3: To verify the execution of the sample application and its pipelines<a name="verify-sample-application-pipelines"></a>
 
-## Step 1: To Verify the Execution of the Sample Checkout Pipeline<a name="verify-execution-checkout-pipeline"></a>
+## Step 1: To verify the execution of the sample checkout pipeline<a name="verify-execution-checkout-pipeline"></a>
 
 1. Sign in to the [Amazon DynamoDB console](https://console.aws.amazon.com/dynamodb/)\.
 
@@ -12,7 +12,7 @@
 
    The stored attributes are displayed\.
 
-## Step 2: To Verify the Execution of the Event Storage and Backup Pipeline<a name="verify-execution-event-storage-backup-pipeline"></a>
+## Step 2: To verify the execution of the event storage and backup pipeline<a name="verify-execution-event-storage-backup-pipeline"></a>
 
 1. Sign in to the [Amazon S3 console](https://console.aws.amazon.com/s3/)\.
 
@@ -28,7 +28,7 @@
 
    To verify that the stored JSON payload doesn't contain any credit card information, decompress the file\.
 
-## Step 3: To Verify the Execution of the Event Search and Analytics Pipeline<a name="verify-execution-event-search-analytics-pipeline"></a>
+## Step 3: To verify the execution of the event search and analytics pipeline<a name="verify-execution-event-search-analytics-pipeline"></a>
 
 1. Sign in to the [Amazon Elasticsearch Service console](https://console.aws.amazon.com/es/)\.
 
@@ -38,7 +38,7 @@
 
    To verify that the event is indexed because it refers to an order whose value is higher than USD $100, on the **serverl\-analyt\-*abcdefgh1ijk*** page, choose **Indices**, **checkout\_events**\.
 
-## Step 4: To Verify the Execution of the Event Replay Pipeline<a name="verify-execution-event-replay-pipeline"></a>
+## Step 4: To verify the execution of the event replay pipeline<a name="verify-execution-event-replay-pipeline"></a>
 
 1. Sign in to the [Amazon SQS console](https://console.aws.amazon.com/sqs/)\.
 

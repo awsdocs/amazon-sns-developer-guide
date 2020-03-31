@@ -1,4 +1,4 @@
-# What is Amazon Simple Notification Service?<a name="welcome"></a>
+# What is Amazon SNS?<a name="welcome"></a>
 
 Amazon Simple Notification Service \(Amazon SNS\) is a web service that coordinates and manages the delivery or sending of messages to subscribing endpoints or clients\. In Amazon SNS, there are two types of clients—publishers and subscribers—also referred to as producers and consumers\. Publishers communicate asynchronously with subscribers by producing and sending a message to a topic, which is a logical access point and communication channel\. Subscribers \(that is, web servers, email addresses, Amazon SQS queues, AWS Lambda functions\) consume or receive the message or notification over one of the supported protocols \(that is, Amazon SQS, HTTP/S, email, SMS, Lambda\) when they are subscribed to the topic\. 
 

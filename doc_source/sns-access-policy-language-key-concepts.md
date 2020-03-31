@@ -1,4 +1,4 @@
-# Key Concepts<a name="sns-access-policy-language-key-concepts"></a>
+# Key concepts<a name="sns-access-policy-language-key-concepts"></a>
 
 The following sections describe the concepts you need to understand to use the access policy language\. They're presented in a logical order, with the first terms you need to know at the top of the list\.
 
@@ -10,13 +10,13 @@ The following sections describe the concepts you need to understand to use the a
 + [Principal](#principal)
 + [Action](#action)
 + [Resource](#resource)
-+ [Conditions and Keys](#conditions)
++ [Conditions and keys](#conditions)
 + [Requester](#requester)
 + [Evaluation](#evaluation)
 + [Effect](#effect)
-+ [Default Deny](#Define_SoftDeny)
++ [Default deny](#Define_SoftDeny)
 + [Allow](#allow)
-+ [Explicit Deny](#Define_HardDeny)
++ [Explicit deny](#Define_HardDeny)
 
 ## Permission<a name="permissions"></a>
 
@@ -48,7 +48,7 @@ The *action* is the activity the principal has permission to perform\. The actio
 
 The *resource* is the object the principal is requesting access to\. The resource is C in the statement "A has permission to do B to C where D applies\."
 
-## Conditions and Keys<a name="conditions"></a>
+## Conditions and keys<a name="conditions"></a>
 
 The *conditions* are any restrictions or details about the permission\. The condition is D in the statement "A has permission to do B to C where D applies\." The part of the policy that specifies the conditions can be the most detailed and complex of all the parts\. Typical conditions are related to:
 + Date and time \(for example, the request must arrive before a specific day\)
@@ -56,7 +56,7 @@ The *conditions* are any restrictions or details about the permission\. The cond
 
 A *key* is the specific characteristic that is the basis for access restriction\. For example, the date and time of request\.
 
-You use both *conditions* and *keys* together to express the restriction\. The easiest way to understand how you actually implement a restriction is with an example: If you want to restrict access to before May 30, 2010, you use the condition called `DateLessThan`\. You use the key called `aws:CurrentTime` and set it to the value `2010-05-30T00:00:00Z`\. AWS defines the conditions and keys you can use\. The AWS service itself \(for example, Amazon SQS or Amazon SNS\) might also define service\-specific keys\. For more information, see [Amazon SNS API Permissions: Actions and Resources Reference](sns-access-policy-language-api-permissions-reference.md)\.
+You use both *conditions* and *keys* together to express the restriction\. The easiest way to understand how you actually implement a restriction is with an example: If you want to restrict access to before May 30, 2010, you use the condition called `DateLessThan`\. You use the key called `aws:CurrentTime` and set it to the value `2010-05-30T00:00:00Z`\. AWS defines the conditions and keys you can use\. The AWS service itself \(for example, Amazon SQS or Amazon SNS\) might also define service\-specific keys\. For more information, see [Amazon SNS API permissions: Actions and resources reference](sns-access-policy-language-api-permissions-reference.md)\.
 
 ## Requester<a name="requester"></a>
 
@@ -64,17 +64,17 @@ The *requester* is the person who sends a request to an AWS service and asks for
 
 ## Evaluation<a name="evaluation"></a>
 
-*Evaluation* is the process the AWS service uses to determine if an incoming request should be denied or allowed based on the applicable policies\. For information about the evaluation logic, see [Evaluation Logic](sns-access-policy-language-evaluation-logic.md)\.
+*Evaluation* is the process the AWS service uses to determine if an incoming request should be denied or allowed based on the applicable policies\. For information about the evaluation logic, see [Evaluation logic](sns-access-policy-language-evaluation-logic.md)\.
 
 ## Effect<a name="effect"></a>
 
 The *effect* is the result that you want a policy statement to return at evaluation time\. You specify this value when you write the statements in a policy, and the possible values are *deny* and *allow*\.
 
- For example, you could write a policy that has a statement that *denies* all requests that come from Antarctica \(effect=deny grantn that the request uses an IP address allocated to Antarctica\)\. Alternately, you could write a policy that has a statement that *allows* all requests that *don't* come from Antarctica \(effect=allow, grantn that the request doesn't come from Antarctica\)\. Although the two statements sound like they do the same thing, in the access policy language logic, they are different\. For more information, see [Evaluation Logic](sns-access-policy-language-evaluation-logic.md)\.
+ For example, you could write a policy that has a statement that *denies* all requests that come from Antarctica \(effect=deny grantn that the request uses an IP address allocated to Antarctica\)\. Alternately, you could write a policy that has a statement that *allows* all requests that *don't* come from Antarctica \(effect=allow, grantn that the request doesn't come from Antarctica\)\. Although the two statements sound like they do the same thing, in the access policy language logic, they are different\. For more information, see [Evaluation logic](sns-access-policy-language-evaluation-logic.md)\.
 
-Although there are only two possible values you can specify for the effect \(allow or deny\), there can be three different results at policy evaluation time: *default deny*, *allow*, or *explicit deny*\. For more information, see the following concepts and [Evaluation Logic](sns-access-policy-language-evaluation-logic.md)\.
+Although there are only two possible values you can specify for the effect \(allow or deny\), there can be three different results at policy evaluation time: *default deny*, *allow*, or *explicit deny*\. For more information, see the following concepts and [Evaluation logic](sns-access-policy-language-evaluation-logic.md)\.
 
-## Default Deny<a name="Define_SoftDeny"></a>
+## Default deny<a name="Define_SoftDeny"></a>
 
 A *default deny* is the default result from a policy in the absence of an allow or explicit deny\. 
 
@@ -82,6 +82,6 @@ A *default deny* is the default result from a policy in the absence of an allow 
 
 An *allow* results from a statement that has effect=allow, assuming any stated conditions are met\. Example: Allow requests if they are received before 1:00 p\.m\. on April 30, 2010\. An allow overrides all default denies, but never an explicit deny\.
 
-## Explicit Deny<a name="Define_HardDeny"></a>
+## Explicit deny<a name="Define_HardDeny"></a>
 
 An *explicit deny* results from a statement that has effect=deny, assuming any stated conditions are met\. Example: Deny all requests if they are from Antarctica\. Any request that comes from Antarctica will always be denied no matter what any other policies might allow\.

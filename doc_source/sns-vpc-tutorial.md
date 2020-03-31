@@ -1,4 +1,4 @@
-# Tutorial: Publishing Amazon SNS Messages Privately from Amazon VPC<a name="sns-vpc-tutorial"></a>
+# Tutorial: Publishing Amazon SNS messages privately from Amazon VPC<a name="sns-vpc-tutorial"></a>
 
 In this tutorial, you learn how to publish to an Amazon SNS topic while keeping the messages secure in a private network\. You publish a message from an Amazon EC2 instance that's hosted in Amazon Virtual Private Cloud \(Amazon VPC\)\. The message stays within the AWS network without traveling the public internet\. By publishing messages privately from a VPC, you can improve the security of the traffic between your applications and Amazon SNS\. This security is important when you publish personally identifiable information \(PII\) about your customers, or when your application is subject to market regulations\. For example, publishing privately is helpful if you have a healthcare system that must comply with the Health Insurance Portability and Accountability Act \(HIPAA\), or a financial system that must comply with the Payment Card Industry Data Security Standard \(PCI DSS\)\.
 
@@ -18,21 +18,21 @@ This network consists of a VPC that contains an Amazon EC2 instance\. The instan
 This tutorial takes about 20 minutes to complete\.
 
 **Topics**
-+ [Before You Begin](#sns-vpc-tutorial-prereqs)
-+ [Step 1: Create a Key Pair](#sns-vpc-tutorial-keypair)
-+ [Step 2: Create Resources](#sns-vpc-tutorial-resources)
-+ [Step 3: Check the Internet Connection for Your Instance](#sns-vpc-tutorial-connection)
-+ [Step 4: Create an Endpoint](#sns-vpc-tutorial-endpoint)
-+ [Step 5: Publish a Message](#sns-vpc-tutorial-publish)
++ [Before you begin](#sns-vpc-tutorial-prereqs)
++ [Step 1: Create a key pair](#sns-vpc-tutorial-keypair)
++ [Step 2: Create resources](#sns-vpc-tutorial-resources)
++ [Step 3: Check the internet connection for your instance](#sns-vpc-tutorial-connection)
++ [Step 4: Create an endpoint](#sns-vpc-tutorial-endpoint)
++ [Step 5: Publish a message](#sns-vpc-tutorial-publish)
 + [Step 6: Verify](#sns-vpc-tutorial-verify)
-+ [Step 7: Clean Up](#sns-vpc-tutorial-delete)
-+ [Related Resources](#sns-vpc-tutorial-resources-related)
++ [Step 7: Clean up](#sns-vpc-tutorial-delete)
++ [Related resources](#sns-vpc-tutorial-resources-related)
 
-## Before You Begin<a name="sns-vpc-tutorial-prereqs"></a>
+## Before you begin<a name="sns-vpc-tutorial-prereqs"></a>
 
 Before you start this tutorial, you need an Amazon Web Services \(AWS\) account\. When you sign up, your account is automatically signed up for all services in AWS, including Amazon SNS and Amazon VPC\. If you haven't created an account already, go to [https://aws.amazon.com/](https://aws.amazon.com/), and then choose **Create a Free Account**\.
 
-## Step 1: Create an Amazon EC2 Key Pair<a name="sns-vpc-tutorial-keypair"></a>
+## Step 1: Create an Amazon EC2 key pair<a name="sns-vpc-tutorial-keypair"></a>
 
 A *key pair* is used to log in to an Amazon EC2 instance\. It consists of a public key that's used to encrypt your login information, and a private key that's used to decrypt it\. When you create a key pair, you download a copy of the private key\. Later in this tutorial, you use the key pair to log in to an Amazon EC2 instance\. To log in, you specify the name of the key pair, and you provide the private key\.
 
@@ -63,7 +63,7 @@ A *key pair* is used to log in to an Amazon EC2 instance\. It consists of a publ
       $ chmod 400 VPCE-Tutorial-KeyPair.pem
       ```
 
-## Step 2: Create the AWS Resources<a name="sns-vpc-tutorial-resources"></a>
+## Step 2: Create the AWS resources<a name="sns-vpc-tutorial-resources"></a>
 
 To set up the infrastructure that supports this tutorial, you use an AWS CloudFormation *template*\. A template is a file that acts as a blueprint for building AWS resources, such as Amazon EC2 instances and Amazon SNS topics\. The template for this tutorial is provided on GitHub for you to download\. 
 
@@ -111,7 +111,7 @@ The stack for this tutorial includes the following resources:
 **Tip**  
 Choose the **Refresh** button to see the latest stack status\.
 
-## Step 3: Confirm That Your Amazon EC2 Instance Lacks Internet Access<a name="sns-vpc-tutorial-connection"></a>
+## Step 3: Confirm that your Amazon EC2 instance lacks internet access<a name="sns-vpc-tutorial-connection"></a>
 
 The Amazon EC2 instance that was launched in your VPC in the previous step lacks internet access\. It disallows outbound traffic, and it's unable to publish messages to Amazon SNS\. Verify this by logging in to the instance\. Then, attempt to connect to a public endpoint, and attempt to message Amazon SNS\.
 
@@ -145,7 +145,7 @@ At this point in the tutorial, the publish attempt fails\. In a later step, afte
 
 **To verify that the instance lacks connectivity to Amazon SNS**
 
-1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/](https://console.aws.amazon.com/sns)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. In the navigation menu on the left, choose **Topics**\.
 
@@ -159,7 +159,7 @@ At this point in the tutorial, the publish attempt fails\. In a later step, afte
 
    Because the publish attempt fails, you can cancel at any time\.
 
-## Step 4: Create an Amazon VPC Endpoint for Amazon SNS<a name="sns-vpc-tutorial-endpoint"></a>
+## Step 4: Create an Amazon VPC endpoint for Amazon SNS<a name="sns-vpc-tutorial-endpoint"></a>
 
 To connect the VPC to Amazon SNS, you define an interface VPC endpoint\. After you add the endpoint, you can log in to the Amazon EC2 instance in your VPC, and from there you can use the Amazon SNS API\. You can publish messages to the topic, and the messages are published privately\. They stay within the AWS network, and they don't travel the public internet\.
 
@@ -199,7 +199,7 @@ The instance still lacks access to other AWS services and endpoints on the inter
    The Amazon VPC console opens the **Endpoints** page\. The new endpoint has a status of **pending**\. In a few minutes, after the creation process completes, the status changes to **available**\.  
 ![\[The VPC endpoint with a status of available.\]](http://docs.aws.amazon.com/sns/latest/dg/images/vpce-tutorial-create-endpoint-status-available.png)
 
-## Step 5: Publish a Message to Your Amazon SNS Topic<a name="sns-vpc-tutorial-publish"></a>
+## Step 5: Publish a message to your Amazon SNS topic<a name="sns-vpc-tutorial-publish"></a>
 
 Now that your VPC includes an endpoint for Amazon SNS, you can log in to the Amazon EC2 instance and publish messages to the topic\.
 
@@ -221,7 +221,7 @@ Now that your VPC includes an endpoint for Amazon SNS, you can log in to the Ama
    }
    ```
 
-## Step 6: Verify Your Message Deliveries<a name="sns-vpc-tutorial-verify"></a>
+## Step 6: Verify your message deliveries<a name="sns-vpc-tutorial-verify"></a>
 
 When the Amazon SNS topic receives a message, it fans out the message by sending it to the two subscribing Lambda functions\. When these functions receive the message, they log the event to CloudWatch logs\. To verify that your message delivery succeeded, check that the functions were invoked, and check that the CloudWatch logs were updated\.
 
@@ -257,7 +257,7 @@ When the Amazon SNS topic receives a message, it fans out the message by sending
 
 Congratulations\! By adding an endpoint for Amazon SNS to a VPC, you were able to publish a message to a topic from within the network that's managed by the VPC\. The message was published privately without being exposed to the public internet\.
 
-## Step 7: Clean Up<a name="sns-vpc-tutorial-delete"></a>
+## Step 7: Clean up<a name="sns-vpc-tutorial-delete"></a>
 
 Unless you want to retain the resources that you created for this tutorial, you can delete them now\. By deleting AWS resources that you're no longer using, you prevent unnecessary charges to your AWS account\. 
 
@@ -289,7 +289,7 @@ First, delete your VPC endpoint using the Amazon VPC console\. Then, delete the 
 
    The stack status changes to **DELETE\_IN\_PROGRESS**\. When the deletion completes, the stack is removed from the page\.
 
-## Related Resources<a name="sns-vpc-tutorial-resources-related"></a>
+## Related resources<a name="sns-vpc-tutorial-resources-related"></a>
 
 If you want to dive more deeply into the concepts introduced in this tutorial, see the following resources\.
 + [AWS Security Blog: Securing messages published to Amazon SNS with AWS PrivateLink ](http://aws.amazon.com/blogs/security/securing-messages-published-to-amazon-sns-with-aws-privatelink/)

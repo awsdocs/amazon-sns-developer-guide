@@ -1,6 +1,6 @@
-# Tutorial: Publishing a Message with Attributes to an Amazon SNS Topic<a name="sns-tutorial-publish-message-with-attributes"></a>
+# Tutorial: Publishing a message with attributes to an Amazon SNS topic<a name="sns-tutorial-publish-message-with-attributes"></a>
 
-After you [create a topic](sns-tutorial-create-topic.md) and [subscribe an endpoint to it](sns-tutorial-create-subscribe-endpoint-to-topic.md), you can *publish* messages to a topic with message attributes, which let you provide structure metadata items about the message\. For more information, see [Amazon SNS Message Attributes](sns-message-attributes.md)\.
+After you [create a topic](sns-tutorial-create-topic.md) and [subscribe an endpoint to it](sns-tutorial-create-subscribe-endpoint-to-topic.md), you can *publish* messages to a topic with message attributes, which let you provide structure metadata items about the message\. For more information, see [Amazon SNS message attributes](sns-message-attributes.md)\.
 
 The following tutorial shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to publish a message to a topic\.
 
@@ -9,11 +9,11 @@ The following tutorial shows how you can use the AWS Management Console, the AWS
 + [AWS SDK for Java](#publish-message-with-attributes-aws-java)
 + [AWS SDK for \.NET](#publish-message-with-attributes-aws-dot-net)
 
-## To Publish a Message with Attributes to an Amazon SNS Topic Using the AWS Management Console<a name="publish-message-with-attributes-aws-console"></a>
+## To publish a message with attributes to an Amazon SNS topic using the AWS Management Console<a name="publish-message-with-attributes-aws-console"></a>
 
-For detailed instructions on publishing a message with attributes to an Amazon SNS topic using the AWS Management Console, see [To Publish a Message to an Amazon SNS Topic Using the AWS Management Console](sns-tutorial-publish-message-to-topic.md#publish-message-to-topic-aws-console)\.
+For detailed instructions on publishing a message with attributes to an Amazon SNS topic using the AWS Management Console, see [To publish a message to an Amazon SNS topic using the AWS Management Console](sns-tutorial-publish-message-to-topic.md#publish-message-to-topic-aws-console)\.
 
-## To Publish a Message with Attributes to an Amazon SNS Topic Using the AWS SDK for Java<a name="publish-message-with-attributes-aws-java"></a>
+## To publish a message with attributes to an Amazon SNS topic using the AWS SDK for Java<a name="publish-message-with-attributes-aws-java"></a>
 
 1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
@@ -132,7 +132,7 @@ For detailed instructions on publishing a message with attributes to an Amazon S
    MessageId: 1234a567-bc89-012d-3e45-6fg7h890123i
    ```
 
-## To Publish a Message with Attributes to an Amazon SNS Topic Using the AWS SDK for \.NET<a name="publish-message-with-attributes-aws-dot-net"></a>
+## To publish a message with attributes to an Amazon SNS topic using the AWS SDK for \.NET<a name="publish-message-with-attributes-aws-dot-net"></a>
 
 1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 

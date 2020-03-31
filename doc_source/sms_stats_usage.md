@@ -1,17 +1,16 @@
-# Viewing Daily SMS Usage Reports<a name="sms_stats_usage"></a>
+# Viewing daily SMS usage reports<a name="sms_stats_usage"></a>
 
 You can monitor your SMS deliveries by subscribing to daily usage reports from Amazon SNS\. For each day that you send at least one SMS message, Amazon SNS delivers a usage report as a CSV file to the specified Amazon S3 bucket\. It takes 24 hours for the SMS usage report to be available in the S3 bucket\. 
 
 **Topics**
-+ [Daily Usage Report Information](#daily_usage_info)
-+ [Subscribing to Daily Usage Reports](#subscribe-to-daily-usage-reports)
++ [Daily usage report information](#daily_usage_info)
++ [Subscribing to daily usage reports](#subscribe-to-daily-usage-reports)
 
-## Daily Usage Report Information<a name="daily_usage_info"></a>
+## Daily usage report information<a name="daily_usage_info"></a>
 
 The usage report includes the following information for each SMS message that you send from your account\.
 
-**Note**  
- The report does not include messages that are sent to recipients who have opted out\.
+ Note that the report does not include messages that are sent to recipients who have opted out\.
 + Time of publication for message \(in UTC\)
 + Message ID
 + Destination phone number
@@ -21,7 +20,10 @@ The usage report includes the following information for each SMS message that yo
 + Part number \(a message is split into multiple parts if it is too long for a single message\)
 + Total number of parts
 
-## Subscribing to Daily Usage Reports<a name="subscribe-to-daily-usage-reports"></a>
+**Note**  
+If Amazon SNS did not receive the part number, we set it's value to zero\.
+
+## Subscribing to daily usage reports<a name="subscribe-to-daily-usage-reports"></a>
 
 To subscribe to daily usage reports, you must create an Amazon S3 bucket with the appropriate permissions\.
 
@@ -39,7 +41,7 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 1. In the **Permissions** section, choose **Add bucket policy**\.
 
-1. In the **Bucket Policy Editor** window, provide a policy that allows the Amazon SNS service principal to write to your bucket\. For an example, see [Example Bucket Policy](#example_bucket_policy)\.
+1. In the **Bucket Policy Editor** window, provide a policy that allows the Amazon SNS service principal to write to your bucket\. For an example, see [Example bucket policy](#example_bucket_policy)\.
 
    If you use the example policy, remember to replace *my\-s3\-bucket* with the name of your bucket\.
 
@@ -57,7 +59,7 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 1. Choose **Save changes**\.
 
-### Example Bucket Policy<a name="example_bucket_policy"></a>
+### Example bucket policy<a name="example_bucket_policy"></a>
 
 The following policy allows the Amazon SNS service principal to perform the `s3:PutObject` and `s3:GetBucketLocation` actions\. You can use this example when you create an Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS\.
 
@@ -83,7 +85,7 @@ The following policy allows the Amazon SNS service principal to perform the `s3:
 }
 ```
 
-### Example Daily Usage Report<a name="example_report"></a>
+### Example daily usage report<a name="example_report"></a>
 
 After you subscribe to daily usage reports, each day, Amazon SNS puts a CSV file with usage data in the following location:
 
@@ -97,7 +99,7 @@ The following shows an example report:
 
 ```
 PublishTimeUTC,MessageId,DestinationPhoneNumber,MessageType,DeliveryStatus,PriceInUSD,PartNumber,TotalParts
-2016-05-10T03:00:29.476Z,96a298ac-1458-4825-a7eb-7330e0720b72,1XXX5550100,Promotional,Message has been accepted by phone carrier,0.90084,1,1
-2016-05-10T03:00:29.561Z,1e29d394-d7f4-4dc9-996e-26412032c344,1XXX5550100,Promotional,Message has been accepted by phone carrier,0.34322,1,1
-2016-05-10T03:00:30.769Z,98ba941c-afc7-4c51-ba2c-56c6570a6c08,1XXX5550100,Transactional,Message has been accepted by phone carrier,0.27815,1,1
+2016-05-10T03:00:29.476Z,96a298ac-1458-4825-a7eb-7330e0720b72,1XXX5550100,Promotional,Message has been accepted by phone carrier,0.90084,0,1
+2016-05-10T03:00:29.561Z,1e29d394-d7f4-4dc9-996e-26412032c344,1XXX5550100,Promotional,Message has been accepted by phone carrier,0.34322,0,1
+2016-05-10T03:00:30.769Z,98ba941c-afc7-4c51-ba2c-56c6570a6c08,1XXX5550100,Transactional,Message has been accepted by phone carrier,0.27815,0,1
 ```

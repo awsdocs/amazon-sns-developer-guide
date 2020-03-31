@@ -1,6 +1,6 @@
-# Tutorial: Configuring an Amazon SNS Dead\-Letter Queue for a Subscription<a name="sns-configure-dead-letter-queue"></a>
+# Tutorial: Configuring an Amazon SNS dead\-letter queue for a subscription<a name="sns-configure-dead-letter-queue"></a>
 
-A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can target for messages that can't be delivered to subscribers successfully\. Messages that can't be delivered due to client errors or server errors are held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Amazon SNS Dead\-Letter Queues](sns-dead-letter-queues.md) and [Message Delivery Retries](sns-message-delivery-retries.md)\.
+A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can target for messages that can't be delivered to subscribers successfully\. Messages that can't be delivered due to client errors or server errors are held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Amazon SNS dead\-letter queues](sns-dead-letter-queues.md) and [Message delivery retries](sns-message-delivery-retries.md)\.
 
 The following tutorial shows how you can use the AWS Management Console, the AWS SDK for Java, the AWS CLI, and AWS CloudFormation to configure a dead\-letter queue for an Amazon SNS subscription\.
 
@@ -43,7 +43,7 @@ Before you begin any of the following tutorials, complete the following prerequi
 + [AWS CLI](#configure-dead-letter-queue-aws-cli)
 + [AWS CloudFormation](#configure-dead-letter-queue-aws-cloudformation)
 
-## To Configure a Dead\-Letter Queue for an Amazon SNS Subscription Using the AWS Management Console<a name="configure-dead-letter-queue-aws-console"></a>
+## To configure a dead\-letter queue for an Amazon SNS subscription using the AWS Management Console<a name="configure-dead-letter-queue-aws-console"></a>
 
 Before your begin this tutorial, make sure you complete the [prerequisites](#dead-letter-queue-prerequisites)\.
 
@@ -57,7 +57,7 @@ Before your begin this tutorial, make sure you complete the [prerequisites](#dea
 **Note**  
 Currently, you can't use an Amazon SQS FIFO queue as a dead\-letter queue for an Amazon SNS subscription\.
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Subscriptions**\.
 
@@ -73,7 +73,7 @@ Currently, you can't use an Amazon SQS FIFO queue as a dead\-letter queue for an
 
    Your subscription is configured to use a dead\-letter queue\.
 
-## To Configure a Dead\-Letter Queue for an Amazon SNS Subscription Using the AWS SDK for Java<a name="configure-dead-letter-queue-aws-java"></a>
+## To configure a dead\-letter queue for an Amazon SNS subscription using the AWS SDK for Java<a name="configure-dead-letter-queue-aws-java"></a>
 
 Before your begin this tutorial, make sure you complete the [prerequisites](#dead-letter-queue-prerequisites)\.
 
@@ -107,7 +107,7 @@ Before your begin this tutorial, make sure you complete the [prerequisites](#dea
 
    The Amazon SQS queue is set as the dead\-letter queue for the specified Amazon SNS subscription\.
 
-## To Configure a Dead\-Letter Queue for an Amazon SNS Subscription Using the AWS CLI<a name="configure-dead-letter-queue-aws-cli"></a>
+## To configure a dead\-letter queue for an Amazon SNS subscription using the AWS CLI<a name="configure-dead-letter-queue-aws-cli"></a>
 
 Before your begin this tutorial, make sure you complete the [prerequisites](#dead-letter-queue-prerequisites)\.
 
@@ -122,7 +122,7 @@ Before your begin this tutorial, make sure you complete the [prerequisites](#dea
    --attribute-value "{\"deadLetterTargetArn\": \"arn:aws:sqs:us-east-2:123456789012:MyDeadLetterQueue\"}"
    ```
 
-## To Configure a Dead\-Letter Queue for an Amazon SNS Subscription Using AWS CloudFormation<a name="configure-dead-letter-queue-aws-cloudformation"></a>
+## To configure a dead\-letter queue for an Amazon SNS subscription using AWS CloudFormation<a name="configure-dead-letter-queue-aws-cloudformation"></a>
 
 Before your begin this tutorial, make sure you complete the [prerequisites](#dead-letter-queue-prerequisites)\.
 

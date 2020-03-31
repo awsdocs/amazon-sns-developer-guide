@@ -1,4 +1,4 @@
-# Step 1: To Deploy the Sample Application<a name="deploy-sample-application"></a>
+# Step 1: To deploy the sample application<a name="deploy-sample-application"></a>
 
 1. Sign in to the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\.
 

@@ -1,16 +1,16 @@
-# Amazon SNS Message and JSON Formats<a name="sns-message-and-json-formats"></a>
+# Amazon SNS message and JSON formats<a name="sns-message-and-json-formats"></a>
 
 Amazon SNS uses the following formats\.
 
 **Topics**
-+ [HTTP/HTTPS Headers](#http-header)
-+ [HTTP/HTTPS Subscription Confirmation JSON Format](#http-subscription-confirmation-json)
-+ [HTTP/HTTPS Notification JSON Format](#http-notification-json)
-+ [HTTP/HTTPS Unsubscribe Confirmation JSON Format](#http-unsubscribe-confirmation-json)
-+ [SetSubscriptionAttributes Delivery Policy JSON Format](#set-sub-attributes-delivery-policy-json)
-+ [SetTopicAttributes Delivery Policy JSON Format](#set-topic-attributes-delivery-policy-json)
++ [HTTP/HTTPS headers](#http-header)
++ [HTTP/HTTPS subscription confirmation JSON format](#http-subscription-confirmation-json)
++ [HTTP/HTTPS notification JSON format](#http-notification-json)
++ [HTTP/HTTPS unsubscribe confirmation JSON format](#http-unsubscribe-confirmation-json)
++ [SetSubscriptionAttributes delivery policy JSON format](#set-sub-attributes-delivery-policy-json)
++ [SetTopicAttributes delivery policy JSON format](#set-topic-attributes-delivery-policy-json)
 
-## HTTP/HTTPS Headers<a name="http-header"></a>
+## HTTP/HTTPS headers<a name="http-header"></a>
 
 When Amazon SNS sends a subscription confirmation, notification, or unsubscribe confirmation message to HTTP/HTTPS endpoints, it sends a POST message with a number of Amazon SNS\-specific header values\. You can use these header values to do things such as identify the type of message without having to parse the JSON message body to read the `Type` value\.
 
@@ -41,7 +41,7 @@ Connection: Keep-Alive
 User-Agent: Amazon Simple Notification Service Agent
 ```
 
-## HTTP/HTTPS Subscription Confirmation JSON Format<a name="http-subscription-confirmation-json"></a>
+## HTTP/HTTPS subscription confirmation JSON format<a name="http-subscription-confirmation-json"></a>
 
 After you subscribe an HTTP/HTTPS endpoint, Amazon SNS sends a subscription confirmation message to the HTTP/HTTPS endpoint\. This message contains a `SubscribeURL` value that you must visit to confirm the subscription \(alternatively, you can use the `Token` value with the [ConfirmSubscription](https://docs.aws.amazon.com/sns/latest/api/API_ConfirmSubscription.html)\)\.
 
@@ -111,7 +111,7 @@ User-Agent: Amazon Simple Notification Service Agent
 }
 ```
 
-## HTTP/HTTPS Notification JSON Format<a name="http-notification-json"></a>
+## HTTP/HTTPS notification JSON format<a name="http-notification-json"></a>
 
 When Amazon SNS sends a notification to a subscribed HTTP or HTTPS endpoint, the POST message sent to the endpoint has a message body that contains a JSON document with the following name\-value pairs\.
 
@@ -174,7 +174,7 @@ User-Agent: Amazon Simple Notification Service Agent
 }
 ```
 
-## HTTP/HTTPS Unsubscribe Confirmation JSON Format<a name="http-unsubscribe-confirmation-json"></a>
+## HTTP/HTTPS unsubscribe confirmation JSON format<a name="http-unsubscribe-confirmation-json"></a>
 
 After an HTTP/HTTPS endpoint is unsubscribed from a topic, Amazon SNS sends an unsubscribe confirmation message to the endpoint\.
 
@@ -242,7 +242,7 @@ User-Agent: Amazon Simple Notification Service Agent
 }
 ```
 
-## SetSubscriptionAttributes Delivery Policy JSON Format<a name="set-sub-attributes-delivery-policy-json"></a>
+## SetSubscriptionAttributes delivery policy JSON format<a name="set-sub-attributes-delivery-policy-json"></a>
 
 If you send a request to the SetSubscriptionAttributes action and set the AttributeName parameter to a value of `DeliveryPolicy`, the value of the AttributeValue parameter must be a valid JSON object\. For example, the following example sets the delivery policy to 5 total retries\.
 
@@ -274,7 +274,7 @@ Use the following JSON format for the value of the AttributeValue parameter\.
 
 For more information about the SetSubscriptionAttribute action, go to [SetSubscriptionAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html) in the *Amazon Simple Notification Service API Reference*\.
 
-## SetTopicAttributes Delivery Policy JSON Format<a name="set-topic-attributes-delivery-policy-json"></a>
+## SetTopicAttributes delivery policy JSON format<a name="set-topic-attributes-delivery-policy-json"></a>
 
 If you send a request to the SetTopicAttributes action and set the AttributeName parameter to a value of `DeliveryPolicy`, the value of the AttributeValue parameter must be a valid JSON object\. For example, the following example sets the delivery policy to 5 total retries\.
 

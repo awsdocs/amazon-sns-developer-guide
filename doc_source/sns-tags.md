@@ -1,6 +1,6 @@
-# Amazon SNS Tags<a name="sns-tags"></a>
+# Amazon SNS tags<a name="sns-tags"></a>
 
-To organize and identify your Amazon SNS resources \(for example, for cost allocation or for organizing and discovering tagged topics\), you can add metadata *tags* that identify a topic's purpose, owner, or environment—this is especially useful when you have many topics\. For information about managing Amazon SNS topics using the AWS Management Console or the AWS SDK for Java \(and the `[TagResource](https://docs.aws.amazon.com/sns/latest/api/API_TagResource.html)`, `[UntagResource](https://docs.aws.amazon.com/sns/latest/api/API_UntagResource.html)`, and `[ListTagsForResource](https://docs.aws.amazon.com/sns/latest/api/API_ListTagsForResource.html)` API actions\), see the [Tutorial: Listing, Adding, and Removing Tags for an Amazon SNS Topic](sns-tutorial-list-add-remove-tags-for-topic.md) tutorial\.
+To organize and identify your Amazon SNS resources \(for example, for cost allocation or for organizing and discovering tagged topics\), you can add metadata *tags* that identify a topic's purpose, owner, or environment—this is especially useful when you have many topics\. For information about managing Amazon SNS topics using the AWS Management Console or the AWS SDK for Java \(and the `[TagResource](https://docs.aws.amazon.com/sns/latest/api/API_TagResource.html)`, `[UntagResource](https://docs.aws.amazon.com/sns/latest/api/API_UntagResource.html)`, and `[ListTagsForResource](https://docs.aws.amazon.com/sns/latest/api/API_ListTagsForResource.html)` API actions\), see the [Tutorial: Listing, adding, and removing tags for an Amazon SNS topic](sns-tutorial-list-add-remove-tags-for-topic.md) tutorial\.
 
 **Note**  
 Currently, tag\-based access control isn't available\.

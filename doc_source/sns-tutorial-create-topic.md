@@ -1,4 +1,4 @@
-# Tutorial: Creating an Amazon SNS Topic<a name="sns-tutorial-create-topic"></a>
+# Tutorial: Creating an Amazon SNS topic<a name="sns-tutorial-create-topic"></a>
 
 An Amazon SNS topic is a logical access point that acts as a *communication channel*\. A topic lets you group multiple *endpoints* \(such as AWS Lambda, Amazon SQS, HTTP/S, or an email address\)\.
 
@@ -11,9 +11,9 @@ The first and most common Amazon SNS task is creating a topic\. The following tu
 + [AWS SDK for Java](#create-topic-aws-java)
 + [AWS SDK for \.NET](#create-topic-aws-dot-net)
 
-## To Create a Topic Using the AWS Management Console<a name="create-topic-aws-console"></a>
+## To create a topic using the AWS Management Console<a name="create-topic-aws-console"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. Do one of the following:
    + If no topics have ever been created under your AWS account before, read the description of Amazon SNS on the home page\.
@@ -21,11 +21,11 @@ The first and most common Amazon SNS task is creating a topic\. The following tu
 
 1. In the **Create topic** section, enter a **Topic name**, for example *MyTopic*\.
 
-1. \(Optional\) Expand the **Encryption** section and do the following\. For more information, see [Encryption at Rest](sns-server-side-encryption.md)\.
+1. \(Optional\) Expand the **Encryption** section and do the following\. For more information, see [Encryption at rest](sns-server-side-encryption.md)\.
 
    1. Choose **Enable encryption**\.
 
-   1. Specify the customer master key \(CMK\)\. For more information, see [Key Terms](sns-server-side-encryption.md#sse-key-terms)\.
+   1. Specify the customer master key \(CMK\)\. For more information, see [Key terms](sns-server-side-encryption.md#sse-key-terms)\.
 
       For each CMK type, the **Description**, **Account**, and **CMK ARN** are displayed\.
 **Important**  
@@ -41,15 +41,15 @@ Alternatively, the first time you use the `Publish` action on a topic with SSE e
 For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*
       + To use a custom CMK ARN from your AWS account or from another AWS account, enter it into the **Customer master key \(CMK\)** field\.
 
-1. \(Optional\) To configure access permissions for your topic, expand the **Access policy** section\. For more information, see [Identity and Access Management in Amazon SNS](sns-authentication-and-access-control.md)\.
+1. \(Optional\) To configure access permissions for your topic, expand the **Access policy** section\. For more information, see [Identity and access management in Amazon SNS](sns-authentication-and-access-control.md)\.
 **Important**  
 As a security precaution, Amazon SNS uses the `aws:sourceOwner` permission to limit access to the topic to the owner of the current AWS account\.
 
-1. \(Optional\) To configure how Amazon SNS retries failed message delivery attempts, expand the **Delivery retry policy \(HTTP/S\)** section\. For more information, see [Message Delivery Retries](sns-message-delivery-retries.md)\.
+1. \(Optional\) To configure how Amazon SNS retries failed message delivery attempts, expand the **Delivery retry policy \(HTTP/S\)** section\. For more information, see [Message delivery retries](sns-message-delivery-retries.md)\.
 
-1. \(Optional\) To configure how Amazon SNS logs the delivery of messages to CloudWatch, expand the **Delivery status logging** section\. For more information, see [Amazon SNS Message Delivery Status](sns-topic-attributes.md)\.
+1. \(Optional\) To configure how Amazon SNS logs the delivery of messages to CloudWatch, expand the **Delivery status logging** section\. For more information, see [Amazon SNS message delivery status](sns-topic-attributes.md)\.
 
-1. \(Optional\) To add metadata tags to the topic, expand the **Tags** section, enter a **Key** and a **Value** \(optional\) and choose **Add tag**\. For more information, see [Amazon SNS Tags](sns-tags.md)\.
+1. \(Optional\) To add metadata tags to the topic, expand the **Tags** section, enter a **Key** and a **Value** \(optional\) and choose **Add tag**\. For more information, see [Amazon SNS tags](sns-tags.md)\.
 
 1. Choose **Create topic**\.
 
@@ -63,7 +63,7 @@ As a security precaution, Amazon SNS uses the `aws:sourceOwner` permission to li
    arn:aws:sns:us-east-2:123456789012:MyTopic
    ```
 
-## To Create a Topic Using the AWS SDK for Java<a name="create-topic-aws-java"></a>
+## To create a topic using the AWS SDK for Java<a name="create-topic-aws-java"></a>
 
 1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
@@ -98,7 +98,7 @@ As a security precaution, Amazon SNS uses the `aws:sourceOwner` permission to li
    final String topicArn = "arn:aws:sns:us-east-2:123456789012:MyTopic";
    ```
 
-## To Create a Topic Using the AWS SDK for \.NET<a name="create-topic-aws-dot-net"></a>
+## To create a topic using the AWS SDK for \.NET<a name="create-topic-aws-dot-net"></a>
 
 1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 

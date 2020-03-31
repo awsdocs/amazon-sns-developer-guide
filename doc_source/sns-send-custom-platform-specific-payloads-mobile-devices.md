@@ -1,8 +1,8 @@
-# Send Custom Platform\-Specific Payloads to Mobile Devices<a name="sns-send-custom-platform-specific-payloads-mobile-devices"></a>
+# Send custom platform\-specific payloads to mobile devices<a name="sns-send-custom-platform-specific-payloads-mobile-devices"></a>
 
-You can use the AWS Management Console or Amazon SNS APIs to send custom messages with platform\-specific payloads to mobile devices\. For information about using the Amazon SNS APIs, see [Using Amazon SNS Mobile Push APIs](mobile-push-api.md) and the `SNSMobilePush.java` file in `[snsmobilepush\.zip](samples/snsmobilepush.zip)`\. 
+You can use the AWS Management Console or Amazon SNS APIs to send custom messages with platform\-specific payloads to mobile devices\. For information about using the Amazon SNS APIs, see [Using Amazon SNS mobile push APIs](mobile-push-api.md) and the `SNSMobilePush.java` file in `[snsmobilepush\.zip](samples/snsmobilepush.zip)`\. 
 
-## Sending JSON\-Formatted Messages<a name="mobile-push-send-json"></a>
+## Sending JSON\-formatted messages<a name="mobile-push-send-json"></a>
 
 When you send platform\-specific payloads, the data must be formatted as JSON key\-value pair strings, with the quotation marks escaped\.
 
@@ -10,11 +10,11 @@ The following examples show a custom message for the FCM platform\.
 
 ```
 {
-  "GCM":"{\"data\":{\"message\":\"Check out these awesome deals!\",\"url\":\"www.amazon.com\"}}"
+  "GCM":"{ \"notification\": { \"body\": \"Sample message for Android endpoints\", \"title\":\"TitleTest\" } }"
 }
 ```
 
-## Sending Platform\-Specific Messages<a name="mobile-push-send-platform"></a>
+## Sending platform\-specific messages<a name="mobile-push-send-platform"></a>
 
 In addition to sending custom data as key\-value pairs, you can send platform\-specific key\-value pairs\.
 
@@ -22,16 +22,21 @@ The following example shows the inclusion of the FCM parameters `time_to_live` a
 
 ```
 {
-  "GCM":"{\"data\":{\"message\":\"Check out these awesome deals!\",\"url\":\"www.amazon.com\"},\"time_to_live\": 3600,\"collapse_key\":\"deals\"}"
+   "GCM":"{  
+       \"notification\": 
+         { \"body\": \"Sample message for Android endpoints\", \"title\":\"TitleTest\" },
+      \"data\":
+         {\"time_to_live\": 3600,\"collapse_key\":\"deals\"}"
+   }
 }
 ```
 
 For a list of the key\-value pairs supported by each of the push notification services supported in Amazon SNS, see the following: 
-+ [Payload Key Reference](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/PayloadKeyReference.html#//apple_ref/doc/uid/TP40008194-CH17-SW1) in the APNs documentation
++ [Payload Key Reference](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/PayloadKeyReference.html#/apple_ref/doc/uid/TP40008194-CH17-SW1) in the APNs documentation
 + [Firebase Cloud Messaging HTTP Protocol](https://firebase.google.com/docs/cloud-messaging/http-server-ref) in the FCM documentation
 + [Send a Message](https://developer.amazon.com/sdk/adm/sending-message.html) in the ADM documentation
 
-## Sending Messages to an Application on Multiple Platforms<a name="mobile-push-send-multiplatform"></a>
+## Sending messages to an application on multiple platforms<a name="mobile-push-send-multiplatform"></a>
 
 To send a message to an application installed on devices for multiple platforms, such as FCM and APNs, you must first subscribe the mobile endpoints to a topic in Amazon SNS and then publish the message to the topic\.
 
@@ -47,13 +52,13 @@ one of the notification platforms.",
 }
 ```
 
-## Sending Messages to APNs as Alert or Background Notifications<a name="mobile-push-send-message-apns-background-notification"></a>
+## Sending messages to APNs as alert or background notifications<a name="mobile-push-send-message-apns-background-notification"></a>
 
 Amazon SNS can send messages to APNs as `alert` or `background` notifications \(for more information, see [Pushing Background Updates to Your App](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app) in the APNs documentation\)\.
 + An `alert` APNs notification informs the user by displaying an alert message, playing a sound, or adding a badge to your application’s icon\.
 + A `background` APNs notification wakes up or instructs your application to act upon the content of the notification, without informing the user\.
 
-### Specifying Custom APNs Header Values<a name="specify-custom-header-value"></a>
+### Specifying custom APNs header values<a name="specify-custom-header-value"></a>
 
 We recommend specifying custom values for the `AWS.SNS.MOBILE.APNS.PUSH_TYPE` [reserved message attribute](sns-message-attributes.md#sns-attrib-mobile-reserved) using the Amazon SNS `Publish` API action, AWS SDKs, or the AWS CLI\. The following CLI example sets `content-available` to `1` and `apns-push-type` to `background` for the specified topic\. 
 
@@ -69,7 +74,7 @@ aws sns publish \
 --message-structure json
 ```
 
-### Inferring the APNs Push Type Header from the Payload<a name="inferring-push-type-header-from-payload"></a>
+### Inferring the APNs push type header from the payload<a name="inferring-push-type-header-from-payload"></a>
 
 If you don't set the `apns-push-type` APNs header, Amazon SNS sets header to `alert` or `background` depending on the `content-available` key in the `aps` dictionary of your JSON\-formatted APNs payload configuration\.
 

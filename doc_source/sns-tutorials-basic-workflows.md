@@ -1,4 +1,4 @@
-# Basic Workflows<a name="sns-tutorials-basic-workflows"></a>
+# Basic workflows<a name="sns-tutorials-basic-workflows"></a>
 
 This section contains the tutorials that encompass the basic workflows of Amazon SNS\.
 

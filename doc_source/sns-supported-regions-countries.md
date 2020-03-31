@@ -1,14 +1,17 @@
-# Supported Regions and Countries<a name="sns-supported-regions-countries"></a>
+# Supported Regions and countries<a name="sns-supported-regions-countries"></a>
 
 Currently, Amazon SNS supports SMS messaging in the following AWS Regions:
 
 
-| Region Name | Region | Endpoint | Protocol | 
+| Region name | Region | Endpoint | Protocol | 
 | --- | --- | --- | --- | 
 | US East \(N\. Virginia\) | us\-east\-1 | sns\.us\-east\-1\.amazonaws\.com | HTTP and HTTPS | 
 | US West \(Oregon\) | us\-west\-2 | sns\.us\-west\-2\.amazonaws\.com | HTTP and HTTPS | 
+| AWS GovCloud \(US\-West\) | us\-gov\-west\-1 | sns\.us\-gov\-west\-1\.amazonaws\.com | HTTP and HTTPS | 
+| Europe \(Frankfurt\) | eu\-central\-1 | sns\.eu\-central\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Europe \(Ireland\) | eu\-west\-1 | sns\.eu\-west\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Asia Pacific \(Tokyo\) | ap\-northeast\-1 | sns\.ap\-northeast\-1\.amazonaws\.com | HTTP and HTTPS | 
+| Asia Pacific \(Mumbai\) | ap\-south\-1 | sns\.ap\-south\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Asia Pacific \(Singapore\) | ap\-southeast\-1 | sns\.ap\-southeast\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Asia Pacific \(Sydney\) | ap\-southeast\-2 | sns\.ap\-southeast\-2\.amazonaws\.com | HTTP and HTTPS | 
 
@@ -163,7 +166,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Papua New Guinea | PG | Yes |  | 
 | Paraguay | PY | Yes |  | 
 | Peru | PE |  |  | 
-| Philippines | PH |  | Yes | 
+| Philippines | PH | Yes[1](#sms-support-note-1) | Yes | 
 | Poland | PL | Yes | Yes | 
 | Portugal | PT | Yes | Yes | 
 | Puerto Rico | PR |  | Yes | 

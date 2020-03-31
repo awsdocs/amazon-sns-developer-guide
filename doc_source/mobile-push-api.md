@@ -1,8 +1,8 @@
-# Using Amazon SNS Mobile Push APIs<a name="mobile-push-api"></a>
+# Using Amazon SNS mobile push APIs<a name="mobile-push-api"></a>
 
-To use the Amazon SNS mobile push APIs, you must first meet the prerequisites for the push notification service, such as Apple Push Notification Service \(APNs\) and Firebase Cloud Messaging \(FCM\)\. For more information about the prerequisites, see [Prerequisites for Amazon SNS User Notifications](sns-prerequisites-for-mobile-push-notifications.md)\. 
+To use the Amazon SNS mobile push APIs, you must first meet the prerequisites for the push notification service, such as Apple Push Notification Service \(APNs\) and Firebase Cloud Messaging \(FCM\)\. For more information about the prerequisites, see [Prerequisites for Amazon SNS user notifications](sns-prerequisites-for-mobile-push-notifications.md)\. 
 
- To send a push notification message to a mobile app and device using the APIs, you must first use the `CreatePlatformApplication` action, which returns a `PlatformApplicationArn` attribute\. The `PlatformApplicationArn` attribute is then used by `CreatePlatformEndpoint`, which returns an `EndpointArn` attribute\. You can then use the `EndpointArn` attribute with the `Publish` action to send a notification message to a mobile app and device, or you could use the `EndpointArn` attribute with the `Subscribe` action for subscription to a topic\. For more information, see [User Notification Process Overview](sns-user-notifications-process-overview.md)\.
+ To send a push notification message to a mobile app and device using the APIs, you must first use the `CreatePlatformApplication` action, which returns a `PlatformApplicationArn` attribute\. The `PlatformApplicationArn` attribute is then used by `CreatePlatformEndpoint`, which returns an `EndpointArn` attribute\. You can then use the `EndpointArn` attribute with the `Publish` action to send a notification message to a mobile app and device, or you could use the `EndpointArn` attribute with the `Subscribe` action for subscription to a topic\. For more information, see [User notification process overview](sns-user-notifications-process-overview.md)\.
 
 The Amazon SNS mobile push APIs are as follows: 
 

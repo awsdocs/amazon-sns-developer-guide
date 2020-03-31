@@ -1,10 +1,10 @@
-# Tutorial: Enabling Server\-Side Encryption \(SSE\) for an Amazon SNS Topic with an Encrypted Amazon SQS Queue Subscribed<a name="sns-tutorial-enable-encryption-for-topic-sqs-queue-subscriptions"></a>
+# Tutorial: Enabling server\-side encryption \(SSE\) for an Amazon SNS topic with an encrypted Amazon SQS queue subscribed<a name="sns-tutorial-enable-encryption-for-topic-sqs-queue-subscriptions"></a>
 
-You can enable server\-side encryption \(SSE\) for a topic to protect its data\. To allow Amazon SNS to send messages to encrypted Amazon SQS queues, the customer master key \(CMK\) associated with the Amazon SQS queue must have a policy statement that grants Amazon SNS service\-principal access to the AWS KMS API actions `GenerateDataKey` and `Decrypt`\. Because AWS managed CMKs don't support policy modifications, you must use a custom CMK\. For more information about using SSE, see [Encryption at Rest](sns-server-side-encryption.md)\.
+You can enable server\-side encryption \(SSE\) for a topic to protect its data\. To allow Amazon SNS to send messages to encrypted Amazon SQS queues, the customer master key \(CMK\) associated with the Amazon SQS queue must have a policy statement that grants Amazon SNS service\-principal access to the AWS KMS API actions `GenerateDataKey` and `Decrypt`\. Because AWS managed CMKs don't support policy modifications, you must use a custom CMK\. For more information about using SSE, see [Encryption at rest](sns-server-side-encryption.md)\.
 
 The following tutorial shows how you can enable SSE for an Amazon SNS topic to which an encrypted Amazon SQS queue is subscribed, using the AWS Management Console\.
 
-## Step 1: To Create a Custom CMK<a name="create-custom-cmk"></a>
+## Step 1: To create a custom CMK<a name="create-custom-cmk"></a>
 
 1. Sign in to the [AWS KMS console](https://console.aws.amazon.com/kms/) with a user that has at least the `AWSKeyManagementServicePowerUser` policy\.
 
@@ -37,9 +37,9 @@ The following tutorial shows how you can enable SSE for an Amazon SNS topic to w
 
 Your new custom CMK appears in the list of keys\.
 
-## Step 2: To Create an Encrypted Amazon SNS Topic<a name="create-encrypted-topic"></a>
+## Step 2: To create an encrypted Amazon SNS topic<a name="create-encrypted-topic"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics**\.
 
@@ -51,7 +51,7 @@ Your new custom CMK appears in the list of keys\.
 
    1. Choose **Enable server\-side encryption**\.
 
-   1. Specify the customer master key \(CMK\)\. For more information, see [Key Terms](sns-server-side-encryption.md#sse-key-terms)\.
+   1. Specify the customer master key \(CMK\)\. For more information, see [Key terms](sns-server-side-encryption.md#sse-key-terms)\.
 
       For each CMK type, the **Description**, **Account**, and **CMK ARN** are displayed\.
 **Important**  
@@ -68,7 +68,7 @@ Ask the owner of the CMK to grant you these permissions\. For more information, 
 
 Your new encrypted topic appears in the list of topics\.
 
-## Step 3: To Create and Subscribe Encrypted Amazon SQS Queues<a name="create-encrypted-queue"></a>
+## Step 3: To create and subscribe encrypted Amazon SQS queues<a name="create-encrypted-queue"></a>
 
 1. Sign in to the [Amazon SQS console](https://console.aws.amazon.com/sqs/)\.
 
@@ -96,9 +96,9 @@ Your new encrypted topic appears in the list of topics\.
 
 1. Choose **OK**\.
 
-## Step 4: To Publish a Message to Your Encrypted Topic<a name="publish-to-encrypted-topic"></a>
+## Step 4: To publish a message to your encrypted topic<a name="publish-to-encrypted-topic"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. On the navigation panel, choose **Topics**\.
 
@@ -114,7 +114,7 @@ Your new encrypted topic appears in the list of topics\.
 
 Your message is published to your subscribed encrypted queues\.
 
-## Step 5: To Verify Message Delivery<a name="verify-message-delivery"></a>
+## Step 5: To verify message delivery<a name="verify-message-delivery"></a>
 
 1. Sign in to the [Amazon SQS console](https://console.aws.amazon.com/sqs/)\.
 

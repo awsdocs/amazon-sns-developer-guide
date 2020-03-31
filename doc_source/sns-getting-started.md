@@ -1,14 +1,14 @@
-# Getting Started with Amazon SNS<a name="sns-getting-started"></a>
+# Getting started with Amazon SNS<a name="sns-getting-started"></a>
 
 This section helps you become more familiar with Amazon SNS by showing you how to manage topics, subscriptions, and messages using the AWS Management Console\.
 
 ## Prerequisites<a name="sns-prerequisites"></a>
 
-Before you begin, complete the steps in [Setting Up Access for Amazon SNS](sns-setting-up.md)\.
+Before you begin, complete the steps in [Setting up access for Amazon SNS](sns-setting-up.md)\.
 
-## Step 1: Create a Topic<a name="step-create-queue"></a>
+## Step 1: Create a topic<a name="step-create-queue"></a>
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/)\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
 1. In the **Create topic** section, enter a **Topic name**, for example *MyTopic*\.
 
@@ -24,7 +24,7 @@ Before you begin, complete the steps in [Setting Up Access for Amazon SNS](sns-s
    arn:aws:sns:us-east-2:123456789012:MyTopic
    ```
 
-## Step 2: Create a Subscription for an Endpoint to the Topic<a name="step-send-message"></a>
+## Step 2: Create a subscription for an endpoint to the topic<a name="step-send-message"></a>
 
 1. On the navigation panel, choose **Subscriptions**\.
 
@@ -60,7 +60,7 @@ After your subscription is created, you must confirm it\. Only HTTP/S endpoints,
 
 1. In your web browser, a subscription confirmation with your subscription ID is displayed\.
 
-## Step 3: Publish a Message to the Topic<a name="step-receive-delete-message"></a>
+## Step 3: Publish a message to the topic<a name="step-receive-delete-message"></a>
 
 1. On the navigation panel, choose **Topics**\.
 
@@ -78,7 +78,7 @@ After your subscription is created, you must confirm it\. Only HTTP/S endpoints,
       + Choose **Identical payload for all delivery protocols** and then enter the message, for example:
 
         ```
-        If you receive this message, publishing a message to an Amazon SNS topic works.
+        Publishing a message to an Amazon SNS topic.
         ```
       + Choose **Custom payload for each delivery protocol** and then use a JSON object to define the message to send to each protocol, for example:
 
@@ -105,7 +105,7 @@ After your subscription is created, you must confirm it\. Only HTTP/S endpoints,
         }
         ```
 
-        For more information, see [Send Custom Platform\-Specific Payloads to Mobile Devices](sns-send-custom-platform-specific-payloads-mobile-devices.md)\.
+        For more information, see [Send custom platform\-specific payloads to mobile devices](sns-send-custom-platform-specific-payloads-mobile-devices.md)\.
 
    1. In the **Message attributes** section, add any attributes that you want Amazon SNS to match with the subscription attribute `FilterPolicy` to decide whether the subscribed endpoint is interested in the published message\.
 
@@ -119,7 +119,7 @@ If the attribute type is **String\.Array**, enclose the array in square brackets
 
       If the attribute type is **String**, **String\.Array**, or **Number**, Amazon SNS evaluates the message attribute against a subscription's filter policy \(if present\) before sending the message to the subscription\.
 
-      For more information, see [Amazon SNS Message Attributes](sns-message-attributes.md)\.
+      For more information, see [Amazon SNS message attributes](sns-message-attributes.md)\.
 
    1. Choose **Publish message**\.
 
@@ -129,7 +129,7 @@ If the attribute type is **String\.Array**, enclose the array in square brackets
 
 1. In your email client, check the email address that you specified earlier and read the email from Amazon SNS\.
 
-## Step 4: Delete the Subscription and Topic<a name="step-delete-queue"></a>
+## Step 4: Delete the subscription and topic<a name="step-delete-queue"></a>
 
 1. On the navigation panel, choose **Subscriptions**\.
 
@@ -151,7 +151,7 @@ When you delete a topic, you also delete all subscriptions to the topic\.
 
    The topic is deleted\.
 
-## Next Steps<a name="sns-next-steps-getting-started"></a>
+## Next steps<a name="sns-next-steps-getting-started"></a>
 
 Now that you've created a topic and a subscription and learned how to send messages to a topic and how to delete a subscription and topic, you might want to try the following:
 + [Enable server\-side encryption for a topic\.](sns-tutorial-enable-encryption-for-topic.md)
@@ -160,5 +160,5 @@ Now that you've created a topic and a subscription and learned how to send messa
 + [Deploy and test the AWS Event Fork Pipelines sample application](sns-tutorial-deploy-test-fork-pipelines-sample-application.md)\.
 + [Learn about message filtering\.](sns-message-filtering.md)
 + Learn how to interact with Amazon SNS programmatically by exploring the [AWS Developer Center](https://aws.amazon.com/developer/)\.
-+ Learn about keeping an eye on costs and resources in the [Troubleshooting Amazon SNS Topics](sns-troubleshooting.md) section\.
++ Learn about keeping an eye on costs and resources in the [Troubleshooting Amazon SNS topics](sns-troubleshooting.md) section\.
 + Learn about protecting your data and access to it in the [Security](sns-security.md) section\.
