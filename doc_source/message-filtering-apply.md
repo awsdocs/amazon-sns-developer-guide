@@ -2,6 +2,9 @@
 
 You can apply a filter policy to an Amazon SNS subscription using the Amazon SNS console\. Or, to apply policies programmatically, you can use the Amazon SNS API, the AWS Command Line Interface \(AWS CLI\), or any AWS SDK that supports Amazon SNS, such as the AWS SDK for Java\.
 
+**Important**  
+AWS services such as IAM and Amazon SNS use a distributed computing model called eventual consistency\. Additions or changes to a subscription filter policy require up to 15 minutes to fully take effect\. 
+
 ## AWS Management Console<a name="message-filtering-apply-console"></a>
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.

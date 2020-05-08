@@ -6,7 +6,7 @@
 
  For more information about IAM support for temporary security credentials, go to [Granting Temporary Access to Your AWS Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/TokenBasedAuth.html) in *Using IAM*\. 
 
-**Example Using temporary security credentials to authenticate an Amazon SNS request**  
+**Example Example: Using temporary security credentials to authenticate an Amazon SNS request**  
  The following example demonstrates how to obtain temporary security credentials to authenticate an Amazon SNS request\.   
 
 ```

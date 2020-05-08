@@ -69,6 +69,9 @@ Delete a topic when you no longer want to publish messages to its subscribed end
 
 You can use the AWS SDKs to make programmatic requests to Amazon SNS and manage which phone numbers can receive SMS messages from your account\.
 
+**Note**  
+Remember to configure your AWS credentials before using the SDK\. For more information, see [AWS SDK for \.NET Developer Guide](https://alpha-docs-aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) or [AWS SDK for Java V2 Developer Guide]( https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html)
+
 ### Viewing all opted out phone numbers<a name="sms_view_optout_sdk"></a>
 
 To view all opted out phone numbers, submit a `ListPhoneNumbersOptedOut` request with the Amazon SNS API\.

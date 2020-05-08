@@ -7,7 +7,7 @@ The following list grants information specific to the Amazon SNS implementation 
 
 ## Policy quotas<a name="sns-policy-quotas"></a>
 
-The following table lists the maximum quotas for policy information\.
+The following table lists the maximum quotas for a policy statement\.
 
 
 | Name | Maximum quota | 

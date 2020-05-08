@@ -8,17 +8,25 @@ For more information about deploying AWS resources using an AWS CloudFormation t
 
 The example template creates an Amazon SNS topic that can send messages to two Amazon SQS queues with appropriate permissions for members of one IAM group to publish to the topic and another to read messages from the queues\. The template also creates IAM users that are added to each group\.
 
-You can download this template \([https://s3\.amazonaws\.com/cloudformation\-templates\-us\-east\-1/SNSToSQS\.template](https://s3.amazonaws.com/cloudformation-templates-us-east-1/SNSToSQS.template)\) from the [AWS CloudFormation Sample Templates page](http://aws.amazon.com/cloudformation/aws-cloudformation-templates/)\.
+You copy the template contents into a file\. You can also download the template from the [AWS CloudFormation Templates page](http://aws.amazon.com/cloudformation/aws-cloudformation-templates/)\. On the templates page, choose **Browse sample templates by AWS service** and then choose **Amazon Simple Queue Service**\. 
 
 MySNSTopic is set up to publish to two subscribed endpoints, which are two Amazon SQS queues \(MyQueue1 and MyQueue2\)\. MyPublishTopicGroup is an IAM group whose members have permission to publish to MySNSTopic using the [Publish](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) API action or [sns\-publish](https://docs.aws.amazon.com/cli/latest/reference/sns/publish.html) command\. The template creates the IAM users MyPublishUser and MyQueueUser and gives them login profiles and access keys\. The user who creates a stack with this template specifies the passwords for the login profiles as input parameters\. The template creates access keys for the two IAM users with MyPublishUserKey and MyQueueUserKey\. AddUserToMyPublishTopicGroup adds MyPublishUser to the MyPublishTopicGroup so that the user will have the permissions assigned to the group\.
 
 MyRDMessageQueueGroup is an IAM group whose members have permission to read and delete messages from the two Amazon SQS queues using the [ReceiveMessage](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Query_QueryReceiveMessage.html) and [DeleteMessage](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Query_QueryDeleteMessage.html) API actions\. AddUserToMyQueueGroup adds MyQueueUser to the MyRDMessageQueueGroup so that the user will have the permissions assigned to the group\. MyQueuePolicy assigns permission for MySNSTopic to publish its notifications to the two queues\.
 
+The following listing shows the AWS CloudFormation template contents\.
+
 ```
 {
-  "AWSTemplateFormatVersion": "2010-09-09",
-
-  "Description": "This Template creates an Amazon SNS topic that can send messages to two Amazon SQS queues with appropriate permissions for one IAM user to publish to the topic and another to read messages from the queues. MySNSTopic is set up to publish to two subscribed endpoints, which are two Amazon SQS queues (MyQueue1 and MyQueue2). MyPublishUser is an IAM user that can publish to MySNSTopic using the Publish API. MyTopicPolicy assigns that permission to MyPublishUser. MyQueueUser is an IAM user that can read messages from the two Amazon SQS queues. MyQueuePolicy assigns those permissions to MyQueueUser. It also assigns permission for MySNSTopic to publish its notifications to the two queues. The template creates access keys for the two IAM users with MyPublishUserKey and MyQueueUserKey. You will be billed for the AWS resources used if you create a stack from this template.",
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  
+  "Description" : "AWS CloudFormation Sample Template SNSToSQS: This Template creates an SNS topic that can send messages to 
+  two SQS queues with appropriate permissions for one IAM user to publish to the topic and another to read messages from the queues. 
+  MySNSTopic is set up to publish to two subscribed endpoints, which are two SQS queues (MyQueue1 and MyQueue2). MyPublishUser is an IAM user 
+  that can publish to MySNSTopic using the Publish API. MyTopicPolicy assigns that permission to MyPublishUser. MyQueueUser is an IAM user 
+  that can read messages from the two SQS queues. MyQueuePolicy assigns those permissions to MyQueueUser. It also assigns permission for 
+  MySNSTopic to publish its notifications to the two queues. The template creates access keys for the two IAM users with MyPublishUserKey 
+  and MyQueueUserKey. ***Warning*** you will be billed for the AWS resources used if you create a stack from this template.",
 
   "Parameters": {
     "MyPublishUserPassword": {

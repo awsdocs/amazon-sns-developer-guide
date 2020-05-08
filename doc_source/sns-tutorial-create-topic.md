@@ -41,9 +41,9 @@ Alternatively, the first time you use the `Publish` action on a topic with SSE e
 For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*
       + To use a custom CMK ARN from your AWS account or from another AWS account, enter it into the **Customer master key \(CMK\)** field\.
 
-1. \(Optional\) To configure access permissions for your topic, expand the **Access policy** section\. For more information, see [Identity and access management in Amazon SNS](sns-authentication-and-access-control.md)\.
-**Important**  
-As a security precaution, Amazon SNS uses the `aws:sourceOwner` permission to limit access to the topic to the owner of the current AWS account\.
+1. \(Optional\) By default, only the topic owner can publish or subscribe to the topic\. To configure additional access permissions, expand the **Access policy** section\. For more information, see [Identity and access management in Amazon SNS](sns-authentication-and-access-control.md)\. 
+**Note**  
+When you create a topic using the console, the default policy uses the `aws:SourceOwner` condition key\. This key is very similar to `aws:SourceAccount`, except that the `aws:SourceOwner` value must match the owner of the topic\. Use `aws:SourceAccount` to configure conditions for other accounts\. 
 
 1. \(Optional\) To configure how Amazon SNS retries failed message delivery attempts, expand the **Delivery retry policy \(HTTP/S\)** section\. For more information, see [Message delivery retries](sns-message-delivery-retries.md)\.
 

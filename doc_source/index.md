@@ -120,4 +120,4 @@ Amazon's trademarks and trade dress may not be used in
    + [Amazon SNS security best practices](sns-security-best-practices.md)
 + [Amazon SNS release notes](sns-release-notes.md)
    + [Amazon SNS document history](sns-document-history.md)
-+ [AWS Glossary](glossary.md)
++ [AWS glossary](glossary.md)

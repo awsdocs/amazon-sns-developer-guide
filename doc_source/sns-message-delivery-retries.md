@@ -5,7 +5,7 @@ Amazon SNS defines a *delivery policy* for each delivery protocol\. The delivery
 ## Delivery protocols and policies<a name="delivery-policies-for-protocols"></a>
 
 **Note**  
-Except for HTTP/S, you can't change Amazon SNS\-defined delivery policies\. Other delivery protocols don't support custom delivery policies\.
+With the exception of HTTP/S, you can't change Amazon SNS\-defined delivery policies\. Only HTTP/S supports custom policies\. See [Creating an HTTP/S delivery policy](#creating-delivery-policy)\.
 Amazon SNS applies jittering to delivery retries\. For more information, see the [Exponential Backoff and Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) post on the *AWS Architecture Blog*\.
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html)
@@ -26,7 +26,7 @@ Each delivery policy is comprised of four phases\.
 
 1. **Post\-Backoff Phase** – This phase follows the backoff phase\. It specifies a number of retries and the amount of delay between them\. This is the final phase\.
 
-## Creating a delivery policy<a name="creating-delivery-policy"></a>
+## Creating an HTTP/S delivery policy<a name="creating-delivery-policy"></a>
 
 You can use a delivery policy and its four phases to define how Amazon SNS retries the delivery of messages to HTTP/S endpoints\. Amazon SNS lets you override the default retry policy for HTTP endpoints when you might, for example, want to customize the policy based your HTTP server's capacity\.
 

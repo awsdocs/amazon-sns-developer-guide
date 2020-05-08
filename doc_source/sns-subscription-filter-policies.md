@@ -4,6 +4,9 @@ A subscription filter policy allows you to specify attribute names and assign a 
 
 When Amazon SNS evaluates message attributes against the subscription filter policy, it ignores message attributes that aren't specified in the policy\.
 
+**Important**  
+AWS services such as IAM and Amazon SNS use a distributed computing model called eventual consistency\. Additions or changes to a subscription filter policy require up to 15 minutes to fully take effect\. 
+
 A subscription accepts a message under the following conditions:
 + Each attribute name in a filter policy matches an attribute name assigned to the message\.
 + For each matching attribute name, at least one match exists between the following:

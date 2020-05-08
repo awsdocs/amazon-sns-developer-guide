@@ -33,7 +33,9 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 1. Choose **Create Bucket**\.
 
-1. For **Bucket Name**, type a name, such as **sns\-sms\-daily\-usage**\. For information about conventions and restrictions for bucket names, see [Rules for Bucket Naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
+1. For **Bucket Name**, we recommend that you enter a name that is unique for your account and your organization\. For example, use the pattern `<my-bucket-prefix>-<account_id>-<org-id>`\. 
+
+   For information about conventions and restrictions for bucket names, see [Rules for Bucket Naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
 
 1. Choose **Create**\.
 
@@ -43,7 +45,7 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 1. In the **Bucket Policy Editor** window, provide a policy that allows the Amazon SNS service principal to write to your bucket\. For an example, see [Example bucket policy](#example_bucket_policy)\.
 
-   If you use the example policy, remember to replace *my\-s3\-bucket* with the name of your bucket\.
+   If you use the example policy, remember to replace *my\-s3\-bucket* with the bucket name that you chose in Step 3\.
 
 1. Choose **Save**\.
 
@@ -53,9 +55,11 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 1. On the navigation panel, choose **Text messaging \(SMS\)**\.
 
-1. On the **Text messaging \(SMS\)** page, in the **Text messaging preferences** section, choose **Edit**\.
+1. On the **Text messaging \(SMS\)** page, in the **Text messaging preferences** section, choose **Edit**\.  
+![\[Text messaging preferences section\]](http://docs.aws.amazon.com/sns/latest/dg/images/daily-usage-report1.png)
 
-1. On the **Edit text messaging preferences** page, in the **Details** section, specify the **Amazon S3 bucket name for usage reports**\.
+1. On the **Edit text messaging preferences** page, in the **Details** section, specify the **Amazon S3 bucket name for usage reports**\.  
+![\[Details section of the Edit text messaging preferences page\]](http://docs.aws.amazon.com/sns/latest/dg/images/daily-usage-report2.png)
 
 1. Choose **Save changes**\.
 

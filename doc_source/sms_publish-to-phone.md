@@ -76,6 +76,9 @@ This message\-level attribute overrides the account\-level attribute `DefaultSMS
 
 The following examples show how to set message attributes using the Amazon SNS clients that are provided by the AWS SDKs\.
 
+**Note**  
+Remember to configure your AWS credentials before using the SDK\. For more information, see [AWS SDK for \.NET Developer Guide](https://alpha-docs-aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) or [AWS SDK for Java V2 Developer Guide]( https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html)
+
 ------
 #### [ AWS SDK for Java ]
 
@@ -118,6 +121,9 @@ pubRequest.MessageAttributes["AWS.SNS.SMS.SMSType"] =
 ### Sending a message<a name="sms_publish_sdks"></a>
 
 The following examples show how to send a message using the Amazon SNS clients that are provided by the AWS SDKs\.
+
+**Note**  
+Remember to configure your AWS credentials before using the SDK\. For more information, see [AWS SDK for \.NET Developer Guide](https://alpha-docs-aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) or [AWS SDK for Java V2 Developer Guide]( https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html)
 
 ------
 #### [ AWS SDK for Java ]

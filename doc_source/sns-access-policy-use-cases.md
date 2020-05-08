@@ -98,14 +98,13 @@ In this case, you want to configure a topic's policy so that another AWS account
 
 In the following example statement, the topic owner in these policies is 1111\-2222\-3333 and the AWS resource owner is 4444\-5555\-6666\. The example grants the AWS account ID 4444\-5555\-6666 the ability to publish to My\-Topic from any AWS resource owned by the account\.
 
-**Note**  
-If you publish messages directly \(rather than having an AWS resource publish messages on your behalf\), a policy in which you specify an empty `Principal` *and *use `AWS:SourceAccount` as a condition will not work\.
-
 ```
 {
   "Statement": [{
     "Effect": "Allow",
-    "Principal": "*",
+    "Principal": { 
+      "Service": "someservice.amazonaws.com" 
+    },
     "Action": "sns:Publish",
     "Resource": "arn:aws:sns:us-east-2:111122223333:MyTopic",
     "Condition": {
