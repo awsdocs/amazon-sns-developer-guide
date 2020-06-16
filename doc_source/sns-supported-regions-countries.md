@@ -104,7 +104,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Hong Kong | HK | Yes | Yes | 
 | Hungary | HU |  | Yes | 
 | Iceland | IS | Yes |  | 
-| India | IN | Yes[1](#sms-support-note-1) | Yes | 
+| India | IN | Yes[3](#sms-support-note-3) | Yes | 
 | Indonesia | ID |  | Yes | 
 | Iraq | IQ |  |  | 
 | Ireland | IE | Yes | Yes | 
@@ -232,3 +232,5 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 1. <a name="sms-support-note-1"></a>Senders are required to use a pre\-registered alphabetic sender ID\. To request a sender ID from AWS Support, file a support request\. Some countries require senders to meet specific requirements or abide by certain restrictions in order to obtain approval\. In these cases, AWS Support might contact you for additional information after you submit your sender ID request\.
 
 1. <a name="sms-support-note-2"></a>Senders are required to use a pre\-registered template for each type of message that they plan to send\. If a sender doesn’t meet this requirement, their messages will be blocked\. To register a template, file a support request\. Some countries require senders to meet additional, specific requirements or abide by certain restrictions in order to obtain approval\. In these cases, AWS Support might ask you for additional information\.
+
+1. <a name="sms-support-note-3"></a>Senders are required to use a pre\-registered alphabetic sender ID\. Additional registration steps are required\. For more information, see [Special requirements for sending SMS messages to recipients in India](channels-sms-awssupport-sender-id-india.md)\.

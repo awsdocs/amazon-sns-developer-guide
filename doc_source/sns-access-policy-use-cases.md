@@ -6,7 +6,8 @@
 + [Publish messages to an Amazon SQS queue](#sns-publish-messages-to-sqs-queue)
 + [Allow any AWS resource to publish to a topic](#sns-allow-any-aws-resource-to-publish-to-topic)
 + [Allow an Amazon S3 bucket to publish to a topic](#sns-allow-s3-bucket-to-publish-to-topic)
-+ [Allow any CloudWatch alarm in an AWS account to publish to an Amazon SNS topic in a different AWS account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
++ [Allow accounts in an AWS organization to publish to a topic in a different account](#sns-allow-organization-to-publish-to-topic-in-another-account)
++ [Allow any CloudWatch alarm to publish to a topic in a different account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
 + [Restrict publication to an Amazon SNS topic only from a specific VPC endpoint](#sns-restrict-publication-only-from-specified-vpc-endpoint)
 
 This section grants a few examples of typical use cases for access control\.
@@ -76,7 +77,9 @@ The example presented below is an Amazon SQS policy \(controlling access to your
   "Statement": [{
     "Sid": "Allow-SNS-SendMessage",
     "Effect": "Allow",
-    "Principal": "*",
+    "Principal": {
+      "Service": "sns.amazonaws.com"
+    },
     "Action": ["sqs:SendMessage"],
     "Resource": "arn:aws:sqs:us-east-2:444455556666:MyQueue",
     "Condition": {
@@ -122,28 +125,52 @@ In this case, you want to configure a topic's policy so that another AWS account
 
 This example assumes that you write your own policy and then use the `SetTopicAttributes` action to set the topic's `Policy` attribute to your new policy\.
 
-The following example statement uses the `ArnLike` condition to make sure the ARN of the resource making the request \(the `AWS:SourceARN`\) is an Amazon S3 ARN\. You could use a similar condition to restrict the permission to a set of Amazon S3 buckets, or even to a specific bucket\. In this example, the topic owner is 1111\-2222\-3333 and the Amazon S3 owner is 4444\-5555\-6666\. The example states that any Amazon S3 bucket owned by 4444\-5555\-6666 is allowed to publish to My\-Topic\.
+The following example statement uses the `SourceAccount` condition to ensure that only the Amazon S3 owner account can access the topic\. In this example, the topic owner is 1111\-2222\-3333 and the Amazon S3 owner is 4444\-5555\-6666\. The example states that any Amazon S3 bucket owned by 4444\-5555\-6666 is allowed to publish to MyTopic\.
 
 ```
 {
   "Statement": [{
     "Effect": "Allow",
-    "Principal": "*",
+     "Principal": { 
+      "Service": "s3.amazonaws.com" 
+    },
     "Action": "sns:Publish",
     "Resource": "arn:aws:sns:us-east-2:111122223333:MyTopic",
     "Condition": {
       "StringEquals": {
         "AWS:SourceAccount": "444455556666"
-      },
-      "ArnLike": {
-        "AWS:SourceArn": "arn:aws:s3:*:*:*"
-      }
+      }       
     }
   }]
 }
 ```
 
-## Allow any CloudWatch alarm in an AWS account to publish to an Amazon SNS topic in a different AWS account<a name="sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account"></a>
+## Allow accounts in an AWS organization to publish to a topic in a different account<a name="sns-allow-organization-to-publish-to-topic-in-another-account"></a>
+
+The AWS Organizations service helps you to centrally manage billing, control access and security, and share resources across your AWS accounts\. 
+
+You can find your organization ID in the [ Organizations console](https://console.aws.amazon.com/organizations/)\. For more information, see [ Viewing details of an organization from the master account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_details.html#orgs_view_org)\. 
+
+In this example, any AWS account in organization `myOrgId` can publish to Amazon SNS topic `MyTopic` in account `444455556666`\. The policy checks the organization ID value using the `aws:PrincipalOrgID` global condition key\.
+
+```
+{
+"Statement": [{
+  "Effect": "Allow",
+  "Principal": {
+     "AWS": "*"
+  },
+  "Action": "SNS:Publish",
+  "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
+  "Condition": {
+      "StringEquals": {
+            "aws:PrincipalOrgID": "myOrgId"
+      }
+  }
+}]
+```
+
+## Allow any CloudWatch alarm to publish to a topic in a different account<a name="sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account"></a>
 
 In this case, any CloudWatch alarms in account `111122223333` are allowed to publish to an Amazon SNS topic in account `444455556666`\.
 

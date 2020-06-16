@@ -10,7 +10,14 @@ To invoke Lambda functions using Amazon SNS notifications, you need the followin
 + Lambda function
 + Amazon SNS topic
 
-For information about creating a Lambda function, see [Getting Started with AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)\. For information about creating an Amazon SNS topic, see [Create a topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html)\.
+For information about creating a Lambda function to use with Amazon SNS, see [Using Lambda with Amazon SNS](https://docs.aws.amazon.com/lambda/latest/dg/with-sns-example.html)\. For information about creating an Amazon SNS topic, see [Create a topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html)\.
+
+ When you use Amazon SNS to deliver messages from opt\-in regions to regions which are enabled by default, you must alter the policy created in the AWS Lambda function by replacing the principal `sns.amazonaws.com` with `sns.<opt-in-region>.amazonaws.com`\. 
+
+ For example, if you want to subscribe an AWS Lambda function in US East \(N\. Virginia\) to an SNS topic in Asia Pacific \(Hong Kong\), change the principal in the AWS Lambda function policy to `sns.ap-east-1.amazonaws.com`\. Opt\-in regions include any regions launched after March 20, 2019, which includes Asia Pacific \(Hong Kong\), Middle East \(Bahrain\), EU \(Milano\), and Africa \(Cape Town\)\. Regions launched prior to March 20, 2019 are enabled by default\. 
+
+**Note**  
+We do not support cross\-region delivery to AWS Lambda from a region that is enabled by default to an opt\-in region\. Also, cross\-region forwarding of SNS messages from opt\-in regions to other opt\-in regions is not supported\. 
 
 ## Configuring Amazon SNS with Lambda endpoints using the AWS Management Console<a name="lambda-console"></a>
 
@@ -32,4 +39,4 @@ For information about creating a Lambda function, see [Getting Started with AWS 
 
    1. Choose **Create subscription**\.
 
-When a message is published to an SNS topic that has a Lambda function subscribed to it, the Lambda function is invoked with the payload of the published message\. For information about how to create a sample message history store using Amazon SNS, Lambda, and Amazon DynamoDB, see the AWS Mobile Development blog [Invoking AWS Lambda functions via Amazon SNS](https://mobile.awsblog.com/post/Tx1VE917Z8J4UDY/Invoking-AWS-Lambda-functions-via-Amazon-SNS)\.
+When a message is published to an SNS topic that has a Lambda function subscribed to it, the Lambda function is invoked with the payload of the published message\. For information about how to use AWS Lambda with Amazon SNS, including a tutorial, see [ Using AWS Lambda with Amazon SNS](https://docs.aws.amazon.com/lambda/latest/dg/with-sns.html)\.

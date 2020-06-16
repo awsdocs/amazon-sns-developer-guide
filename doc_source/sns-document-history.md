@@ -5,7 +5,6 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 
 | Date | Documentation update | 
 | --- | --- | 
-| February 11, 2020 | Corrected the information in the [Reserving a dedicated short code for SMS messaging](sqs-sms-short-codes.md) section\. | 
 | February 7, 2020 | Corrected the formatting of code examples throughout this guide\. | 
 | February 5, 2020 | Revised the information in the [AWS CLI](message-filtering-apply.md#message-filtering-apply-cli) section\. | 
 | January 6, 2020 | Made a minor correction in the [Using identity\-based policies with Amazon SNS](sns-using-identity-based-policies.md) section\. | 
@@ -33,7 +32,7 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 | September 10, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | August 29, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | August 26, 2019 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
-| August 19, 2019 | Added the [Allow any CloudWatch alarm in an AWS account to publish to an Amazon SNS topic in a different AWS account](sns-access-policy-use-cases.md#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account) section\. | 
+| August 19, 2019 | Added the [Allow any CloudWatch alarm to publish to a topic in a different account](sns-access-policy-use-cases.md#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account) section\. | 
 | August 16, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
 | August 1, 2019 | Corrected outdated links to the Amazon SNS console throughout this guide\. | 
 | July 26, 2019 | Revised the information in the following sections: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html) | 
@@ -67,7 +66,6 @@ The following table lists changes to the *Amazon Simple Notification Service Dev
 | September 20, 2018 | Made minor corrections throughout this guide\. | 
 | September 19, 2018 | Updated all the links in the [Platform response codes](sns-msg-status.md#platform-returncodes) section\. | 
 | September 17, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
-| September 13, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | September 12, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 
 | September 6, 2018 | Corrected the information in the [Creating the endpoint](sns-internetwork-traffic-privacy.md#sns-vpc-endpoint-create) section\. | 
 | September 5, 2018 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-document-history.html)  | 

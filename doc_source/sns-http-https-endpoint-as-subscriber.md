@@ -228,7 +228,7 @@ If you followed [Step 1](#SendMessageToHttp.prepare), the code that you deployed
 
 1. On the navigation panel, choose **Topics** and then choose a topic\.
 
-1. Choose the **Publish to topic** button\.
+1. Choose the **Publish message** button\.
 
 1. In the **Subject** box, enter a subject \(for example, **Testing publish to my endpoint**\)\.
 

@@ -50,11 +50,11 @@ Subscriptions enable you to send an SMS message to multiple recipients by publis
 
 When you publish a message to a topic, Amazon SNS attempts to deliver that message to every phone number that is subscribed to the topic\.
 
-1. On the topic details page, choose **Publish to topic**\.
+1. On the topic details page, choose **Publish message**\.
 
-1. On the **Publish a message** page, for **Subject**, leave the field blank unless your topic contains email subscriptions and you want to publish to both email and SMS subscriptions\. The text that you enter for **Subject** is used as the email subject line\.
+1. On the **Publish message to topic** page, for **Subject**, leave the field blank unless your topic contains email subscriptions and you want to publish to both email and SMS subscriptions\. The text that you enter for **Subject** is used as the email subject line\.
 
-1. For **Message**, type a message\.
+1. For **Message body**, type a message\.
 
    For information about the size quotas for SMS messages, see [Sending an SMS message](sms_publish-to-phone.md)\.
 

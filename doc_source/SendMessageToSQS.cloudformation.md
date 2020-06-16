@@ -182,7 +182,9 @@ The following listing shows the AWS CloudFormation template contents\.
         "PolicyDocument": {
           "Statement": [{
             "Effect": "Allow",
-            "Principal": "*",
+            "Principal": {
+              "Service": "sns.amazonaws.com"
+            },
             "Action": ["sqs:SendMessage"],
             "Resource": "*",
             "Condition": {

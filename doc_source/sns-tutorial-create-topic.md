@@ -100,9 +100,9 @@ When you create a topic using the console, the default policy uses the `aws:Sour
 
 ## To create a topic using the AWS SDK for \.NET<a name="create-topic-aws-dot-net"></a>
 
-1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
+1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 
-1. Write your code\. For more information, see [Programming with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-programming-techniques.html)\.
+1. Write your code\. For more information, see [Programming with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-programming-techniques.html)\.
 
    The following code excerpt creates the topic *`MyTopic`* and then prints the topic ARN and the `CreateTopicRequest` request ID\.
 

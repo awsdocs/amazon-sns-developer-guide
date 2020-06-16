@@ -74,7 +74,7 @@ Call one of the following APIs, depending on your target programming language or
 | Programming language or platform | API reference links | 
 | --- | --- | 
 | Android | [setPlatformApplicationAttributes](https://docs.aws.amazon.com/AWSAndroidSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSClient.html#setPlatformApplicationAttributes%28com.amazonaws.services.sns.model.SetPlatformApplicationAttributesRequest%29) | 
-| iOS | [AWSSNSSetPlatformApplicationAttributesInput](https://docs.aws.amazon.com/AWSiOSSDK/latest/Classes/AWSSNSSetPlatformApplicationAttributesInput.html) | 
+| iOS | [AWSSNSSetPlatformApplicationAttributesInput](https://aws-amplify.github.io/aws-sdk-ios/docs/reference/AWSSNS/Classes/AWSSNSSetPlatformApplicationAttributesInput.html) | 
 | Java | [setPlatformApplicationAttributes](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSClient.html#setPlatformApplicationAttributes(com.amazonaws.services.sns.model.SetPlatformApplicationAttributesRequest)) | 
 | JavaScript | [setPlatformApplicationAttributes](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SNS.html#setPlatformApplicationAttributes-property) | 
 | \.NET | [SetPlatformApplicationAttributes](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=SNS/MSNSSNSSetPlatformApplicationAttributesSetPlatformApplicationAttributesRequest.html&tocid=Amazon_SimpleNotificationService_AmazonSimpleNotificationServiceClient) | 

@@ -111,9 +111,9 @@ If the attribute type is **String\.Array**, enclose the array in square brackets
 
 ## To publish a message to an Amazon SNS topic using the AWS SDK for \.NET<a name="publish-message-to-topic-aws-dot-net"></a>
 
-1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
+1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 
-1. Write your code\. For more information, see [Programming with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-programming-techniques.html)\.
+1. Write your code\. For more information, see [Programming with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-programming-techniques.html)\.
 
    The following code excerpt publishes a message to a topic and then prints the `MessageId`\.
 

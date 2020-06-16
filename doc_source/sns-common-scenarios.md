@@ -19,7 +19,7 @@ Application and system alerts are notifications that are triggered by predefined
 
 ## Push email and text messaging<a name="SNSPushMessaging"></a>
 
-Push email and text messaging are two ways to transmit messages to individuals or groups via email and/or SMS\. For example, you could use Amazon SNS to push targeted news headlines to subscribers by email or SMS\. Upon receiving the email or SMS text, interested readers could then choose to learn more by visiting a website or launching an application\. For more information about using Amazon SNS to send SMS notifications, see [Using Amazon SNS for user notifications with a mobile phone number as a subscriber \(send SMS\)](sns-mobile-phone-number-as-subscriber.md)\. 
+Push email and text messaging are two ways to transmit messages to individuals or groups via email and/or SMS\. For example, you could use Amazon SNS to push targeted news headlines to subscribers by email or SMS\. Upon receiving the email or SMS text, interested readers could then choose to learn more by visiting a website or launching an application\. For more information about using Amazon SNS to send SMS notifications, see [Text messaging \(SMS\)](sns-mobile-phone-number-as-subscriber.md)\. 
 
 ## Mobile push notifications<a name="SNSMobilePushScenario"></a>
 

@@ -83,13 +83,19 @@ To set a policy on a queue, you can use the Amazon SQS console or the [SetQueueA
 
 1. Choose **Add Permission**\.
 
+1. Choose **Edit Policy Document \(Advanced\)**\.
+
+1. Set `Principal` to be the Amazon SNS service, as shown in the example below\. 
+
 If you wanted to create the policy document yourself, you would create a policy like the following\. The policy allows MyTopic to send messages to MyQueue\. 
 
 ```
 {
   "Statement": [{
     "Effect":"Allow",
-    "Principal":"*",
+    "Principal": {
+      "Service": "sns.amazonaws.com"
+    },
     "Action":"sqs:SendMessage",
     "Resource":"arn:aws:sqs:us-east-2:123456789012:MyQueue",
     "Condition":{

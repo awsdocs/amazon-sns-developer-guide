@@ -4,7 +4,7 @@ You can use Amazon SNS to build event\-driven applications which use subscriber 
 
 To accelerate the development of your event\-driven applications, you can subscribe event\-handling pipelines—powered by AWS Event Fork Pipelines—to Amazon SNS topics\. AWS Event Fork Pipelines is a suite of open\-source [nested applications](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template-nested-applications.html), based on the [AWS Serverless Application Model](https://aws.amazon.com/serverless/sam/) \(AWS SAM\), which you can deploy directly from the [AWS Event Fork Pipelines suite](https://serverlessrepo.aws.amazon.com/applications?query=aws-event-fork-pipelines) \(choose **Show apps that create custom IAM roles or resource policies**\) into your AWS account\.
 
-For an AWS Event Fork Pipelines use case, see [](sns-tutorial-deploy-test-fork-pipelines-sample-application.md)\.
+For an AWS Event Fork Pipelines use case, see [Tutorial: Deploying and testing the AWS Event Fork Pipelines sample application](sns-tutorial-deploy-test-fork-pipelines-sample-application.md)\.
 
 **Topics**
 + [How AWS Event Fork Pipelines works](#how-sns-fork-works)

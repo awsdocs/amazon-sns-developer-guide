@@ -134,9 +134,9 @@ For detailed instructions on publishing a message with attributes to an Amazon S
 
 ## To publish a message with attributes to an Amazon SNS topic using the AWS SDK for \.NET<a name="publish-message-with-attributes-aws-dot-net"></a>
 
-1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
+1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 
-1. Write your code\. For more information, see [Programming with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-programming-techniques.html)\.
+1. Write your code\. For more information, see [Programming with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-programming-techniques.html)\.
 
 1. The following code example helps simplify the process of publishing messages with attributes\. The `SNSMessageAttributes` class stores the `MessageAttributes` field as a dictionary\. You can use the overloaded `addAttribute` method to add attributes with the data types `String`, `String.Array`, and `Number`\. To publish the message, use the `publish` method by providing the `AmazonSimpleNotificationServiceClient` client and the topic ARN\.
 

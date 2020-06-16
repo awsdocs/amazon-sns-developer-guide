@@ -1,6 +1,6 @@
 # Encryption at rest<a name="sns-server-side-encryption"></a>
 
-Server\-side encryption \(SSE\) lets you transmit sensitive data in encrypted topics\. SSE protects the contents of messages in Amazon SNS topics using keys managed in AWS Key Management Service \(AWS KMS\)\. 
+Server\-side encryption \(SSE\) lets you store sensitive data in encrypted topics\. SSE protects the contents of messages in Amazon SNS topics using keys managed in AWS Key Management Service \(AWS KMS\)\. 
 
 For information about managing SSE using the AWS Management Console or the AWS SDK for Java \(by setting the `KmsMasterKeyId` attribute using the `[CreateTopic](https://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html)` and `[SetTopicAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetTopicAttributes.html)` API actions\), see [Tutorial: Enabling server\-side encryption \(SSE\) for an Amazon SNS topic](sns-tutorial-enable-encryption-for-topic.md)\. For information about creating encrypted topics using AWS CloudFormation \(by setting the `KmsMasterKeyId` property using the `[AWS::SNS::Topic](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic.html)` resource\), see the *AWS CloudFormation User Guide*\.
 

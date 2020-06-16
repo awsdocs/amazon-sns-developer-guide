@@ -2,7 +2,7 @@
 
 When you no longer need a subscription or topic, you must first unsubscribe from the topic before you can delete the topic\.
 
-The following tutorial shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to publish a message to a topic\.
+The following tutorial shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to subscriptions and topics\.
 
 **Topics**
 + [AWS Management Console](#delete-subscription-topic-aws-console)
@@ -62,9 +62,9 @@ When you delete a topic, you also delete all subscriptions to the topic\.
 
 ## To delete an Amazon SNS subscription and topic using the AWS SDK for \.NET<a name="delete-subscription-topic-aws-dot-net"></a>
 
-1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
+1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 
-1. Write your code\. For more information, see [Programming with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-programming-techniques.html)\.
+1. Write your code\. For more information, see [Programming with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-programming-techniques.html)\.
 
    The following code excerpt deletes a topic and then prints the `DeleteTopicRequest` request ID\.
 **Important**  
