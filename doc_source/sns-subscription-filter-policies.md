@@ -17,8 +17,8 @@ A subscription accepts a message under the following conditions:
 + [Example message with attributes](#example-message-with-attributes)
 + [Example filter policies](#example-filter-policies)
 + [Filter policy constraints](#subscription-filter-policy-constraints)
-+ [Attribute String Value Matching (Whitelisting, Blacklisting, and Prefix Matching)](#string-value-matching)
-+ [Attribute Numeric Value Matching (Whitelisting, Blacklisting, and Range Matching)](#numeric-value-matching)
++ [Attribute string value matching](#string-value-matching)
++ [Attribute numeric value matching](#numeric-value-matching)
 + [Attribute key matching](#attribute-key-matching)
 + [AND/OR logic](#and-or-logic)
 
@@ -148,7 +148,7 @@ You can use string values to match message attributes and filter messages\. Stri
 
 You can use the following string operations to match message attributes\.
 
-### Exact matching \(whitelisting\)<a name="string-exact-matching-whitelisting"></a>
+### Exact matching<a name="string-exact-matching"></a>
 
 Exact matching occurs when a policy attribute value matches one or more message attribute values\.
 
@@ -174,7 +174,7 @@ However, it doesn't match the following message attribute:
 "customer_interests": {"Type": "String", "Value": "baseball"}
 ```
 
-### Anything\-but matching \(blacklisting\)<a name="string-anything-but-matching-blacklisting"></a>
+### Anything\-but matching<a name="string-anything-but-matching"></a>
 
 When a policy attribute value includes the keyword `anything-but`, it matches any message attribute that *doesn't* include any of the policy attribute values\.
 
@@ -236,7 +236,7 @@ However, it doesn't match the following message attribute:
 
 You can use numeric values to match message attributes and filter messages\. Numeric values aren't enclosed in double quotation marks in the JSON policy\. You can use the following numeric operations to match message attributes\.
 
-### Exact matching \(whitelisting\)<a name="numeric-exact-matching-whitelisting"></a>
+### Exact matching<a name="numeric-exact-matching"></a>
 
 When a policy attribute value includes the keyword `numeric` and the operator `=`, it matches any message attribute that has the same name and an equal numeric value\.
 
@@ -256,7 +256,7 @@ It matches either of the following message attributes:
 "price_usd": {"Type": "Number", "Value": 3.015e2}
 ```
 
-### Anything\-but matching \(blacklisting\)<a name="numeric-anything-but-matching-blacklisting"></a>
+### Anything\-but matching<a name="numeric-anything-but-matching"></a>
 
 When a policy attribute value includes the keyword `anything-but`, it matches any message attribute that *doesn't* include any of the policy attribute values\.
 

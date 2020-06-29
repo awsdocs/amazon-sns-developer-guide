@@ -98,13 +98,13 @@ The delivery status log for a failed SMS delivery will resemble the following ex
 
 The reason for a failure is provided with the `providerResponse` attribute\. SMS messages might fail to deliver for the following reasons:
 + Blocked as spam by phone carrier
-+ Destination is blacklisted
++ Destination is on a blocked list
 + Invalid phone number
 + Message body is invalid
 + Phone carrier has blocked this message
 + Phone carrier is currently unreachable/unavailable
 + Phone has blocked SMS
-+ Phone is blacklisted
++ Phone is on a blocked list
 + Phone is currently unreachable/unavailable
 + Phone number is opted out
 + This delivery would exceed max price
