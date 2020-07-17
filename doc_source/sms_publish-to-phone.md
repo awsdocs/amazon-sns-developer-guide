@@ -27,7 +27,7 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 
 1. On the navigation panel, choose **Text messaging \(SMS\)**\.
 
-1. On the **Text messaging \(SMS\)** page, choose **Send a text message \(SMS\)**\. The **Send text message \(SMS\)** window opens\.
+1. On the **Mobile Text messaging \(SMS\)** page, choose **Publish text message**\. The **Publish SMS message** window opens\.
 
 1. For **Message type**, choose one of the following:
    + **Promotional** – Noncritical messages, such as marketing messages\. Amazon SNS optimizes the message delivery to incur the lowest cost\.

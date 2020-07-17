@@ -34,7 +34,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Austria | AT | Yes | Yes | 
 | Azerbaijan | AZ |  |  | 
 | Bahamas | BS | Yes |  | 
-| Bahrain | BH | Yes |  | 
+| Bahrain | BH | Yes | Yes | 
 | Bangladesh | BD |  |  | 
 | Barbados | BB | Yes |  | 
 | Belarus | BY | Yes[1](#sms-support-note-1) |  | 
@@ -66,13 +66,12 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Costa Rica | CR |  |  | 
 | Croatia | HR |  | Yes | 
 | Cyprus | CY | Yes |  | 
-| Czech Republic | CZ |  | Yes | 
+| Czechia | CZ |  | Yes | 
 | Democratic Republic of the Congo | CD |  |  | 
 | Denmark | DK | Yes | Yes | 
 | Djibouti | DJ | Yes |  | 
 | Dominica | DM | Yes |  | 
 | Dominican Republic | DO |  |  | 
-| Timor\-Leste | TL |  |  | 
 | Ecuador | EC |  |  | 
 | Egypt | EG | Yes[1](#sms-support-note-1) |  | 
 | El Salvador | SV |  |  | 
@@ -204,6 +203,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Tajikistan | TJ | Yes |  | 
 | Tanzania | TZ |  |  | 
 | Thailand | TH | Yes[1](#sms-support-note-1) | Yes | 
+| Timor\-Leste | TL |  |  | 
 | Togo | TG | Yes |  | 
 | Tonga | TO | Yes |  | 
 | Trinidad and Tobago | TT | Yes |  | 
