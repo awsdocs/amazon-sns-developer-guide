@@ -77,7 +77,7 @@ The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions 
       "kms:GenerateDataKey",
       "kms:Decrypt"
     ],
-    "Resource": "arn:aws:kms:default-regionus-east-2:123456789012:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+    "Resource": "arn:aws:kms:us-east-2:123456789012:key/1234abcd-12ab-34cd-56ef-1234567890ab"
   }, {
     "Effect": "Allow",
     "Action": [
