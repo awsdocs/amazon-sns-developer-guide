@@ -19,27 +19,29 @@ When you subscribe an Amazon SQS queue to an Amazon SNS topic, you can publish a
 }
 ```
 
-**Important**  
-Amazon SNS isn't currently compatible with Amazon SQS FIFO queues\.  
-Instead of following the steps listed below, you can now subscribe an Amazon SQS queue to an Amazon SNS topic using the Amazon SQS console, which simplifies the process\. For more information, see [Subscribe Queue to Amazon SNS Topic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqssubscribe.html)
+Amazon SNS isn't currently compatible with Amazon SQS FIFO queues\.
 
-To enable an Amazon SNS topic to send messages to an Amazon SQS queue, follow these steps:
+## Subscribing an Amazon SQS queue to an Amazon SNS topic<a name="subscribe-sqs-queue-to-sns-topic"></a>
 
-1. [Get the Amazon Resource Name \(ARN\) of the queue you want to send messages to and the topic to which you want to subscribe the queue\.](#SendMessageToSQS.arn)
+To enable an Amazon SNS topic to send messages to an Amazon SQS queue, do one of the following:
++ Use the [Amazon SQS console](https://console.aws.amazon.com/sqs/), which simplifies the process\. For more information, see [Subscribing an Amazon SQS queue to an Amazon SNS topic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-subscribe-queue-sns-topic.html) in the *Amazon Simple Queue Service Developer Guide*\.
++ Follow these steps: 
 
-1. [Give `sqs:SendMessage` permission to the Amazon SNS topic so that it can send messages to the queue\.](#SendMessageToSQS.sqs.permissions)
+  1. [Get the Amazon Resource Name \(ARN\) of the queue you want to send messages to and the topic to which you want to subscribe the queue\.](#SendMessageToSQS.arn)
 
-1. [Subscribe the queue to the Amazon SNS topic\.](#SendMessageToSQS.subscribe)
+  1. [Give `sqs:SendMessage` permission to the Amazon SNS topic so that it can send messages to the queue\.](#SendMessageToSQS.sqs.permissions)
 
-1. [Give IAM users or AWS accounts the appropriate permissions to publish to the Amazon SNS topic and read messages from the Amazon SQS queue\.](#SendMessageToSQS.iam.permissions)
+  1. [Subscribe the queue to the Amazon SNS topic\.](#SendMessageToSQS.subscribe)
 
-1. [Test it out by publishing a message to the topic and reading the message from the queue\.](#SendMessageToSQS.test)
+  1. [Give IAM users or AWS accounts the appropriate permissions to publish to the Amazon SNS topic and read messages from the Amazon SQS queue\.](#SendMessageToSQS.iam.permissions)
+
+  1. [Test it out by publishing a message to the topic and reading the message from the queue\.](#SendMessageToSQS.test)
 
 To learn about how to set up a topic to send messages to a queue that is in a different AWS account, see [Sending Amazon SNS messages to an Amazon SQS queue in a different account](sns-send-message-to-sqs-cross-account.md)\.
 
 To see an AWS CloudFormation template that creates a topic that sends messages to two queues, see [Using an AWS CloudFormation template to create a topic that sends messages to Amazon SQS queues](SendMessageToSQS.cloudformation.md)\.
 
-## Step 1: Get the ARN of the queue and topic<a name="SendMessageToSQS.arn"></a>
+### Step 1: Get the ARN of the queue and topic<a name="SendMessageToSQS.arn"></a>
 
 When subscribing a queue to your topic, you'll need a copy of the ARN for the queue\. Similarly, when giving permission for the topic to send messages to the queue, you'll need a copy of the ARN for the topic\.
 
@@ -63,7 +65,7 @@ To get the topic ARN, you can use the Amazon SNS console, the `[sns\-get\-topic\
 
 1. From the **Topic Details** section, copy the **Topic ARN** value so that you can use it to give permission for the Amazon SNS topic to send messages to the queue\.
 
-## Step 2: Give permission to the Amazon SNS topic to send messages to the Amazon SQS queue<a name="SendMessageToSQS.sqs.permissions"></a>
+### Step 2: Give permission to the Amazon SNS topic to send messages to the Amazon SQS queue<a name="SendMessageToSQS.sqs.permissions"></a>
 
 For an Amazon SNS topic to be able to send messages to a queue, you must set a policy on the queue that allows the Amazon SNS topic to perform the `sqs:SendMessage` action\.
 
@@ -107,7 +109,7 @@ If you wanted to create the policy document yourself, you would create a policy 
 }
 ```
 
-## Step 3: Subscribe the queue to the Amazon SNS topic<a name="SendMessageToSQS.subscribe"></a>
+### Step 3: Subscribe the queue to the Amazon SNS topic<a name="SendMessageToSQS.subscribe"></a>
 
 To send messages to a queue through a topic, you must subscribe the queue to the Amazon SNS topic\. You specify the queue by its ARN\. To subscribe to a topic, you can use the Amazon SNS console, the `[sns\-subscribe](https://docs.aws.amazon.com/cli/latest/reference/sns/subscribe.html)` CLI command, or the `[Subscribe](https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html)` API action\. Before you start, make sure you have the ARN for the queue that you want to subscribe\.
 
@@ -133,7 +135,7 @@ To send messages to a queue through a topic, you must subscribe the queue to the
 
    Usually, you'll be subscribing your own queue to your own topic in your own account\. However, you can also subscribe a queue from a different account to your topic\. If the user who creates the subscription is not the owner of the queue \(for example, if a user from account A subscribes a queue from account B to a topic in account A\), the subscription must be confirmed\. For more information about subscribing a queue from a different account and confirming the subscription, see [Sending Amazon SNS messages to an Amazon SQS queue in a different account](sns-send-message-to-sqs-cross-account.md)\.
 
-## Step 4: Give users permissions to the appropriate topic and queue actions<a name="SendMessageToSQS.iam.permissions"></a>
+### Step 4: Give users permissions to the appropriate topic and queue actions<a name="SendMessageToSQS.iam.permissions"></a>
 
 You should use AWS Identity and Access Management \(IAM\) to allow only appropriate users to publish to the Amazon SNS topic and to read/delete messages from the Amazon SQS queue\. For more information about controlling actions on topics and queues for IAM users, see [Using identity\-based policies with Amazon SNS](sns-using-identity-based-policies.md), and [Controlling User Access to Your AWS Account ](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/UsingIAM.html) in the Amazon Simple Queue Service Developer Guide\.
 
@@ -143,7 +145,7 @@ There are two ways to control access to a topic or queue:
 
 You should use the first method for most cases \(apply policies to groups and manage permissions for users by adding or removing the appropriate users to the groups\)\. If you need to give permissions to a user in another account, you should use the second method\.
 
-### Adding a policy to an IAM user or group<a name="SendMessageToSQS.iam.permissions.user"></a>
+#### Adding a policy to an IAM user or group<a name="SendMessageToSQS.iam.permissions.user"></a>
 
 If you added the following policy to an IAM user or group, you would give that user or members of that group permission to perform the `sns:Publish` action on the topic MyTopic\.
 
@@ -175,7 +177,7 @@ If you added the following policy to an IAM user or group, you would give that u
 }
 ```
 
-### Adding a policy to a topic or queue<a name="SendMessageToSQS.iam.permissions.resource"></a>
+#### Adding a policy to a topic or queue<a name="SendMessageToSQS.iam.permissions.resource"></a>
 
 The following example policies show how to give another account permissions to a topic and queue\.
 
@@ -217,7 +219,7 @@ If you added the following policy to a queue MyQueue in account 123456789012, yo
 }
 ```
 
-## Step 5: Test the topic's queue subscriptions<a name="SendMessageToSQS.test"></a>
+### Step 5: Test the topic's queue subscriptions<a name="SendMessageToSQS.test"></a>
 
 You can test a topic's queue subscriptions by publishing to the topic and viewing the message that the topic sends to the queue\.
 

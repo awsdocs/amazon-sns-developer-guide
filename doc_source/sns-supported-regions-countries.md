@@ -155,7 +155,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | New Zealand | NZ |  | Yes | 
 | Nicaragua | NI |  |  | 
 | Niger | NE | Yes |  | 
-| Nigeria | NG |  |  | 
+| Nigeria | NG | Yes |  | 
 | Norway | NO | Yes | Yes | 
 | Oman | OM | Yes |  | 
 | Pakistan | PK |  |  | 

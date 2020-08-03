@@ -22,7 +22,7 @@ Vilpower charges a fee for completing the registration process\. Currently, this
 
 1. Choose **Signup** to create another account\. During the registration process, do the following:
    + When you're asked to specify the type of entity that you want to register as, choose **As Enterprise**\.
-   + On the Select your Telemarketer page, for Telemarketer Name, choose **Infobip Private Limited – ALL**\. For **Enter Telemarketer ID**, enter **110200001152**\.
+   + On the Select your Telemarketer page, for Telemarketer Name, start typing **Infobip** and then choose **Infobip Private Limited – ALL** from the dropdown list\.
    + When prompted to provide your Header IDs, enter the sender IDs that you want to register\.
    + When prompted to provide your Content Templates, enter the message content that you plan to send to your recipients\. Include a template for every message that you plan to send\. 
 
