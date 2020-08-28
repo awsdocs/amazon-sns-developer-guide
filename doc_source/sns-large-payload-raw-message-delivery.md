@@ -1,11 +1,6 @@
-# Amazon SNS large payload and raw message delivery<a name="sns-large-payload-raw-message-delivery"></a>
+# Raw message delivery<a name="sns-large-payload-raw-message-delivery"></a>
 
-Amazon SNS and Amazon SQS let you send and receive large payloads \(from 64 to 256 kilobytes in size\)\.
-
-**Note**  
-To send large payloads, you must use an AWS SDK that supports Signature Version 4\.
-
-To avoid having Amazon SQS and HTTP/S endpoints process the JSON formatting of messages, Amazon SNS also allows raw message delivery:
+To avoid having Amazon SQS and HTTP/S endpoints process the JSON formatting of messages, Amazon SNS allows raw message delivery:
 + When you enable raw message delivery for an Amazon SQS endpoint, any Amazon SNS metadata is stripped from the published message and the message is sent as is\.
 + When you enable raw message delivery for HTTP/S endpoints, the HTTP header `x-amz-sns-rawdelivery` with its value set to `true` is added to the message, indicating that the message has been published without JSON formatting\.
 

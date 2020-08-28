@@ -18,7 +18,7 @@ Currently, Amazon SNS supports SMS messaging in the following AWS Regions:
 You can use Amazon SNS to send SMS messages to the following countries and regions:
 
 
-| Country or region | ISO code | Supports sender IDs | Supports two\-way SMS | 
+| Country or region | ISO code | Supports sender IDs | Supports two\-way SMS \(Amazon Pinpoint only\) | 
 | --- | --- | --- | --- | 
 | Afghanistan | AF |  |  | 
 | Albania | AL | Yes |  | 
