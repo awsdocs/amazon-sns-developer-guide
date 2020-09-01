@@ -6,6 +6,7 @@
 + [Publish messages to an Amazon SQS queue](#sns-publish-messages-to-sqs-queue)
 + [Allow any AWS resource to publish to a topic](#sns-allow-any-aws-resource-to-publish-to-topic)
 + [Allow an Amazon S3 bucket to publish to a topic](#sns-allow-s3-bucket-to-publish-to-topic)
++ [Allow another AWS service to publish to a topic that is owned by another account](#sns-allow-specified-service-to-publish-to-topic)
 + [Allow accounts in an AWS organization to publish to a topic in a different account](#sns-allow-organization-to-publish-to-topic-in-another-account)
 + [Allow any CloudWatch alarm to publish to a topic in a different account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
 + [Restrict publication to an Amazon SNS topic only from a specific VPC endpoint](#sns-restrict-publication-only-from-specified-vpc-endpoint)
@@ -144,6 +145,41 @@ The following example statement uses the `SourceAccount` condition to ensure tha
   }]
 }
 ```
+
+## Allow another AWS service to publish to a topic that is owned by another account<a name="sns-allow-specified-service-to-publish-to-topic"></a>
+
+You can allow another AWS service to publish to a topic that is owned by another AWS account\. Suppose that you signed into the 111122223333 account, opened Amazon SES, and created an email\. To publish notifications about this email to a Amazon SNS topic that the 444455556666 account owns, you'd create a policy like the following\. To do so, you need to provide information about the principal \(the other service\) and each resource's ownership\. The `Resource` statement provides the topic ARN, which includes the account ID of the topic owner, 444455556666\. The `"aws:SourceOwner": "111122223333"` statement specifies that your account owns the email\. 
+
+```
+{
+  "Version": "2008-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "__default_statement_ID",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ses.amazonaws.com"
+      },
+      "Action": "SNS:Publish",
+      "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
+      "Condition": {
+        "StringEquals": {
+          "aws:SourceOwner": "111122223333"
+        }
+      }
+    }
+  ]
+}
+```
+
+### `aws:SourceAccount` versus `aws:SourceOwner`<a name="source-account-versus-source-owner"></a>
+
+The `aws:SourceAccount` and `aws:SourceOwner` condition keys are similar in that they both identify a resource owner\. This section describes the differences between each condition key and when to use each one when creating access policies for Amazon SNS topics\.
+
+When you create topics from the Amazon SNS console, the default policy uses the `aws:SourceOwner` condition key to allow only the topic owner to publish and subscribe to the topic\. The value for `aws:SourceOwner` is the topic owner\. In more advanced access policies, use the condition keys as follows: 
++ Use `aws:SourceAccount` to configure conditions for other accounts for publishing and subscribing to topics\.
++ Use `aws:SourceOwner` to allow publishing requests from another AWS service\. Use the above example to specify ownership of the other service's resource and of the Amazon SNS topic\.
 
 ## Allow accounts in an AWS organization to publish to a topic in a different account<a name="sns-allow-organization-to-publish-to-topic-in-another-account"></a>
 
