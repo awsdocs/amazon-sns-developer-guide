@@ -6,6 +6,7 @@ Currently, Amazon SNS supports SMS messaging in the following AWS Regions:
 | Region name | Region | Endpoint | Protocol | 
 | --- | --- | --- | --- | 
 | US East \(N\. Virginia\) | us\-east\-1 | sns\.us\-east\-1\.amazonaws\.com | HTTP and HTTPS | 
+| US West \(N\. California\) | us\-west\-1 | sns\.us\-west\-1\.amazonaws\.com | HTTP and HTTPS | 
 | US West \(Oregon\) | us\-west\-2 | sns\.us\-west\-2\.amazonaws\.com | HTTP and HTTPS | 
 | AWS GovCloud \(US\-West\) | us\-gov\-west\-1 | sns\.us\-gov\-west\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Europe \(Frankfurt\) | eu\-central\-1 | sns\.eu\-central\-1\.amazonaws\.com | HTTP and HTTPS | 
