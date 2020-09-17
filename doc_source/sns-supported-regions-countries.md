@@ -142,7 +142,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Mexico | MX |  | Yes | 
 | Moldova | MD | Yes |  | 
 | Monaco | MC |  |  | 
-| Mongolia | MO | Yes |  | 
+| Mongolia | MN | Yes |  | 
 | Montenegro | ME | Yes |  | 
 | Montserrat | MS | Yes |  | 
 | Morocco | MA |  |  | 

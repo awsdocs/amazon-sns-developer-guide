@@ -3,8 +3,8 @@
 Before you can use Amazon SNS, you must complete the following steps\.
 
 **Topics**
-+ [Create an AWS Account and an IAM Administrator User](#create-aws-account)
-+ [Create an IAM User and Get Your AWS Credentials](#create-iam-user)
++ [Step 1: Create an AWS account and an IAM administrator user](#create-aws-account)
++ [Step 2: Create an IAM user and get your AWS credentials](#create-iam-user)
 + [Next steps](#next-steps-setting-up)
 
 ## Step 1: Create an AWS account and an IAM administrator user<a name="create-aws-account"></a>

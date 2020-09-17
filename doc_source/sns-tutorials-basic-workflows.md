@@ -3,9 +3,9 @@
 This section contains the tutorials that encompass the basic workflows of Amazon SNS\.
 
 **Topics**
-+ [Creating an Amazon SNS Topic](sns-tutorial-create-topic.md)
-+ [Subscribing an Endpoint to an Amazon SNS Topic](sns-tutorial-create-subscribe-endpoint-to-topic.md)
-+ [Publishing a Message to an Amazon SNS Topic](sns-tutorial-publish-message-to-topic.md)
-+ [Listing, Adding, and Removing Tags for an Amazon SNS Topic](sns-tutorial-list-add-remove-tags-for-topic.md)
-+ [Configuring an Amazon SNS Dead-Letter Queue for an Amazon SNS Subscription](sns-configure-dead-letter-queue.md)
-+ [Deleting an Amazon SNS Subscription or Topic](sns-tutorial-delete-subscription-topic.md)
++ [Tutorial: Creating an Amazon SNS topic](sns-tutorial-create-topic.md)
++ [Tutorial: Subscribing an endpoint to an Amazon SNS topic](sns-tutorial-create-subscribe-endpoint-to-topic.md)
++ [Tutorial: Publishing a message to an Amazon SNS topic](sns-tutorial-publish-message-to-topic.md)
++ [Tutorial: Listing, adding, and removing tags for an Amazon SNS topic](sns-tutorial-list-add-remove-tags-for-topic.md)
++ [Tutorial: Configuring an Amazon SNS dead\-letter queue for a subscription](sns-configure-dead-letter-queue.md)
++ [Tutorial: Deleting an Amazon SNS subscription and topic](sns-tutorial-delete-subscription-topic.md)

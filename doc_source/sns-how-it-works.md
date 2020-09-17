@@ -8,7 +8,7 @@ This section provides information about Amazon SNS topic and message attributes\
 + [Message delivery retries](sns-message-delivery-retries.md)
 + [Dead\-letter queues](sns-dead-letter-queues.md)
 + [Message attributes](sns-message-attributes.md)
-+ [Message Filtering](sns-message-filtering.md)
++ [Message filtering](sns-message-filtering.md)
 + [Message and JSON formats](sns-message-and-json-formats.md)
 + [Raw message delivery](sns-large-payload-raw-message-delivery.md)
 + [Large message payloads](large-message-payloads.md)

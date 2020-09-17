@@ -7,6 +7,6 @@ The following tutorials show how you can use the AWS Management Console to deplo
 To delete the resources that comprise a pipeline, find the pipeline on the **Applications** page of on the AWS Lambda console, expand the **SAM template section**, choose **CloudFormation stack**, and then choose **Other Actions**, **Delete Stack**\.
 
 **Topics**
-+ [To Deploy and Subscribe the Event Storage and Backup Pipeline](deploy-event-storage-backup-pipeline.md)
-+ [To Deploy and Subscribe the Event Search and Analytics Pipeline](deploy-event-search-analytics-pipeline.md)
-+ [To Deploy and Subscribe the Event Replay Pipeline](deploy-event-replay-pipeline.md)
++ [Tutorial: To deploy and subscribe the event storage and backup pipeline](deploy-event-storage-backup-pipeline.md)
++ [Tutorial: To deploy and subscribe the event search and analytics pipeline](deploy-event-search-analytics-pipeline.md)
++ [Tutorial: To deploy and subscribe the event replay pipeline](deploy-event-replay-pipeline.md)

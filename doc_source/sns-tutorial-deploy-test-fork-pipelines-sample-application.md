@@ -9,7 +9,7 @@ To avoid incurring unwanted costs after you finish deploying the AWS Event Fork 
 
 **Topics**
 + [Example AWS Event Fork Pipelines use case](example-sns-fork-use-case.md)
-+ [To Deploy the Sample Application](deploy-sample-application.md)
-+ [To Execute the Sample Application](execute-sample-application.md)
-+ [To Verify the Execution of the Sample Application and Its Pipelines](verify-sample-application-pipelines.md)
-+ [To Simulate an Issue and Replay Events for Recovery](simulate-issue-replay-events-for-recovery.md)
++ [Step 1: To deploy the sample application](deploy-sample-application.md)
++ [Step 2: To execute the sample application](execute-sample-application.md)
++ [Step 3: To verify the execution of the sample application and its pipelines](verify-sample-application-pipelines.md)
++ [Step 4: To simulate an issue and replay events for recovery](simulate-issue-replay-events-for-recovery.md)
