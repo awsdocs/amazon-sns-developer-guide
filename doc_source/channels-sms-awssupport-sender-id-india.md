@@ -29,6 +29,6 @@ Vilpower charges a fee for completing the registration process\. Currently, this
 
 1. Complete the steps at [Requesting sender IDs](channels-sms-awssupport-sender-id.md) to request a sender ID for India\. In your request, provide the Entity ID, Unique Header IDs, and Template IDs that you received during the registration process\.
 
-1. Download and complete the information on this [spreadsheet](samples/India_DLT_Template_Validation.zip), and add it to your support case\. This provides additional information to Amazon, allowing successful registration with downstream carriers\.
+1. Download and complete the information on this [spreadsheet](https://docs.aws.amazon.com/pinpoint/latest/userguide/samples/India_DLT_Template_Validation.zip), and add it to your support case\. This provides additional information to Amazon, allowing successful registration with downstream carriers\.
 
 1. Repeat steps 3 & 4 if any information, such as a Unique Header ID and/or Template ID, has changed, or if you modify an already registered template\.
