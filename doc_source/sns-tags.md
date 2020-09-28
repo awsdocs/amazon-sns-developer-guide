@@ -1,26 +1,79 @@
-# Amazon SNS tags<a name="sns-tags"></a>
+# Configuring tags for an Amazon SNS topic<a name="sns-tags"></a>
 
-To organize and identify your Amazon SNS resources \(for example, for cost allocation or for organizing and discovering tagged topics\), you can add metadata *tags* that identify a topic's purpose, owner, or environment—this is especially useful when you have many topics\. For information about managing Amazon SNS topics using the AWS Management Console or the AWS SDK for Java \(and the `[TagResource](https://docs.aws.amazon.com/sns/latest/api/API_TagResource.html)`, `[UntagResource](https://docs.aws.amazon.com/sns/latest/api/API_UntagResource.html)`, and `[ListTagsForResource](https://docs.aws.amazon.com/sns/latest/api/API_ListTagsForResource.html)` API actions\), see the [Tutorial: Listing, adding, and removing tags for an Amazon SNS topic](sns-tutorial-list-add-remove-tags-for-topic.md) tutorial\.
+You can track your Amazon SNS resources \(for example, for cost allocation\) by adding, removing, and listing metadata tags for Amazon SNS topics\. This page shows how to add, update, and remove tags for a topic using the AWS Management Console and the AWS SDK for Java\. For more information, see [Configuring tags for an Amazon SNS topic](#sns-tags)\.
+
+**Topics**
++ [AWS Management Console](#add-update-remove-tags-for-topic-aws-console)
++ [AWS SDK for Java](#add-update-remove-tags-for-topic-aws-java)
 
 **Note**  
 Currently, tag\-based access control isn't available\.
 
-You can use cost allocation tags to organize your AWS bill to reflect your own cost structure\. To do this, sign up to get your AWS account bill to include tag keys and values\. For more information, see [Setting Up a Monthly Cost Allocation Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/configurecostallocreport.html#allocation-report) in the *AWS Billing and Cost Management User Guide*\.
+## To list, add, and remove, metadata tags for an Amazon SNS topic using the AWS Management Console<a name="add-update-remove-tags-for-topic-aws-console"></a>
 
-Each tag consists of a key\-value pair that you define\. For example, you can easily identify your *production* and *testing* topics if you tag your topics as follows:
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
+1. On the navigation panel, choose **Topics**\.
 
-****  
+1. On the **Topics** page, choose a topic and choose **Edit**\.
 
-| Topic | Key | Value | 
-| --- | --- | --- | 
-| MyTopicA | TopicType | Production | 
-| MyTopicB | TopicType | Testing | 
+1. Expand the **Tags** section\.
 
-**Note**  
-When you use tags, keep the following guidelines in mind:  
-We don't recommend adding more than 50 tags to a topic\.
-Tags don't have any semantic meaning\. Amazon SNS interprets tags as character strings\.
-Tags are case\-sensitive\.
-A new tag with a key identical to that of an existing tag overwrites the existing tag\.
-Tagging actions are limited to 10 TPS per AWS account, per AWS region\. If your application requires a higher throughput, [submit a request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\.
+   The tags added to the topic are listed\.
+
+1. Modify topic tags:
+   + To add a tag, choose **Add tag** and enter a **Key** and **Value** \(optional\),
+   + To remove a tag, choose **Remove tag** next to a key\-value pair\.
+
+1. Choose **Save changes**
+
+## To list, add, and remove metadata tags for an Amazon SNS topic using the AWS SDK for Java\.<a name="add-update-remove-tags-for-topic-aws-java"></a>
+
+1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
+
+1. Write your code\. For more information, see [Using the SDK for Java 2\.x](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/basics.html)\.
+
+1. To list the tags added to a topic, add the following code:
+
+   ```
+   final ListTagsForResourceRequest listTagsForResourceRequest = new ListTagsForResourceRequest();
+   listTagsForResourceRequest.setResourceArn(topicArn);
+   final ListTagsForResourceResult listTagsForResourceResult = snsClient.listTagsForResource(listTagsForResourceRequest);
+   System.out.println(String.format("ListTagsForResource: \tTags for topic %s are %s.\n",
+   	topicArn, listTagsForResourceResult.getTags()));
+   ```
+
+1. To add tags \(or update the value of tags\), add the following code:
+
+   ```
+   final Tag tagTeam = new Tag();
+   tagTeam.setKey("Team");
+   tagTeam.setValue("Development");
+   final Tag tagEnvironment = new Tag();
+   tagEnvironment.setKey("Environment");
+   tagEnvironment.setValue("Gamma");
+        
+   final List<Tag> tagList = new ArrayList<>();
+   tagList.add(tagTeam);
+   tagList.add(tagEnvironment);
+        
+   final TagResourceRequest tagResourceRequest = new TagResourceRequest();
+   tagResourceRequest.setResourceArn(topicArn);
+   tagResourceRequest.setTags(tagList);
+   final TagResourceResult tagResourceResult = snsClient.tagResource(tagResourceRequest);
+   ```
+
+1. To remove a tag from the topic using the tag's key, add the following code:
+
+   ```
+   final UntagResourceRequest untagResourceRequest = new UntagResourceRequest();
+   untagResourceRequest.setResourceArn(topicArn);
+   final List<String> tagKeyList = new ArrayList<>();
+   tagKeyList.add("Team");
+   untagResourceRequest.setTagKeys(tagKeyList);
+   final UntagResourceResult untagResourceResult = snsClient.untagResource(untagResourceRequest);
+   ```
+
+1. Compile and run your code\.
+
+   The existing tags are listed, two are added, and one is removed from the topic\.

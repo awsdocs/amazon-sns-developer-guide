@@ -19,5 +19,5 @@ When you create your case in the AWS Support Center, include all the information
 **Topics**
 + [Requesting dedicated short codes for SMS messaging with Amazon SNS](channels-sms-awssupport-short-code.md)
 + [Requesting dedicated long codes for SMS messaging with Amazon SNS](channels-sms-awssupport-long-code.md)
-+ [Requesting increases to your monthly SMS spending quota for Amazon SNS](channels-sms-awssupport-spend-threshold.md)
 + [Requesting sender IDs for SMS messaging with Amazon SNS](channels-sms-awssupport-sender-id.md)
++ [Requesting increases to your monthly SMS spending quota for Amazon SNS](channels-sms-awssupport-spend-threshold.md)

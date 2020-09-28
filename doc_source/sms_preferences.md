@@ -2,7 +2,7 @@
 
 Use Amazon SNS to specify preferences for SMS messaging, such as how your deliveries are optimized \(for cost or for reliable delivery\), your monthly spending limit, how message deliveries are logged, and whether to subscribe to daily SMS usage reports\.
 
-These preferences take effect for every SMS message that you send from your account, but you can override some of them when you send an individual message\. For more information, see [Sending an SMS message](sms_publish-to-phone.md)\.
+These preferences take effect for every SMS message that you send from your account, but you can override some of them when you send an individual message\. For more information, see [Publishing to a mobile phone](sms_publish-to-phone.md)\.
 
 **Topics**
 + [Setting SMS messaging preferences using the AWS Management Console](#sms_preferences_console)

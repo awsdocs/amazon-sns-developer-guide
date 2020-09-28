@@ -1,8 +1,8 @@
-# Create a platform endpoint and manage device tokens<a name="mobile-platform-endpoint"></a>
+# Creating a platform endpoint<a name="mobile-platform-endpoint"></a>
 
-When an app and mobile device register with a push notification service, the push notification service returns a device token\. Amazon SNS uses the device token to create a mobile endpoint, to which it can send direct push notification messages\. For more information, see [Prerequisites for Amazon SNS user notifications](sns-prerequisites-for-mobile-push-notifications.md) and [User notification process overview](sns-user-notifications-process-overview.md)\.
+When an app and mobile device register with a push notification service, the push notification service returns a device token\. Amazon SNS uses the device token to create a mobile endpoint, to which it can send direct push notification messages\. For more information, see [Prerequisites for Amazon SNS user notifications](sns-prerequisites-for-mobile-push-notifications.md) and [User notification process overview](sns-mobile-application-as-subscriber.md#sns-user-notifications-process-overview)\.
 
-This section describes the recommended approach for creating a platform endpoint and managing device tokens\.
+This section describes the recommended approach for creating a platform endpoint\.
 
 **Topics**
 + [Create a platform endpoint](#mobile-platform-endpoint-create)
@@ -188,7 +188,7 @@ class RegistrationExample {
 
 An interesting thing to note about this implementation is how the `InvalidParameterException` is handled in the `createEndpoint` method\. Amazon SNS rejects create platform endpoint requests when an existing platform endpoint has the same device token and a non\-null `CustomUserData` field, because the alternative is to overwrite \(and therefore lose\) the `CustomUserData`\. The `createEndpoint` method in the preceding code captures the `InvalidParameterException` thrown by Amazon SNS, checks whether it was thrown for this particular reason, and if so, extracts the ARN of the existing platform endpoint from the exception\. This succeeds, since a platform endpoint with the correct device token exists\.
 
- For more information, see [Using Amazon SNS mobile push APIs](mobile-push-api.md)\.
+ For more information, see [Mobile push API actions](mobile-push-api.md)\.
 
 ------
 #### [ AWS SDK for \.NET ]
@@ -308,7 +308,7 @@ class RegistrationExample
 }
 ```
 
- For more information, see [Using Amazon SNS mobile push APIs](mobile-push-api.md)\.
+ For more information, see [Mobile push API actions](mobile-push-api.md)\.
 
 ------
 

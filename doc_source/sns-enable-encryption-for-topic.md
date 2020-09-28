@@ -1,11 +1,11 @@
-# Tutorial: Enabling server\-side encryption \(SSE\) for an Amazon SNS topic<a name="sns-tutorial-enable-encryption-for-topic"></a>
+# Enabling server\-side encryption \(SSE\) for an Amazon SNS topic<a name="sns-enable-encryption-for-topic"></a>
 
 You can enable server\-side encryption \(SSE\) for a topic to protect its data\. For more information about using SSE, see [Encryption at rest](sns-server-side-encryption.md)\.
 
 **Important**  
 All requests to topics with SSE enabled must use HTTPS and [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\.
 
-The following tutorial shows how to enable, disable, and configure SSE for an existing Amazon SNS topic using the AWS Management Console and the AWS SDK for Java \(by setting the `KmsMasterKeyId` attribute using the `[CreateTopic](https://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html)` and `[SetTopicAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetTopicAttributes.html)` API actions\)\.
+This page shows how to enable, disable, and configure SSE for an existing Amazon SNS topic using the AWS Management Console and the AWS SDK for Java \(by setting the `KmsMasterKeyId` attribute using the `[CreateTopic](https://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html)` and `[SetTopicAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetTopicAttributes.html)` API actions\)\.
 
 **Topics**
 + [AWS Management Console](#enable-encryption-console)

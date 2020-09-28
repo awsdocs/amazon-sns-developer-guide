@@ -5,3 +5,5 @@ Data protection refers to protecting data while in\-transit \(as it travels to a
 **Topics**
 + [Encryption at rest](sns-server-side-encryption.md)
 + [Key management](sns-key-management.md)
++ [Enabling server\-side encryption \(SSE\) for an Amazon SNS topic](sns-enable-encryption-for-topic.md)
++ [Enabling server\-side encryption \(SSE\) for an Amazon SNS topic with an encrypted Amazon SQS queue subscribed](sns-enable-encryption-for-topic-sqs-queue-subscriptions.md)

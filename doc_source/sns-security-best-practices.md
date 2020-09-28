@@ -64,4 +64,4 @@ Amazon SNS VPC endpoints provide two ways to control access to your messages:
 + You can control the requests, users, or groups that are allowed through a specific VPC endpoint\.
 + You can control which VPCs or VPC endpoints have access to your topic using a topic policy\.
 
-For more information, see [Creating an Amazon VPC endpoint for Amazon SNS](sns-internetwork-traffic-privacy.md#sns-vpc-endpoint) and [Creating an Amazon VPC endpoint policy for Amazon SNS](sns-internetwork-traffic-privacy.md#sns-vpc-endpoint-policy)\.
+For more information, see [Creating the endpoint](sns-internetwork-traffic-privacy.md#sns-vpc-endpoint-create) and [Creating an Amazon VPC endpoint policy for Amazon SNS](sns-internetwork-traffic-privacy.md#sns-vpc-endpoint-policy)\.

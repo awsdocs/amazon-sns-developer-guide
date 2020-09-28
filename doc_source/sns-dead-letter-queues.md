@@ -1,6 +1,6 @@
-# Amazon SNS dead\-letter queues<a name="sns-dead-letter-queues"></a>
+# Amazon SNS dead\-letter queues \(DLQs\)<a name="sns-dead-letter-queues"></a>
 
-A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can target for messages that can't be delivered to subscribers successfully\. Messages that can't be delivered due to client errors or server errors are held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Tutorial: Configuring an Amazon SNS dead\-letter queue for a subscription](sns-configure-dead-letter-queue.md) and [Message delivery retries](sns-message-delivery-retries.md)\.
+A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can target for messages that can't be delivered to subscribers successfully\. Messages that can't be delivered due to client errors or server errors are held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Configuring an Amazon SNS dead\-letter queue for a subscription](sns-configure-dead-letter-queue.md) and [Message delivery retries](sns-message-delivery-retries.md)\.
 
 **Note**  
 The Amazon SNS subscription and Amazon SQS queue must be under the same AWS account and Region\.
@@ -13,6 +13,7 @@ To use an encrypted Amazon SQS queue as a dead\-letter queue, you must use a cus
 + [How are messages moved into a dead\-letter queue?](#how-messages-moved-into-dead-letter-queue)
 + [How can I move messages out of a dead\-letter queue?](#how-to-move-messages-out-of-dead-letter-queue)
 + [How can I monitor and log dead\-letter queues?](#how-to-monitor-log-dead-letter-queues)
++ [Configuring an Amazon SNS dead\-letter queue for a subscription](sns-configure-dead-letter-queue.md)
 
 ## Why do message deliveries fail?<a name="why-do-message-deliveries-fail"></a>
 
@@ -36,7 +37,7 @@ A dead\-letter queue associated with an Amazon SNS subscription is an ordinary A
 
 ## How are messages moved into a dead\-letter queue?<a name="how-messages-moved-into-dead-letter-queue"></a>
 
-Your messages are moved into a dead\-letter queue using a *redrive policy*\. A redrive policy is a JSON object that refers to the ARN of the dead\-letter queue\. The `deadLetterTargetArn` attribute specifies the ARN\. The ARN must point to an Amazon SQS queue in the same AWS account and Region as your Amazon SNS subscription\. For more information, see [Tutorial: Configuring an Amazon SNS dead\-letter queue for a subscription](sns-configure-dead-letter-queue.md)\. 
+Your messages are moved into a dead\-letter queue using a *redrive policy*\. A redrive policy is a JSON object that refers to the ARN of the dead\-letter queue\. The `deadLetterTargetArn` attribute specifies the ARN\. The ARN must point to an Amazon SQS queue in the same AWS account and Region as your Amazon SNS subscription\. For more information, see [Configuring an Amazon SNS dead\-letter queue for a subscription](sns-configure-dead-letter-queue.md)\. 
 
 **Note**  
 Currently, you can't use an Amazon SQS FIFO queue as a dead\-letter queue for an Amazon SNS subscription\.

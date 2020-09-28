@@ -1,14 +1,14 @@
-# Tutorial: Configuring an Amazon SNS dead\-letter queue for a subscription<a name="sns-configure-dead-letter-queue"></a>
+# Configuring an Amazon SNS dead\-letter queue for a subscription<a name="sns-configure-dead-letter-queue"></a>
 
-A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can target for messages that can't be delivered to subscribers successfully\. Messages that can't be delivered due to client errors or server errors are held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Amazon SNS dead\-letter queues](sns-dead-letter-queues.md) and [Message delivery retries](sns-message-delivery-retries.md)\.
+A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can target for messages that can't be delivered to subscribers successfully\. Messages that can't be delivered due to client errors or server errors are held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Amazon SNS dead\-letter queues \(DLQs\)](sns-dead-letter-queues.md) and [Message delivery retries](sns-message-delivery-retries.md)\.
 
-The following tutorial shows how you can use the AWS Management Console, the AWS SDK for Java, the AWS CLI, and AWS CloudFormation to configure a dead\-letter queue for an Amazon SNS subscription\.
+This page shows how you can use the AWS Management Console, the AWS SDK for Java, the AWS CLI, and AWS CloudFormation to configure a dead\-letter queue for an Amazon SNS subscription\.
 
 ## Prerequisites<a name="dead-letter-queue-prerequisites"></a>
 
-Before you begin any of the following tutorials, complete the following prerequisites:
+Before you configure a dead\-letter queue, complete the following prerequisites:
 
-1. [Create an Amazon SNS topic](sns-tutorial-create-topic.md) named `MyTopic`\.
+1. [Create an Amazon SNS topic](sns-create-topic.md) named `MyTopic`\.
 
 1. [Create an Amazon SQS queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-create-queue.html) named `MyEndpoint`, to be used as the endpoint for the Amazon SNS subscription\.
 

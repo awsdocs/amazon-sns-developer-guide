@@ -1,14 +1,16 @@
-# Using Amazon SNS for system\-to\-system messaging with AWS Event Fork Pipelines as a subscriber<a name="sns-fork-pipeline-as-subscriber"></a>
+# Fanout to AWS Event Fork Pipelines<a name="sns-fork-pipeline-as-subscriber"></a>
 
 You can use Amazon SNS to build event\-driven applications which use subscriber services to perform work automatically in response to events triggered by publisher services\. This architectural pattern can make services more reusable, interoperable, and scalable\. However, it can be labor\-intensive to fork the processing of events into pipelines that address common event handling requirements, such as event storage, backup, search, analytics, and replay\.
 
 To accelerate the development of your event\-driven applications, you can subscribe event\-handling pipelines—powered by AWS Event Fork Pipelines—to Amazon SNS topics\. AWS Event Fork Pipelines is a suite of open\-source [nested applications](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template-nested-applications.html), based on the [AWS Serverless Application Model](https://aws.amazon.com/serverless/sam/) \(AWS SAM\), which you can deploy directly from the [AWS Event Fork Pipelines suite](https://serverlessrepo.aws.amazon.com/applications?query=aws-event-fork-pipelines) \(choose **Show apps that create custom IAM roles or resource policies**\) into your AWS account\.
 
-For an AWS Event Fork Pipelines use case, see [Tutorial: Deploying and testing the AWS Event Fork Pipelines sample application](sns-tutorial-deploy-test-fork-pipelines-sample-application.md)\.
+For an AWS Event Fork Pipelines use case, see [Deploying and testing the AWS Event Fork Pipelines sample application](sns-deploy-test-fork-pipelines-sample-application.md)\.
 
 **Topics**
 + [How AWS Event Fork Pipelines works](#how-sns-fork-works)
 + [Deploying AWS Event Fork Pipelines](#deploying-sns-fork-pipelines)
++ [Deploying and testing the AWS Event Fork Pipelines sample application](sns-deploy-test-fork-pipelines-sample-application.md)
++ [Subscribing an AWS Event Fork Pipelines to an Amazon SNS topic](sns-subscribe-event-fork-pipelines.md)
 
 ## How AWS Event Fork Pipelines works<a name="how-sns-fork-works"></a>
 
@@ -63,7 +65,7 @@ By default, the replay function is disabled, not redriving your events\. If you 
 
 ## Deploying AWS Event Fork Pipelines<a name="deploying-sns-fork-pipelines"></a>
 
-The [AWS Event Fork Pipelines suite](https://serverlessrepo.aws.amazon.com/applications?query=aws-event-fork-pipelines) \(choose **Show apps that create custom IAM roles or resource policies**\) is available as a group of public applications in the AWS Serverless Application Repository, from where you can deploy and test them manually using the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\. For information about deploying pipelines using the AWS Lambda console, see [Subscribing AWS Event Fork Pipelines to an Amazon SNS topic](sns-tutorial-subscribe-event-fork-pipelines.md)\.
+The [AWS Event Fork Pipelines suite](https://serverlessrepo.aws.amazon.com/applications?query=aws-event-fork-pipelines) \(choose **Show apps that create custom IAM roles or resource policies**\) is available as a group of public applications in the AWS Serverless Application Repository, from where you can deploy and test them manually using the [AWS Lambda console](https://console.aws.amazon.com/lambda/)\. For information about deploying pipelines using the AWS Lambda console, see [Subscribing an AWS Event Fork Pipelines to an Amazon SNS topic](sns-subscribe-event-fork-pipelines.md)\.
 
 In a production scenario, we recommend embedding AWS Event Fork Pipelines within your overall application's AWS SAM template\. The nested\-application feature lets you do this by adding the resource `[AWS::Serverless::Application](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template.html#serverless-sam-template-application)` to your AWS SAM template, referencing the AWS SAR `ApplicationId` and the `SemanticVersion` of the nested application\.
 

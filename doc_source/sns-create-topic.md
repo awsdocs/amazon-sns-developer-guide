@@ -1,10 +1,10 @@
-# Tutorial: Creating an Amazon SNS topic<a name="sns-tutorial-create-topic"></a>
+# Creating an Amazon SNS topic<a name="sns-create-topic"></a>
 
 An Amazon SNS topic is a logical access point that acts as a *communication channel*\. A topic lets you group multiple *endpoints* \(such as AWS Lambda, Amazon SQS, HTTP/S, or an email address\)\.
 
 To broadcast the messages of a message\-producer system \(for example, an e\-commerce website\) working with multiple other services that require its messages \(for example, checkout and fulfillment systems\), you can create a topic for your producer system\.
 
-The first and most common Amazon SNS task is creating a topic\. The following tutorial shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to create a topic\.
+The first and most common Amazon SNS task is creating a topic\. This page shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to create a topic\.
 
 **Topics**
 + [AWS Management Console](#create-topic-aws-console)
@@ -43,13 +43,13 @@ For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.a
 
 1. \(Optional\) By default, only the topic owner can publish or subscribe to the topic\. To configure additional access permissions, expand the **Access policy** section\. For more information, see [Identity and access management in Amazon SNS](sns-authentication-and-access-control.md) and [Example cases for Amazon SNS access control](sns-access-policy-use-cases.md)\. 
 **Note**  
-When you create a topic using the console, the default policy uses the `aws:SourceOwner` condition key\. This key is similar to `aws:SourceAccount`\. For information about the differences between `aws:SourceOwner` and `aws:SourceAccount`, see [`aws:SourceAccount` versus `aws:SourceOwner`](sns-access-policy-use-cases.md#source-account-versus-source-owner)\. 
+When you create a topic using the console, the default policy uses the `aws:SourceOwner` condition key\. This key is similar to `aws:SourceAccount`\. For information about the differences between `aws:SourceOwner` and `aws:SourceAccount`, see [`aws:SourceAccount` versus `aws:SourceOwner`](sns-access-policy-use-cases.md#source-account-versus-source-owner)\.
 
 1. \(Optional\) To configure how Amazon SNS retries failed message delivery attempts, expand the **Delivery retry policy \(HTTP/S\)** section\. For more information, see [Message delivery retries](sns-message-delivery-retries.md)\.
 
 1. \(Optional\) To configure how Amazon SNS logs the delivery of messages to CloudWatch, expand the **Delivery status logging** section\. For more information, see [Amazon SNS message delivery status](sns-topic-attributes.md)\.
 
-1. \(Optional\) To add metadata tags to the topic, expand the **Tags** section, enter a **Key** and a **Value** \(optional\) and choose **Add tag**\. For more information, see [Amazon SNS tags](sns-tags.md)\.
+1. \(Optional\) To add metadata tags to the topic, expand the **Tags** section, enter a **Key** and a **Value** \(optional\) and choose **Add tag**\. For more information, see [Configuring tags for an Amazon SNS topic](sns-tags.md)\.
 
 1. Choose **Create topic**\.
 

@@ -16,6 +16,6 @@ For more information, see the following:
 
 **Topics**
 + [Amazon SNS subscription filter policies](sns-subscription-filter-policies.md)
-+ [Tutorial: Applying a subscription filter policy](message-filtering-apply.md)
-+ [Tutorial: Removing a subscription filter policy](message-filtering-policy-remove.md)
 + [Subscription filter policies as Java collections](subscription-filter-policies-as-java-collections.md)
++ [Applying a subscription filter policy](message-filtering-apply.md)
++ [Removing a subscription filter policy](message-filtering-policy-remove.md)

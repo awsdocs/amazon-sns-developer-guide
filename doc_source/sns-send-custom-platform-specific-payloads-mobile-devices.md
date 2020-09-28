@@ -1,6 +1,6 @@
-# Send custom platform\-specific payloads to mobile devices<a name="sns-send-custom-platform-specific-payloads-mobile-devices"></a>
+# Publishing with platform\-specific payload<a name="sns-send-custom-platform-specific-payloads-mobile-devices"></a>
 
-You can use the AWS Management Console or Amazon SNS APIs to send custom messages with platform\-specific payloads to mobile devices\. For information about using the Amazon SNS APIs, see [Using Amazon SNS mobile push APIs](mobile-push-api.md) and the `SNSMobilePush.java` file in `[snsmobilepush\.zip](samples/snsmobilepush.zip)`\. 
+You can use the AWS Management Console or Amazon SNS APIs to send custom messages with platform\-specific payloads to mobile devices\. For information about using the Amazon SNS APIs, see [Mobile push API actions](mobile-push-api.md) and the `SNSMobilePush.java` file in `[snsmobilepush\.zip](samples/snsmobilepush.zip)`\. 
 
 ## Sending JSON\-formatted messages<a name="mobile-push-send-json"></a>
 

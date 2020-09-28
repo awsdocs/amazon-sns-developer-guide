@@ -1,4 +1,4 @@
-# Tutorial: Removing a subscription filter policy<a name="message-filtering-policy-remove"></a>
+# Removing a subscription filter policy<a name="message-filtering-policy-remove"></a>
 
 To stop filtering the messages that are sent to a subscription, remove the subscription's filter policy by overwriting it with an empty JSON body\. After you remove the policy, the subscription accepts every message that's published to it\.
 

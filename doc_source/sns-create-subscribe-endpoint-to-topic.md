@@ -1,8 +1,6 @@
-# Tutorial: Subscribing an endpoint to an Amazon SNS topic<a name="sns-tutorial-create-subscribe-endpoint-to-topic"></a>
+# Subscribing to an Amazon SNS topic<a name="sns-create-subscribe-endpoint-to-topic"></a>
 
-To receive messages published to [a topic](sns-tutorial-create-topic.md), you must *subscribe* an endpoint \(such as AWS Lambda, Amazon SQS, HTTP/S, or an email address\) to the topic\. When you subscribe an endpoint to a topic and confirm the subscription, the endpoint begins to receive messages published to the associated topic\.
-
-The following tutorial shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to create a subscription and then subscribe an endpoint to a topic\.
+To receive messages published to [a topic](sns-create-topic.md), you must *subscribe* an endpoint \(such as AWS Lambda, Amazon SQS, HTTP/S, or an email address\) to the topic\. When you subscribe an endpoint to a topic and confirm the subscription, the endpoint begins to receive messages published to the associated topic\.
 
 **Topics**
 + [AWS Management Console](#create-subscribe-endpoint-to-topic-aws-console)

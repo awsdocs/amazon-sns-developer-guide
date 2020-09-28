@@ -121,7 +121,7 @@ Some Amazon SNS event sources require you to provide an IAM role \(rather than t
 [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.managing.sns.html)
 [AWS IoT](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sns-rule.html)
 
-1. [Enable SSE for your topic](sns-tutorial-enable-encryption-for-topic.md) using your CMK\.
+1. [Enable SSE for your topic](sns-enable-encryption-for-topic.md) using your CMK\.
 
 1. Provide the ARN of the encrypted topic to the event source\.
 

@@ -1,6 +1,6 @@
-# Originating identities for SMS messages<a name="channels-sms-originating-identities"></a>
+# Origination identities for SMS messages<a name="channels-sms-originating-identities"></a>
 
-When you send SMS messages using Amazon SNS, you can identify yourself to your recipients in one of three ways: by using a sender ID, by using a long code, or by using a short code\. These methods of identifying yourself to your customers are known as *originating identities*\. Each of these types of originating identities has its own advantages and disadvantages, which are discussed in the following sections\.
+When you send SMS messages using Amazon SNS, you can identify yourself to your recipients in one of three ways: by using a sender ID, by using a long code, or by using a short code\. These methods of identifying yourself to your customers are known as *origination identities*\. Each of these types of identities has its own advantages and disadvantages, which are discussed in the following sections\.
 
 ## Sender IDs<a name="channels-sms-originating-identities-sender-ids"></a>
 
@@ -50,7 +50,7 @@ If you're running a new customer acquisition campaign, you can invite potential 
 
 Because mobile carriers must approve new short codes before making them active, they are less likely to flag messages sent from short codes as unsolicited\.
 
-When you use dedicated short codes to send SMS messages, you can send a higher volume of messages per 24\-hour period than you can when you use other types of originating identities\. In other words, you have a much higher *sending quota*\. You can also send a much higher volume of messages per second\. That is, you have a much higher *sending rate*\.
+When you use dedicated short codes to send SMS messages, you can send a higher volume of messages per 24\-hour period than you can when you use other types of origination identities\. In other words, you have a much higher *sending quota*\. You can also send a much higher volume of messages per second\. That is, you have a much higher *sending rate*\.
 
 **Important**
 

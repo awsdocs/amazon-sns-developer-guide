@@ -1,4 +1,4 @@
-# Using Amazon SNS application attributes for message delivery status<a name="sns-msg-status"></a>
+# Mobile app attributes<a name="sns-msg-status"></a>
 
 Amazon Simple Notification Service \(Amazon SNS\) provides support to log the delivery status of push notification messages\. After you configure application attributes, log entries will be sent to CloudWatch Logs for messages sent from Amazon SNS to mobile endpoints\. Logging message delivery status helps provide better operational insight, such as the following: 
 + Know whether a push notification message was delivered from Amazon SNS to the push notification service\.

@@ -1,20 +1,10 @@
 # Sending Amazon SNS messages to an Amazon SQS queue in a different account<a name="sns-send-message-to-sqs-cross-account"></a>
 
-You can publish a notification to an Amazon SNS topic with one or more subscriptions to Amazon SQS queues in another account\. You set up the topic and queues the same way you would if they were in the same account \(see [Using Amazon SNS for system\-to\-system messaging with an Amazon SQS queue as a subscriber](sns-sqs-as-subscriber.md)\)\. The major difference is how you handle subscription confirmation, and that depends on how you subscribe the queue to the topic\.
+You can publish a notification to an Amazon SNS topic with one or more subscriptions to Amazon SQS queues in another account\. You set up the topic and queues the same way you would if they were in the same account \(see [Fanout to Amazon SQS queues](sns-sqs-as-subscriber.md)\)\. The major difference is how you handle subscription confirmation, and that depends on how you subscribe the queue to the topic\.
 
 **Topics**
-+ [Opt\-in regions](#SendMessageToSQS.regions)
 + [Queue owner creates subscription](#SendMessageToSQS.cross.account.queueowner)
 + [A user who does not own the queue creates subscription](#SendMessageToSQS.cross.account.notqueueowner)
-
-## Opt\-in regions<a name="SendMessageToSQS.regions"></a>
-
- When you use Amazon SNS to deliver messages from opt\-in regions to regions which are enabled by default, you must alter the resource policy created for the queue\. Replace the principal `sns.amazonaws.com` with `sns.<opt-in-region>.amazonaws.com`\. 
-
- For example, if you want to subscribe a queue in US East \(N\. Virginia\) to an SNS topic in Asia Pacific \(Hong Kong\), change the principal in the queue policy to `sns.ap-east-1.amazonaws.com`\. Opt\-in regions include any regions launched after March 20, 2019, which includes Asia Pacific \(Hong Kong\), Middle East \(Bahrain\), EU \(Milano\), and Africa \(Cape Town\)\. Regions launched prior to March 20, 2019 are enabled by default\. 
-
-**Note**  
-We also support cross\-region delivery to Amazon SQS from a region that is enabled by default to an opt\-in region\. However, cross\-region forwarding of SNS messages from opt\-in regions to other opt\-in regions is not supported\. 
 
 ## Queue owner creates subscription<a name="SendMessageToSQS.cross.account.queueowner"></a>
 
@@ -53,7 +43,7 @@ The account that created the Amazon SQS queue is the queue owner\. When the queu
 
 ### Step 2: To add an Amazon SQS queue subscription to a topic in another AWS account using the AWS Management Console<a name="sns-tutorial-add-sqs-subscription-to-sns-topic-another-account"></a>
 
-Before you begin, make sure you have the ARNs for your topic and queue and that you have [given permission to the topic to send messages to the queue](sns-sqs-as-subscriber.md#SendMessageToSQS.sqs.permissions)\.
+Before you begin, make sure you have the ARNs for your topic and queue and that you have [given permission to the topic to send messages to the queue](subscribe-sqs-queue-to-sns-topic.md#SendMessageToSQS.sqs.permissions)\.
 
 1. On the navigation panel, choose **Subscriptions**\.
 
@@ -81,7 +71,7 @@ When you use the `Subscribe` action, Amazon SNS sends a subscription confirmatio
 To confirm the subscription, a user with permission to read messages from the queue must visit the subscription URL\. Until the subscription is confirmed, no notifications published to the topic are sent to the queue\. To confirm the subscription, you can use the Amazon SQS console or the `[ReceiveMessage](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Query_QueryReceiveMessage.html)` action\.
 
 **Note**  
-Before you subscribe an endpoint to the topic, make sure that the queue can receive messages from the topic by setting the `sqs:SendMessage` permission for the queue\. For more information, see [Step 2: Give permission to the Amazon SNS topic to send messages to the Amazon SQS queue](sns-sqs-as-subscriber.md#SendMessageToSQS.sqs.permissions)\.
+Before you subscribe an endpoint to the topic, make sure that the queue can receive messages from the topic by setting the `sqs:SendMessage` permission for the queue\. For more information, see [Step 2: Give permission to the Amazon SNS topic to send messages to the Amazon SQS queue](subscribe-sqs-queue-to-sns-topic.md#SendMessageToSQS.sqs.permissions)\.
 
 ### To confirm a subscription using the AWS Management Console<a name="sns-tutorial-confirm-subscription-console"></a>
 

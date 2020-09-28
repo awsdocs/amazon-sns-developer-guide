@@ -1,4 +1,4 @@
-# Amazon SNS message and JSON formats<a name="sns-message-and-json-formats"></a>
+# Parsing message formats<a name="sns-message-and-json-formats"></a>
 
 Amazon SNS uses the following formats\.
 

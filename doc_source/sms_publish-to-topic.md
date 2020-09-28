@@ -1,4 +1,4 @@
-# Sending an SMS message to multiple phone numbers<a name="sms_publish-to-topic"></a>
+# Publishing to a topic<a name="sms_publish-to-topic"></a>
 
 You can publish a single SMS message to many phone numbers at once by subscribing those phone numbers to a topic\. A topic is a communication channel to which you can add subscribers and then publish messages to all of those subscribers\. A subscriber will receive all messages published to the topic until you cancel the subscription or the subscriber opts out of receiving SMS messages from your account\.
 
@@ -56,7 +56,7 @@ When you publish a message to a topic, Amazon SNS attempts to deliver that messa
 
 1. For **Message body**, type a message\.
 
-   For information about the size quotas for SMS messages, see [Sending an SMS message](sms_publish-to-phone.md)\.
+   For information about the size quotas for SMS messages, see [Publishing to a mobile phone](sms_publish-to-phone.md)\.
 
    If your topic has a display name, Amazon SNS adds it to the message, which increases the message length\. The display name length is the number of characters in the name plus two characters for the right angle bracket \(>\) and space that Amazon SNS adds\.
 

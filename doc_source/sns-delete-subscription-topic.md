@@ -1,37 +1,39 @@
-# Tutorial: Deleting an Amazon SNS subscription and topic<a name="sns-tutorial-delete-subscription-topic"></a>
+# Deleting an Amazon SNS subscription and topic<a name="sns-delete-subscription-topic"></a>
 
-When you no longer need a subscription or topic, you must first unsubscribe from the topic before you can delete the topic\.
-
-The following tutorial shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to subscriptions and topics\.
+You can delete a subscription from an Amazon SNS topic, or you can delete the whole topic\. Note that you can't delete a subscription that's pending confirmation\. After three days, Amazon SNS deletes the unconfirmed subscription automatically\.
 
 **Topics**
-+ [AWS Management Console](#delete-subscription-topic-aws-console)
++ [AWS Management Console](#sns-delete-subscription-topic-console)
 + [AWS SDK for Java](#delete-subscription-topic-aws-java)
 + [AWS SDK for \.NET](#delete-subscription-topic-aws-dot-net)
 
-## To delete an Amazon SNS subscription and topic using the AWS Management Console<a name="delete-subscription-topic-aws-console"></a>
+## To delete an Amazon SNS subscription and topic using the AWS Management Console<a name="sns-delete-subscription-topic-console"></a>
+
+**To delete a subscription using the AWS Management Console**
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
-1. On the navigation panel, choose **Subscriptions**\.
+1. In the left navigation pane, choose **Subscriptions**\.
 
-1. On the **Subscriptions** page, choose a *confirmed* subscription and then choose **Delete**\.
-**Note**  
-You can't delete a pending confirmation\. After 3 days, Amazon SNS deletes it automatically\.
+1. On the **Subscriptions** page, select a subscription with a **Status** of **Confirmed**, and then choose **Delete**\.
 
 1. In the **Delete subscription** dialog box, choose **Delete**\.
 
-   The subscription is deleted\.
+   The console deletes the subscription\.
 
-1. On the navigation panel, choose **Topics**\.
+When you delete a topic, Amazon SNS deletes the subscriptions associated with the topic\.
 
-1. On the **Topics** page, choose a topic and then choose **Delete**\.
-**Important**  
-When you delete a topic, you also delete all subscriptions to the topic\.
+**To delete a topic using the AWS Management Console**
 
-1. On the **Delete topic *MyTopic*** dialog box, enter `delete me` and then choose **Delete**\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
-   The topic is deleted\.
+1. In the left navigation pane, choose **Topics**\.
+
+1. On the **Topics** page, select a topic, and then choose **Delete**\.
+
+1. In the **Delete topic** dialog box, enter `delete me`, and then choose **Delete**\.
+
+   The console deletes the topic\.
 
 ## To delete an Amazon SNS subscription and topic using the AWS SDK for Java<a name="delete-subscription-topic-aws-java"></a>
 

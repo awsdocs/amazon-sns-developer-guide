@@ -1,4 +1,4 @@
-# Tutorial: Applying a subscription filter policy<a name="message-filtering-apply"></a>
+# Applying a subscription filter policy<a name="message-filtering-apply"></a>
 
 You can apply a filter policy to an Amazon SNS subscription using the Amazon SNS console\. Or, to apply policies programmatically, you can use the Amazon SNS API, the AWS Command Line Interface \(AWS CLI\), or any AWS SDK that supports Amazon SNS, such as the AWS SDK for Java\.
 

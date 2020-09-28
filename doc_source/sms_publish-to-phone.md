@@ -1,8 +1,8 @@
-# Sending an SMS message<a name="sms_publish-to-phone"></a>
+# Publishing to a mobile phone<a name="sms_publish-to-phone"></a>
 
 You can use Amazon SNS to send SMS messages to SMS\-enabled devices\. You can publish messages directly to the phone numbers for these devices, and you do not need to subscribe the phone numbers to an Amazon SNS topic\. 
 
-Subscribing phone numbers to a topic can be still useful if you want to publish each message to multiple phone numbers at once\. For steps on how to publish an SMS message to a topic, see [Sending an SMS message to multiple phone numbers](sms_publish-to-topic.md)\.
+Subscribing phone numbers to a topic can be still useful if you want to publish each message to multiple phone numbers at once\. For steps on how to publish an SMS message to a topic, see [Publishing to a topic](sms_publish-to-topic.md)\.
 
 When you send a message, you can control whether the message is optimized for cost or reliable delivery, and you can specify a sender ID\. If you send the message programmatically using the Amazon SNS API or AWS SDKs, you can specify a maximum price for the message delivery\.
 

@@ -1,4 +1,4 @@
-# Send a direct message to a mobile device<a name="mobile-push-send-directmobile"></a>
+# Publishing to a mobile device<a name="mobile-push-send-directmobile"></a>
 
 You can send Amazon SNS push notification messages directly to an endpoint which represents an application on a mobile device\. 
 

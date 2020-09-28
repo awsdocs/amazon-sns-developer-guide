@@ -4,7 +4,7 @@ Amazon SNS supports delivery of message attributes, which let you provide struct
 
 Message attributes are optional and separate from—but are sent together with—the message body\. The receiver can use this information to decide how to handle the message without having to process the message body first\.
 
-For information about sending messages with attributes using the AWS Management Console or the AWS SDK for Java, see the [Tutorial: Publishing a message with attributes to an Amazon SNS topic](sns-tutorial-publish-message-with-attributes.md) tutorial\.
+For information about sending messages with attributes using the AWS Management Console or the AWS SDK for Java, see the [To publish messages to Amazon SNS topics using the AWS Management Console](sns-publishing.md#sns-publishing-messages) tutorial\.
 
 **Note**  
 Message attributes are sent only when the message structure is String, not JSON\.
