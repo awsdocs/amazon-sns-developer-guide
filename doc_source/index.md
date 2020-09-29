@@ -104,7 +104,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Supported Regions for mobile applications](sns-mobile-push-supported-regions.md)
    + [Email notifications](sns-email-notifications.md)
 + [Amazon SNS security](sns-security.md)
-   + [Data protection in Amazon SNS](sns-data-protection.md)
+   + [Data protection](sns-data-protection.md)
       + [Data encryption](sns-data-encryption.md)
          + [Encryption at rest](sns-server-side-encryption.md)
          + [Key management](sns-key-management.md)
