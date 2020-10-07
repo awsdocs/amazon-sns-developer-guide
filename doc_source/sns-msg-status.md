@@ -17,7 +17,9 @@ Amazon Simple Notification Service \(Amazon SNS\) provides support to log the de
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
-1. On the navigation panel, choose **Apps**, and then choose the app containing the endpoints for which you want receive CloudWatch Logs\.
+1. On the navigation panel, point to **Mobile**, and then choose **Push notifications**\.
+
+1. From the **Platform applications** section, choose the application that contains the endpoints for which you want receive CloudWatch Logs\.
 
 1. Choose **Application Actions** and then choose **Delivery Status**\.
 

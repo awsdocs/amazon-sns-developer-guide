@@ -39,9 +39,9 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 1. Choose **Create**\.
 
-1. In the **All Buckets** table, choose the bucket and choose **Properties**\.
+1. In the **All Buckets** table, choose the bucket\.
 
-1. In the **Permissions** section, choose **Add bucket policy**\.
+1. In the **Permissions** tab, choose **Bucket policy**\.
 
 1. In the **Bucket Policy Editor** window, provide a policy that allows the Amazon SNS service principal to write to your bucket\. For an example, see [Example bucket policy](#example_bucket_policy)\.
 
@@ -68,7 +68,8 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 The following policy allows the Amazon SNS service principal to perform the `s3:PutObject` and `s3:GetBucketLocation` actions\. You can use this example when you create an Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS\.
 
 ```
-{
+ {
+  "Version": "2008-10-17",
   "Statement": [{
     "Sid": "AllowPutObject",
     "Effect": "Allow",
@@ -76,7 +77,12 @@ The following policy allows the Amazon SNS service principal to perform the `s3:
       "Service": "sns.amazonaws.com"
     },
     "Action": "s3:PutObject",
-    "Resource": "arn:aws:s3:::my-s3-bucket/*"
+    "Resource": "arn:aws:s3:::my-s3-bucket/*",
+    "Condition": {
+      "StringEquals": {
+          "aws:SourceAccount": "account_id"
+      }
+    }
   }, {
     "Sid": "AllowGetBucketLocation",
     "Effect": "Allow",
@@ -84,10 +90,18 @@ The following policy allows the Amazon SNS service principal to perform the `s3:
       "Service": "sns.amazonaws.com"
     },
     "Action": "s3:GetBucketLocation",
-    "Resource": "arn:aws:s3:::my-s3-bucket"
+    "Resource": "arn:aws:s3:::my-s3-bucket",
+    "Condition": {
+      "StringEquals": {
+          "aws:SourceAccount": "account_id"
+      }
+    }
   }]
 }
 ```
+
+**Note**  
+You can publish usage reports to Amazon S3 buckets that are owned by the AWS account that's specified in the `Condition` element in the Amazon S3 policy\. To publish usage reports to an Amazon S3 bucket that another AWS account owns, see [How can I copy S3 objects from another AWS account?](https://aws.amazon.com/premiumsupport/knowledge-center/copy-s3-objects-account/)\. 
 
 ### Example daily usage report<a name="example_report"></a>
 

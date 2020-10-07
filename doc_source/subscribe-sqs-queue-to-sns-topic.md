@@ -30,7 +30,7 @@ To get the queue ARN, you can use the Amazon SQS console or the [GetQueueAttribu
 
 1. Select the box for the queue whose ARN you want to get\.
 
-1. From the **Details** tab, copy the ARN value so that you can use it to subscribe to the Amazon SNS topic\.
+1. From the **Details** section, copy the ARN value so that you can use it to subscribe to the Amazon SNS topic\.
 
 To get the topic ARN, you can use the Amazon SNS console, the `[sns\-get\-topic\-attributes](https://docs.aws.amazon.com/cli/latest/reference/sns/get-topic-attributes.html)` command, or the `[GetQueueAttributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Query_QueryGetQueueAttributes.html)` API action\.
 
@@ -40,7 +40,7 @@ To get the topic ARN, you can use the Amazon SNS console, the `[sns\-get\-topic\
 
 1. On the navigation panel, choose the topic whose ARN you want to get\.
 
-1. From the **Topic Details** section, copy the **Topic ARN** value so that you can use it to give permission for the Amazon SNS topic to send messages to the queue\.
+1. From the **Details** section, copy the **ARN** value so that you can use it to give permission for the Amazon SNS topic to send messages to the queue\.
 
 ## Step 2: Give permission to the Amazon SNS topic to send messages to the Amazon SQS queue<a name="SendMessageToSQS.sqs.permissions"></a>
 
@@ -54,37 +54,31 @@ To set a policy on a queue, you can use the Amazon SQS console or the [SetQueueA
 
 1. Sign in to the AWS Management Console and open the Amazon SQS console at [https://console\.aws\.amazon\.com/sqs/](https://console.aws.amazon.com/sqs/)\.
 
-1. Select the box for the queue whose policy you want to set, choose the **Permissions** tab, and then choose **Add a Permission**\.
+1. Select the box for the queue whose policy you want to set, choose the **Access policy** tab, and then choose **Edit**\.
 
-1. In the **Add a Permission** dialog box, select **Allow** for **Effect**, choose **Everybody \(\*\)** for **Principal**, and then select **SendMessage** from the **Actions** drop\-down\.
+1. In the **Access policy** section, define who can access your queue\.
+   + Add a condition that allows the action for the topic\.
+   + Set `Principal` to be the Amazon SNS service, as shown in the example below\. 
 
-1. Add a condition that allows the action for the topic\. Choose **Add Conditions \(optional\)**, choose **ArnEquals** for **Condition**, choose **aws:SourceArn** for **Key**, and paste in the topic ARN for **Value**\. Choose **Add Condition**\. The new condition should appear at the bottom of the box \(you may have to scroll down to see this\)\.
+   For example, the following policy allows MyTopic to send messages to MyQueue\. 
 
-1. Choose **Add Permission**\.
-
-1. Choose **Edit Policy Document \(Advanced\)**\.
-
-1. Set `Principal` to be the Amazon SNS service, as shown in the example below\. 
-
-If you wanted to create the policy document yourself, you would create a policy like the following\. The policy allows MyTopic to send messages to MyQueue\. 
-
-```
-{
-  "Statement": [{
-    "Effect":"Allow",
-    "Principal": {
-      "Service": "sns.amazonaws.com"
-    },
-    "Action":"sqs:SendMessage",
-    "Resource":"arn:aws:sqs:us-east-2:123456789012:MyQueue",
-    "Condition":{
-      "ArnEquals":{
-        "aws:SourceArn":"arn:aws:sns:us-east-2:123456789012:MyTopic"
-      }
-    }
-  }]
-}
-```
+   ```
+   {
+     "Statement": [{
+       "Effect":"Allow",
+       "Principal": {
+         "Service": "sns.amazonaws.com"
+       },
+       "Action":"sqs:SendMessage",
+       "Resource":"arn:aws:sqs:us-east-2:123456789012:MyQueue",
+       "Condition":{
+         "ArnEquals":{
+           "aws:SourceArn":"arn:aws:sns:us-east-2:123456789012:MyTopic"
+         }
+       }
+     }]
+   }
+   ```
 
 ## Step 3: Subscribe the queue to the Amazon SNS topic<a name="SendMessageToSQS.subscribe"></a>
 

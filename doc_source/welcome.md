@@ -34,7 +34,7 @@ Amazon SNS provides the following features and capabilities:
   By default, each subscriber receives every message published to the topic\. To receive a subset of the messages, a subscriber must assign a filter policy to the topic subscription\. When the incoming message attributes match the filter policy attributes, the message is delivered to the subscribed endpoint\. Otherwise, the message is filtered out\. For more information, see [Amazon SNS message filtering](sns-message-filtering.md)\. 
 + **Message security** 
 
-  Server\-side encrpytion protects the contents of messages that are stored in Amazon SNS topics, using encryption keys provided by AWS KMS\. For more information, see [Encryption at rest](sns-server-side-encryption.md)\.
+  Server\-side encryption protects the contents of messages that are stored in Amazon SNS topics, using encryption keys provided by AWS KMS\. For more information, see [Encryption at rest](sns-server-side-encryption.md)\.
 
   You can also establish a private connection between Amazon SNS and your virtual private cloud \(VPC\)\. for more information, see [Internetwork traffic privacy](sns-internetwork-traffic-privacy.md)\.
 + **Message durability** 
