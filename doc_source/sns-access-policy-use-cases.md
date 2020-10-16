@@ -191,19 +191,22 @@ In this example, any AWS account in organization `myOrgId` can publish to Amazon
 
 ```
 {
-"Statement": [{
-  "Effect": "Allow",
-  "Principal": {
-     "AWS": "*"
-  },
-  "Action": "SNS:Publish",
-  "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
-  "Condition": {
-      "StringEquals": {
-            "aws:PrincipalOrgID": "myOrgId"
-      }
-  }
-}]
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "SNS:Publish",
+            "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
+            "Condition": {
+                "StringEquals": {
+                    "aws:PrincipalOrgID": "myOrgId"
+                }
+            }
+        }
+    ]
+}
 ```
 
 ## Allow any CloudWatch alarm to publish to a topic in a different account<a name="sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account"></a>
@@ -212,19 +215,22 @@ In this case, any CloudWatch alarms in account `111122223333` are allowed to pub
 
 ```
 {
- "Statement": [{
-    "Effect": "Allow",
-    "Principal": {
-       "AWS": "*"
-    },
-    "Action": "SNS:Publish",
-    "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
-    "Condition": {
-       "ArnLike": {
-          "aws:SourceArn": "arn:aws:cloudwatch:us-east-2:111122223333:alarm:*"
-       }
-    }
- }]
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "SNS:Publish",
+            "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
+            "Condition": {
+                "ArnLike": {
+                    "aws:SourceArn": "arn:aws:cloudwatch:us-east-2:111122223333:alarm:*"
+                }
+            }
+        }
+    ]
+}
 ```
 
 ## Restrict publication to an Amazon SNS topic only from a specific VPC endpoint<a name="sns-restrict-publication-only-from-specified-vpc-endpoint"></a>

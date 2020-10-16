@@ -1,4 +1,4 @@
-# Message delivery retries<a name="sns-message-delivery-retries"></a>
+# Amazon SNS message delivery retries<a name="sns-message-delivery-retries"></a>
 
 Amazon SNS defines a *delivery policy* for each delivery protocol\. The delivery policy defines how Amazon SNS retries the delivery of messages when server\-side errors occur \(when the system that hosts the subscribed endpoint becomes unavailable\)\. When the delivery policy is exhausted, Amazon SNS stops retrying the delivery and discards the message—unless a dead\-letter queue is attached to the subscription\. For more information, see [Amazon SNS dead\-letter queues \(DLQs\)](sns-dead-letter-queues.md)\.
 

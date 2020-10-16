@@ -1,6 +1,6 @@
 # Amazon SNS dead\-letter queues \(DLQs\)<a name="sns-dead-letter-queues"></a>
 
-A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can target for messages that can't be delivered to subscribers successfully\. Messages that can't be delivered due to client errors or server errors are held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Configuring an Amazon SNS dead\-letter queue for a subscription](sns-configure-dead-letter-queue.md) and [Message delivery retries](sns-message-delivery-retries.md)\.
+A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can target for messages that can't be delivered to subscribers successfully\. Messages that can't be delivered due to client errors or server errors are held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Configuring an Amazon SNS dead\-letter queue for a subscription](sns-configure-dead-letter-queue.md) and [Amazon SNS message delivery retries](sns-message-delivery-retries.md)\.
 
 **Note**  
 The Amazon SNS subscription and Amazon SQS queue must be under the same AWS account and Region\.
@@ -17,7 +17,7 @@ To use an encrypted Amazon SQS queue as a dead\-letter queue, you must use a cus
 
 ## Why do message deliveries fail?<a name="why-do-message-deliveries-fail"></a>
 
-In general, message delivery fails when Amazon SNS can't access a subscribed endpoint due to a *client\-side* or *server\-side error*\. When Amazon SNS receives a client\-side error, or continues to receive a server\-side error for a message beyond the number of retries specified by the corresponding retry policy, Amazon SNS discards the message—unless a dead\-letter queue is attached to the subscription\. Failed deliveries don't change the status of your subscriptions\. For more information, see [Message delivery retries](sns-message-delivery-retries.md)\.
+In general, message delivery fails when Amazon SNS can't access a subscribed endpoint due to a *client\-side* or *server\-side error*\. When Amazon SNS receives a client\-side error, or continues to receive a server\-side error for a message beyond the number of retries specified by the corresponding retry policy, Amazon SNS discards the message—unless a dead\-letter queue is attached to the subscription\. Failed deliveries don't change the status of your subscriptions\. For more information, see [Amazon SNS message delivery retries](sns-message-delivery-retries.md)\.
 
 ### Client\-side errors<a name="client-side-errors"></a>
 

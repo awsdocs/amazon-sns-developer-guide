@@ -1,4 +1,4 @@
-# Raw message delivery<a name="sns-large-payload-raw-message-delivery"></a>
+# Amazon SNS raw message delivery<a name="sns-large-payload-raw-message-delivery"></a>
 
 To avoid having Amazon SQS and HTTP/S endpoints process the JSON formatting of messages, Amazon SNS allows raw message delivery:
 + When you enable raw message delivery for an Amazon SQS endpoint, any Amazon SNS metadata is stripped from the published message and the message is sent as is\.

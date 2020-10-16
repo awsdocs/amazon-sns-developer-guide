@@ -1,4 +1,4 @@
-# Message publishing<a name="sns-publishing"></a>
+# Amazon SNS message publishing<a name="sns-publishing"></a>
 
 After you [create an Amazon SNS topic](sns-create-topic.md) and [subscribe](sns-create-subscribe-endpoint-to-topic.md) an endpoint to it, you can *publish* messages to the topic\. When a message is published, Amazon SNS attempts to deliver the message to the subscribed endpoints\. An endpoint can be an AWS Lambda function, an Amazon Simple Queue Service \(Amazon SQS\) queue, an HTTP\(S\) endpoint, or an email address\.
 

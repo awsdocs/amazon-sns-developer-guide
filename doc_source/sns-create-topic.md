@@ -45,7 +45,7 @@ For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.a
 **Note**  
 When you create a topic using the console, the default policy uses the `aws:SourceOwner` condition key\. This key is similar to `aws:SourceAccount`\. For information about the differences between `aws:SourceOwner` and `aws:SourceAccount`, see [`aws:SourceAccount` versus `aws:SourceOwner`](sns-access-policy-use-cases.md#source-account-versus-source-owner)\.
 
-1. \(Optional\) To configure how Amazon SNS retries failed message delivery attempts, expand the **Delivery retry policy \(HTTP/S\)** section\. For more information, see [Message delivery retries](sns-message-delivery-retries.md)\.
+1. \(Optional\) To configure how Amazon SNS retries failed message delivery attempts, expand the **Delivery retry policy \(HTTP/S\)** section\. For more information, see [Amazon SNS message delivery retries](sns-message-delivery-retries.md)\.
 
 1. \(Optional\) To configure how Amazon SNS logs the delivery of messages to CloudWatch, expand the **Delivery status logging** section\. For more information, see [Amazon SNS message delivery status](sns-topic-attributes.md)\.
 

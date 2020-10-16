@@ -1,4 +1,4 @@
-# Cross\-region delivery<a name="sns-cross-region-delivery"></a>
+# Sending Amazon SNS messages to an Amazon SQS queue or AWS Lambda function in a different Region<a name="sns-cross-region-delivery"></a>
 
 Amazon SNS supports cross\-region deliveries, both for Regions that are enabled by default and for [opt\-in Regions](#opt-in-regions)\. For the current list of AWS Regions that Amazon SNS supports, including opt\-in Regions, see [Amazon Simple Notification Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sns.html) in the *Amazon Web Services General Reference\.* 
 

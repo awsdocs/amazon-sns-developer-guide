@@ -22,7 +22,7 @@ Amazon SNS provides the following features and capabilities:
   Application\-to\-person notifications provides user notifications to subscribers such as mobile applications, mobile phone numbers, and email addresses\. For more information, see [Using Amazon SNS for application\-to\-person \(A2P\) messaging](sns-user-notifications.md)\. 
 + **Message delivery retry** 
 
-  Amazon SNS specifies a delivery policy for each delivery protocol\. The delivery policy defines how Amazon SNS retries the delivery of messages when server\-side errors occur\. For more information, see [Message delivery retries](sns-message-delivery-retries.md)\.
+  Amazon SNS specifies a delivery policy for each delivery protocol\. The delivery policy defines how Amazon SNS retries the delivery of messages when server\-side errors occur\. For more information, see [Amazon SNS message delivery retries](sns-message-delivery-retries.md)\.
 + **Dead\-letter queues** 
 
   A dead\-letter queue is an Amazon SQS queue for messages that can't be delivered successfully due to client errors or server errors\. After a configurable number of retry attempts, an undeliverable message is held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Amazon SNS dead\-letter queues \(DLQs\)](sns-dead-letter-queues.md)\. 
