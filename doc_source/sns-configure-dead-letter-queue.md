@@ -55,7 +55,7 @@ Before your begin this tutorial, make sure you complete the [prerequisites](#dea
    arn:aws:sqs:us-east-2:123456789012:MyDeadLetterQueue
    ```
 **Note**  
-Currently, you can't use an Amazon SQS FIFO queue as a dead\-letter queue for an Amazon SNS subscription\.
+For a [FIFO topic](sns-fifo-topics.md), use an Amazon SQS FIFO queue as a dead\-letter queue for the Amazon SNS subscrption\.
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 

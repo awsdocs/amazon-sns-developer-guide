@@ -22,6 +22,8 @@ Before you begin, complete the steps in [Setting up access for Amazon SNS](sns-s
 
 1. On the **Topics** page, choose **Create topic**\.
 
+1. By default, the console creates a FIFO topic\. Choose **Standard**\.
+
 1. In the **Details** section, enter a **Name** for the topic, such as *MyTopic*\.
 
 1. Scroll to the end of the form and choose **Create topic**\.

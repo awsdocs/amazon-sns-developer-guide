@@ -1,0 +1,11 @@
+# Message grouping for FIFO topics<a name="fifo-message-grouping"></a>
+
+Messages that belong to the same group are processed one by one, in a strict order relative to the group\. 
+
+When you publish messages to an Amazon SNS FIFO topic, you set the message group ID\. The group ID is a mandatory token that specifies that a message belongs to a specific message group\. The SNS FIFO topic passes the group ID to the subscribed Amazon SQS FIFO queues\. There is no limit to the number of group IDs in SNS FIFO topics or SQS FIFO queues\.
+
+There's no affinity between a message group and a subscription\. Therefore, messages that are published to any message group are delivered to all subscribed queues, subject to any filter policies attached to subscriptions\. For more information, see [Message delivery for FIFO topics](fifo-message-delivery.md) and [Message filtering for FIFO topics](fifo-message-filtering.md)\.
+
+In the [auto parts price management example use case](fifo-example-use-case.md), there's a dedicated message group for each product sold in the platform\. The same SNS FIFO topic is used for processing all price updates\. The sequence of price updates is preserved within the context of a single auto parts product, but *not* across multiple products\. The following diagram shows how this works\. Notice that for the product with the **product\-214** message group ID, the **m1** message is always processed before the **m4** message\. This sequence is preserved throughout the workflow, from Amazon SNS to Amazon SQS to AWS Lambda\. Similarly, for the product with the **product\-799** message group ID, the **m2** message is always processed before the **m3** message\. The **product\-214** and **product\-799** message groups are independent of each other, so there is no relationship between how their messages are sequenced\. 
+
+![\[Messages are processed in a strict order relative to the message group.\]](http://docs.aws.amazon.com/sns/latest/dg/images/sns-fifo-grouping.png)

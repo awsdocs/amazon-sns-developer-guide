@@ -3,47 +3,41 @@
 To receive messages published to [a topic](sns-create-topic.md), you must *subscribe* an endpoint \(such as AWS Lambda, Amazon SQS, HTTP/S, or an email address\) to the topic\. When you subscribe an endpoint to a topic and confirm the subscription, the endpoint begins to receive messages published to the associated topic\.
 
 **Topics**
-+ [AWS Management Console](#create-subscribe-endpoint-to-topic-aws-console)
++ [AWS Management Console](#subscribe-topic-aws-console)
 + [AWS SDK for Java](#create-subscribe-endpoint-to-topic-aws-java)
 + [AWS SDK for \.NET](#create-subscribe-endpoint-to-topic-aws-dot-net)
 
-## To subscribe an endpoint to an Amazon SNS topic using the AWS Management Console<a name="create-subscribe-endpoint-to-topic-aws-console"></a>
+## To subscribe an endpoint to a Amazon SNS topic using the AWS Management Console<a name="subscribe-topic-aws-console"></a>
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
-1. On the navigation panel, choose **Subscriptions**\.
+1. In the left navigation pane, choose **Subscriptions**\.
 
 1. On the **Subscriptions** page, choose **Create subscription**\.
 
-1. On the **Create subscription** page, do the following:
+1. On the **Create subscription** page, in the **Details** section, do the following:
 
-   1. Enter the **Topic ARN** of the topic you created earlier, for example:
+   1. For **Topic ARN**, choose the Amazon Resource Name \(ARN\) of a topic\.
 
-      ```
-      arn:aws:sns:us-east-2:123456789012:MyTopic
-      ```
-**Note**  
-To see a list of the topics in the current AWS account, choose the **Topic ARN** field\.
+   1. For **Protocol**, choose an endpoint type, such as **Email**\. To subscribe to a [FIFO topic](sns-fifo-topics.md), choose **Amazon SQS** for the protocol\.
 
-   1. For **Protocol**, choose an endpoint type, for example **Email**\.
+   1. For **Endpoint**, enter the endpoint value, such as an email address or the ARN of an Amazon SQS queue\. Note that HTTP\(S\) endpoints, email addresses, and AWS resources in other AWS accounts require confirmation\.
 
-   1. For **Endpoint**, enter an email address that can receive notifications, for example:
+   1. \(Optional\) To configure a filter policy, expand the **Subscription filter policy** section\. For more information, see [Filter policy constraints](sns-subscription-filter-policies.md#subscription-filter-policy-constraints)\.
 
-      ```
-      name@example.com
-      ```
-**Note**  
-After your subscription is created, you must confirm it\. Only HTTP/S endpoints, email addresses, and AWS resources in other AWS accounts require confirmation\. \(Amazon SQS queues and Lambda functions in the same AWS account—as well as mobile endpoints —don't require confirmation\.\)
+   1. \(Optional\) To configure a dead\-letter queue for the topic, expand the **Redrive policy \(dead\-letter queue\)** section\. For more information, see [Amazon SNS dead\-letter queues \(DLQs\)](sns-dead-letter-queues.md)\.
 
    1. Choose **Create subscription**\.
 
-      The subscription is created and the ***Subscription: 1234a567\-bc89\-012d\-3e45\-6fg7h890123i*** page is displayed\.
+      The console creates the subscription and opens the subscription's **Details** page\.
 
-      The subscription's **ARN**, **Endpoint**, **Topic**, **Status** \(**Pending confirmation** at this stage\), and **Protocol** are displayed in the **Details** section\.
+For some endpoint types—such as HTTP\(S\) endpoints, email addresses, and AWS resources in other AWS accounts—you must confirm the subscription before the endpoint can start to receive messages\.
 
-1. In your email client, check the email address that you specified and choose **Confirm subscription** in the email from Amazon SNS\.
+**To confirm a subscription**
 
-1. In your web browser, a subscription confirmation with your subscription ID is displayed\.
+1. If your endpoint is an email address, check your email inbox and choose **Confirm subscription** in the email from Amazon SNS\.
+
+1. Amazon SNS opens your web browser and displays a subscription confirmation with your subscription ID\.
 
 ## To subscribe an endpoint to an Amazon SNS topic using the AWS SDK for Java<a name="create-subscribe-endpoint-to-topic-aws-java"></a>
 
@@ -71,6 +65,8 @@ After your subscription is created, you must confirm it\. Only HTTP/S endpoints,
    SubscribeRequest: {AWS_REQUEST_ID=1234a567-bc89-012d-3e45-6fg7h890123i}
    To confirm the subscription, check your email.
    ```
+
+For a detailed example of how to create and publish a FIFO topic using the AWS SDK for Java, see [Using the AWS SDK for Java 2\.x](fifo-topic-code-examples.md#fifo-topic-java)\.
 
 ## To subscribe an endpoint to an Amazon SNS topic using the AWS SDK for \.NET<a name="create-subscribe-endpoint-to-topic-aws-dot-net"></a>
 

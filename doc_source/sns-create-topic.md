@@ -6,6 +6,8 @@ To broadcast the messages of a message\-producer system \(for example, an e\-com
 
 The first and most common Amazon SNS task is creating a topic\. This page shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to create a topic\.
 
+During creation, you choose a topic type \(Standard or FIFO\) and name the topic\. After creating a topic, you can't change the topic type or name\. All other configuration choices are optional during topic creation, and you can add or remove them later by editing the topic\.
+
 **Topics**
 + [AWS Management Console](#create-topic-aws-console)
 + [AWS SDK for Java](#create-topic-aws-java)
@@ -19,7 +21,17 @@ The first and most common Amazon SNS task is creating a topic\. This page shows 
    + If no topics have ever been created under your AWS account before, read the description of Amazon SNS on the home page\.
    + If topics have been created under your AWS account before, on the navigation panel, choose **Topics**\.
 
-1. In the **Create topic** section, enter a **Topic name**, for example *MyTopic*\.
+1. On the **Topics** page, choose **Create topic**\.
+
+1. On the **Create topic** page, in the **Details** section, do the following:
+
+   1. For **Type**, choose a topic type \(**Standard** or **FIFO**\)\.
+
+   1. Enter a **Name** for the topic\. For a [FIFO topic](sns-fifo-topics.md), add **\.fifo** to the end of the name\.
+
+   1. \(Optional\) Enter a **Display name** for the topic\.
+
+   1. \(Optional\) For a FIFO topic, you can choose **content\-based message deduplication** to enable default message deduplication\. For more information, see [Message deduplication for FIFO topics](fifo-message-dedup.md)\.
 
 1. \(Optional\) Expand the **Encryption** section and do the following\. For more information, see [Encryption at rest](sns-server-side-encryption.md)\.
 
@@ -97,6 +109,8 @@ When you create a topic using the console, the default policy uses the `aws:Sour
    ```
    final String topicArn = "arn:aws:sns:us-east-2:123456789012:MyTopic";
    ```
+
+For a detailed example of how to create and publish a FIFO topic using the AWS SDK for Java, see [Using the AWS SDK for Java 2\.x](fifo-topic-code-examples.md#fifo-topic-java)\.
 
 ## To create a topic using the AWS SDK for \.NET<a name="create-topic-aws-dot-net"></a>
 

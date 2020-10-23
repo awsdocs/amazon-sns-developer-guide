@@ -1,10 +1,14 @@
 # Origination identities for SMS messages<a name="channels-sms-originating-identities"></a>
 
-When you send SMS messages using Amazon SNS, you can identify yourself to your recipients in one of three ways: by using a sender ID, by using a long code, or by using a short code\. These methods of identifying yourself to your customers are known as *origination identities*\. Each of these types of identities has its own advantages and disadvantages, which are discussed in the following sections\.
+When you send SMS messages using Amazon SNS, you can identify yourself to your recipients using the following types of *originating identities*
++ Sender IDs
++ Origination numbers
+
+Each of these types of originating identities has its own advantages and disadvantages, which are discussed in the following sections\.
 
 ## Sender IDs<a name="channels-sms-originating-identities-sender-ids"></a>
 
-A sender ID is an alphabetic name that identifies the sender of an SMS message\. When you send an SMS message using a sender ID, and the recipient is in an area where sender ID authentication is supported, your sender ID appears on the recipient’s device instead of a phone number\. A sender ID provides SMS recipients with more information about the sender than a phone number or short code provides\.
+A sender ID is an alphabetic name that identifies the sender of an SMS message\. When you send an SMS message using a sender ID, and the recipient is in an area where sender ID authentication is supported, your sender ID appears on the recipient’s device instead of a phone number\. A sender ID provides SMS recipients with more information about the sender than a phone number, long code, or short code provides\.
 
 Sender IDs are supported in several countries and regions around the world\. In some places, if you're a business that sends SMS messages to individual customers, you must use a sender ID that's pre\-registered with a regulatory agency or industry group\. 
 
@@ -16,11 +20,25 @@ Sender IDs provide the recipient with more information about the message sender\
 
 Support and requirements for sender ID authentication aren't consistent across all countries or regions\. Several major markets \(including Canada, China, and the United States\) don't support sender ID\. In some areas, you must have your sender IDs pre\-approved by a regulatory agency before you can use them\.
 
-## Long codes<a name="channels-sms-originating-identities-long-codes"></a>
+## Origination numbers<a name="channels-sms-originating-identities-origination-numbers"></a>
+
+An origination number is a numeric string that identifies the phone number of the sender of an SMS message\. When you send an SMS message using an origination number, the recipient's device shows the origination number as the sender's phone number\. 
+
+**Advantages**
+
+Providing valid origination numbers provides a more consistent and trusted experience for message recipients\. In addition, you can specify different origination numbers by use case\.
+
+**Disadvantages**
+
+Origination numbers must match short or long codes that you've already purchased and configured in your AWS account for the destination county\.
+
+Support for origination numbers is not available in countries where local laws require the use of sender IDs instead of origination numbers\. 
+
+### Long codes<a name="channels-sms-originating-identities-long-codes"></a>
 
 Long codes are phone numbers that use the number format of the country or region where your recipients are located\. Long codes are also referred to as long numbers or virtual mobile numbers\. For example, in the United States and Canada, long codes contain 11 digits: the number 1 \(the country code\), a three\-digit area code, and a seven\-digit phone number\.
 
-If you're using the two\-way SMS feature to send and receive SMS messages, you can request up to five dedicated long codes per country\. For more information about requesting long codes, see [Requesting dedicated long codes for SMS messaging with Amazon SNS](channels-sms-awssupport-long-code.md)\.
+For more information about requesting long codes, see [Requesting dedicated long codes for SMS messaging with Amazon SNS](channels-sms-awssupport-long-code.md)\.
 
 **Advantages**
 
@@ -34,11 +52,11 @@ Long codes also have limited throughput\. In the United States and Canada, where
 
 Many jurisdictions have restrictions related to using long codes to send Application\-to\-Person \(A2P\) SMS messages\. An A2P SMS is a message that's sent to a customer's mobile device when that customer submits his or her mobile number to an application\. A2P messages are one\-way conversations, such as marketing messages, one\-time passwords, and appointment reminders\. If you plan to send A2P messages, you should purchase a dedicated short code \(if your customers are in the United States or Canada\), or use a sender ID \(if your recipients are in a country or region where sender IDs are supported\)\.
 
-## Short codes<a name="channels-sms-originating-identities-short-codes"></a>
+### Short codes<a name="channels-sms-originating-identities-short-codes"></a>
 
 Short codes are numeric sequences that are shorter than a regular phone number\. For example, in the United States and Canada, standard phone numbers \(long codes\) contain 11 digits, while short codes contain five or six digits\. Amazon SNS supports dedicated short codes\.
 
-### Dedicated short codes<a name="channels-sms-originating-identities-dedicated-short-codes"></a>
+#### Dedicated short codes<a name="channels-sms-originating-identities-dedicated-short-codes"></a>
 
 If you send a large volume of SMS messages to recipients in the United States or Canada, you can purchase a dedicated short code\. Unlike the short codes in the shared pool, dedicated short codes are reserved for your exclusive use\.
 

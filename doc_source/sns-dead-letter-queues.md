@@ -4,7 +4,7 @@ A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can 
 
 **Note**  
 The Amazon SNS subscription and Amazon SQS queue must be under the same AWS account and Region\.
-Currently, you can't use an Amazon SQS FIFO queue as a dead\-letter queue for an Amazon SNS subscription\.
+For a [FIFO topic](sns-fifo-topics.md), use an Amazon SQS FIFO queue as a dead\-letter queue for the Amazon SNS subscrption\.
 To use an encrypted Amazon SQS queue as a dead\-letter queue, you must use a custom CMK with a key policy that grants the Amazon SNS service principal access to AWS KMS API actions\. For more information, see [Encryption at rest](sns-server-side-encryption.md) in this guide and [Protecting Amazon SQS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html) in the *Amazon Simple Queue Service Developer Guide*\.
 
 **Topics**
@@ -40,7 +40,7 @@ A dead\-letter queue associated with an Amazon SNS subscription is an ordinary A
 Your messages are moved into a dead\-letter queue using a *redrive policy*\. A redrive policy is a JSON object that refers to the ARN of the dead\-letter queue\. The `deadLetterTargetArn` attribute specifies the ARN\. The ARN must point to an Amazon SQS queue in the same AWS account and Region as your Amazon SNS subscription\. For more information, see [Configuring an Amazon SNS dead\-letter queue for a subscription](sns-configure-dead-letter-queue.md)\. 
 
 **Note**  
-Currently, you can't use an Amazon SQS FIFO queue as a dead\-letter queue for an Amazon SNS subscription\.
+For a [FIFO topic](sns-fifo-topics.md), use an Amazon SQS FIFO queue as a dead\-letter queue for the Amazon SNS subscrption\.
 
 The following JSON object is a sample redrive policy, attached to an SNS subscription\.
 

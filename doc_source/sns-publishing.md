@@ -26,6 +26,10 @@ You can publish messages only to topics and endpoints in the same AWS Region\.
 
    1. \(Optional\) Enter a message **Subject**\.
 
+   1. For a [FIFO topic](sns-fifo-topics.md), enter a **Message group ID**\. Messages in the same message group are delivered in the order that they are published\.
+
+   1. For a FIFO topic, enter a **Message deduplication ID**\. This ID is optional if you enabled the **Content\-based message deduplication** setting for the topic\.
+
    1. \(Optional\) For [mobile push notifications](sns-ttl.md), enter a **Time to Live \(TTL\)** value in seconds\. This is the amount of time that a push notification service—such as Apple Push Notification Service \(APNs\) or Firebase Cloud Messaging \(FCM\)—has to deliver the message to the endpoint\.
 
 1. In the **Message body** section, do one of the following:
@@ -79,6 +83,8 @@ For attribute type **String\.Array**, enclose the array in square brackets \(`[]
    ```
    MessageId: 1234a567-bc89-012d-3e45-6fg7h890123i
    ```
+
+For a detailed example of how to create and publish a FIFO topic using the AWS SDK for Java, see [Using the AWS SDK for Java 2\.x](fifo-topic-code-examples.md#fifo-topic-java)\.
 
 ## To publish a message to an Amazon SNS topic using the AWS SDK for \.NET<a name="publish-message-to-topic-aws-dot-net"></a>
 

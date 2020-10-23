@@ -18,5 +18,3 @@ When you subscribe an Amazon SQS queue to an Amazon SNS topic, you can publish a
    "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:123456789012:MyTopic:c7fe3a54-ab0e-4ec2-88e0-db410a0f2bee"
 }
 ```
-
-Amazon SNS isn't currently compatible with Amazon SQS FIFO queues\.

@@ -1,0 +1,10 @@
+# FIFO topics example use case<a name="fifo-example-use-case"></a>
+
+The following example describes an ecommerce platform built by an auto parts manufacturer using Amazon SNS FIFO topics and Amazon SQS FIFO queues\. The platform is composed of three serverless applications:
++ Inventory managers use a price management application to set the price for each item in stock\. At this company, product prices can change based on currency exchange fluctuation, market demand, and shifts in sales strategy\. The price management application uses an AWS Lambda function that publishes price updates to an SNS FIFO topic whenever prices change\.
++ A wholesale application provides the backend for a website where auto body shops and car manufacturers can buy the company's auto parts in bulk\. To get price change notifications, the wholesale application subscribes its SQS FIFO queue to the price management application's SNS FIFO topic\.
++ A retail application provides the backend for another website where car owners and car tuning enthusiasts can purchase individual auto parts for their vehicles\. To get price change notifications, the retail application also subscribes its SQS FIFO queue to the price management application's SNS FIFO topic\.
+
+![\[The high-level architecture of the ecommerce platform.\]](http://docs.aws.amazon.com/sns/latest/dg/images/sns-fifo-usecase.png)
+
+For the wholesale and retail applications to receive price updates in the correct order, the price management application must use a strictly ordered message distribution system\. Using SNS FIFO topics and SQS FIFO queues enables the processing of messages in order and with no duplication\. For more information, see [Message ordering details for FIFO topics](fifo-topic-message-ordering.md)\. For code snippets that implement this use case, see [Code examples for FIFO topics](fifo-topic-code-examples.md)\.

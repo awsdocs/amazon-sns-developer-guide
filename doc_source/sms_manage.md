@@ -232,7 +232,7 @@ With the AWS SDK for \.NET, use code like the following:
 
 ```
 ListSubscriptionsResponse response = snsClient.ListSubscriptions();
-// find the subscriptionAwn you want
+// find the subscriptionArn you want
 foreach (Subscription sub in response.Subscriptions)
     Console.WriteLine(sub.SubscriptionArn);
 // unsubscribe
@@ -272,7 +272,7 @@ Using the AWS SDK for \.NET, use code like the following:
 
 ```
 ListTopicsResponse restopics= snsClient.ListTopics();
-// find the topicAwn you want
+// find the topicArn you want
 foreach (Topic t in restopics.Topics)
     Console.WriteLine(t.TopicArn);
 // delete

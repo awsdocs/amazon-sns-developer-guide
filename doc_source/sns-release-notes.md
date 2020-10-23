@@ -4,6 +4,8 @@ The following table describes recent changes to the *Amazon SNS Developer Guide*
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Origination numbers are available](https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html) | You can use origination numbers when sending text messages \(SMS\)\. | October 23, 2020 | 
+| [Support for Amazon SNS FIFO topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html) | You can use Amazon SNS FIFO topics with Amazon SQS FIFO queues to integrate distributed applications that require data consistency in near\-real time\. | October 22, 2020 | 
 | [The Amazon SNS Extended Client Library for Java is available](https://docs.aws.amazon.com/sns/latest/dg/large-message-payloads.html) | You can use this library to publish large Amazon SNS messages\. | August 25, 2020 | 
 | [Server\-side encryption \(SSE\) in the China Regions](https://docs.aws.amazon.com/sns/latest/dg/chapter-security.html#sns-server-side-encryption) | Server\-side encryption \(SSE\) for Amazon SNS is available in the China Regions\. | January 20, 2020 | 
 | [Amazon SNS supports using dead\-letter queues to capture undeliverable messages](https://docs.aws.amazon.com/sns/latest/dg/sns-dead-letter-queues.html) | You can use an Amazon SQS dead\-letter queue with an Amazon SNS subscription to capture undeliverable messages\. | November 14, 2019 | 

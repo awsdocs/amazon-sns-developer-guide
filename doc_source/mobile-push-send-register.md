@@ -2,7 +2,7 @@
 
  For Amazon SNS to send notification messages to mobile endpoints, whether it is direct or with subscriptions to a topic, you first need to create a platform application\. After the app is registered with AWS, the next step is to create an endpoint for the app and mobile device\. The endpoint is then used by Amazon SNS for sending notification messages to the app and device\. 
 
-**To create plaform application**
+**To create platform application**
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
