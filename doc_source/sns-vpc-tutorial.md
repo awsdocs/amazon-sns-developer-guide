@@ -1,4 +1,4 @@
-# Publishing Amazon SNS messages from a VPC from Amazon VPC<a name="sns-vpc"></a>
+# Publishing an Amazon SNS message from a VPC from Amazon VPC<a name="sns-vpc-tutorial"></a>
 
 This section describes how to publish to an Amazon SNS topic while keeping the messages secure in a private network\. You publish a message from an Amazon EC2 instance that's hosted in Amazon Virtual Private Cloud \(Amazon VPC\)\. The message stays within the AWS network without traveling the public internet\. By publishing messages privately from a VPC, you can improve the security of the traffic between your applications and Amazon SNS\. This security is important when you publish personally identifiable information \(PII\) about your customers, or when your application is subject to market regulations\. For example, publishing privately is helpful if you have a healthcare system that must comply with the Health Insurance Portability and Accountability Act \(HIPAA\), or a financial system that must comply with the Payment Card Industry Data Security Standard \(PCI DSS\)\.
 
