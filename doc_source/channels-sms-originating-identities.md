@@ -10,7 +10,10 @@ Each of these types of originating identities has its own advantages and disadva
 
 A sender ID is an alphabetic name that identifies the sender of an SMS message\. When you send an SMS message using a sender ID, and the recipient is in an area where sender ID authentication is supported, your sender ID appears on the recipient’s device instead of a phone number\. A sender ID provides SMS recipients with more information about the sender than a phone number, long code, or short code provides\.
 
-Sender IDs are supported in several countries and regions around the world\. In some places, if you're a business that sends SMS messages to individual customers, you must use a sender ID that's pre\-registered with a regulatory agency or industry group\. 
+Sender IDs are supported in several countries and regions around the world\. In some places, if you're a business that sends SMS messages to individual customers, you must use a sender ID that's pre\-registered with a regulatory agency or industry group\.
+
+**Important**  
+Use a sender ID that represents a brand or trademark that you own\. AWS prohibits SMS [SMS spoofing](https://en.wikipedia.org/wiki/SMS_spoofing), where the sender ID is used to impersonate another person, company, or product\.
 
 **Advantages**
 
