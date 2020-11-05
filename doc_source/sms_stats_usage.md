@@ -21,7 +21,7 @@ The usage report includes the following information for each SMS message that yo
 + Total number of parts
 
 **Note**  
-If Amazon SNS did not receive the part number, we set it's value to zero\.
+If Amazon SNS did not receive the part number, we set its value to zero\.
 
 ## Subscribing to daily usage reports<a name="subscribe-to-daily-usage-reports"></a>
 

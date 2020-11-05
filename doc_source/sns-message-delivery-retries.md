@@ -2,6 +2,11 @@
 
 Amazon SNS defines a *delivery policy* for each delivery protocol\. The delivery policy defines how Amazon SNS retries the delivery of messages when server\-side errors occur \(when the system that hosts the subscribed endpoint becomes unavailable\)\. When the delivery policy is exhausted, Amazon SNS stops retrying the delivery and discards the message—unless a dead\-letter queue is attached to the subscription\. For more information, see [Amazon SNS dead\-letter queues \(DLQs\)](sns-dead-letter-queues.md)\.
 
+**Topics**
++ [Delivery protocols and policies](#delivery-policies-for-protocols)
++ [Delivery policy stages](#delivery-policy-stages)
++ [Creating an HTTP/S delivery policy](#creating-delivery-policy)
+
 ## Delivery protocols and policies<a name="delivery-policies-for-protocols"></a>
 
 **Note**  
@@ -42,12 +47,12 @@ The following JSON object represents a delivery policy that instructs Amazon SNS
 
 1. 10 times \(with exponential backoff from 1 second to 60 seconds\)
 
-1. 35 times \(60 seconds apart\)
+1. 35 times \(60 seconds apart\) in the post\-backoff phase
 
-Amazon SNS makes a total of 50 attempts before discarding the message\.
+In this sample delivery policy, Amazon SNS makes a total of 50 attempts before discarding the message\. To keep the message after the retries specified in the delivery policy are exhausted, configure your subscription to move undeliverables messages to a dead\-letter queue \(DLQ\)\. For more information, see [Amazon SNS dead\-letter queues \(DLQs\)](sns-dead-letter-queues.md)\.
 
 **Note**  
-This delivery policy also instructs Amazon SNS to throttle deliveries to no more than 10 per second\.
+This delivery policy also instructs Amazon SNS to throttle deliveries to no more than 10 per second, using the `maxReceivesPerSecond` property\. This self\-throttling rate could result in more messsages published \(inbound traffic\) than delivered \(outbound traffic\)\. When there's more inbound than outbound traffic, your subscription can accumulate a large message backlog, which might cause high message delivery latency\. In your delivery policies, be sure to specify a value for `maxReceivesPerSecond` that doesn't adversely impact your workload\. 
 
 ```
 {
