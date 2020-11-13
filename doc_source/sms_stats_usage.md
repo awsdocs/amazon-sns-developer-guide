@@ -29,7 +29,7 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 **To create an Amazon S3 bucket for your daily usage reports**
 
-1. Sign in to the [Amazon S3 console](https://console.aws.amazon.com/s3/)\.
+1. From the AWS account that sends SMS messages, sign in to the [Amazon S3 console](https://console.aws.amazon.com/s3/)\.
 
 1. Choose **Create Bucket**\.
 
@@ -65,38 +65,50 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 ### Example bucket policy<a name="example_bucket_policy"></a>
 
-The following policy allows the Amazon SNS service principal to perform the `s3:PutObject` and `s3:GetBucketLocation` actions\. You can use this example when you create an Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS\.
+The following policy allows the Amazon SNS service principal to perform the `s3:PutObject`, `s3:GetBucketLocation`, and `s3:ListBucket` actions\. You can use this example when you create an Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS\.
 
 ```
- {
+{
   "Version": "2008-10-17",
-  "Statement": [{
-    "Sid": "AllowPutObject",
-    "Effect": "Allow",
-    "Principal": {
-      "Service": "sns.amazonaws.com"
-    },
-    "Action": "s3:PutObject",
-    "Resource": "arn:aws:s3:::my-s3-bucket/*",
-    "Condition": {
-      "StringEquals": {
+  "Statement": [
+    {
+      "Sid": "AllowPutObject",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "sns.amazonaws.com"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::my-s3-bucket/*",
+      "Condition": {
+        "StringEquals": {
           "aws:SourceAccount": "account_id"
+        }
       }
-    }
-  }, {
-    "Sid": "AllowGetBucketLocation",
-    "Effect": "Allow",
-    "Principal": {
-      "Service": "sns.amazonaws.com"
     },
-    "Action": "s3:GetBucketLocation",
-    "Resource": "arn:aws:s3:::my-s3-bucket",
-    "Condition": {
-      "StringEquals": {
+    {
+      "Sid": "AllowGetBucketLocation",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "sns.amazonaws.com"
+      },
+      "Action": "s3:GetBucketLocation",
+      "Resource": "arn:aws:s3:::my-s3-bucket",
+      "Condition": {
+        "StringEquals": {
           "aws:SourceAccount": "account_id"
+        }
       }
+    },
+    {
+      "Sid": "AllowListBucket",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "sns.amazonaws.com"
+      },
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::my-s3-bucket"
     }
-  }]
+  ]
 }
 ```
 
