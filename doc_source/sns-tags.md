@@ -1,6 +1,6 @@
 # Configuring tags for an Amazon SNS topic<a name="sns-tags"></a>
 
-You can track your Amazon SNS resources \(for example, for cost allocation\) by adding, removing, and listing metadata tags for Amazon SNS topics\. This page shows how to add, update, and remove tags for a topic using the AWS Management Console and the AWS SDK for Java\. For more information, see [Configuring tags for an Amazon SNS topic](#sns-tags)\.
+You can track your Amazon SNS resources \(for example, for cost allocation\) by adding, removing, and listing metadata tags for Amazon SNS topics\. This page shows how to add, update, and remove tags for a topic using the AWS Management Console and the AWS SDK for Java\. 
 
 **Topics**
 + [AWS Management Console](#add-update-remove-tags-for-topic-aws-console)
@@ -15,7 +15,7 @@ Currently, tag\-based access control isn't available\.
 
 1. On the navigation panel, choose **Topics**\.
 
-1. On the **Topics** page, choose a topic and choose **Edit**\.
+1. On the **Topics** page, choose a topic and then choose **Edit**\.
 
 1. Expand the **Tags** section\.
 

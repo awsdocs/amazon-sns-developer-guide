@@ -6,7 +6,7 @@ To broadcast the messages of a message\-producer system \(for example, an e\-com
 
 The first and most common Amazon SNS task is creating a topic\. This page shows how you can use the AWS Management Console, the AWS SDK for Java, and the AWS SDK for \.NET to create a topic\.
 
-During creation, you choose a topic type \(Standard or FIFO\) and name the topic\. After creating a topic, you can't change the topic type or name\. All other configuration choices are optional during topic creation, and you can add or remove them later by editing the topic\.
+During creation, you choose a topic type \(standard or FIFO\) and name the topic\. After creating a topic, you can't change the topic type or name\. All other configuration choices are optional during topic creation, and you can edit them later\.
 
 **Topics**
 + [AWS Management Console](#create-topic-aws-console)
