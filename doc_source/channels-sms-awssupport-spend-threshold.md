@@ -52,7 +52,7 @@ In order to prevent our systems from being used to send unsolicited or malicious
 
 We might not be able to grant your request if your use case doesn’t align with our policies\.
 
-## Step 2: Update your SMS settings on the Amazon Pinpoint console<a name="channels-sms-awssupport-spend-threshold-settings"></a>
+## Step 2: Update your SMS settings on the Amazon SNS console<a name="channels-sms-awssupport-spend-threshold-settings"></a>
 
 After we notify you that your monthly spending quota has been increased, you have to adjust the spending quota for your account on the Amazon SNS console\.
 
@@ -67,9 +67,9 @@ After we notify you that your monthly spending quota has been increased, you hav
 
 1. On the Mobile text messaging \(SMS\) page, next to Text messaging preferences, choose Edit\.
 
-1. On the Edit text messaging preferences page, under Details, enter your new SMS spend limit for Account spend limit \- 
-
-1. Note: You might receive a warning that the entered value is larger than the default spend limit\. You can ignore this 
+1. On the Edit text messaging preferences page, under Details, enter your new SMS spend limit for Account spend limit\.
+**Note**  
+You might receive a warning that the entered value is larger than the default spend limit\. You can ignore this\. 
 
 1. Choose Save changes\.
 
