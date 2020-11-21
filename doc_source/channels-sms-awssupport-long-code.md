@@ -28,9 +28,9 @@ Request a long code by completing the following steps\.
 
 1. Under **Default call type** choose **Transactional** or **Promotional**\.
 
-1. Under **Quantity** choose **1**\. Amazon SNS currently only supports a single long code per AWS account\.
+1. From the **Quantity** drop\-down, choose the number of long codes to request\. You can request up to 10 long codes at a time\.
 
-1. Optional: If you would like to create long codes in more countries or regions, choose **Add a country or region**\. Amazon SNS currently only supports a single long code per AWS account\.
+1. Optional: To create long codes in more countries or regions, or request more than 10 long codes for your target country or region, choose **Add a country or region**\. 
 
 1. Choose **Request long codes**\.
 
