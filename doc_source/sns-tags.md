@@ -29,7 +29,7 @@ Currently, tag\-based access control isn't available\.
 
 ## To list, add, and remove metadata tags for an Amazon SNS topic using the AWS SDK for Java\.<a name="add-update-remove-tags-for-topic-aws-java"></a>
 
-1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
+1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup.html#setup-credentials) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
 1. Write your code\. For more information, see [Using the SDK for Java 2\.x](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/basics.html)\.
 

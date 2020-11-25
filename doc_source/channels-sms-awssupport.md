@@ -8,7 +8,7 @@ By default, the monthly spending threshold is $1\.00 \(USD\)\. Your spending thr
 + 
 
 **A dedicated number \(short code or long code\)**  
-You need to request short codes through the Support Center\. want to enable two\-way SMS with Amazon SNS\. Long codes are supported for US regions\. You can request long codes through the Amazon Pinpoint console\.
+You need to request short codes through the Support Center\. Long codes are supported for US regions\. You can request long codes through the Amazon Pinpoint console\.
 + 
 
 **A dedicated sender ID**  

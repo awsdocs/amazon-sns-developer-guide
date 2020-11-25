@@ -49,7 +49,7 @@ For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.a
 
 1. Configure AWS KMS key policies to allow encryption of topics and encryption and decryption of messages\. For more information, see [Configuring AWS KMS permissions](sns-key-management.md#sns-what-permissions-for-sse)
 
-1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
+1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup.html#setup-credentials) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
 1. Obtain the customer master key \(CMK\) ID\. For more information, see [Key terms](sns-server-side-encryption.md#sse-key-terms)\.
 **Note**  

@@ -77,7 +77,7 @@ For a [FIFO topic](sns-fifo-topics.md), use an Amazon SQS FIFO queue as a dead\-
 
 Before your begin this tutorial, make sure you complete the [prerequisites](#dead-letter-queue-prerequisites)\.
 
-1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
+1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup.html#setup-credentials) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
 1. Write your code\. For more information, see [Using the SDK for Java 2\.x](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/basics.html)\.
 
