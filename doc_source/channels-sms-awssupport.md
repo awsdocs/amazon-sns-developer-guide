@@ -1,6 +1,6 @@
 # Requesting support for SMS messaging with Amazon SNS<a name="channels-sms-awssupport"></a>
 
-Certain SMS options with Amazon SNS are unavailable until you contact AWS Support\. Open a case in the [AWS Support Center](https://console.aws.amazon.com/support/home#/) to request any of the following:
+Certain SMS options with Amazon SNS aren't available until you contact AWS Support\. Open a case in the [AWS Support Center](https://console.aws.amazon.com/support/home#/) to request any of the following:
 + 
 
 **An increase to your monthly SMS spending threshold**  
