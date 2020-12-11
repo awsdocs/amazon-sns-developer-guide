@@ -67,7 +67,7 @@ When you publish a message to a topic, Amazon SNS attempts to deliver that messa
 To send an SMS message to a topic using one of AWS SDKs, use the actions in that SDK that correspond to the following requests in the Amazon SNS API\.
 
 **Note**  
-Remember to configure your AWS credentials before using the SDK\. For more information, see [AWS SDK for \.NET Developer Guide](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) or [AWS SDK for Java V2 Developer Guide](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html)
+Remember to configure your AWS credentials before using the SDK\. For more information, see [AWS SDK for \.NET Developer Guide](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) or [AWS SDK for Java V2 Developer Guide](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup.html#setup-credentials)\.
 
 `CreateTopic`  
 Creates a topic to which you can subscribe phone numbers and then publish messages to all of those phone numbers at once by publishing to the topic\.

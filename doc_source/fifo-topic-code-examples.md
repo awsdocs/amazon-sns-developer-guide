@@ -94,7 +94,11 @@ retailPolicy.addAttribute("business", "retail");
 retailPolicy.apply(sns, retailSubscriptionArn);
 ```
 
+ 
+
 ### Publishing messages to FIFO topics \(SDK for Java\)<a name="fifo-topic-java-publish"></a>
+
+ 
 
 Now you're ready to publish messages to your Amazon SNS FIFO topic\. The following code example composes and publishes a wholesale price update message\.
 
@@ -125,6 +129,8 @@ sns.publish(
         .withMessageDeduplicationId(dedupId)
         .withMessageAttributes(attributes);
 ```
+
+ 
 
 ### Receiving messages from FIFO subscriptions<a name="fifo-receiving-messages"></a>
 

@@ -35,7 +35,8 @@ It's up to you how you use both of the systems together to manage your permissio
 In this example, both an IAM policy and an Amazon SNS policy apply to Bob\. The IAM policy grants him permission for `Subscribe` on any of the AWS account's topics, whereas the Amazon SNS policy grants him permission to use `Publish` on a specific topic \(topic\_xyz\)\. The following diagram illustrates the concept\.  
 
 ![\[IAM and Amazon SNS policies for Bob\]](http://docs.aws.amazon.com/sns/latest/dg/images/SNS_UnionOfPolicies.png)
-If Bob were to send a request to subscribe to any topic in the AWS account, the IAM policy would allow the action\. If Bob were to send a request to publish a message to topic\_xyz, the Amazon SNS policy would allow the action\.
+If Bob were to send a request to subscribe to any topic in the AWS account, the IAM policy would allow the action\. If Bob were to send a request to publish a message to topic\_xyz, the Amazon SNS policy would allow the action\.  
+ 
 
 **Example 2**  
 In this example, we build on example 1 \(where Bob has two policies that apply to him\)\. Let's say that Bob publishes messages to topic\_xyz that he shouldn't have, so you want to entirely remove his ability to publish to topics\. The easiest thing to do is to add an IAM policy that denies him access to the `Publish` action on all topics\. This third policy overrides the Amazon SNS policy that originally gave him permission to publish to topic\_xyz, because an explicit deny always overrides an allow \(for more information about policy evaluation logic, see [Evaluation logic](sns-access-policy-language-evaluation-logic.md)\)\. The following diagram illustrates the concept\.  

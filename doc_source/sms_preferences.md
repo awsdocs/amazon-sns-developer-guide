@@ -1,6 +1,6 @@
 # Setting SMS messaging preferences<a name="sms_preferences"></a>
 
-Use Amazon SNS to specify preferences for SMS messaging, such as how your deliveries are optimized \(for cost or for reliable delivery\), your monthly spending limit, how message deliveries are logged, and whether to subscribe to daily SMS usage reports\.
+Use Amazon SNS to specify preferences for SMS messaging\. For example, you can specify whether to optimize deliveries for cost or reliability, your monthly spending limit, how deliveries are logged, and whether to subscribe to daily SMS usage reports\.
 
 These preferences take effect for every SMS message that you send from your account, but you can override some of them when you send an individual message\. For more information, see [Publishing to a mobile phone](sms_publish-to-phone.md)\.
 
@@ -49,7 +49,7 @@ To set your SMS preferences using one of AWS SDKs, use the action in that SDK th
 The following examples show how to set SMS preferences using the Amazon SNS clients that are provided by the AWS SDKs\.
 
 **Note**  
-Remember to configure your AWS credentials before using the SDK\. For more information, see [AWS SDK for \.NET Developer Guide](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) or [AWS SDK for Java V2 Developer Guide](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup-credentials.html)
+Remember to configure your AWS credentials before using the SDK\. For more information, see [AWS SDK for \.NET Developer Guide](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) or [AWS SDK for Java V2 Developer Guide](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup.html#setup-credentials)\.
 
 ------
 #### [ AWS SDK for Java ]
