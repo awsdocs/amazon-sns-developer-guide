@@ -6,7 +6,7 @@ You can use the AWS Management Console or Amazon SNS APIs to send custom message
 
 When you send platform\-specific payloads, the data must be formatted as JSON key\-value pair strings, with the quotation marks escaped\.
 
-The following examples show a custom message for the FCM platform\.
+The following examples show a custom message for the GCM platform\.
 
 ```
 {
