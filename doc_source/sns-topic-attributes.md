@@ -1,10 +1,11 @@
 # Amazon SNS message delivery status<a name="sns-topic-attributes"></a>
 
 Amazon SNS provides support to log the delivery status of notification messages sent to topics with the following Amazon SNS endpoints: 
-+ Application
 + HTTP
-+ Lambda
-+ SQS
++ Amazon Kinesis Data Firehose
++ AWS Lambda
++ Platform application endpoint
++ Amazon Simple Queue Service
 
  After you configure the message delivery status attributes, log entries will be sent to CloudWatch Logs for messages sent to a topic subscribed to an Amazon SNS endpoint\. Logging message delivery status helps provide better operational insight, such as the following: 
 + Knowing whether a message was delivered to the Amazon SNS endpoint\.
@@ -27,11 +28,11 @@ Amazon SNS provides support to log the delivery status of notification messages 
 
 1. On the **Edit *MyTopic*** page, expand the **Delivery status logging** section\.
 
-1. Choose the protocols for which you want to log delivery status, for example **Lambda**\.
+1. Choose the protocol for which you want to log delivery status; for example **AWS Lambda**\.
 
 1. Enter the **Success sample rate** \(the percentage of successful messages for which you want to receive CloudWatch Logs\.
 
-1. In the **IAM roles** subsection, do one of the following:
+1. In the **IAM roles** section, do one of the following:
    + To choose an existing service role from your account, choose **Use existing service role** and then specify IAM roles for successful and failed deliveries\.
    + To create a new service role in your account, choose **Create new service role**, choose **Create new roles** to define the IAM roles for successful and failed deliveries in the IAM console\.
 
@@ -49,24 +50,29 @@ The [AWS SDKs](https://aws.amazon.com/tools/) provide APIs in several languages 
 
 You can use the following topic attribute name values for message delivery status:
 
-**Application**
+**HTTP**
++ `HTTPSuccessFeedbackRoleArn`
++ `HTTPSuccessFeedbackSampleRate`
++ `HTTPFailureFeedbackRoleArn`
+
+**Amazon Kinesis Data Firehose**
++ `FirehoseSuccessFeedbackRoleArn`
++ `FirehoseSuccessFeedbackSampleRate`
++ `FirehoseFailureFeedbackRoleArn`
+
+**AWS Lambda**
++ `LambdaSuccessFeedbackRoleArn`
++ `LambdaSuccessFeedbackSampleRate`
++ `LambdaFailureFeedbackRoleArn`
+
+**Platform application endpoint**
 + `ApplicationSuccessFeedbackRoleArn`
 + `ApplicationSuccessFeedbackSampleRate`
 + `ApplicationFailureFeedbackRoleArn`
 **Note**  
 In addition to being able to configure topic attributes for message delivery status of notification messages sent to Amazon SNS application endpoints, you can also configure application attributes for the delivery status of push notification messages sent to push notification services\. For more information, see [Using Amazon SNS Application Attributes for Message Delivery Status](https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html)\. 
 
-**HTTP**
-+ `HTTPSuccessFeedbackRoleArn`
-+ `HTTPSuccessFeedbackSampleRate`
-+ `HTTPFailureFeedbackRoleArn`
-
-**Lambda**
-+ `LambdaSuccessFeedbackRoleArn`
-+ `LambdaSuccessFeedbackSampleRate`
-+ `LambdaFailureFeedbackRoleArn`
-
-**SQS**
+**Amazon SQS**
 + `SQSSuccessFeedbackRoleArn`
 + `SQSSuccessFeedbackSampleRate`
 + `SQSFailureFeedbackRoleArn`

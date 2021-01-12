@@ -15,6 +15,8 @@ Amazon SNS applies jittering to delivery retries\. For more information, see the
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html)
 
+¹ For throttling errors with the Kinesis Data Firehose protocol, Amazon SNS uses the same delivery policy as for customer managed endpoints\.
+
 ## Delivery policy stages<a name="delivery-policy-stages"></a>
 
 The following diagram shows the phases of a delivery policy\.

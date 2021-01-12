@@ -5,7 +5,7 @@ To receive messages published to [a topic](sns-create-topic.md), you must *subsc
 **Note**  
 HTTP\(S\) endpoints, email addresses, and AWS resources in other AWS accounts require confirmation of the subscription before they can receive messages\.
 
-## To subscribe an endpoint to a Amazon SNS topic<a name="subscribe-topic-aws-console"></a>
+## To subscribe an endpoint to an Amazon SNS topic<a name="subscribe-topic-aws-console"></a>
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
@@ -20,6 +20,7 @@ HTTP\(S\) endpoints, email addresses, and AWS resources in other AWS accounts re
    1. For **Protocol**, choose an endpoint type\.  The available endpoint types are:
       + [**HTTP/HTTPS**](sns-http-https-endpoint-as-subscriber.md)
       + [**Email/Email\-JSON**](sns-email-notifications.md)
+      + [**Amazon Kinesis Data Firehose**](sns-firehose-as-subscriber.md)
       + [**Amazon SQS**](sns-sqs-as-subscriber.md)
 **Note**  
 To subscribe to an [SNS FIFO topic](sns-fifo-topics.md), choose this option\.
@@ -29,7 +30,9 @@ To subscribe to an [SNS FIFO topic](sns-fifo-topics.md), choose this option\.
 
    1. For **Endpoint**, enter the endpoint value, such as an email address or the ARN of an Amazon SQS queue\.
 
-   1. \(Optional\) For Amazon SQS, HTTP, and HTTPS endpoints, you can also enable raw message delivery\. For more information, see [Amazon SNS raw message delivery](sns-large-payload-raw-message-delivery.md)\.
+   1. Kinesis Data Firehose endpoints only: For **Subscription role ARN**, specify the ARN of the IAM role that you created for writing to Kinesis Data Firehose delivery streams\. For more information, see [Prerequisites for subscribing Kinesis Data Firehose delivery streams to Amazon SNS topics](prereqs-kinesis-data-firehose.md)\.
+
+   1. \(Optional\) For Kinesis Data Firehose, Amazon SQS, HTTP/S endpoints, you can also enable raw message delivery\. For more information, see [Amazon SNS raw message delivery](sns-large-payload-raw-message-delivery.md)\.
 
    1. \(Optional\) To configure a filter policy, expand the **Subscription filter policy** section\. For more information, see [Amazon SNS subscription filter policies](sns-subscription-filter-policies.md)\.
 
