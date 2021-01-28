@@ -54,7 +54,11 @@ For more information, see [Encryption at rest](sns-server-side-encryption.md) an
 
 ### Enforce encryption of data in transit<a name="enforce-encryption-data-in-transit"></a>
 
-Without HTTPS \(TLS\), a network\-based attacker can eavesdrop on network traffic or manipulate it using an attack such as man\-in\-the\-middle\. Allow only encrypted connections over HTTPS \(TLS\) using the [https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_Boolean](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_Boolean) condition in the topic policy to force requests to use SSL\. 
+It's possible, but not recommended, to publish messages that are not encrypted during transit by using HTTP\. You can't, however, use HTTP when publishing to an encrypted SNS topic\.
+
+AWS recommends that you use HTTPS instead of HTTP\. When you use HTTPS, messages are automatically encrypted during transit, even if the SNS topic itself isn't encrypted\. Without HTTPS, a network\-based attacker can eavesdrop on network traffic or manipulate it using an attack such as man\-in\-the\-middle\.
+
+To enforce only encrypted connections over HTTPS, add the [https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_Boolean](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_Boolean) condition in the IAM policy that's attached to unencrypted SNS topics\. This forces message publishers to use HTTPS instead of HTTP\. 
 
 ### Consider using VPC endpoints to access Amazon SNS<a name="consider-using-vpc-endpoints-access-sns"></a>
 

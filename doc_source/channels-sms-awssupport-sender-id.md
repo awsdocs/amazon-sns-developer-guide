@@ -9,7 +9,7 @@ Support for sender IDs varies by country\. For example, carriers in the United S
 
 **Important**  
 Some countries require you to register sender IDs before you use them to send messages\. Depending on the country, this registration process might take several weeks\. The countries that require pre\-registered sender IDs are indicated in the table on the [Supported Countries](sns-supported-regions-countries.md) page\.  
-If you have enterprise support and are registering multiple templates across multiple please raise the requests as per instructions below, and work with your Technical Account Manager to ensure that your on\-boarding experience is co\-ordinated\.
+If you have enterprise support and are registering multiple templates across multiple accounts, follow the steps below, and work with your Technical Account Manager to ensure that your onboarding experience is coordinated\.
 
 If you're sending messages to recipients in a country where sender IDs are supported, and that country doesn't require you to register your sender ID, you don't have to perform any additional steps\. You can start sending messages that include sender ID values immediately\.
 

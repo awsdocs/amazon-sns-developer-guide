@@ -4,6 +4,7 @@ The following table describes recent changes to the *Amazon Simple Notification 
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Support for 1\-minute Amazon CloudWatch metrics](https://docs.aws.amazon.com/sns/latest/dg/sns-monitoring-using-cloudwatch.html) | The 1\-minute CloudWatch metric for Amazon SNS is now available in all Regions\. | January 28, 2021 | 
 | [Support for Amazon Kinesis Data Firehose endpoints](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html) | You can subscribe Kinesis Data Firehose delivery streams to SNS topics, which allow you to send notifications to archiving and analytics endpoints such as Amazon Simple Storage Service \(Amazon S3\) buckets, Amazon Redshift tables, and more\. | January 12, 2021 | 
 | [Origination numbers are available](https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html) | You can use origination numbers when sending text messages \(SMS\)\. | October 23, 2020 | 
 | [Support for Amazon SNS FIFO topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html) | To integrate distributed applications that require data consistency in near\-real time, you can use Amazon SNS FIFO topics with Amazon SQS FIFO queues\. | October 22, 2020 | 

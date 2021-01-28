@@ -1,10 +1,9 @@
 # Monitoring Amazon SNS topics using CloudWatch<a name="sns-monitoring-using-cloudwatch"></a>
 
-Amazon SNS and CloudWatch are integrated so you can collect, view, and analyze metrics for every active Amazon SNS notification\. Once you have configured CloudWatch for Amazon SNS, you can gain better insight into the performance of your Amazon SNS topics, push notifications, and SMS deliveries\. For example, you can set an alarm to send you an email notification if a specified threshold is met for an Amazon SNS metric, such as `NumberOfNotificationsFailed`\. For a list of all the metrics that Amazon SNS sends to CloudWatch, see [Amazon SNS metrics](#sns-metrics)\. For more information about Amazon SNS push notifications, see [Mobile push notifications](sns-mobile-application-as-subscriber.md) 
-
-The metrics you configure with CloudWatch for your Amazon SNS topics are automatically collected and pushed to CloudWatch every five minutes\. These metrics are gathered on all topics that meet the CloudWatch guidelines for being active\. A topic is considered active by CloudWatch for up to six hours from the last activity \(that is, any API call\) on the topic\. 
+Amazon SNS and Amazon CloudWatch are integrated so you can collect, view, and analyze metrics for every active Amazon SNS notification\. Once you have configured CloudWatch for Amazon SNS, you can gain better insight into the performance of your Amazon SNS topics, push notifications, and SMS deliveries\. For example, you can set an alarm to send you an email notification if a specified threshold is met for an Amazon SNS metric, such as `NumberOfNotificationsFailed`\. For a list of all the metrics that Amazon SNS sends to CloudWatch, see [Amazon SNS metrics](#sns-metrics)\. For more information about Amazon SNS push notifications, see [Mobile push notifications](sns-mobile-application-as-subscriber.md)\. 
 
 **Note**  
+The metrics you configure with CloudWatch for your Amazon SNS topics are automatically collected and pushed to CloudWatch at *1\-minute* intervals\. These metrics are gathered on all topics that meet the CloudWatch guidelines for being active\. A topic is considered active by CloudWatch for up to six hours from the last activity \(that is, any API call\) on the topic\.   
 There is no charge for the Amazon SNS metrics reported in CloudWatch; they are provided as part of the Amazon SNS service\.
 
 ## View CloudWatch metrics for Amazon SNS<a name="view-cloudwatch-metrics"></a>
@@ -23,7 +22,7 @@ You can monitor metrics for Amazon SNS using the CloudWatch console, CloudWatch'
    + **Topic Metrics**
    + **Metrics with no dimensions**
 
-1. To view more detail, choose a specific item\. For example, if you choose **Topic Metrics** and then choose **NumberOfMessagesPublished**, the average number of published Amazon SNS messages for a five\-minute period throughout the time range of 6 hours is displayed\.
+1. To view more detail, choose a specific item\. For example, if you choose **Topic Metrics** and then choose **NumberOfMessagesPublished**, the average number of published Amazon SNS messages for a 1\-minute period throughout the time range of 6 hours is displayed\.
 
 ## Set CloudWatch alarms for Amazon SNS metrics<a name="SNS_AlarmMetrics"></a>
 
@@ -54,17 +53,17 @@ Amazon SNS sends the following metrics to CloudWatch\.
 
 | Metric | Description | 
 | --- | --- | 
-|  `NumberOfMessagesPublished`  |  The number of messages published to your Amazon SNS topics\. Units: *Count* Valid Statistics: Sum  | 
-|  `NumberOfNotificationsDelivered`  |  The number of messages successfully delivered from your Amazon SNS topics to subscribing endpoints\. For a delivery attempt to succeed, the endpoint's subscription must accept the message\. A subscription accepts a message if a\.\) it lacks a filter policy or b\.\) its filter policy includes attributes that match those assigned to the message\. If the subscription rejects the message, the delivery attempt isn't counted for this metric\. Units: *Count* Valid Statistics: Sum  | 
-|  `NumberOfNotificationsFailed`  |  The number of messages that Amazon SNS failed to deliver\.  For Amazon SQS, email, SMS, or mobile push endpoints, the metric increments by 1 when Amazon SNS stops attempting message deliveries\. For HTTP or HTTPS endpoints, the metric includes every failed delivery attempt, including retries that follow the initial attempt\. For all other endpoints, the count increases by 1 when the message fails to deliver \(regardless of the number of attempts\)\. This metric does not include messages that were rejected by subscription filter policies\. You can control the number of retries for HTTP endpoints\. For more information, see [Amazon SNS message delivery retries](sns-message-delivery-retries.md)\. Units: *Count* Valid Statistics: Sum, Average  | 
+|  NumberOfMessagesPublished  |  The number of messages published to your Amazon SNS topics\. Units: *Count* Valid Statistics: Sum  | 
+|  NumberOfNotificationsDelivered  |  The number of messages successfully delivered from your Amazon SNS topics to subscribing endpoints\. For a delivery attempt to succeed, the endpoint's subscription must accept the message\. A subscription accepts a message if a\.\) it lacks a filter policy or b\.\) its filter policy includes attributes that match those assigned to the message\. If the subscription rejects the message, the delivery attempt isn't counted for this metric\. Units: *Count* Valid Statistics: Sum  | 
+|  NumberOfNotificationsFailed  |  The number of messages that Amazon SNS failed to deliver\.  For Amazon SQS, email, SMS, or mobile push endpoints, the metric increments by 1 when Amazon SNS stops attempting message deliveries\. For HTTP or HTTPS endpoints, the metric includes every failed delivery attempt, including retries that follow the initial attempt\. For all other endpoints, the count increases by 1 when the message fails to deliver \(regardless of the number of attempts\)\. This metric does not include messages that were rejected by subscription filter policies\. You can control the number of retries for HTTP endpoints\. For more information, see [Amazon SNS message delivery retries](sns-message-delivery-retries.md)\. Units: *Count* Valid Statistics: Sum, Average  | 
 | NumberOfNotificationsFilteredOut |  The number of messages that were rejected by subscription filter policies\. A filter policy rejects a message when the message attributes don't match the policy attributes\. Units: *Count* Valid Statistics: Sum, Average  | 
 | NumberOfNotificationsFilteredOut\-InvalidAttributes |  The number of messages that were rejected by subscription filter policies because the messages' attributes are invalid – for example, because the attribute JSON is incorrectly formatted\. Units: *Count* Valid Statistics: Sum, Average  | 
 | NumberOfNotificationsFilteredOut\-NoMessageAttributes |  The number of messages that were rejected by subscription filter policies because the messages have no attributes\. Units: *Count* Valid Statistics: Sum, Average  | 
-|  `NumberOfNotificationsRedrivenToDlq`  | The number of messages that have been moved to a dead\-letter queue\.Units: CountValid Statistics: Sum, Average | 
-|  `NumberOfNotificationsFailedToRedriveToDlq`  | The number of messages that couldn't be moved to a dead\-letter queue\.Units: CountValid Statistics: Sum, Average | 
-|  `PublishSize`  |  The size of messages published\. Units: *Bytes* Valid Statistics: Minimum, Maximum, Average and Count  | 
+|  NumberOfNotificationsRedrivenToDlq  | The number of messages that have been moved to a dead\-letter queue\.Units: CountValid Statistics: Sum, Average | 
+|  NumberOfNotificationsFailedToRedriveToDlq  | The number of messages that couldn't be moved to a dead\-letter queue\.Units: CountValid Statistics: Sum, Average | 
+|  PublishSize  |  The size of messages published\. Units: *Bytes* Valid Statistics: Minimum, Maximum, Average and Count  | 
 | SMSMonthToDateSpentUSD |  The charges you have accrued since the start of the current calendar month for sending SMS messages\. You can set an alarm for this metric to know when your month\-to\-date charges are close to the monthly SMS spend quota for your account\. When Amazon SNS determines that sending an SMS message would incur a cost that exceeds this quota, it stops publishing SMS messages within minutes\. For information about setting your monthly SMS spend quota, or for information about requesting a spend quota increase with AWS, see [Setting SMS messaging preferences](sms_preferences.md)\. Units: *USD* Valid Statistics: Maximum  | 
-|  `SMSSuccessRate`  |  The rate of successful SMS message deliveries\. Units: *Count* Valid Statistics: Sum, Average, Data Samples  | 
+|  SMSSuccessRate  |  The rate of successful SMS message deliveries\. Units: *Count* Valid Statistics: Sum, Average, Data Samples  | 
 
 ## Dimensions for Amazon SNS metrics<a name="sns-metric-dimensions"></a>
 
