@@ -1,0 +1,10 @@
+# Related services<a name="welcome-related"></a>
+
+You can use the following services with Amazon SNS:
++ **Amazon SQS** offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components\. Amazon SQS is related to Amazon SNS in the following ways:
+  + Amazon SNS provides [dead\-letter queues](sns-dead-letter-queues.md) powered by Amazon SQS for undeliverable messages\.
+  + You can [subscribe an Amazon SQS queue to an SNS topic](sns-sqs-as-subscriber.md)\.
+  + You can subscribe an Amazon SQS FIFO queue to an [Amazon SNS FIFO topic](sns-fifo-topics.md) to receive messages in order and with no duplicates\.
++ **AWS Lambda** enables you to build applications that respond quickly to new information\. Run your application code in Lambda functions on highly available compute infrastructure\. For more information, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/)\. You can [subscribe a Lambda function to an SNS topic](sns-lambda-as-subscriber.md)\.
++ **AWS Identity and Access Management \(IAM\)** helps you securely control access to AWS resources for your users\. Use IAM to control who can use your Amazon SNS topics \(authentication\), what topics they can use, and how they can use them \(authorization\)\. For more information, see [Using identity\-based policies with Amazon SNS](sns-using-identity-based-policies.md)\.
++ **AWS CloudFormation** enables you to model and set up your AWS resources\. Create a template that describes the AWS resources that you want, including Amazon SNS topics and subscriptions\. AWS CloudFormation takes care of provisioning and configuring those resources for you\. For more information, see the [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)\.

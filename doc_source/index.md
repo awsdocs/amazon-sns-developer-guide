@@ -15,6 +15,14 @@ Amazon's trademarks and trade dress may not be used in
 -----
 ## Contents
 + [What is Amazon SNS?](welcome.md)
+   + [Features and capabilities](welcome-features.md)
+   + [Related services](welcome-related.md)
+   + [Accessing Amazon SNS](welcome-accessing.md)
+   + [Pricing for Amazon SNS](welcome-pricing.md)
+   + [Common Amazon SNS scenarios](sns-common-scenarios.md)
++ [Amazon SNS event sources and destinations](sns-event-sources-and-destinations.md)
+   + [Amazon SNS event sources](sns-event-sources.md)
+   + [Amazon SNS event destinations](sns-event-destinations.md)
 + [Setting up access for Amazon SNS](sns-setting-up.md)
 + [Getting started with Amazon SNS](sns-getting-started.md)
 + [Configuring Amazon SNS](sns-configuring.md)
