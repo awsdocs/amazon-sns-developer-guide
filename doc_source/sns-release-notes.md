@@ -4,6 +4,7 @@ The following table describes recent changes to the *Amazon Simple Notification 
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Ending support for P2P long codes for US destinations](https://docs.aws.amazon.com/sns/latest/dg/channels-sms-us-requirements.html) | Effective April 1, 2021, US telecom providers no longer support using person\-to\-person \(P2P\) long codes for application\-to\-person \(A2P\) communications to US destinations\. Instead, you can use short codes, toll\-free numbers, or a new type of origination number called *10DLC*\. | February 16, 2021 | 
 | [Support for 1\-minute Amazon CloudWatch metrics](https://docs.aws.amazon.com/sns/latest/dg/sns-monitoring-using-cloudwatch.html) | The 1\-minute CloudWatch metric for Amazon SNS is now available in all Regions\. | January 28, 2021 | 
 | [Support for Amazon Kinesis Data Firehose endpoints](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html) | You can subscribe Kinesis Data Firehose delivery streams to SNS topics, which allow you to send notifications to archiving and analytics endpoints such as Amazon Simple Storage Service \(Amazon S3\) buckets, Amazon Redshift tables, and more\. | January 12, 2021 | 
 | [Origination numbers are available](https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html) | You can use origination numbers when sending text messages \(SMS\)\. | October 23, 2020 | 

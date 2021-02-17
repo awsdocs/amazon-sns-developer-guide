@@ -4,7 +4,7 @@ You can use Amazon SNS to send SMS messages to SMS\-enabled devices\. You can pu
 
 Subscribing phone numbers to a topic can be still useful if you want to publish each message to multiple phone numbers at once\. For steps on how to publish an SMS message to a topic, see [Publishing to a topic](sms_publish-to-topic.md)\.
 
-When you send a message, you can control whether the message is optimized for cost or reliable delivery, and you can specify a sender ID or origination number\. If you send the message programmatically using the Amazon SNS API or AWS SDKs, you can specify a maximum price for the message delivery\.
+When you send a message, you can control whether the message is optimized for cost or reliable delivery, and you can specify a [sender ID or origination number](channels-sms-originating-identities.md)\. If you send the message programmatically using the Amazon SNS API or AWS SDKs, you can specify a maximum price for the message delivery\.
 
 Each SMS message can contain up to 140 bytes, and the character quota depends on the encoding scheme\. For example, an SMS message can contain:
 + 160 GSM characters
@@ -51,9 +51,7 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 
    This message\-level sender ID overrides your default sender ID, which you set on the **Text messaging preferences** page\.
 
-1. \(Optional\) For **Origination number**, enter a string of 5\-14 numbers to display as the sender's phone number on the receiver's device\. This string must match a short or long code that is configured in your AWS account for the destination country\. For more information on short and long codes, see one of the following:
-   + [Short codes](channels-sms-originating-identities.md#channels-sms-originating-identities-short-codes)
-   + [Long codes](channels-sms-originating-identities.md#channels-sms-originating-identities-long-codes)
+1. \(Optional\) For **Origination number**, enter a string of 5\-14 numbers to display as the sender's phone number on the receiver's device\. This string must match an origination number that is configured in your AWS account for the destination country\. The origination number can be a 10DLC number, toll\-free number, person\-to\-person long code, or short codes\. For more information, see [Origination identities for SMS messages](channels-sms-originating-identities.md)\.
 
    For the countries and regions that support origination numbers, see [Supported Regions and countries](sns-supported-regions-countries.md)\.
 
@@ -72,9 +70,7 @@ If you do not specify a sender ID, the message will display a long code as the s
 This message\-level attribute overrides the account\-level attribute `DefaultSenderID`, which you set using the `SetSMSAttributes` request\.
 
 `AWS.MM.SMS.OriginationNumber`  
-A custom string of 5\-14 numbers, which may include an optional leading `+` symbol\. The origination number is displayed as the sender's phone number on the receiver's device\. This string must match a short or long code that is configured in your AWS account for the destination country\. For more information on short and long codes, see one of the following:  
-+ [Short codes](channels-sms-originating-identities.md#channels-sms-originating-identities-short-codes)
-+ [Long codes](channels-sms-originating-identities.md#channels-sms-originating-identities-long-codes)
+A custom string of 5\-14 numbers, which may include an optional leading `+` symbol\. The origination number is displayed as the sender's phone number on the receiver's device\. This string must match an origination number that is configured in your AWS account for the destination country\. The origination number can be a 10DLC number, toll\-free number, person\-to\-person long code, or short code\. For more information, see [Origination identities for SMS messages](channels-sms-originating-identities.md)\.  
 For the countries and regions that support origination numbers, see [Supported Regions and countries](sns-supported-regions-countries.md)\.  
 If you don't specify an origination number, Amazon SNS selects an origination number to use for the SMS text message, based on your AWS account configuration\.
 

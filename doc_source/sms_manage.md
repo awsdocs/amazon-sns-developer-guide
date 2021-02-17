@@ -21,7 +21,7 @@ Where required by local laws and regulations \(such as the US and Canada\), SMS 
 + TD
 + UNSUBSCRIBE
 
-To opt out, the recipient must reply to the same long code or short code that Amazon SNS used to deliver the message\. After opting out, the recipient will no longer receive SMS messages delivered from your AWS account unless you opt in the phone number\.
+To opt out, the recipient must reply to the same [origination number](channels-sms-originating-identities-origination-numbers.md) that Amazon SNS used to deliver the message\. After opting out, the recipient will no longer receive SMS messages delivered from your AWS account unless you opt in the phone number\.
 
 If the phone number is subscribed to an Amazon SNS topic, opting out does not remove the subscription, but SMS messages will fail to deliver to that subscription unless you opt in the phone number\.
 
