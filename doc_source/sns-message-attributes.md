@@ -26,10 +26,14 @@ Name, type, and value must not be empty or null\. In addition, the message body 
 
 Message attribute data types identify how the message attribute values are handled by Amazon SNS\. For example, if the type is a number, Amazon SNS validates that it's a number\.
 
-Amazon SNS supports the following logical data types:
+Amazon SNS supports the following logical data types for all endpoints except as noted:
 + **String** – Strings are Unicode with UTF\-8 binary encoding\. For a list of code values, see [http://en\.wikipedia\.org/wiki/ASCII\#ASCII\_printable\_characters](http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters)\.
 + **String\.Array** – An array, formatted as a string, that can contain multiple values\. The values can be strings, numbers, or the keywords `true`, `false`, and `null`\.
+
+  This data type isn't supported for AWS Lambda subscriptions\. If you specify this data type for Lambda endpoints, it's passed as the `String` data type in the JSON payload that Amazon SNS delivers to Lambda\. 
 + **Number** – Numbers are positive or negative integers or floating\-point numbers\. Numbers have sufficient range and precision to encompass most of the possible values that integers, floats, and doubles typically support\. A number can have a value from \-109 to 109, with 5 digits of accuracy after the decimal point\. Leading and trailing zeroes are trimmed\.
+
+  This data type isn't supported for AWS Lambda subscriptions\. If you specify this data type for Lambda endpoints, it's passed as the `String` data type in the JSON payload that Amazon SNS delivers to Lambda\. 
 + **Binary** – Binary type attributes can store any binary data; for example, compressed data, encrypted data, or images\.
 
 ## Reserved message attributes for mobile push notifications<a name="sns-attrib-mobile-reserved"></a>
