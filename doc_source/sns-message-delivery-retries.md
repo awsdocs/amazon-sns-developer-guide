@@ -87,6 +87,8 @@ The delivery policy is composed of a retry policy and a throttle policy\. In tot
 | backoffFunction | The model for backoff between retries\.  |  One of four options: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html) **Default:** linear  | 
 | maxReceivesPerSecond  | The maximum number of deliveries per second, per subscription\. | 1 or greater**Default:** No throttling | 
 
+Please note that the total policy retry time for a HTTP/S endpoint cannot be greater than 3600 seconds. This is a hard limit and cannot be increased.
+
 Amazon SNS uses the following formula to calculate the number of retries in the backoff phase:
 
 ```
