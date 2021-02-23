@@ -35,7 +35,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Angola | AO | Yes |  | 
 | Anguilla | AI | Yes |  | 
 | Antigua and Barbuda | AG | Yes |  | 
-| Argentina | AR |  | Yes | 
+| Argentina | AR |  |  | 
 | Armenia | AM | Yes |  | 
 | Aruba | AW | Yes |  | 
 | Australia | AU | Yes | Yes | 
@@ -112,7 +112,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Hungary | HU |  | Yes | 
 | Iceland | IS | Yes |  | 
 | India | IN | Yes[3](#sms-support-note-3) | Yes | 
-| Indonesia | ID |  | Yes | 
+| Indonesia | ID |  |  | 
 | Iraq | IQ |  |  | 
 | Ireland | IE | Yes | Yes | 
 | Israel | IL | Yes | Yes | 
@@ -136,7 +136,6 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Lithuania | LT | Yes | Yes | 
 | Luxembourg | LU | Yes |  | 
 | Macau | MO | Yes |  | 
-| Former Yugoslav Republic of Macedonia | MK | Yes |  | 
 | Madagascar | MG | Yes |  | 
 | Malawi | MW | Yes |  | 
 | Malaysia | MY |  | Yes | 
@@ -164,6 +163,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Nicaragua | NI |  |  | 
 | Niger | NE | Yes |  | 
 | Nigeria | NG | Yes |  | 
+| North Macedonia | MK | Yes |  | 
 | Norway | NO | Yes | Yes | 
 | Oman | OM | Yes |  | 
 | Pakistan | PK |  |  | 
@@ -199,7 +199,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Solomon Islands | SB | Yes |  | 
 | Somalia | SO | Yes |  | 
 | South Africa | ZA |  | Yes | 
-| South Korea | KR |  | Yes | 
+| South Korea | KR |  |  | 
 | South Sudan | SS | Yes |  | 
 | Spain | ES | Yes | Yes | 
 | Sri Lanka | LK |  |  | 

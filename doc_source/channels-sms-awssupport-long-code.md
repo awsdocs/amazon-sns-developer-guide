@@ -3,7 +3,7 @@
 **Important**  
 Effective April 1, 2021, US telecom providers no longer support using person\-to\-person \(P2P\) long codes for application\-to\-person \(A2P\) communications to US destinations\. Instead, you need to use another type of origination ID for these messages\. For more information, see [Special requirements for sending SMS messages to US destinations](channels-sms-us-requirements.md)\.
 
-To request 10DLC numbers, toll\-free numbers, and P2P long codes, use the Amazon Pinpoint console\. For detailed instructions, see [Requesting a number](https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-request-number.html) in the *Amazon Pinpoint User Guide*\.
+To request [10DLC numbers](channels-sms-originating-identities-10dlc.md), [toll\-free numbers](channels-sms-originating-identities-tfn.md), and [P2P long codes](channels-sms-originating-identities-long-codes.md), use the Amazon Pinpoint console\. For detailed instructions, see [Requesting a number](https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-request-number.html) in the *Amazon Pinpoint User Guide*\.
 
 Amazon SNS SMS messaging is available in Regions where Amazon Pinpoint is not currently supported\. In these cases, open the Amazon Pinpoint console in the US East \(N\. Virginia\) Region to register your 10DLC company and campaign\. Then open a case in the [AWS Support Center](https://console.aws.amazon.com/support/home#/) to request that the registered 10DLC number is moved to the Region of operation\. For information on Regions where Amazon Pinpoint is available, see [Amazon Pinpoint endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/pinpoint.html) in the *AWS General Reference*\.
 
