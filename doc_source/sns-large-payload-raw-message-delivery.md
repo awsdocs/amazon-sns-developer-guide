@@ -29,7 +29,7 @@ In the following examples, the same message is sent to the same Amazon SQS queue
   {
     "Type": "Notification",
     "MessageId": "dc1e94d9-56c5-5e96-808d-cc7f68faa162",
-    "TopicArn": "arn:aws:sns:us-east-2:665242997532:ExampleTopic1",
+    "TopicArn": "arn:aws:sns:us-east-2:111122223333:ExampleTopic1",
     "Subject": "TestSubject",
     "Message": "This is a test message.",
     "Timestamp": "2021-02-16T21:41:19.978Z",
