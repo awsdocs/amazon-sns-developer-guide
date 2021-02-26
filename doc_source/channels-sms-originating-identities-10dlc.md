@@ -4,9 +4,7 @@ US carriers no longer support using application\-to\-person \(A2P\) SMS messagin
 
 To get started with 10DLC, first use Amazon Pinpoint to register for 10DLC:
 
-1. Register your company with [The Campaign Registry](https://www.campaignregistry.com), a third\-party information hub that facilitates 10DLC messaging\.
-
-   Registration is typically instantaneous unless The Campaign Registry requires more information\.
+1. Register your company using the [Amazon Pinpoint console](https://console.aws.amazon.com/pinpoint/)\. Once you successfully complete your registration with Amazon Pinpoint, you can start registering 10DLC campaigns\.
 
    For more information, see [Registering a company](https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-register-company.html) in the *Amazon Pinpoint User Guide*\.
 **Note**  
