@@ -18,4 +18,4 @@ Amazon SNS supports SMS messaging in several regions, and you can send messages 
 + [Supported Regions and countries](sns-supported-regions-countries.md)
 + [SMS best practices](channels-sms-best-practices.md)
 + [Special requirements for sending SMS messages to US destinations](channels-sms-us-requirements.md)
-+ [Special requirements for sending SMS messages to recipients in India](channels-sms-awssupport-sender-id-india.md)
++ [Special requirements for sending SMS messages to recipients in India](channels-sms-senderid-india.md)

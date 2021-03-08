@@ -133,7 +133,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Supported Regions and countries](sns-supported-regions-countries.md)
       + [SMS best practices](channels-sms-best-practices.md)
       + [Special requirements for sending SMS messages to US destinations](channels-sms-us-requirements.md)
-      + [Special requirements for sending SMS messages to recipients in India](channels-sms-awssupport-sender-id-india.md)
+      + [Special requirements for sending SMS messages to recipients in India](channels-sms-senderid-india.md)
    + [Mobile push notifications](sns-mobile-application-as-subscriber.md)
       + [Setting up a mobile app](mobile-push-send.md)
          + [Prerequisites for Amazon SNS user notifications](sns-prerequisites-for-mobile-push-notifications.md)

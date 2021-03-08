@@ -1,4 +1,4 @@
-# Special requirements for sending SMS messages to recipients in India<a name="channels-sms-awssupport-sender-id-india"></a>
+# Special requirements for sending SMS messages to recipients in India<a name="channels-sms-senderid-india"></a>
 
 By default, when you send messages to recipients in India, Amazon SNS uses International Long Distance Operator \(ILDO\) connections to transmit those messages\. When recipients see a message that's sent over an ILDO connection, it appears to be sent from a random numeric ID\. Choosing a route type \(transactional or promotional\) is mandatory when sending domestic messages to India\. For a promotional message, choose the promotional route type as this uses a numeric sender ID\. For a transactional message, choose the transactional route as this uses a case\-sensitive alphanumeric sender ID\. Note that your account cannot use both numeric sender IDs and alphanumeic sender IDs in the same account\. Maintain separate accounts for each ID type\. For additional content guidelines, see the [Vilpower website](https://www.vilpower.in)\.
 
