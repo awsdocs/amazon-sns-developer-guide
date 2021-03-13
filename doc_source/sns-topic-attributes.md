@@ -7,7 +7,7 @@ Amazon SNS provides support to log the delivery status of notification messages 
 + Platform application endpoint
 + Amazon Simple Queue Service
 
- After you configure the message delivery status attributes, log entries will be sent to CloudWatch Logs for messages sent to a topic subscribed to an Amazon SNS endpoint\. Logging message delivery status helps provide better operational insight, such as the following: 
+ After you configure the message delivery status attributes, log entries will be sent to CloudWatch Logs for messages sent to a topic that is subscribed to by an Amazon SNS endpoint\. Logging message delivery status helps provide better operational insight, such as the following: 
 + Knowing whether a message was delivered to the Amazon SNS endpoint\.
 + Identifying the response sent from the Amazon SNS endpoint to Amazon SNS\.
 + Determining the message dwell time \(the time between the publish timestamp and just before handing off to an Amazon SNS endpoint\)\.
