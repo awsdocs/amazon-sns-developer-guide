@@ -184,7 +184,7 @@ If you added the following policy to a queue MyQueue in account 123456789012, yo
       "sqs:ReceiveMessage"
     ],
     "Resource":[
-      "arn:aws:sns:us-east-2:123456789012:MyQueue"
+      "arn:aws:sqs:us-east-2:123456789012:MyQueue"
     ]
   }]
 }
