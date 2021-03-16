@@ -6,7 +6,7 @@ Amazon SNS provides the following features and capabilities:
   Application\-to\-application messaging supports subscribers such as Amazon Kinesis Data Firehose delivery streams, Lambda functions, Amazon SQS queues, HTTP/S endpoints, and AWS Event Fork Pipelines\. For more information, see [Using Amazon SNS for application\-to\-application \(A2A\) messaging](sns-system-to-system-messaging.md)\.
 + **Application\-to\-person notifications**
 
-  Application\-to\-person notifications provides user notifications to subscribers such as mobile applications, mobile phone numbers, and email addresses\. For more information, see [Using Amazon SNS for application\-to\-person \(A2P\) messaging](sns-user-notifications.md)\.
+  Application\-to\-person notifications provide user notifications to subscribers such as mobile applications, mobile phone numbers, and email addresses\. For more information, see [Using Amazon SNS for application\-to\-person \(A2P\) messaging](sns-user-notifications.md)\.
 + **Standard and FIFO topics**
 
   Use a FIFO topic to ensure strict message ordering, to define message groups, and to prevent message duplication\. Only Amazon SQS FIFO queues can subscribe to a FIFO topic\. For more information, see [Message ordering and deduplication \(FIFO topics\)](sns-fifo-topics.md)\.
