@@ -141,8 +141,8 @@ If you added the following policy to an IAM user or group, you would give that u
       "sqs:DeleteMessage"
     ],
     "Resource":[
-      "arn:aws:sns:us-east-2:123456789012:MyQueue1",
-      "arn:aws:sns:us-east-2:123456789012:MyQueue2"
+      "arn:aws:sqs:us-east-2:123456789012:MyQueue1",
+      "arn:aws:sqs:us-east-2:123456789012:MyQueue2"
     ]
   }]
 }
