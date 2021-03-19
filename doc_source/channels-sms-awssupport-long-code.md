@@ -1,7 +1,7 @@
 # Requesting 10DLC numbers, toll\-free numbers, and P2P long codes for SMS messaging with Amazon SNS<a name="channels-sms-awssupport-long-code"></a>
 
 **Important**  
-Effective April 1, 2021, US telecom providers no longer support using person\-to\-person \(P2P\) long codes for application\-to\-person \(A2P\) communications to US destinations\. Instead, you need to use another type of origination ID for these messages\. For more information, see [Special requirements for sending SMS messages to US destinations](channels-sms-us-requirements.md)\.
+Effective June 1, 2021, US telecom providers no longer support using person\-to\-person \(P2P\) long codes for application\-to\-person \(A2P\) communications to US destinations\. Instead, you need to use another type of origination ID for these messages\. For more information, see [Special requirements for sending SMS messages to US destinations](channels-sms-us-requirements.md)\.
 
 To request [10DLC numbers](channels-sms-originating-identities-10dlc.md), [toll\-free numbers](channels-sms-originating-identities-tfn.md), and [P2P long codes](channels-sms-originating-identities-long-codes.md), use the Amazon Pinpoint console\. For detailed instructions, see [Requesting a number](https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-request-number.html) in the *Amazon Pinpoint User Guide*\.
 

@@ -2,7 +2,7 @@
 
 To publish messages to your Amazon SNS topics from an Amazon VPC, create an interface VPC endpoint\. Then, you can publish messages to your topics while keeping the traffic within the network that you manage with the VPC\.
 
-Use the following information to create the endpoint and test the connection between your VPC and Amazon SNS\. Or, for a walkthrough that helps you start from scratch, see [Publishing an Amazon SNS message from a VPC from Amazon VPC](sns-vpc-tutorial.md)\.
+Use the following information to create the endpoint and test the connection between your VPC and Amazon SNS\. Or, for a walkthrough that helps you start from scratch, see [Publishing an Amazon SNS message from Amazon VPC](sns-vpc-tutorial.md)\.
 
 ## Creating the endpoint<a name="sns-vpc-endpoint-create"></a>
 

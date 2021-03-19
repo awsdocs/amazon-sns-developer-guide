@@ -1,7 +1,7 @@
 # Amazon Simple Notification Service Developer Guide
 
 -----
-*****Copyright &copy; 2021 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy;  Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -161,7 +161,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Internetwork traffic privacy](sns-internetwork-traffic-privacy.md)
          + [Creating an Amazon VPC endpoint for Amazon SNS](sns-vpc-create-endpoint.md)
          + [Creating an Amazon VPC endpoint policy for Amazon SNS](sns-vpc-endpoint-policy.md)
-         + [Publishing an Amazon SNS message from a VPC from Amazon VPC](sns-vpc-tutorial.md)
+         + [Publishing an Amazon SNS message from Amazon VPC](sns-vpc-tutorial.md)
    + [Identity and access management in Amazon SNS](sns-authentication-and-access-control.md)
       + [Overview of managing access in Amazon SNS](sns-overview-of-managing-access.md)
          + [When to use access control](sns-when-to-use-access-control.md)

@@ -14,4 +14,4 @@ VPC endpoints don't allow you to subscribe an Amazon SNS topic to a private IP a
 **Topics**
 + [Creating an Amazon VPC endpoint for Amazon SNS](sns-vpc-create-endpoint.md)
 + [Creating an Amazon VPC endpoint policy for Amazon SNS](sns-vpc-endpoint-policy.md)
-+ [Publishing an Amazon SNS message from a VPC from Amazon VPC](sns-vpc-tutorial.md)
++ [Publishing an Amazon SNS message from Amazon VPC](sns-vpc-tutorial.md)

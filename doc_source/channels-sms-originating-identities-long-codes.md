@@ -1,7 +1,7 @@
 # Person\-to\-person \(P2P\) long codes<a name="channels-sms-originating-identities-long-codes"></a>
 
 **Important**  
-Effective April 1, 2021, US telecom providers no longer support using person\-to\-person \(P2P\) long codes for application\-to\-person \(A2P\) communications to US destinations\. Instead, you need to use another type of origination ID for these messages\. For more information, see [Special requirements for sending SMS messages to US destinations](channels-sms-us-requirements.md)\.
+Effective June 1, 2021, US telecom providers no longer support using person\-to\-person \(P2P\) long codes for application\-to\-person \(A2P\) communications to US destinations\. Instead, you need to use another type of origination ID for these messages\. For more information, see [Special requirements for sending SMS messages to US destinations](channels-sms-us-requirements.md)\.
 
 P2P long codes are phone numbers that use the number format of the country or region where your recipients are located\. P2P long codes are also referred to as long numbers or virtual mobile numbers\. For example, in the United States and Canada, P2P long codes contain 11 digits: the number 1 \(the country code\), a three\-digit area code, and a seven\-digit phone number\.
 
