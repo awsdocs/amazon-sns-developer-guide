@@ -202,7 +202,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | South Korea | KR |  |  | 
 | South Sudan | SS | Yes |  | 
 | Spain | ES | Yes | Yes | 
-| Sri Lanka | LK |  |  | 
+| Sri Lanka | LK | Yes[1](#sms-support-note-1) |  | 
 | Suriname | SR | Yes |  | 
 | Swaziland | SZ | Yes |  | 
 | Sweden | SE | Yes | Yes | 
