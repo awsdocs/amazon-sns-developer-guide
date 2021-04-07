@@ -174,6 +174,32 @@ However, it doesn't match the following message attribute:
 "customer_interests": {"Type": "String", "Value": "baseball"}
 ```
 
+### Prefix matching<a name="string-prefix-matching"></a>
+
+When a policy attribute includes the keyword `prefix`, it matches any message attribute value that begins with the specified characters\.
+
+Consider the following policy attribute:
+
+```
+"customer_interests": [{"prefix": "bas"}]
+```
+
+It matches either of the following message attributes:
+
+```
+"customer_interests": {"Type": "String", "Value": "baseball"}
+```
+
+```
+"customer_interests": {"Type": "String", "Value": "basketball"}
+```
+
+However, it doesn't match the following message attribute:
+
+```
+"customer_interests": {"Type": "String", "Value": "rugby"}
+```
+
 ### Anything\-but matching<a name="string-anything-but-matching"></a>
 
 When a policy attribute value includes the keyword `anything-but`, it matches any message attribute that *doesn't* include any of the policy attribute values\.
@@ -206,35 +232,64 @@ However, it doesn't match the following message attribute:
 "customer_interests": {"Type": "String", "Value": "rugby"}
 ```
 
-### Prefix matching<a name="string-prefix-matching"></a>
+#### Using a prefix with the `anything-but` operator<a name="string-anything-but-matching-prefix"></a>
 
-When a policy attribute includes the keyword `prefix`, it matches any message attribute value that begins with the specified characters\.
+For attribute *string* matching, you can also use a prefix with the `anything-but` operator\.
+
+For example, the following policy attribute denies the `order-` prefix:
+
+```
+"event\":[{\"anything-but\" : {\"prefix\":\"order-\"}}]
+```
+
+It matches either of the following attributes:
+
+```
+"event": {"Type": "String", "Value": data-entry}
+```
+
+```
+"event": {"Type": "String", "Value": order_number}
+```
+
+However, it *doesn't* match the following attribute:
+
+```
+"event": {"Type": "String", "Value": order-cancelled}
+```
+
+### IP address matching<a name="ip-address-matching"></a>
+
+You can use the `cidr` operator to check whether an incoming message originates from a specific IP address or subnet\. 
 
 Consider the following policy attribute:
 
 ```
-"customer_interests": [{"prefix": "bas"}]
+"source_ip":[{\"cidr\": \"10.0.0.0/24\"}]
 ```
 
 It matches either of the following message attributes:
 
 ```
-"customer_interests": {"Type": "String", "Value": "baseball"}
+"source_ip": {"Type": "String", "Value": "10.0.0.0"}
 ```
 
 ```
-"customer_interests": {"Type": "String", "Value": "basketball"}
+"source_ip": {"Type": "String", "Value": "10.0.0.255"}
 ```
 
-However, it doesn't match the following message attribute:
+However, it *doesn't* match the following message attribute:
 
 ```
-"customer_interests": {"Type": "String", "Value": "rugby"}
+"source_ip": {"Type": "String", "Value": "10.1.1.0"}
 ```
 
 ## Attribute numeric value matching<a name="numeric-value-matching"></a>
 
-You can use numeric values to match message attributes and filter messages\. Numeric values aren't enclosed in double quotation marks in the JSON policy\. You can use the following numeric operations to match message attributes\.
+You can use numeric values to match message attributes and filter messages\. Numeric values aren't enclosed in double quotation marks in the JSON policy\. You can use the following numeric operations to match message attributes\. 
+
+**Note**  
+Prefixes are supported for attribute *string* matching only\.
 
 ### Exact matching<a name="numeric-exact-matching"></a>
 
@@ -310,28 +365,47 @@ It matches any message attributes with positive numbers up to and including 150\
 
 ## Attribute key matching<a name="attribute-key-matching"></a>
 
-You can use the `exists` operator to check whether an incoming message has an attribute whose key is listed in the filter policy\.
+You can use the `exists` operator  to return incoming messages with or without specified attributes in the filter policy:
++ Use `"exists": true` to return incoming messages that include the specified attribute\.
 
-Consider the following policy attribute:
+  For example, the following attribute uses the `exists` operator with a value of `true`:
 
-```
-"store": [{"exists": true}]
-```
+  ```
+  "store": [{"exists": true}]
+  ```
 
-It matches any message that contains the `store` attribute key, such as the following:
+  It matches any message that contains the `store` attribute key, such as the following:
 
-```
-"store": "fans"
-"customer_interests": ["baseball", "basketball"]
-```
+  ```
+  "store": "fans" 
+     "customer_interests": ["baseball", "basketball"]
+  ```
 
-However, it doesn't match any message *without* the `store` attribute key, such as the following:
+  However, it doesn't match any message *without* the `store` attribute key, such as the following:
 
-```
-"customer_interests": ["baseball", "basketball"]
-```
+  ```
+  "customer_interests": ["baseball", "basketball"]
+  ```
++ Use `"exists": false` to return incoming messages that *don't* include the specified attribute\.
 
-Note: You cannot use the `exists` operator to match messages in which an attribute does not exist\. Filtering will NOT match any messages if you set `[{"exists": false}]`\. 
+  The following example shows the effect of using the `exists` operator with a value of `false`:
+
+  ```
+  "store": [{"exists": false}]
+  ```
+
+  It *doesn't* match any message that contains the `store` attribute key, such as the following:
+
+  ```
+  "store": "fans" 
+      "customer_interests": ["baseball", "basketball"]
+  ```
+
+  However, it matches any messages *without* the `store` attribute key, such as the following:
+
+  ```
+  "customer_interests": ["baseball", "basketball"]
+  ```
 
 ## AND/OR logic<a name="and-or-logic"></a>
 
@@ -363,3 +437,6 @@ Consider the following policy attribute:
 ```
 
 It matches any message attributes with the value of `customer_interests` set to `rugby`, `football`, *or* `baseball`\.
+
+**Note**  
+Currently, you can't use SNS filters to apply `OR` logic across different message attributes\. Instead, you can use SNS subscriptions\. For example, assume you have messages attributes named `customer_interests` and `customer_preferences`\. To apply `OR` logic across both attributes, create an SNS subscription to match each message attribute\. That way, you can use your subscriber application to consume both types of messages from both subscriptions\. 

@@ -216,7 +216,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Tonga | TO | Yes |  | 
 | Trinidad and Tobago | TT | Yes |  | 
 | Tunisia | TN | Yes |  | 
-| Turkey | TR |  | Yes | 
+| Turkey | TR | Yes[1](#sms-support-note-1) | Yes | 
 | Turkmenistan | TM | Yes |  | 
 | Turks and Caicos Islands | TC | Yes |  | 
 | Uganda | UG | Yes |  | 
