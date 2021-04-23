@@ -30,8 +30,8 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 1. On the **Mobile Text messaging \(SMS\)** page, choose **Publish text message**\. The **Publish SMS message** window opens\.
 
 1. For **Message type**, choose one of the following:
-   + **Promotional** – Noncritical messages, such as marketing messages\. Amazon SNS optimizes the message delivery to incur the lowest cost\.
-   + **Transactional** – Critical messages that support customer transactions, such as one\-time passcodes for multi\-factor authentication\. Amazon SNS optimizes the message delivery to achieve the highest reliability\.
+   + **Promotional** – Noncritical messages, such as marketing messages\. 
+   + **Transactional** – Critical messages that support customer transactions, such as one\-time passcodes for multi\-factor authentication\. 
 
    This message\-level setting overrides your default message type, which you set on the **Text messaging preferences** page\.
 
@@ -41,23 +41,33 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 
 1. For **Message**, type the message to send\.
 
-1. \(Optional\) For **Sender ID**, type a custom ID that contains 3\-11 alphanumeric characters, including at least one letter and no spaces\. The sender ID is displayed as the message sender on the receiving device\. For example, you can use your business brand to make the message source easier to recognize\.
+1. \(Optional\) Expand the **Origination identities** section and specify how to identify yourself to your recipients:
+   + To specify a **Sender ID**, type a custom ID that contains 3\-11 alphanumeric characters, including at least one letter and no spaces\. The sender ID is displayed as the message sender on the receiving device\. For example, you can use your business brand to make the message source easier to recognize\.
 
-   Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and countries](sns-supported-regions-countries.md)\.
+     Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and countries](sns-supported-regions-countries.md)\.
 
-   If you do not specify a sender ID, one of the following is displayed as the originating identity:
-   + In countries that support long codes, the long code is shown\.
-   + In countries where only sender IDs are supported, *NOTICE* is shown\.
+     If you do not specify a sender ID, one of the following is displayed as the originating identity:
+     + In countries that support long codes, the long code is shown\.
+     + In countries where only sender IDs are supported, *NOTICE* is shown\.
 
-   This message\-level sender ID overrides your default sender ID, which you set on the **Text messaging preferences** page\.
+     This message\-level sender ID overrides your default sender ID, which you set on the **Text messaging preferences** page\.
+   + To specify an **Origination number**, enter a string of 5\-14 numbers to display as the sender's phone number on the receiver's device\. This string must match an origination number that is configured in your AWS account for the destination country\. The origination number can be a 10DLC number, toll\-free number, person\-to\-person long code, or short codes\. For more information, see [Origination identities for SMS messages](channels-sms-originating-identities.md)\.
 
-1. \(Optional\) For **Origination number**, enter a string of 5\-14 numbers to display as the sender's phone number on the receiver's device\. This string must match an origination number that is configured in your AWS account for the destination country\. The origination number can be a 10DLC number, toll\-free number, person\-to\-person long code, or short codes\. For more information, see [Origination identities for SMS messages](channels-sms-originating-identities.md)\.
+     For the countries and regions that support origination numbers, see [Supported Regions and countries](sns-supported-regions-countries.md)\.
 
-   For the countries and regions that support origination numbers, see [Supported Regions and countries](sns-supported-regions-countries.md)\.
+     If you don't specify an origination number, Amazon SNS selects an origination number to use for the SMS text message, based on your AWS account configuration\.
 
-   If you don't specify an origination number, Amazon SNS selects an origination number to use for the SMS text message, based on your AWS account configuration\.
+1. If you're sending SMS messages to recipients in India, expand the **Country\-specific attributes** section and specify the following attributes:
+   + **Entity ID** – The entity ID or principal entity \(PE\) ID that you received from the regulatory body for sending SMS messages to recipients in India\.
 
-1. Choose **Send text message**\.
+     This is a custom, TRAI\-provided string of 1\-30 characters that uniquely identifies the entity that you registered with the TRAI\.
+   + **Template ID** – The template ID that you received from the regulatory body for sending SMS messages to recipients in India\.
+
+     This is a custom, TRAI\-provided string of 1\-30 characters that uniquely identifies the template that you registered with the TRAI\. The template ID must be associated with the sender ID that you specified in the previous step\. 
+
+   For more information on sending SMS messages to recipients in India, see [Special requirements for sending SMS messages to recipients in India](channels-sms-senderid-india.md)\.
+
+1. Choose **Publish message**\.
 
 ## Sending a message \(AWS SDKs\)<a name="sms_publish_sdk"></a>
 
@@ -81,9 +91,19 @@ If you are sending the message to an Amazon SNS topic, the maximum price applies
 
 `AWS.SNS.SMS.SMSType`  
 The type of message that you are sending:  
-+ `Promotional` \(default\) – Noncritical messages, such as marketing messages\. Amazon SNS optimizes the message delivery to incur the lowest cost\.
-+ `Transactional` – Critical messages that support customer transactions, such as one\-time passcodes for multi\-factor authentication\. Amazon SNS optimizes the message delivery to achieve the highest reliability\.
++ `Promotional` \(default\) – Noncritical messages, such as marketing messages\. 
++ `Transactional` – Critical messages that support customer transactions, such as one\-time passcodes for multi\-factor authentication\. 
 This message\-level attribute overrides the account\-level attribute `DefaultSMSType`, which you set using the `SetSMSAttributes` request\.
+
+`AWS.MM.SMS.EntityId`  
+This attribute is only required for sending SMS messages to recipients in India\.  
+The entity ID or principal entity \(PE\) ID that you received from the regulatory body for sending SMS messages to recipients in India\.  
+This is a custom, TRAI\-provided string of 1\-30 characters that uniquely identifies the entity that you registered with the TRAI\.
+
+`AWS.MM.SMS.TemplateId`  
+This attribute is only required for sending SMS messages to recipients in India\.  
+The template ID that you received from the regulatory body for sending SMS messages to recipients in India\.  
+This is a custom, TRAI\-provided string of 1\-30 characters that uniquely identifies the template that you registered with the TRAI\. The template ID must be associated with the sender ID that you specified for the message\.
 
 ### \(Optional\) Setting message attributes<a name="sms_attributes_sdks"></a>
 

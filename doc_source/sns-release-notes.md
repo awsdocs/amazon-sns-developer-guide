@@ -4,6 +4,7 @@ The following table describes recent changes to the *Amazon Simple Notification 
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [New attributes for sending SMS messages to recipients in India](https://docs.aws.amazon.com/sns/latest/dg/sns-register-entity-and-template.html) | Two new attributes, **Entity ID** and **Template ID**, are now required for sending SMS messages to recipients in India\. | April 22, 2021 | 
 | [Updates to message filtering operators](https://docs.aws.amazon.com/sns/latest/dg/sns-subscription-filter-policies.html) | A new operator, `cidr`, is available for matching message source IP addresses and subnets\. You can also now check for the *absence* of an attribute key, and use a prefix with the `anything-but` operator for attribute string matching\. | April 7, 2021 | 
 | [Ending support for P2P long codes for US destinations](https://docs.aws.amazon.com/sns/latest/dg/channels-sms-us-requirements.html) | Effective June 1, 2021, US telecom providers no longer support using person\-to\-person \(P2P\) long codes for application\-to\-person \(A2P\) communications to US destinations\. Instead, you can use short codes, toll\-free numbers, or a new type of origination number called *10DLC*\. | February 16, 2021 | 
 | [Support for 1\-minute Amazon CloudWatch metrics](https://docs.aws.amazon.com/sns/latest/dg/sns-monitoring-using-cloudwatch.html) | The 1\-minute CloudWatch metric for Amazon SNS is now available in all Regions\. | January 28, 2021 | 

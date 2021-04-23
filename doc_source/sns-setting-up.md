@@ -9,7 +9,7 @@ Before you can use Amazon SNS, you must complete the following steps\.
 
 ## Step 1: Create an AWS account and an IAM administrator user<a name="create-aws-account"></a>
 
-To access any AWS service, you must first create an [AWS account](https://aws.amazon.com/)\. This is an Amazon account that can use AWS products\. You can use your AWS account to view your activity and usage reports and to manage authentication and access\.
+To access any AWS service, you must first create an [AWS account](https://aws.amazon.com/)\. You can use your AWS account to view your activity and usage reports and to manage authentication and access\.
 
 1. Navigate to the [AWS home page](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
 

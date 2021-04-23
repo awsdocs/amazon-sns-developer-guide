@@ -82,7 +82,7 @@ Your new encrypted topic appears in the list of topics\.
 
    1. Choose **Use SSE**\.
 
-   1. For **AWS AWS KMS Customer Master Key \(CMK\)**, choose **MyCustomCMK** [which you created earlier](#create-custom-cmk), and then choose **Create Queue**\.
+   1. For **AWS KMS Customer Master Key \(CMK\)**, choose **MyCustomCMK** [which you created earlier](#create-custom-cmk), and then choose **Create Queue**\.
 
 1. Repeat the process to create a second queue \(for example, named `MyEncryptedQueue2`\)\.
 
