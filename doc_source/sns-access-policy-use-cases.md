@@ -7,7 +7,7 @@
 + [Allow any AWS resource to publish to a topic](#sns-allow-any-aws-resource-to-publish-to-topic)
 + [Allow an Amazon S3 bucket to publish to a topic](#sns-allow-s3-bucket-to-publish-to-topic)
 + [Allow another AWS service to publish to a topic that is owned by another account](#sns-allow-specified-service-to-publish-to-topic)
-+ [Allow accounts in an AWS organization to publish to a topic in a different account](#sns-allow-organization-to-publish-to-topic-in-another-account)
++ [Allow accounts in an organization in AWS Organizations to publish to a topic in a different account](#sns-allow-organization-to-publish-to-topic-in-another-account)
 + [Allow any CloudWatch alarm to publish to a topic in a different account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
 + [Restrict publication to an Amazon SNS topic only from a specific VPC endpoint](#sns-restrict-publication-only-from-specified-vpc-endpoint)
 
@@ -181,11 +181,11 @@ When you create topics from the Amazon SNS console, the default policy uses the 
 + Use `aws:SourceAccount` to configure conditions for other accounts for publishing and subscribing to topics\.
 + Use `aws:SourceOwner` to allow publishing requests from another AWS service\. Use the above example to specify ownership of the other service's resource and of the Amazon SNS topic\.
 
-## Allow accounts in an AWS organization to publish to a topic in a different account<a name="sns-allow-organization-to-publish-to-topic-in-another-account"></a>
+## Allow accounts in an organization in AWS Organizations to publish to a topic in a different account<a name="sns-allow-organization-to-publish-to-topic-in-another-account"></a>
 
 The AWS Organizations service helps you to centrally manage billing, control access and security, and share resources across your AWS accounts\. 
 
-You can find your organization ID in the [ Organizations console](https://console.aws.amazon.com/organizations/)\. For more information, see [ Viewing details of an organization from the master account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_details.html#orgs_view_org)\. 
+You can find your organization ID in the [ Organizations console](https://console.aws.amazon.com/organizations/)\. For more information, see [ Viewing details of an organization from the management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_details.html#orgs_view_org)\. 
 
 In this example, any AWS account in organization `myOrgId` can publish to Amazon SNS topic `MyTopic` in account `444455556666`\. The policy checks the organization ID value using the `aws:PrincipalOrgID` global condition key\.
 
