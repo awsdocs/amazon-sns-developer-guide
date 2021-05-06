@@ -28,7 +28,7 @@ After [registering your organization with TRAI](sns-india-register-with-trai.md)
 
    When adding content to SMS messages, make sure that it exactly matches the content in the DLT registered template\. Carriers block SMS messages if their message content includes additional character returns, spaces, punctuation, or mismatched sentence case\. Variables in a template can have 30 or fewer characters\. 
 
-1. Expand the **Origination identities** section\. For the **Sender ID**, type a custom ID that contains 3\-11 characters\.
+1. In the **Origination identities** section, for the **Sender ID**, type a custom ID that contains 3\-11 characters\.
 
    Sender IDs can be numeric for promotional messages, or alphabetic or alphanumeric for transactional messages\. The sender ID is displayed as the message sender on the receiving device\.
 
