@@ -87,7 +87,7 @@ Each action you specify in a policy must be prefixed with the lowercase string `
 
 Amazon SNS implements the following AWS\-wide policy keys, plus some service\-specific keys\.
 
-For a list of condition keys supported by each AWS service, see [Actions, Resources, and Condition Keys for AWS Services](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html) in the *IAM User Guide*\. For a list of condition keys that can be used in multiple AWS services, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html) in the *IAM User Guide*\.
+For a list of condition keys supported by each AWS service, see [Actions, resources, and condition keys for AWS services](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html) in the *IAM User Guide*\. For a list of condition keys that can be used in multiple AWS services, see [AWS global condition context keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html) in the *IAM User Guide*\.
 
 Amazon SNS uses the following service\-specific keys\. Use these keys in policies that restrict access to `Subscribe` requests\.
 + **sns:endpoint—**The URL, email address, or ARN from a `Subscribe` request or a previously confirmed subscription\. Use with string conditions \(see [Example policies for Amazon SNS](#sns-example-policies)\) to restrict access to specific endpoints \(for example, \*@yourcompany\.com\)\.

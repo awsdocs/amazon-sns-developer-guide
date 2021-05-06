@@ -41,7 +41,7 @@ When you send an SMS message, specify the phone number using the E\.164 format\.
 
 1. For **Message**, type the message to send\.
 
-1. \(Optional\) Expand the **Origination identities** section and specify how to identify yourself to your recipients:
+1. \(Optional\) In the **Origination identities** section, specify how to identify yourself to your recipients:
    + To specify a **Sender ID**, type a custom ID that contains 3\-11 alphanumeric characters, including at least one letter and no spaces\. The sender ID is displayed as the message sender on the receiving device\. For example, you can use your business brand to make the message source easier to recognize\.
 
      Support for sender IDs varies by country and/or region\. For example, messages delivered to U\.S\. phone numbers will not display the sender ID\. For the countries and regions that support sender IDs, see [Supported Regions and countries](sns-supported-regions-countries.md)\.
