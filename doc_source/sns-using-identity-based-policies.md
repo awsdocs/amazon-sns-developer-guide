@@ -85,7 +85,7 @@ Each action you specify in a policy must be prefixed with the lowercase string `
 
 ## Amazon SNS policy keys<a name="sns-policy-keys"></a>
 
-Amazon SNS implements the following AWS\-wide policy keys, plus some service\-specific keys\.
+Amazon SNS implements the following AWS wide policy keys, plus some service\-specific keys\.
 
 For a list of condition keys supported by each AWS service, see [Actions, resources, and condition keys for AWS services](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html) in the *IAM User Guide*\. For a list of condition keys that can be used in multiple AWS services, see [AWS global condition context keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html) in the *IAM User Guide*\.
 

@@ -1,8 +1,11 @@
 # Origination numbers<a name="channels-sms-originating-identities-origination-numbers"></a>
 
-An origination number is a numeric string that identifies the SMS message sender's phone number\. When you send an SMS message using an origination number, the recipient's device shows the origination number as the sender's phone number\. You can specify different origination numbers by use case\.
+An *origination number* is a numeric string that identifies an SMS message sender's phone number\. When you send an SMS message using an origination number, the recipient's device shows the origination number as the sender's phone number\. You can specify different origination numbers by use case\.
 
-Support for origination numbers is not available in countries where local laws require the use of sender IDs instead of origination numbers\. 
+**Tip**  
+To view a list of all existing origination numbers in your AWS account, in the navigation pane of the [Amazon SNS console](https://console.aws.amazon.com/sns/home), choose **Origination numbers**\.
+
+Support for origination numbers is not available in countries where local laws require the use of [sender IDs](channels-sms-originating-identities-sender-ids.md) instead of origination numbers\.
 
 **Topics**
 + [10DLC](channels-sms-originating-identities-10dlc.md)

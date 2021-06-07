@@ -48,9 +48,9 @@ Some of the fields on the request form are marked as "optional\." However, AWS S
 
 The AWS Support team provides an initial response to your request within 24 hours\.
 
-In order to prevent our systems from being used to send unsolicited or malicious content, we have to consider each request carefully\. If we’re able to do so, we'll grant your request within this 24\-hour period\. However, if we need to obtain additional information from you, it might take longer to resolve your request\.
+To prevent our systems from being used to send unsolicited or malicious content, we consider each request carefully\. If we can, we will grant your request within this 24\-hour period\. However, if we need additional information from you, it might take longer to resolve your request\.
 
-We might not be able to grant your request if your use case doesn’t align with our policies\.
+If your use case doesn't align with our policies, we might be unable to grant your request\.
 
 ## Step 2: Update your SMS settings on the Amazon SNS console<a name="channels-sms-awssupport-spend-threshold-settings"></a>
 

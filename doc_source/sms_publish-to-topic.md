@@ -1,6 +1,6 @@
 # Publishing to a topic<a name="sms_publish-to-topic"></a>
 
-You can publish a single SMS message to many phone numbers at once by subscribing those phone numbers to a topic\. A topic is a communication channel to which you can add subscribers and then publish messages to all of those subscribers\. A subscriber will receive all messages published to the topic until you cancel the subscription or the subscriber opts out of receiving SMS messages from your account\.
+You can publish a single SMS message to many phone numbers at once by subscribing those phone numbers to an Amazon SNS topic\. An SNS topic is a communication channel to which you can add subscribers and then publish messages to all of those subscribers\. A subscriber receives all messages published to the topic until you cancel the subscription, or until the subscriber opts out of receiving SMS messages from your AWS account\.
 
 **Topics**
 + [Sending a message to a topic \(console\)](#sms_publish-to-topic_console)
@@ -14,79 +14,103 @@ Complete the following steps if you don't already have a topic to which you want
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
-1. In the console menu, set the region selector to a [region that supports SMS messaging](sns-supported-regions-countries.md)\.
+1. In the console menu, choose an [AWS Region that supports SMS messaging](sns-supported-regions-countries.md)\.
 
-1. On the navigation panel, choose **Topics**\.
+1. In the navigation pane, choose **Topics**\.
 
-1. On the **Topics** page, choose **Create new topic**\. The **Create new topic** window opens\.
+1. On the **Topics** page, choose **Create topic**\.
 
-1. For **Topic name**, type a name\.
+1. On the **Create topic** page, under **Details**, do the following:
 
-1. \(Optional\) For **Display name**, type a custom prefix for your SMS messages\. When you send a message to the topic, Amazon SNS prepends the display name followed by a right angle bracket \(>\) and a space\. Display names are not case sensitive, and Amazon SNS converts display names to uppercase characters\. For example, if the display name of a topic is `MyTopic` and the message is `Hello World!`, the message would appear as:
+   1. For **Type**, choose **Standard**\.
 
-   ```
-   MYTOPIC> Hello World!
-   ```
+   1. For **Name**, enter a topic name\.
 
-1. Choose **Create topic**\. The topic name and Amazon Resource Name \(ARN\) are added to the table on the **Topics** page\.
+   1. \(Optional\) For **Display name**, enter a custom prefix for your SMS messages\. When you send a message to the topic, Amazon SNS prepends the display name followed by a right angle bracket \(>\) and a space\. Display names are not case sensitive, and Amazon SNS converts display names to uppercase characters\. For example, if the display name of a topic is `MyTopic` and the message is `Hello World!`, the message appears as:
 
-**To add SMS subscriptions**
+      ```
+      MYTOPIC> Hello World!
+      ```
 
-Subscriptions enable you to send an SMS message to multiple recipients by publishing the message just once to your topic\.
+1. Choose **Create topic**\. The topic's name and Amazon Resource Name \(ARN\) appear on the **Topics** page\.
 
-1. On the **Topics** page, choose the topic ARN\.
+**To create an SMS subscription**
 
-1. On the topic details page, choose **Create Subscription**\.
+You can use subscriptions to send an SMS message to multiple recipients by publishing the message only once to your topic\.
+**Note**  
+When you start using Amazon SNS to send SMS messages, your AWS account is in the *SMS sandbox*\. The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as an SMS sender\. While your account is in the SMS sandbox, you can use all of the features of Amazon SNS, but you can send SMS messages only to verified destination phone numbers\. For more information, see [SMS sandbox](sns-sms-sandbox.md)\.
 
-1. For **Protocol**, select **SMS**\.
+1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
-1. For **Endpoint**, type the phone number to which you want to send messages\.
+1. In the navigation pane, choose **Subscriptions**\.
 
-1. Choose **Create Subscription**\. The subscription information is added to the **Subscriptions** table\.
+1. On the **Subscriptions** page, choose **Create subscription**\.
 
-   You can repeat these steps to add more phone numbers, and you can add other types of subscriptions, such as email\.
+1. On the **Create subscription** page, under **Details**, do the following:
 
-**To send the message**
+   1. For **Topic ARN**, enter or choose the Amazon Resource Name \(ARN\) of the topic to which you want to send SMS messages\.
+
+   1. For **Protocol**, choose **SMS**\.
+
+   1. For **Endpoint**, enter the phone number that you want to subscribe to your topic\.
+
+1. Choose **Create subscription**\. The subscription information appears on the **Subscriptions** page\.
+
+   To add more phone numbers, repeat these steps\. You can also add other types of subscriptions, such as email\.
+
+**To send a message**
 
 When you publish a message to a topic, Amazon SNS attempts to deliver that message to every phone number that is subscribed to the topic\.
 
+1. In the [Amazon SNS console](https://console.aws.amazon.com/sns/home), on the **Topics** page, choose the name of the topic to which you want to send SMS messages\.
+
 1. On the topic details page, choose **Publish message**\.
 
-1. On the **Publish message to topic** page, for **Subject**, leave the field blank unless your topic contains email subscriptions and you want to publish to both email and SMS subscriptions\. The text that you enter for **Subject** is used as the email subject line\.
+1. On the **Publish message to topic** page, under **Message details**, do the following:
 
-1. For **Message body**, type a message\.
+   1. For **Subject**, keep the field blank unless your topic contains email subscriptions and you want to publish to both email and SMS subscriptions\. Amazon SNS uses the **Subject** that you enter as the email subject line\.
 
-   For information about the size quotas for SMS messages, see [Publishing to a mobile phone](sms_publish-to-phone.md)\.
+   1. \(Optional\) For **Time to Live \(TTL\)**, enter a number of seconds that Amazon SNS has to send your SMS message to any mobile application endpoint subscribers\.
 
-   If your topic has a display name, Amazon SNS adds it to the message, which increases the message length\. The display name length is the number of characters in the name plus two characters for the right angle bracket \(>\) and space that Amazon SNS adds\.
+1. Under **Message body**, do the following:
+
+   1. For **Message structure**, choose **Identical payload for all delivery protocols** to send the same message to all protocol types subscribed to your topic\. Or, choose **Custom payload for each delivery protocol** to customize the message for subscribers of different protocol types\. For example, you can enter a default message for phone number subscribers and a custom message for email subscribers\.
+
+   1. For **Message body to send to the endpoint**, enter your message, or your custom messages per delivery protocol\.
+
+      If your topic has a display name, Amazon SNS adds it to the message, which increases the message length\. The display name length is the number of characters in the name plus two characters for the right angle bracket \(>\) and the space that Amazon SNS adds\.
+
+      For information about the size quotas for SMS messages, see [Publishing to a mobile phone](sms_publish-to-phone.md)\.
+
+1. \(Optional\) For **Message attributes**, add message metadata such as timestamps, signatures, and IDs\.
 
 1. Choose **Publish message**\. Amazon SNS sends the SMS message and displays a success message\.
 
 ## Sending a message to a topic \(AWS SDKs\)<a name="sms_publish-to-topic_sdk"></a>
 
-To send an SMS message to a topic using one of AWS SDKs, use the actions in that SDK that correspond to the following requests in the Amazon SNS API\.
+To send an SMS message to a topic using one of the [AWS SDKs](http://aws.amazon.com/getting-started/tools-sdks/), use the API operations in that SDK that correspond to the following requests in the Amazon SNS API\.
 
 **Note**  
-Remember to configure your AWS credentials before using the SDK\. For more information, see [AWS SDK for \.NET Developer Guide](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) or [AWS SDK for Java V2 Developer Guide](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup.html#setup-credentials)\.
+Remember to configure your AWS credentials before using the SDK\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\. Or, see [Using credentials](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html) in the *AWS SDK for Java Developer Guide*\.
 
 `CreateTopic`  
-Creates a topic to which you can subscribe phone numbers and then publish messages to all of those phone numbers at once by publishing to the topic\.
+Creates a topic to which you can subscribe phone numbers and then publish messages to all subscribed phone numbers at once\.
 
 `Subscribe`  
 Subscribes a phone number to a topic\.
 
 `Publish`  
-Sends a message to each phone number subscribed to a topic\.   
+Sends a message to each phone number subscribed to a topic\.  
 You can use the `MessageAttributes` parameter to set several attributes for the message \(for example, the maximum price\)\. For more information, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)\.
 
 ### Creating a topic<a name="sms_create_topic_sdks"></a>
 
-The following examples show how to create a topic using the Amazon SNS clients that are provided by the AWS SDKs\.
+The following examples show how to create a topic using the Amazon SNS clients that the AWS SDKs provide\.
 
 ------
 #### [ AWS SDK for Java ]
 
-The following example uses the `createTopic` method of the `AmazonSNSClient` class in the AWS SDK for Java:
+The following example uses the `createTopic` operation of the `AmazonSNSClient` class in the AWS SDK for Java:
 
 ```
 public static void main(String[] args) {
@@ -104,9 +128,9 @@ public static String createSNSTopic(AmazonSNSClient snsClient) {
 }
 ```
 
-The example uses the `getCachedResponseMetadata` method to get the request ID\.
+The example uses the `getCachedResponseMetadata` operation to get the request ID\.
 
-When you run this example, the following is displayed in the console output window of your IDE:
+When you run this example, the console output window of your IDE displays the following:
 
 ```
 {TopicArn: arn:aws:sns:us-east-1:123456789012:mySNSTopic}
@@ -116,7 +140,7 @@ CreateTopicRequest - {AWS_REQUEST_ID=93f7fc90-f131-5ca3-ab18-b741fef918b5}
 ------
 #### [ AWS SDK for \.NET ]
 
-The following example uses the `createTopic` method of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET:
+The following example uses the `createTopic` operation of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET:
 
 ```
 static void Main(string[] args)
@@ -136,7 +160,7 @@ public static String CreateSNSTopic(AmazonSimpleNotificationServiceClient snsCli
 }
 ```
 
-When you run this example, the following is displayed in the console output window of your IDE:
+When you run this example, the console output window of your IDE displays the following:
 
 ```
 {TopicArn: arn:aws:sns:us-east-1:123456789012:mySNSTopic}
@@ -147,12 +171,12 @@ CreateTopicRequest - 93f7fc90-f131-5ca3-ab18-b741fef918b5
 
 ### Adding an SMS subscription to your topic<a name="sms_add_subscription_sdks"></a>
 
-The following examples show how to add an SMS subscription to a topic using the Amazon SNS clients that are provided by the AWS SDKs\.
+The following examples show how to add an SMS subscription to a topic using the Amazon SNS clients that the AWS SDKs provide\.
 
 ------
 #### [ AWS SDK for Java ]
 
-The following example uses the `subscribe` method of the `AmazonSNSClient` class in the AWS SDK for Java:
+The following example uses the `subscribe` operation of the `AmazonSNSClient` class in the AWS SDK for Java:
 
 ```
 public static void main(String[] args) {
@@ -176,13 +200,13 @@ public static void subscribeToTopic(AmazonSNSClient snsClient, String topicArn,
 ```
 
 This example constructs the `subscribeRequest` object and passes it the following arguments:
-+ `topicArn` \- The Amazon Resource Name \(ARN\) of the topic to which you are adding a subscription\.
-+ `"sms"` \- The protocol option for an SMS subscription\.
-+ `endpoint` \- The phone number that you are subscribing to the topic\.
++ `topicArn` – The Amazon Resource Name \(ARN\) of the topic to which you are adding a subscription\.
++ `"sms"` – The protocol option for an SMS subscription\.
++ `endpoint` – The phone number that you are subscribing to the topic\.
 
-The example uses the `getCachedResponseMetadata` method to get the request ID for the subscribe request\.
+The example uses the `getCachedResponseMetadata` operation to get the request ID for the subscribe request\.
 
-When you run this example, the ID of the subscribe request is displayed in the console window of your IDE:
+When you run this example, the console window of your IDE displays the subscribe request ID:
 
 ```
 SubscribeRequest - {AWS_REQUEST_ID=f38fe925-8093-5bd4-9c19-a7c7625de38c}
@@ -191,7 +215,7 @@ SubscribeRequest - {AWS_REQUEST_ID=f38fe925-8093-5bd4-9c19-a7c7625de38c}
 ------
 #### [ AWS SDK for \.NET ]
 
-The following example uses the `subscribe` method of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET:
+The following example uses the `subscribe` operation of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET:
 
 ```
 static void Main(string[] args)
@@ -215,11 +239,11 @@ static public void SubscribeToTopic(AmazonSimpleNotificationServiceClient snsCli
 ```
 
 This example constructs the `SubscribeRequest` object and passes it the following arguments:
-+ `topicArn` \- The Amazon Resource Name \(ARN\) of the topic to which you are adding a subscription\.
-+ `"sms"` \- The protocol option for an SMS subscription\.
-+ `endpoint` \- The phone number that you are subscribing to the topic\.
++ `topicArn` – The Amazon Resource Name \(ARN\) of the topic to which you are adding a subscription\.
++ `"sms"` – The protocol option for an SMS subscription\.
++ `endpoint` – The phone number that you are subscribing to the topic\.
 
-When you run this example, the ID of the subscribe request is displayed in the console window of your IDE:
+When you run this example, the console window of your IDE displays the subscribe request ID:
 
 ```
 SubscribeRequest - f38fe925-8093-5bd4-9c19-a7c7625de38c
@@ -229,12 +253,12 @@ SubscribeRequest - f38fe925-8093-5bd4-9c19-a7c7625de38c
 
 ### \(Optional\) Setting message attributes<a name="sms_set_attributes_sdks"></a>
 
-The following examples show how to set message attributes using the Amazon SNS clients that are provided by the AWS SDKs\.
+The following examples show how to set message attributes using the Amazon SNS clients that the AWS SDKs provide\.
 
 ------
 #### [ AWS SDK for Java ]
 
-With the AWS SDK for Java, you set message attribute values by constructing a map that associates the attribute keys with `MessageAttributeValue` objects\. Each `MessageAttributeValue` object is initialized with an attribute value, and each object declares the data type for the value\. The following example sets the sender ID to "mySenderID", maximum price to 0\.50 USD, and SMS type to promotional:
+With the AWS SDK for Java, you set message attribute values by constructing a map that associates the attribute keys with `MessageAttributeValue` objects\. Each `MessageAttributeValue` object is initialized with an attribute value, and each object declares the data type for the value\. The following example sets the sender ID to "mySenderID", maximum price to "0\.50" USD, and SMS type to "Promotional":
 
 ```
 Map<String, MessageAttributeValue> smsAttributes =
@@ -250,14 +274,14 @@ smsAttributes.put("AWS.SNS.SMS.SMSType", new MessageAttributeValue()
         .withDataType("String"));
 ```
 
-For more information about message attributes, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)
+For more information about message attributes, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)\.
 
-When you send an SMS message, you will apply your attributes to the `PublishRequest` object\.
+When you send an SMS message, you apply your attributes to the `PublishRequest` object\.
 
 ------
 #### [ AWS SDK for \.NET ]
 
-With the AWS SDK for \.NET, you set message attribute values by adding attribute keys with `MessageAttributeValue` objects to the MessageAttributes field of the `PublishRequest` object\. Each `MessageAttributeValue` object is initialized with an attribute value, and each object declares the data type for the value\. The following example sets the sender ID to "mySenderID", maximum price to 0\.50 USD, and SMS type to promotional:
+With the AWS SDK for \.NET, you set message attribute values by adding attribute keys with `MessageAttributeValue` objects to the `MessageAttributes` field of the `PublishRequest` object\. Each `MessageAttributeValue` object is initialized with an attribute value, and each object declares the data type for the value\. The following example sets the sender ID to "mySenderID", maximum price to "0\.50" USD, and SMS type to "Promotional":
 
 ```
 PublishRequest pubRequest = new PublishRequest();
@@ -269,20 +293,20 @@ pubRequest.MessageAttributes["AWS.SNS.SMS.SMSType"] =
     new MessageAttributeValue { StringValue = "Promotional", DataType = "String" };
 ```
 
-For more information about message attributes, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)
+For more information about message attributes, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)\.
 
-When you send an SMS message, you will apply your attributes to the `PublishRequest` object\.
+When you send an SMS message, you apply your attributes to the `PublishRequest` object\.
 
 ------
 
 ### Publishing a message to your topic<a name="sms_publish_to_topic_sdks"></a>
 
-The following examples show how to publish a message to a topic using the Amazon SNS clients that are provided by the AWS SDKs\.
+The following examples show how to publish a message to a topic using the Amazon SNS clients that the AWS SDKs provide\.
 
 ------
 #### [ AWS SDK for Java ]
 
-The following example uses the `publish` method of the `AmazonSNSClient` class in the AWS SDK for Java:
+The following example uses the `publish` operation of the `AmazonSNSClient` class in the AWS SDK for Java:
 
 ```
 public static void main(String[] args) {
@@ -296,9 +320,9 @@ public static void main(String[] args) {
         sendSMSMessageToTopic(snsClient, topicArn, message, smsAttributes);
 }
 
-//<create topic method>
+//<create topic operation>
 
-//<subscribe to topic method>
+//<subscribe to topic operation>
 
 public static void sendSMSMessageToTopic(AmazonSNSClient snsClient, String topicArn, 
 		String message, Map<String, MessageAttributeValue> smsAttributes) {
@@ -310,11 +334,11 @@ public static void sendSMSMessageToTopic(AmazonSNSClient snsClient, String topic
 }
 ```
 
-Amazon SNS will attempt to deliver that message to every phone number that is subscribed to the topic\.
+Amazon SNS attempts to deliver that message to every phone number that is subscribed to the topic\.
 
-This example constructs the `publishRequest` object while passing the topic Amazon Resource Name \(ARN\) and the message as arguments\. The `publishResult` object captures the message ID returned by Amazon SNS\.
+This example constructs the `publishRequest` object while passing the topic ARN and the message as arguments\. The `publishResult` object captures the message ID that Amazon SNS returns\.
 
-When you run this example, the message ID is displayed in the console output window of your IDE:
+When you run this example, the console output window of your IDE displays the message ID:
 
 ```
 {MessageId: 9b888f80-15f7-5c30-81a2-c4511a3f5229}
@@ -323,7 +347,7 @@ When you run this example, the message ID is displayed in the console output win
 ------
 #### [ AWS SDK for \.NET ]
 
-The following example uses the `Publish` method of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET:
+The following example uses the `Publish` operation of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET:
 
 ```
 public static void main(string[] args) 
@@ -340,16 +364,16 @@ public static void main(string[] args)
         Console.WriteLine(pubResponse.MessageId);
 }
 
-//<create topic method>
+//<create topic operation>
 
-//<subscribe to topic method>
+//<subscribe to topic operation>
 ```
 
-Amazon SNS will attempt to deliver that message to every phone number that is subscribed to the topic\.
+Amazon SNS attempts to deliver that message to every phone number that is subscribed to the topic\.
 
-This example constructs the `publishRequest` object and assigns the topic Amazon Resource Name \(ARN\) and the message\. The `publishResponse` object captures the message ID returned by Amazon SNS\.
+This example constructs the `publishRequest` object and assigns the topic ARN and the message\. The `publishResponse` object captures the message ID that Amazon SNS returns\.
 
-When you run this example, the message ID is displayed in the console output window of your IDE:
+When you run this example, the console output window of your IDE displays the message ID:
 
 ```
 9b888f80-15f7-5c30-81a2-c4511a3f5229

@@ -19,7 +19,7 @@ For each campaign you're registering, there is a carrier registration fee that w
 
 1. Under **Account Settings**, and then under **SMS and voice**, choose **10DLC campaigns**\.
 
-1. On the **Create a 10DLC campaign** page, the **Fees** section displays the one\-time carrier 10DLC campaign registration fee, separate from any monthly or AWS fees, in addition to the monthly 10DLC campaign fee\. This fee charged is per campaign\.
+1. On the **Create a 10DLC campaign** page, the **Fees** section displays the one\-time carrier 10DLC campaign registration fee, separate from any monthly fees charged by AWS, in addition to the monthly 10DLC campaign fee\. This fee charged is per campaign\.
 
 1. For **Company name**, choose the company that you're creating this campaign for\. If you haven't already registered the company, you must do that first\. 
 

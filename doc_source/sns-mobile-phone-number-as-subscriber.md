@@ -9,6 +9,7 @@ Where required by local laws and regulations \(such as the US and Canada\), SMS 
 Amazon SNS supports SMS messaging in several regions, and you can send messages to more than 200 countries and regions\. For more information, see [Supported Regions and countries](sns-supported-regions-countries.md)\.
 
 **Topics**
++ [SMS sandbox](sns-sms-sandbox.md)
 + [Origination identities for SMS messages](channels-sms-originating-identities.md)
 + [Requesting support for SMS messaging with Amazon SNS](channels-sms-awssupport.md)
 + [Setting SMS messaging preferences](sms_preferences.md)

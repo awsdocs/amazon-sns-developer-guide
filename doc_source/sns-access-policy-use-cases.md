@@ -235,7 +235,7 @@ In this case, any CloudWatch alarms in account `111122223333` are allowed to pub
 
 ## Restrict publication to an Amazon SNS topic only from a specific VPC endpoint<a name="sns-restrict-publication-only-from-specified-vpc-endpoint"></a>
 
-In this case, the topic in account 444455556666 is allowed to publish only from the VPC endpoint with the ID `vpc-1ab2c34d`\.
+In this case, the topic in account 444455556666 is allowed to publish only from the VPC endpoint with the ID `vpce-1ab2c34d`\.
 
 ```
 {
@@ -246,7 +246,7 @@ In this case, the topic in account 444455556666 is allowed to publish only from 
     "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
     "Condition": {
       "StringNotEquals": {
-        "aws:sourceVpce": "vpc-1ab2c34d"
+        "aws:sourceVpce": "vpce-1ab2c34d"
       }
     }
   }]

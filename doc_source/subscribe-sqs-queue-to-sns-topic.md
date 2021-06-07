@@ -14,7 +14,7 @@ To enable an Amazon SNS topic to send messages to an Amazon SQS queue, do one of
 
   1. [Test it out by publishing a message to the topic and reading the message from the queue\.](#SendMessageToSQS.test)
 
-To learn about how to set up a topic to send messages to a queue that is in a different AWS account, see [Sending Amazon SNS messages to an Amazon SQS queue in a different account](sns-send-message-to-sqs-cross-account.md)\.
+To learn about how to set up a topic to send messages to a queue that is in a different AWS\-account;, see [Sending Amazon SNS messages to an Amazon SQS queue in a different account](sns-send-message-to-sqs-cross-account.md)\.
 
 To see an AWS CloudFormation template that creates a topic that sends messages to two queues, see [Using an AWS CloudFormation template to create a topic that sends messages to Amazon SQS queues](SendMessageToSQS.cloudformation.md)\.
 
