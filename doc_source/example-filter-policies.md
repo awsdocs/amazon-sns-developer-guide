@@ -33,7 +33,7 @@ Because this message includes the `MessageAttributes` field, any topic subscript
       },
       "price_usd": {
          "Type": "Number", 
-         "Value":210.75
+         "Value": "210.75"
       }
    }
 }
