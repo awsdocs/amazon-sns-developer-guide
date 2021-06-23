@@ -10,6 +10,8 @@
 
 1. From the **Platform applications** section, choose **Create platform application**\.
 
+   For the list of Regions where you can create mobile applications, see [Supported Regions for mobile applications](sns-mobile-push-supported-regions.md)\.
+
 1. In the **Application name** box, enter a name to represent your app\.
 
    App names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, hyphens, and periods, and must be between 1 and 256 characters long\.
