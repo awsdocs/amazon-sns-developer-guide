@@ -51,4 +51,4 @@ Amazon SNS SMS messaging is available in Regions where Amazon Pinpoint is not cu
 
 ## 10DLC registration and monthly fees<a name="sns-10dlc-fees"></a>
 
-There are registration and monthly fees associated with using 10DLC, such as registering your company and 10DLC campaign\. These are separate from any other monthly fees charged by AWS\. For more information, see the [Amazon SNS Worldwide SMS Pricing](https://aws.amazon.com/sns/pricing/) page\.
+There are registration and monthly fees associated with using 10DLC, such as registering your company and 10DLC campaign\. These are separate from any other monthly fees charged by AWS\. For more information, see the [Amazon SNS Worldwide SMS Pricing](https://aws.amazon.com/sns/sms-pricing/) page\.
