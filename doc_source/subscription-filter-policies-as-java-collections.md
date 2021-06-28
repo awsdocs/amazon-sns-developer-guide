@@ -183,10 +183,10 @@ fp.addAttribute("store", "example_corp");
 fp.addAttribute("event", "order_placed");
 
 // Add a prefix attribute.
-filterPolicy.addAttributePrefix("customer_interests", "bas");
+fp.addAttributePrefix("customer_interests", "bas");
 
 // Add an anything-but attribute.
-filterPolicy.addAttributeAnythingBut("customer_interests", "baseball");
+fp.addAttributeAnythingBut("customer_interests", "baseball");
 
 // Add a filter policy attribute with a list of values.
 final ArrayList<String> attributeValues = new ArrayList<>();
@@ -196,10 +196,10 @@ attributeValues.add("hockey");
 fp.addAttribute("customer_interests", attributeValues);
 
 // Add a numeric attribute.
-filterPolicy.addAttribute("price_usd", "=", 0);
+fp.addAttribute("price_usd", "=", 0);
 
 // Add a numeric attribute with a range.
-filterPolicy.addAttributeRange("price_usd", ">", 0, "<=", 100);
+fp.addAttributeRange("price_usd", ">", 0, "<=", 100);
 
 // Apply the filter policy attributes to an Amazon SNS subscription.
 fp.apply(snsClient, subscriptionArn);
