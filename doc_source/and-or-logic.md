@@ -30,4 +30,4 @@ Consider the following policy attribute:
 It matches any message attributes with the value of `customer_interests` set to `rugby`, `football`, *or* `baseball`\.
 
 **Note**  
-Currently, you can't use SNS filters to apply `OR` logic across different message attributes\. Instead, you can use SNS subscriptions\. For example, assume you have messages attributes named `customer_interests` and `customer_preferences`\. To apply `OR` logic across both attributes, create an SNS subscription to match each message attribute\. That way, you can use your subscriber application to consume both types of messages from both subscriptions\. 
+Currently, you can't use SNS filters to apply `OR` logic across different message attributes\. Instead, you can use multiple SNS subscriptions with different endpoints to achieve the same effect\. For example, assume that you have message attributes named `customer_interests` and `customer_preferences`\. To apply `OR` logic across both attributes, create an SNS subscription to match each message attribute\. Then, you can use your subscriber application to consume both types of messages through the different endpoints\. 
