@@ -1,5 +1,10 @@
 # To deploy and subscribe the event storage and backup pipeline<a name="deploy-event-storage-backup-pipeline"></a>
 
+
+|  | 
+| --- |
+| For event archiving and analytics, Amazon SNS now recommends using its native integration with Amazon Kinesis Data Firehose\. You can subscribe Kinesis Data Firehose delivery streams to SNS topics, which allows you to send notifications to archiving and analytics endpoints such as Amazon Simple Storage Service \(Amazon S3\) buckets, Amazon Redshift tables, Amazon Elasticsearch Service \(Amazon ES\), and more\. Using Amazon SNS with Kinesis Data Firehose delivery streams is a fully\-managed and codeless solution that doesn't require you to use AWS Lambda functions\. For more information, see [Fanout to Kinesis Data Firehose delivery streams](sns-firehose-as-subscriber.md)\. | 
+
 This page shows how to deploy the [Event Storage and Backup Pipeline](sns-fork-pipeline-as-subscriber.md#sns-fork-event-storage-and-backup-pipeline) and subscribe it to an Amazon SNS topic\. This process automatically turns the AWS SAM template associated with the pipeline into an AWS CloudFormation stack, and then deploys the stack into your AWS account\. This process also creates and configures the set of resources that comprise the Event Storage and Backup Pipeline, including the following:
 + Amazon SQS queue
 + Lambda function

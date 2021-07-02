@@ -1,5 +1,10 @@
 # Fanout to AWS Event Fork Pipelines<a name="sns-fork-pipeline-as-subscriber"></a>
 
+
+|  | 
+| --- |
+| For event archiving and analytics, Amazon SNS now recommends using its native integration with Amazon Kinesis Data Firehose\. You can subscribe Kinesis Data Firehose delivery streams to SNS topics, which allows you to send notifications to archiving and analytics endpoints such as Amazon Simple Storage Service \(Amazon S3\) buckets, Amazon Redshift tables, Amazon Elasticsearch Service \(Amazon ES\), and more\. Using Amazon SNS with Kinesis Data Firehose delivery streams is a fully\-managed and codeless solution that doesn't require you to use AWS Lambda functions\. For more information, see [Fanout to Kinesis Data Firehose delivery streams](sns-firehose-as-subscriber.md)\. | 
+
 You can use Amazon SNS to build event\-driven applications which use subscriber services to perform work automatically in response to events triggered by publisher services\. This architectural pattern can make services more reusable, interoperable, and scalable\. However, it can be labor\-intensive to fork the processing of events into pipelines that address common event handling requirements, such as event storage, backup, search, analytics, and replay\.
 
 To accelerate the development of your event\-driven applications, you can subscribe event\-handling pipelines—powered by AWS Event Fork Pipelines—to Amazon SNS topics\. AWS Event Fork Pipelines is a suite of open\-source [nested applications](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template-nested-applications.html), based on the [AWS Serverless Application Model](https://aws.amazon.com/serverless/sam/) \(AWS SAM\), which you can deploy directly from the [AWS Event Fork Pipelines suite](https://serverlessrepo.aws.amazon.com/applications?query=aws-event-fork-pipelines) \(choose **Show apps that create custom IAM roles or resource policies**\) into your AWS account\.
