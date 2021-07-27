@@ -46,7 +46,7 @@ User-Agent: Amazon Simple Notification Service Agent
 After you subscribe an HTTP/HTTPS endpoint, Amazon SNS sends a subscription confirmation message to the HTTP/HTTPS endpoint\. This message contains a `SubscribeURL` value that you must visit to confirm the subscription \(alternatively, you can use the `Token` value with the [ConfirmSubscription](https://docs.aws.amazon.com/sns/latest/api/API_ConfirmSubscription.html)\)\.
 
 **Note**  
-Amazon SNS doesn'tsend notifications to this endpoint until the subscription is confirmed
+Amazon SNS doesn't send notifications to this endpoint until the subscription is confirmed
 
 The subscription confirmation message is a POST message with a message body that contains a JSON document with the following name\-value pairs\.
 
