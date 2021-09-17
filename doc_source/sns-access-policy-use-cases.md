@@ -245,7 +245,7 @@ In this case, the topic in account 444455556666 is allowed to publish only from 
     "Action": "SNS:Publish",
     "Resource": "arn:aws:sns:us-east-2:444455556666:MyTopic",
     "Condition": {
-      "StringNotEquals": {
+      "StringEquals": {
         "aws:sourceVpce": "vpce-1ab2c34d"
       }
     }
