@@ -93,7 +93,7 @@ The following is an example raw configuration object\.
 
 ```
 {
-  "APNS": "{\"aps\":{\"content-available\":1},\"Foo1\":\"\Bar\",\"Foo2\":123}"
+  "APNS": "{\"aps\":{\"content-available\":1},\"Foo1\":\"Bar\",\"Foo2\":123}"
 }
 ```
 
