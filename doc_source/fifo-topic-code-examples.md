@@ -3,27 +3,25 @@
 You can use the following code examples to integrate the [auto parts price management example use case](fifo-example-use-case.md) with SNS FIFO topics and SQS FIFO queues\. 
 
 **Topics**
-+ [FIFO example \(SDK for Java\)](#fifo-topic-java)
++ [FIFO example \(AWS SDKs\)](#fifo-topic-aws-sdks)
 + [FIFO example \(AWS CloudFormation\)](#fifo-topic-cfn)
 
-## Using the AWS SDK for Java 2\.x<a name="fifo-topic-java"></a>
+## Using an AWS SDK<a name="fifo-topic-aws-sdks"></a>
 
-Using the AWS SDK for Java 2\.x, you create an Amazon SNS FIFO topic by setting its `FifoTopic` attribute to true\. You create an Amazon SQS FIFO queue by setting its `FifoQueue` attribute to true\. Also, you must add the `.fifo` suffix to the name of each FIFO resource\.
+Using an AWS SDK, you create an Amazon SNS FIFO topic by setting its `FifoTopic` attribute to true\. You create an Amazon SQS FIFO queue by setting its `FifoQueue` attribute to true\. Also, you must add the `.fifo` suffix to the name of each FIFO resource\. After you create a FIFO topic or queue, you can't convert it into a standard topic or queue\.
 
-**Note**  
-After you create a topic or queue resource as FIFO, you can't convert it into a standard topic or queue\.
-
-To run these examples, follow the instructions in [ Getting Started with AWS SDK for Java 2\.0](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/getting-started.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
-
-### Creating FIFO topics \(SDK for Java\)<a name="fifo-topic-java-create"></a>
-
- First, create the following FIFO resources:
+The following code example creates these FIFO resources:
 + The SNS FIFO topic that distributes the price updates
 + The SQS FIFO queues that provide these updates to the two applications \(wholesale and retail\)
 + The SNS FIFO subscriptions that connect both of the queues to the topic
 
-**Note**  
-If you test this code sample by publishing a message to the topic, make sure that you publish the message with the `business` atribute\. Specify either `retail` or `wholesale` for the attribute value\. Otherwise, the message is filtered out and not delivered to the subscribed queues\. 
+This example sets [filter policies](sns-subscription-filter-policies.md) on the subscriptions\. If you test the example by publishing a message to the topic, make sure that you publish the message with the `business` atribute\. Specify either `retail` or `wholesale` for the attribute value\. Otherwise, the message is filtered out and not delivered to the subscribed queues\. For more information, see [Message filtering for FIFO topics](fifo-message-filtering.md)\.
+
+------
+#### [ Java ]
+
+**SDK for Java 1\.x**  
+Create a FIFO topic and FIFO queues\. Subscribe the queues to the topic\.  
 
 ```
 // Create API clients
@@ -51,6 +49,11 @@ String topicArn = sns.createTopic(
 Map<String, String> queueAttributes = new HashMap<String, String>();
 
 queueAttributes.put("FifoQueue", "true");
+
+// Disable content-based deduplication because messages published with the same body
+// might carry different attributes that must be processed independently.
+// The price management system uses the message attributes to define whether a given
+// price update applies to the wholesale application or to the retail application.
 queueAttributes.put("ContentBasedDeduplication", "false");
 
 String wholesaleQueueUrl = sqs.createQueue(
@@ -67,23 +70,16 @@ String retailQueueUrl = sqs.createQueue(
 
 // Subscribe FIFO queues to FIFO topic, setting required permissions
 
-String wholesaleSubscriptionArn = 
+String wholesaleSubscriptionArn =
     Topics.subscribeQueue(sns, sqs, topicArn, wholesaleQueueUrl);
 
-String retailSubscriptionArn = 
+String retailSubscriptionArn =
     Topics.subscribeQueue(sns, sqs, topicArn, retailQueueUrl);
 ```
-
-Note that content\-based deduplication has been disabled, because messages published with the same body might carry different attributes that must be processed independently\. The price management system uses the message attributes to define whether a given price update applies to the wholesale application, to the retail application, or to both\.
-
-For more information about message deduplication, see [Message deduplication for FIFO topics](fifo-message-dedup.md)\.
-
-### Setting filter policies for FIFO subscriptions \(SDK for Java\)<a name="fifo-topic-java-filter"></a>
-
-After you create the SNS FIFO subscriptions, you can set their [filter policies](sns-subscription-filter-policies.md), so that each subscriber application receives only the price updates that it needs\. The following code example sets these policies, where the attribute represents the type of business, either wholesale or retail\. You can find the Java source code for the `SNSMessageFilterPolicy` class in [Subscription filter policies as Java collections](subscription-filter-policies-as-java-collections.md)\. For more information, see [Message filtering for FIFO topics](fifo-message-filtering.md)\.
+Set a filter policy on each subscription so that each subscriber application receives only the price updates that it needs\.  
 
 ```
-// Set the Amazon SNS subscription filter polcies
+// Set the Amazon SNS subscription filter policies
 
 SNSMessageFilterPolicy wholesalePolicy = new SNSMessageFilterPolicy();
 wholesalePolicy.addAttribute("business", "wholesale");
@@ -93,17 +89,10 @@ SNSMessageFilterPolicy retailPolicy = new SNSMessageFilterPolicy();
 retailPolicy.addAttribute("business", "retail");
 retailPolicy.apply(sns, retailSubscriptionArn);
 ```
-
- 
-
-### Publishing messages to FIFO topics \(SDK for Java\)<a name="fifo-topic-java-publish"></a>
-
- 
-
-Now you're ready to publish messages to your Amazon SNS FIFO topic\. The following code example composes and publishes a wholesale price update message\.
+Compose and publish a message that updates the wholesale price\.  
 
 ```
-// Publish message to FIFO topic 
+// Publish message to FIFO topic
 
 String subject = "Price Update";
 String payload = "{\"product\": 214, \"price\": 79.99}";
@@ -129,8 +118,9 @@ sns.publish(
         .withMessageDeduplicationId(dedupId)
         .withMessageAttributes(attributes);
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
 
- 
+------
 
 ### Receiving messages from FIFO subscriptions<a name="fifo-receiving-messages"></a>
 

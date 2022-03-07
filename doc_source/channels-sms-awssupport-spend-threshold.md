@@ -1,13 +1,13 @@
 # Requesting increases to your monthly SMS spending quota for Amazon SNS<a name="channels-sms-awssupport-spend-threshold"></a>
 
-Your spending quota determines how much money you can spend sending SMS messages through Amazon SNS each month\. When Amazon SNS determines that sending an SMS message would incur a cost that exceeds your spending quota for the current month, it stops publishing SMS messages within minutes\.
+Amazon SNS provides spending quotas to help you manage the maximum per\-month cost incurred by sending SMS using your account\. The spending quota limits your risk in case of malicious attack, and prevents your upstream application from sending more messages than expected\. You can configure Amazon SNS to stop publishing SMS messages when it determines that sending an SMS message will incur a cost that exceeds your spending quota for the current month\. 
+
+To ensure your operations are not impacted, we recommend requesting a spending quota high enough to support your production workloads\. For more information, see [Step 1: Open an Amazon SNS SMS case](#channels-sms-awssupport-spend-threshold-open)\. Once you have received the quota, you can manage your risk by applying the full quota, or a smaller value, as described in [Step 2: Update your SMS settings](#channels-sms-awssupport-spend-threshold-settings)\. By applying a smaller value, you can control your monthly spending with the option to scale up if necessary\.
 
 **Important**  
-Because Amazon SNS is a distributed system, it stops sending SMS messages within minutes of the spending quota being exceeded\. During this period, if you continue to send SMS messages, you might incur costs that exceed your quota\.
+Because Amazon SNS is a distributed system, it stops sending SMS messages within minutes if the spending quota is exceeded\. During this period, if you continue to send SMS messages, you might incur costs that exceed your quota\.
 
-We set the spending quota for all new accounts at $1\.00 \(USD\) per month\. This quota is intended to let you test the message\-sending capabilities of Amazon SNS\. This quota also helps to reduce the risk of sending large campaigns before you're actually ready to use Amazon SNS for your production workloads\. Finally, this quota is necessary to prevent malicious users from abusing Amazon SNS\.
-
-To request an increase to the SMS spending quota for your account, open a quota increase case in the AWS Support Center\.
+We set the spending quota for all new accounts at $1\.00 \(USD\) per month\. This quota is intended to let you test the message\-sending capabilities of Amazon SNS\. To request an increase to the SMS spending quota for your account, open a quota increase case in the AWS Support Center\.
 
 ## Step 1: Open an Amazon SNS SMS case<a name="channels-sms-awssupport-spend-threshold-open"></a>
 
@@ -72,17 +72,5 @@ After we notify you that your monthly spending quota has been increased, you hav
 You might receive a warning that the entered value is larger than the default spend limit\. You can ignore this\. 
 
 1. Choose Save changes\.
-
-    If you get an "Invalid Parameter" error, check the contact from AWS Support and confirm that you entered the correct new SMS spend limit\. If you still experience a problem, open a case in the AWS Support Center\. 
-
-1. Open the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/)\.
-
-1. On the **All projects** page, choose a project that uses the SMS channel\.
-
-1. In the navigation pane, under **Settings**, choose **SMS and voice**\.
-
-1. In the **SMS and voice** section, choose **Edit**\.
-
-1. Under **Account\-level settings**, for **Account spending limit**, enter the maximum amount, in US Dollars, that you want to spend on SMS messages each calendar month\. You can specify a value that's less than or equal to the total monthly spending quota provided by AWS Support\. By setting a lower value, you can control your monthly spending while still retaining the capacity to scale up if necessary\.
-
-1. Choose **Save changes**\.
+**Note**  
+If you get an "Invalid Parameter" error, check the contact from AWS Support and confirm that you entered the correct new SMS spend limit\. If you still experience a problem, open a case in the AWS Support Center\. 

@@ -68,18 +68,6 @@ EventDeliveryFailure="arn:aws:sns:us-east-1:12345EXAMPLE:MyFCMPlatformApplicatio
 
 ### AWS SDKs<a name="application-event-notifications-sdk"></a>
 
-Call one of the following APIs, depending on your target programming language or platform:
+Set application event notifications by submitting a `SetPlatformApplicationAttributes` request with the Amazon SNS API using an AWS SDK\.
 
-
-| Programming language or platform | API reference links | 
-| --- | --- | 
-| Android | [setPlatformApplicationAttributes](https://docs.aws.amazon.com/AWSAndroidSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSClient.html#setPlatformApplicationAttributes%28com.amazonaws.services.sns.model.SetPlatformApplicationAttributesRequest%29) | 
-| iOS | [AWSSNSSetPlatformApplicationAttributesInput](https://aws-amplify.github.io/aws-sdk-ios/docs/reference/AWSSNS/Classes/AWSSNSSetPlatformApplicationAttributesInput.html) | 
-| Java | [setPlatformApplicationAttributes](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSClient.html#setPlatformApplicationAttributes(com.amazonaws.services.sns.model.SetPlatformApplicationAttributesRequest)) | 
-| JavaScript | [setPlatformApplicationAttributes](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SNS.html#setPlatformApplicationAttributes-property) | 
-| \.NET | [SetPlatformApplicationAttributes](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=SNS/MSNSSNSSetPlatformApplicationAttributesSetPlatformApplicationAttributesRequest.html&tocid=Amazon_SimpleNotificationService_AmazonSimpleNotificationServiceClient) | 
-| PHP | [SetPlatformApplicationAttributes](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-sns-2010-03-31.html#setplatformapplicationattributes) | 
-| Python \(boto\) | [set\_platform\_application\_attributes](http://boto.readthedocs.org/en/latest/ref/sns.html) | 
-| Ruby | [set\_platform\_application\_attributes](https://docs.aws.amazon.com/sdkforruby/api/Aws/SNS/Client.html#set_platform_application_attributes-instance_method) | 
-| Unity | [SetPlatformApplicationAttributesAsync](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=SNS/MSNSSNSSetPlatformApplicationAttributesAsyncSetPlatformApplicationAttributesRequestCancellationToken.html&tocid=Amazon_SimpleNotificationService_AmazonSimpleNotificationServiceClient) | 
-| Windows PowerShell | [Set\-SNSPlatformApplicationAttributes](https://docs.aws.amazon.com/powershell/latest/reference/items/Set-SNSPlatformApplicationAttributes.html) | 
+For a complete list of AWS SDK developer guides and code examples, including help getting started and information about previous versions, see [Using Amazon SNS with an AWS SDK](sdk-general-information-section.md)\.

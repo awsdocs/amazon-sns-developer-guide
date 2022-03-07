@@ -5,9 +5,7 @@ Before you can send SMS messages to recipients in India, you must register your 
 + Your organization's Tax Deduction Account Number \(TAN\)\.
 + Your organization's Goods and Services Tax Identification Number \(GSTIN\)\.
 + Your organization's Corporate Identity Number \(CIN\)\.
-+ A letter of authorization that gives you the authority to register your organization with Vilpower\. The Vilpower website includes a template that you can download and modify to fit your needs\.
-
-Vilpower charges a fee for completing the registration process\. Currently, this fee is ₹5900\.
++ A letter of authorization that gives you the authority to register your organization with Vilpower\. The Vilpower website includes a template that you can download and modify to fit your needs\. Vilpower charges a fee for completing the registration process\.
 
 **To register your organization with the TRAI**
 

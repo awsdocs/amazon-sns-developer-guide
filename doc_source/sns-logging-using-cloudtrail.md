@@ -16,24 +16,32 @@ For an ongoing record of events in your AWS account, including events for Amazon
 
 Amazon SNS supports logging the following actions as events in CloudTrail log files:
 + `[AddPermission](https://docs.aws.amazon.com/sns/latest/api/API_AddPermission.html)`
++ `[CheckIfPhoneNumberIsOptedOut](https://docs.aws.amazon.com/sns/latest/api/API_CheckIfPhoneNumberIsOptedOut.html)`
 + `[ConfirmSubscription](https://docs.aws.amazon.com/sns/latest/api/API_ConfirmSubscription.html)`
 + `[CreatePlatformApplication](https://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html)`
 + `[CreatePlatformEndpoint](https://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformEndpoint.html)`
++ `[CreateSMSSandboxPhoneNumber](https://docs.aws.amazon.com/sns/latest/api/API_CreateSMSSandboxPhoneNumber.html)`
 + `[CreateTopic](https://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html)`
 + `[DeleteEndpoint](https://docs.aws.amazon.com/sns/latest/api/API_DeleteEndpoint.html)`
 + `[DeletePlatformApplication](https://docs.aws.amazon.com/sns/latest/api/API_DeletePlatformApplication.html)`
++ `[DeleteSMSSandboxPhoneNumber](https://docs.aws.amazon.com/sns/latest/api/API_DeleteSMSSandboxPhoneNumber.html)`
 + `[DeleteTopic](https://docs.aws.amazon.com/sns/latest/api/API_DeleteTopic.html)`
 + `[GetEndpointAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetEndpointAttributes.html)`
 + `[GetPlatformApplicationAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetPlatformApplicationAttributes.html)`
 + `[GetSMSAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetSMSAttributes.html)`
++ `[GetSMSSandboxAccountStatus](https://docs.aws.amazon.com/sns/latest/api/API_GetSMSSandboxAccountStatus.html)`
 + `[GetSubscriptionAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetSubscriptionAttributes.html)`
 + `[GetTopicAttributes](https://docs.aws.amazon.com/sns/latest/api/API_GetTopicAttributes.html)`
 + `[ListEndpointsByPlatformApplication](https://docs.aws.amazon.com/sns/latest/api/API_ListEndpointsByPlatformApplication.html)`
++ `[ListOriginationNumbers](https://docs.aws.amazon.com/sns/latest/api/API_ListOriginationNumbers.html)`
 + `[ListPhoneNumbersOptedOut](https://docs.aws.amazon.com/sns/latest/api/API_ListPhoneNumbersOptedOut.html)`
 + `[ListPlatformApplications](https://docs.aws.amazon.com/sns/latest/api/API_ListPlatformApplications.html)`
++ `[ListSMSSandboxPhoneNumbers](https://docs.aws.amazon.com/sns/latest/api/API_ListSMSSandboxPhoneNumbers.html)`
 + `[ListSubscriptions](https://docs.aws.amazon.com/sns/latest/api/API_ListSubscriptions.html)`
 + `[ListSubscriptionsByTopic](https://docs.aws.amazon.com/sns/latest/api/API_ListSubscriptionsByTopic.html)`
++ `[ListTagsForResource](https://docs.aws.amazon.com/sns/latest/api/API_ListTagsForResource.html)`
 + `[ListTopics](https://docs.aws.amazon.com/sns/latest/api/API_ListTopics.html)`
++ `[OptInPhoneNumber](https://docs.aws.amazon.com/sns/latest/api/API_OptInPhoneNumber.html)`
 + `[RemovePermission](https://docs.aws.amazon.com/sns/latest/api/API_RemovePermission.html)`
 + `[SetEndpointAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html)`
 + `[SetPlatformApplicationAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)`
@@ -41,7 +49,10 @@ Amazon SNS supports logging the following actions as events in CloudTrail log fi
 + `[SetSubscriptionAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html)`
 + `[SetTopicAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetTopicAttributes.html)`
 + `[Subscribe](https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html)`
++ `[TagResource](https://docs.aws.amazon.com/sns/latest/api/API_TagResource.html)`
 + `[Unsubscribe](https://docs.aws.amazon.com/sns/latest/api/API_Unsubscribe.html)`
++ `[UntagResource](https://docs.aws.amazon.com/sns/latest/api/API_UntagResource.html)`
++ `[VerifySMSSandboxPhoneNumber](https://docs.aws.amazon.com/sns/latest/api/API_VerifySMSSandboxPhoneNumber.html)`
 
 **Note**  
 When you are not logged in to Amazon Web Services \(unauthenticated mode\) and either the [ConfirmSubscription](https://docs.aws.amazon.com/sns/latest/api/API_ConfirmSubscription.html) or [Unsubscribe](https://docs.aws.amazon.com/sns/latest/api/API_Unsubscribe.html) actions are invoked, then they will not be logged to CloudTrail\. Such as, when you choose the provided link in an email notification to confirm a pending subscription to a topic, the `ConfirmSubscription` action is invoked in unauthenticated mode\. In this example, the `ConfirmSubscription` action would not be logged to CloudTrail\.

@@ -44,101 +44,142 @@ The S3 bucket policy must grant write access to Amazon SNS\.
 
 ## Setting preferences \(AWS SDKs\)<a name="sms_preferences_sdk"></a>
 
-To set your SMS preferences using one of AWS SDKs, use the action in that SDK that corresponds to the `SetSMSAttributes` request in the Amazon SNS API\. With this request, you assign values to the different SMS attributes, such as your monthly spend quota and your default SMS type \(promotional or transactional\)\. For all SMS attributes, see [SetSMSAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html) in the *Amazon Simple Notification Service API Reference*\.
+To set your SMS preferences using one of the AWS SDKs, use the action in that SDK that corresponds to the `SetSMSAttributes` request in the Amazon SNS API\. With this request, you assign values to the different SMS attributes, such as your monthly spend quota and your default SMS type \(promotional or transactional\)\. For all SMS attributes, see [SetSMSAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html) in the *Amazon Simple Notification Service API Reference*\.
 
-The following examples show how to set SMS preferences using the Amazon SNS clients that are provided by the AWS SDKs\.
-
-**Note**  
-Remember to configure your AWS credentials before using the SDK\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\. Or, see [Using credentials](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html) in the *AWS SDK for Java Developer Guide*\.
+The following code examples show how to set the default settings for sending SMS messages using Amazon SNS\.
 
 ------
-#### [ AWS SDK for Java ]
+#### [ C\+\+ ]
 
-The following example uses the `setSMSAttributes` method of the `AmazonSNSClient` class in the AWS SDK for Java\. This examples sets values for the different attribute names:
-
-```
-public static void main(String[] args) {
-	AmazonSNSClient snsClient = new AmazonSNSClient();
-	setDefaultSmsAttributes(snsClient);
-}
-
-public static void setDefaultSmsAttributes(AmazonSNSClient snsClient) {
-	SetSMSAttributesRequest setRequest = new SetSMSAttributesRequest()
-			.addAttributesEntry("DefaultSenderID", "mySenderID")
-			.addAttributesEntry("MonthlySpendLimit", "1")
-			.addAttributesEntry("DeliveryStatusIAMRole", 
-					"arn:aws:iam::123456789012:role/mySnsRole")
-			.addAttributesEntry("DeliveryStatusSuccessSamplingRate", "10")
-			.addAttributesEntry("DefaultSMSType", "Transactional")
-			.addAttributesEntry("UsageReportS3Bucket", "sns-sms-daily-usage");
-	snsClient.setSMSAttributes(setRequest);
-	Map<String, String> myAttributes = snsClient.getSMSAttributes(new GetSMSAttributesRequest())
-		.getAttributes();
-	System.out.println("My SMS attributes:");
-	for (String key : myAttributes.keySet()) {
-		System.out.println(key + " = " + myAttributes.get(key));
-	}
-}
-```
-
-This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the quota, submit [submit a request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\. For **New limit value**, enter your desired monthly spend quota\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend quota increase\. The AWS Support team provides an initial response to your request within 24 hours\.
-
-To verify that the attributes were set correctly, the example prints the result of the `getSMSAttributes` method\. When you run this example, the attributes are displayed in the console output window of your IDE:
+**SDK for C\+\+**  
+How to use Amazon SNS to set the DefaultSMSType attribute\.  
 
 ```
-My SMS attributes:
-DeliveryStatusSuccessSamplingRate = 10
-UsageReportS3Bucket = sns-sms-daily-usage
-DefaultSMSType = Transactional
-DeliveryStatusIAMRole = arn:aws:iam::123456789012:role/mySnsRole
-MonthlySpendLimit = 1
-DefaultSenderID = mySenderID
-```
+  Aws::SDKOptions options;
+  Aws::InitAPI(options);
+  {
+    Aws::SNS::SNSClient sns;
+    Aws::String sms_type =  argv[1];
 
-------
-#### [ AWS SDK for \.NET ]
+    Aws::SNS::Model::SetSMSAttributesRequest ssmst_req;
+    ssmst_req.AddAttributes("DefaultSMSType", sms_type);
 
-The following example uses the `SetSMSAttributes` method of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET\. This example sets values for the different attribute names:
+    auto ssmst_out = sns.SetSMSAttributes(ssmst_req);
 
-```
-static void Main(string[] args)
-{
-    AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(Amazon.RegionEndpoint.USWest2);
-    SetDefaultSmsAttributes(snsClient);            
-}
-
-public static void SetDefaultSmsAttributes(AmazonSimpleNotificationServiceClient snsClient)
-{
-    SetSMSAttributesRequest setRequest = new SetSMSAttributesRequest();
-    setRequest.Attributes["DefaultSenderID"] = "mySenderID";
-    setRequest.Attributes["MonthlySpendLimit"] =  "1";
-    setRequest.Attributes["DeliveryStatusIAMRole"] = "arn:aws:iam::123456789012:role/mySnsRole";
-    setRequest.Attributes["DeliveryStatusSuccessSamplingRate"] =  "10";
-    setRequest.Attributes["DefaultSMSType"] = "Transactional";
-    setRequest.Attributes["UsageReportS3Bucket"] = "sns-sms-daily-usage";
-    SetSMSAttributesResponse setResponse = snsClient.SetSMSAttributes(setRequest);
-    GetSMSAttributesRequest getRequest = new GetSMSAttributesRequest();
-    GetSMSAttributesResponse getResponse = snsClient.GetSMSAttributes(getRequest);
-    Console.WriteLine("My SMS attributes:");
-    foreach (var item in getResponse.Attributes)
+    if (ssmst_out.IsSuccess())
     {
-        Console.WriteLine(item.Key + " = " + item.Value);
+      std::cout << "SMS Type set successfully " << std::endl;
     }
+    else
+    {
+        std::cout << "Error while setting SMS Type: '" << ssmst_out.GetError().GetMessage()
+            << "'" << std::endl;
+    }
+  }
+
+  Aws::ShutdownAPI(options);
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
++  For API details, see [SetSmsAttributes](https://docs.aws.amazon.com/goto/SdkForCpp/sns-2010-03-31/SetSmsAttributes) in *AWS SDK for C\+\+ API Reference*\. 
+
+------
+#### [ Java ]
+
+**SDK for Java 2\.x**  
+  
+
+```
+   public static void setSNSAttributes( SnsClient snsClient, HashMap<String, String> attributes) {
+
+        try {
+            SetSmsAttributesRequest request = SetSmsAttributesRequest.builder()
+                .attributes(attributes)
+                .build();
+
+            SetSmsAttributesResponse result = snsClient.setSMSAttributes(request);
+            System.out.println("Set default Attributes to " + attributes + ". Status was " + result.sdkHttpResponse().statusCode());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+     }
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
++  For API details, see [SetSmsAttributes](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/SetSmsAttributes) in *AWS SDK for Java 2\.x API Reference*\. 
+
+------
+#### [ JavaScript ]
+
+**SDK for JavaScript V3**  
+Create the client in a separate module and export it\.  
+
+```
+import  { SNSClient } from "@aws-sdk/client-sns";
+// Set the AWS Region.
+const REGION = "REGION"; //e.g. "us-east-1"
+// Create SNS service object.
+const snsClient = new SNSClient({ region: REGION });
+export  { snsClient };
+```
+Import the SDK and client modules and call the API\.  
+
+```
+// Import required AWS SDK clients and commands for Node.js
+import {SetSMSAttributesCommand } from "@aws-sdk/client-sns";
+import {snsClient } from "./libs/snsClient.js";
+
+// Set the parameters
+const params = {
+  attributes: {
+    /* required */
+    DefaultSMSType: "Transactional" /* highest reliability */,
+    //'DefaultSMSType': 'Promotional' /* lowest cost */
+  },
+};
+
+const run = async () => {
+  try {
+    const data = await snsClient.send(new SetSMSAttributesCommand(params));
+    console.log("Success.",  data);
+    return data; // For unit tests.
+  } catch (err) {
+    console.log("Error", err.stack);
+  }
+};
+run();
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/sns-examples-sending-sms.html#sending-sms-setattributes)\. 
++  For API details, see [SetSmsAttributes](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sns/classes/setsmsattributescommand.html) in *AWS SDK for JavaScript API Reference*\. 
+
+------
+#### [ PHP ]
+
+**SDK for PHP**  
+  
+
+```
+$SnSclient = new SnsClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => '2010-03-31'
+]);
+
+try {
+    $result = $SnSclient->SetSMSAttributes([
+        'attributes' => [
+            'DefaultSMSType' => 'Transactional',
+        ],
+    ]);
+    var_dump($result);
+} catch (AwsException $e) {
+    // output error message if fails
+    error_log($e->getMessage());
 }
 ```
-
-This example sets the value for the `MonthlySpendLimit` attribute to 1\.00 USD\. By default, this is the maximum amount allowed by Amazon SNS\. If you want to raise the quota, [submit a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\. For **New limit value**, enter your desired monthly spend quota\. In the **Use Case Description** field, explain that you are requesting an SMS monthly spend quota increase\. The AWS Support team provides an initial response to your request within 24 hours\.
-
-To verify that the attributes were set correctly, the example prints the result of the `GetSMSAttributes` method\. When you run this example, the attributes are displayed in the console output window of your IDE:
-
-```
-My SMS attributes:
-DeliveryStatusSuccessSamplingRate = 10
-UsageReportS3Bucket = sns-sms-daily-usage
-DefaultSMSType = Transactional
-DeliveryStatusIAMRole = arn:aws:iam::123456789012:role/mySnsRole
-MonthlySpendLimit = 1
-DefaultSenderID = mySenderID
-```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for PHP Developer Guide](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/sns-examples-sending-sms.html#set-sms-attributes)\. 
++  For API details, see [SetSmsAttributes](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/SetSmsAttributes) in *AWS SDK for PHP API Reference*\. 
 
 ------

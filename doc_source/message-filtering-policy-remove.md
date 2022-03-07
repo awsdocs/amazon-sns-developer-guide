@@ -26,36 +26,6 @@ To remove a filter policy with the AWS CLI, use the [https://docs.aws.amazon.com
 $ aws sns set-subscription-attributes --subscription-arn arn:aws:sns: ... --attribute-name FilterPolicy --attribute-value "{}"
 ```
 
-## AWS SDK for Java<a name="message-filtering-policy-remove-sdks"></a>
-
-The following examples show how to remove filter policies using the Amazon SNS clients that are provided by the AWS SDKs\.
-
-------
-#### [ AWS SDK for Java ]
-
-To remove a filter policy with the AWS SDK for Java, use the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSClient.html#setSubscriptionAttributes-com.amazonaws.services.sns.model.SetSubscriptionAttributesRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSClient.html#setSubscriptionAttributes-com.amazonaws.services.sns.model.SetSubscriptionAttributesRequest-) method of the `AmazonSNS` client\. Provide a string that contains an empty JSON body as your filter policy:
-
-```
-AmazonSNS snsClient = AmazonSNSClientBuilder.defaultClient();
-SetSubscriptionAttributesRequest request =
-        new SetSubscriptionAttributesRequest(subscriptionArn, "FilterPolicy", "{}");
-snsClient.setSubscriptionAttributes(request);
-```
-
-------
-#### [ AWS SDK for \.NET ]
-
-To remove a filter policy with the AWS SDK for \.NET, use the [https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SNS/MSNSSetSubscriptionAttributesSetSubscriptionAttributesRequest.html](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SNS/MSNSSetSubscriptionAttributesSetSubscriptionAttributesRequest.html) method of the `AmazonSNS` client\. Provide a string that contains an empty JSON body as your filter policy:
-
-```
-AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient();
-SetSubscriptionAttributesRequest request =
-        new SetSubscriptionAttributesRequest(subscriptionArn, "FilterPolicy", "{}");
-snsClient.SetSubscriptionAttributes(request);
-```
-
-------
-
 ## Amazon SNS API<a name="message-filtering-policy-remove-api"></a>
 
 To remove a filter policy with the Amazon SNS API, make a request to the [https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html](https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html) action\. Set the `AttributeName` parameter to `FilterPolicy`, and provide an empty JSON body for the `AttributeValue` parameter\.

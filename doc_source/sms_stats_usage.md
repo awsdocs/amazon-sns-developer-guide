@@ -35,7 +35,7 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 1. For **Bucket Name**, we recommend that you enter a name that is unique for your account and your organization\. For example, use the pattern `<my-bucket-prefix>-<account_id>-<org-id>`\. 
 
-   For information about conventions and restrictions for bucket names, see [Rules for Bucket Naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service Developer Guide*\.
+   For information about conventions and restrictions for bucket names, see [Rules for Bucket Naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules) in the *Amazon Simple Storage Service User Guide*\.
 
 1. Choose **Create**\.
 
@@ -65,50 +65,67 @@ To subscribe to daily usage reports, you must create an Amazon S3 bucket with th
 
 ### Example bucket policy<a name="example_bucket_policy"></a>
 
-The following policy allows the Amazon SNS service principal to perform the `s3:PutObject`, `s3:GetBucketLocation`, and `s3:ListBucket` actions\. You can use this example when you create an Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS\.
+The following policy allows the Amazon SNS service principal to perform the `s3:PutObject`, `s3:GetBucketLocation`, and `s3:ListBucket` actions\.
+
+AWS provides tools for all services with service principals that have been given access to resources in your account\. When the principal in an Amazon S3 bucket policy statement is an [AWS service principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services), you can use the [https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn) or [https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceaccount](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceaccount) global condition keys to protect against the [confused deputy problem](https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html)\. To limit which region and account from which the bucket can receive daily usage reports, use `aws:SourceArn` as shown in the example below\. If you do not wish to limit which regions can generate these reports, use `aws:SourceAccount` to limit based on which account is generating the reports\. If you don't know the ARN of the resource, use `aws:SourceAccount`\.
+
+Use the following example that includes confused deputy protection when you create an Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS\.
 
 ```
 {
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowPutObject",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "sns.amazonaws.com"
-      },
-      "Action": "s3:PutObject",
-      "Resource": "arn:aws:s3:::my-s3-bucket/*",
-      "Condition": {
-        "StringEquals": {
-          "aws:SourceAccount": "account_id"
-        }
-      }
-    },
-    {
-      "Sid": "AllowGetBucketLocation",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "sns.amazonaws.com"
-      },
-      "Action": "s3:GetBucketLocation",
-      "Resource": "arn:aws:s3:::my-s3-bucket",
-      "Condition": {
-        "StringEquals": {
-          "aws:SourceAccount": "account_id"
-        }
-      }
-    },
-    {
-      "Sid": "AllowListBucket",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "sns.amazonaws.com"
-      },
-      "Action": "s3:ListBucket",
-      "Resource": "arn:aws:s3:::my-s3-bucket"
-    }
-  ]
+	"Version": "2008-10-17",
+	"Statement": [{
+			"Sid": "AllowPutObject",
+			"Effect": "Allow",
+			"Principal": {
+				"Service": "sns.amazonaws.com"
+			},
+			"Action": "s3:PutObject",
+			"Resource": "arn:aws:s3:::my-s3-bucket/*",
+			"Condition": {
+				"StringEquals": {
+					"aws:SourceAccount": "account_id"
+				},
+				"ArnLike": {
+					"aws:SourceArn": "arn:aws:sns:region:account_id:*"
+				}
+			}
+		},
+		{
+			"Sid": "AllowGetBucketLocation",
+			"Effect": "Allow",
+			"Principal": {
+				"Service": "sns.amazonaws.com"
+			},
+			"Action": "s3:GetBucketLocation",
+			"Resource": "arn:aws:s3:::my-s3-bucket",
+			"Condition": {
+				"StringEquals": {
+					"aws:SourceAccount": "account_id"
+				},
+				"ArnLike": {
+					"aws:SourceArn": "arn:aws:sns:region:account_id:*"
+				}
+			}
+		},
+		{
+			"Sid": "AllowListBucket",
+			"Effect": "Allow",
+			"Principal": {
+				"Service": "sns.amazonaws.com"
+			},
+			"Action": "s3:ListBucket",
+			"Resource": "arn:aws:s3:::my-s3-bucket",
+			"Condition": {
+				"StringEquals": {
+					"aws:SourceAccount": "account_id"
+				},
+				"ArnLike": {
+					"aws:SourceArn": "arn:aws:sns:region:account_id:*"
+				}
+			}
+		}
+	]
 }
 ```
 

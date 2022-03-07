@@ -1,6 +1,6 @@
 # Applying a subscription filter policy<a name="message-filtering-apply"></a>
 
-You can apply a filter policy to an Amazon SNS subscription using the Amazon SNS console\. Or, to apply policies programmatically, you can use the Amazon SNS API, the AWS Command Line Interface \(AWS CLI\), or any AWS SDK that supports Amazon SNS, such as the AWS SDK for Java\.
+You can apply a filter policy to an Amazon SNS subscription using the Amazon SNS console\. Or, to apply policies programmatically, you can use the Amazon SNS API, the AWS Command Line Interface \(AWS CLI\), or any AWS SDK that supports Amazon SNS\.
 
 **Important**  
 AWS services such as IAM and Amazon SNS use a distributed computing model called eventual consistency\. Additions or changes to a subscription filter policy require up to 15 minutes to fully take effect\. 
@@ -13,9 +13,9 @@ AWS services such as IAM and Amazon SNS use a distributed computing model called
 
 1. Select a subscription and then choose **Edit**\.
 
-1. On the **Edit *EXAMPLE1\-23bc\-4567\-d890\-ef12g3hij456*** page, expand the **Subscription filter policy** section\.
+1. On the **Edit** page, expand the **Subscription filter policy** section\.
 
-1. In the **JSON editor** field, provide the JSON body of your filter policy\.
+1. In the **JSON editor** field, provide the **JSON body** of your filter policy\.
 
 1. Choose **Save changes**\.
 
@@ -52,48 +52,93 @@ $ aws sns get-subscription-attributes --subscription-arn arn:aws:sns: ...
 }
 ```
 
-## AWS SDK for Java<a name="message-filtering-apply-sdks"></a>
+## AWS SDKs<a name="message-filtering-apply-sdks"></a>
 
-The following examples show how to apply filter policies using the Amazon SNS clients that are provided by the AWS SDKs\.
-
-------
-#### [ AWS SDK for Java ]
-
-To apply a filter policy with the AWS SDK for Java, use the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSClient.html#setSubscriptionAttributes-com.amazonaws.services.sns.model.SetSubscriptionAttributesRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/AmazonSNSClient.html#setSubscriptionAttributes-com.amazonaws.services.sns.model.SetSubscriptionAttributesRequest-) method of the `AmazonSNS` client\. Provide a [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/model/SetSubscriptionAttributesRequest.html](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/sns/model/SetSubscriptionAttributesRequest.html) object as the argument, as shown in the following example:
-
-```
-AmazonSNS snsClient = AmazonSNSClientBuilder.defaultClient();
-String filterPolicyString = "{\"store\":[\"example_corp\"],\"event\":[\"order_placed\"]}";
-SetSubscriptionAttributesRequest request =
-        new SetSubscriptionAttributesRequest(subscriptionArn, "FilterPolicy", filterPolicyString);
-snsClient.setSubscriptionAttributes(request);
-```
-
-To initialize the `SetSubscriptionAttributesRequest` object, provide the following arguments:
-+ `subscriptionArn` – The Amazon Resource Name \(ARN\) of the subscription to which the policy is applied\.
-+ `attributeName` – Must be `"FilterPolicy"`\.
-+ `attributeValue` – Your JSON filter policy as a string\. Because you must enclose the string policy in double quotes, remember to escape the double quotes that enclose the attribute names and values, as in `\"store\"`\.
-
-The `SetSubscriptionAttributesRequest` class accepts the filter policy as a string\. If you want to define your policy as a Java collection, create a map that associates each attribute name with a list of values\. To assign the policy to a subscription, you first produce a string version of the policy from the contents of the map\. You then pass the string as the `attributeValue` argument to `SetSubscriptionAttributesRequest`\. 
+The following code examples show how to set an Amazon SNS filter policy\.
 
 ------
-#### [ AWS SDK for \.NET ]
+#### [ Java ]
 
-To apply a filter policy with the AWS SDK for \.NET, use the [ `SetSubscriptionAttributes`](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SNS/MSNSSetSubscriptionAttributesSetSubscriptionAttributesRequest.html) method of the `AmazonSNS` client\. Provide a [ `SetSubscriptionAttributesRequest`](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/SNS/TSetSubscriptionAttributesRequest.html) object as the argument, as shown in the following example:
+**SDK for Java 2\.x**  
+  
 
 ```
-AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient();
-String filterPolicyString = "{\"store\":[\"example_corp\"],\"event\":[\"order_placed\"]}";
-SetSubscriptionAttributesRequest request = new SetSubscriptionAttributesRequest(subscriptionArn, "FilterPolicy", filterPolicyString);
-snsClient.setSubscriptionAttributes(request);
+    public static void usePolicy(SnsClient snsClient,  String subscriptionArn) {
+
+        try {
+            SNSMessageFilterPolicy fp = new SNSMessageFilterPolicy();
+
+            // Add a filter policy attribute with a single value
+            fp.addAttribute("store", "example_corp");
+            fp.addAttribute("event", "order_placed");
+
+            // Add a prefix attribute
+            fp.addAttributePrefix("customer_interests", "bas");
+
+            // Add an anything-but attribute
+            fp.addAttributeAnythingBut("customer_interests", "baseball");
+
+            // Add a filter policy attribute with a list of values
+            ArrayList<String> attributeValues = new ArrayList<>();
+            attributeValues.add("rugby");
+            attributeValues.add("soccer");
+            attributeValues.add("hockey");
+            fp.addAttribute("customer_interests", attributeValues);
+
+            // Add a numeric attribute
+            fp.addAttribute("price_usd", "=", 0);
+
+            // Add a numeric attribute with a range
+            fp.addAttributeRange("price_usd", ">", 0, "<=", 100);
+
+            // Apply the filter policy attributes to an Amazon SNS subscription
+            fp.apply(snsClient, subscriptionArn);
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
++  For API details, see [SetSubscriptionAttributes](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/SetSubscriptionAttributes) in *AWS SDK for Java 2\.x API Reference*\. 
 
-To initialize the `SetSubscriptionAttributesRequest` object, provide the following arguments:
-+ `subscriptionArn` – The Amazon Resource Name \(ARN\) of the subscription to which the policy is applied\.
-+ `attributeName` – Must be `"FilterPolicy"`\.
-+ `attributeValue` – Your JSON filter policy as a string\. Because you must enclose the string policy in double quotes, remember to escape the double quotes that enclose the attribute names and values, as in `\"store\"`\.
+------
+#### [ Python ]
 
-The `SetSubscriptionAttributesRequest` class accepts the filter policy as a string\. If you want to define your policy as a C\# collection, create a dictionary that associates each attribute name with a list of values\. To assign the policy to a subscription, you first produce a string version of the policy from the contents of the dictionary\. You then pass the string as the `attributeValue` argument to `SetSubscriptionAttributesRequest`\. 
+**SDK for Python \(Boto3\)**  
+  
+
+```
+class SnsWrapper:
+    """Encapsulates Amazon SNS topic and subscription functions."""
+    def __init__(self, sns_resource):
+        """
+        :param sns_resource: A Boto3 Amazon SNS resource.
+        """
+        self.sns_resource = sns_resource
+
+    def add_subscription_filter(subscription, attributes):
+        """
+        Adds a filter policy to a subscription. A filter policy is a key and a
+        list of values that are allowed. When a message is published, it must have an
+        attribute that passes the filter or it will not be sent to the subscription.
+
+        :param subscription: The subscription the filter policy is attached to.
+        :param attributes: A dictionary of key-value pairs that define the filter.
+        """
+        try:
+            att_policy = {key: [value] for key, value in attributes.items()}
+            subscription.set_attributes(
+                AttributeName='FilterPolicy', AttributeValue=json.dumps(att_policy))
+            logger.info("Added filter to subscription %s.", subscription.arn)
+        except ClientError:
+            logger.exception(
+                "Couldn't add filter to subscription %s.", subscription.arn)
+            raise
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
++  For API details, see [SetSubscriptionAttributes](https://docs.aws.amazon.com/goto/boto3/sns-2010-03-31/SetSubscriptionAttributes) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------
 

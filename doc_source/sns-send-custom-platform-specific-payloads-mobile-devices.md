@@ -69,8 +69,8 @@ aws sns publish \
 --message '{"APNS_PLATFORM":"{\"aps\":{\"content-available\":1}}"}' \
 --message-attributes '{ \
   "AWS.SNS.MOBILE.APNS.TOPIC":{"DataType":"String","StringValue":"com.amazon.mobile.messaging.myapp"}, \
-  "AWS.SNS.MOBILE.APNS.PRIORITY":{"DataType":"String","StringValue":"10"}}', \
   "AWS.SNS.MOBILE.APNS.PUSH_TYPE":{"DataType":"String","StringValue":"background"} \
+  "AWS.SNS.MOBILE.APNS.PRIORITY":{"DataType":"String","StringValue":"10"}}', \
 --message-structure json
 ```
 

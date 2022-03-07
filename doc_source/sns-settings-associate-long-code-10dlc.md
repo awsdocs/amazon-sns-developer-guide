@@ -1,8 +1,6 @@
 # Associating a long code with a 10DLC campaign<a name="sns-settings-associate-long-code-10dlc"></a>
 
-If you have an existing long code, you can associate that long code with one of your current 10DLC campaigns by filing a support request\. You do this using the Amazon Pinpoint \(not Amazon SNS\) console\.
-
-The long code you associate with the 10DLC campaign can only be used with that campaign and can't be used for any other 10DLC campaign\. While your long code is being migrated to 10DLC you'll still be able to use it\. Until it's approved, however, you won't be able to use it for any 10DLC campaign\.
+If you have an existing long code, you can associate that long code with one of your current 10DLC campaigns by filing a support request\. The long code you associate with the 10DLC campaign can only be used with that campaign and can't be used for any other 10DLC campaign\. While your long code is being migrated to 10DLC you'll still be able to use it\. Until it's approved, however, you won't be able to use it for any 10DLC campaign\.
 
 When filing the request, you'll need:
 + The long codes to associate with a 10DLC campaign
@@ -25,7 +23,7 @@ When filing the request, you'll need:
 
 1. For **Limit type**, choose **Pinpoint**\.
 
-1. In the **Requests** section, choose the **Region**, and then for the **Limit**, choose **10DLC**\.
+1. In the **Requests** section, choose the **Region**, and then for the **Limit**, choose **10 DLC \- Associate existing US long code to 10DLC campaign**\.
 
 1. Under **Case description**, for **Use case description**, be sure to include the 10DLC campaign ID and the long code numbers you want to associate that campaign\. You can include multiple long codes in the request, but you should include only one campaign ID\.
 

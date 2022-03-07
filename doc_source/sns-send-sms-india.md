@@ -35,10 +35,10 @@ After [registering your organization with TRAI](sns-india-register-with-trai.md)
 1. Expand the **Country\-specific attributes** section and specify the following required attributes for sending SMS messages to recipients in India:
    + **Entity ID** – The entity ID or principal entity \(PE\) ID that you received from the regulatory body for sending SMS messages to recipients in India\.
 
-     This is a custom, TRAI\-provided string of 1\-30 characters that uniquely identifies the entity that you registered with the TRAI\.
+     This is a custom, TRAI\-provided string of 1–50 characters that uniquely identifies the entity that you registered with the TRAI\.
    + **Template ID** – The template ID that you received from the regulatory body for sending SMS messages to recipients in India\.
 
-     This is a custom, TRAI\-provided string of 1\-30 characters that uniquely identifies the template that you registered with the TRAI\. The template ID must be associated with the sender ID that you specified in the previous step, and with the message content\. 
+     This is a custom, TRAI\-provided string of 1–50 characters that uniquely identifies the template that you registered with the TRAI\. The template ID must be associated with the sender ID that you specified in the previous step, and with the message content\. 
 
 1. Choose **Publish message**\.
 

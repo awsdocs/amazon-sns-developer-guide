@@ -7,3 +7,4 @@
 + [Creating a platform application](mobile-push-send-register.md)
 + [Creating a platform endpoint](mobile-platform-endpoint.md)
 + [Adding device tokens or registration IDs](mobile-push-send-devicetoken.md)
++ [Apple authentication methods](sns-apple-authentication-methods.md)
