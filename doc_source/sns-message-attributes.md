@@ -1,6 +1,6 @@
 # Amazon SNS message attributes<a name="sns-message-attributes"></a>
 
-Amazon SNS supports delivery of message attributes, which let you provide structured metadata items \(such as timestamps, geospatial data, signatures, and identifiers\) about the message\. For attribute mapping between Amazon SNS and Amazon SQS, each message can have up to 10 attributes\. When using raw mode or an endpoint other than Amazon SQS, a message can have more than 10 attributes\.
+Amazon SNS supports delivery of message attributes, which let you provide structured metadata items \(such as timestamps, geospatial data, signatures, and identifiers\) about the message\. For SQS subscriptions, a maximum of 10 message attributes can be sent when [Raw Message Delivery](sns-large-payload-raw-message-delivery.md) is enabled\. To send more than 10 message attributes, Raw Message Delivery must be disabled\.
 
 Message attributes are optional and separate from—but are sent together with—the message body\. The receiver can use this information to decide how to handle the message without having to process the message body first\.
 
@@ -28,6 +28,8 @@ Message attribute data types identify how the message attribute values are handl
 
 Amazon SNS supports the following logical data types for all endpoints except as noted:
 + **String** – Strings are Unicode with UTF\-8 binary encoding\. For a list of code values, see [http://en\.wikipedia\.org/wiki/ASCII\#ASCII\_printable\_characters](http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters)\.
+**Note**  
+Surrogate values are not supported in the message attributes\. For example, using a surrogate value to represent an emoji will give you the following error: `Invalid attribute value was passed in for message attribute`\.
 + **String\.Array** – An array, formatted as a string, that can contain multiple values\. The values can be strings, numbers, or the keywords `true`, `false`, and `null`\.
 
   This data type isn't supported for AWS Lambda subscriptions\. If you specify this data type for Lambda endpoints, it's passed as the `String` data type in the JSON payload that Amazon SNS delivers to Lambda\. 

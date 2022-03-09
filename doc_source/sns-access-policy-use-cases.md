@@ -4,14 +4,14 @@
 + [Grant AWS account access to a topic](#sns-grant-aws-account-access-to-topic)
 + [Limit subscriptions to HTTPS](#sns-limit-subscriptions-to-https)
 + [Publish messages to an Amazon SQS queue](#sns-publish-messages-to-sqs-queue)
-+ [Allow any AWS resource to publish to a topic](#sns-allow-any-aws-resource-to-publish-to-topic)
-+ [Allow an Amazon S3 bucket to publish to a topic](#sns-allow-s3-bucket-to-publish-to-topic)
-+ [Allow another AWS service to publish to a topic that is owned by another account](#sns-allow-specified-service-to-publish-to-topic)
++ [Allow Amazon S3 event notifications to publish to a topic](#sns-allow-s3-bucket-to-publish-to-topic)
++ [Allow Amazon SES to publish to a topic that is owned by another account](#sns-allow-specified-service-to-publish-to-topic)
++ [`aws:SourceAccount` versus `aws:SourceOwner`](#source-account-versus-source-owner)
 + [Allow accounts in an organization in AWS Organizations to publish to a topic in a different account](#sns-allow-organization-to-publish-to-topic-in-another-account)
 + [Allow any CloudWatch alarm to publish to a topic in a different account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
 + [Restrict publication to an Amazon SNS topic only from a specific VPC endpoint](#sns-restrict-publication-only-from-specified-vpc-endpoint)
 
-This section grants a few examples of typical use cases for access control\.
+This section describes a few examples of typical use cases for access control\.
 
 ## Grant AWS account access to a topic<a name="sns-grant-aws-account-access-to-topic"></a>
 
@@ -96,37 +96,13 @@ This policy uses the `aws:SourceArn` condition to restrict access to the queue b
 
 The preceding policy is an example of the Amazon SQS policy you could write and add to a specific queue\. It would grant access to Amazon SNS and other AWS services\. Amazon SNS grants a default policy to all newly created topics\. The default policy grants access to your topic to all other AWS services\. This default policy uses an `aws:SourceArn` condition to ensure that AWS services access your topic only on behalf of AWS resources you own\.
 
-## Allow any AWS resource to publish to a topic<a name="sns-allow-any-aws-resource-to-publish-to-topic"></a>
-
-In this case, you want to configure a topic's policy so that another AWS account's resource \(for example, Amazon S3 bucket, Amazon EC2 instance, or Amazon SQS queue\) can publish to your topic\. This example assumes that you write your own policy and then use the `SetTopicAttributes` action to set the topic's `Policy` attribute to your new policy\.
-
-In the following example statement, the topic owner in these policies is 1111\-2222\-3333 and the AWS resource owner is 4444\-5555\-6666\. The example grants the AWS account ID 4444\-5555\-6666 the ability to publish to My\-Topic from any AWS resource owned by the account\.
-
-```
-{
-  "Statement": [{
-    "Effect": "Allow",
-    "Principal": { 
-      "Service": "someservice.amazonaws.com" 
-    },
-    "Action": "sns:Publish",
-    "Resource": "arn:aws:sns:us-east-2:111122223333:MyTopic",
-    "Condition": {
-      "StringEquals": {
-        "AWS:SourceAccount": "444455556666"
-      }
-    }
-  }]
-}
-```
-
-## Allow an Amazon S3 bucket to publish to a topic<a name="sns-allow-s3-bucket-to-publish-to-topic"></a>
+## Allow Amazon S3 event notifications to publish to a topic<a name="sns-allow-s3-bucket-to-publish-to-topic"></a>
 
 In this case, you want to configure a topic's policy so that another AWS account's Amazon S3 bucket can publish to your topic\. For more information about publishing notifications from Amazon S3, go to [Setting Up Notifications of Bucket Events](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)\. 
 
 This example assumes that you write your own policy and then use the `SetTopicAttributes` action to set the topic's `Policy` attribute to your new policy\.
 
-The following example statement uses the `SourceAccount` condition to ensure that only the Amazon S3 owner account can access the topic\. In this example, the topic owner is 1111\-2222\-3333 and the Amazon S3 owner is 4444\-5555\-6666\. The example states that any Amazon S3 bucket owned by 4444\-5555\-6666 is allowed to publish to MyTopic\.
+The following example statement uses the `SourceAccount` condition to ensure that only the Amazon S3 owner account can access the topic\. In this example, the topic owner is 111122223333 and the Amazon S3 owner is 444455556666\. The example states that any Amazon S3 bucket owned by 444455556666 is allowed to publish to MyTopic\.
 
 ```
 {
@@ -146,7 +122,25 @@ The following example statement uses the `SourceAccount` condition to ensure tha
 }
 ```
 
-## Allow another AWS service to publish to a topic that is owned by another account<a name="sns-allow-specified-service-to-publish-to-topic"></a>
+When publishing events to Amazon SNS, the following services support `aws:SourceAccount`:
++ Amazon API Gateway
++ Amazon CloudWatch
++ Amazon DevOps Guru
++ Amazon DynamoDB
++ Amazon ElastiCache
++ Amazon GameLift
++ Amazon Pinpoint SMS and Voice API
++ Amazon RDS
++ Amazon Redshift
++ Amazon Simple Storage Service
++ Amazon S3 Glacier
++ Amazon SES
++ AWS CodeCommit
++ AWS Directory Service
++ AWS Lambda
++ AWS Systems Manager Incident Manager
+
+## Allow Amazon SES to publish to a topic that is owned by another account<a name="sns-allow-specified-service-to-publish-to-topic"></a>
 
 You can allow another AWS service to publish to a topic that is owned by another AWS account\. Suppose that you signed into the 111122223333 account, opened Amazon SES, and created an email\. To publish notifications about this email to a Amazon SNS topic that the 444455556666 account owns, you'd create a policy like the following\. To do so, you need to provide information about the principal \(the other service\) and each resource's ownership\. The `Resource` statement provides the topic ARN, which includes the account ID of the topic owner, 444455556666\. The `"aws:SourceOwner": "111122223333"` statement specifies that your account owns the email\. 
 
@@ -173,13 +167,29 @@ You can allow another AWS service to publish to a topic that is owned by another
 }
 ```
 
-### `aws:SourceAccount` versus `aws:SourceOwner`<a name="source-account-versus-source-owner"></a>
+When publishing events to Amazon SNS, the following services support `aws:SourceOwner`:
++ Amazon API Gateway
++ Amazon CloudWatch
++ Amazon DevOps Guru
++ Amazon DynamoDB
++ Amazon ElastiCache
++ Amazon GameLift
++ Amazon Pinpoint SMS and Voice API
++ Amazon RDS
++ Amazon Redshift
++ Amazon Simple Storage Service
++ Amazon S3 Glacier
++ Amazon SES
++ AWS CodeCommit
++ AWS Directory Service
++ AWS Lambda
++ AWS Systems Manager Incident Manager
 
-The `aws:SourceAccount` and `aws:SourceOwner` condition keys are similar in that they both identify a resource owner\. This section describes the differences between each condition key and when to use each one when creating access policies for Amazon SNS topics\.
+## `aws:SourceAccount` versus `aws:SourceOwner`<a name="source-account-versus-source-owner"></a>
 
-When you create topics from the Amazon SNS console, the default policy uses the `aws:SourceOwner` condition key to allow only the topic owner to publish and subscribe to the topic\. The value for `aws:SourceOwner` is the topic owner\. In more advanced access policies, use the condition keys as follows: 
-+ Use `aws:SourceAccount` to configure conditions for other accounts for publishing and subscribing to topics\.
-+ Use `aws:SourceOwner` to allow publishing requests from another AWS service\. Use the above example to specify ownership of the other service's resource and of the Amazon SNS topic\.
+The `aws:SourceAccount` and `aws:SourceOwner` condition keys are each set by some AWS services when they publish to an Amazon SNS topic\. When supported, the value will be the 12\-digit AWS account ID on whose behalf the service is publishing data\. Some services support one, and some support the other\.
++ See [Allow Amazon S3 event notifications to publish to a topic](#sns-allow-s3-bucket-to-publish-to-topic) for how Amazon S3 notifications use `aws:SourceAccount` and a list of AWS services that support that condition\.
++ See [Allow Amazon SES to publish to a topic that is owned by another account](#sns-allow-specified-service-to-publish-to-topic) for how Amazon SES uses `aws:SourceOwner` and a list of AWS services that support that condition\.
 
 ## Allow accounts in an organization in AWS Organizations to publish to a topic in a different account<a name="sns-allow-organization-to-publish-to-topic-in-another-account"></a>
 

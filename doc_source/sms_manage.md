@@ -69,107 +69,233 @@ Delete a topic when you no longer want to publish messages to its subscribed end
 
 You can use the AWS SDKs to make programmatic requests to Amazon SNS and manage which phone numbers can receive SMS messages from your account\.
 
-**Note**  
-Remember to configure your AWS credentials before using the SDK\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\. Or, see [Using credentials](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html) in the *AWS SDK for Java Developer Guide*\.
+To use an AWS SDK, you must configure it with your credentials\. For more information, see [The shared config and credentials files](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html) in the *AWS SDKs and Tools Reference Guide*\.
 
 ### Viewing all opted out phone numbers<a name="sms_view_optout_sdk"></a>
 
 To view all opted out phone numbers, submit a `ListPhoneNumbersOptedOut` request with the Amazon SNS API\.
 
-Or, you can use the Amazon SNS clients in the AWS SDKs, as shown by the following examples:
+The following code examples show how to list phone numbers that are opted out of receiving Amazon SNS messages\.
 
 ------
-#### [ AWS SDK for Java ]
+#### [ Java ]
 
-With the AWS SDK for Java, you can use the `listPhoneNumbersOptedOut` method of the `AmazonSNSClient` class:
+**SDK for Java 2\.x**  
+  
 
 ```
-public static void main(String[] args) {
-	AmazonSNSClient snsClient = new AmazonSNSClient();
-	listOptOut(snsClient);
-}
+    public static void listOpts( SnsClient snsClient) {
 
-public static void listOptOut(AmazonSNSClient snsClient) {
-	String nextToken = null;
-	do {
-		ListPhoneNumbersOptedOutResult result = snsClient
-				.listPhoneNumbersOptedOut(new ListPhoneNumbersOptedOutRequest()
-						.withNextToken(nextToken));
-		nextToken = result.getNextToken();
-		for (String phoneNum : result.getPhoneNumbers()) {
-			System.out.println(phoneNum);
-		}
-	} while (nextToken != null);
-}
+        try {
+
+            ListPhoneNumbersOptedOutRequest request = ListPhoneNumbersOptedOutRequest.builder().build();
+            ListPhoneNumbersOptedOutResponse result = snsClient.listPhoneNumbersOptedOut(request);
+            System.out.println("Status is " + result.sdkHttpResponse().statusCode() + "\n\nPhone Numbers: \n\n" + result.phoneNumbers());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
++  For API details, see [ListPhoneNumbersOptedOut](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/ListPhoneNumbersOptedOut) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
-#### [ AWS SDK for \.NET ]
+#### [ PHP ]
 
-With the AWS SDK for \.NET, you can use the `ListPhoneNumbersOptedOut` method of the `AmazonSimpleNotificationServiceClient` class:
+**SDK for PHP**  
+  
 
 ```
-public static void Main(String[] args) 
-{
-    AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(Amazon.RegionEndpoint.USWest2);
-    ListOptOut(snsClient);
-}
+require 'vendor/autoload.php';
 
-public static void ListOptOut(AmazonSimpleNotificationServiceClient snsClient)
-{
-    String nextToken = null;
-    do
-    {
-        ListPhoneNumbersOptedOutRequest listRequest = new ListPhoneNumbersOptedOutRequest { NextToken = nextToken };
-        ListPhoneNumbersOptedOutResponse listResponse = snsClient.ListPhoneNumbersOptedOut(listRequest);
-        nextToken = listResponse.NextToken;
-        foreach (String phoneNum in listResponse.PhoneNumbers)
-            Console.WriteLine(phoneNum);
-    } while (nextToken != null);
+use Aws\Sns\SnsClient; 
+use Aws\Exception\AwsException;
+
+/**
+ * Returns a list of phone numbers that are opted out of receiving SMS messages from your AWS SNS account.
+ *
+ * This code expects that you have AWS credentials set up per:
+ * https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials.html
+ */
+ 
+$SnSclient = new SnsClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => '2010-03-31'
+]);
+
+try {
+    $result = $SnSclient->listPhoneNumbersOptedOut([
+    ]);
+    var_dump($result);
+} catch (AwsException $e) {
+    // output error message if fails
+    error_log($e->getMessage());
 }
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for PHP Developer Guide](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/sns-examples-sending-sms.html#list-opted-out-phone-numbers)\. 
++  For API details, see [ListPhoneNumbersOptedOut](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/ListPhoneNumbersOptedOut) in *AWS SDK for PHP API Reference*\. 
 
 ------
-
-Amazon SNS returns a paginated response, so this example repeats the request each time Amazon SNS returns a next token\. When you run this example, it displays a list of all opted out phone numbers in the console output window of your IDE\.
 
 ### Checking whether a phone number is opted out<a name="sms_check_optout_sdk"></a>
 
 To check whether a phone number is opted out, submit a `CheckIfPhoneNumberIsOptedOut` request with the Amazon SNS API\.
 
-Or, you can use the Amazon SNS clients in the AWS SDKs, as shown by the following examples:
+The following code examples show how to check whether a phone number is opted out of receiving Amazon SNS messages\.
 
 ------
-#### [ AWS SDK for Java ]
+#### [ \.NET ]
 
-With the AWS SDK for Java, you can use the `checkIfPhoneNumberIsOptedOut` method of the `AmazonSNSClient` class:
-
-```
-CheckIfPhoneNumberIsOptedOutRequest request = new CheckIfPhoneNumberIsOptedOutRequest().withPhoneNumber(phoneNumber);
-System.out.println(snsClient.checkIfPhoneNumberIsOptedOut(request));
-```
-
-When you run this example, a true or false result is displayed in the console output window of your IDE:
+**AWS SDK for \.NET**  
+  
 
 ```
-{IsOptedOut: false}
+        /// <summary>
+        /// Checks to see if the supplied phone number has been opted out.
+        /// </summary>
+        /// <param name="client">The initialized Amazon SNS Client object used
+        /// to check if the phone number has been opted out.</param>
+        /// <param name="phoneNumber">A string representing the phone number
+        /// to check.</param>
+        public static async Task CheckIfOptedOutAsync(IAmazonSimpleNotificationService client, string phoneNumber)
+        {
+            var request = new CheckIfPhoneNumberIsOptedOutRequest
+            {
+                PhoneNumber = phoneNumber,
+            };
+
+            try
+            {
+                var response = await client.CheckIfPhoneNumberIsOptedOutAsync(request);
+
+                if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    string optOutStatus = response.IsOptedOut ? "opted out" : "not opted out.";
+                    Console.WriteLine($"The phone number: {phoneNumber} is {optOutStatus}");
+                }
+            }
+            catch (AuthorizationErrorException ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+        }
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
++  For API details, see [CheckIfPhoneNumberIsOptedOut](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut) in *AWS SDK for \.NET API Reference*\. 
 
 ------
-#### [ AWS SDK for \.NET ]
+#### [ Java ]
 
-Using the AWS SDK for \.NET, you can use the `CheckIfPhoneNumberIsOptedOut` method of the `AmazonSimpleNotificationServiceClient` class:
-
-```
-CheckIfPhoneNumberIsOptedOutRequest request = new CheckIfPhoneNumberIsOptedOutRequest { PhoneNumber = phoneNumber };
-Console.WriteLine(snsClient.CheckIfPhoneNumberIsOptedOut(request).IsOptedOut);
-```
-
-When you run this example, a true or false result is displayed in the console output window of your IDE:
+**SDK for Java 2\.x**  
+  
 
 ```
-false
+        public static void checkPhone(SnsClient snsClient, String phoneNumber) {
+
+            try {
+            CheckIfPhoneNumberIsOptedOutRequest request = CheckIfPhoneNumberIsOptedOutRequest.builder()
+                .phoneNumber(phoneNumber)
+                .build();
+
+            CheckIfPhoneNumberIsOptedOutResponse result = snsClient.checkIfPhoneNumberIsOptedOut(request);
+
+            System.out.println(result.isOptedOut() + "Phone Number " + phoneNumber + " has Opted Out of receiving sns messages." +
+                "\n\nStatus was " + result.sdkHttpResponse().statusCode());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
++  For API details, see [CheckIfPhoneNumberIsOptedOut](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut) in *AWS SDK for Java 2\.x API Reference*\. 
+
+------
+#### [ JavaScript ]
+
+**SDK for JavaScript V3**  
+Create the client in a separate module and export it\.  
+
+```
+import  { SNSClient } from "@aws-sdk/client-sns";
+// Set the AWS Region.
+const REGION = "REGION"; //e.g. "us-east-1"
+// Create SNS service object.
+const snsClient = new SNSClient({ region: REGION });
+export  { snsClient };
+```
+Import the SDK and client modules and call the API\.  
+
+```
+// Import required AWS SDK clients and commands for Node.js
+import {CheckIfPhoneNumberIsOptedOutCommand } from "@aws-sdk/client-sns";
+import {snsClient } from "./libs/snsClient.js";
+
+// Set the parameters
+const params = { phoneNumber: "353861230764" }; //PHONE_NUMBER, in the E.164 phone number structure
+
+const run = async () => {
+  try {
+    const data = await snsClient.send(
+      new CheckIfPhoneNumberIsOptedOutCommand(params)
+    );
+    console.log("Success.",  data);
+    return data; // For unit tests.
+  } catch (err) {
+    console.log("Error", err.stack);
+  }
+};
+run();
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/sns-examples-sending-sms.html#sending-sms-checkifphonenumberisoptedout)\. 
++  For API details, see [CheckIfPhoneNumberIsOptedOut](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sns/classes/checkifphonenumberisoptedoutcommand.html) in *AWS SDK for JavaScript API Reference*\. 
+
+------
+#### [ PHP ]
+
+**SDK for PHP**  
+  
+
+```
+require 'vendor/autoload.php';
+
+use Aws\Sns\SnsClient; 
+use Aws\Exception\AwsException;
+
+/**
+ * Indicates whether the phone number owner has opted out of receiving SMS messages from your AWS SNS account.
+ *
+ * This code expects that you have AWS credentials set up per:
+ * https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials.html
+ */
+ 
+$SnSclient = new SnsClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => '2010-03-31'
+]);
+
+$phone = '+1XXX5550100';
+
+try {
+    $result = $SnSclient->checkIfPhoneNumberIsOptedOut([
+        'phoneNumber' => $phone,
+    ]);
+    var_dump($result);
+} catch (AwsException $e) {
+    // output error message if fails
+    error_log($e->getMessage());
+}
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for PHP Developer Guide](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/sns-examples-sending-sms.html#check-if-a-phone-number-has-opted-out)\. 
++  For API details, see [CheckIfPhoneNumberIsOptedOut](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut) in *AWS SDK for PHP API Reference*\. 
 
 ------
 
@@ -177,67 +303,207 @@ false
 
 To opt in a phone number, submit an `OptInPhoneNumber` request with the Amazon SNS API\.
 
-Or, you can use the Amazon SNS clients in the AWS SDKs, as shown by the following examples:
-
-------
-#### [ AWS SDK for Java ]
-
-With the AWS SDK for Java, you can use the `optInPhoneNumber` method of the `AmazonSNSClient` class:
-
-```
-snsClient.optInPhoneNumber(new OptInPhoneNumberRequest().withPhoneNumber(phoneNumber));
-```
-
-------
-#### [ AWS SDK for \.NET ]
-
-With the AWS SDK for \.NET, you can use the `OptInPhoneNumber` method of the `AmazonSimpleNotificationServiceClient` class:
-
-```
-snsClient.OptInPhoneNumber(new OptInPhoneNumberRequest { PhoneNumber = phoneNumber});
-```
-
-------
-
 You can opt in a phone number only once every 30 days\.
 
 ### Deleting an SMS subscription<a name="sms_manage_subscriptions_sdk"></a>
 
 To delete an SMS subscription from an Amazon SNS topic, get the subscription ARN by submitting a `ListSubscriptions` request with the Amazon SNS API, and then pass the ARN to an `Unsubscribe` request\.
 
-Or, you can use the Amazon SNS clients in the AWS SDKs, as shown by the following examples:
+The following code examples show how to delete an Amazon SNS subscription\.
 
 ------
-#### [ AWS SDK for Java ]
+#### [ C\+\+ ]
 
-With the AWS SDK for Java, you can get your subscription ARNs using the `listSubscriptions` method of the `AmazonSNSClient` class:
+**SDK for C\+\+**  
+  
 
 ```
-ListSubscriptionsResult result = snsClient.listSubscriptions();
-for (Subscription sub : result.getSubscriptions()) {
-	System.out.println(sub);
+  Aws::SDKOptions options;
+  Aws::InitAPI(options);
+  {
+    Aws::SNS::SNSClient sns;
+    Aws::String subscription_arn = argv[1];
+
+    Aws::SNS::Model::UnsubscribeRequest s_req;
+    s_req.SetSubscriptionArn(subscription_arn);
+
+    auto s_out = sns.Unsubscribe(s_req);
+
+    if (s_out.IsSuccess())
+    {
+      std::cout << "Unsubscribed successfully " << std::endl;
+    }
+    else
+    {
+      std::cout << "Error while unsubscribing " << s_out.GetError().GetMessage()
+        << std::endl;
+    }
+  }
+
+  Aws::ShutdownAPI(options);
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
++  For API details, see [Unsubscribe](https://docs.aws.amazon.com/goto/SdkForCpp/sns-2010-03-31/Unsubscribe) in *AWS SDK for C\+\+ API Reference*\. 
+
+------
+#### [ Java ]
+
+**SDK for Java 2\.x**  
+  
+
+```
+    public static void unSub(SnsClient snsClient, String subscriptionArn) {
+
+        try {
+            UnsubscribeRequest request = UnsubscribeRequest.builder()
+                .subscriptionArn(subscriptionArn)
+                .build();
+
+            UnsubscribeResponse result = snsClient.unsubscribe(request);
+
+            System.out.println("\n\nStatus was " + result.sdkHttpResponse().statusCode()
+                + "\n\nSubscription was removed for " + request.subscriptionArn());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
++  For API details, see [Unsubscribe](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/Unsubscribe) in *AWS SDK for Java 2\.x API Reference*\. 
+
+------
+#### [ JavaScript ]
+
+**SDK for JavaScript V3**  
+Create the client in a separate module and export it\.  
+
+```
+import  { SNSClient } from "@aws-sdk/client-sns";
+// Set the AWS Region.
+const REGION = "REGION"; //e.g. "us-east-1"
+// Create SNS service object.
+const snsClient = new SNSClient({ region: REGION });
+export  { snsClient };
+```
+Import the SDK and client modules and call the API\.  
+
+```
+// Import required AWS SDK clients and commands for Node.js
+import {UnsubscribeCommand } from "@aws-sdk/client-sns";
+import {snsClient } from "./libs/snsClient.js";
+
+// Set the parameters
+const params = { SubscriptionArn: "TOPIC_SUBSCRIPTION_ARN" }; //TOPIC_SUBSCRIPTION_ARN
+
+const run = async () => {
+  try {
+    const data = await snsClient.send(new UnsubscribeCommand(params));
+    console.log("Success.",  data);
+    return data; // For unit tests.
+  } catch (err) {
+    console.log("Error", err.stack);
+  }
+};
+run();
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/sns-examples-managing-topics.html#sns-examples-unsubscribing)\. 
++  For API details, see [Unsubscribe](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sns/classes/unsubscribecommand.html) in *AWS SDK for JavaScript API Reference*\. 
+
+------
+#### [ Kotlin ]
+
+**SDK for Kotlin**  
+This is prerelease documentation for a feature in preview release\. It is subject to change\.
+  
+
+```
+suspend fun unSub(subscriptionArnVal: String) {
+
+       val request = UnsubscribeRequest {
+           subscriptionArn = subscriptionArnVal
+        }
+
+       SnsClient { region = "us-east-1" }.use { snsClient ->
+         snsClient.unsubscribe(request)
+         println("Subscription was removed for ${request.subscriptionArn}")
+       }
 }
 ```
-
-You can delete a subscription by passing its ARN as a string argument to the `unsubscribe` method:
-
-```
-snsClient.unsubscribe(subscriptionArn);
-```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/secretsmanager#code-examples)\. 
++  For API details, see [Unsubscribe](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 
 ------
-#### [ AWS SDK for \.NET ]
+#### [ PHP ]
 
-With the AWS SDK for \.NET, use code like the following:
+**SDK for PHP**  
+  
 
 ```
-ListSubscriptionsResponse response = snsClient.ListSubscriptions();
-// find the subscriptionArn you want
-foreach (Subscription sub in response.Subscriptions)
-    Console.WriteLine(sub.SubscriptionArn);
-// unsubscribe
-snsClient.Unsubscribe(subscriptionArn);
+require 'vendor/autoload.php';
+
+use Aws\Sns\SnsClient; 
+use Aws\Exception\AwsException;
+
+/**
+ * Deletes a subscription to an Amazon SNS topic.
+ *
+ * This code expects that you have AWS credentials set up per:
+ * https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials.html
+ */
+ 
+$SnSclient = new SnsClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => '2010-03-31'
+]);
+
+$subscription = 'arn:aws:sns:us-east-1:111122223333:MySubscription';
+
+try {
+    $result = $SnSclient->unsubscribe([
+        'SubscriptionArn' => $subscription,
+    ]);
+    var_dump($result);
+} catch (AwsException $e) {
+    // output error message if fails
+    error_log($e->getMessage());
+}
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for PHP Developer Guide](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/sns-examples-subscribing-unsubscribing-topics.html#unsubscribe-from-a-topic)\. 
++  For API details, see [Unsubscribe](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/Unsubscribe) in *AWS SDK for PHP API Reference*\. 
+
+------
+#### [ Python ]
+
+**SDK for Python \(Boto3\)**  
+  
+
+```
+class SnsWrapper:
+    """Encapsulates Amazon SNS topic and subscription functions."""
+    def __init__(self, sns_resource):
+        """
+        :param sns_resource: A Boto3 Amazon SNS resource.
+        """
+        self.sns_resource = sns_resource
+
+    def delete_subscription(subscription):
+        """
+        Unsubscribes and deletes a subscription.
+        """
+        try:
+            subscription.delete()
+            logger.info("Deleted subscription %s.", subscription.arn)
+        except ClientError:
+            logger.exception("Couldn't delete subscription %s.", subscription.arn)
+            raise
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
++  For API details, see [Unsubscribe](https://docs.aws.amazon.com/goto/boto3/sns-2010-03-31/Unsubscribe) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------
 
@@ -245,38 +511,225 @@ snsClient.Unsubscribe(subscriptionArn);
 
 To delete a topic and all of its subscriptions, get the topic ARN by submitting a `ListTopics` request with the Amazon SNS API, and then pass the ARN to the `DeleteTopic` request\.
 
-Or, you can use the Amazon SNS clients in the AWS SDKs, as shown by the following examples:
+The following code examples show how to delete an Amazon SNS topic and all subscriptions to that topic\.
 
 ------
-#### [ AWS SDK for Java ]
+#### [ \.NET ]
 
-With the AWS SDK for Java, you can get your topic ARNs using the `listTopics` method of the `AmazonSNSClient` class:
+**AWS SDK for \.NET**  
+  
 
 ```
-ListTopicsResult result = snsClient.listTopics();
-for (Topic t : result.getTopics()) {
-	System.out.println(t);
+    /// <summary>
+    /// This example deletes an existing Amazon Simple Notification Service
+    /// (Amazon SNS) topic. The example was created using the AWS SDK for .NET
+    /// version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class DeleteSNSTopic
+    {
+        public static async Task Main()
+        {
+            string topicArn = "arn:aws:sns:us-east-2:704825161248:ExampleSNSTopic";
+            IAmazonSimpleNotificationService client = new AmazonSimpleNotificationServiceClient();
+
+            var response = await client.DeleteTopicAsync(topicArn);
+        }
+    }
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
++  For API details, see [DeleteTopic](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/DeleteTopic) in *AWS SDK for \.NET API Reference*\. 
+
+------
+#### [ C\+\+ ]
+
+**SDK for C\+\+**  
+  
+
+```
+  Aws::SDKOptions options;
+  Aws::InitAPI(options);
+  {
+    Aws::String topic_arn = argv[1];
+    Aws::SNS::SNSClient sns;
+
+    Aws::SNS::Model::DeleteTopicRequest dt_req;
+    dt_req.SetTopicArn(topic_arn);
+
+    auto dt_out = sns.DeleteTopic(dt_req);
+
+    if (dt_out.IsSuccess())
+    {
+      std::cout << "Successfully deleted topic " << topic_arn << std::endl;
+    }
+    else
+    {
+      std::cout << "Error deleting topic " << topic_arn << ":" <<
+        dt_out.GetError().GetMessage() << std::endl;
+    }
+  }
+
+  Aws::ShutdownAPI(options);
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
++  For API details, see [DeleteTopic](https://docs.aws.amazon.com/goto/SdkForCpp/sns-2010-03-31/DeleteTopic) in *AWS SDK for C\+\+ API Reference*\. 
+
+------
+#### [ Java ]
+
+**SDK for Java 2\.x**  
+  
+
+```
+    public static void deleteSNSTopic(SnsClient snsClient, String topicArn ) {
+
+        try {
+            DeleteTopicRequest request = DeleteTopicRequest.builder()
+                .topicArn(topicArn)
+                .build();
+
+            DeleteTopicResponse result = snsClient.deleteTopic(request);
+            System.out.println("\n\nStatus was " + result.sdkHttpResponse().statusCode());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
++  For API details, see [DeleteTopic](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/DeleteTopic) in *AWS SDK for Java 2\.x API Reference*\. 
+
+------
+#### [ JavaScript ]
+
+**SDK for JavaScript V3**  
+Create the client in a separate module and export it\.  
+
+```
+import  { SNSClient } from "@aws-sdk/client-sns";
+// Set the AWS Region.
+const REGION = "REGION"; //e.g. "us-east-1"
+// Create SNS service object.
+const snsClient = new SNSClient({ region: REGION });
+export  { snsClient };
+```
+Import the SDK and client modules and call the API\.  
+
+```
+// Load the AWS SDK for Node.js
+
+// Import required AWS SDK clients and commands for Node.js
+import {DeleteTopicCommand } from "@aws-sdk/client-sns";
+import {snsClient } from "./libs/snsClient.js";
+
+// Set the parameters
+const params = { TopicArn: "TOPIC_ARN" }; //TOPIC_ARN
+
+const run = async () => {
+  try {
+    const data = await snsClient.send(new DeleteTopicCommand(params));
+    console.log("Success.",  data);
+    return data; // For unit tests.
+  } catch (err) {
+    console.log("Error", err.stack);
+  }
+};
+run();
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/sns-examples-managing-topics.html#sns-examples-managing-topics-deletetopic)\. 
++  For API details, see [DeleteTopic](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sns/classes/deletetopiccommand.html) in *AWS SDK for JavaScript API Reference*\. 
+
+------
+#### [ Kotlin ]
+
+**SDK for Kotlin**  
+This is prerelease documentation for a feature in preview release\. It is subject to change\.
+  
+
+```
+suspend fun deleteSNSTopic(topicArnVal: String) {
+
+    val request = DeleteTopicRequest {
+        topicArn = topicArnVal
+    }
+
+    SnsClient { region = "us-east-1" }.use { snsClient ->
+      snsClient.deleteTopic(request)
+      println("$topicArnVal was successfully deleted.")
+    }
 }
 ```
-
-You can delete a topic by passing its ARN as a string argument to the `deleteTopic` method:
-
-```
-snsClient.deleteTopic(topicArn);
-```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/sns#code-examples)\. 
++  For API details, see [DeleteTopic](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 
 ------
-#### [ AWS SDK for \.NET ]
+#### [ PHP ]
 
-Using the AWS SDK for \.NET, use code like the following:
+**SDK for PHP**  
+  
 
 ```
-ListTopicsResponse restopics= snsClient.ListTopics();
-// find the topicArn you want
-foreach (Topic t in restopics.Topics)
-    Console.WriteLine(t.TopicArn);
-// delete
-snsClient.DeleteTopic(topicArn);
+require 'vendor/autoload.php';
+
+use Aws\Sns\SnsClient; 
+use Aws\Exception\AwsException;
+
+/**
+ * Deletes a SNS topic and all its subscriptions.
+ *
+ * This code expects that you have AWS credentials set up per:
+ * https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials.html
+ */
+ 
+$SnSclient = new SnsClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => '2010-03-31'
+]);
+
+$topic = 'arn:aws:sns:us-east-1:111122223333:MyTopic';
+
+try {
+    $result = $SnSclient->deleteTopic([
+        'TopicArn' => $topic,
+    ]);
+    var_dump($result);
+} catch (AwsException $e) {
+    // output error message if fails
+    error_log($e->getMessage());
+}
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
++  For API details, see [DeleteTopic](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/DeleteTopic) in *AWS SDK for PHP API Reference*\. 
+
+------
+#### [ Python ]
+
+**SDK for Python \(Boto3\)**  
+  
+
+```
+class SnsWrapper:
+    """Encapsulates Amazon SNS topic and subscription functions."""
+    def __init__(self, sns_resource):
+        """
+        :param sns_resource: A Boto3 Amazon SNS resource.
+        """
+        self.sns_resource = sns_resource
+
+    def delete_topic(topic):
+        """
+        Deletes a topic. All subscriptions to the topic are also deleted.
+        """
+        try:
+            topic.delete()
+            logger.info("Deleted topic %s.", topic.arn)
+        except ClientError:
+            logger.exception("Couldn't delete topic %s.", topic.arn)
+            raise
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
++  For API details, see [DeleteTopic](https://docs.aws.amazon.com/goto/boto3/sns-2010-03-31/DeleteTopic) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------

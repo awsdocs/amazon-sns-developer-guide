@@ -6,6 +6,9 @@ This page describes how to subscribe an [email address](#sns-email-notifications
 You can't customize the body of the email message\. The email delivery feature is intended to provide internal system alerts, not marketing messages\.
 Email delivery throughput is throttled according to [Amazon SNS quotas](https://docs.aws.amazon.com/general/latest/gr/sns.html#limits_sns)\.
 
+**Important**  
+To prevent mailing list recipients from unsubscribing all recipients from Amazon SNS topic emails, see [Set up an email subscription that requires authentication to unsubscribe](http://aws.amazon.com/premiumsupport/knowledge-center/prevent-unsubscribe-all-sns-topic/) from AWS Support\.
+
 ## To subscribe an email address to an Amazon SNS topic using the AWS Management Console<a name="create-subscribe-endpoint-to-topic-console"></a>
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
@@ -38,58 +41,346 @@ You must confirm the subscription before the email address can start to receive 
 
 1. Amazon SNS opens your web browser and displays a subscription confirmation with your subscription ID\.
 
-## To subscribe an email address to an Amazon SNS topic using the AWS SDK for Java<a name="create-subscribe-endpoint-to-topic-aws-java"></a>
+## To subscribe an email address to an Amazon SNS topic using an AWS SDK<a name="subscribe-email-to-topic-aws-sdks"></a>
 
-1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup.html#setup-credentials) in the *AWS SDK for Java 2\.x Developer Guide*\.
+To use an AWS SDK, you must configure it with your credentials\. For more information, see [The shared config and credentials files](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html) in the *AWS SDKs and Tools Reference Guide*\.
 
-1. Write your code\. For more information, see [Using the SDK for Java 2\.x](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/basics.html)\.
+The following code examples show how to subscribe an email address to an Amazon SNS topic\.
 
-   The following code excerpt creates a subscription for an email endpoint and then prints the `SubscribeRequest` request ID\.
+------
+#### [ C\+\+ ]
 
-   ```
-   // Subscribe an email endpoint to an Amazon SNS topic.
-   final SubscribeRequest subscribeRequest = new SubscribeRequest(topicArn, "email", "name@example.com");
-   snsClient.subscribe(subscribeRequest);
-   
-   // Print the request ID for the SubscribeRequest action.
-   System.out.println("SubscribeRequest: " + snsClient.getCachedResponseMetadata(subscribeRequest));
-   System.out.println("To confirm the subscription, check your email.");
-   ```
+**SDK for C\+\+**  
+  
 
-1. Compile and run your code\.
+```
+/**
+ * Subscribe an email address endpoint to a topic - demonstrates how to initiate a subscription to an Amazon SNS topic with delivery
+ *  to an email address.
+ * 
+ * SNS will send a subscription confirmation email to the email address provided which you need to confirm to 
+ * receive messages.
+ *
+ * <protocol_value> set to "email" provides delivery of message via SMTP (see https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html for available protocols).
+ * <topic_arn_value> can be obtained from run_list_topics executable and includes the "arn:" prefix.
+ */
 
-   The subscription is created and the `SubscribeRequest` request ID is printed, for example:
+int main(int argc, char ** argv)
+{
+  if (argc != 4)
+  {
+    std::cout << "Usage: subscribe_email <protocol_value=email> <topic_arn_value>"
+                 " <email_address>" << std::endl;
+    return 1;
+  }
 
-   ```
-   SubscribeRequest: {AWS_REQUEST_ID=1234a567-bc89-012d-3e45-6fg7h890123i}
-   To confirm the subscription, check your email.
-   ```
+  Aws::SDKOptions options;
+  Aws::InitAPI(options);
+  {
+    Aws::SNS::SNSClient sns;
+    Aws::String protocol = argv[1];
+    Aws::String topic_arn = argv[2];
+    Aws::String endpoint = argv[3];
 
-For a detailed example of how to create and publish a FIFO topic using the AWS SDK for Java, see [Using the AWS SDK for Java 2\.x](fifo-topic-code-examples.md#fifo-topic-java)\.
+    Aws::SNS::Model::SubscribeRequest s_req;
+    s_req.SetTopicArn(topic_arn);
+    s_req.SetProtocol(protocol);
+    s_req.SetEndpoint(endpoint);
 
-## To subscribe an email address to an Amazon SNS topic using the AWS SDK for \.NET<a name="create-subscribe-endpoint-to-topic-aws-dot-net"></a>
+    auto s_out = sns.Subscribe(s_req);
 
-1. Specify your AWS credentials\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
+    if (s_out.IsSuccess())
+    {
+      std::cout << "Subscribed successfully " << std::endl;
+    }
+    else
+    {
+      std::cout << "Error while subscribing " << s_out.GetError().GetMessage()
+        << std::endl;
+    }
+  }
 
-1. Write your code\. For more information, see [Programming with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-programming-techniques.html)\.
+  Aws::ShutdownAPI(options);
+  return 0;
+}
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
++  For API details, see [Subscribe](https://docs.aws.amazon.com/goto/SdkForCpp/sns-2010-03-31/Subscribe) in *AWS SDK for C\+\+ API Reference*\. 
 
-   The following code excerpt creates a subscription for an email endpoint and then prints the `SubscribeRequest` request ID\.
+------
+#### [ Go ]
 
-   ```
-   // Subscribe an email endpoint to an Amazon SNS topic.
-   SubscribeRequest subscribeRequest = new SubscribeRequest(topicArn, "email", "name@example.com");
-   SubscribeResponse subscribeResponse = snsClient.Subscribe(subscribeRequest);
-   
-   // Print the request ID for the SubscribeRequest action.
-   Console.WriteLine("SubscribeRequest: " + subscribeResponse.ResponseMetadata.RequestId);
-   Console.WriteLine("To confirm the subscription, check your email.");
-   ```
+**SDK for Go V2**  
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/gov2/sns/Subscribe#code-examples)\. 
++  For API details, see [Subscribe](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/sns#Client.Subscribe) in *AWS SDK for Go API Reference*\. 
 
-1. Compile and run your code\.
+------
+#### [ Java ]
 
-   The subscription is created and the `SubscribeRequest` request ID is printed, for example:
+**SDK for Java 2\.x**  
+  
 
-   ```
-   SubscribeRequest: 1234a567-bc89-012d-3e45-6fg7h890123i
-   To confirm the subscription, check your email.
-   ```
+```
+    public static void subEmail(SnsClient snsClient, String topicArn, String email) {
+
+        try {
+            SubscribeRequest request = SubscribeRequest.builder()
+                .protocol("email")
+                .endpoint(email)
+                .returnSubscriptionArn(true)
+                .topicArn(topicArn)
+                .build();
+
+            SubscribeResponse result = snsClient.subscribe(request);
+            System.out.println("Subscription ARN: " + result.subscriptionArn() + "\n\n Status is " + result.sdkHttpResponse().statusCode());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
++  For API details, see [Subscribe](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/Subscribe) in *AWS SDK for Java 2\.x API Reference*\. 
+
+------
+#### [ JavaScript ]
+
+**SDK for JavaScript V3**  
+Create the client in a separate module and export it\.  
+
+```
+import  { SNSClient } from "@aws-sdk/client-sns";
+// Set the AWS Region.
+const REGION = "REGION"; //e.g. "us-east-1"
+// Create SNS service object.
+const snsClient = new SNSClient({ region: REGION });
+export  { snsClient };
+```
+Import the SDK and client modules and call the API\.  
+
+```
+// Import required AWS SDK clients and commands for Node.js
+import {SubscribeCommand } from "@aws-sdk/client-sns";
+import {snsClient } from "./libs/snsClient.js";
+
+// Set the parameters
+const params = {
+  Protocol: "email" /* required */,
+  TopicArn: "TOPIC_ARN", //TOPIC_ARN
+  Endpoint: "EMAIL_ADDRESS", //EMAIL_ADDRESS
+};
+
+const run = async () => {
+  try {
+    const data = await snsClient.send(new SubscribeCommand(params));
+    console.log("Success.",  data);
+    return data; // For unit tests.
+  } catch (err) {
+    console.log("Error", err.stack);
+  }
+};
+run();
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/sns-examples-managing-topics.html#sns-examples-subscribing-email)\. 
++  For API details, see [Subscribe](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sns/classes/subscribecommand.html) in *AWS SDK for JavaScript API Reference*\. 
+
+------
+#### [ Kotlin ]
+
+**SDK for Kotlin**  
+This is prerelease documentation for a feature in preview release\. It is subject to change\.
+  
+
+```
+suspend fun subEmail(topicArnVal: String, email: String) : String {
+
+    val request = SubscribeRequest {
+        protocol = "email"
+        endpoint = email
+        returnSubscriptionArn = true
+        topicArn = topicArnVal
+    }
+
+    SnsClient { region = "us-east-1" }.use { snsClient ->
+        val result = snsClient.subscribe(request)
+        return result.subscriptionArn.toString()
+    }
+}
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/secretsmanager#code-examples)\. 
++  For API details, see [Subscribe](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
+
+------
+#### [ PHP ]
+
+**SDK for PHP**  
+  
+
+```
+require 'vendor/autoload.php';
+
+use Aws\Sns\SnsClient; 
+use Aws\Exception\AwsException;
+
+/**
+ * Prepares to subscribe an endpoint by sending the endpoint a confirmation message.
+ *
+ * This code expects that you have AWS credentials set up per:
+ * https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials.html
+ */
+ 
+$SnSclient = new SnsClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => '2010-03-31'
+]);
+
+$protocol = 'email';
+$endpoint = 'sample@example.com';
+$topic = 'arn:aws:sns:us-east-1:111122223333:MyTopic';
+
+try {
+    $result = $SnSclient->subscribe([
+        'Protocol' => $protocol,
+        'Endpoint' => $endpoint,
+        'ReturnSubscriptionArn' => true,
+        'TopicArn' => $topic,
+    ]);
+    var_dump($result);
+} catch (AwsException $e) {
+    // output error message if fails
+    error_log($e->getMessage());
+}
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
++  For API details, see [Subscribe](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/Subscribe) in *AWS SDK for PHP API Reference*\. 
+
+------
+#### [ Python ]
+
+**SDK for Python \(Boto3\)**  
+  
+
+```
+class SnsWrapper:
+    """Encapsulates Amazon SNS topic and subscription functions."""
+    def __init__(self, sns_resource):
+        """
+        :param sns_resource: A Boto3 Amazon SNS resource.
+        """
+        self.sns_resource = sns_resource
+
+    def subscribe(topic, protocol, endpoint):
+        """
+        Subscribes an endpoint to the topic. Some endpoint types, such as email,
+        must be confirmed before their subscriptions are active. When a subscription
+        is not confirmed, its Amazon Resource Number (ARN) is set to
+        'PendingConfirmation'.
+
+        :param topic: The topic to subscribe to.
+        :param protocol: The protocol of the endpoint, such as 'sms' or 'email'.
+        :param endpoint: The endpoint that receives messages, such as a phone number
+                         (in E.164 format) for SMS messages, or an email address for
+                         email messages.
+        :return: The newly added subscription.
+        """
+        try:
+            subscription = topic.subscribe(
+                Protocol=protocol, Endpoint=endpoint, ReturnSubscriptionArn=True)
+            logger.info("Subscribed %s %s to topic %s.", protocol, endpoint, topic.arn)
+        except ClientError:
+            logger.exception(
+                "Couldn't subscribe %s %s to topic %s.", protocol, endpoint, topic.arn)
+            raise
+        else:
+            return subscription
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
++  For API details, see [Subscribe](https://docs.aws.amazon.com/goto/boto3/sns-2010-03-31/Subscribe) in *AWS SDK for Python \(Boto3\) API Reference*\. 
+
+------
+#### [ Ruby ]
+
+**SDK for Ruby**  
+  
+
+```
+require 'aws-sdk-sns'  # v2: require 'aws-sdk'
+
+def subscription_created?(sns_client, topic_arn, protocol, endpoint)
+
+  sns_client.subscribe(topic_arn: topic_arn, protocol: protocol, endpoint: endpoint)
+
+rescue StandardError => e
+  puts "Error while creating the subscription: #{e.message}"
+end
+
+# Full example call:
+def run_me
+
+protocol = 'email'
+endpoint = 'EMAIL_ADDRESS'
+topic_arn = 'TOPIC_ARN'
+region = 'REGION'
+
+sns_client = Aws::SNS::Client.new(region: region)
+
+puts "Creating the subscription."
+
+  if subscription_created?(sns_client, topic_arn, protocol, endpoint)
+    puts 'The subscriptions was created.'
+  else
+    puts 'The subscription was not created. Stopping program.'
+    exit 1
+  end
+end
+
+run_me if $PROGRAM_NAME == __FILE__
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/ruby/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for Ruby Developer Guide](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/sns-example-create-subscription.html)\. 
++  For API details, see [Subscribe](https://docs.aws.amazon.com/goto/SdkForRubyV3/sns-2010-03-31/Subscribe) in *AWS SDK for Ruby API Reference*\. 
+
+------
+#### [ Rust ]
+
+**SDK for Rust**  
+This documentation is for an SDK in preview release\. The SDK is subject to change and should not be used in production\.
+  
+
+```
+async fn subscribe_and_publish(
+    client: &Client,
+    topic_arn: &str,
+    email_address: &str,
+) -> Result<(), Error> {
+    println!("Receiving on topic with ARN: `{}`", topic_arn);
+
+    let rsp = client
+        .subscribe()
+        .topic_arn(topic_arn)
+        .protocol("email")
+        .endpoint(email_address)
+        .send()
+        .await?;
+
+    println!("Added a subscription: {:?}", rsp);
+
+    let rsp = client
+        .publish()
+        .topic_arn(topic_arn)
+        .message("hello sns!")
+        .send()
+        .await?;
+
+    println!("Published message: {:?}", rsp);
+
+    Ok(())
+}
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/rust_dev_preview/sns#code-examples)\. 
++  For API details, see [Subscribe](https://docs.rs/releases/search?query=aws-sdk) in *AWS SDK for Rust API reference*\. 
+
+------

@@ -8,7 +8,6 @@ The TTL message attribute is used to specify expiration metadata about a message
 + [TTL message attributes for push notification services](#sns-ttl-msg-attrib)
 + [Precedence order for determining TTL](#sns-ttl-precedence)
 + [Specifying TTL using the AWS Management Console](#sns-ttl-console)
-+ [Specifying TTL with the AWS SDKs](#sns-ttl-sdk)
 
 ## TTL message attributes for push notification services<a name="sns-ttl-msg-attrib"></a>
 
@@ -59,28 +58,3 @@ If you set different TTL values \(one in message attributes and another in the m
 1. In the **Message details** section, enter the TTL \(the number of seconds that the push notification service has to deliver the message to the endpoint\)\.
 
 1. Choose **Publish message**\.
-
-## Specifying TTL with the AWS SDKs<a name="sns-ttl-sdk"></a>
-
-The [AWS SDKs](http://aws.amazon.com/tools/) provide APIs in several languages for using TTL with Amazon SNS\. 
-
-For more information about the SDK for Java, see [Getting Started with the AWS SDK for Java](https://aws.amazon.com/developers/getting-started/java/)\.
-
-The following Java example shows how to configure a TTL message attribute and publish the message to an endpoint, which in this example is registered with Baidu Cloud Push:
-
-```
-Map<String, MessageAttributeValue> messageAttributes = new HashMap<String, MessageAttributeValue>();
-
-// Insert your desired value (in seconds) of TTL here. For example, a TTL of 1 day would be 86,400 seconds. 
-messageAttributes.put("AWS.SNS.MOBILE.BAIDU.TTL", new MessageAttributeValue().withDataType("String").withStringValue("86400"));
-
-PublishRequest publishRequest = new PublishRequest();
-publishRequest.setMessageAttributes(messageAttributes);
-String message = "{\"title\":\"Test_Title\",\"description\":\"Test_Description\"}";
-publishRequest.setMessage(message);
-publishRequest.setMessageStructure("json");
-publishRequest.setTargetArn("arn:aws:sns:us-east-2:999999999999:endpoint/BAIDU/TestApp/318fc7b3-bc53-3d63-ac42-e359468ac730");
-PublishResult publishResult = snsClient.publish(publishRequest);
-```
-
-For more information about using message attributes with Amazon SNS, see [Amazon SNS message attributes](sns-message-attributes.md)\. 

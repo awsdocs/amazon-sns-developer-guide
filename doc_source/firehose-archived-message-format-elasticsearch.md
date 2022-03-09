@@ -1,6 +1,6 @@
-# Archived message format in Amazon ES indices<a name="firehose-archived-message-format-elasticsearch"></a>
+# Archived message format in OpenSearch Service indices<a name="firehose-archived-message-format-elasticsearch"></a>
 
-The following example shows an Amazon SNS notification sent to an Amazon Elasticsearch Service \(Amazon ES\) index named `my-index`\. This index has a time filter field on the `Timestamp` field\. The SNS notification is placed in the `_source` property of the payload\.
+The following example shows an Amazon SNS notification sent to an Amazon OpenSearch Service \(OpenSearch Service\) index named `my-index`\. This index has a time filter field on the `Timestamp` field\. The SNS notification is placed in the `_source` property of the payload\.
 
 **Note**  
 In this example, raw message delivery is disabled for the published message\. When raw message delivery is disabled, Amazon SNS adds JSON metadata to the message, including these properties:  

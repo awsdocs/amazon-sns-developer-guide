@@ -3,6 +3,8 @@
 You can use [Amazon SNS](https://aws.amazon.com/sns/) to send notification messages to one or more HTTP or HTTPS endpoints\. When you subscribe an endpoint to a topic, you can publish a notification to the topic and Amazon SNS sends an HTTP POST request delivering the contents of the notification to the subscribed endpoint\. When you subscribe the endpoint, you choose whether Amazon SNS uses HTTP or HTTPS to send the POST request to the endpoint\. If you use HTTPS, then you can take advantage of the support in Amazon SNS for the following: 
 + **Server Name Indication \(SNI\)**—This allows Amazon SNS to support HTTPS endpoints that require SNI, such as a server requiring multiple certificates for hosting multiple domains\. For more information about SNI, see [Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)\.
 + **Basic and Digest Access Authentication**—This allows you to specify a username and password in the HTTPS URL for the HTTP POST request, such as `https://user:password@domain.com` or `https://user@domain.com` The username and password are encrypted over the SSL connection established when using HTTPS\. Only the domain name is sent in plaintext\. For more information about Basic and Digest Access Authentication, see [RFC\-2617](http://www.rfc-editor.org/info/rfc2617)\.
+**Important**  
+HTTPS URLs are only retrievable from the Amazon SNS `GetSubscriptionAttributes` API action, for principals to which you have granted API access\.
 **Note**  
  The client service must be able to support the `HTTP/1.1 401 Unauthorized` header response
 
@@ -38,4 +40,3 @@ POST / HTTP/1.1
 + [Subscribing an endpoint to a topic](sns-subscribe-https-s-endpoints-to-topic.md)
 + [Verifying message signatures](sns-verify-signature-of-message.md)
 + [Parsing message formats](sns-message-and-json-formats.md)
-+ [Example \(Java\)](sns-example-code-endpoint-java-servlet.md)

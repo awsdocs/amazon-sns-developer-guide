@@ -2,7 +2,7 @@
 
 A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can target for messages that can't be delivered to subscribers successfully\. Messages that can't be delivered due to client errors or server errors are held in the dead\-letter queue for further analysis or reprocessing\. For more information, see [Amazon SNS dead\-letter queues \(DLQs\)](sns-dead-letter-queues.md) and [Amazon SNS message delivery retries](sns-message-delivery-retries.md)\.
 
-This page shows how you can use the AWS Management Console, the AWS SDK for Java, the AWS CLI, and AWS CloudFormation to configure a dead\-letter queue for an Amazon SNS subscription\.
+This page shows how you can use the AWS Management Console, an AWS SDK, the AWS CLI, and AWS CloudFormation to configure a dead\-letter queue for an Amazon SNS subscription\.
 
 ## Prerequisites<a name="dead-letter-queue-prerequisites"></a>
 
@@ -39,7 +39,7 @@ Before you configure a dead\-letter queue, complete the following prerequisites:
 **Topics**
 + [Prerequisites](#dead-letter-queue-prerequisites)
 + [AWS Management Console](#configure-dead-letter-queue-aws-console)
-+ [AWS SDK for Java](#configure-dead-letter-queue-aws-java)
++ [AWS SDKs](#configure-dead-letter-queue-aws-sdk)
 + [AWS CLI](#configure-dead-letter-queue-aws-cli)
 + [AWS CloudFormation](#configure-dead-letter-queue-aws-cloudformation)
 
@@ -73,39 +73,40 @@ For a [FIFO topic](sns-fifo-topics.md), use an Amazon SQS FIFO queue as a dead\-
 
    Your subscription is configured to use a dead\-letter queue\.
 
-## To configure a dead\-letter queue for an Amazon SNS subscription using the AWS SDK for Java<a name="configure-dead-letter-queue-aws-java"></a>
+## To configure a dead\-letter queue for an Amazon SNS subscription using an AWS SDK<a name="configure-dead-letter-queue-aws-sdk"></a>
 
-Before your begin this tutorial, make sure you complete the [prerequisites](#dead-letter-queue-prerequisites)\.
+Before you run this example, make sure that you complete the [prerequisites](#dead-letter-queue-prerequisites)\.
 
-1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup.html#setup-credentials) in the *AWS SDK for Java 2\.x Developer Guide*\.
+To use an AWS SDK, you must configure it with your credentials\. For more information, see [The shared config and credentials files](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html) in the *AWS SDKs and Tools Reference Guide*\.
 
-1. Write your code\. For more information, see [Using the SDK for Java 2\.x](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/basics.html)\.
+The following code example shows how to set an Amazon SQS queue as a dead\-letter queue for an Amazon SNS subscription\.
 
-   For more information about creating Amazon SQS queues, see [To Configure an Amazon SQS Queue Using the AWS SDK for Java](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-create-queue.html#create-queue-java) in the *Amazon Simple Queue Service Developer Guide*\.
+------
+#### [ Java ]
 
-   The following code excerpt uses the ARN of an Amazon SNS subscription and an Amazon SQS queue to set the `RedrivePolicy` request parameter attribute\.
+**SDK for Java 1\.x**  
+  
 
-   ```
-   // Specify the ARN of the Amazon SNS subscription.
-   String subscriptionArn = 
-       "arn:aws:sns:us-east-2:123456789012:MyEndpoint:1234a567-bc89-012d-3e45-6fg7h890123i";
-   
-   // Specify the ARN of the Amazon SQS queue to use as a dead-letter queue.
-   String redrivePolicy = 
-       "{\"deadLetterTargetArn\":\"arn:aws:sqs:us-east-2:123456789012:MyDeadLetterQueue\"}";
-   
-   // Set the specified Amazon SQS queue as a dead-letter queue 
-   // of the specified Amazon SNS subscription.
-   SetSubscriptionAttributesRequest request = new SetSubscriptionAttributesRequest()
-       .withSubscriptionArn(subscriptionArn)
-       .withAttributeName("RedrivePolicy")
-       .withAttributeValue(redrivePolicy);
-   sns.setSubscriptionAttributes(request);
-   ```
+```
+// Specify the ARN of the Amazon SNS subscription.
+String subscriptionArn =
+    "arn:aws:sns:us-east-2:123456789012:MyEndpoint:1234a567-bc89-012d-3e45-6fg7h890123i";
 
-1. Compile and run your code\.
+// Specify the ARN of the Amazon SQS queue to use as a dead-letter queue.
+String redrivePolicy =
+    "{\"deadLetterTargetArn\":\"arn:aws:sqs:us-east-2:123456789012:MyDeadLetterQueue\"}";
 
-   The Amazon SQS queue is set as the dead\-letter queue for the specified Amazon SNS subscription\.
+// Set the specified Amazon SQS queue as a dead-letter queue
+// of the specified Amazon SNS subscription by setting the RedrivePolicy attribute.
+SetSubscriptionAttributesRequest request = new SetSubscriptionAttributesRequest()
+    .withSubscriptionArn(subscriptionArn)
+    .withAttributeName("RedrivePolicy")
+    .withAttributeValue(redrivePolicy);
+sns.setSubscriptionAttributes(request);
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
+
+------
 
 ## To configure a dead\-letter queue for an Amazon SNS subscription using the AWS CLI<a name="configure-dead-letter-queue-aws-cli"></a>
 

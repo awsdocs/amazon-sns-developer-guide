@@ -88,295 +88,86 @@ When you publish a message to a topic, Amazon SNS attempts to deliver that messa
 
 ## Sending a message to a topic \(AWS SDKs\)<a name="sms_publish-to-topic_sdk"></a>
 
-To send an SMS message to a topic using one of the [AWS SDKs](http://aws.amazon.com/getting-started/tools-sdks/), use the API operations in that SDK that correspond to the following requests in the Amazon SNS API\.
+To use an AWS SDK, you must configure it with your credentials\. For more information, see [The shared config and credentials files](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html) in the *AWS SDKs and Tools Reference Guide*\.
 
-**Note**  
-Remember to configure your AWS credentials before using the SDK\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\. Or, see [Using credentials](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html) in the *AWS SDK for Java Developer Guide*\.
-
-`CreateTopic`  
-Creates a topic to which you can subscribe phone numbers and then publish messages to all subscribed phone numbers at once\.
-
-`Subscribe`  
-Subscribes a phone number to a topic\.
-
-`Publish`  
-Sends a message to each phone number subscribed to a topic\.  
-You can use the `MessageAttributes` parameter to set several attributes for the message \(for example, the maximum price\)\. For more information, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)\.
-
-### Creating a topic<a name="sms_create_topic_sdks"></a>
-
-The following examples show how to create a topic using the Amazon SNS clients that the AWS SDKs provide\.
+The following code example shows how to:
++ Create an Amazon SNS topic\.
++ Subscribe phone numbers to the topic\.
++ Publish SMS messages to the topic so that all subscribed phone numbers receive the message at once\.
 
 ------
-#### [ AWS SDK for Java ]
+#### [ Java ]
 
-The following example uses the `createTopic` operation of the `AmazonSNSClient` class in the AWS SDK for Java:
+**SDK for Java 1\.x**  
+Create a topic and return its ARN\.  
 
 ```
-public static void main(String[] args) {
-    AmazonSNSClient snsClient = new AmazonSNSClient();
-    String topicArn = createSNSTopic(snsClient);
-}
-
 public static String createSNSTopic(AmazonSNSClient snsClient) {
     CreateTopicRequest createTopic = new CreateTopicRequest("mySNSTopic");
     CreateTopicResult result = snsClient.createTopic(createTopic);
-    System.out.println("Create topic request: " + 
+    System.out.println("Create topic request: " +
         snsClient.getCachedResponseMetadata(createTopic));
     System.out.println("Create topic result: " + result);
     return result.getTopicArn();
 }
 ```
-
-The example uses the `getCachedResponseMetadata` operation to get the request ID\.
-
-When you run this example, the console output window of your IDE displays the following:
+Subscribe an endpoint to a topic\.  
 
 ```
-{TopicArn: arn:aws:sns:us-east-1:123456789012:mySNSTopic}
-CreateTopicRequest - {AWS_REQUEST_ID=93f7fc90-f131-5ca3-ab18-b741fef918b5}
-```
-
-------
-#### [ AWS SDK for \.NET ]
-
-The following example uses the `createTopic` operation of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET:
-
-```
-static void Main(string[] args)
-{
-    AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(Amazon.RegionEndpoint.USWest2);
-    String topicArn = CreateSNSTopic(snsClient);
-}
-
-public static String CreateSNSTopic(AmazonSimpleNotificationServiceClient snsClient)
-{
-    //create a new SNS topic
-    CreateTopicRequest createTopicRequest = new CreateTopicRequest("MyNewTopic200");
-    CreateTopicResponse createTopicResponse = snsClient.CreateTopic(createTopicRequest);
-    //get request id for CreateTopicRequest from SNS metadata		
-    Console.WriteLine("CreateTopicRequest - " + createTopicResponse.ResponseMetadata.RequestId);
-    return createTopicResponse.TopicArn;
+public static void subscribeToTopic(AmazonSNSClient snsClient, String topicArn,
+        String protocol, String endpoint) {
+    SubscribeRequest subscribe = new SubscribeRequest(topicArn, protocol, endpoint);
+    SubscribeResult subscribeResult = snsClient.subscribe(subscribe);
+    System.out.println("Subscribe request: " +
+        snsClient.getCachedResponseMetadata(subscribe));
+    System.out.println("Subscribe result: " + subscribeResult);
 }
 ```
-
-When you run this example, the console output window of your IDE displays the following:
-
-```
-{TopicArn: arn:aws:sns:us-east-1:123456789012:mySNSTopic}
-CreateTopicRequest - 93f7fc90-f131-5ca3-ab18-b741fef918b5
-```
-
-------
-
-### Adding an SMS subscription to your topic<a name="sms_add_subscription_sdks"></a>
-
-The following examples show how to add an SMS subscription to a topic using the Amazon SNS clients that the AWS SDKs provide\.
-
-------
-#### [ AWS SDK for Java ]
-
-The following example uses the `subscribe` operation of the `AmazonSNSClient` class in the AWS SDK for Java:
+Set attributes on the message, such as the ID of the sender, the maximum price, and its type\. Message attributes are optional\.  
 
 ```
-public static void main(String[] args) {
-        AmazonSNSClient snsClient = new AmazonSNSClient();
-        String phoneNumber = "+1XXX5550100";
-        String topicArn = createSNSTopic(snsClient);
-        subscribeToTopic(snsClient, topicArn, "sms", phoneNumber);
-}
-
-//<create SNS topic>
-
-public static void subscribeToTopic(AmazonSNSClient snsClient, String topicArn, 
-		String protocol, String endpoint) {	
-        SubscribeRequest subscribe = new SubscribeRequest(topicArn, protocol,
-                                                          endpoint);
-        SubscribeResult subscribeResult = snsClient.subscribe(subscribe);
-        System.out.println("Subscribe request: " + 
-                snsClient.getCachedResponseMetadata(subscribe));
-        System.out.println("Subscribe result: " + subscribeResult);
-}
-```
-
-This example constructs the `subscribeRequest` object and passes it the following arguments:
-+ `topicArn` – The Amazon Resource Name \(ARN\) of the topic to which you are adding a subscription\.
-+ `"sms"` – The protocol option for an SMS subscription\.
-+ `endpoint` – The phone number that you are subscribing to the topic\.
-
-The example uses the `getCachedResponseMetadata` operation to get the request ID for the subscribe request\.
-
-When you run this example, the console window of your IDE displays the subscribe request ID:
-
-```
-SubscribeRequest - {AWS_REQUEST_ID=f38fe925-8093-5bd4-9c19-a7c7625de38c}
-```
-
-------
-#### [ AWS SDK for \.NET ]
-
-The following example uses the `subscribe` operation of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET:
-
-```
-static void Main(string[] args)
-{
-    AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(Amazon.RegionEndpoint.USWest2);
-    String phoneNumber = "+1XXX5550100";
-    String topicArn = CreateSNSTopic(snsClient);
-    SubscribeToTopic(snsClient, topicArn, "sms", phoneNumber);
-}
-
-//<create SNS topic>
-
-static public void SubscribeToTopic(AmazonSimpleNotificationServiceClient snsClient, String topicArn,
-    String protocol, String endpoint)
-{
-    SubscribeRequest subscribeRequest = new SubscribeRequest(topicArn, protocol, endpoint);
-    SubscribeResponse subscribeResponse = snsClient.Subscribe(subscribeRequest);
-    Console.WriteLine("Subscribe request: " + subscribeResponse.ResponseMetadata.RequestId);
-    Console.WriteLine("Subscribe result: " + subscribeResponse.);
-}
-```
-
-This example constructs the `SubscribeRequest` object and passes it the following arguments:
-+ `topicArn` – The Amazon Resource Name \(ARN\) of the topic to which you are adding a subscription\.
-+ `"sms"` – The protocol option for an SMS subscription\.
-+ `endpoint` – The phone number that you are subscribing to the topic\.
-
-When you run this example, the console window of your IDE displays the subscribe request ID:
-
-```
-SubscribeRequest - f38fe925-8093-5bd4-9c19-a7c7625de38c
-```
-
-------
-
-### \(Optional\) Setting message attributes<a name="sms_set_attributes_sdks"></a>
-
-The following examples show how to set message attributes using the Amazon SNS clients that the AWS SDKs provide\.
-
-------
-#### [ AWS SDK for Java ]
-
-With the AWS SDK for Java, you set message attribute values by constructing a map that associates the attribute keys with `MessageAttributeValue` objects\. Each `MessageAttributeValue` object is initialized with an attribute value, and each object declares the data type for the value\. The following example sets the sender ID to "mySenderID", maximum price to "0\.50" USD, and SMS type to "Promotional":
-
-```
-Map<String, MessageAttributeValue> smsAttributes =
-        new HashMap<String, MessageAttributeValue>();
-smsAttributes.put("AWS.SNS.SMS.SenderID", new MessageAttributeValue()
+public static void addMessageAttributes(Map<String, MessageAttributeValue> smsAttributes) {
+    smsAttributes.put("AWS.SNS.SMS.SenderID", new MessageAttributeValue()
         .withStringValue("mySenderID") //The sender ID shown on the device.
         .withDataType("String"));
-smsAttributes.put("AWS.SNS.SMS.MaxPrice", new MessageAttributeValue()
+    smsAttributes.put("AWS.SNS.SMS.MaxPrice", new MessageAttributeValue()
         .withStringValue("0.50") //Sets the max price to 0.50 USD.
         .withDataType("Number"));
-smsAttributes.put("AWS.SNS.SMS.SMSType", new MessageAttributeValue()
+    smsAttributes.put("AWS.SNS.SMS.SMSType", new MessageAttributeValue()
         .withStringValue("Promotional") //Sets the type to promotional.
         .withDataType("String"));
+}
 ```
-
-For more information about message attributes, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)\.
-
-When you send an SMS message, you apply your attributes to the `PublishRequest` object\.
-
-------
-#### [ AWS SDK for \.NET ]
-
-With the AWS SDK for \.NET, you set message attribute values by adding attribute keys with `MessageAttributeValue` objects to the `MessageAttributes` field of the `PublishRequest` object\. Each `MessageAttributeValue` object is initialized with an attribute value, and each object declares the data type for the value\. The following example sets the sender ID to "mySenderID", maximum price to "0\.50" USD, and SMS type to "Promotional":
+Publish a message to a topic\. The message is sent to every subscriber\.  
 
 ```
-PublishRequest pubRequest = new PublishRequest();
-pubRequest.MessageAttributes["AWS.SNS.SMS.SenderID"] = 
-    new MessageAttributeValue{ StringValue = "mySenderId", DataType = "String"};
-pubRequest.MessageAttributes["AWS.SNS.SMS.MaxPrice"] =
-    new MessageAttributeValue { StringValue = "0.50", DataType = "Number" };
-pubRequest.MessageAttributes["AWS.SNS.SMS.SMSType"] =
-    new MessageAttributeValue { StringValue = "Promotional", DataType = "String" };
+public static void sendSMSMessageToTopic(AmazonSNSClient snsClient, String topicArn,
+        String message, Map<String, MessageAttributeValue> smsAttributes) {
+    PublishResult result = snsClient.publish(new PublishRequest()
+        .withTopicArn(topicArn)
+        .withMessage(message)
+        .withMessageAttributes(smsAttributes));
+    System.out.println(result);
+}
 ```
-
-For more information about message attributes, see [Sending a message \(AWS SDKs\)](sms_publish-to-phone.md#sms_publish_sdk)\.
-
-When you send an SMS message, you apply your attributes to the `PublishRequest` object\.
-
-------
-
-### Publishing a message to your topic<a name="sms_publish_to_topic_sdks"></a>
-
-The following examples show how to publish a message to a topic using the Amazon SNS clients that the AWS SDKs provide\.
-
-------
-#### [ AWS SDK for Java ]
-
-The following example uses the `publish` operation of the `AmazonSNSClient` class in the AWS SDK for Java:
+Call the previous functions to create a topic, subscribe a phone number, set message attributes, and publish a message to the topic\.  
 
 ```
 public static void main(String[] args) {
-        AmazonSNSClient snsClient = new AmazonSNSClient();
-        String message = "My SMS message";
-        Map<String, MessageAttributeValue> smsAttributes = 
-                new HashMap<String, MessageAttributeValue>();
-        //<set SMS attributes>
-        String topicArn = createSNSTopic(snsClient);
-        //<subscribe to topic>
-        sendSMSMessageToTopic(snsClient, topicArn, message, smsAttributes);
-}
+    AmazonSNSClient snsClient = new AmazonSNSClient();
 
-//<create topic operation>
+    String topicArn = createSNSTopic(snsClient);
+    String phoneNumber = "+1XXX5550100";
+    // Specify a protocol of "sms" when subscribing a phone number.
+    subscribeToTopic(snsClient, topicArn, "sms", phoneNumber);
 
-//<subscribe to topic operation>
-
-public static void sendSMSMessageToTopic(AmazonSNSClient snsClient, String topicArn, 
-		String message, Map<String, MessageAttributeValue> smsAttributes) {
-        PublishResult result = snsClient.publish(new PublishRequest()
-                        .withTopicArn(topicArn)
-                        .withMessage(message)
-                        .withMessageAttributes(smsAttributes));
-        System.out.println(result);
+    String message = "My SMS message";
+    Map<String, MessageAttributeValue> smsAttributes =
+        new HashMap<String, MessageAttributeValue>();
+    addMessageAttributes(smsAttributes)
+    sendSMSMessageToTopic(snsClient, topicArn, message, smsAttributes);
 }
 ```
-
-Amazon SNS attempts to deliver that message to every phone number that is subscribed to the topic\.
-
-This example constructs the `publishRequest` object while passing the topic ARN and the message as arguments\. The `publishResult` object captures the message ID that Amazon SNS returns\.
-
-When you run this example, the console output window of your IDE displays the message ID:
-
-```
-{MessageId: 9b888f80-15f7-5c30-81a2-c4511a3f5229}
-```
-
-------
-#### [ AWS SDK for \.NET ]
-
-The following example uses the `Publish` operation of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET:
-
-```
-public static void main(string[] args) 
-{
-        AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(Amazon.RegionEndpoint.USWest2);
-        String topicArn = createSNSTopic(snsClient);
-        PublishRequest pubRequest = new PublishRequest();
-        pubRequest.Message = "My SMS message";
-        pubRequest.TopicArn = topicArn;
-        // add optional MessageAttributes...
-        //   pubRequest.MessageAttributes["AWS.SNS.SMS.SenderID"] = 
-        //      new MessageAttributeValue{ StringValue = "mySenderId", DataType = "String"};
-        PublishResponse pubResponse = snsClient.Publish(pubRequest);
-        Console.WriteLine(pubResponse.MessageId);
-}
-
-//<create topic operation>
-
-//<subscribe to topic operation>
-```
-
-Amazon SNS attempts to deliver that message to every phone number that is subscribed to the topic\.
-
-This example constructs the `publishRequest` object and assigns the topic ARN and the message\. The `publishResponse` object captures the message ID that Amazon SNS returns\.
-
-When you run this example, the console output window of your IDE displays the message ID:
-
-```
-9b888f80-15f7-5c30-81a2-c4511a3f5229
-```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
 
 ------
