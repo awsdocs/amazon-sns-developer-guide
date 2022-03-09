@@ -79,7 +79,7 @@ It matches either of the following message attributes:
 It also matches the following message attribute \(because it contains a value that *isn't* `rugby` or `tennis`\):
 
 ```
-"customer_interests": {"Type": "String.Array", "Value": "[\"rugby\", \"baseball\"]"}
+"customer_interests": {"Type": "String.Array", "Value": "["rugby", "baseball"]"}
 ```
 
 However, it doesn't match the following message attribute:
@@ -95,23 +95,23 @@ For attribute *string* matching, you can also use a prefix with the `anything-bu
 For example, the following policy attribute denies the `order-` prefix:
 
 ```
-"event":[{"anything-but": {"prefix":"order-"}}]
+"event":[{"anything-but": {"prefix": "order-"}}]
 ```
 
 It matches either of the following attributes:
 
 ```
-"event": {"Type": "String", "Value": data-entry}
+"event": {"Type": "String", "Value": "data-entry"}
 ```
 
 ```
-"event": {"Type": "String", "Value": order_number}
+"event": {"Type": "String", "Value": "order_number"}
 ```
 
 However, it *doesn't* match the following attribute:
 
 ```
-"event": {"Type": "String", "Value": order-cancelled}
+"event": {"Type": "String", "Value": "order-cancelled"}
 ```
 
 ## IP address matching<a name="ip-address-matching"></a>
