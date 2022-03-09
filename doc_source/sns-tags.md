@@ -1,79 +1,94 @@
-# Configuring tags for an Amazon SNS topic<a name="sns-tags"></a>
+# Amazon SNS topic tagging<a name="sns-tags"></a>
 
-You can track your Amazon SNS resources \(for example, for cost allocation\) by adding, removing, and listing metadata tags for Amazon SNS topics\. This page shows how to add, update, and remove tags for a topic using the AWS Management Console and the AWS SDK for Java\. 
+Amazon SNS supports tagging of Amazon SNS topics\. This can help you track and manage the costs associated with your topics, provide enhanced security in your AWS Identity and Access Management \(IAM\) policies, and lets you easily search or filter through thousands of topics\. Tagging enables you to manage your Amazon SNS topics using AWS Resource Groups\. For more information on Resource Groups, see the [AWS Resource Groups User Guide](https://docs.aws.amazon.com/ARG/latest/userguide/resource-groups.html)\.
 
 **Topics**
-+ [AWS Management Console](#add-update-remove-tags-for-topic-aws-console)
-+ [AWS SDK for Java](#add-update-remove-tags-for-topic-aws-java)
++ [Tagging for cost allocation](#tagging-for-cost-allocation)
++ [Tagging for access control](#sns-tagging-for-access-control)
++ [Tagging for resource searching and filtering](#sns-tagging-for-searching-filtering)
++ [Configuring tags](sns-tags-configuring.md)
+
+## Tagging for cost allocation<a name="tagging-for-cost-allocation"></a>
+
+To organize and identify your Amazon SNS topics for cost allocation, you can add tags that identify the purpose of a topic\. This is especially useful when you have many topics\. You can use cost allocation tags to organize your AWS bill to reflect your own cost structure\. To do this, sign up to get your AWS account bill to include the tag keys and values\. For more information, see [Setting Up a Monthly Cost Allocation Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/configurecostallocreport.html#allocation-report) in the [AWS Billing and Cost Management User Guide](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html)\.
+
+For example, you can add tags that represent the cost center and purpose of your Amazon SNS topics, as follows:
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-tags.html)
+
+This tagging scheme lets you to group two topics performing related tasks in the same cost center, while tagging an unrelated activity with a different cost allocation tag\.
+
+## Tagging for access control<a name="sns-tagging-for-access-control"></a>
+
+AWS Identity and Access Management supports controlling access to resources based on tags\. After tagging your resources, provide information about your resource tags in the condition element of an IAM policy to manage tag\-based access\. For information on how to tag your resources using the [Amazon SNS console](sns-tags-configuring.md#list-add-update-remove-tags-for-topic-aws-console) or the [AWS SDK](sns-tags-configuring.md#tag-resource-aws-sdks), see [Configuring tags](sns-tags-configuring.md)\.
+
+You can restrict access for an IAM identity\. For example, you can restrict `Publish` and `PublishBatch` access to all Amazon SNS topics that include a tag with the key `environment` and the value `production`, while allowing access to all other Amazon SNS topics\. In the example below, the policy restricts the ability to publish messages to topics tagged with `production`, while allowing messages to be published to topics tagged with `development`\. For more information, see [Controlling Access Using Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in the IAM User Guide\.
 
 **Note**  
-Currently, tag\-based access control isn't available\.
+Setting the IAM permission for `Publish` sets permission for both `Publish` and `PublishBatch`\.
 
-## To list, add, and remove, metadata tags for an Amazon SNS topic using the AWS Management Console<a name="add-update-remove-tags-for-topic-aws-console"></a>
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Deny",
+    "Action": [
+	"sns:Publish"
+    ],
+    "Resource": "arn:aws:sns:*:*:*",
+    "Condition": {
+      "StringEquals": {
+        "aws:ResourceTag/environment": "production"
+      }
+    }
+  },
+  {
+    "Effect": "Allow",
+    "Action": [
+      "sns:Publish"
+    ],
+    "Resource": "arn:aws:sns:*:*:*",
+    "Condition": {
+      "StringEquals": {
+        "aws:ResourceTag/environment": "development"
+      }
+    }
+  }]
+}
+```
 
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
+## Tagging for resource searching and filtering<a name="sns-tagging-for-searching-filtering"></a>
 
-1. On the navigation panel, choose **Topics**\.
+An AWS account can have tens of thousands of Amazon SNS topics \(see [Amazon SNS Quotas](https://docs.aws.amazon.com/general/latest/gr/sns.html) for details\)\. By tagging your topics, you can simplify the process of searching through or filtering out topics\.
 
-1. On the **Topics** page, choose a topic and then choose **Edit**\.
+For example, you may have hundreds of topics associated with your production environment\. Rather than having to manually search for these topics, you can query for all topics with a given tag:
 
-1. Expand the **Tags** section\.
+```
+import com.amazonaws.services.resourcegroups.AWSResourceGroups;
+import com.amazonaws.services.resourcegroups.AWSResourceGroupsClientBuilder;
+import com.amazonaws.services.resourcegroups.model.QueryType;
+import com.amazonaws.services.resourcegroups.model.ResourceQuery;
+import com.amazonaws.services.resourcegroups.model.SearchResourcesRequest;
+import com.amazonaws.services.resourcegroups.model.SearchResourcesResult;
 
-   The tags added to the topic are listed\.
+public class Example {
+    public static void main(String[] args) {
+        // Query Amazon SNS Topics with tag "keyA" as "valueA"
+        final String QUERY = "{\"ResourceTypeFilters\":[\"AWS::SNS::Topic\"],\"TagFilters\":[{\"Key\":\"keyA\", \"Values\":[\"valueA\"]}]}";
 
-1. Modify topic tags:
-   + To add a tag, choose **Add tag** and enter a **Key** and **Value** \(optional\),
-   + To remove a tag, choose **Remove tag** next to a key\-value pair\.
+        // Initialize ResourceGroup client
+        AWSResourceGroups awsResourceGroups = AWSResourceGroupsClientBuilder
+            .standard()
+            .build();
 
-1. Choose **Save changes**
-
-## To list, add, and remove metadata tags for an Amazon SNS topic using the AWS SDK for Java\.<a name="add-update-remove-tags-for-topic-aws-java"></a>
-
-1. Specify your AWS credentials\. For more information, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/setup.html#setup-credentials) in the *AWS SDK for Java 2\.x Developer Guide*\.
-
-1. Write your code\. For more information, see [Using the SDK for Java 2\.x](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/basics.html)\.
-
-1. To list the tags added to a topic, add the following code:
-
-   ```
-   final ListTagsForResourceRequest listTagsForResourceRequest = new ListTagsForResourceRequest();
-   listTagsForResourceRequest.setResourceArn(topicArn);
-   final ListTagsForResourceResult listTagsForResourceResult = snsClient.listTagsForResource(listTagsForResourceRequest);
-   System.out.println(String.format("ListTagsForResource: \tTags for topic %s are %s.\n",
-   	topicArn, listTagsForResourceResult.getTags()));
-   ```
-
-1. To add tags \(or update the value of tags\), add the following code:
-
-   ```
-   final Tag tagTeam = new Tag();
-   tagTeam.setKey("Team");
-   tagTeam.setValue("Development");
-   final Tag tagEnvironment = new Tag();
-   tagEnvironment.setKey("Environment");
-   tagEnvironment.setValue("Gamma");
-        
-   final List<Tag> tagList = new ArrayList<>();
-   tagList.add(tagTeam);
-   tagList.add(tagEnvironment);
-        
-   final TagResourceRequest tagResourceRequest = new TagResourceRequest();
-   tagResourceRequest.setResourceArn(topicArn);
-   tagResourceRequest.setTags(tagList);
-   final TagResourceResult tagResourceResult = snsClient.tagResource(tagResourceRequest);
-   ```
-
-1. To remove a tag from the topic using the tag's key, add the following code:
-
-   ```
-   final UntagResourceRequest untagResourceRequest = new UntagResourceRequest();
-   untagResourceRequest.setResourceArn(topicArn);
-   final List<String> tagKeyList = new ArrayList<>();
-   tagKeyList.add("Team");
-   untagResourceRequest.setTagKeys(tagKeyList);
-   final UntagResourceResult untagResourceResult = snsClient.untagResource(untagResourceRequest);
-   ```
-
-1. Compile and run your code\.
-
-   The existing tags are listed, two are added, and one is removed from the topic\.
+        // Query all resources with certain tags from ResourceGroups 
+        SearchResourcesResult result = awsResourceGroups.searchResources(
+            new SearchResourcesRequest().withResourceQuery(
+                new ResourceQuery()
+                .withType(QueryType.TAG_FILTERS_1_0)
+                .withQuery(QUERY)
+            ));
+        System.out.println("SNS Topics with certain tags are " + result.getResourceIdentifiers());
+    }
+}
+```

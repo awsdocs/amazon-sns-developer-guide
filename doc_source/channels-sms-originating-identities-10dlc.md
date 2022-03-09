@@ -17,29 +17,31 @@ If you use local long codes or a shared pool of numbers, you must switch over to
 
 ## 10DLC capabilities<a name="sns-10dlc-capabilities"></a>
 
-The capabilities of 10DLC phone numbers depend on the mobile carriers of your recipients\. AT&T provides a throughput limit based on the number of message parts that can be sent each minute\. T\-Mobile and Sprint provide a daily limit, with no limitation on the number of message parts that can be sent per minute\. As of February 15, 2021, Verizon hasn't announced its 10DLC throughput policy\.
+The capabilities of 10DLC phone numbers depend on which mobile carriers your recipients use\. AT&T provides a limit on the number of message parts that can be sent each minute for each campaign\. T\-Mobile provides a daily limit of messages that can be sent for each company, with no limit on the number of message parts that can be sent per minute\. Verizon hasn't published throughput limits, but uses a filtering system for 10DLC that is designed to remove spam, unsolicited messages, and abusive content, with less emphasis on the actual message throughput\.
 
-When you set up 10DLC, you have to register your company\. Your company information is used by The Campaign Registry to calculate a trust score\. Your trust score determines the capabilities of your 10DLC phone number\. The following table shows the 10DLC trust score tiers and the capabilities of 10DLC numbers that fall into those tiers\. We're working with The Campaign Registry to provide additional information about finding the trust score for your company\.
+New 10DLC campaigns that are associated with unvetted companies can send 75 message parts per minute to recipients who use AT&T, and 2,000 messages per day to recipients who use T\-Mobile\. The company limit is shared across all of your 10DLC campaigns\. For example, if you have registered one company and two campaigns, the daily allotment of 2,000 messages to T\-Mobile customers is shared across those campaigns\. Similarly, if you register the same company in more than one AWS account, the daily allotment is shared across those accounts\.
 
+If your throughput needs exceed these limits, you can request that your company registration be vetted\. When you vet your company registration, a third\-party verification provider analyzes your company details\. The verification provider then provides a vetting score, which determines the capabilities of your 10DLC campaigns\. There is a one\-time charge for the vetting service\. For more information, see [Vetting your Amazon SNS 10DLC registration](sns-settings-register-company.md#sns-10dlc-vetting)\.
 
-| Tier | Message parts per minute \(AT&T\) | Maximum daily messages \(T\-Mobile\) | 
-| --- | --- | --- | 
-|  High  |  3,600  | 200,000 | 
-| Medium\-high | 600 |  40,000  | 
-| Medium\-low | 30 | 10,000 | 
-| Basic | 12 | 2,000 | 
+Your actual throughput rate will vary depending on various factors, such as whether or not your company has been vetted, your campaign types, and your vetting score\. The following flowchart shows the throughput rates for various situations\.
 
-For a comparison of the different phone number types see [U\.S\. product number comparison](channels-sms-originating-identities-origination-numbers.md#sns-10dlc-product-comparison)\.
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sns/latest/dg/images/sns-10DLC.png)
+
+Throughput rates for 10DLC are determined by the US mobile carriers in cooperation with the Campaign Registry\. Neither Amazon SNS nor any other SMS sending service can increase 10DLC throughput beyond these rates\. If you need high throughput rates and high deliverability rates across all US carriers, we recommend that you use x a short code\. For more information about obtaining a short code, see [Requesting dedicated short codes for SMS messaging with Amazon SNS](channels-sms-awssupport-short-code.md)\.
 
 ## Getting started with 10DLC<a name="sns-getting-started-with-10dlc"></a>
 
-Use the Amazon Pinpoint \(not Amazon SNS\) console to request your 10DLC\. Follow these steps to set up 10DLC for use with your 10DLC campaigns\.
+Use the [Amazon Pinpoint](https://console.aws.amazon.com/pinpoint/) console \(not Amazon SNS\) to request your 10DLC\. Follow these steps to set up 10DLC for use with your 10DLC campaigns\.
 
 1. **Register your company\. **
 
    Before you can request a 10DLC, your company must be registered with The Campaign Registry; for information, see [Registering a company](sns-settings-register-company.md)\. Registration is typically instantaneous unless The Campaign Registry requires more information\. There is a one\-time registration fee to register your company, displayed on the registration page\. This one\-time fee is paid separately from your monthly charges for the campaign and 10DLC\. 
 **Note**  
 Amazon SNS SMS messaging is available in Regions where Amazon Pinpoint is not currently supported\. In these cases, open the Amazon Pinpoint console in the US East \(N\. Virginia\) Region to register your 10DLC company and campaign, but *do not* request a 10DLC number\. Instead, open a case in the [AWS Support Center](https://console.aws.amazon.com/support/home#/) to request a 10DLC number in the AWS Region where you use or plan to use Amazon SNS to send SMS messages\. For information on Regions where Amazon Pinpoint is available, see [Amazon Pinpoint endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/pinpoint.html) in the *AWS General Reference*\.
+
+1.  **\(Optional, but recommended\) Apply for vetting**
+
+   If your company registration is successful, you can begin creating low\-volume, mixed\-use 10DLC campaigns\. These campaigns can send 75 messages per minute to recipients who use AT&T, and your registered company can send 2,000 messages per day to recipients who use T\-Mobile\. If your use case requires a throughput rate that exceeds these values, you can apply for vetting of your company registration\. Vetting your company registration can increase the throughput rates for your companies and campaigns, but it isn't guaranteed to do so\. For more information about vetting, see [Vetting your Amazon SNS 10DLC registration](sns-settings-register-company.md#sns-10dlc-vetting)\.
 
 1. **Register your campaign\.**
 
@@ -51,4 +53,4 @@ Amazon SNS SMS messaging is available in Regions where Amazon Pinpoint is not cu
 
 ## 10DLC registration and monthly fees<a name="sns-10dlc-fees"></a>
 
-There are registration and monthly fees associated with using 10DLC, such as registering your company and 10DLC campaign\. These are separate from any other monthly fees charged by AWS\. For more information, see the [Amazon SNS Worldwide SMS Pricing](https://aws.amazon.com/sns/pricing/) page\.
+There are registration and monthly fees associated with using 10DLC, such as registering your company and 10DLC campaign\. These are separate from any other monthly fees charged by AWS\. For more information, see the [Amazon SNS Worldwide SMS Pricing](https://aws.amazon.com/sns/sms-pricing/) page\.

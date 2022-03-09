@@ -95,7 +95,7 @@ For attribute *string* matching, you can also use a prefix with the `anything-bu
 For example, the following policy attribute denies the `order-` prefix:
 
 ```
-"event":[{"anything-but" : {"prefix":"order-"}}]
+"event":[{"anything-but": {"prefix": "order-"}}]
 ```
 
 It matches either of the following attributes:

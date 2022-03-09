@@ -33,7 +33,7 @@ Because this message includes the `MessageAttributes` field, any topic subscript
       },
       "price_usd": {
          "Type": "Number", 
-         "Value":210.75
+         "Value": "210.75"
       }
    }
 }
@@ -43,7 +43,7 @@ For information about applying attributes to a message, see [Amazon SNS message 
 
 The following filter policies accept or reject messages based on their attribute names and values\.
 
-## A policy that accepts messages<a name="policy-accepts-messages"></a>
+## A policy that accepts the example message<a name="policy-accepts-messages"></a>
 
 The attributes in the following subscription filter policy match the attributes assigned to the example message\.
 
@@ -62,7 +62,7 @@ If any single attribute in this policy doesn't match an attribute assigned to th
 }
 ```
 
-## A policy that rejects messages<a name="policy-rejects-messages"></a>
+## A policy that rejects the example message<a name="policy-rejects-messages"></a>
 
 The following subscription filter policy has multiple mismatches between its attributes and the attributes assigned to the example message\. Because the `encrypted` attribute name isn't present in the message attributes, this policy attribute causes the message to be rejected regardless of the value assigned to it\.
 

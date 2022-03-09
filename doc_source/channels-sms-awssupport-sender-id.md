@@ -30,7 +30,7 @@ If you plan to send messages to recipients in a country where sender IDs are all
 
 1. On the **My support cases** tab, choose **Create case**\.
 
-1. Choose **Service quota increase**\.
+1. Choose **Service limit increase**\.
 
 1. Under **Case classification**, do the following:
 

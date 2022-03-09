@@ -44,7 +44,7 @@ After you configure the message delivery status attributes, log entries are sent
 
 ## Configuring message delivery status attributes for topics subscribed to Amazon SNS endpoints using the AWS SDKs<a name="msg-status-sdk"></a>
 
-The [AWS SDKs](https://aws.amazon.com/tools/) provide APIs in several languages for using message delivery status attributes with Amazon SNS\. 
+The AWS SDKs provide APIs in several languages for using message delivery status attributes with Amazon SNS\. 
 
 ### Topic attributes<a name="topic-attributes"></a>
 
@@ -81,47 +81,189 @@ In addition to being able to configure topic attributes for message delivery sta
 
 ### AWS SDK examples to configure topic attributes<a name="topic-attributes-sdks"></a>
 
-The following examples show how to configure topic attributes using the Amazon SNS clients that are provided by the AWS SDKs\.
+The following code examples show how to set Amazon SNS topic attributes\.
 
 ------
-#### [ AWS SDK for Java ]
+#### [ Java ]
 
-The following Java example shows how to use the `SetTopicAttributes` API to configure topic attributes for message delivery status of notification messages sent to topics subscribed to Amazon SNS endpoints\. In this example, it is assumed that string values have been set for `topicArn`, `attribName`, and `attribValue`\.
-
-```
-final static String topicArn = ("arn:aws:sns:us-east-2:123456789012:MyTopic");
-final static String attribName = ("LambdaSuccessFeedbackRoleArn");
-final static String attribValue = ("arn:aws:iam::123456789012:role/SNSSuccessFeedback");
-```
+**SDK for Java 2\.x**  
+  
 
 ```
-SetTopicAttributesRequest setTopicAttributesRequest = new SetTopicAttributesRequest();
-setTopicAttributesRequest.withTopicArn(topicArn);
-setTopicAttributesRequest.setAttributeName(attribName);
-setTopicAttributesRequest.setAttributeValue(attribValue);
-```
+    public static void setTopAttr(SnsClient snsClient, String attribute, String topicArn, String value) {
 
-For more information about the SDK for Java, see [Getting Started with the AWS SDK for Java](https://aws.amazon.com/developers/getting-started/java/)\.
+        try {
+
+            SetTopicAttributesRequest request = SetTopicAttributesRequest.builder()
+                .attributeName(attribute)
+                .attributeValue(value)
+                .topicArn(topicArn)
+                .build();
+
+            SetTopicAttributesResponse result = snsClient.setTopicAttributes(request);
+            System.out.println("\n\nStatus was " + result.sdkHttpResponse().statusCode() + "\n\nTopic " + request.topicArn()
+                + " updated " + request.attributeName() + " to " + request.attributeValue());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
++  For API details, see [SetTopicAttributes](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/SetTopicAttributes) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
-#### [ AWS SDK for \.NET ]
+#### [ JavaScript ]
 
-The following \.NET example shows how to use the `SetTopicAttributes` API to configure topic attributes for message delivery status of notification messages sent to topics subscribed to Amazon SNS endpoints\. In this example, it is assumed that string values have been set for `topicArn`, `attribName`, and `attribValue`\.
-
-```
-static String topicArn = "arn:aws:sns:us-east-2:123456789012:MyTopic";
-static String attribName = "LambdaSuccessFeedbackRoleArn";
-String attribValue = "arn:aws:iam::123456789012:role/SNSSuccessFeedback";
-```
+**SDK for JavaScript V3**  
+Create the client in a separate module and export it\.  
 
 ```
-SetTopicAttributesRequest setTopicAttributesRequest = new SetTopicAttributesRequest {
-    TopicArn = topicArn,
-    AttributeName = attribName,
-    AttributeValue = attribValue
+import  { SNSClient } from "@aws-sdk/client-sns";
+// Set the AWS Region.
+const REGION = "REGION"; //e.g. "us-east-1"
+// Create SNS service object.
+const snsClient = new SNSClient({ region: REGION });
+export  { snsClient };
+```
+Import the SDK and client modules and call the API\.  
+
+```
+// Import required AWS SDK clients and commands for Node.js
+import {SetTopicAttributesCommand } from "@aws-sdk/client-sns";
+import {snsClient } from "./libs/snsClient.js";
+
+// Set the parameters
+const params = {
+  AttributeName: "ATTRIBUTE_NAME", // ATTRIBUTE_NAME
+  TopicArn: "TOPIC_ARN", // TOPIC_ARN
+  AttributeValue: "NEW_ATTRIBUTE_VALUE", //NEW_ATTRIBUTE_VALUE
 };
-```
 
-For more information about the AWS SDK for \.NET, see [Getting Started with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-setup.html)\.
+const run = async () => {
+  try {
+    const data = await snsClient.send(new SetTopicAttributesCommand(params));
+    console.log("Success.",  data);
+    return data; // For unit tests.
+  } catch (err) {
+    console.log("Error", err.stack);
+  }
+};
+run();
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/sns-examples-managing-topics.html#sns-examples-managing-topicsstttopicattributes)\. 
++  For API details, see [SetTopicAttributes](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sns/classes/settopicattributescommand.html) in *AWS SDK for JavaScript API Reference*\. 
+
+------
+#### [ Kotlin ]
+
+**SDK for Kotlin**  
+This is prerelease documentation for a feature in preview release\. It is subject to change\.
+  
+
+```
+suspend fun setTopAttr(attribute: String?, topicArnVal: String?, value: String?) {
+
+        val request = SetTopicAttributesRequest {
+            attributeName = attribute
+            attributeValue = value
+            topicArn = topicArnVal
+        }
+
+       SnsClient { region = "us-east-1" }.use { snsClient ->
+        snsClient.setTopicAttributes(request)
+        println("Topic ${request.topicArn} was updated.")
+       }
+}
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/secretsmanager#code-examples)\. 
++  For API details, see [SetTopicAttributes](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
+
+------
+#### [ PHP ]
+
+**SDK for PHP**  
+  
+
+```
+require 'vendor/autoload.php';
+
+use Aws\Sns\SnsClient; 
+use Aws\Exception\AwsException;
+
+/**
+ * Configure the message delivery status attributes for an Amazon SNS Topic.
+ *
+ * This code expects that you have AWS credentials set up per:
+ * https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials.html
+ */
+ 
+$SnSclient = new SnsClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => '2010-03-31'
+]);
+$attribute = 'Policy | DisplayName | DeliveryPolicy';
+$value = 'First Topic';
+$topic = 'arn:aws:sns:us-east-1:111122223333:MyTopic';
+
+try {
+    $result = $SnSclient->setTopicAttributes([
+        'AttributeName' => $attribute,
+        'AttributeValue' => $value,
+        'TopicArn' => $topic,
+    ]);
+    var_dump($result);
+} catch (AwsException $e) {
+    // output error message if fails
+    error_log($e->getMessage());
+}
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
++  For API details, see [SetTopicAttributes](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/SetTopicAttributes) in *AWS SDK for PHP API Reference*\. 
+
+------
+#### [ Ruby ]
+
+**SDK for Ruby**  
+  
+
+```
+require 'aws-sdk-sns'  # v2: require 'aws-sdk'
+
+policy  = '{
+  "Version":"2008-10-17",
+  "Id":"__default_policy_ID",
+  "Statement":[{
+    "Sid":"__default_statement_ID",
+    "Effect":"Allow",
+    "Principal":{
+      "AWS":"*"
+    },
+    "Action":["SNS:Publish"],
+    "Resource":"' + MY_TOPIC_ARN + '",
+    "Condition":{
+      "ArnEquals":{
+        "AWS:SourceArn":"' + MY_RESOURCE_ARN + '"}
+     }
+  }]
+}'
+# Replace us-west-2 with the AWS Region you're using for Amazon SNS.
+sns = Aws::SNS::Resource.new(region: 'REGION')
+
+# Get topic by ARN
+topic = sns.topic()
+
+# Add policy to topic
+topic.set_attributes({
+  attribute_name: "POLICY_NAME",
+  attribute_value: policy
+})
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/ruby/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for Ruby Developer Guide](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/sns-example-enable-resource.html)\. 
++  For API details, see [SetTopicAttributes](https://docs.aws.amazon.com/goto/SdkForRubyV3/sns-2010-03-31/SetTopicAttributes) in *AWS SDK for Ruby API Reference*\. 
 
 ------

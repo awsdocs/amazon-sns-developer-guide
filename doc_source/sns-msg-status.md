@@ -98,7 +98,7 @@ setPlatformApplicationAttributesRequest.setPlatformApplicationArn("arn:aws:sns:u
 sns.setPlatformApplicationAttributes(setPlatformApplicationAttributesRequest);
 ```
 
-For more information about the SDK for Java, see [Getting Started with the AWS SDK for Java](https://aws.amazon.com/developers/getting-started/java/)\.
+For more information about the SDK for Java, see [Getting Started with the AWS SDK for Java](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/get-started.html)\.
 
 ## Platform response codes<a name="platform-returncodes"></a>
 

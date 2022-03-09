@@ -57,8 +57,8 @@ This message\-level setting overrides your account\-level default message type\.
      If you don't specify an origination number, Amazon SNS selects an origination number to use for the SMS text message, based on your AWS account configuration\.
 
 1. If you're sending SMS messages to recipients in India, expand **Country\-specific attributes**, and specify the following attributes:
-   + **Entity ID** – The entity ID or principal entity \(PE\) ID for sending SMS messages to recipients in India\. This ID is a unique string of 1–30 characters that the Telecom Regulatory Authority of India \(TRAI\) provides to identify the entity that you registered with the TRAI\.
-   + **Template ID** – The template ID for sending SMS messages to recipients in India\. This ID is a unique, TRAI\-provided string of 1–30 characters that identifies the template that you registered with the TRAI\. The template ID must be associated with the sender ID that you specified for the message\.
+   + **Entity ID** – The entity ID or principal entity \(PE\) ID for sending SMS messages to recipients in India\. This ID is a unique string of 1–50 characters that the Telecom Regulatory Authority of India \(TRAI\) provides to identify the entity that you registered with the TRAI\.
+   + **Template ID** – The template ID for sending SMS messages to recipients in India\. This ID is a unique, TRAI\-provided string of 1–50 characters that identifies the template that you registered with the TRAI\. The template ID must be associated with the sender ID that you specified for the message\.
 
    For more information on sending SMS messages to recipients in India, see [Special requirements for sending SMS messages to recipients in India](channels-sms-senderid-india.md)\.
 
@@ -72,7 +72,7 @@ To send SMS messages from an origination number, you can also choose **Originati
 To send an SMS message using one of the AWS SDKs, use the API operation in that SDK that corresponds to the `Publish` request in the Amazon SNS API\. With this request, you can send an SMS message directly to a phone number\. You can also use the `MessageAttributes` parameter to set values for the following attribute names:
 
 `AWS.SNS.SMS.SenderID`  
-A custom ID that contains 3–11 alphanumeric characters, including at least one letter and no spaces\. The sender ID appears as the message sender on the receiving device\. For example, you can use your business brand to help make the message source easier to recognize\.  
+A custom ID that contains 3–11 alphanumeric characters or hyphen \(\-\) characters, including at least one letter and no spaces\. The sender ID appears as the message sender on the receiving device\. For example, you can use your business brand to help make the message source easier to recognize\.  
 Support for sender IDs varies by country or region\. For example, messages delivered to US phone numbers don't display the sender ID\. For a list of the countries or regions that support sender IDs, see [Supported Regions and countries](sns-supported-regions-countries.md)\.  
 If you don't specify a sender ID, a [long code](channels-sms-originating-identities-long-codes.md) appears as the sender ID in supported countries or regions\. For countries or regions that require an alphabetic sender ID, *NOTICE* appears as the sender ID\.  
 This message\-level attribute overrides the account\-level attribute `DefaultSenderID`, which you can set using the `SetSMSAttributes` request\.
@@ -94,121 +94,208 @@ This message\-level attribute overrides the account\-level attribute `DefaultSMS
 
 `AWS.MM.SMS.EntityId`  
 This attribute is required only for sending SMS messages to recipients in India\.  
-This is your entity ID or principal entity \(PE\) ID for sending SMS messages to recipients in India\. This ID is a unique string of 1–30 characters that the Telecom Regulatory Authority of India \(TRAI\) provides to identify the entity that you registered with the TRAI\.
+This is your entity ID or principal entity \(PE\) ID for sending SMS messages to recipients in India\. This ID is a unique string of 1–50 characters that the Telecom Regulatory Authority of India \(TRAI\) provides to identify the entity that you registered with the TRAI\.
 
 `AWS.MM.SMS.TemplateId`  
 This attribute is required only for sending SMS messages to recipients in India\.  
-This is your template for sending SMS messages to recipients in India\. This ID is a unique, TRAI\-provided string of 1–30 characters that identifies the template that you registered with the TRAI\. The template ID must be associated with the sender ID that you specified for the message\.
-
-### \(Optional\) Setting message attributes<a name="sms_attributes_sdks"></a>
-
-The following examples show how to set message attributes using the Amazon SNS clients that the AWS SDKs provide\.
-
-**Note**  
-Remember to configure your AWS credentials before using the SDK\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\. Or, see [Using credentials](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html) in the *AWS SDK for Java Developer Guide*\.
-
-------
-#### [ AWS SDK for Java ]
-
-With the AWS SDK for Java, you set message attribute values by constructing a map that associates the attribute keys with `MessageAttributeValue` objects\. Each `MessageAttributeValue` object is initialized with an attribute value, and each object declares the data type for the value\. The following example sets the sender ID to "mySenderID", maximum price to "0\.50" USD, and SMS type to "Promotional":
-
-```
-Map<String, MessageAttributeValue> smsAttributes =
-        new HashMap<String, MessageAttributeValue>();
-smsAttributes.put("AWS.SNS.SMS.SenderID", new MessageAttributeValue()
-        .withStringValue("mySenderID") //The sender ID shown on the device.
-        .withDataType("String"));
-smsAttributes.put("AWS.SNS.SMS.MaxPrice", new MessageAttributeValue()
-        .withStringValue("0.50") //Sets the max price to 0.50 USD.
-        .withDataType("Number"));
-smsAttributes.put("AWS.SNS.SMS.SMSType", new MessageAttributeValue()
-        .withStringValue("Promotional") //Sets the type to promotional.
-        .withDataType("String"));
-```
-
-When you send an SMS message, you apply your attributes to the `PublishRequest` object\.
-
-------
-#### [ AWS SDK for \.NET ]
-
-With the AWS SDK for \.NET, you set message attribute values by constructing a map that associates the attribute keys with `MessageAttributeValue` objects\. Each `MessageAttributeValue` object is initialized with an attribute value, and each object declares the data type for the value\. The following example sets the sender ID to "mySenderID", maximum price to "0\.50" USD, and SMS type to "Promotional":
-
-```
-PublishRequest pubRequest = new PublishRequest();
-// add optional MessageAttributes...
-pubRequest.MessageAttributes["AWS.SNS.SMS.SenderID"] = 
-    new MessageAttributeValue{ StringValue = "mySenderId", DataType = "String"};
-pubRequest.MessageAttributes["AWS.SNS.SMS.MaxPrice"] =
-    new MessageAttributeValue { StringValue = "0.50", DataType = "Number" };
-pubRequest.MessageAttributes["AWS.SNS.SMS.SMSType"] =
-    new MessageAttributeValue { StringValue = "Promotional", DataType = "String" };
-```
-
-------
+This is your template for sending SMS messages to recipients in India\. This ID is a unique, TRAI\-provided string of 1–50 characters that identifies the template that you registered with the TRAI\. The template ID must be associated with the sender ID that you specified for the message\.
 
 ### Sending a message<a name="sms_publish_sdks"></a>
 
-The following examples show how to send a message using the Amazon SNS clients that the AWS SDKs provide\.
-
-**Note**  
-Remember to configure your AWS credentials before using the SDK\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\. Or, see [Using credentials](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html) in the *AWS SDK for Java Developer Guide*\.
+The following code examples show how to publish SMS messages using Amazon SNS\.
 
 ------
-#### [ AWS SDK for Java ]
+#### [ C\+\+ ]
 
-The following example uses the `publish` operation of the `AmazonSNSClient` class in the AWS SDK for Java\. This example sends a message directly to a phone number:
-
-```
-public static void main(String[] args) {
-        AmazonSNSClient snsClient = new AmazonSNSClient();
-        String message = "My SMS message";
-        String phoneNumber = "+1XXX5550100";
-        Map<String, MessageAttributeValue> smsAttributes = 
-                new HashMap<String, MessageAttributeValue>();
-        //<set SMS attributes>
-        sendSMSMessage(snsClient, message, phoneNumber, smsAttributes);
-}
-
-public static void sendSMSMessage(AmazonSNSClient snsClient, String message, 
-		String phoneNumber, Map<String, MessageAttributeValue> smsAttributes) {
-        PublishResult result = snsClient.publish(new PublishRequest()
-                        .withMessage(message)
-                        .withPhoneNumber(phoneNumber)
-                        .withMessageAttributes(smsAttributes));
-        System.out.println(result); // Prints the message ID.
-}
-```
-
-When you run this example, the console output window of your IDE displays the message ID:
+**SDK for C\+\+**  
+  
 
 ```
-{MessageId: 9b888f80-15f7-5c30-81a2-c4511a3f5229}
-```
-
-------
-#### [ AWS SDK for \.NET ]
-
-The following example uses the `Publish` operation of the `AmazonSimpleNotificationServiceClient` class in the AWS SDK for \.NET\. This example sends a message directly to a phone number:
-
-```
-static void Main(string[] args)
+/**
+ * Publish SMS: use Amazon SNS to send an SMS text message to a phone number.
+ * Note: This requires additional AWS configuration prior to running example. 
+ * 
+ *  NOTE: When you start using Amazon SNS to send SMS messages, your AWS account is in the SMS sandbox and you can only
+ *  use verified destination phone numbers. See https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html.
+ *  NOTE: If destination is in the US, you also have an additional restriction that you have use a dedicated
+ *  origination ID (phone number). You can request an origination number using Amazon Pinpoint for a fee.
+ *  See https://aws.amazon.com/blogs/compute/provisioning-and-using-10dlc-origination-numbers-with-amazon-sns/ 
+ *  for more information. 
+ * 
+ *  <phone_number_value> input parameter uses E.164 format. 
+ *  For example, in United States, this input value should be of the form: +12223334444
+ */
+int main(int argc, char ** argv)
 {
-    AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient(Amazon.RegionEndpoint.USWest2);
-    PublishRequest pubRequest = new PublishRequest();
-    pubRequest.Message = "My SMS message";
-    pubRequest.PhoneNumber = "+1XXX5550100";
-    // add optional MessageAttributes, for example:
-    //   pubRequest.MessageAttributes.Add("AWS.SNS.SMS.SenderID", new MessageAttributeValue
-    //      { StringValue = "SenderId", DataType = "String" });
-    PublishResponse pubResponse = snsClient.Publish(pubRequest);
-    Console.WriteLine(pubResponse.MessageId);
+  if (argc != 3)
+  {
+    std::cout << "Usage: publish_sms <message_value> <phone_number_value> " << std::endl;
+    return 1;
+  }
+
+  Aws::SDKOptions options;
+  Aws::InitAPI(options);
+  {
+    Aws::SNS::SNSClient sns;
+    Aws::String message = argv[1];
+    Aws::String phone_number = argv[2];
+
+    Aws::SNS::Model::PublishRequest psms_req;
+    psms_req.SetMessage(message);
+    psms_req.SetPhoneNumber(phone_number);
+
+    auto psms_out = sns.Publish(psms_req);
+
+    if (psms_out.IsSuccess())
+    {
+      std::cout << "Message published successfully " << psms_out.GetResult().GetMessageId()
+        << std::endl;
+    }
+    else
+    {
+      std::cout << "Error while publishing message " << psms_out.GetError().GetMessage()
+        << std::endl;
+    }
+  }
+
+  Aws::ShutdownAPI(options);
+  return 0;
 }
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
++  For API details, see [Publish](https://docs.aws.amazon.com/goto/SdkForCpp/sns-2010-03-31/Publish) in *AWS SDK for C\+\+ API Reference*\. 
 
-When you run this example, the message ID is displayed in the console output window of your IDE:
+------
+#### [ Java ]
+
+**SDK for Java 2\.x**  
+  
 
 ```
-9b888f80-15f7-5c30-81a2-c4511a3f5229
+    public static void pubTextSMS(SnsClient snsClient, String message, String phoneNumber) {
+        try {
+            PublishRequest request = PublishRequest.builder()
+                .message(message)
+                .phoneNumber(phoneNumber)
+                .build();
+
+            PublishResponse result = snsClient.publish(request);
+            System.out.println(result.messageId() + " Message sent. Status was " + result.sdkHttpResponse().statusCode());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
++  For API details, see [Publish](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/Publish) in *AWS SDK for Java 2\.x API Reference*\. 
+
+------
+#### [ Kotlin ]
+
+**SDK for Kotlin**  
+This is prerelease documentation for a feature in preview release\. It is subject to change\.
+  
+
+```
+suspend fun pubTextSMS(messageVal: String?, phoneNumberVal: String?) {
+
+        val request = PublishRequest {
+            message = messageVal
+            phoneNumber = phoneNumberVal
+        }
+
+        SnsClient { region = "us-east-1" }.use { snsClient ->
+          val result = snsClient.publish(request)
+          println("${result.messageId} message sent.")
+        }
+}
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/sns#code-examples)\. 
++  For API details, see [Publish](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
+
+------
+#### [ PHP ]
+
+**SDK for PHP**  
+  
+
+```
+require 'vendor/autoload.php';
+
+use Aws\Sns\SnsClient; 
+use Aws\Exception\AwsException;
+
+/**
+ * Sends a a text message (SMS message) directly to a phone number using Amazon SNS.
+ *
+ * This code expects that you have AWS credentials set up per:
+ * https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials.html
+ */
+ 
+$SnSclient = new SnsClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => '2010-03-31'
+]);
+
+$message = 'This message is sent from a Amazon SNS code sample.';
+$phone = '+1XXX5550100';
+
+try {
+    $result = $SnSclient->publish([
+        'Message' => $message,
+        'PhoneNumber' => $phone,
+    ]);
+    var_dump($result);
+} catch (AwsException $e) {
+    // output error message if fails
+    error_log($e->getMessage());
+}
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
++  For more information, see [AWS SDK for PHP Developer Guide](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/sns-examples-sending-sms.html#publish-to-a-text-message-sms-message)\. 
++  For API details, see [Publish](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/Publish) in *AWS SDK for PHP API Reference*\. 
+
+------
+#### [ Python ]
+
+**SDK for Python \(Boto3\)**  
+  
+
+```
+class SnsWrapper:
+    """Encapsulates Amazon SNS topic and subscription functions."""
+    def __init__(self, sns_resource):
+        """
+        :param sns_resource: A Boto3 Amazon SNS resource.
+        """
+        self.sns_resource = sns_resource
+
+    def publish_text_message(self, phone_number, message):
+        """
+        Publishes a text message directly to a phone number without need for a
+        subscription.
+
+        :param phone_number: The phone number that receives the message. This must be
+                             in E.164 format. For example, a United States phone
+                             number might be +12065550101.
+        :param message: The message to send.
+        :return: The ID of the message.
+        """
+        try:
+            response = self.sns_resource.meta.client.publish(
+                PhoneNumber=phone_number, Message=message)
+            message_id = response['MessageId']
+            logger.info("Published message to %s.", phone_number)
+        except ClientError:
+            logger.exception("Couldn't publish message to %s.", phone_number)
+            raise
+        else:
+            return message_id
+```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
++  For API details, see [Publish](https://docs.aws.amazon.com/goto/boto3/sns-2010-03-31/Publish) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------

@@ -4,6 +4,6 @@ Through [Amazon Kinesis Data Firehose delivery streams](sns-firehose-as-subscrib
 
 **Topics**
 + [Amazon S3 destinations](firehose-s3-destinations.md)
-+ [Amazon ES destinations](firehose-elasticsearch-destinations.md)
++ [OpenSearch Service destinations](firehose-elasticsearch-destinations.md)
 + [Amazon Redshift destinations](firehose-redshift-destinations.md)
 + [HTTP destinations](firehose-http-destinations.md)

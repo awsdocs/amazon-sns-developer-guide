@@ -7,7 +7,7 @@ This section describes the recommended approach for creating a platform endpoint
 **Topics**
 + [Create a platform endpoint](#mobile-platform-endpoint-create)
 + [Pseudo code](#mobile-platform-endpoint-pseudo-code)
-+ [AWS SDK examples](#mobile-platform-endpoint-sdk-examples)
++ [AWS SDK example](#mobile-platform-endpoint-sdk-examples)
 + [Troubleshooting](#mobile-platform-endpoint-problems)
 
 ## Create a platform endpoint<a name="mobile-platform-endpoint-create"></a>
@@ -57,61 +57,61 @@ This approach can be used any time the app wants to register or re\-register its
 + There are two cases where it may call the create platform endpoint action\. It may be called at the very beginning, where the app does not know its own platform endpoint ARN, as happens during a first\-time registration\. It is also called if the initial get endpoint attributes action call fails with a not\-found exception, as would happen if the application knows its endpoint ARN but it was deleted\.
 +  The get endpoint attributes action is called to verify the platform endpoint's state even if the platform endpoint was just created\. This happens when the platform endpoint already exists but is disabled\. In this case, the create platform endpoint action succeeds but does not enable the platform endpoint, so you must double\-check the state of the platform endpoint before returning success\.
 
-## AWS SDK examples<a name="mobile-platform-endpoint-sdk-examples"></a>
+## AWS SDK example<a name="mobile-platform-endpoint-sdk-examples"></a>
 
-The following examples show how to implement the previous pseudo code using the Amazon SNS clients that are provided by the AWS SDKs\.
+The following code shows how to implement the previous pseudo code using the Amazon SNS clients that are provided by the AWS SDKs\.
 
-**Note**  
-Remember to configure your AWS credentials before using the SDK\. For more information, see [Configuring AWS Credentials](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\. Or, see [Using credentials](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html) in the *AWS SDK for Java Developer Guide*\.
+To use an AWS SDK, you must configure it with your credentials\. For more information, see [The shared config and credentials files](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html) in the *AWS SDKs and Tools Reference Guide*\.
 
 ------
-#### [ AWS SDK for Java ]
+#### [ Java ]
 
-Here is an implementation of the previous pseudo code in Java:
+**SDK for Java 1\.x**  
+  
 
 ```
 class RegistrationExample {
- 
+
   AmazonSNSClient client = new AmazonSNSClient(); //provide credentials here
   String arnStorage = null;
- 
+
   public void registerWithSNS() {
- 
+
     String endpointArn = retrieveEndpointArn();
     String token = "Retrieved from the mobile operating system";
- 
+
     boolean updateNeeded = false;
     boolean createNeeded = (null == endpointArn);
- 
+
     if (createNeeded) {
       // No platform endpoint ARN is stored; need to call createEndpoint.
       endpointArn = createEndpoint();
       createNeeded = false;
     }
- 
+
     System.out.println("Retrieving platform endpoint data...");
     // Look up the platform endpoint and make sure the data in it is current, even if
     // it was just created.
     try {
-      GetEndpointAttributesRequest geaReq = 
+      GetEndpointAttributesRequest geaReq =
           new GetEndpointAttributesRequest()
         .withEndpointArn(endpointArn);
-      GetEndpointAttributesResult geaRes = 
+      GetEndpointAttributesResult geaRes =
         client.getEndpointAttributes(geaReq);
-   
+
       updateNeeded = !geaRes.getAttributes().get("Token").equals(token)
         || !geaRes.getAttributes().get("Enabled").equalsIgnoreCase("true");
-   
+
     } catch (NotFoundException nfe) {
       // We had a stored ARN, but the platform endpoint associated with it
       // disappeared. Recreate it.
         createNeeded = true;
     }
- 
+
     if (createNeeded) {
       createEndpoint(token);
     }
- 
+
     System.out.println("updateNeeded = " + updateNeeded);
 
     if (updateNeeded) {
@@ -121,23 +121,23 @@ class RegistrationExample {
       Map attribs = new HashMap();
       attribs.put("Token", token);
       attribs.put("Enabled", "true");
-      SetEndpointAttributesRequest saeReq = 
+      SetEndpointAttributesRequest saeReq =
           new SetEndpointAttributesRequest()
         .withEndpointArn(endpointArn)
         .withAttributes(attribs);
       client.setEndpointAttributes(saeReq);
     }
   }
- 
+
   /**
   * @return never null
   * */
   private String createEndpoint(String token) {
- 
+
     String endpointArn = null;
     try {
       System.out.println("Creating platform endpoint with token " + token);
-      CreatePlatformEndpointRequest cpeReq = 
+      CreatePlatformEndpointRequest cpeReq =
           new CreatePlatformEndpointRequest()
         .withPlatformApplicationArn(applicationArn)
         .withToken(token);
@@ -152,20 +152,19 @@ class RegistrationExample {
                  "with the same [Tt]oken.*");
       Matcher m = p.matcher(message);
       if (m.matches()) {
-        // The platform endpoint already exists for this token, but with
-        // additional custom data that
-        // createEndpoint doesn't want to overwrite. Just use the
+        // The platform endpoint already exists for this token, but with additional
+        // custom data that createEndpoint doesn't want to overwrite. Use the
         // existing platform endpoint.
         endpointArn = m.group(1);
       } else {
-        // Rethrow the exception, the input is actually bad.
+        // Rethrow the exception, because the input is actually bad.
         throw ipe;
       }
     }
     storeEndpointArn(endpointArn);
     return endpointArn;
   }
- 
+
   /**
   * @return the ARN the app was registered under previously, or null if no
   *         platform endpoint ARN is stored.
@@ -175,7 +174,7 @@ class RegistrationExample {
     // or return null if null is stored.
     return arnStorage;
   }
- 
+
   /**
   * Stores the platform endpoint ARN in permanent storage for lookup next time.
   * */
@@ -185,132 +184,11 @@ class RegistrationExample {
   }
 }
 ```
-
-An interesting thing to note about this implementation is how the `InvalidParameterException` is handled in the `createEndpoint` method\. Amazon SNS rejects create platform endpoint requests when an existing platform endpoint has the same device token and a non\-null `CustomUserData` field, because the alternative is to overwrite \(and therefore lose\) the `CustomUserData`\. The `createEndpoint` method in the preceding code captures the `InvalidParameterException` thrown by Amazon SNS, checks whether it was thrown for this particular reason, and if so, extracts the ARN of the existing platform endpoint from the exception\. This succeeds, since a platform endpoint with the correct device token exists\.
-
- For more information, see [Mobile push API actions](mobile-push-api.md)\.
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
 
 ------
-#### [ AWS SDK for \.NET ]
-
-Here is an implementation of the previous pseudo code in C\#:
-
-```
-class RegistrationExample
-{
-    private AmazonSimpleNotificationServiceClient client = new AmazonSimpleNotificationServiceClient();
-    private String arnStorage = null;
-
-    public void RegisterWithSNS()
-    {
-        String endpointArn = EndpointArn;
-        String token = "Retrieved from the mobile operating system";
-        String applicationArn = "Set this based on your application";
-
-        bool updateNeeded = false;
-        bool createNeeded = (null == endpointArn);
-
-        if (createNeeded)
-        {
-            // No platform endpoint ARN is stored; need to call createEndpoint.
-            EndpointArn = CreateEndpoint(token, applicationArn);
-            createNeeded = false;
-        }
-
-        Console.WriteLine("Retrieving platform endpoint data...");
-        // Look up the platform endpoint and make sure the data in it is current, even if
-        // it was just created.
-        try
-        {
-            GetEndpointAttributesRequest geaReq = new GetEndpointAttributesRequest();
-            geaReq.EndpointArn = EndpointArn;
-            GetEndpointAttributesResponse geaRes = client.GetEndpointAttributes(geaReq);
-            updateNeeded = !(geaRes.Attributes["Token"] == token) || !(geaRes.Attributes["Enabled"] == "true");
-        }
-        catch (NotFoundException)
-        {
-            // We had a stored ARN, but the platform endpoint associated with it
-            // disappeared. Recreate it.
-            createNeeded = true;
-        }
-
-        if (createNeeded)
-        {
-            CreateEndpoint(token, applicationArn);
-        }
-
-        Console.WriteLine("updateNeeded = " + updateNeeded);
-  
-        if (updateNeeded)
-        {
-            // The platform endpoint is out of sync with the current data;
-            // update the token and enable it.
-            Console.WriteLine("Updating platform endpoint " + endpointArn);
-            Dictionary<String,String> attribs = new Dictionary<String,String>();
-            attribs["Token"] = token;
-            attribs["Enabled"] = "true";
-            SetEndpointAttributesRequest saeReq = new SetEndpointAttributesRequest();
-            saeReq.EndpointArn = EndpointArn;
-            saeReq.Attributes = attribs;
-            client.SetEndpointAttributes(saeReq);
-        }
-    }
-
-    private String CreateEndpoint(String token, String applicationArn)
-    {
-        String endpointArn = null;
-
-        try
-        {
-            Console.WriteLine("Creating platform endpoint with token " + token);
-            CreatePlatformEndpointRequest cpeReq = new CreatePlatformEndpointRequest();
-            cpeReq.PlatformApplicationArn = applicationArn;
-            cpeReq.Token = token;
-            CreatePlatformEndpointResponse cpeRes = client.CreatePlatformEndpoint(cpeReq);
-            endpointArn = cpeRes.EndpointArn;
-        }
-        catch (InvalidParameterException ipe)
-        {
-            String message = ipe.Message;
-            Console.WriteLine("Exception message: " + message);
-            Regex rgx = new Regex(".*Endpoint (arn:aws:sns[^ ]+) already exists with the same [Tt]oken.*", 
-                RegexOptions.IgnoreCase);
-            MatchCollection m = rgx.Matches(message);          
-            if (m.Count > 0 && m[0].Groups.Count > 1)
-            {
-                // The platform endpoint already exists for this token, but with
-                // additional custom data that createEndpoint doesn't want to overwrite.
-                // Just use the existing platform endpoint.
-                endpointArn = m[0].Groups[1].Value;
-            }
-            else
-            {
-                // Rethrow the exception, the input is actually bad.
-                throw ipe;
-            }
-        }
-        EndpointArn = endpointArn;
-        return endpointArn;
-    }
-
-    // Get/Set arn
-    public String EndpointArn
-    {
-        get
-        {
-            return arnStorage;
-        }
-        set
-        {
-            arnStorage = value;
-        }
-    }
-}
-```
 
  For more information, see [Mobile push API actions](mobile-push-api.md)\.
-
-------
 
 ## Troubleshooting<a name="mobile-platform-endpoint-problems"></a>
 

@@ -5,19 +5,23 @@ Before you can send SMS messages to recipients in India, you must register your 
 + Your organization's Tax Deduction Account Number \(TAN\)\.
 + Your organization's Goods and Services Tax Identification Number \(GSTIN\)\.
 + Your organization's Corporate Identity Number \(CIN\)\.
-+ A letter of authorization that gives you the authority to register your organization with Vilpower\. The Vilpower website includes a template that you can download and modify to fit your needs\.
++ A letter of authorization that gives you the authority to register your organization.
 
-Vilpower charges a fee for completing the registration process\. Currently, this fee is ₹5900\.
+You can use the following Distributed Ledger Technology \(DLT\)\ registration sites to register your organization with the TRAI \(fees may apply\)\. The registration process varies by site. Contact their respective support teams for assistance.
++ BSNL DLT (https://www.ucc-bsnl.co.in/)\
++ Jio DLT (https://trueconnect.jio.com) – Free Registration\.
++ Smart Enterprise Solutions (https://smartping.live/entity/register-with) – Free Registration\.
++ Vilpower (https://www.vilpower.in/)\
 
 **To register your organization with the TRAI**
-
-1. In a web browser, go to the Vilpower website at [https://www\.vilpower\.in](https://www.vilpower.in)\.
-
-1. Choose **Signup** to create another account\. During the registration process, do the following:
+The following details how to register your organization with the TRAI using Vilpower\.
+1. In a web browser, go to the Vilpower website at (https://www.vilpower.in/)\.
+2. Choose **Signup** to create another account\. During the registration process, do the following:
    + For the type of entity to register as, choose **As Enterprise**\.
    + For Telemarketer Name, use **Infobip Private Limited \- ALL**\. When prompted, start typing **Infobip** and then choose **Infobip Private Limited – ALL** from the dropdown list\.
    +  For **Enter Telemarketer ID**, enter **110200001152**\.
    + When prompted to provide your Header IDs, enter the sender IDs that you want to register\.
    + When prompted to provide your Content Templates, enter the message content that you plan to send to your recipients\. Include a template for every message that you plan to send\. 
+
 **Note**  
-The Vilpower website is not maintained by Amazon Web Services\. Steps on their website are subject to change by Vilpower\.
+DLT registration provider websites are not maintained by Amazon Web Services. Steps on their websites are subject to change\.

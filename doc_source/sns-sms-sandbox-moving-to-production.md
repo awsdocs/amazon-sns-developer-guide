@@ -10,13 +10,11 @@ Moving your AWS account out of the [SMS sandbox](sns-sms-sandbox.md) requires th
 
    For instructions on publishing SMS messages to one or more phone numbers, see [Publishing to a mobile phone](sms_publish-to-phone.md)\.
 
-1. Open the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
+1. On the Amazon SNS console's **Mobile text messaging \(SMS\)** page, under **Account information**, choose **Exit SMS sandbox**\.
 
-1. Choose **Create case**\.
+   The [AWS Support Center](https://console.aws.amazon.com/support/home#/) opens and creates a case\. The **Service limit increase** option is already selected and the **Limit type** is set to **SNS Text Messaging**\.
 
-1. On the **Create case** page, choose **Service limit increase**\.
-
-1. Under **Case details**, for **Limit type**, choose **SNS Text Messaging**, and then provide the following information:
+1. Under **Case details**, provide the following information:
    + A link to the site or the name of the app that you plan to send SMS messages from
    + The type of messages that you plan to send: one\-time passwords, promotional, or transactional
    + The AWS Region that you plan to send SMS messages from

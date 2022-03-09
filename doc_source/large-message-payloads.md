@@ -1,18 +1,18 @@
 # Publishing large messages with Amazon SNS and Amazon S3<a name="large-message-payloads"></a>
 
-To publish large Amazon SNS messages, you can use the [The Amazon SNS Extended Client Library for Java](https://github.com/awslabs/amazon-sns-java-extended-client-lib/)\. This library is useful for messages that are larger than the current maximum of 256 KB, up to maximum of 2 GB\. The libary saves actual payload to an Amazon S3 bucket and publishes the reference of the stored Amazon S3 object to the topic\. Subscribed Amazon SQS queues can use the [Amazon SQS Extended Client Library for Java](https://github.com/awslabs/amazon-sqs-java-extended-client-lib) to de\-reference and retrieve payloads from Amazon S3\. Other endpoints, such as Lambda, can use the [Payload Offloading Java Common Library for AWS](https://github.com/awslabs/payload-offloading-java-common-lib-for-aws) to de\-reference and retrieve the payload\.
+To publish large Amazon SNS messages, you can use the [The Amazon SNS Extended Client Library for Java](https://github.com/awslabs/amazon-sns-java-extended-client-lib/)\. This library is useful for messages that are larger than the current maximum of 256 KB, up to maximum of 2 GB\. The library saves actual payload to an Amazon S3 bucket and publishes the reference of the stored Amazon S3 object to the topic\. Subscribed Amazon SQS queues can use the [Amazon SQS Extended Client Library for Java](https://github.com/awslabs/amazon-sqs-java-extended-client-lib) to de\-reference and retrieve payloads from Amazon S3\. Other endpoints, such as Lambda, can use the [Payload Offloading Java Common Library for AWS](https://github.com/awslabs/payload-offloading-java-common-lib-for-aws) to de\-reference and retrieve the payload\.
 
 ## Prerequisites<a name="prereqs-sns-extended-client-library"></a>
 
 The following are the prerequisites for using the Amazon SNS Extended Client Library for Java:
 + An AWS SDK\.
 
-  The example on this page uses the AWS Java SDK\. To install and set up the SDK, see [Set up the AWS SDK for Java](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-install.html) in the *AWS SDK for Java Developer Guide*\.
+  The example on this page uses the AWS Java SDK\. To install and set up the SDK, see [Set up the AWS SDK for Java](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup-install.html) in the *AWS SDK for Java Developer Guide*\.
 + An AWS account with the proper credentials\. 
 
   To create an AWS account, navigate to the [AWS home page](https://aws.amazon.com/), and then choose **Create an AWS Account**\. Follow the instructions\.
 
-  For information about credentials, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html) in the *AWS SDK for Java Developer Guide*\.
+  For information about credentials, see [Set up AWS Credentials and Region for Development](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup-credentials.html) in the *AWS SDK for Java Developer Guide*\.
 + Java 8 or better\. 
 + [The Amazon SNS Extended Client Library for Java](https://github.com/awslabs/amazon-sns-java-extended-client-lib/) \(also available from [Maven](https://maven.apache.org/)\)\. 
 
@@ -37,6 +37,9 @@ The following shows an example of how to do the following:
 + Publish a test message\.
 
 The message payload is stored in Amazon S3 and the reference to it is published\. The Amazon SQS Extended Client is used to receive the message\.
+
+**SDK for Java 1\.x**  
+To publish a large message, use the Amazon SNS Extended Client Library for Java\. The message that you send references an Amazon S3 object containing the actual message content\.  
 
 ```
 import com.amazon.sqs.javamessaging.AmazonSQSExtendedClient;
@@ -120,6 +123,7 @@ public class Example {
     }
 }
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
 
 ## Other endpoint protocols<a name="large-payloads-other-protocols"></a>
 

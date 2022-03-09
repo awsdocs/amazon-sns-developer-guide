@@ -176,11 +176,11 @@ The following Java code excerpt shows how to initialize and use the example `SNS
 
 ```
 // Initialize the example filter policy class.
-final SNSMessageFilterPolicy fp = new SNSMessageFilterPolicy();
+final SNSMessageFilterPolicy filterPolicy = new SNSMessageFilterPolicy();
 
 // Add a filter policy attribute with a single value.
-fp.addAttribute("store", "example_corp");
-fp.addAttribute("event", "order_placed");
+filterPolicy.addAttribute("store", "example_corp");
+filterPolicy.addAttribute("event", "order_placed");
 
 // Add a prefix attribute.
 filterPolicy.addAttributePrefix("customer_interests", "bas");
@@ -189,11 +189,11 @@ filterPolicy.addAttributePrefix("customer_interests", "bas");
 filterPolicy.addAttributeAnythingBut("customer_interests", "baseball");
 
 // Add a filter policy attribute with a list of values.
-final ArrayList<String> attributeValues = new ArrayList<>();
+final List<String> attributeValues = new ArrayList<>();
 attributeValues.add("rugby");
 attributeValues.add("soccer");
 attributeValues.add("hockey");
-fp.addAttribute("customer_interests", attributeValues);
+filterPolicy.addAttribute("customer_interests", attributeValues);
 
 // Add a numeric attribute.
 filterPolicy.addAttribute("price_usd", "=", 0);
@@ -202,5 +202,5 @@ filterPolicy.addAttribute("price_usd", "=", 0);
 filterPolicy.addAttributeRange("price_usd", ">", 0, "<=", 100);
 
 // Apply the filter policy attributes to an Amazon SNS subscription.
-fp.apply(snsClient, subscriptionArn);
+filterPolicy.apply(snsClient, subscriptionArn);
 ```

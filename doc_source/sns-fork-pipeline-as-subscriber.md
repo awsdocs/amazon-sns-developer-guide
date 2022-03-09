@@ -1,5 +1,10 @@
 # Fanout to AWS Event Fork Pipelines<a name="sns-fork-pipeline-as-subscriber"></a>
 
+
+|  | 
+| --- |
+| For event archiving and analytics, Amazon SNS now recommends using its native integration with Amazon Kinesis Data Firehose\. You can subscribe Kinesis Data Firehose delivery streams to SNS topics, which allows you to send notifications to archiving and analytics endpoints such as Amazon Simple Storage Service \(Amazon S3\) buckets, Amazon Redshift tables, Amazon OpenSearch Service \(OpenSearch Service\), and more\. Using Amazon SNS with Kinesis Data Firehose delivery streams is a fully\-managed and codeless solution that doesn't require you to use AWS Lambda functions\. For more information, see [Fanout to Kinesis Data Firehose delivery streams](sns-firehose-as-subscriber.md)\. | 
+
 You can use Amazon SNS to build event\-driven applications which use subscriber services to perform work automatically in response to events triggered by publisher services\. This architectural pattern can make services more reusable, interoperable, and scalable\. However, it can be labor\-intensive to fork the processing of events into pipelines that address common event handling requirements, such as event storage, backup, search, analytics, and replay\.
 
 To accelerate the development of your event\-driven applications, you can subscribe event\-handling pipelines—powered by AWS Event Fork Pipelines—to Amazon SNS topics\. AWS Event Fork Pipelines is a suite of open\-source [nested applications](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template-nested-applications.html), based on the [AWS Serverless Application Model](https://aws.amazon.com/serverless/sam/) \(AWS SAM\), which you can deploy directly from the [AWS Event Fork Pipelines suite](https://serverlessrepo.aws.amazon.com/applications?query=aws-event-fork-pipelines) \(choose **Show apps that create custom IAM roles or resource policies**\) into your AWS account\.
@@ -44,13 +49,13 @@ To fine\-tune the behavior of your Firehose stream, you can configure it to buff
 
 The following diagram shows the [Event Search and Analytics Pipeline](https://serverlessrepo.aws.amazon.com/applications/arn:aws:serverlessrepo:us-east-1:077246666028:applications~fork-event-search-analytics-pipeline)\. You can subscribe this pipeline to your Amazon SNS topic to index the events that flow through your system in a search domain and then run analytics on them\.
 
-This pipeline is comprised of an Amazon SQS queue that buffers the events delivered by the Amazon SNS topic, an AWS Lambda function that polls events from the queue and pushes them into an Amazon Kinesis Data Firehose stream, an Amazon Elasticsearch Service domain that indexes the events loaded by the Firehose stream, and an Amazon S3 bucket that stores the dead\-letter events that can’t be indexed in the search domain\.
+This pipeline is comprised of an Amazon SQS queue that buffers the events delivered by the Amazon SNS topic, an AWS Lambda function that polls events from the queue and pushes them into an Amazon Kinesis Data Firehose stream, an Amazon OpenSearch Service domain that indexes the events loaded by the Firehose stream, and an Amazon S3 bucket that stores the dead\-letter events that can’t be indexed in the search domain\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sns/latest/dg/images/sns-fork-event-search-and-analytics-pipeline.png)
 
 To fine\-tune your Firehose stream in terms of event buffering, transformation, and compression, you can configure this pipeline\.
 
-You can also configure whether the pipeline should reuse an existing Elasticsearch domain in your AWS account or create a new one for you\. As events are indexed in the search domain, you can use Kibana to run analytics on your events and update visual dashboards in real\-time\. 
+You can also configure whether the pipeline should reuse an existing OpenSearch domain in your AWS account or create a new one for you\. As events are indexed in the search domain, you can use Kibana to run analytics on your events and update visual dashboards in real\-time\. 
 
 ### The event replay pipeline<a name="sns-fork-event-replay-pipeline"></a>
 

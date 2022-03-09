@@ -30,7 +30,7 @@
 
 ## Step 3: To verify the execution of the event search and analytics pipeline<a name="verify-execution-event-search-analytics-pipeline"></a>
 
-1. Sign in to the [Amazon Elasticsearch Service console](https://console.aws.amazon.com/es/)\.
+1. Sign in to the [Amazon OpenSearch Service console](https://console.aws.amazon.com/es/)\.
 
 1. On the navigation panel, under **My domains**, choose the domain prefixed with `serverl-analyt`\.
 

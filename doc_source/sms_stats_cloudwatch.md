@@ -62,6 +62,7 @@ The delivery status log for a successful SMS delivery will resemble the followin
     "delivery": {
         "phoneCarrier": "My Phone Carrier",
         "mnc": 270,
+        "numberOfMessageParts": 1,
         "destination": "+1XXX5550100",
         "priceInUSD": 0.00645,
         "smsType": "Transactional",
@@ -86,6 +87,7 @@ The delivery status log for a failed SMS delivery will resemble the following ex
     },
     "delivery": {
         "mnc": 0,
+        "numberOfMessageParts": 1,
         "destination": "+1XXX5550100",
         "priceInUSD": 0.00645,
         "smsType": "Transactional",

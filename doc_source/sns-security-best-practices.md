@@ -16,6 +16,7 @@ The following are preventative security best practices for Amazon SNS\.
 + [Implement server\-side encryption](#implement-server-side-encryption)
 + [Enforce encryption of data in transit](#enforce-encryption-data-in-transit)
 + [Consider using VPC endpoints to access Amazon SNS](#consider-using-vpc-endpoints-access-sns)
++ [Ensure subscriptions are not configured to deliver to raw http endpoints](#http-subscription-configuration)
 
 ### Ensure topics aren't publicly accessible<a name="ensure-topics-not-publicly-accessible"></a>
 
@@ -92,3 +93,7 @@ Amazon SNS VPC endpoints provide two ways to control access to your messages:
 + You can control which VPCs or VPC endpoints have access to your topic using a topic policy\.
 
 For more information, see [Creating the endpoint](sns-vpc-create-endpoint.md#sns-vpc-endpoint-create) and [Creating an Amazon VPC endpoint policy for Amazon SNS](sns-vpc-endpoint-policy.md)\.
+
+### Ensure subscriptions are not configured to deliver to raw http endpoints<a name="http-subscription-configuration"></a>
+
+Avoid configuring subscriptions to deliver to a raw http endpoints\. Always have subscriptions delivering to an endpoint domain name\. For example, a subscription configured to deliver to an endpoint, `http://1.2.3.4/my-path`, should be changed to `http://my.domain.name/my-path`\.

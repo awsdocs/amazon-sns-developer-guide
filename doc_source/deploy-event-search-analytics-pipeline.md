@@ -1,10 +1,15 @@
 # To deploy and subscribe the event search and analytics pipeline<a name="deploy-event-search-analytics-pipeline"></a>
 
+
+|  | 
+| --- |
+| For event archiving and analytics, Amazon SNS now recommends using its native integration with Amazon Kinesis Data Firehose\. You can subscribe Kinesis Data Firehose delivery streams to SNS topics, which allows you to send notifications to archiving and analytics endpoints such as Amazon Simple Storage Service \(Amazon S3\) buckets, Amazon Redshift tables, Amazon OpenSearch Service \(OpenSearch Service\), and more\. Using Amazon SNS with Kinesis Data Firehose delivery streams is a fully\-managed and codeless solution that doesn't require you to use AWS Lambda functions\. For more information, see [Fanout to Kinesis Data Firehose delivery streams](sns-firehose-as-subscriber.md)\. | 
+
 This page shows how to deploy the [Event Search and Analytics Pipeline](sns-fork-pipeline-as-subscriber.md#sns-fork-event-search-and-analytics-pipeline) and subscribe it to an Amazon SNS topic\. This process automatically turns the AWS SAM template associated with the pipeline into an AWS CloudFormation stack, and then deploys the stack into your AWS account\. This process also creates and configures the set of resources that comprise the Event Search and Analytics Pipeline, including the following:
 + Amazon SQS queue
 + Lambda function
 + Kinesis Data Firehose delivery stream
-+ Amazon Elasticsearch Service domain
++ Amazon OpenSearch Service domain
 + Amazon S3 dead\-letter bucket
 
 For more information about configuring a stream with an index as a destination, see `[ElasticsearchDestinationConfiguration](https://docs.aws.amazon.com/firehose/latest/APIReference/API_ElasticsearchDestinationConfiguration.html)` in the *Amazon Kinesis Data Firehose API Reference*\.
@@ -37,11 +42,11 @@ For each deployment, the application name must be unique\. If you reuse an appli
       + `INFO` \(default\)
       + `WARNING`
 
-   1. \(Optional\) For **SearchDomainArn**, enter the ARN of the Amazon ES domain, a cluster that configures the needed compute and storage functionality\. If you don't enter a value, a new domain is created with the default configuration\.
+   1. \(Optional\) For **SearchDomainArn**, enter the ARN of the OpenSearch Service domain, a cluster that configures the needed compute and storage functionality\. If you don't enter a value, a new domain is created with the default configuration\.
 
    1. For **TopicArn**, enter the ARN of the Amazon SNS topic to which this instance of the fork pipeline is to be subscribed\.
 
-   1. For **SearchIndexName**, enter the name of the Amazon ES index for event search and analytics\.
+   1. For **SearchIndexName**, enter the name of the OpenSearch Service index for event search and analytics\.
 **Note**  
 The following quotas apply to index names:  
 Can't include uppercase letters
@@ -50,9 +55,9 @@ Can't begin with the following characters: `- + _`
 Can't be the following: `. ..`
 Can't be longer than 80 characters
 Can't be longer than 255 bytes
-Can't contain a colon \(from Amazon ES 7\.0\)
+Can't contain a colon \(from OpenSearch Service 7\.0\)
 
-   1. \(Optional\) Enter one of the following **SearchIndexRotationPeriod** settings for the rotation period of the Amazon ES index:
+   1. \(Optional\) Enter one of the following **SearchIndexRotationPeriod** settings for the rotation period of the OpenSearch Service index:
       + `NoRotation` \(default\)
       + `OneDay`
       + `OneHour`
@@ -61,10 +66,10 @@ Can't contain a colon \(from Amazon ES 7\.0\)
 
       Index rotation appends a timestamp to the index name, facilitating the expiration of old data\. 
 
-   1. For **SearchTypeName**, enter the name of the Amazon ES type for organizing the events in an index\.
+   1. For **SearchTypeName**, enter the name of the OpenSearch Service type for organizing the events in an index\.
 **Note**  
-Amazon ES type names can contain any character \(except null bytes\) but can't begin with `_`\.
-For Amazon ES 6\.x, there can be only one type per index\. If you specify a new type for an existing index that already has another type, Kinesis Data Firehose returns a runtime error\.
+OpenSearch Service type names can contain any character \(except null bytes\) but can't begin with `_`\.
+For OpenSearch Service 6\.x, there can be only one type per index\. If you specify a new type for an existing index that already has another type, Kinesis Data Firehose returns a runtime error\.
 
    1. \(Optional\) For **StreamBufferingIntervalInSeconds** and **StreamBufferingSizeInMBs**, enter the values for configuring the buffering of incoming events\. If you don't enter any values, 300 seconds and 5 MB are used\.
 
@@ -76,9 +81,9 @@ For Amazon ES 6\.x, there can be only one type per index\. If you specify a new 
 
    1. \(Optional\) For **StreamPrefix**, enter the string prefix to name files stored in the S3 dead\-letter bucket\. If you don't enter a value, no prefix is used\.
 
-   1. \(Optional\) For **StreamRetryDurationInSecons**, enter the retry duration for cases when Kinesis Data Firehose can't index events in the Amazon ES index\. If you don't enter a value, then 300 seconds is used\.
+   1. \(Optional\) For **StreamRetryDurationInSecons**, enter the retry duration for cases when Kinesis Data Firehose can't index events in the OpenSearch Service index\. If you don't enter a value, then 300 seconds is used\.
 
-   1. \(Optional\) For **SubscriptionFilterPolicy**, enter the Amazon SNS subscription filter policy, in JSON format, to be used for filtering incoming events\. The filter policy decides which events are indexed in the Amazon ES index\. If you don't enter a value, no filtering is used \(all events are indexed\)\.
+   1. \(Optional\) For **SubscriptionFilterPolicy**, enter the Amazon SNS subscription filter policy, in JSON format, to be used for filtering incoming events\. The filter policy decides which events are indexed in the OpenSearch Service index\. If you don't enter a value, no filtering is used \(all events are indexed\)\.
 
    1. Choose **I acknowledge that this app creates custom IAM roles, resource policies and deploys nested applications\.** and then choose **Deploy**\.
 
@@ -88,4 +93,4 @@ In the **Resources** section, AWS CloudFormation begins to create the stack and 
 
 When the deployment is complete, Lambda displays the **Your application has been deployed** status\.
 
-Messages published to your Amazon SNS topic are indexed in the Amazon ES index provisioned by the Event Search and Analytics pipeline automatically\. If the pipeline can't index an event, it stores it in a S3 dead\-letter bucket\.
+Messages published to your Amazon SNS topic are indexed in the OpenSearch Service index provisioned by the Event Search and Analytics pipeline automatically\. If the pipeline can't index an event, it stores it in a S3 dead\-letter bucket\.
