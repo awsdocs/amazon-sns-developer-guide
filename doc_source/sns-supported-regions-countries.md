@@ -9,7 +9,12 @@ Currently, Amazon SNS supports SMS messaging in the following AWS Regions:
 | US East \(N\. Virginia\) | us\-east\-1 | sns\.us\-east\-1\.amazonaws\.com | HTTP and HTTPS | 
 | US West \(N\. California\) | us\-west\-1 | sns\.us\-west\-1\.amazonaws\.com | HTTP and HTTPS | 
 | US West \(Oregon\) | us\-west\-2 | sns\.us\-west\-2\.amazonaws\.com | HTTP and HTTPS | 
+| Africa \(Cape Town\) | af\-south\-1 | sns\.af\-south\-1\.amazonaws\.com | HTTP and HTTPS | 
+| Asia Pacific \(Hong Kong\) | ap\-east\-1 | sns\.ap\-east\-1\.amazonaws\.com | HTTP and HTTPS | 
+| Asia Pacific \(Jakarta\) | ap\-southeast\-3 | sns\.ap\-southeast\-3\.amazonaws\.com | HTTP and HTTPS | 
 | Asia Pacific \(Mumbai\) | ap\-south\-1 | sns\.ap\-south\-1\.amazonaws\.com | HTTP and HTTPS | 
+| Asia Pacific \(Osaka\) | ap\-northeast\-3 | sns\.ap\-northeast\-3\.amazonaws\.com | HTTP and HTTPS | 
+| Asia Pacific \(Seoul\) | ap\-northeast\-2 | sns\.ap\-northeast\-2\.amazonaws\.com | HTTP and HTTPS | 
 | Asia Pacific \(Singapore\) | ap\-southeast\-1 | sns\.ap\-southeast\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Asia Pacific \(Sydney\) | ap\-southeast\-2 | sns\.ap\-southeast\-2\.amazonaws\.com | HTTP and HTTPS | 
 | Asia Pacific \(Tokyo\) | ap\-northeast\-1 | sns\.ap\-northeast\-1\.amazonaws\.com | HTTP and HTTPS | 
@@ -17,10 +22,12 @@ Currently, Amazon SNS supports SMS messaging in the following AWS Regions:
 | Europe \(Frankfurt\) | eu\-central\-1 | sns\.eu\-central\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Europe \(Ireland\) | eu\-west\-1 | sns\.eu\-west\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Europe \(London\) | eu\-west\-2 | sns\.eu\-west\-2\.amazonaws\.com | HTTP and HTTPS | 
+| Europe \(Milan\) | eu\-south\-1 | sns\.eu\-south\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Europe \(Paris\) | eu\-west\-3 | sns\.eu\-west\-3\.amazonaws\.com | HTTP and HTTPS | 
 | Europe \(Stockholm\) | eu\-north\-1 | sns\.eu\-north\-1\.amazonaws\.com | HTTP and HTTPS | 
 | Middle East \(Bahrain\) | me\-south\-1 | sns\.me\-south\-1\.amazonaws\.com | HTTP and HTTPS | 
 | South America \(São Paulo\) | sa\-east\-1 | sns\.sa\-east\-1\.amazonaws\.com | HTTP and HTTPS | 
+| AWS GovCloud \(US\-East\) | us\-gov\-east\-1 | sns\.us\-gov\-east\-1\.amazonaws\.com | HTTP and HTTPS | 
 | AWS GovCloud \(US\-West\) | us\-gov\-west\-1 | sns\.us\-gov\-west\-1\.amazonaws\.com | HTTP and HTTPS | 
 
 You can use Amazon SNS to send SMS messages to the following countries and regions:

@@ -12,6 +12,7 @@ Amazon SNS defines a *delivery policy* for each delivery protocol\. The delivery
 **Note**  
 With the exception of HTTP/S, you can't change Amazon SNS\-defined delivery policies\. Only HTTP/S supports custom policies\. See [Creating an HTTP/S delivery policy](#creating-delivery-policy)\.
 Amazon SNS applies jittering to delivery retries\. For more information, see the [Exponential Backoff and Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) post on the *AWS Architecture Blog*\.
+**The total policy retry time for an HTTP/S endpoint cannot be greater than 3,600 seconds\. This is a hard limit and cannot be increased**\.
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html)
 
@@ -86,8 +87,6 @@ The delivery policy is composed of a retry policy and a throttle policy\. In tot
 | numMaxDelayRetries | The number of retries in the post\-backoff phase, with the maximum delay between them\. | 0 or greater**Default:** 0 | 
 | backoffFunction | The model for backoff between retries\.  |  One of four options: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html) **Default:** linear  | 
 | maxReceivesPerSecond  | The maximum number of deliveries per second, per subscription\. | 1 or greater**Default:** No throttling | 
-
-Please note that the total policy retry time for a HTTP/S endpoint cannot be greater than 3600 seconds. This is a hard limit and cannot be increased.
 
 Amazon SNS uses the following formula to calculate the number of retries in the backoff phase:
 
