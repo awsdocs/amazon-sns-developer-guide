@@ -26,12 +26,12 @@ AWS services such as IAM and Amazon SNS use a distributed computing model called
 To apply a filter policy with the AWS Command Line Interface \(AWS CLI\), use the [https://docs.aws.amazon.com/cli/latest/reference/sns/set-subscription-attributes.html](https://docs.aws.amazon.com/cli/latest/reference/sns/set-subscription-attributes.html) command, as shown in the following example: 
 
 ```
-$ aws sns set-subscription-attributes --subscription-arn arn:aws:sns: ... --attribute-name FilterPolicy --attribute-value "{\"store\":[\"example_corp\"],\"event\":[\"order_placed\"]}"
+$ aws sns set-subscription-attributes --subscription-arn arn:aws:sns: ... --attribute-name FilterPolicy --attribute-value '{"store":["example_corp"],"event":["order_placed"]}'
 ```
 
 For the `--attribute-name` option, specify `FilterPolicy`\. For `--attribute-value`, specify your JSON policy\. 
 
-To provide valid JSON for your policy, enclose the attribute names and values in double quotes\. You must also enclose the entire policy argument in quotes\. To avoid escaping quotes, you can use single quotes to enclose the policy and double quotes to enclose the JSON names and values, as shown in the example\.
+To provide valid JSON for your policy, enclose the attribute names and values in double quotes\. You must also enclose the entire policy argument in quotes\. To avoid escaping quotes, you can use single quotes to enclose the policy and double quotes to enclose the JSON names and values, as shown in the above example\.
 
 To verify that your filter policy was applied, use the `get-subscription-attributes` command\. The attributes in the terminal output should show your filter policy for the `FilterPolicy` key, as shown in the following example:
 

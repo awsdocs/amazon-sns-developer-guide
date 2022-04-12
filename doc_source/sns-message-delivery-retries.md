@@ -68,10 +68,12 @@ This delivery policy also instructs Amazon SNS to throttle deliveries to no more
     "numMaxDelayRetries": 35,
     "backoffFunction": "exponential"
   },
+  "sicklyRetryPolicy": null,
   "throttlePolicy": {
     "maxReceivesPerSecond": 10
+  },  
+  "guaranteed": false
   }
-}
 ```
 
 The delivery policy is composed of a retry policy and a throttle policy\. In total, there are eight attributes in a delivery policy\.
@@ -82,10 +84,12 @@ The delivery policy is composed of a retry policy and a throttle policy\. In tot
 | minDelayTarget | The minimum delay for a retry\.**Unit:** Seconds | 1 to maximum delay**Default:** 20 | 
 | maxDelayTarget | The maximum delay for a retry\.**Unit:** Seconds | Minimum delay to 3,600**Default:** 20 | 
 | numRetries | The total number of retries, including immediate, pre\-backoff, backoff, and post\-backoff retries\. | 0 to 100**Default:** 3 | 
+| numMaxDelayRetries | The number of retries in the post\-backoff phase, with the maximum delay between them\. | 0 or greater**Default:** 0 | 
 | numNoDelayRetries | The number of retries to be done immediately, with no delay between them\. | 0 or greater**Default:** 0 | 
 | numMinDelayRetries | The number of retries in the pre\-backoff phase, with the specified minimum delay between them\. | 0 or greater**Default:** 0 | 
-| numMaxDelayRetries | The number of retries in the post\-backoff phase, with the maximum delay between them\. | 0 or greater**Default:** 0 | 
 | backoffFunction | The model for backoff between retries\.  |  One of four options: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html) **Default:** linear  | 
+| sicklyRetryPolicy | This attribute has been deprecated\. It is present for backward compatibility only\. |  **Default:** null  | 
+| guaranteed | This attribute has been deprecated\. It is present for backward compatibility only\. |  **Default:** false  | 
 | maxReceivesPerSecond  | The maximum number of deliveries per second, per subscription\. | 1 or greater**Default:** No throttling | 
 
 Amazon SNS uses the following formula to calculate the number of retries in the backoff phase:

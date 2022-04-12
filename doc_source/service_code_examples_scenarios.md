@@ -1,4 +1,4 @@
-# Scenarios for Amazon SNS<a name="service_code_examples_scenarios"></a>
+# Scenarios for Amazon SNS using AWS SDKs<a name="service_code_examples_scenarios"></a>
 
 The following code examples show you how to implement common scenarios in Amazon SNS with AWS SDKs\. These scenarios show you how to accomplish specific tasks by calling multiple functions within Amazon SNS\. Each scenario includes a link to GitHub, where you can find instructions on how to set up and run the code\.
 

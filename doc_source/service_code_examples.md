@@ -1,4 +1,4 @@
-# Code examples for Amazon SNS<a name="service_code_examples"></a>
+# Code examples for Amazon SNS using AWS SDKs<a name="service_code_examples"></a>
 
 The following code examples show how to use Amazon SNS with an AWS software development kit \(SDK\)\. 
 

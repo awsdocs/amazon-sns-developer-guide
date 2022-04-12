@@ -1,4 +1,4 @@
-# Actions for Amazon SNS<a name="service_code_examples_actions"></a>
+# Actions for Amazon SNS using AWS SDKs<a name="service_code_examples_actions"></a>
 
 The following code examples demonstrate how to perform individual Amazon SNS actions with AWS SDKs\. These excerpts call the Amazon SNS API and are not intended to be run in isolation\. Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 

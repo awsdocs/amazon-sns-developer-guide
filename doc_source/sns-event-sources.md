@@ -27,7 +27,7 @@ Amazon SNS introduced [FIFO topics](sns-fifo-topics.md) in October, 2020\. Curre
 
 | AWS service | Benefit of using with Amazon SNS | 
 | --- | --- | 
-|  [AWS Billing and Cost Management](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html) – Provides features that help you monitor your costs and pay your bill\.  |  Receive budget notifications, price change notifications, and anomaly alerts\. For more information, see the following pages in the AWS Billing and Cost Management User Guide: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-event-sources.html)  | 
+|  [AWS Billing and Cost Management](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html) – Provides features that help you monitor your costs and pay your bill\.  |  Receive budget notifications, price change notifications, and anomaly alerts\. For more information, see the following pages in the AWS Billing User Guide: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-event-sources.html)  | 
 
 ## Business applications services<a name="sns-event-sources-business-applications"></a>
 
