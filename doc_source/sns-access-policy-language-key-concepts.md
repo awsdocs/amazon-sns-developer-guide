@@ -28,9 +28,13 @@ A *statement* is the formal description of a single permission, written in the a
 
 ## Policy<a name="policy"></a>
 
-A *policy* is a document \(written in the access policy language\) that acts as a container for one or more statements\. For example, a policy could have two statements in it: one that states that Jane can subscribe using the email protocol, and another that states that Bob cannot publish to TopicA\. As shown in the following figure, an equivalent scenario would be to have two policies, one that states that Jane can subscribe using the email protocol, and another that states that Bob cannot publish to TopicA\.
+A *policy* is a document \(written in the access policy language\) that acts as a container for one or more statements\. For example, a policy could have two statements in it: one that states that Jane can subscribe using the email protocol, and another that states that Bob cannot publish to Topic A\. As shown in the following figure, an equivalent scenario would be to have two policies, one that states that Jane can subscribe using the email protocol, and another that states that Bob cannot publish to Topic A\.
 
 ![\[Policy diagram\]](http://docs.aws.amazon.com/sns/latest/dg/images/AccessPolicyLanguage_Statement_and_Policy.gif)
+
+Only ASCII characters are allowed in policy documents\. You can utilize `aws:SourceAccount` and `aws:SourceOwner` to work around the scenario where you need to plug\-in other AWS services' ARNs that contain non\-ASCII characters\. See the difference between [`aws:SourceAccount` versus `aws:SourceOwner`](sns-access-policy-use-cases.md#source-account-versus-source-owner)\.
+
+
 
 ## Issuer<a name="issuer"></a>
 

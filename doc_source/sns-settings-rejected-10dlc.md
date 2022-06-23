@@ -20,11 +20,11 @@ If the status for your company registration is **Unverified**, there were issues
 
    Check the information that you provided and confirm that all of the fields contain the correct information\. You can edit your company registration in the Amazon Pinpoint console\. For more information about modifying your company registration details, see [Editing or deleting a registered company](sns-settings-10dlc-modify-company.md)\.
 
-If you're unable to identify the issue with your registration, you can create a case with AWS Support to request additional information\. Follow the procedure in Campaign registration issues to create a case\.
-
 ### Campaign registration issues<a name="sns-campaign-registration-issues-10dlc"></a>
 
 When you register your 10DLC campaign, you might see an error message in certain situations\.
+
+If you're unable to identify the issue with your registration, you can create a case with the [AWS Support Center](https://console.aws.amazon.com/support/home#/) to request additional information\. Use the following procedures to create an AWS Support case\. The AWS Support team will provide information about the reasons why your 10DLC campaign registration was rejected\.
 
 **To submit a request for information about a rejected 10DLC campaign**
 
@@ -50,5 +50,3 @@ When you register your 10DLC campaign, you might see an error message in certain
 1. For **Contact method**, choose your preferred method of communicating with the AWS Support team\.
 
 1. Choose **Submit**\.
-
-The AWS Support team will provide information about the reasons that your 10DLC campaign registration was rejected in your AWS Support case\.

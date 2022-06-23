@@ -3,7 +3,7 @@
 Before you can request a 10DLC, you need to register your company with The Campaign Registry\. 
 
 **Note**  
-Amazon SNS SMS messaging is available in Regions where Amazon Pinpoint is not currently supported\. In these cases, open the Amazon Pinpoint console in the US East \(N\. Virginia\) Region to register your 10DLC company and campaign, but *do not* request a 10DLC number\. Instead, open a case in the [AWS Support Center](https://console.aws.amazon.com/support/home#/) to request a 10DLC number in the AWS Region where you use or plan to use Amazon SNS to send SMS messages\. For information on Regions where Amazon Pinpoint is available, see [Amazon Pinpoint endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/pinpoint.html) in the *AWS General Reference*\.
+Amazon SNS SMS messaging is available in Regions where Amazon Pinpoint is not currently supported\. In these cases, open the Amazon Pinpoint console in the US East \(N\. Virginia\) Region to register your 10DLC company and campaign, but *do not* request a 10DLC number\. Instead, use the [AWS Service Quotas console](https://us-east-1.console.aws.amazon.com/support/home?region=us-east-1&skipRegion=true#/case/create?issueType=service-limit-increase) to create a service limit increase case while requesting the 10DLC number for that Region\. For information on Regions where Amazon Pinpoint is available, see [Amazon Pinpoint endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/pinpoint.html) in the *AWS General Reference*\.
 
 ## 10DLC company registration statuses<a name="sns-10dlc-registration-status"></a>
 

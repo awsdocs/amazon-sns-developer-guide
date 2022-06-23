@@ -9,6 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ \.NET ]
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
@@ -60,13 +61,13 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
 +  For API details, see [GetTopicAttributes](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/GetTopicAttributes) in *AWS SDK for \.NET API Reference*\. 
 
 ------
 #### [ C\+\+ ]
 
 **SDK for C\+\+**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
   
 
 ```
@@ -98,13 +99,13 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
   Aws::ShutdownAPI(options);
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
 +  For API details, see [GetTopicAttributes](https://docs.aws.amazon.com/goto/SdkForCpp/sns-2010-03-31/GetTopicAttributes) in *AWS SDK for C\+\+ API Reference*\. 
 
 ------
 #### [ Java ]
 
 **SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
@@ -124,13 +125,13 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
 +  For API details, see [GetTopicAttributes](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/GetTopicAttributes) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
 #### [ JavaScript ]
 
 **SDK for JavaScript V3**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
 Create the client in a separate module and export it\.  
 
 ```
@@ -162,11 +163,11 @@ const run = async () => {
 };
 run();
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
 +  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/sns-examples-managing-topics.html#sns-examples-managing-topicsgetttopicattributes)\. 
 +  For API details, see [GetTopicAttributes](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sns/classes/gettopicattributescommand.html) in *AWS SDK for JavaScript API Reference*\. 
 
 **SDK for JavaScript V2**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/sns#code-examples)\. 
 Import the SDK and client modules and call the API\.  
 
 ```
@@ -188,7 +189,6 @@ getTopicAttribsPromise.then(
     console.error(err, err.stack);
   });
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/sns#code-examples)\. 
 +  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/sns-examples-managing-topics.html#sns-examples-managing-topicsgetttopicattributes)\. 
 +  For API details, see [GetTopicAttributes](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/sns-2010-03-31/GetTopicAttributes) in *AWS SDK for JavaScript API Reference*\. 
 
@@ -197,6 +197,7 @@ getTopicAttribsPromise.then(
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/sns#code-examples)\. 
   
 
 ```
@@ -212,13 +213,13 @@ suspend fun getSNSTopicAttributes(topicArnVal: String) {
     }
  }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/sns#code-examples)\. 
 +  For API details, see [GetTopicAttributes](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 
 ------
 #### [ PHP ]
 
 **SDK for PHP**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
   
 
 ```
@@ -240,7 +241,6 @@ try {
     error_log($e->getMessage());
 }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
 +  For API details, see [GetTopicAttributes](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/GetTopicAttributes) in *AWS SDK for PHP API Reference*\. 
 
 ------

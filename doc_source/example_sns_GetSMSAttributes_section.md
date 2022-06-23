@@ -9,6 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ C\+\+ ]
 
 **SDK for C\+\+**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
   
 
 ```
@@ -40,13 +41,13 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
   Aws::ShutdownAPI(options);
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
 +  For API details, see [GetSMSAttributes](https://docs.aws.amazon.com/goto/SdkForCpp/sns-2010-03-31/GetSMSAttributes) in *AWS SDK for C\+\+ API Reference*\. 
 
 ------
 #### [ Java ]
 
 **SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
@@ -76,13 +77,13 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
         System.out.println("\n\nStatus was good");
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
 +  For API details, see [GetSMSAttributes](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/GetSMSAttributes) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
 #### [ JavaScript ]
 
 **SDK for JavaScript V3**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
 Create the client in a separate module and export it\.  
 
 ```
@@ -120,7 +121,6 @@ const run = async () => {
 };
 run();
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
 +  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/sns-examples-subscribing-unubscribing-topics.html#sns-confirm-subscription-email)\. 
 +  For API details, see [GetSMSAttributes](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sns/classes/getsmsattributescommand.html) in *AWS SDK for JavaScript API Reference*\. 
 
@@ -128,6 +128,7 @@ run();
 #### [ PHP ]
 
 **SDK for PHP**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
   
 
 ```
@@ -159,7 +160,6 @@ try {
     error_log($e->getMessage());
 }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
 +  For more information, see [AWS SDK for PHP Developer Guide](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/sns-examples-sending-sms.html#get-sms-attributes)\. 
 +  For API details, see [GetSMSAttributes](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/GetSMSAttributes) in *AWS SDK for PHP API Reference*\. 
 

@@ -2,7 +2,7 @@
 
 The following code examples demonstrate how to perform individual Amazon SNS actions with AWS SDKs\. These excerpts call the Amazon SNS API and are not intended to be run in isolation\. Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
 
- The following examples include only the most commonly used actions\. For a complete list, see the *Amazon SNS API Reference*\.
+ The following examples include only the most commonly used actions\. For a complete list, see the [Amazon Simple Notification Service API Reference](https://docs.aws.amazon.com/sns/latest/api/welcome.html)\. 
 
 **Topics**
 + [Add tags to a topic](example_sns_TagResource_section.md)

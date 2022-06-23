@@ -39,21 +39,21 @@ Do not add personally identifiable information \(PII\) or other confidential or 
 
    1. Choose **Enable encryption**\.
 
-   1. Specify the customer master key \(CMK\)\. For more information, see [Key terms](sns-server-side-encryption.md#sse-key-terms)\.
+   1. Specify the AWS KMS key\. For more information, see [Key terms](sns-server-side-encryption.md#sse-key-terms)\.
 
-      For each CMK type, the **Description**, **Account**, and **CMK ARN** are displayed\.
+      For each KMS type, the **Description**, **Account**, and **KMS ARN** are displayed\.
 **Important**  
-If you aren't the owner of the CMK, or if you log in with an account that doesn't have the `kms:ListAliases` and `kms:DescribeKey` permissions, you won't be able to view information about the CMK on the Amazon SNS console\.  
-Ask the owner of the CMK to grant you these permissions\. For more information, see the [AWS KMS API Permissions: Actions and Resources Reference](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html) in the *AWS Key Management Service Developer Guide*\.
-      + The AWS managed CMK for Amazon SNS **\(Default\) alias/aws/sns** is selected by default\.
+If you aren't the owner of the KMS, or if you log in with an account that doesn't have the `kms:ListAliases` and `kms:DescribeKey` permissions, you won't be able to view information about the KMS on the Amazon SNS console\.  
+Ask the owner of the KMS to grant you these permissions\. For more information, see the [AWS KMS API Permissions: Actions and Resources Reference](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html) in the *AWS Key Management Service Developer Guide*\.
+      + The AWS managed KMS for Amazon SNS **\(Default\) alias/aws/sns** is selected by default\.
 **Note**  
 Keep the following in mind:  
-The first time you use the AWS Management Console to specify the AWS managed CMK for Amazon SNS for a topic, AWS KMS creates the AWS managed CMK for Amazon SNS\.
-Alternatively, the first time you use the `Publish` action on a topic with SSE enabled, AWS KMS creates the AWS managed CMK for Amazon SNS\.
-      + To use a custom CMK from your AWS account, choose the **Customer master key \(CMK\)** field and then choose the custom CMK from the list\.
+The first time you use the AWS Management Console to specify the AWS managed KMS for Amazon SNS for a topic, AWS KMS creates the AWS managed KMS for Amazon SNS\.
+Alternatively, the first time you use the `Publish` action on a topic with SSE enabled, AWS KMS creates the AWS managed KMS for Amazon SNS\.
+      + To use a custom KMS from your AWS account, choose the **AWS KMS key** field and then choose the custom KMS from the list\.
 **Note**  
-For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*
-      + To use a custom CMK ARN from your AWS account or from another AWS account, enter it into the **Customer master key \(CMK\)** field\.
+For instructions on creating custom KMSs, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*
+      + To use a custom KMS ARN from your AWS account or from another AWS account, enter it into the **AWS KMS key** field\.
 
 1. \(Optional\) By default, only the topic owner can publish or subscribe to the topic\. To configure additional access permissions, expand the **Access policy** section\. For more information, see [Identity and access management in Amazon SNS](sns-authentication-and-access-control.md) and [Example cases for Amazon SNS access control](sns-access-policy-use-cases.md)\. 
 **Note**  
@@ -87,6 +87,7 @@ The following code examples show how to create an Amazon SNS topic\.
 #### [ \.NET ]
 
 **AWS SDK for \.NET**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
   
 
 ```
@@ -109,13 +110,13 @@ The following code examples show how to create an Amazon SNS topic\.
             return response.TopicArn;
         }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/CreateTopic) in *AWS SDK for \.NET API Reference*\. 
 
 ------
 #### [ C\+\+ ]
 
 **SDK for C\+\+**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
   
 
 ```
@@ -143,20 +144,20 @@ The following code examples show how to create an Amazon SNS topic\.
 
   Aws::ShutdownAPI(options);
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/goto/SdkForCpp/sns-2010-03-31/CreateTopic) in *AWS SDK for C\+\+ API Reference*\. 
 
 ------
 #### [ Go ]
 
 **SDK for Go V2**  
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/gov2/sns/CreateTopic#code-examples)\. 
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/gov2/sns/CreateTopic#code-examples)\. 
 +  For API details, see [CreateTopic](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/sns#Client.CreateTopic) in *AWS SDK for Go API Reference*\. 
 
 ------
 #### [ Java ]
 
 **SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
@@ -178,13 +179,13 @@ The following code examples show how to create an Amazon SNS topic\.
         return "";
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/CreateTopic) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
 #### [ JavaScript ]
 
 **SDK for JavaScript V3**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
 Create the client in a separate module and export it\.  
 
 ```
@@ -216,7 +217,6 @@ const run = async () => {
 };
 run();
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
 +  For more information, see [AWS SDK for JavaScript Developer Guide](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/sns-examples-managing-topics.html#sns-examples-managing-topics-createtopic)\. 
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sns/classes/createtopiccommand.html) in *AWS SDK for JavaScript API Reference*\. 
 
@@ -225,6 +225,7 @@ run();
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/sns#code-examples)\. 
   
 
 ```
@@ -240,13 +241,13 @@ suspend fun createSNSTopic(topicName: String): String {
        }
  }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/sns#code-examples)\. 
 +  For API details, see [CreateTopic](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 
 ------
 #### [ PHP ]
 
 **SDK for PHP**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
   
 
 ```
@@ -280,7 +281,6 @@ try {
     error_log($e->getMessage());
 }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
 +  For more information, see [AWS SDK for PHP Developer Guide](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/sns-examples-managing-topics.html#create-a-topic)\. 
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/goto/SdkForPHPV3/sns-2010-03-31/CreateTopic) in *AWS SDK for PHP API Reference*\. 
 
@@ -288,6 +288,7 @@ try {
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
   
 
 ```
@@ -315,13 +316,13 @@ class SnsWrapper:
         else:
             return topic
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/goto/boto3/sns-2010-03-31/CreateTopic) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------
 #### [ Ruby ]
 
 **SDK for Ruby**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/ruby/example_code/sns#code-examples)\. 
   
 
 ```
@@ -353,7 +354,6 @@ end
 
 run_me if $PROGRAM_NAME == __FILE__
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/ruby/example_code/sns#code-examples)\. 
 +  For more information, see [AWS SDK for Ruby Developer Guide](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/sns-example-create-topic.html)\. 
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/goto/SdkForRubyV3/sns-2010-03-31/CreateTopic) in *AWS SDK for Ruby API Reference*\. 
 
@@ -362,6 +362,7 @@ run_me if $PROGRAM_NAME == __FILE__
 
 **SDK for Rust**  
 This documentation is for an SDK in preview release\. The SDK is subject to change and should not be used in production\.
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/rust_dev_preview/sns#code-examples)\. 
   
 
 ```
@@ -376,7 +377,6 @@ async fn make_topic(client: &Client, topic_name: &str) -> Result<(), Error> {
     Ok(())
 }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/rust_dev_preview/sns#code-examples)\. 
 +  For API details, see [CreateTopic](https://docs.rs/releases/search?query=aws-sdk) in *AWS SDK for Rust API reference*\. 
 
 ------

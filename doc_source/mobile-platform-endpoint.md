@@ -67,6 +67,7 @@ To use an AWS SDK, you must configure it with your credentials\. For more inform
 #### [ Java ]
 
 **SDK for Java 1\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
   
 
 ```
@@ -184,7 +185,6 @@ class RegistrationExample {
   }
 }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
 
 ------
 

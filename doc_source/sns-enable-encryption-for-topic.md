@@ -19,21 +19,21 @@ This page shows how to enable, disable, and configure SSE for an existing Amazon
 
    1. Choose **Enable encryption**\.
 
-   1. Specify the customer master key \(CMK\)\. For more information, see [Key terms](sns-server-side-encryption.md#sse-key-terms)\.
+   1. Specify the AWS KMS key\. For more information, see [Key terms](sns-server-side-encryption.md#sse-key-terms)\.
 
-      For each CMK type, the **Description**, **Account**, and **CMK ARN** are displayed\.
+      For each KMS type, the **Description**, **Account**, and **KMS ARN** are displayed\.
 **Important**  
-If you aren't the owner of the CMK, or if you log in with an account that doesn't have the `kms:ListAliases` and `kms:DescribeKey` permissions, you won't be able to view information about the CMK on the Amazon SNS console\.  
-Ask the owner of the CMK to grant you these permissions\. For more information, see the [AWS KMS API Permissions: Actions and Resources Reference](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html) in the *AWS Key Management Service Developer Guide*\.
-      + The AWS managed CMK for Amazon SNS **\(Default\) alias/aws/sns** is selected by default\.
+If you aren't the owner of the KMS, or if you log in with an account that doesn't have the `kms:ListAliases` and `kms:DescribeKey` permissions, you won't be able to view information about the KMS on the Amazon SNS console\.  
+Ask the owner of the KMS to grant you these permissions\. For more information, see the [AWS KMS API Permissions: Actions and Resources Reference](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html) in the *AWS Key Management Service Developer Guide*\.
+      + The AWS managed KMS for Amazon SNS **\(Default\) alias/aws/sns** is selected by default\.
 **Note**  
 Keep the following in mind:  
-The first time you use the AWS Management Console to specify the AWS managed CMK for Amazon SNS for a topic, AWS KMS creates the AWS managed CMK for Amazon SNS\.
-Alternatively, the first time you use the `Publish` action on a topic with SSE enabled, AWS KMS creates the AWS managed CMK for Amazon SNS\.
-      + To use a custom CMK from your AWS account, choose the **Customer master key \(CMK\)** field and then choose the custom CMK from the list\.
+The first time you use the AWS Management Console to specify the AWS managed KMS for Amazon SNS for a topic, AWS KMS creates the AWS managed KMS for Amazon SNS\.
+Alternatively, the first time you use the `Publish` action on a topic with SSE enabled, AWS KMS creates the AWS managed KMS for Amazon SNS\.
+      + To use a custom KMS from your AWS account, choose the **AWS KMS key** field and then choose the custom KMS from the list\.
 **Note**  
-For instructions on creating custom CMKs, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*
-      + To use a custom CMK ARN from your AWS account or from another AWS account, enter it into the **Customer master key \(CMK\)** field\.
+For instructions on creating custom KMSs, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*
+      + To use a custom KMS ARN from your AWS account or from another AWS account, enter it into the **AWS KMS key** field\.
 
 1. Choose **Save changes**\.
 

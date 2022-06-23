@@ -9,10 +9,11 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
-    public static void usePolicy(SnsClient snsClient,  String subscriptionArn) {
+    public static void usePolicy(SnsClient snsClient, String subscriptionArn) {
 
         try {
             SNSMessageFilterPolicy fp = new SNSMessageFilterPolicy();
@@ -49,13 +50,13 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
 +  For API details, see [SetSubscriptionAttributes](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/SetSubscriptionAttributes) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
   
 
 ```
@@ -86,7 +87,6 @@ class SnsWrapper:
                 "Couldn't add filter to subscription %s.", subscription.arn)
             raise
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
 +  For API details, see [SetSubscriptionAttributes](https://docs.aws.amazon.com/goto/boto3/sns-2010-03-31/SetSubscriptionAttributes) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------

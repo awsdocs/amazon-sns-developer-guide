@@ -18,17 +18,15 @@ Some of the fields on the request form are marked as "optional\." However, AWS S
 
 **To request a spending quota increase**
 
-1. Go to the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. 
+1. Sign in to the [AWS Support Center](https://us-east-1.console.aws.amazon.com/support/home?region=us-east-1&skipRegion=true#/case/create?issueType=service-limit-increase)\. 
 
-1. Choose **Create case**\.
+1. Under **Create case**, choose **Service limit increase**, and then under **Case details**, perform the following steps:
 
-1. Choose **Service limit increase**, and then under **Case classification**, perform the following steps:
+1. For **Limit type**, choose **SNS Text Messaging**\.
 
-1. For **Limit** type, choose **SNS Text Messaging**\.
+1. For **Provide a link to the site or app which will be sending SMS messages \- optional**, enter the URL of your website or application\.
 
-1. For **Link to site or app which will be sending SMS \- optional**, enter the URL of your website or application\.
-
-1. For **Type of messages \- optional**, choose **One Time Password**, **Promotional**, or **Transactional**, depending on what you plan to send\.
+1. For **What type of messages do you plan to send? \- optional**, choose **One Time Password**, **Promotional**, or **Transactional**, depending on what you plan to send\.
 
 1. For **Targeted Countries** \- optional, choose **General Limits**\.
 
@@ -38,7 +36,7 @@ Some of the fields on the request form are marked as "optional\." However, AWS S
 
 1. For **New limit**, enter the needed spend limit that you calculated earlier\.
 
-1. Under **Case description**, for Use case description, enter the description that you wrote earlier\.
+1. Under **Case description**, for **Use case description**, enter the description that you wrote earlier\.
 
 1. Expand **Contact options**, and then choose your preferred contact language\.
 

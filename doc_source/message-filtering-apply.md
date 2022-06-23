@@ -56,14 +56,18 @@ $ aws sns get-subscription-attributes --subscription-arn arn:aws:sns: ...
 
 The following code examples show how to set an Amazon SNS filter policy\.
 
+**Important**  
+If you are using the SDK for Java 2\.x example, the class `SNSMessageFilterPolicy` is not available out of the box\. For instructions on how to install this class, see the [example](https://github.com/awsdocs/aws-doc-sdk-examples/blob/main/javav2/example_code/sns/src/main/java/com/example/sns/SNSMessageFilterPolicy.java) from the GitHub website\.
+
 ------
 #### [ Java ]
 
 **SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
-    public static void usePolicy(SnsClient snsClient,  String subscriptionArn) {
+    public static void usePolicy(SnsClient snsClient, String subscriptionArn) {
 
         try {
             SNSMessageFilterPolicy fp = new SNSMessageFilterPolicy();
@@ -100,13 +104,13 @@ The following code examples show how to set an Amazon SNS filter policy\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
 +  For API details, see [SetSubscriptionAttributes](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/SetSubscriptionAttributes) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
   
 
 ```
@@ -137,7 +141,6 @@ class SnsWrapper:
                 "Couldn't add filter to subscription %s.", subscription.arn)
             raise
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
 +  For API details, see [SetSubscriptionAttributes](https://docs.aws.amazon.com/goto/boto3/sns-2010-03-31/SetSubscriptionAttributes) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------

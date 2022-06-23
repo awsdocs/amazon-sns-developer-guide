@@ -13,6 +13,7 @@ With [Amazon SNS](https://aws.amazon.com/sns/), you have the ability to send pus
 + [Mobile push API errors](mobile-push-api-error.md)
 + [Using the Amazon SNS time to live \(TTL\) message attribute for mobile push notifications](sns-ttl.md)
 + [Supported Regions for mobile applications](sns-mobile-push-supported-regions.md)
++ [Mobile push notifications best practices](mobile-push-notifications-best-practices.md)
 
 ## How user notifications work<a name="sns-how-user-notifications-work"></a>
 

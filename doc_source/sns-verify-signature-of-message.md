@@ -83,7 +83,7 @@ The following example is a string to sign for a `SubscriptionConfirmation`\.
 
 1. Decode the `Signature` value from Base64 format\. The message delivers the signature in the `Signature` value, which is encoded as Base64\. Before you compare the signature value with the signature you have calculated, make sure that you decode the `Signature` value from Base64 so that you compare the values using the same format\.
 
-1. Generate the derived hash value of the Amazon SNS message\. Submit the Amazon SNS message, in canonical format, to the same hash function used to generate the signature\. 
+1. Generate the derived hash value of the Amazon SNS message\. Submit the Amazon SNS message, in canonical format, to the same hash function used to generate the signature\. Use **SHA1** as the hash function\.
 
 1. Generate the asserted hash value of the Amazon SNS message\. The asserted hash value is the result of using the public key value \(from step 3\) to decrypt the signature delivered with the Amazon SNS message\. 
 

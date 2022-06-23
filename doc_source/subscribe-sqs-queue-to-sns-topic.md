@@ -46,9 +46,9 @@ To get the topic ARN, you can use the Amazon SNS console, the `[sns\-get\-topic\
 
 For an Amazon SNS topic to be able to send messages to a queue, you must set a policy on the queue that allows the Amazon SNS topic to perform the `sqs:SendMessage` action\.
 
-Before you subscribe a queue to a topic, you need a topic and a queue\. If you haven't already created a topic or queue, create them now\. For more information, see [Creating a Topic](https://docs.aws.amazon.com/sns/latest/gsg/CreateTopic.html), and see [Creating a Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-getting-started.htmlCreatingQueue.html) in the *Amazon Simple Queue Service Developer Guide*\.
+Before you subscribe a queue to a topic, you need a topic and a queue\. If you haven't already created a topic or queue, create them now\. For more information, see [Creating a Topic](https://docs.aws.amazon.com/sns/latest/gsg/CreateTopic.html), and see [Creating a Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-getting-started.htmlCreatingQueue.html) in the *Amazon Simple Queue Service Developer Guide*\. 
 
-To set a policy on a queue, you can use the Amazon SQS console or the [SetQueueAttributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Query_QuerySetQueueAttributes.html) API action\. Before you start, make sure you have the ARN for the topic that you want to allow to send messages to the queue\.
+To set a policy on a queue, you can use the Amazon SQS console or the [SetQueueAttributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Query_QuerySetQueueAttributes.html) API action\. Before you start, make sure you have the ARN for the topic that you want to allow to send messages to the queue\. If you are subscribing a queue to multiple topics, your policy must contain one `Statement` element for each topic\.
 
 **To set a SendMessage policy on a queue using the Amazon SQS console**
 
@@ -64,19 +64,21 @@ To set a policy on a queue, you can use the Amazon SQS console or the [SetQueueA
 
    ```
    {
-     "Statement": [{
-       "Effect":"Allow",
-       "Principal": {
-         "Service": "sns.amazonaws.com"
-       },
-       "Action":"sqs:SendMessage",
-       "Resource":"arn:aws:sqs:us-east-2:123456789012:MyQueue",
-       "Condition":{
-         "ArnEquals":{
-           "aws:SourceArn":"arn:aws:sns:us-east-2:123456789012:MyTopic"
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "Service": "sns.amazonaws.com"
+         },
+         "Action": "sqs:SendMessage",
+         "Resource": "arn:aws:sqs:us-east-2:123456789012:MyQueue",
+         "Condition": {
+           "ArnEquals": {
+             "aws:SourceArn": "arn:aws:sns:us-east-2:123456789012:MyTopic"
+           }
          }
        }
-     }]
+     ]
    }
    ```
 
@@ -122,11 +124,13 @@ If you added the following policy to an IAM user or group, you would give that u
 
 ```
 {
-  "Statement": [{
-    "Effect": "Allow",
-    "Action": "sns:Publish",
-    "Resource": "arn:aws:sns:us-east-2:123456789012:MyTopic"
-  }]
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:us-east-2:123456789012:MyTopic"
+    }
+  ]
 }
 ```
 
@@ -134,17 +138,19 @@ If you added the following policy to an IAM user or group, you would give that u
 
 ```
 {
-  "Statement":[{
-    "Effect":"Allow",
-    "Action":[
-      "sqs:ReceiveMessage",
-      "sqs:DeleteMessage"
-    ],
-    "Resource":[
-      "arn:aws:sqs:us-east-2:123456789012:MyQueue1",
-      "arn:aws:sqs:us-east-2:123456789012:MyQueue2"
-    ]
-  }]
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sqs:ReceiveMessage",
+        "sqs:DeleteMessage"
+      ],
+      "Resource": [
+        "arn:aws:sqs:us-east-2:123456789012:MyQueue1",
+        "arn:aws:sqs:us-east-2:123456789012:MyQueue2"
+      ]
+    }
+  ]
 }
 ```
 
@@ -159,14 +165,16 @@ If you added the following policy to a topic MyTopic in account 123456789012, yo
 
 ```
 {
-  "Statement":[{
-    "Effect":"Allow",
-    "Principal":{
-      "AWS":"111122223333"
-    },
-    "Action":"sns:Publish",
-    "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
-  }]
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "111122223333"
+      },
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:us-east-2:123456789012:MyTopic"
+    }
+  ]
 }
 ```
 
@@ -174,19 +182,21 @@ If you added the following policy to a queue MyQueue in account 123456789012, yo
 
 ```
 {
-  "Statement":[{
-    "Effect":"Allow",
-    "Principal":{
-      "AWS":"111122223333"
-    },
-    "Action":[
-      "sqs:DeleteMessage",
-      "sqs:ReceiveMessage"
-    ],
-    "Resource":[
-      "arn:aws:sqs:us-east-2:123456789012:MyQueue"
-    ]
-  }]
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "111122223333"
+      },
+      "Action": [
+        "sqs:DeleteMessage",
+        "sqs:ReceiveMessage"
+      ],
+      "Resource": [
+        "arn:aws:sqs:us-east-2:123456789012:MyQueue"
+      ]
+    }
+  ]
 }
 ```
 

@@ -5,7 +5,7 @@ A dead\-letter queue is an Amazon SQS queue that an Amazon SNS subscription can 
 **Note**  
 The Amazon SNS subscription and Amazon SQS queue must be under the same AWS account and Region\.
 For a [FIFO topic](sns-fifo-topics.md), use an Amazon SQS FIFO queue as a dead\-letter queue for the Amazon SNS subscrption\.
-To use an encrypted Amazon SQS queue as a dead\-letter queue, you must use a custom CMK with a key policy that grants the Amazon SNS service principal access to AWS KMS API actions\. For more information, see [Encryption at rest](sns-server-side-encryption.md) in this guide and [Protecting Amazon SQS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html) in the *Amazon Simple Queue Service Developer Guide*\.
+To use an encrypted Amazon SQS queue as a dead\-letter queue, you must use a custom KMS with a key policy that grants the Amazon SNS service principal access to AWS KMS API actions\. For more information, see [Encryption at rest](sns-server-side-encryption.md) in this guide and [Protecting Amazon SQS Data Using Server\-Side Encryption \(SSE\) and AWS KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html) in the *Amazon Simple Queue Service Developer Guide*\.
 
 **Topics**
 + [Why do message deliveries fail?](#why-do-message-deliveries-fail)

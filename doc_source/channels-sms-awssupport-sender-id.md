@@ -24,17 +24,11 @@ If you plan to send messages to recipients in a country where sender IDs are all
 
 **To request a sender ID**
 
-1. Sign in to the AWS Management Console at [https://console\.aws\.amazon\.com/](https://console.aws.amazon.com/)\.
+1. Sign in to the [AWS Support Center](https://us-east-1.console.aws.amazon.com/support/home?region=us-east-1&skipRegion=true#/case/create?issueType=service-limit-increase)\. 
 
-1. On the **Support** menu, choose **Support Center**\.
+1. Under **Create case**, choose **Service limit increase**, and then under **Case details**, perform the following steps:
 
-1. On the **My support cases** tab, choose **Create case**\.
-
-1. Choose **Service limit increase**\.
-
-1. Under **Case classification**, do the following:
-
-   1. For **Quota type**, choose **Pinpoint SMS**\.
+   1. For **Limit type**, choose **Pinpoint SMS**\.
 
    1. For **Provide a link to the site or app which will be sending SMS messages**, identify the website or application where your audience members opt in to receive your SMS messages\.
 

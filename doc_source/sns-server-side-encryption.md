@@ -13,7 +13,7 @@ For information about compatibility of other services with encrypted topics, see
 AWS KMS combines secure, highly available hardware and software to provide a key management system scaled for the cloud\. When you use Amazon SNS with AWS KMS, the [data keys](#sse-key-terms) that encrypt your message data are also encrypted and stored with the data they protect\.
 
 The following are benefits of using AWS KMS:
-+ You can create and manage [customer master keys \(CMKs\)](#sse-key-terms) yourself\.
++ You can create and manage the [AWS KMS key](#sse-key-terms) yourself\.
 + You can also use AWS\-managed KMS keys for Amazon SNS, which are unique for each account and region\.
 + The AWS KMS security standards can help you meet encryption\-related compliance requirements\.
 
@@ -44,10 +44,10 @@ The following key terms can help you better understand the functionality of SSE\
 The data encryption key \(DEK\) responsible for encrypting the contents of Amazon SNS messages\.  
 For more information, see [Data Keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys) in the *AWS Key Management Service Developer Guide* and [Envelope Encryption](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/how-it-works.html#envelope-encryption) in the *AWS Encryption SDK Developer Guide*\.
 
-**Customer master key ID**  
-The alias, alias ARN, key ID, or key ARN of an AWS managed customer master key \(CMK\) or a custom CMK—in your account or in another account\. While the alias of the AWS managed CMK for Amazon SNS is always `alias/aws/sns`, the alias of a custom CMK can, for example, be `alias/MyAlias`\. You can use these CMKs to protect the messages in Amazon SNS topics\.   
+**AWS KMS key ID**  
+The alias, alias ARN, key ID, or key ARN of an AWS KMS key, or a custom AWS KMS—in your account or in another account\. While the alias of the AWS managed AWS KMS for Amazon SNS is always `alias/aws/sns`, the alias of a custom AWS KMS can, for example, be `alias/MyAlias`\. You can use these AWS KMS keys to protect the messages in Amazon SNS topics\.   
 Keep the following in mind:  
-+ The first time you use the AWS Management Console to specify the AWS managed CMK for Amazon SNS for a topic, AWS KMS creates the AWS managed CMK for Amazon SNS\.
-+ Alternatively, the first time you use the `Publish` action on a topic with SSE enabled, AWS KMS creates the AWS managed CMK for Amazon SNS\.
-You can create CMKs, define the policies that control how CMKs can be used, and audit CMK usage using the **Customer managed keys** section of the AWS KMS console or the `[CreateKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)` AWS KMS action\. For more information, see [Customer Master Keys \(CMKs\)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) and [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*\. For more examples of CMK identifiers, see [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters) in the *AWS Key Management Service API Reference*\. For information about finding CMK identifiers, see [Find the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) in the *AWS Key Management Service Developer Guide*\.  
++ The first time you use the AWS Management Console to specify the AWS managed KMS for Amazon SNS for a topic, AWS KMS creates the AWS managed KMS for Amazon SNS\.
++ Alternatively, the first time you use the `Publish` action on a topic with SSE enabled, AWS KMS creates the AWS managed KMS for Amazon SNS\.
+You can create AWS KMS keys, define the policies that control how AWS KMS keys can be used, and audit AWS KMS usage using the **AWS KMS keys** section of the AWS KMS console or the `[CreateKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)` AWS KMS action\. For more information, see [AWS KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys) and [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*\. For more examples of AWS KMS identifiers, see [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters) in the *AWS Key Management Service API Reference*\. For information about finding AWS KMS identifiers, see [Find the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) in the *AWS Key Management Service Developer Guide*\.  
 There are additional charges for using AWS KMS\. For more information, see [Estimating AWS KMS costs](sns-key-management.md#sse-estimate-kms-usage-costs) and [AWS Key Management Service Pricing](https://aws.amazon.com/kms/pricing)\.

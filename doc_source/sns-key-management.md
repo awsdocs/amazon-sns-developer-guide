@@ -9,7 +9,7 @@ The following sections provide information about working with keys managed in AW
 
 ## Estimating AWS KMS costs<a name="sse-estimate-kms-usage-costs"></a>
 
-To predict costs and better understand your AWS bill, you might want to know how often Amazon SNS uses your customer master key \(CMK\)\.
+To predict costs and better understand your AWS bill, you might want to know how often Amazon SNS uses your AWS KMS key\.
 
 **Note**  
 Although the following formula can give you a very good idea of expected costs, actual costs might be higher because of the distributed nature of Amazon SNS\.
@@ -59,15 +59,15 @@ Before you can use SSE, you must configure AWS KMS key policies to allow encrypt
 
 **Note**  
 You can also manage permissions for KMS keys using IAM policies\. For more information, see [Using IAM Policies with AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html)\.  
-While you can configure global permissions to send to and receive from Amazon SNS, AWS KMS requires explicitly naming the full ARN of CMKs in specific regions in the `Resource` section of an IAM policy\.
+While you can configure global permissions to send to and receive from Amazon SNS, AWS KMS requires explicitly naming the full ARN of KMSs in specific regions in the `Resource` section of an IAM policy\.
 
-You must also ensure that the key policies of the customer master key \(CMK\) allow the necessary permissions\. To do this, name the principals that produce and consume encrypted messages in Amazon SNS as users in the CMK key policy\. 
+You must also ensure that the key policies of the AWS KMS key allow the necessary permissions\. To do this, name the principals that produce and consume encrypted messages in Amazon SNS as users in the KMS key policy\. 
 
-Alternatively, you can specify the required AWS KMS actions and CMK ARN in an IAM policy assigned to the principals that publish and subscribe to receive encrypted messages in Amazon SNS\. For more information, see [Managing Access to AWS KMS CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/control-access-overview.html#managing-access) in the *AWS Key Management Service Developer Guide*\.
+Alternatively, you can specify the required AWS KMS actions and KMS ARN in an IAM policy assigned to the principals that publish and subscribe to receive encrypted messages in Amazon SNS\. For more information, see [Managing Access to AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/control-access-overview.html#managing-access) in the *AWS Key Management Service Developer Guide*\.
 
 ### Allow a user to send messages to a topic with SSE<a name="send-to-encrypted-topic"></a>
 
-The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions for the customer master key \(CMK\)\.
+The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions for the AWS KMS key\.
 
 ```
 {
@@ -92,9 +92,9 @@ The publisher must have the `kms:GenerateDataKey` and `kms:Decrypt` permissions 
 
 Several AWS services publish events to Amazon SNS topics\. To allow these event sources to work with encrypted topics, you must perform the following steps\.
 
-1. Use a customer managed CMK\. For more information, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*\.
+1. Use a customer managed KMS\. For more information, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the *AWS Key Management Service Developer Guide*\.
 
-1. To allow the AWS service to have the `kms:GenerateDataKey*` and `kms:Decrypt` permissions, add the following statement to the CMK policy\.
+1. To allow the AWS service to have the `kms:GenerateDataKey*` and `kms:Decrypt` permissions, add the following statement to the KMS policy\.
 
    ```
    {
@@ -121,7 +121,7 @@ Some Amazon SNS event sources require you to provide an IAM role \(rather than t
 [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.managing.sns.html)
 [AWS IoT](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sns-rule.html)
 
-1. [Enable SSE for your topic](sns-enable-encryption-for-topic.md) using your CMK\.
+1. [Enable SSE for your topic](sns-enable-encryption-for-topic.md) using your KMS\.
 
 1. Provide the ARN of the encrypted topic to the event source\.
 
@@ -134,11 +134,11 @@ The ciphertext references a key that doesn't exist or that you don't have access
 HTTP Status Code: 400
 
 **KMSDisabledException**  
-The request was rejected because the specified CMK isn't enabled\.  
+The request was rejected because the specified KMS isn't enabled\.  
 HTTP Status Code: 400
 
 **KMSInvalidStateException**  
-The request was rejected because the state of the specified resource isn't valid for this request\. For more information, see [How Key State Affects Use of a Customer Master Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*\.  
+The request was rejected because the state of the specified resource isn't valid for this request\. For more information, see [How Key State Affects Use of a AWS KMS Key](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html) in the *AWS Key Management Service Developer Guide*\.  
 HTTP Status Code: 400
 
 **KMSNotFoundException**  
