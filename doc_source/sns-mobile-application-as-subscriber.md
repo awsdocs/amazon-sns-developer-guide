@@ -33,9 +33,9 @@ Push notification services, such as APNs and FCM, maintain a connection with eac
 
 1. [Obtain the credentials and device token](sns-prerequisites-for-mobile-push-notifications.md) for the mobile platforms that you want to support\.
 
-1. Use the credentials to create a platform application object \(`PlatformApplicationArn`\) using Amazon SNS\. For more information, see [Creating a platform endpoint](mobile-platform-endpoint.md)\.
+1. Use the credentials to create a platform application object \(`PlatformApplicationArn`\) using Amazon SNS\. For more information, see [Creating a platform application](mobile-push-send-register.md)\.
 
-1. Use the returned credentials to request a device token for your mobile app and device from the mobile platforms\. The token you receive represents your mobile app and device\.
+1. Use the returned credentials to request a device token for your mobile app and device from the push notification service\. The token you receive represents your mobile app and device\.
 
 1. Use the device token and the `PlatformApplicationArn` to create a platform endpoint object \(`EndpointArn`\) using Amazon SNS\. For more information, see [Creating a platform endpoint](mobile-platform-endpoint.md)\.
 
