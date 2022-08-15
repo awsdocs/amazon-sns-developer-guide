@@ -8,8 +8,8 @@ Before you can send SMS messages to recipients in India, you must register your 
 + A letter of authorization that gives you the authority to register your organization\.
 
 The following is a sample list of a few Distributed Ledger Technology \(DLT\) registration sites you can use to register your organization with the TRAI \(fees may apply\)\. The registration process varies by site\. Contact their respective support teams for assistance\.
-+ [BSNL DLT](https://www.ucc-bsnl.co.in)
-+ [Jio Trueconnect](https://trueconnect.jio.com) \- Free registration\.
++ [BSNL DLT](https://www.ucc-bsnl.co.in) \- Free registration\.
++ [Jio Trueconnect](https://trueconnect.jio.com) \- Jio Trueconnect charges a fee for completing the registration process\.
 + [Smart Enterprise Solutions](https://smartping.live/entity/register-with) \- Free registration\.
 + [Vilpower](https://www.vilpower.in) \- Includes a template that you can download and modify to fit your needs\. Vilpower charges a fee for completing the registration process\.
 
