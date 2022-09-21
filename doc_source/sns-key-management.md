@@ -120,7 +120,7 @@ Some Amazon SNS event sources require you to provide an IAM role \(rather than t
 [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/notifications-for-AWS-Config.html)
 [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.managing.sns.html)
 [AWS IoT](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sns-rule.html)
-[EC2 Image Builder](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-infra-config.html)
+[EC2 Image Builder](https://docs.aws.amazon.com/imagebuilder/latest/userguide/ibhow-integrations.html#integ-sns-encrypted)
 
 1. Add the `aws:SourceAccount` and `aws:SourceArn` condition keys to the KMS resource policy to further protect the KMS key from [confused deputy](https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html) attacks\. Refer to service specific documentation list \(above\) for exact details in each case\.
 
