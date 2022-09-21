@@ -47,7 +47,22 @@ How to use Amazon SNS to set the DefaultSMSType attribute\.
   
 
 ```
-   public static void setSNSAttributes( SnsClient snsClient, HashMap<String, String> attributes) {
+public class SetSMSAttributes {
+    public static void main(String[] args) {
+
+        HashMap<String, String> attributes = new HashMap<>(1);
+        attributes.put("DefaultSMSType", "Transactional");
+        attributes.put("UsageReportS3Bucket", "janbucket" );
+
+        SnsClient snsClient = SnsClient.builder()
+            .region(Region.US_EAST_1)
+            .credentialsProvider(ProfileCredentialsProvider.create())
+            .build();
+        setSNSAttributes(snsClient, attributes);
+        snsClient.close();
+    }
+
+    public static void setSNSAttributes( SnsClient snsClient, HashMap<String, String> attributes) {
 
         try {
             SetSmsAttributesRequest request = SetSmsAttributesRequest.builder()
@@ -61,7 +76,7 @@ How to use Amazon SNS to set the DefaultSMSType attribute\.
             System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);
         }
-     }
+    }
 ```
 +  For API details, see [SetSmsAttributes](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/SetSmsAttributes) in *AWS SDK for Java 2\.x API Reference*\. 
 

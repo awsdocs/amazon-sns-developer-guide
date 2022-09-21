@@ -94,7 +94,6 @@ The following code examples show how to set Amazon SNS topic attributes\.
     public static void setTopAttr(SnsClient snsClient, String attribute, String topicArn, String value) {
 
         try {
-
             SetTopicAttributesRequest request = SetTopicAttributesRequest.builder()
                 .attributeName(attribute)
                 .attributeValue(value)
@@ -167,16 +166,16 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 ```
 suspend fun setTopAttr(attribute: String?, topicArnVal: String?, value: String?) {
 
-        val request = SetTopicAttributesRequest {
-            attributeName = attribute
-            attributeValue = value
-            topicArn = topicArnVal
-        }
+    val request = SetTopicAttributesRequest {
+        attributeName = attribute
+        attributeValue = value
+        topicArn = topicArnVal
+    }
 
-       SnsClient { region = "us-east-1" }.use { snsClient ->
+    SnsClient { region = "us-east-1" }.use { snsClient ->
         snsClient.setTopicAttributes(request)
         println("Topic ${request.topicArn} was updated.")
-       }
+    }
 }
 ```
 +  For API details, see [SetTopicAttributes](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 

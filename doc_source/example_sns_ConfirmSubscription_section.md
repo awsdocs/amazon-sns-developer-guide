@@ -16,7 +16,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
     public static void confirmSub(SnsClient snsClient, String subscriptionToken, String topicArn ) {
 
         try {
-             ConfirmSubscriptionRequest request = ConfirmSubscriptionRequest.builder()
+            ConfirmSubscriptionRequest request = ConfirmSubscriptionRequest.builder()
                 .token(subscriptionToken)
                 .topicArn(topicArn)
                 .build();
@@ -105,7 +105,7 @@ $subscription_token = 'arn:aws:sns:us-east-1:111122223333:MyTopic:123456-abcd-12
 $topic = 'arn:aws:sns:us-east-1:111122223333:MyTopic';
 
 try {
-    $result = $SnSclient->subscribe([
+    $result = $SnSclient->confirmSubscription([
         'Token' => $subscription_token,
         'TopicArn' => $topic,
     ]);

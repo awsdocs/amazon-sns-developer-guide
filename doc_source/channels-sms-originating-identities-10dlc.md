@@ -27,7 +27,7 @@ Your actual throughput rate will vary depending on various factors, such as whet
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/sns/latest/dg/images/sns-10DLC.png)
 
-Throughput rates for 10DLC are determined by the US mobile carriers in cooperation with the Campaign Registry\. Neither Amazon SNS nor any other SMS sending service can increase 10DLC throughput beyond these rates\. If you need high throughput rates and high deliverability rates across all US carriers, we recommend that you use x a short code\. For more information about obtaining a short code, see [Requesting dedicated short codes for SMS messaging with Amazon SNS](channels-sms-awssupport-short-code.md)\.
+Throughput rates for 10DLC are determined by the US mobile carriers in cooperation with the Campaign Registry\. Neither Amazon SNS nor any other SMS sending service can increase 10DLC throughput beyond these rates\. If you need high throughput rates and high deliverability rates across all US carriers, we recommend that you use a short code\. For more information about obtaining a short code, see [Requesting dedicated short codes for SMS messaging with Amazon SNS](channels-sms-awssupport-short-code.md)\.
 
 ## Getting started with 10DLC<a name="sns-getting-started-with-10dlc"></a>
 

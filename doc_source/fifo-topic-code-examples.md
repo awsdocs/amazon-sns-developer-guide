@@ -20,104 +20,96 @@ This example sets [filter policies](sns-subscription-filter-policies.md) on the 
 ------
 #### [ Java ]
 
-**SDK for Java 1\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
+**SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
 Create a FIFO topic and FIFO queues\. Subscribe the queues to the topic\.  
 
 ```
-// Create API clients
+    public static void main(String[] args) {
 
-AWSCredentialsProvider credentials = getCredentials();
+        final String usage = "\n" +
+            "Usage: " +
+            "    <topicArn>\n\n" +
+            "Where:\n" +
+            "   fifoTopicName - The name of the FIFO topic. \n\n" +
+            "   fifoQueueARN - The ARN value of a SQS FIFO queue. You can get this value from the AWS Management Console. \n\n";
 
-AmazonSNS sns = new AmazonSNSClient(credentials);
-AmazonSQS sqs = new AmazonSQSClient(credentials);
+        if (args.length != 2) {
+            System.out.println(usage);
+            System.exit(1);
+        }
 
-// Create FIFO topic
+        String fifoTopicName = "PriceUpdatesTopic3.fifo";
+        String fifoQueueARN = "arn:aws:sqs:us-east-1:814548047983:MyPriceSQS.fifo";
+        SnsClient snsClient = SnsClient.builder()
+            .region(Region.US_EAST_1)
+            .credentialsProvider(ProfileCredentialsProvider.create())
+            .build();
 
-Map<String, String> topicAttributes = new HashMap<String, String>();
+        createFIFO(snsClient, fifoTopicName, fifoQueueARN);
+    }
 
-topicAttributes.put("FifoTopic", "true");
-topicAttributes.put("ContentBasedDeduplication", "false");
+    public static void createFIFO(SnsClient snsClient, String topicName, String queueARN) {
 
-String topicArn = sns.createTopic(
-    new CreateTopicRequest()
-        .withName("PriceUpdatesTopic.fifo")
-        .withAttributes(topicAttributes)
-).getTopicArn();
+        try {
+            // Create a FIFO topic by using the SNS service client.
+            Map<String, String> topicAttributes = new HashMap<>();
+            topicAttributes.put("FifoTopic", "true");
+            topicAttributes.put("ContentBasedDeduplication", "false");
 
-// Create FIFO queues
+            CreateTopicRequest topicRequest = CreateTopicRequest.builder()
+                .name(topicName)
+                .attributes(topicAttributes)
+                .build();
 
-Map<String, String> queueAttributes = new HashMap<String, String>();
+            CreateTopicResponse response = snsClient.createTopic(topicRequest);
+            String topicArn = response.topicArn();
+            System.out.println("The topic ARN is"+topicArn);
 
-queueAttributes.put("FifoQueue", "true");
+            // Subscribe to the endpoint by using the SNS service client.
+            // Only Amazon SQS FIFO queues can receive notifications from an Amazon SNS FIFO topic.
+            SubscribeRequest subscribeRequest = SubscribeRequest.builder()
+                .topicArn(topicArn)
+                .endpoint(queueARN)
+                .protocol("sqs")
+                .build();
 
-// Disable content-based deduplication because messages published with the same body
-// might carry different attributes that must be processed independently.
-// The price management system uses the message attributes to define whether a given
-// price update applies to the wholesale application or to the retail application.
-queueAttributes.put("ContentBasedDeduplication", "false");
+            snsClient.subscribe(subscribeRequest);
+            System.out.println("The topic is subscribed to the queue.");
 
-String wholesaleQueueUrl = sqs.createQueue(
-    new CreateQueueRequest()
-        .withName("WholesaleQueue.fifo")
-        .withAttributes(queueAttributes)
-).getQueueUrl();
+            // Compose and publish a message that updates the wholesale price.
+            String subject = "Price Update";
+            String payload = "{\"product\": 214, \"price\": 79.99}";
+            String groupId = "PID-214";
+            String dedupId = UUID.randomUUID().toString();
+            String attributeName = "business";
+            String attributeValue = "wholesale";
 
-String retailQueueUrl = sqs.createQueue(
-    new CreateQueueRequest()
-        .withName("RetailQueue.fifo")
-        .withAttributes(queueAttributes)
-).getQueueUrl();
+            MessageAttributeValue msgAttValue = MessageAttributeValue.builder()
+                .dataType("String")
+                .stringValue(attributeValue)
+                .build();
 
-// Subscribe FIFO queues to FIFO topic, setting required permissions
+            Map<String, MessageAttributeValue> attributes = new HashMap<>();
+            attributes.put(attributeName, msgAttValue);
+            PublishRequest pubRequest = PublishRequest.builder()
+                .topicArn(topicArn)
+                .subject(subject)
+                .message(payload)
+                .messageGroupId(groupId)
+                .messageDeduplicationId(dedupId)
+                .messageAttributes(attributes)
+                .build();
 
-String wholesaleSubscriptionArn =
-    Topics.subscribeQueue(sns, sqs, topicArn, wholesaleQueueUrl);
+            snsClient.publish(pubRequest);
+            System.out.println("Message was published to "+topicArn);
 
-String retailSubscriptionArn =
-    Topics.subscribeQueue(sns, sqs, topicArn, retailQueueUrl);
-```
-Set a filter policy on each subscription so that each subscriber application receives only the price updates that it needs\.  
-
-```
-// Set the Amazon SNS subscription filter policies
-
-SNSMessageFilterPolicy wholesalePolicy = new SNSMessageFilterPolicy();
-wholesalePolicy.addAttribute("business", "wholesale");
-wholesalePolicy.apply(sns, wholesaleSubscriptionArn);
-
-SNSMessageFilterPolicy retailPolicy = new SNSMessageFilterPolicy();
-retailPolicy.addAttribute("business", "retail");
-retailPolicy.apply(sns, retailSubscriptionArn);
-```
-Compose and publish a message that updates the wholesale price\.  
-
-```
-// Publish message to FIFO topic
-
-String subject = "Price Update";
-String payload = "{\"product\": 214, \"price\": 79.99}";
-String groupId = "PID-214";
-String dedupId = UUID.randomUUID().toString();
-String attributeName = "business";
-String attributeValue = "wholesale";
-
-Map<String, MessageAttributeValue> attributes = new HashMap<>();
-
-attributes.put(
-    attributeName,
-    new MessageAttributeValue()
-        .withDataType("String")
-        .withStringValue(attributeValue));
-
-sns.publish(
-    new PublishRequest()
-        .withTopicArn(topicArn)
-        .withSubject(subject)
-        .withMessage(payload)
-        .withMessageGroupId(groupId);
-        .withMessageDeduplicationId(dedupId)
-        .withMessageAttributes(attributes);
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
+}
 ```
 
 ------

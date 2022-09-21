@@ -55,8 +55,8 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
         try {
             GetSubscriptionAttributesRequest request = GetSubscriptionAttributesRequest.builder()
-                    .subscriptionArn(topicArn)
-                    .build();
+                .subscriptionArn(topicArn)
+                .build();
 
             // Get the Subscription attributes
             GetSubscriptionAttributesResponse res = snsClient.getSubscriptionAttributes(request);

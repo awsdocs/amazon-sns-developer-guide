@@ -13,6 +13,12 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
   
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
     /// <summary>
     /// This example shows how to retrieve the attributes of an Amazon Simple
     /// Notification Service (Amazon SNS) topic. The example was written using
@@ -211,7 +217,7 @@ suspend fun getSNSTopicAttributes(topicArnVal: String) {
         val result = snsClient.getTopicAttributes(request)
         println("${result.attributes}")
     }
- }
+}
 ```
 +  For API details, see [GetTopicAttributes](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 

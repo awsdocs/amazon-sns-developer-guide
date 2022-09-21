@@ -4,13 +4,13 @@
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
@@ -56,6 +56,22 @@ Amazon's trademarks and trade dress may not be used in
       + [AND/OR logic](and-or-logic.md)
    + [Applying a subscription filter policy](message-filtering-apply.md)
    + [Removing a subscription filter policy](message-filtering-policy-remove.md)
++ [Message data protection](message-data-protection.md)
+   + [Understanding data protection policies](sns-message-data-protection-policies.md)
+      + [Creating data protection policies to secure message data in Amazon SNS](sns-message-data-protection-configure.md)
+         + [Creating data protection policies to secure message data (API)](sns-message-data-protection-configure-api.md)
+         + [Creating data protection policies to secure message data (CLI)](sns-message-data-protection-configure-cli.md)
+         + [Creating data protection policies to secure message data (CloudFormation)](sns-message-data-protection-configure-cfn.md)
+         + [Creating data protection policies to secure message data (Console)](sns-message-data-protection-configure-console.md)
+         + [Creating data protection policies to secure message data (SDK)](sns-message-data-protection-configure-sdk.md)
+      + [Deleting data protection policies in Amazon SNS](sns-message-data-protection-delete.md)
+      + [Data protection policy examples](sns-message-data-protection-examples.md)
+   + [Using managed data identifiers in Amazon SNS](sns-message-data-protection-data-identifiers.md)
+      + [Sensitive data types: Credentials](sns-message-data-protection-sensitive-data-types-credentials.md)
+      + [Sensitive data types: Devices](sns-message-data-protection-sensitive-data-types-devices.md)
+      + [Sensitive data types: Financial](sns-message-data-protection-sensitive-data-types-financial.md)
+      + [Sensitive data types: Protected health information (PHI)](sns-message-data-protection-sensitive-data-types-phi.md)
+      + [Sensitive data types: Personally identifiable information (PII)](sns-message-data-protection-sensitive-data-types-pii.md)
 + [Amazon SNS message delivery](message-delivery.md)
    + [Amazon SNS raw message delivery](sns-large-payload-raw-message-delivery.md)
    + [Sending Amazon SNS messages to an Amazon SQS queue in a different account](sns-send-message-to-sqs-cross-account.md)
@@ -132,6 +148,7 @@ Amazon's trademarks and trade dress may not be used in
                + [10DLC cross-account access](sns-settings-sms-crossaccount-10dlc.md)
                + [Getting information about 10DLC registration issues](sns-settings-rejected-10dlc.md)
             + [Toll-free numbers](channels-sms-originating-identities-tfn.md)
+            + [Toll-free number registration requirements and process](channels-sns-sms-tfn-register.md)
             + [Short codes](channels-sms-originating-identities-short-codes.md)
             + [Person-to-person (P2P) long codes](channels-sms-originating-identities-long-codes.md)
       + [Requesting support for SMS messaging with Amazon SNS](channels-sms-awssupport.md)
@@ -223,6 +240,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Creating an Amazon VPC endpoint for Amazon SNS](sns-vpc-create-endpoint.md)
          + [Creating an Amazon VPC endpoint policy for Amazon SNS](sns-vpc-endpoint-policy.md)
          + [Publishing an Amazon SNS message from Amazon VPC](sns-vpc-tutorial.md)
+      + [Message Data Protection security](sns-message-data-protection.md)
    + [Identity and access management in Amazon SNS](sns-authentication-and-access-control.md)
       + [Overview of managing access in Amazon SNS](sns-overview-of-managing-access.md)
          + [When to use access control](sns-when-to-use-access-control.md)

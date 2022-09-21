@@ -79,7 +79,7 @@ It matches either of the following message attributes:
 It also matches the following message attribute \(because it contains a value that *isn't* `rugby` or `tennis`\):
 
 ```
-"customer_interests": {"Type": "String.Array", "Value": "["rugby", "baseball"]"}
+"customer_interests": {"Type": "String.Array", "Value": "[\"rugby\", \"baseball\"]"}
 ```
 
 However, it doesn't match the following message attribute:

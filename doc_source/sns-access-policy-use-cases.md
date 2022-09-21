@@ -1,5 +1,7 @@
 # Example cases for Amazon SNS access control<a name="sns-access-policy-use-cases"></a>
 
+This section describes a few examples of typical use cases for access control\.
+
 **Topics**
 + [Grant AWS account access to a topic](#sns-grant-aws-account-access-to-topic)
 + [Limit subscriptions to HTTPS](#sns-limit-subscriptions-to-https)
@@ -10,8 +12,6 @@
 + [Allow accounts in an organization in AWS Organizations to publish to a topic in a different account](#sns-allow-organization-to-publish-to-topic-in-another-account)
 + [Allow any CloudWatch alarm to publish to a topic in a different account](#sns-allow-cloudwatch-alarm-to-publish-to-topic-in-another-account)
 + [Restrict publication to an Amazon SNS topic only from a specific VPC endpoint](#sns-restrict-publication-only-from-specified-vpc-endpoint)
-
-This section describes a few examples of typical use cases for access control\.
 
 ## Grant AWS account access to a topic<a name="sns-grant-aws-account-access-to-topic"></a>
 
@@ -125,16 +125,16 @@ The following example statement uses the `SourceAccount` condition to ensure tha
 When publishing events to Amazon SNS, the following services support `aws:SourceAccount`:
 + Amazon API Gateway
 + Amazon CloudWatch
-+ Amazon DevOps Guru
++ Amazon DevOps Guru
 + Amazon DynamoDB
 + Amazon ElastiCache
 + Amazon GameLift
 + Amazon Pinpoint SMS and Voice API
 + Amazon RDS
 + Amazon Redshift
-+ Amazon Simple Storage Service
 + Amazon S3 Glacier
 + Amazon SES
++ Amazon Simple Storage Service
 + AWS CodeCommit
 + AWS Directory Service
 + AWS Lambda
@@ -170,15 +170,13 @@ You can allow another AWS service to publish to a topic that is owned by another
 When publishing events to Amazon SNS, the following services support `aws:SourceOwner`:
 + Amazon API Gateway
 + Amazon CloudWatch
-+ Amazon DevOps Guru
++ Amazon DevOps Guru
 + Amazon DynamoDB
 + Amazon ElastiCache
 + Amazon GameLift
 + Amazon Pinpoint SMS and Voice API
 + Amazon RDS
 + Amazon Redshift
-+ Amazon Simple Storage Service
-+ Amazon S3 Glacier
 + Amazon SES
 + AWS CodeCommit
 + AWS Directory Service

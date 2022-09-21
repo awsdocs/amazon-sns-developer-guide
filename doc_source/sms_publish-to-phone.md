@@ -202,15 +202,15 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 ```
 suspend fun pubTextSMS(messageVal: String?, phoneNumberVal: String?) {
 
-        val request = PublishRequest {
-            message = messageVal
-            phoneNumber = phoneNumberVal
-        }
+    val request = PublishRequest {
+        message = messageVal
+        phoneNumber = phoneNumberVal
+    }
 
-        SnsClient { region = "us-east-1" }.use { snsClient ->
-          val result = snsClient.publish(request)
-          println("${result.messageId} message sent.")
-        }
+    SnsClient { region = "us-east-1" }.use { snsClient ->
+        val result = snsClient.publish(request)
+        println("${result.messageId} message sent.")
+    }
 }
 ```
 +  For API details, see [Publish](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 

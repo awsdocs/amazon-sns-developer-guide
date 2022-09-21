@@ -18,7 +18,7 @@ For Amazon SNS to send notification messages to mobile endpoints, whether direct
 
 1. For **Push notification platform**, choose the platform that the app is registered with, and then enter the appropriate credentials\.
 **Note**  
-If you're using one of the Apple Push Notification Service \(APNs\) platforms, you can choose between [token\- or certificate\-based authentication](sns-apple-authentication-methods.md), then choose **Choose file** to upload the \.p8 or \.p12 file \(exported from Keychain Access\) to Amazon SNS\.
+If you're using one of the Apple Push Notification Service \(APNs\) platforms, you can choose between [token or certificate\-based authentication](sns-apple-authentication-methods.md), then choose **Choose file** to upload the \.p8 or \.p12 file \(exported from Keychain Access\) to Amazon SNS\.
 
 1. Choose **Create platform application**\.
 

@@ -17,7 +17,6 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
         try {
             SNSMessageFilterPolicy fp = new SNSMessageFilterPolicy();
-
             // Add a filter policy attribute with a single value
             fp.addAttribute("store", "example_corp");
             fp.addAttribute("event", "order_placed");

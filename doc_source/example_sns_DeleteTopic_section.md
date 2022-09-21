@@ -13,6 +13,10 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+
     /// <summary>
     /// This example deletes an existing Amazon Simple Notification Service
     /// (Amazon SNS) topic. The example was created using the AWS SDK for .NET
@@ -148,8 +152,8 @@ suspend fun deleteSNSTopic(topicArnVal: String) {
     }
 
     SnsClient { region = "us-east-1" }.use { snsClient ->
-      snsClient.deleteTopic(request)
-      println("$topicArnVal was successfully deleted.")
+        snsClient.deleteTopic(request)
+        println("$topicArnVal was successfully deleted.")
     }
 }
 ```

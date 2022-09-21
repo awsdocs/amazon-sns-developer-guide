@@ -8,123 +8,54 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 ------
 #### [ Java ]
 
-**SDK for Java 1\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
+**SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
-class RegistrationExample {
+public class RegistrationExample {
 
-  AmazonSNSClient client = new AmazonSNSClient(); //provide credentials here
-  String arnStorage = null;
+    public static void main(String[] args) {
 
-  public void registerWithSNS() {
+        final String usage = "\n" +
+            "Usage: " +
+            "    <token>\n\n" +
+            "Where:\n" +
+            "   token - The name of the FIFO topic. \n\n" +
+            "   platformApplicationArn - The ARN value of platform application. You can get this value from the AWS Management Console. \n\n";
 
-    String endpointArn = retrieveEndpointArn();
-    String token = "Retrieved from the mobile operating system";
+        if (args.length != 2) {
+            System.out.println(usage);
+            System.exit(1);
+        }
 
-    boolean updateNeeded = false;
-    boolean createNeeded = (null == endpointArn);
+        String token = args[0];
+        String platformApplicationArn = args[1];
+        SnsClient snsClient = SnsClient.builder()
+            .region(Region.US_EAST_1)
+            .credentialsProvider(ProfileCredentialsProvider.create())
+            .build();
 
-    if (createNeeded) {
-      // No platform endpoint ARN is stored; need to call createEndpoint.
-      endpointArn = createEndpoint();
-      createNeeded = false;
+        createEndpoint(snsClient, token, platformApplicationArn);
     }
 
-    System.out.println("Retrieving platform endpoint data...");
-    // Look up the platform endpoint and make sure the data in it is current, even if
-    // it was just created.
-    try {
-      GetEndpointAttributesRequest geaReq =
-          new GetEndpointAttributesRequest()
-        .withEndpointArn(endpointArn);
-      GetEndpointAttributesResult geaRes =
-        client.getEndpointAttributes(geaReq);
+    public static void createEndpoint(SnsClient snsClient, String token, String platformApplicationArn){
 
-      updateNeeded = !geaRes.getAttributes().get("Token").equals(token)
-        || !geaRes.getAttributes().get("Enabled").equalsIgnoreCase("true");
+        System.out.println("Creating platform endpoint with token " + token);
 
-    } catch (NotFoundException nfe) {
-      // We had a stored ARN, but the platform endpoint associated with it
-      // disappeared. Recreate it.
-        createNeeded = true;
+        try {
+            CreatePlatformEndpointRequest endpointRequest = CreatePlatformEndpointRequest.builder()
+                .token(token)
+                .platformApplicationArn(platformApplicationArn)
+                .build();
+
+            CreatePlatformEndpointResponse response = snsClient.createPlatformEndpoint(endpointRequest);
+            System.out.println("The ARN of the endpoint is " + response.endpointArn());
+        } catch ( SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
     }
-
-    if (createNeeded) {
-      createEndpoint(token);
-    }
-
-    System.out.println("updateNeeded = " + updateNeeded);
-
-    if (updateNeeded) {
-      // The platform endpoint is out of sync with the current data;
-      // update the token and enable it.
-      System.out.println("Updating platform endpoint " + endpointArn);
-      Map attribs = new HashMap();
-      attribs.put("Token", token);
-      attribs.put("Enabled", "true");
-      SetEndpointAttributesRequest saeReq =
-          new SetEndpointAttributesRequest()
-        .withEndpointArn(endpointArn)
-        .withAttributes(attribs);
-      client.setEndpointAttributes(saeReq);
-    }
-  }
-
-  /**
-  * @return never null
-  * */
-  private String createEndpoint(String token) {
-
-    String endpointArn = null;
-    try {
-      System.out.println("Creating platform endpoint with token " + token);
-      CreatePlatformEndpointRequest cpeReq =
-          new CreatePlatformEndpointRequest()
-        .withPlatformApplicationArn(applicationArn)
-        .withToken(token);
-      CreatePlatformEndpointResult cpeRes = client
-        .createPlatformEndpoint(cpeReq);
-      endpointArn = cpeRes.getEndpointArn();
-    } catch (InvalidParameterException ipe) {
-      String message = ipe.getErrorMessage();
-      System.out.println("Exception message: " + message);
-      Pattern p = Pattern
-        .compile(".*Endpoint (arn:aws:sns[^ ]+) already exists " +
-                 "with the same [Tt]oken.*");
-      Matcher m = p.matcher(message);
-      if (m.matches()) {
-        // The platform endpoint already exists for this token, but with additional
-        // custom data that createEndpoint doesn't want to overwrite. Use the
-        // existing platform endpoint.
-        endpointArn = m.group(1);
-      } else {
-        // Rethrow the exception, because the input is actually bad.
-        throw ipe;
-      }
-    }
-    storeEndpointArn(endpointArn);
-    return endpointArn;
-  }
-
-  /**
-  * @return the ARN the app was registered under previously, or null if no
-  *         platform endpoint ARN is stored.
-  */
-  private String retrieveEndpointArn() {
-    // Retrieve the platform endpoint ARN from permanent storage,
-    // or return null if null is stored.
-    return arnStorage;
-  }
-
-  /**
-  * Stores the platform endpoint ARN in permanent storage for lookup next time.
-  * */
-  private void storeEndpointArn(String endpointArn) {
-    // Write the platform endpoint ARN to permanent storage.
-    arnStorage = endpointArn;
-  }
 }
 ```
 

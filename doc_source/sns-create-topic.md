@@ -91,6 +91,28 @@ The following code examples show how to create an Amazon SNS topic\.
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
+    /// <summary>
+    /// This example shows how to use Amazon Simple Notification Service
+    /// (Amazon SNS) to add a new Amazon SNS topic. The example was created
+    /// using the AWS SDK for .NET version 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class CreateSNSTopic
+    {
+        public static async Task Main()
+        {
+            string topicName = "ExampleSNSTopic";
+
+            IAmazonSimpleNotificationService client = new AmazonSimpleNotificationServiceClient();
+
+            var topicArn = await CreateSNSTopicAsync(client, topicName);
+            Console.WriteLine($"New topic ARN: {topicArn}");
+        }
+
         /// <summary>
         /// Creates a new SNS topic using the supplied topic name.
         /// </summary>
@@ -109,6 +131,8 @@ The following code examples show how to create an Amazon SNS topic\.
 
             return response.TopicArn;
         }
+
+    }
 ```
 +  For API details, see [CreateTopic](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/CreateTopic) in *AWS SDK for \.NET API Reference*\. 
 
@@ -166,13 +190,13 @@ The following code examples show how to create an Amazon SNS topic\.
         CreateTopicResponse result = null;
         try {
             CreateTopicRequest request = CreateTopicRequest.builder()
-                    .name(topicName)
-                    .build();
+                .name(topicName)
+                .build();
 
             result = snsClient.createTopic(request);
             return result.topicArn();
-        } catch (SnsException e) {
 
+        } catch (SnsException e) {
             System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);
         }
@@ -231,15 +255,15 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 ```
 suspend fun createSNSTopic(topicName: String): String {
 
-       val request = CreateTopicRequest {
-            name = topicName
-        }
+    val request = CreateTopicRequest {
+        name = topicName
+    }
 
-       SnsClient { region = "us-east-1" }.use { snsClient ->
+    SnsClient { region = "us-east-1" }.use { snsClient ->
         val result = snsClient.createTopic(request)
         return result.topicArn.toString()
-       }
- }
+    }
+}
 ```
 +  For API details, see [CreateTopic](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 

@@ -71,7 +71,6 @@ If you are using the SDK for Java 2\.x example, the class `SNSMessageFilterPolic
 
         try {
             SNSMessageFilterPolicy fp = new SNSMessageFilterPolicy();
-
             // Add a filter policy attribute with a single value
             fp.addAttribute("store", "example_corp");
             fp.addAttribute("event", "order_placed");

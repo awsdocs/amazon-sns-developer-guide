@@ -61,10 +61,12 @@ You have chosen to subscribe to the topic arn:aws:sns:us-east-2:123456789012:MyT
 A Universally Unique Identifier, unique for each message published\. For a message that Amazon SNS resends during a retry, the message ID of the original message is used\.
 
 **`Signature`**  
-Base64\-encoded "SHA1withRSA" signature of the Message, MessageId, Type, Timestamp, and TopicArn values\.
+Base64\-encoded `SHA1withRSA` or `SHA256withRSA` signature of the Message, MessageId, Type, Timestamp, and TopicArn values\.
 
 **`SignatureVersion`**  
-Version of the Amazon SNS signature used\.
+Version of the Amazon SNS signature used\.  
++ If the `SignatureVersion` is **1**, `Signature` is a Base64\-encoded `SHA1withRSA` signature of the Message, MessageId, Type, Timestamp, and TopicArn values\. 
++ If the `SignatureVersion` is **2**, `Signature` is a Base64\-encoded `SHA256withRSA` signature of the Message, MessageId, Type, Timestamp, and TopicArn values\.
 
 **`SigningCertURL`**  
 The URL to the certificate that was used to sign the message\.
@@ -122,10 +124,12 @@ The Message value specified when the notification was published to the topic\.
 A Universally Unique Identifier, unique for each message published\. For a notification that Amazon SNS resends during a retry, the message ID of the original message is used\.
 
 **`Signature`**  
-Base64\-encoded `SHA1withRSA` signature of the Message, MessageId, Subject \(if present\), Type, Timestamp, and TopicArn values\.
+Base64\-encoded `SHA1withRSA` or `SHA256withRSA` signature of the Message, MessageId, Subject \(if present\), Type, Timestamp, and TopicArn values\.
 
 **`SignatureVersion`**  
-Version of the Amazon SNS signature used\.
+Version of the Amazon SNS signature used\.  
++ If the `SignatureVersion` is **1**, `Signature` is a Base64\-encoded `SHA1withRSA` signature of the Message, MessageId, Subject \(if present\), Type, Timestamp, and TopicArn values\.
++ If the `SignatureVersion` is **2**, `Signature` is a Base64\-encoded `SHA256withRSA` signature of the Message, MessageId, Subject \(if present\), Type, Timestamp, and TopicArn values\.
 
 **`SigningCertURL`**  
 The URL to the certificate that was used to sign the message\.
@@ -191,10 +195,12 @@ You have chosen to deactivate subscription arn:aws:sns:us-east-2:123456789012:My
 A Universally Unique Identifier, unique for each message published\. For a message that Amazon SNS resends during a retry, the message ID of the original message is used\.
 
 **`Signature`**  
-Base64\-encoded "SHA1withRSA" signature of the Message, MessageId, Type, Timestamp, and TopicArn values\.
+Base64\-encoded `SHA1withRSA` or `SHA256withRSA` signature of the Message, MessageId, Type, Timestamp, and TopicArn values\.
 
 **`SignatureVersion`**  
-Version of the Amazon SNS signature used\.
+Version of the Amazon SNS signature used\.  
++ If the `SignatureVersion` is **1**, `Signature` is a Base64\-encoded `SHA1withRSA` signature of the Message, MessageId, Type, Timestamp, and TopicArn values\.
++ If the `SignatureVersion` is **2**, `Signature` is a Base64\-encoded `SHA256withRSA` signature of the Message, MessageId, Type, Timestamp, and TopicArn values\.
 
 **`SigningCertURL`**  
 The URL to the certificate that was used to sign the message\.

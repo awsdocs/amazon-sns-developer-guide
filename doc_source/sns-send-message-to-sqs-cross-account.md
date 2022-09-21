@@ -27,14 +27,16 @@ The account that created the Amazon SQS queue is the queue owner\. When the queu
 
    ```
    {
-     "Statement":[{
-       "Effect":"Allow",
-       "Principal":{
-         "AWS":"111122223333"
-       },
-       "Action":"sns:Subscribe",
-       "Resource":"arn:aws:sns:us-east-2:123456789012:MyTopic"
-     }]
+      "Statement": [
+         {
+            "Effect": "Allow",
+            "Principal": {
+               "AWS": "111122223333"
+            },
+            "Action": "sns:Subscribe",
+            "Resource": "arn:aws:sns:us-east-2:123456789012:MyTopic"
+         }
+      ]
    }
    ```
 
@@ -104,16 +106,16 @@ The following is an example policy statement that allows the Amazon SNS topic to
 
 ```
 {
-"Sid": "Stmt1234",
-"Effect": "Allow",
-"Principal": "*",
-"Action": "sqs:SendMessage",
-"Resource": "arn:aws:sqs:us-west-2:111111111111:QueueName",
-"Condition": {
-"ArnEquals": {
-"aws:SourceArn": "arn:aws:sns:us-west-2:555555555555:TopicName"
-}
-}
+   "Sid": "Stmt1234",
+   "Effect": "Allow",
+   "Principal": "*",
+   "Action": "sqs:SendMessage",
+   "Resource": "arn:aws:sqs:us-west-2:111111111111:QueueName",
+   "Condition": {
+      "ArnEquals": {
+         "aws:SourceArn": "arn:aws:sns:us-west-2:555555555555:TopicName"
+      }
+   }
 }
 ```
 

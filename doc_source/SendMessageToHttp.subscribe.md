@@ -6,14 +6,14 @@ To send messages to an HTTP or HTTPS endpoint through a topic, you must subscrib
 
 1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
 
-1. On the navigation panel, choose **Topics** and then choose the topic\.
+1. On the navigation panel, choose **Topics**\.
 
-1. Choose the **Other actions** drop\-down list and select **Subscribe to topic**\.
+1. Choose the **Create subscription**\.
 
 1. In the **Protocol** drop\-down list, select **HTTP** or **HTTPS**\.
 
 1. In the **Endpoint** box, paste in the URL for the endpoint that you want the topic to send messages to and then choose **Create subscription**\.
 
-1. For the **Subscription request received\!** message, choose **Close**\.
+1. The confirmation message is displayed\. Choose **Close**\.
 
    Your new subscription's **Subscription ID** displays PendingConfirmation\. When you confirm the subscription, **Subscription ID** will display the subscription ID\.

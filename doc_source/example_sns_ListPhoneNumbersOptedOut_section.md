@@ -16,7 +16,6 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
     public static void listOpts( SnsClient snsClient) {
 
         try {
-
             ListPhoneNumbersOptedOutRequest request = ListPhoneNumbersOptedOutRequest.builder().build();
             ListPhoneNumbersOptedOutResponse result = snsClient.listPhoneNumbersOptedOut(request);
             System.out.println("Status is " + result.sdkHttpResponse().statusCode() + "\n\nPhone Numbers: \n\n" + result.phoneNumbers());

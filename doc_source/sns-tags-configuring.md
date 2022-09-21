@@ -45,34 +45,34 @@ The following code examples show how to add tags to an Amazon SNS topic\.
 ```
     public static void addTopicTags(SnsClient snsClient, String topicArn) {
 
-     try {
-        Tag tag = Tag.builder()
+        try {
+            Tag tag = Tag.builder()
                 .key("Team")
                 .value("Development")
                 .build();
 
-        Tag tag2 = Tag.builder()
+            Tag tag2 = Tag.builder()
                 .key("Environment")
                 .value("Gamma")
                 .build();
 
-        List<Tag> tagList = new ArrayList<>();
-        tagList.add(tag);
-        tagList.add(tag2);
+            List<Tag> tagList = new ArrayList<>();
+            tagList.add(tag);
+            tagList.add(tag2);
 
-        TagResourceRequest tagResourceRequest = TagResourceRequest.builder()
+            TagResourceRequest tagResourceRequest = TagResourceRequest.builder()
                 .resourceArn(topicArn)
                 .tags(tagList)
                 .build();
 
-        snsClient.tagResource(tagResourceRequest);
-        System.out.println("Tags have been added to "+topicArn);
+            snsClient.tagResource(tagResourceRequest);
+            System.out.println("Tags have been added to "+topicArn);
 
-      } catch (SnsException e) {
-          System.err.println(e.awsErrorDetails().errorMessage());
-          System.exit(1);
-      }
-   }
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
 ```
 +  For API details, see [TagResource](https://docs.aws.amazon.com/goto/SdkForJavaV2/sns-2010-03-31/TagResource) in *AWS SDK for Java 2\.x API Reference*\. 
 
@@ -88,7 +88,7 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 suspend fun addTopicTags(topicArn: String) {
 
     val tag = Tag {
-        key ="Team"
+        key = "Team"
         value = "Development"
     }
 
@@ -98,11 +98,11 @@ suspend fun addTopicTags(topicArn: String) {
     }
 
     val tagList = mutableListOf<Tag>()
-        tagList.add(tag)
-        tagList.add(tag2)
+    tagList.add(tag)
+    tagList.add(tag2)
 
     val request = TagResourceRequest {
-        resourceArn=topicArn
+        resourceArn = topicArn
         tags = tagList
     }
 

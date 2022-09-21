@@ -4,7 +4,6 @@ When you first register an app and mobile device with a notification service, su
 
  You can add device tokens and registration IDs to Amazon SNS using the following methods: 
 + Manually add a single token to AWS using the AWS Management Console
-+ Migrate existing tokens from a CSV file to AWS using the AWS Management Console 
 + Upload several tokens using the `CreatePlatformEndpoint` API 
 + Register tokens from devices that will install your apps in the future
 
@@ -21,27 +20,6 @@ When you first register an app and mobile device with a notification service, su
 1. Finally, choose **Add Endpoints**\.
 
    Now with the endpoint created, you can either send messages directly to a mobile device or send messages to mobile devices that are subscribed to a topic\.
-
-**To migrate existing tokens from a CSV file to AWS**
-
- You can migrate existing tokens contained in a CSV file\. The CSV file cannot be larger than 2MB\. When migrating several tokens, it is recommended to use the `CreatePlatformEndpoint` API\. Each of the tokens in the CSV file must be followed by a newline\. For example, your CSV file should look similar to the following: 
-
-```
-amzn1.adm-registration.v1.XpvSSUk0Rc3hTVVV--TOKEN--KMTlmMWxwRkxMaDNST2luZz01,"User data with spaces requires quotes"
-amzn1.adm-registration.v1.XpvSSUk0Rc3hTVVV--TOKEN--KMTlmMWxwRkxMaDNST2luZz04,"Data,with,commas,requires,quotes"
-amzn1.adm-registration.v1.XpvSSUk0Rc3hTVVV--TOKEN--KMTlmMWxwRkxMaDNST2luZz02,"Quoted data requires ""escaped"" quotes"
-amzn1.adm-registration.v1.XpvSSUk0Rc3hTVVV--TOKEN--KMTlmMWxwRkxMaDNST2luZz03,"{""key"": ""json is allowed"", ""value"":""endpoint"", ""number"": 1}"
-amzn1.adm-registration.v1.XpvSSUk0Rc3hTVVV--TOKEN--KMTlmMWxwRkxMaDNST2luZz05,SimpleDataNoQuotes
-amzn1.adm-registration.v1.XpvSSUk0Rc3hTVVV--TOKEN--KMTlmMWxwRkxMaDNST2luZz06,"The following line has no user data"
-amzn1.adm-registration.v1.XpvSSUk0Rc3hTVVV--TOKEN--KMTlmMWxwRkxMaDNST2luZz07
-APBTKzPGlCyT6E6oOfpdwLpcRNxQp5vCPFiFeru9oZylc22HvZSwQTDgmmw9WdNlXMerUPxmpX0w1,"Different token style"
-```
-
-1. Sign in to the [Amazon SNS console](https://console.aws.amazon.com/sns/home)\.
-
-1. Choose **Apps**, choose your app, and then choose **Add Endpoints**\. 
-
-1. Choose **Migrate existing tokens over to AWS**, choose **Choose File**, choose your CSV file, and then choose **Add Endpoints**\. 
 
 **To upload several tokens using the `CreatePlatformEndpoint` API**
 

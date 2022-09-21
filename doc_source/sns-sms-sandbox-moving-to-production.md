@@ -12,27 +12,37 @@ Moving your AWS account out of the [SMS sandbox](sns-sms-sandbox.md) requires th
 
 1. On the Amazon SNS console's **Mobile text messaging \(SMS\)** page, under **Account information**, choose **Exit SMS sandbox**\.
 
-   The [AWS Support Center](https://console.aws.amazon.com/support/home#/) opens and creates a case\. The **Service limit increase** option is already selected and the **Limit type** is set to **SNS Text Messaging**\.
+   The [Amazon Support Center](https://support.console.aws.amazon.com/support/home?#/case/create?issueType=service-limit-increase) opens and creates a case, with the **Service limit increase** option already selected\.
 
-1. Under **Case details**, provide the following information:
-   + A link to the site or the name of the app that you plan to send SMS messages from
-   + The type of messages that you plan to send: one\-time passwords, promotional, or transactional
-   + The AWS Region that you plan to send SMS messages from
-   + The countries or regions that you plan to send SMS messages to
-   + A description of how your customers opt in to receive messages from you
-   + Any message template that you plan to use
+1. Under **Case details**, do the following:
+
+   1. For **Limit type**, choose **SNS Text Messaging**\.
+
+   1. \(Optional\) Provide a **link to the site** or the **name of the app** that you plan to send SMS messages from\.
+
+   1. \(Optional\) Choose the **type of messages** that you plan to send: **One Time Password**, **Promotional**, or **Transactional**\.
+
+   1. \(Optional\) Choose the **AWS Region** that you plan to send SMS messages from\.
+
+   1. \(Optional\) Provide the **countries** or **regions** that you plan to send SMS messages to\.
+
+   1. \(Optional\) Provide a description of how your **customers opt\-in to receive messages** from you\.
+
+   1. \(Optional\) Provide any **message templates** that you plan to use\.
 
 1. Under **Requests**, do the following:
 
-   1. For **Region**, choose the AWS Region where you want to move your AWS account out of the SMS sandbox\.
+   1. For **Region**, choose the **AWS Region** where you want to move your AWS account out of the SMS sandbox\.
 
    1. For **Resource Type**, choose **General Limits**\.
 
    1. For **Limit**, choose **Exit SMS Sandbox**\.
 
-   1. \(Optional\) To make additional requests, such as a limit increase, choose **Add another request**\. Then, choose the options for your request\.
+   1. \(Optional\) To make additional requests, such as a limit increase, choose **Add another request**\. Then, choose the **options** for your request\.
 
-1. \(Optional\) Under **Case description**, enter any additional relevant details about your request\.
+   1. For **New limit value**, choose a **limit value** \(in USD\)\.
+
+1. \(Optional\) Under **Case description**, enter any additional relevant use case details about your request\.
 
 1. Under **Contact options**, choose your **Preferred contact language**\.
 

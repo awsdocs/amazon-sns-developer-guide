@@ -10,6 +10,7 @@ Support for origination numbers is not available in countries where local laws r
 **Topics**
 + [10DLC](channels-sms-originating-identities-10dlc.md)
 + [Toll\-free numbers](channels-sms-originating-identities-tfn.md)
++ [Toll\-free number registration requirements and process](channels-sns-sms-tfn-register.md)
 + [Short codes](channels-sms-originating-identities-short-codes.md)
 + [Person\-to\-person \(P2P\) long codes](channels-sms-originating-identities-long-codes.md)
 + [U\.S\. product number comparison](#sns-10dlc-product-comparison)

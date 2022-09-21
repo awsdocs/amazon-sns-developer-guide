@@ -2,9 +2,6 @@
 
 After you [create an Amazon SNS topic](sns-create-topic.md) and [subscribe](sns-create-subscribe-endpoint-to-topic.md) an endpoint to it, you can *publish* messages to the topic\. When a message is published, Amazon SNS attempts to deliver the message to the subscribed [endpoints](sns-create-subscribe-endpoint-to-topic.md#sns-endpoints)\. 
 
-**Important**  
-You can publish messages only to topics and endpoints in the same AWS Region\.
-
 **Topics**
 + [To publish messages to Amazon SNS topics using the AWS Management Console](#sns-publishing-messages)
 + [To publish a message to a topic using an AWS SDK](#publish-to-topic-aws-sdks)
@@ -194,10 +191,10 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 ```
 suspend fun pubTopic(topicArnVal: String, messageVal: String) {
 
-    val request = PublishRequest{
+    val request = PublishRequest {
         message = messageVal
         topicArn = topicArnVal
-     }
+    }
 
     SnsClient { region = "us-east-1" }.use { snsClient ->
         val result = snsClient.publish(request)

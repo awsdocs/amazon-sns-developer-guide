@@ -20,7 +20,7 @@ When you use Amazon SNS to deliver messages from opt\-in Regions to Regions that
 **Cross\-region delivery support to Amazon SQS**    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/sns-cross-region-delivery.html)
 
-  The following is an example of an access policy statement that allows an Amazon SNS topic in an opt\-in Region \(CPT Region\) to deliver to an Amazon SQS queue in an enabled\-by\-default Region \(IAD Region\)\. It contains the necessary regionalized service principal configuration under the path `Statement`/`Principal`/`Service`\. 
+  The following is an example of an access policy statement that allows an Amazon SNS topic in an opt\-in Region \(af\-south\-1\) to deliver to an Amazon SQS queue in an enabled\-by\-default Region \(us\-east\-1\)\. It contains the necessary regionalized service principal configuration under the path `Statement`/`Principal`/`Service`\. 
 
   ```
   {

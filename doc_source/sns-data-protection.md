@@ -9,11 +9,18 @@ For data protection purposes, we recommend that you protect AWS account credenti
 + Use AWS encryption solutions, along with all default security controls within AWS services\.
 + Use advanced managed security services such as Amazon Macie, which assists in discovering and securing personal data that is stored in Amazon S3\.
 + If you require FIPS 140\-2 validated cryptographic modules when accessing AWS through a command line interface or an API, use a FIPS endpoint\. For more information about the available FIPS endpoints, see [Federal Information Processing Standard \(FIPS\) 140\-2](http://aws.amazon.com/compliance/fips/)\.
++ Message data protection
+  + Message data protection is a new major feature of Amazon SNS
+  + Use MDP to scan message for confidential or sensitive information
+  + Provide message auditing to all content flowing through the topic
+  + Provide content access controls to messages published to the topic and messages delivered by the topic
 
-We strongly recommend that you never put confidential or sensitive information, such as your customers' email addresses, into tags or free\-form fields such as a **Name** field\. This includes when you work with Amazon SNS or other AWS services using the console, API, AWS CLI, or AWS SDKs\. Any data that you enter into tags or free\-form fields used for names may be used for billing or diagnostic logs\. If you provide a URL to an external server, we strongly recommend that you do not include credentials information in the URL to validate your request to that server\.
+**Important**  
+We strongly recommend that you never put confidential or sensitive information, such as your customers' email addresses, into tags or free\-form fields such as a Name field\. This includes when you work with Amazon SNS or other Amazon Web Services using the console, API, AWS CLI, or AWS SDKs\. Any data that you enter into tags or free\-form fields used for names may be used for billing or diagnostic logs\. If you provide a URL to an external server, we strongly recommend that you do not include credentials information in the URL to validate your request to that server\.
 
 The following sections provide additional information about data protection in Amazon SNS\.
 
 **Topics**
 + [Data encryption](sns-data-encryption.md)
 + [Internetwork traffic privacy](sns-internetwork-traffic-privacy.md)
++ [Message Data Protection security](sns-message-data-protection.md)

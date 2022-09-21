@@ -88,7 +88,6 @@ The following code examples show how to list phone numbers that are opted out of
     public static void listOpts( SnsClient snsClient) {
 
         try {
-
             ListPhoneNumbersOptedOutRequest request = ListPhoneNumbersOptedOutRequest.builder().build();
             ListPhoneNumbersOptedOutResponse result = snsClient.listPhoneNumbersOptedOut(request);
             System.out.println("Status is " + result.sdkHttpResponse().statusCode() + "\n\nPhone Numbers: \n\n" + result.phoneNumbers());
@@ -155,6 +154,28 @@ The following code examples show how to check whether a phone number is opted ou
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
+    /// <summary>
+    /// This example shows how to use the Amazon Simple Notification Service
+    /// (Amazon SNS) to check whether a phone number has been opted out. The
+    /// example was created using the AWS SDK for .NET version 3.7 and
+    /// .NET Core 5.0.
+    /// </summary>
+    public class IsPhoneNumOptedOut
+    {
+        public static async Task Main()
+        {
+            string phoneNumber = "+15551112222";
+
+            IAmazonSimpleNotificationService client = new AmazonSimpleNotificationServiceClient();
+
+            await CheckIfOptedOutAsync(client, phoneNumber);
+        }
+
         /// <summary>
         /// Checks to see if the supplied phone number has been opted out.
         /// </summary>
@@ -184,6 +205,7 @@ The following code examples show how to check whether a phone number is opted ou
                 Console.WriteLine($"{ex.Message}");
             }
         }
+    }
 ```
 +  For API details, see [CheckIfPhoneNumberIsOptedOut](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut) in *AWS SDK for \.NET API Reference*\. 
 
@@ -195,15 +217,14 @@ The following code examples show how to check whether a phone number is opted ou
   
 
 ```
-        public static void checkPhone(SnsClient snsClient, String phoneNumber) {
+    public static void checkPhone(SnsClient snsClient, String phoneNumber) {
 
-            try {
+        try {
             CheckIfPhoneNumberIsOptedOutRequest request = CheckIfPhoneNumberIsOptedOutRequest.builder()
                 .phoneNumber(phoneNumber)
                 .build();
 
             CheckIfPhoneNumberIsOptedOutResponse result = snsClient.checkIfPhoneNumberIsOptedOut(request);
-
             System.out.println(result.isOptedOut() + "Phone Number " + phoneNumber + " has Opted Out of receiving sns messages." +
                 "\n\nStatus was " + result.sdkHttpResponse().statusCode());
 
@@ -361,7 +382,6 @@ The following code examples show how to delete an Amazon SNS subscription\.
                 .build();
 
             UnsubscribeResponse result = snsClient.unsubscribe(request);
-
             System.out.println("\n\nStatus was " + result.sdkHttpResponse().statusCode()
                 + "\n\nSubscription was removed for " + request.subscriptionArn());
 
@@ -423,14 +443,14 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 ```
 suspend fun unSub(subscriptionArnVal: String) {
 
-       val request = UnsubscribeRequest {
-           subscriptionArn = subscriptionArnVal
-        }
+    val request = UnsubscribeRequest {
+        subscriptionArn = subscriptionArnVal
+    }
 
-       SnsClient { region = "us-east-1" }.use { snsClient ->
-         snsClient.unsubscribe(request)
-         println("Subscription was removed for ${request.subscriptionArn}")
-       }
+    SnsClient { region = "us-east-1" }.use { snsClient ->
+        snsClient.unsubscribe(request)
+        println("Subscription was removed for ${request.subscriptionArn}")
+    }
 }
 ```
 +  For API details, see [Unsubscribe](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
@@ -521,6 +541,10 @@ The following code examples show how to delete an Amazon SNS topic and all subsc
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+
     /// <summary>
     /// This example deletes an existing Amazon Simple Notification Service
     /// (Amazon SNS) topic. The example was created using the AWS SDK for .NET
@@ -656,8 +680,8 @@ suspend fun deleteSNSTopic(topicArnVal: String) {
     }
 
     SnsClient { region = "us-east-1" }.use { snsClient ->
-      snsClient.deleteTopic(request)
-      println("$topicArnVal was successfully deleted.")
+        snsClient.deleteTopic(request)
+        println("$topicArnVal was successfully deleted.")
     }
 }
 ```

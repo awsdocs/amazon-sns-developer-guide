@@ -1,18 +1,35 @@
 # Verifying the signatures of Amazon SNS messages<a name="sns-verify-signature-of-message"></a>
 
-You should verify the authenticity of a notification, subscription confirmation, or unsubscribe confirmation message sent by Amazon SNS\. Using information contained in the Amazon SNS message, your endpoint can recreate the string to sign and the signature so that you can verify the contents of the message by matching the signature you recreated from the message contents with the signature that Amazon SNS sent with the message\.
+To verify the authenticity of a message sent to your HTTP endpoint by Amazon SNS, you can verify the message signature\. There are two cases where we recommend verifying the authenticity of the message\. First, when Amazon SNS sends a message to your HTTP endpoint that you subscribed to a topic\. Second, when Amazon SNS sends you a confirmation message to your HTTP endpoint upon the execution of the `Subscribe` or the `Unsubscribe` API actions\.
 
-To help prevent spoofing attacks, you should do the following when verifying messages sent by Amazon SNS:
+You should do the following when verifying messages sent by Amazon SNS:
 + Always use HTTPS when getting the certificate from Amazon SNS\.
 + Validate the authenticity of the certificate\.
 + Verify the certificate was received from Amazon SNS\.
 + When possible, use one of the supported AWS SDKs for Amazon SNS to validate and verify messages\.
 
+Amazon SNS supports two message signature versions: 
++ `SignatureVersion`**1**: Amazon SNS creates the signature based on the **SHA1** hash of the message\. 
++ `SignatureVersion`**2**: Amazon SNS creates the signature based on the **SHA256** hash of the message\. 
+
+**To configure the message signature version on Amazon SNS topics**
+
+By default, Amazon SNS topics use `SignatureVersion` 1\. To choose the hashing algorithm on your Amazon SNS topic, either `SignatureVersion` **1** \(SHA1\) or `SignatureVersion` 2** **\(SHA256\), you can use the `SetTopicAttributes` API action\.
+
+The following code example shows how to set the topic attribute `SignatureVersion` using the AWS CLI:
+
+```
+aws sns set-topic-attributes \
+    --topic-arn arn:aws:sns:us-east-2:123456789012:MyTopic \
+    --attribute-name SignatureVersion \
+    --attribute-value 2
+```
+
 **To verify the signature of an Amazon SNS message when using HTTP query\-based requests**
 
 1. Extract the name\-value pairs from the JSON document in the body of the HTTP POST request that Amazon SNS sent to your endpoint\. You'll be using the values of some of the name\-value pairs to create the string to sign\. When you are verifying the signature of an Amazon SNS message, it is critical that you convert the escaped control characters to their original character representations in the `Message` and `Subject` values\. These values must be in their original forms when you use them as part of the string to sign\. For information about how to parse the JSON document, see [Step 1: Make sure your endpoint is ready to process Amazon SNS messages](SendMessageToHttp.prepare.md)\. 
 
-   The `SignatureVersion` tells you the signature version\. From the signature version, you can determine the requirements for how to generate the signature\. For Amazon SNS notifications, Amazon SNS currently supports signature version 1\. This section provides the steps for creating a signature using signature version 1\.
+   The `SignatureVersion` tells you the signature version used by Amazon SNS to generate the signature of the message\. From the signature version, you can determine the requirements for how to generate the signature\. For notifications, Amazon SNS currently supports signature version **1** and **2**\. This section provides the steps for verifying a signature using these signature versions\.
 
 1. Get the X509 certificate that Amazon SNS used to sign the message\. The `SigningCertURL` value points to the location of the X509 certificate used to create the digital signature for the message\. Retrieve the certificate from this location\. 
 
@@ -83,7 +100,11 @@ The following example is a string to sign for a `SubscriptionConfirmation`\.
 
 1. Decode the `Signature` value from Base64 format\. The message delivers the signature in the `Signature` value, which is encoded as Base64\. Before you compare the signature value with the signature you have calculated, make sure that you decode the `Signature` value from Base64 so that you compare the values using the same format\.
 
-1. Generate the derived hash value of the Amazon SNS message\. Submit the Amazon SNS message, in canonical format, to the same hash function used to generate the signature\. Use **SHA1** as the hash function\.
+1. Generate the derived hash value of the Amazon SNS message\. Submit the Amazon SNS message, in canonical format, to the same hash algorithm used to generate the signature\.
+
+   1. If the `SignatureVersion` is **1**, use **SHA1** as the hash algorithm\.
+
+   1. If the `SignatureVersion` is **2**, use **SHA256** as the hash algorithm\.
 
 1. Generate the asserted hash value of the Amazon SNS message\. The asserted hash value is the result of using the public key value \(from step 3\) to decrypt the signature delivered with the Amazon SNS message\. 
 

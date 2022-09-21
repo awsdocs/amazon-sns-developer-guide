@@ -55,7 +55,6 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
                 .build();
 
             UnsubscribeResponse result = snsClient.unsubscribe(request);
-
             System.out.println("\n\nStatus was " + result.sdkHttpResponse().statusCode()
                 + "\n\nSubscription was removed for " + request.subscriptionArn());
 
@@ -117,14 +116,14 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 ```
 suspend fun unSub(subscriptionArnVal: String) {
 
-       val request = UnsubscribeRequest {
-           subscriptionArn = subscriptionArnVal
-        }
+    val request = UnsubscribeRequest {
+        subscriptionArn = subscriptionArnVal
+    }
 
-       SnsClient { region = "us-east-1" }.use { snsClient ->
-         snsClient.unsubscribe(request)
-         println("Subscription was removed for ${request.subscriptionArn}")
-       }
+    SnsClient { region = "us-east-1" }.use { snsClient ->
+        snsClient.unsubscribe(request)
+        println("Subscription was removed for ${request.subscriptionArn}")
+    }
 }
 ```
 +  For API details, see [Unsubscribe](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 

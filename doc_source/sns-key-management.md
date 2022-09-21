@@ -122,6 +122,30 @@ Some Amazon SNS event sources require you to provide an IAM role \(rather than t
 [AWS IoT](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sns-rule.html)
 [EC2 Image Builder](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-infra-config.html)
 
+1. Add the `aws:SourceAccount` and `aws:SourceArn` condition keys to the KMS resource policy to further protect the KMS key from [confused deputy](https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html) attacks\. Refer to service specific documentation list \(above\) for exact details in each case\.
+
+   ```
+   {
+     "Effect": "Allow",
+     "Principal": {
+       "Service": "service.amazonaws.com"
+     },
+     "Action": [
+       "kms:GenerateDataKey*",
+       "kms:Decrypt"
+     ],
+     "Resource": "*",
+     "Condition": {
+       "StringEquals": {
+         "aws:SourceAccount": "customer-account-id"
+       },
+       "ArnLike": {
+         "aws:SourceArn": "arn:aws:service:region:customer-account-id:resource-type:customer-resource-id"
+       }
+     }
+   }
+   ```
+
 1. [Enable SSE for your topic](sns-enable-encryption-for-topic.md) using your KMS\.
 
 1. Provide the ARN of the encrypted topic to the event source\.

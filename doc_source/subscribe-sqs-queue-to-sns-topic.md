@@ -59,6 +59,7 @@ To set a policy on a queue, you can use the Amazon SQS console or the [SetQueueA
 1. In the **Access policy** section, define who can access your queue\.
    + Add a condition that allows the action for the topic\.
    + Set `Principal` to be the Amazon SNS service, as shown in the example below\. 
+   + Use the [https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn) or [https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceaccount](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceaccount) global condition keys to protect against the [confused deputy](https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html) scenario\. To use these condition keys, set the value to the ARN of your topic\. If your queue is subscribed to multiple topics, you can use `aws:SourceAccount` instead\. 
 
    For example, the following policy allows MyTopic to send messages to MyQueue\. 
 

@@ -13,6 +13,19 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
   
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
+    /// <summary>
+    /// An example to list the Amazon Simple Notification Service (Amazon SNS)
+    /// topics for the default user account. The code was written using the
+    /// AWS SDK for .NET 3.7 and .NET Core 5.0.
+    /// </summary>
+    public class ListSNSTopics
+    {
         public static async Task Main()
         {
             IAmazonSimpleNotificationService client = new AmazonSimpleNotificationServiceClient();
@@ -53,6 +66,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
                 Console.WriteLine($"{topic.TopicArn}");
             }
         }
+    }
 ```
 +  For API details, see [ListTopics](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/ListTopics) in *AWS SDK for \.NET API Reference*\. 
 
@@ -174,7 +188,7 @@ suspend fun listSNSTopics() {
     SnsClient { region = "us-east-1" }.use { snsClient ->
         val response = snsClient.listTopics(ListTopicsRequest { })
         response.topics?.forEach { topic ->
-             println("The topic ARN is ${topic.topicArn}")
+            println("The topic ARN is ${topic.topicArn}")
         }
     }
 }

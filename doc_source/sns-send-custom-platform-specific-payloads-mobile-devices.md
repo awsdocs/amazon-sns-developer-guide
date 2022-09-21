@@ -10,7 +10,19 @@ The following examples show a custom message for the FCM platform\.
 
 ```
 {
-  "GCM":"{ \"notification\": { \"body\": \"Sample message for Android endpoints\", \"title\":\"TitleTest\" } }"
+  "GCM":"{ \"notification\": { \"body\": \"Sample message for Android or iOS endpoints\", \"title\":\"TitleTest\" } }"
+}
+```
+
+### Sending silent notification messages<a name="mobile-push-send-json-silent"></a>
+
+If you want to send the message as a silent notification, you need to set the `content_available` attribute to **true** in the JSON formatted message\.
+
+The following examples show a silent notification message for the FCM platform\.
+
+```
+{
+  "GCM": "{ \"notification\" : {\"content_available\" : true }, \"data\": { \"body\": \"Sample message for Android or iOS endpoints\", \"title\":\"Hello world\"}"
 }
 ```
 
@@ -22,12 +34,7 @@ The following example shows the inclusion of the FCM parameters `time_to_live` a
 
 ```
 {
-   "GCM":"{  
-       \"notification\": 
-         { \"body\": \"Sample message for Android endpoints\", \"title\":\"TitleTest\" },
-      \"data\":
-         {\"time_to_live\": 3600,\"collapse_key\":\"deals\"}"
-   }
+  "GCM": "{\"notification\": { \"body\": \"Sample message for Android or iOS endpoints\", \"title\":\"TitleTest\" },\"data\":{\"time_to_live\": 3600,\"collapse_key\":\"deals\"}}"
 }
 ```
 

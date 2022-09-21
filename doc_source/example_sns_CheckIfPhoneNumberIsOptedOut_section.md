@@ -13,6 +13,28 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
   
 
 ```
+    using System;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
+    /// <summary>
+    /// This example shows how to use the Amazon Simple Notification Service
+    /// (Amazon SNS) to check whether a phone number has been opted out. The
+    /// example was created using the AWS SDK for .NET version 3.7 and
+    /// .NET Core 5.0.
+    /// </summary>
+    public class IsPhoneNumOptedOut
+    {
+        public static async Task Main()
+        {
+            string phoneNumber = "+15551112222";
+
+            IAmazonSimpleNotificationService client = new AmazonSimpleNotificationServiceClient();
+
+            await CheckIfOptedOutAsync(client, phoneNumber);
+        }
+
         /// <summary>
         /// Checks to see if the supplied phone number has been opted out.
         /// </summary>
@@ -42,6 +64,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
                 Console.WriteLine($"{ex.Message}");
             }
         }
+    }
 ```
 +  For API details, see [CheckIfPhoneNumberIsOptedOut](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/CheckIfPhoneNumberIsOptedOut) in *AWS SDK for \.NET API Reference*\. 
 
@@ -53,15 +76,14 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
   
 
 ```
-        public static void checkPhone(SnsClient snsClient, String phoneNumber) {
+    public static void checkPhone(SnsClient snsClient, String phoneNumber) {
 
-            try {
+        try {
             CheckIfPhoneNumberIsOptedOutRequest request = CheckIfPhoneNumberIsOptedOutRequest.builder()
                 .phoneNumber(phoneNumber)
                 .build();
 
             CheckIfPhoneNumberIsOptedOutResponse result = snsClient.checkIfPhoneNumberIsOptedOut(request);
-
             System.out.println(result.isOptedOut() + "Phone Number " + phoneNumber + " has Opted Out of receiving sns messages." +
                 "\n\nStatus was " + result.sdkHttpResponse().statusCode());
 

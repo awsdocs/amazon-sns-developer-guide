@@ -11,76 +11,103 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 ------
 #### [ Java ]
 
-**SDK for Java 1\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
+**SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
 Create a topic and return its ARN\.  
 
 ```
-public static String createSNSTopic(AmazonSNSClient snsClient) {
-    CreateTopicRequest createTopic = new CreateTopicRequest("mySNSTopic");
-    CreateTopicResult result = snsClient.createTopic(createTopic);
-    System.out.println("Create topic request: " +
-        snsClient.getCachedResponseMetadata(createTopic));
-    System.out.println("Create topic result: " + result);
-    return result.getTopicArn();
-}
+    public static String createSNSTopic(SnsClient snsClient, String topicName ) {
+
+        CreateTopicResponse result = null;
+        try {
+            CreateTopicRequest request = CreateTopicRequest.builder()
+                .name(topicName)
+                .build();
+
+            result = snsClient.createTopic(request);
+            return result.topicArn();
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+        return "";
+    }
 ```
 Subscribe an endpoint to a topic\.  
 
 ```
-public static void subscribeToTopic(AmazonSNSClient snsClient, String topicArn,
-        String protocol, String endpoint) {
-    SubscribeRequest subscribe = new SubscribeRequest(topicArn, protocol, endpoint);
-    SubscribeResult subscribeResult = snsClient.subscribe(subscribe);
-    System.out.println("Subscribe request: " +
-        snsClient.getCachedResponseMetadata(subscribe));
-    System.out.println("Subscribe result: " + subscribeResult);
-}
+    public static void subTextSNS( SnsClient snsClient, String topicArn, String phoneNumber) {
+
+        try {
+            SubscribeRequest request = SubscribeRequest.builder()
+                .protocol("sms")
+                .endpoint(phoneNumber)
+                .returnSubscriptionArn(true)
+                .topicArn(topicArn)
+                .build();
+
+            SubscribeResponse result = snsClient.subscribe(request);
+            System.out.println("Subscription ARN: " + result.subscriptionArn() + "\n\n Status is " + result.sdkHttpResponse().statusCode());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
 ```
 Set attributes on the message, such as the ID of the sender, the maximum price, and its type\. Message attributes are optional\.  
 
 ```
-public static void addMessageAttributes(Map<String, MessageAttributeValue> smsAttributes) {
-    smsAttributes.put("AWS.SNS.SMS.SenderID", new MessageAttributeValue()
-        .withStringValue("mySenderID") //The sender ID shown on the device.
-        .withDataType("String"));
-    smsAttributes.put("AWS.SNS.SMS.MaxPrice", new MessageAttributeValue()
-        .withStringValue("0.50") //Sets the max price to 0.50 USD.
-        .withDataType("Number"));
-    smsAttributes.put("AWS.SNS.SMS.SMSType", new MessageAttributeValue()
-        .withStringValue("Promotional") //Sets the type to promotional.
-        .withDataType("String"));
-}
+public class SetSMSAttributes {
+    public static void main(String[] args) {
+
+        HashMap<String, String> attributes = new HashMap<>(1);
+        attributes.put("DefaultSMSType", "Transactional");
+        attributes.put("UsageReportS3Bucket", "janbucket" );
+
+        SnsClient snsClient = SnsClient.builder()
+            .region(Region.US_EAST_1)
+            .credentialsProvider(ProfileCredentialsProvider.create())
+            .build();
+        setSNSAttributes(snsClient, attributes);
+        snsClient.close();
+    }
+
+    public static void setSNSAttributes( SnsClient snsClient, HashMap<String, String> attributes) {
+
+        try {
+            SetSmsAttributesRequest request = SetSmsAttributesRequest.builder()
+                .attributes(attributes)
+                .build();
+
+            SetSmsAttributesResponse result = snsClient.setSMSAttributes(request);
+            System.out.println("Set default Attributes to " + attributes + ". Status was " + result.sdkHttpResponse().statusCode());
+
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
 ```
 Publish a message to a topic\. The message is sent to every subscriber\.  
 
 ```
-public static void sendSMSMessageToTopic(AmazonSNSClient snsClient, String topicArn,
-        String message, Map<String, MessageAttributeValue> smsAttributes) {
-    PublishResult result = snsClient.publish(new PublishRequest()
-        .withTopicArn(topicArn)
-        .withMessage(message)
-        .withMessageAttributes(smsAttributes));
-    System.out.println(result);
-}
-```
-Call the previous functions to create a topic, subscribe a phone number, set message attributes, and publish a message to the topic\.  
+    public static void pubTextSMS(SnsClient snsClient, String message, String phoneNumber) {
+        try {
+            PublishRequest request = PublishRequest.builder()
+                .message(message)
+                .phoneNumber(phoneNumber)
+                .build();
 
-```
-public static void main(String[] args) {
-    AmazonSNSClient snsClient = new AmazonSNSClient();
+            PublishResponse result = snsClient.publish(request);
+            System.out.println(result.messageId() + " Message sent. Status was " + result.sdkHttpResponse().statusCode());
 
-    String topicArn = createSNSTopic(snsClient);
-    String phoneNumber = "+1XXX5550100";
-    // Specify a protocol of "sms" when subscribing a phone number.
-    subscribeToTopic(snsClient, topicArn, "sms", phoneNumber);
-
-    String message = "My SMS message";
-    Map<String, MessageAttributeValue> smsAttributes =
-        new HashMap<String, MessageAttributeValue>();
-    addMessageAttributes(smsAttributes)
-    sendSMSMessageToTopic(snsClient, topicArn, message, smsAttributes);
-}
+        } catch (SnsException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
 ```
 
 ------

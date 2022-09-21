@@ -78,7 +78,6 @@ int main(int argc, char ** argv)
     public static String subLambda(SnsClient snsClient, String topicArn, String lambdaArn) {
 
         try {
-
             SubscribeRequest request = SubscribeRequest.builder()
                 .protocol("lambda")
                 .endpoint(lambdaArn)

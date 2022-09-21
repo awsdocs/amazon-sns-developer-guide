@@ -153,7 +153,7 @@ This is prerelease documentation for a feature in preview release\. It is subjec
   
 
 ```
-suspend fun subEmail(topicArnVal: String, email: String) : String {
+suspend fun subEmail(topicArnVal: String, email: String): String {
 
     val request = SubscribeRequest {
         protocol = "email"

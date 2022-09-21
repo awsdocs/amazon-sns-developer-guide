@@ -135,10 +135,10 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 ```
 suspend fun pubTopic(topicArnVal: String, messageVal: String) {
 
-    val request = PublishRequest{
+    val request = PublishRequest {
         message = messageVal
         topicArn = topicArnVal
-     }
+    }
 
     SnsClient { region = "us-east-1" }.use { snsClient ->
         val result = snsClient.publish(request)

@@ -13,6 +13,12 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
   
 
 ```
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Amazon.SimpleNotificationService;
+    using Amazon.SimpleNotificationService.Model;
+
     /// <summary>
     /// This example will retrieve a list of the existing Amazon Simple
     /// Notification Service (Amazon SNS) subscriptions. The example was
@@ -118,7 +124,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
         try {
             ListSubscriptionsRequest request = ListSubscriptionsRequest.builder()
-                    .build();
+                .build();
 
             ListSubscriptionsResponse result = snsClient.listSubscriptions(request);
             System.out.println(result.subscriptions());
@@ -183,7 +189,7 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 suspend fun listSNSSubscriptions() {
 
     SnsClient { region = "us-east-1" }.use { snsClient ->
-        val response = snsClient.listSubscriptions(ListSubscriptionsRequest{})
+        val response = snsClient.listSubscriptions(ListSubscriptionsRequest {})
         response.subscriptions?.forEach { sub ->
             println("Sub ARN is ${sub.subscriptionArn}")
             println("Sub protocol is ${sub.protocol}")

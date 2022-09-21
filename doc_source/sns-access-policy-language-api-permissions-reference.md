@@ -24,11 +24,13 @@ Amazon SNS supports the actions shown in the following table\.
 
 | Action | Description | 
 | --- | --- | 
-|  sns:AddPermission  | Grants permission to add permissions to the topic policy\. | 
-|  sns:DeleteTopic  | Grants permission to delete a topic\. | 
+| sns:AddPermission | Grants permission to add permissions to the topic policy\. | 
+| sns:DeleteTopic | Grants permission to delete a topic\. | 
+| sns:GetDataProtectionPolicy | Grants permission to retrieve a topic's data protection policy\.  | 
 |  sns:GetTopicAttributes  | Grants permission to receive all of the topic attributes\. | 
-|  sns:ListSubscriptionsByTopic  | Grants permission to retrieve all the subscriptions to a specific topic\. | 
-|  sns:Publish  | Grants permission to both publish and publish batch to a topic or endpoint\. For more information, see [Publish](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) and [PublishBatch](https://docs.aws.amazon.com/sns/latest/api/API_BatchPublish.html) in the Amazon Simple Notification Service API Reference  | 
+| sns:ListSubscriptionsByTopic | Grants permission to retrieve all the subscriptions to a specific topic\. | 
+|  sns:Publish  | Grants permission to both publish and publish batch to a topic or endpoint\. For more information, see [Publish](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) and [PublishBatch](https://docs.aws.amazon.com/sns/latest/api/API_BatchPublish.html) in the Amazon Simple Notification Service API Reference\. | 
+| sns:PutDataProtectionPolicy | Grants permission to set a topic's data protection policy\. | 
 |  sns:RemovePermission  | Grants permission to remove any permissions in the topic policy\. | 
 |  sns:SetTopicAttributes  | Grants permission to set a topic's attributes\. | 
 |  sns:Subscribe  | Grants permission to subscribe to a topic\. | 
