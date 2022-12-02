@@ -24,6 +24,11 @@ This section describes several best practices that might help you improve your c
 + [Use dedicated short codes](#channels-sms-best-practices-dedicated-short-codes)
 + [Verify your destination phone numbers](#channels-sms-best-practices-verify-destination-numbers)
 + [Design with redundancy in mind](#channels-sms-best-practices-redundancy)
++ [SMS limits and restrictions](#channels-sms-best-practices-limits)
++ [Managing opt out keywords](#channels-sms-best-practices-optout-keywords)
++ [CreatePool](#channels-sms-best-practices-createpool)
++ [PutKeyword](#channels-sms-best-practices-putkeyword)
++ [Managing number settings](#channels-sms-best-practices-number-settings)
 
 ## Comply with laws, regulations, and carrier requirements<a name="channels-sms-best-practices-understand-laws"></a>
 
@@ -216,3 +221,23 @@ For mission\-critical messaging programs, we recommend that you configure Amazon
 The phone numbers that you use for SMS messages—including short codes, long codes, toll\-free numbers, and 10DLC numbers—can't be replicated across AWS Regions\. As a result, in order to use Amazon SNS in multiple Regions, you must request separate phone numbers in each Region where you want to use Amazon SNS\. For example, if you use a short code to send text messages to recipients in the United States, you need to request separate short codes in each AWS Region that you plan to use\.
 
 In some countries, you can also use multiple types of phone numbers for added redundancy\. For example, in the United States, you can request short codes, 10DLC numbers, and toll\-free numbers\. Each of these phone number types takes a different route to the recipient\. Having multiple phone number types available—either in the same AWS Region or spread across multiple AWS Regions—provides an additional layer of redundancy, which can help improve resiliency\.
+
+## SMS limits and restrictions<a name="channels-sms-best-practices-limits"></a>
+
+For SMS limits and restrictions, see [SMS limits and restrictions in Amazon Pinpoint](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-limitations.html) in the *Amazon Pinpoint User Guide*\.
+
+## Managing opt out keywords<a name="channels-sms-best-practices-optout-keywords"></a>
+
+SMS recipients can use their devices to opt out of messages by replying with a keyword\. For more information, see [Opting out of receiving SMS messages](sms_manage.md#sms_manage_optout)\.
+
+## CreatePool<a name="channels-sms-best-practices-createpool"></a>
+
+Use the `CreatePool` API action to create a new pool and associate a specified origination identity to the pool\. For more information, see [CreatePool](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreatePool.html) in *Amazon Pinpoint SMS and Voice API*\.
+
+## PutKeyword<a name="channels-sms-best-practices-putkeyword"></a>
+
+Use the `PutKeyword`API action to create or update a keyword configuration on an origination phone number or pool\. For more information, see [PutKeyword](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_PutKeyword.html) in *Amazon Pinpoint SMS and Voice API*\.
+
+## Managing number settings<a name="channels-sms-best-practices-number-settings"></a>
+
+You can use the options in the **Number settings** section of the* SMS and voice settings* page to manage settings for the dedicated short codes and long codes that you requested from AWS Support and assigned to your account\. For more information, see [Managing number settings](https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-sms-managing.html#settings-account-sms-number) in *Amazon Pinpoint User Guide*\.

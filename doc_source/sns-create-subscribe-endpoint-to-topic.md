@@ -36,6 +36,8 @@ To subscribe to an [SNS FIFO topic](sns-fifo-topics.md), choose this option\.
 
    1. \(Optional\) To configure a filter policy, expand the **Subscription filter policy** section\. For more information, see [Amazon SNS subscription filter policies](sns-subscription-filter-policies.md)\.
 
+   1. \(Optional\) To enable payload\-based filtering, configure `Filter Policy Scope` to `MessageBody`\. For more information, see [Amazon SNS subscription filter policy scope](sns-message-filtering.md#sns-message-filtering-scope)\.
+
    1. \(Optional\) To configure a dead\-letter queue for the subscription, expand the **Redrive policy \(dead\-letter queue\)** section\. For more information, see [Amazon SNS dead\-letter queues \(DLQs\)](sns-dead-letter-queues.md)\.
 
    1. Choose **Create subscription**\.

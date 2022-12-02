@@ -39,7 +39,7 @@ The following shows an example of how to do the following:
 The message payload is stored in Amazon S3 and the reference to it is published\. The Amazon SQS Extended Client is used to receive the message\.
 
 **SDK for Java 1\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/java/example_code/sns#code-examples)\. 
 To publish a large message, use the Amazon SNS Extended Client Library for Java\. The message that you send references an Amazon S3 object containing the actual message content\.  
 
 ```

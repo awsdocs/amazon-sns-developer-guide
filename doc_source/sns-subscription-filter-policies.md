@@ -1,22 +1,20 @@
 # Amazon SNS subscription filter policies<a name="sns-subscription-filter-policies"></a>
 
-A subscription filter policy allows you to specify attribute names and assign a list of values to each attribute name\. For more information, see [Amazon SNS message filtering](sns-message-filtering.md)\.
+A subscription filter policy allows you to specify property names and assign a list of values to each property name\. For more information, see [Amazon SNS message filtering](sns-message-filtering.md)\.
 
-When Amazon SNS evaluates message attributes against the subscription filter policy, it ignores message attributes that aren't specified in the policy\.
+When Amazon SNS evaluates message attributes or message body properties against the subscription filter policy, it ignores the ones that aren't specified in the policy\.
 
 **Important**  
 AWS services such as IAM and Amazon SNS use a distributed computing model called eventual consistency\. Additions or changes to a subscription filter policy require up to 15 minutes to fully take effect\. 
 
 A subscription accepts a message under the following conditions:
-+ Each attribute name in a filter policy matches an attribute name assigned to the message\.
-+ For each matching attribute name, at least one match exists between the following:
-  + The values of the attribute name in the filter policy
-  + The message attributes
++ When the filter policy scope is set to `MessageAttributes`, each property name in the filter policy matches a message attribute name\. For each matching property name in the filter policy, at least one property value matches the message attribute value\.
++ When the filter policy scope is set to `MessageBody`, each property name in the filter policy matches a message body property name\. For each matching property name in the filter policy, at least one property value matches the message body property value\.
 
 **Topics**
 + [Example filter policies](example-filter-policies.md)
 + [Filter policy constraints](subscription-filter-policy-constraints.md)
-+ [Attribute string value matching](string-value-matching.md)
-+ [Attribute numeric value matching](numeric-value-matching.md)
-+ [Attribute key matching](attribute-key-matching.md)
++ [String value matching](string-value-matching.md)
++ [Numeric value matching](numeric-value-matching.md)
++ [Key matching](attribute-key-matching.md)
 + [AND/OR logic](and-or-logic.md)

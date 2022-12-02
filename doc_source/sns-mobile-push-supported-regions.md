@@ -12,3 +12,4 @@ Currently, you can create mobile applications in the following Regions:
 + Europe \(Frankfurt\)
 + Europe \(Ireland\)
 + South America \(São Paulo\)
++ AWS GovCloud \(US\-West\)

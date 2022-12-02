@@ -76,7 +76,7 @@ Region\-dependent data identifiers require the identifier name with a dash, and 
 | Identifier | Category | 
 | --- | --- | 
 |  Address  |  Personal  | 
-|  AWS Secret Key  |  Credentials  | 
+|  AwsSecretKey  |  Credentials  | 
 |  CreditCardExpiration  |  Financial  | 
 |  CreditCardNumber  |  Financial  | 
 |  CreditCardSecurityCode  |  Financial  | 

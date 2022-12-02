@@ -87,7 +87,7 @@ The following code examples show how to set Amazon SNS topic attributes\.
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
@@ -116,7 +116,7 @@ The following code examples show how to set Amazon SNS topic attributes\.
 #### [ JavaScript ]
 
 **SDK for JavaScript V3**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
 Create the client in a separate module and export it\.  
 
 ```
@@ -160,7 +160,7 @@ run();
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/secretsmanager#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/secretsmanager#code-examples)\. 
   
 
 ```
@@ -184,7 +184,7 @@ suspend fun setTopAttr(attribute: String?, topicArnVal: String?, value: String?)
 #### [ PHP ]
 
 **SDK for PHP**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
   
 
 ```
@@ -227,11 +227,11 @@ try {
 #### [ Ruby ]
 
 **SDK for Ruby**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/ruby/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/ruby/example_code/sns#code-examples)\. 
   
 
 ```
-require 'aws-sdk-sns'  # v2: require 'aws-sdk'
+require "aws-sdk-sns"  # v2: require 'aws-sdk'
 
 policy  = '{
   "Version":"2008-10-17",
@@ -251,7 +251,7 @@ policy  = '{
   }]
 }'
 # Replace us-west-2 with the AWS Region you're using for Amazon SNS.
-sns = Aws::SNS::Resource.new(region: 'REGION')
+sns = Aws::SNS::Resource.new(region: "REGION")
 
 # Get topic by ARN
 topic = sns.topic()
@@ -264,5 +264,27 @@ topic.set_attributes({
 ```
 +  For more information, see [AWS SDK for Ruby Developer Guide](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/sns-example-enable-resource.html)\. 
 +  For API details, see [SetTopicAttributes](https://docs.aws.amazon.com/goto/SdkForRubyV3/sns-2010-03-31/SetTopicAttributes) in *AWS SDK for Ruby API Reference*\. 
+
+------
+#### [ SAP ABAP ]
+
+**SDK for SAP ABAP**  
+This documentation is for an SDK in developer preview release\. The SDK is subject to change and is not recommended for use in production\.
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/sap-abap/services/sns#code-examples)\. 
+  
+
+```
+    TRY.
+        lo_sns->settopicattributes(
+            iv_topicarn = iv_topic_arn
+            iv_attributename  = iv_attribute_name
+            iv_attributevalue = iv_attribute_value
+        ).
+        MESSAGE 'Set/Updated SNS topic attributes' TYPE 'I'.
+      CATCH /aws1/cx_snsnotfoundexception.
+        MESSAGE 'Topic does not exist' TYPE 'E'.
+    ENDTRY.
+```
++  For API details, see [SetTopicAttributes](https://docs.aws.amazon.com/sdk-for-sap-abap/v1/api/latest/index.html) in *AWS SDK for SAP ABAP API reference*\. 
 
 ------

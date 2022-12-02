@@ -27,6 +27,8 @@ To prevent mailing list recipients from unsubscribing all recipients from Amazon
 
    1. \(Optional\) To configure a filter policy, expand the **Subscription filter policy** section\. For more information, see [Amazon SNS subscription filter policies](sns-subscription-filter-policies.md)\.
 
+   1. \(Optional\) To enable payload\-based filtering, configure `Filter Policy Scope` to `MessageBody`\. For more information, see [Amazon SNS subscription filter policy scope](sns-message-filtering.md#sns-message-filtering-scope)\.
+
    1. \(Optional\) To configure a dead\-letter queue for the subscription, expand the **Redrive policy \(dead\-letter queue\)** section\. For more information, see [Amazon SNS dead\-letter queues \(DLQs\)](sns-dead-letter-queues.md)\.
 
    1. Choose **Create subscription**\.
@@ -48,10 +50,45 @@ To use an AWS SDK, you must configure it with your credentials\. For more inform
 The following code examples show how to subscribe an email address to an Amazon SNS topic\.
 
 ------
+#### [ \.NET ]
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+  
+
+```
+        /// <summary>
+        /// Creates a new subscription to a topic.
+        /// </summary>
+        /// <param name="client">The initialized Amazon SNS client object, used
+        /// to create an Amazon SNS subscription.</param>
+        /// <param name="topicArn">The ARN of the topic to subscribe to.</param>
+        /// <returns>A SubscribeResponse object which includes the subscription
+        /// ARN for the new subscription.</returns>
+        public static async Task<SubscribeResponse> TopicSubscribeAsync(
+            IAmazonSimpleNotificationService client,
+            string topicArn)
+        {
+            SubscribeRequest request = new SubscribeRequest()
+            {
+                TopicArn = topicArn,
+                ReturnSubscriptionArn = true,
+                Protocol = "email",
+                Endpoint = "recipient@example.com",
+            };
+
+            var response = await client.SubscribeAsync(request);
+
+            return response;
+        }
+```
++  For API details, see [Subscribe](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/Subscribe) in *AWS SDK for \.NET API Reference*\. 
+
+------
 #### [ C\+\+ ]
 
 **SDK for C\+\+**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
   
 
 ```
@@ -111,14 +148,14 @@ int main(int argc, char ** argv)
 #### [ Go ]
 
 **SDK for Go V2**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/gov2/sns/Subscribe#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/gov2/sns/Subscribe#code-examples)\. 
 +  For API details, see [Subscribe](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/sns#Client.Subscribe) in *AWS SDK for Go API Reference*\. 
 
 ------
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
@@ -147,7 +184,7 @@ int main(int argc, char ** argv)
 #### [ JavaScript ]
 
 **SDK for JavaScript V3**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/sns#code-examples)\. 
 Create the client in a separate module and export it\.  
 
 ```
@@ -191,7 +228,7 @@ run();
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/secretsmanager#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/secretsmanager#code-examples)\. 
   
 
 ```
@@ -216,7 +253,7 @@ suspend fun subEmail(topicArnVal: String, email: String): String {
 #### [ PHP ]
 
 **SDK for PHP**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
   
 
 ```
@@ -261,7 +298,7 @@ try {
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
   
 
 ```
@@ -304,11 +341,11 @@ class SnsWrapper:
 #### [ Ruby ]
 
 **SDK for Ruby**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/ruby/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/ruby/example_code/sns#code-examples)\. 
   
 
 ```
-require 'aws-sdk-sns'  # v2: require 'aws-sdk'
+require "aws-sdk-sns"  # v2: require 'aws-sdk'
 
 def subscription_created?(sns_client, topic_arn, protocol, endpoint)
 
@@ -321,19 +358,19 @@ end
 # Full example call:
 def run_me
 
-protocol = 'email'
-endpoint = 'EMAIL_ADDRESS'
-topic_arn = 'TOPIC_ARN'
-region = 'REGION'
+  protocol = "email"
+endpoint = "EMAIL_ADDRESS"
+topic_arn = "TOPIC_ARN"
+region = "REGION"
 
 sns_client = Aws::SNS::Client.new(region: region)
 
 puts "Creating the subscription."
 
   if subscription_created?(sns_client, topic_arn, protocol, endpoint)
-    puts 'The subscriptions was created.'
+    puts "The subscriptions was created."
   else
-    puts 'The subscription was not created. Stopping program.'
+    puts "The subscription was not created. Stopping program."
     exit 1
   end
 end
@@ -348,7 +385,7 @@ run_me if $PROGRAM_NAME == __FILE__
 
 **SDK for Rust**  
 This documentation is for an SDK in preview release\. The SDK is subject to change and should not be used in production\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/rust_dev_preview/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/rust_dev_preview/sns#code-examples)\. 
   
 
 ```
@@ -382,5 +419,30 @@ async fn subscribe_and_publish(
 }
 ```
 +  For API details, see [Subscribe](https://docs.rs/releases/search?query=aws-sdk) in *AWS SDK for Rust API reference*\. 
+
+------
+#### [ SAP ABAP ]
+
+**SDK for SAP ABAP**  
+This documentation is for an SDK in developer preview release\. The SDK is subject to change and is not recommended for use in production\.
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/sap-abap/services/sns#code-examples)\. 
+  
+
+```
+    TRY.
+        oo_result = lo_sns->subscribe(                      "oo_result is returned for testing purpose"
+                iv_topicarn = iv_topic_arn
+                iv_protocol = 'email'
+                iv_endpoint = iv_email_address
+                iv_returnsubscriptionarn = abap_true
+            ).
+        MESSAGE 'Email address subscribed to SNS topic' TYPE 'I'.
+      CATCH /aws1/cx_snsnotfoundexception.
+        MESSAGE 'Topic does not exist' TYPE 'E'.
+      CATCH /aws1/cx_snssubscriptionlmte00.
+        MESSAGE 'Unable to create subscriptions, you have reached the maximum number of subscriptions allowed.' TYPE 'E'.
+    ENDTRY.
+```
++  For API details, see [Subscribe](https://docs.aws.amazon.com/sdk-for-sap-abap/v1/api/latest/index.html) in *AWS SDK for SAP ABAP API reference*\. 
 
 ------

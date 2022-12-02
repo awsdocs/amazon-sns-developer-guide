@@ -8,13 +8,14 @@
 
 ## What is message data protection?<a name="what-is-message-data-protection"></a>
 
-**Message data protection** safeguards the data that's published to your Amazon SNS topics by using [data protection policies](sns-message-data-protection-policies.md) to audit and block the sensitive information that moves between applications or AWS services\.
+**Message data protection** safeguards the data that's published to your Amazon SNS topics by using [data protection policies](sns-message-data-protection-policies.md) to audit, mask, redact or block the sensitive information that moves between applications or AWS services\.
 
 Message data protection scans data in motion for personally identifiable information \(PII\) and protected health information \(PHI\) using predefined *data identifiers* \(for example, names, addresses, credit card numbers, and prescription drug codes\)\. Using the scanned information, message data protection provides detailed audit logs, and allows you to take action to protect that data\.
 
 Message data protection supports the following actions to help protect sensitive customer information:
-+ **Audit** – Audit up to 99% of the data that's published to an Amazon SNS topic\. You can then choose to send the findings to [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html), [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html), or [Amazon Kinesis Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)\.
-+ **Deny** – Block the transmission of data between applications and AWS resources if sensitive data is present within the payload\.
++ [**Audit**](sns-message-data-protection-operations.md#statement-operation-json-properties-audit) – Audit up to 99% of the data that's published to an Amazon SNS topic\. You can then choose to send the findings to [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html), [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html), or [Amazon Kinesis Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)\.
++ [**De\-identify**](sns-message-data-protection-operations.md#statement-operation-json-properties-deidentify) – Mask or redact sensitive data without interrupting message publishing\.
++ [**Deny**](sns-message-data-protection-operations.md#statement-operation-json-properties-deny) – Block the transmission of data between applications and AWS resources if sensitive data is present within the payload\.
 
 ## Why should I use message data protection?<a name="why-use-message-data-protection"></a>
 

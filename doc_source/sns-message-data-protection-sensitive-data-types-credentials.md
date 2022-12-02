@@ -14,28 +14,12 @@ The following table lists and describes the types of credentials that Amazon SNS
 ## Data identifier ARNs for credential data types<a name="sns-message-data-protection-credentials-arns"></a>
 
 The following lists the Amazon Resource Names \(ARNs\) for the data identifiers that you can add to your data protection policies\.
-+ 
 
-  ```
-  arn:aws:dataprotection::aws:data-identifier/AwsSecretKey
-  ```
-+ 
 
-  ```
-  arn:aws:dataprotection::aws:data-identifier/OpenSshPrivateKey
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/PgpPrivateKey
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/PkcsPrivateKey
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/PuttyPrivateKey
-  ```
+| Credential data identifier ARNs | 
+| --- | 
+| arn:aws:dataprotection::aws:data\-identifier/AwsSecretKey | 
+| arn:aws:dataprotection::aws:data\-identifier/OpenSshPrivateKey | 
+| arn:aws:dataprotection::aws:data\-identifier/PgpPrivateKey | 
+| arn:aws:dataprotection::aws:data\-identifier/PkcsPrivateKey | 
+| arn:aws:dataprotection::aws:data\-identifier/PuttyPrivateKey | 

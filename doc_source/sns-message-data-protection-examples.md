@@ -4,8 +4,9 @@ The following are examples of data protection policies that you can use to audit
 
 **Topics**
 + [Example policy for auditing](#sns-message-data-protection-audit-example)
-+ [Example policy inbound deny statement](#sns-message-data-protection-inbound-deny-example)
-+ [Example policy for outbound deny statement](#sns-message-data-protection-outbound-deny-example)
++ [Example policy with inbound de\-identify statement](#sns-message-data-protection-inbound-deidentify-example)
++ [Example policy with inbound deny statement](#sns-message-data-protection-inbound-deny-example)
++ [Example policy with outbound deny statement](#sns-message-data-protection-outbound-deny-example)
 
 ## Example policy for auditing<a name="sns-message-data-protection-audit-example"></a>
 
@@ -70,7 +71,45 @@ The following example audits 99% of the messages that flow through the topic by 
 }
 ```
 
-## Example policy inbound deny statement<a name="sns-message-data-protection-inbound-deny-example"></a>
+## Example policy with inbound de\-identify statement<a name="sns-message-data-protection-inbound-deidentify-example"></a>
+
+The following example prevents a user from publishing a message to a topic with `CreditCardNumber` by redacting the sensitive data from the message content\.
+
+```
+{
+   "Name": "__example_data_protection_policy",
+   "Description": "Example data protection policy",
+   "Version": "2021-06-01",
+   "Statement": [
+      {
+         "DataDirection": "Inbound",
+         "Principal": [
+            "arn:aws:iam::123456789012:user/ExampleUser"
+         ],
+         "DataIdentifier": [
+            "arn:aws:dataprotection::aws:data-identifier/CreditCardNumber"
+         ],
+         "Operation": {
+            "Deidentify": {
+               "RedactConfig": {}
+            }
+         }
+      }
+   ]
+}
+```
+
+**Inbound de\-identify redact results example:**
+
+```
+// published message
+My credit card number is 4539894458086459
+
+// delivered message
+My credit card number is
+```
+
+## Example policy with inbound deny statement<a name="sns-message-data-protection-inbound-deny-example"></a>
 
 The following example blocks a user from publishing a message to a topic with `CreditCardNumber` in the message content\. Denied payloads in the API response have a status code of "403 AuthorizationError"\.
 
@@ -96,7 +135,7 @@ The following example blocks a user from publishing a message to a topic with `C
 }
 ```
 
-## Example policy for outbound deny statement<a name="sns-message-data-protection-outbound-deny-example"></a>
+## Example policy with outbound deny statement<a name="sns-message-data-protection-outbound-deny-example"></a>
 
 The following example blocks an AWS account from receiving messages that contain `CreditCardNumber`\.
 

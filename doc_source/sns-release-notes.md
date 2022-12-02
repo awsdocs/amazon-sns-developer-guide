@@ -6,6 +6,7 @@ Service features are sometimes rolled out incrementally to the AWS Regions where
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Payload\-based message filtering](https://docs.aws.amazon.com/sns/latest/dg/sns-subscription-filter-policies.html) | Payload\-based filtering lets you filter messages based on the message payload and avoid the costs associated with processing unwanted data\.  | November 22, 2022 | 
 | [SHA256 hash algorithm added for Amazon SNS message signing](https://docs.aws.amazon.com/sns/latest/dg/sns-verify-signature-of-message.html) | Support added for SHA256 hash algorithm when using Amazon SNS message signing\. | September 15, 2022 | 
 | [Additional regions added to SMS messaging](https://docs.aws.amazon.com/sns/latest/dg/sns-supported-regions-countries.html) | Amazon SNS supports SMS messaging in the following regions: Africa \(Cape Town\), Asia Pacific \(Osaka\), Europe \(Milan\) and AWS GovCloud \(US\-East\)\. | September 9, 2022 | 
 | [Message data protection support added](https://docs.aws.amazon.com/sns/latest/dg/message-data-protection.html) | Message data protection safeguards the data that's published to your Amazon SNS topics by using data protection policies to audit and block the sensitive information that moves between applications or AWS services\. | September 8, 2022 | 

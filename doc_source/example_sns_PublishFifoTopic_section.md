@@ -1,6 +1,6 @@
 # Create and publish to a FIFO Amazon SNS topic using an AWS SDK<a name="example_sns_PublishFifoTopic_section"></a>
 
-The following code example shows how to create and publish to a FIFO Amazon SNS topic\.
+The following code examples show how to create and publish to a FIFO Amazon SNS topic\.
 
 **Note**  
 The source code for these examples is in the [AWS Code Examples GitHub repository](https://github.com/awsdocs/aws-doc-sdk-examples)\. Have feedback on a code example? [Create an Issue](https://github.com/awsdocs/aws-doc-sdk-examples/issues/new/choose) in the code examples repo\. 
@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
 Create a FIFO topic and FIFO queues\. Subscribe the queues to the topic\.  
 
 ```
@@ -98,6 +98,74 @@ Create a FIFO topic and FIFO queues\. Subscribe the queues to the topic\.
         }
     }
 }
+```
+
+------
+#### [ SAP ABAP ]
+
+**SDK for SAP ABAP**  
+This documentation is for an SDK in developer preview release\. The SDK is subject to change and is not recommended for use in production\.
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/sap-abap/services/sns#code-examples)\. 
+Create a FIFO topic, subscribe an Amazon SQS FIFO queue to the topic, and publish a message to an Amazon SNS topic\.  
+
+```
+    " Creates a FIFO topic "
+    DATA lt_tpc_attributes TYPE /aws1/cl_snstopicattrsmap_w=>tt_topicattributesmap.
+    DATA ls_tpc_attributes TYPE /aws1/cl_snstopicattrsmap_w=>ts_topicattributesmap_maprow.
+    ls_tpc_attributes-key = 'FifoTopic'.
+    ls_tpc_attributes-value = NEW /aws1/cl_snstopicattrsmap_w( iv_value = 'true' ).
+    INSERT ls_tpc_attributes INTO TABLE lt_tpc_attributes.
+
+    TRY.
+        DATA(lo_create_result) = lo_sns->createtopic(
+               iv_name = iv_topic_name
+               it_attributes = lt_tpc_attributes
+        ).
+        DATA(lv_topic_arn) = lo_create_result->get_topicarn( ).
+        ov_topic_arn = lv_topic_arn.                                    " ov_topic_arn is returned for testing purpose "
+        MESSAGE 'FIFO topic created' TYPE 'I'.
+      CATCH /aws1/cx_snstopiclimitexcdex.
+        MESSAGE 'Unable to create more topics as you have reached the maximum number of topics allowed.' TYPE 'E'.
+    ENDTRY.
+
+    " Subscribes an endpoint to an Amazon SNS topic "
+    " Only SQS FIFO queues can be subscribed to an SNS FIFO topic "
+    TRY.
+        DATA(lo_subscribe_result) = lo_sns->subscribe(
+               iv_topicarn = lv_topic_arn
+               iv_protocol = 'sqs'
+               iv_endpoint = iv_queue_arn
+           ).
+        DATA(lv_subscription_arn) = lo_subscribe_result->get_subscriptionarn( ).
+        ov_subscription_arn = lv_subscription_arn.                      " ov_subscription_arn is returned for testing purpose "
+        MESSAGE 'SQS Queue was subscribed to SNS topic' TYPE 'I'.
+      CATCH /aws1/cx_snsnotfoundexception.
+        MESSAGE 'Topic does not exist' TYPE 'E'.
+      CATCH /aws1/cx_snssubscriptionlmte00.
+        MESSAGE 'Unable to create subscriptions, you have reached the maximum number of subscriptions allowed.' TYPE 'E'.
+    ENDTRY.
+
+    " Publish message to SNS topic "
+    TRY.
+        DATA lt_msg_attributes TYPE /aws1/cl_snsmessageattrvalue=>tt_messageattributemap.
+        DATA ls_msg_attributes TYPE /aws1/cl_snsmessageattrvalue=>ts_messageattributemap_maprow.
+        ls_msg_attributes-key = 'Importance'.
+        ls_msg_attributes-value = NEW /aws1/cl_snsmessageattrvalue( iv_datatype = 'String' iv_stringvalue = 'High' ).
+        INSERT ls_msg_attributes INTO TABLE lt_msg_attributes.
+
+        DATA(lo_result) = lo_sns->publish(
+             iv_topicarn = lv_topic_arn
+             iv_message = 'The price of your mobile plan has been increased from $19 to $23'
+             iv_subject = 'Changes to mobile plan'
+             iv_messagegroupid = 'Update-2'
+             iv_messagededuplicationid = 'Update-2.1'
+             it_messageattributes = lt_msg_attributes
+      ).
+        ov_message_id = lo_result->get_messageid( ).                    " ov_message_id is returned for testing purpose "
+        MESSAGE 'Message was published to SNS topic' TYPE 'I'.
+      CATCH /aws1/cx_snsnotfoundexception.
+        MESSAGE 'Topic does not exist' TYPE 'E'.
+    ENDTRY.
 ```
 
 ------

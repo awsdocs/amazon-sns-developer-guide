@@ -8,7 +8,7 @@ This page describes how to analyze Amazon SNS messages sent through Amazon Kines
 
 1. Configure your delivery stream\. For instructions, see [Choose Amazon Redshift for Your Destination](https://docs.aws.amazon.com/firehose/latest/dev/create-destination.html#create-destination-redshift) in the *Amazon Kinesis Data Firehose Developer Guide*\.
 
-1. Run a query\. For more information, see [Querying a database using the query editor](https://docs.aws.amazon.com/redshift/latest/mgmt/query-editor.html) in the *Amazon Redshift Cluster Management Guide*\.
+1. Run a query\. For more information, see [Querying a database using the query editor](https://docs.aws.amazon.com/redshift/latest/mgmt/query-editor.html) in the *Amazon Redshift Management Guide*\.
 
 ## Example query<a name="example-rs-query"></a>
 

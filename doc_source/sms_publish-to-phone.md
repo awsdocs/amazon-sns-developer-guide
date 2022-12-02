@@ -105,10 +105,79 @@ This is your template for sending SMS messages to recipients in India\. This ID 
 The following code examples show how to publish SMS messages using Amazon SNS\.
 
 ------
+#### [ \.NET ]
+
+**AWS SDK for \.NET**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/dotnetv3/SNS#code-examples)\. 
+  
+
+```
+using Amazon;
+using Amazon.SimpleNotificationService;
+using Amazon.SimpleNotificationService.Model;
+using System;
+using System.Threading.Tasks;
+
+namespace SNSMessageExample
+{
+    class SNSMessage
+    {
+        private AmazonSimpleNotificationServiceClient snsClient;
+
+        /// <summary>
+        /// Constructs a new SNSMessage object initializing the Amazon Simple
+        /// Notification Service (Amazon SNS) client using the supplied
+        /// Region endpoint.
+        /// </summary>
+        /// <param name="regionEndpoint">The Amazon Region endpoint to use in
+        /// sending test messages with this object.</param>
+        public SNSMessage(RegionEndpoint regionEndpoint)
+        {
+            snsClient = new AmazonSimpleNotificationServiceClient(regionEndpoint);
+        }
+
+        /// <summary>
+        /// Sends the SMS message passed in the text parameter to the phone number
+        /// in phoneNum.
+        /// </summary>
+        /// <param name="phoneNum">The ten-digit phone number to which the text
+        /// message will be sent.</param>
+        /// <param name="text">The text of the message to send.</param>
+        /// <returns></returns>
+        public async Task SendTextMessageAsync(string phoneNum, string text)
+        {
+            if (string.IsNullOrEmpty(phoneNum) || string.IsNullOrEmpty(text))
+            {
+                return;
+            }
+
+            // Now actually send the message.
+            var request = new PublishRequest
+            {
+                Message = text,
+                PhoneNumber = phoneNum
+            };
+
+            try
+            {
+                var response = await snsClient.PublishAsync(request);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending message: {ex}");
+            }
+        }
+
+    }
+}
+```
++  For API details, see [Publish](https://docs.aws.amazon.com/goto/DotNetSDKV3/sns-2010-03-31/Publish) in *AWS SDK for \.NET API Reference*\. 
+
+------
 #### [ C\+\+ ]
 
 **SDK for C\+\+**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/cpp/example_code/sns#code-examples)\. 
   
 
 ```
@@ -169,7 +238,7 @@ int main(int argc, char ** argv)
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
@@ -196,7 +265,7 @@ int main(int argc, char ** argv)
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/sns#code-examples)\. 
   
 
 ```
@@ -219,7 +288,7 @@ suspend fun pubTextSMS(messageVal: String?, phoneNumberVal: String?) {
 #### [ PHP ]
 
 **SDK for PHP**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sns#code-examples)\. 
   
 
 ```
@@ -262,7 +331,7 @@ try {
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
   
 
 ```

@@ -12,20 +12,10 @@ Allow up to 15 business days for processing after submitting your registration\.
 A toll\-free number \(TFN\) is a 10\-digit number that begins with one of the following area codes: 800, 888, 877, 866, 855, 844, or 833\. You can use TFNs to send transactional messages only\. 
 
 **Topics**
++ [Guidelines for using toll\-free numbers](#tfn-guidelines)
 + [Purchase a toll\-free number](#purchase-tfn)
 + [Register a toll\-free number](#register-tfn)
-+ [Guidelines for using toll\-free numbers](#tfn-guidelines)
 + [Advantages and disadvantages of toll\-free numbers](#advantages-disadvantages-tfn)
-
-## Purchase a toll\-free number<a name="purchase-tfn"></a>
-
-To purchase TFNs, use the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/)\. For more information, see [Toll\-free number registration requirements and process](channels-sns-sms-tfn-register.md)\.
-
-Currently, Amazon Pinpoint supports toll\-free numbers for both voice and SMS messages\. Amazon SNS supports SMS messaging only\. 
-
-## Register a toll\-free number<a name="register-tfn"></a>
-
-To register a TFN, see [Toll\-free number registration requirements and process](channels-sns-sms-tfn-register.md)\.
 
 ## Guidelines for using toll\-free numbers<a name="tfn-guidelines"></a>
 
@@ -39,8 +29,22 @@ When using a TFN as an origination number, follow these guidelines:
   If you need to use a shortened URL, consider using a [10DLC number](channels-sms-originating-identities-10dlc.md) or [short code](channels-sms-originating-identities-short-codes.md)\. Using short codes and 10DLCs require that you register your message template, where you can specify a shortened URL\.
 + Be aware that keywords opt\-out \(STOP\) and opt\-in \(UNSTOP\) responses are set at the carrier level\. You can't modify these keywords or other any other keywords\. You also can't modify messages that are sent when users reply with STOP and UNSTOP\.
 + Don't send the same or similar message contents using multiple TFNs\. Carriers call this practice *snowshoeing* or *number pooling* and target these messages for filtering\.
-+ Because TFNs are subject to content filtering, be sure your messages don't contain any of the following types of restricted content:    
++ Any messages related to the following industries may be considered restricted and are subject heavy filtering or outright blocks\. This can include one time passwords \(OTP\) and multi factor authentication \(MFA\) for services related to restricted categories\.
+
+  If you had a registration denied for being a non\-compliant use case and you feel this designation is incorrect, you can submit a request via support\. For details on how to do this, see [Registration issues](channels-sns-sms-tfn-register.md#tfn-registration-issues)\.
+
+  The following table describes the types of restricted content:    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-tfn.html)
+
+## Purchase a toll\-free number<a name="purchase-tfn"></a>
+
+To purchase TFNs, use the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/)\. For more information, see [Toll\-free number registration requirements and process](channels-sns-sms-tfn-register.md)\.
+
+Currently, Amazon Pinpoint supports toll\-free numbers for both voice and SMS messages\. Amazon SNS supports SMS messaging only\. 
+
+## Register a toll\-free number<a name="register-tfn"></a>
+
+To register a TFN, see [Toll\-free number registration requirements and process](channels-sns-sms-tfn-register.md)\.
 
 ## Advantages and disadvantages of toll\-free numbers<a name="advantages-disadvantages-tfn"></a>
 

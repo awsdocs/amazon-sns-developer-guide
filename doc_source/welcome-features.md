@@ -26,7 +26,7 @@ Amazon SNS provides the following features and capabilities:
   Message attributes let you provide any arbitrary metadata about the message\. [Amazon SNS message attributes](sns-message-attributes.md)\. 
 + **Message filtering** 
 
-  By default, each subscriber receives every message published to the topic\. To receive a subset of the messages, a subscriber must assign a filter policy to the topic subscription\. When the incoming message attributes match the filter policy attributes, the message is delivered to the subscribed endpoint\. Otherwise, the message is filtered out\. For more information, see [Amazon SNS message filtering](sns-message-filtering.md)\. 
+  By default, each subscriber receives every message published to the topic\. To receive a subset of the messages, a subscriber must assign a filter policy to the topic subscription\. A subscriber can also define the filter policy scope to enable payload\-based or attribute\-based filtering\. Default value for filter policy scope is `MessageAttributes`\. In that case, when the incoming message attributes match the filter policy attributes, the message is delivered to the subscribed endpoint\. Otherwise, the message is filtered out\. When the filter policy scope is `MessageBody`, filter policy attributes are matched against the payload\. For more information, see [Amazon SNS message filtering](sns-message-filtering.md)\. 
 + **Message security** 
 
   Server\-side encryption protects the contents of messages that are stored in Amazon SNS topics, using encryption keys provided by AWS KMS\. For more information, see [Encryption at rest](sns-server-side-encryption.md)\.

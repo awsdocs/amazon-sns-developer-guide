@@ -10,8 +10,8 @@ The following table lists and describes the types of device identifiers that Ama
 ## Data identifier ARNs for device data types<a name="sns-message-data-protection-devices-arns"></a>
 
 The following lists the Amazon Resource Names \(ARNs\) for the data identifiers that you can add to your data protection policies\.
-+ 
 
-  ```
-  arn:aws:dataprotection::aws:data-identifier/IpAddress
-  ```
+
+| Device data identifier ARN | 
+| --- | 
+| arn:aws:dataprotection::aws:data\-identifier/IpAddress | 

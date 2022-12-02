@@ -11,7 +11,7 @@ Message attributes are sent only when the message structure is String, not JSON\
 
 You can also use message attributes to help structure the push notification message for mobile endpoints\. In this scenario, the message attributes are used only to help structure the push notification message\. The attributes are not delivered to the endpoint as they are when sending messages with message attributes to Amazon SQS endpoints\.
 
-You can also use message attributes to make your messages filterable using subscription filter policies\. You can apply filter policies to topic subscriptions\. When a filter policy is applied, a subscription receives only those messages that have attributes that the policy accepts\. For more information, see [Amazon SNS message filtering](sns-message-filtering.md)\.
+You can also use message attributes to make your messages filterable using subscription filter policies\. You can apply filter policies to topic subscriptions\. When a filter policy is applied with filter policy scope set to `MessageAttributes` \(default\), a subscription receives only those messages that have attributes that the policy accepts\. For more information, see [Amazon SNS message filtering](sns-message-filtering.md)\.
 
 ## Message attribute items and validation<a name="SNSMessageAttributesNTV"></a>
 

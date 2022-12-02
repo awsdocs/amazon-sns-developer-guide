@@ -30,6 +30,7 @@ After [purchasing a TFN](https://docs.aws.amazon.com/pinpoint/latest/userguide/s
 + [Toll\-free number registration status](#tfn-registration-status)
 + [Editing a toll\-free number registration](#editing-tfn-registration)
 + [Deleting a toll\-free number registration](#deleting-tfn-registration)
++ [Registration issues](#tfn-registration-issues)
 + [Toll\-free number frequently asked questions](#tfn-faq)
 
 ### Self\-serve registration for toll\-free numbers in Amazon Pinpoint regions<a name="tfn-self-serve-registration"></a>
@@ -89,10 +90,9 @@ If you've requested the TFN in the [Amazon Pinpoint regions](https://docs.aws.am
 
 ### Manual form\-based registration process for toll\-free numbers in regions other than Amazon Pinpoint regions<a name="manual-form-registration"></a>
 
-1. Use the following example registration form to complete the required information in the TFN registration CSV file\. To download the CSV template, choose [US\_TFN\_Registration\.zip](https://e030cbef99d049799cd4c36a33e56afa.s3.amazonaws.com/US_TFN_Registration.zip)\. 
+1. Download this [US\_TFN\_Registration\.zip](https://e030cbef99d049799cd4c36a33e56afa.s3.amazonaws.com/US_TFN_Registration.zip) and use the example registration form \(AWS US Toll\-Free Registration Form\-Business \- Final\.docx\) to complete the required information in the TFN registration CSV file \(bulkUStfn \- Final\.csv\)\.
 
-   Each registration request or use case can only have up to five TFNs\. If you believe you qualify for an exemption to this rule, provide a detailed explanation for consideration\. List all phone numbers associated with the registration or use case\.  
-![\[Example toll-free registration form.\]](http://docs.aws.amazon.com/sns/latest/dg/images/SNS-toll-free-registration-form-1.png)![\[Example toll-free registration form.\]](http://docs.aws.amazon.com/sns/latest/dg/images/SNS-toll-free-registration-form-2.png)
+   Each registration request or use case can only have up to five TFNs\. If you believe you qualify for an exemption to this rule, provide a detailed explanation for consideration\. List all phone numbers associated with the registration or use case\.
 
 1. Create a case with [AWS Support](https://console.aws.amazon.com/support/home#/)\. Attach your completed CSV file to the case, and submit the TFN registration request\.
 
@@ -138,6 +138,35 @@ After you've submitted the TFN registration, you can delete the number\. It is r
 1. In the navigation pane, under **SMS and voice**, choose **Phone numbers** tabs\.
 
 1. On the **Toll\-free registrations** tab, choose the **Registration ID** you want to delete, then select the **Delete Registration** button\.
+
+### Registration issues<a name="tfn-registration-issues"></a>
+
+If your toll\-free number registration is not accepted, you will see a message explaining why it was rejected\.
+
+**To submit a request for information about a rejected toll\-free number**
+
+1. Open the **Amazon Pinpoint console** at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/)\.
+
+1. Choose **Support**, and then **Support Center**\.
+
+1. On the **Support** page, choose **Create case**\.
+
+1. For **Case type**, choose **Service limit increase**\.
+
+1. For **Limit type**, choose **Pinpoint SMS**\.
+
+1. In the **Requests** section, do the following:
+   + Choose the place where you attempted to register the campaign\.
+   + For **Resource Type**, choose **10DLC or TFN Registration**\.
+   + For the **Limit**, choose **Company or Campaign Registration Rejection**\.
+
+1. For **Use case description**, enter the rejected toll\-free number\.
+
+1. Under **Contact options**, for **Preferred contact language**, choose the language that you prefer to use when communicating with AWS support\.
+
+1. For **Contact method**, choose your preferred method of communicating with AWS support\.
+
+1. Choose **Submit**\.
 
 ### Toll\-free number frequently asked questions<a name="tfn-faq"></a>
 

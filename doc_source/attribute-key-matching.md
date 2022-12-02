@@ -1,43 +1,77 @@
-# Attribute key matching<a name="attribute-key-matching"></a>
+# Key matching<a name="attribute-key-matching"></a>
 
-You can use the `exists` operator to return incoming messages with or without specified attributes in the filter policy:
-+ Use `"exists": true` to return incoming messages that include the specified attribute\.
+You can use the `exists` operator to match incoming messages with or without specified properties in the filter policy:
++ Use `"exists": true` to match incoming messages that include the specified property\.
 
-  For example, the following attribute uses the `exists` operator with a value of `true`:
+  For example, the following policy property uses the `exists` operator with a value of `true`:
 
   ```
   "store": [{"exists": true}]
   ```
 
-  It matches any message that contains the `store` attribute key, such as the following:
+  It matches any list of message attributes that contains the `store` attribute key, such as the following:
 
   ```
-  "store": "fans" 
-  "customer_interests": ["baseball", "basketball"]
+  "store": {"Type": "String", "Value": "fans"}
+  "customer_interests": {"Type": "String.Array", "Value": "[\"baseball\", \"basketball\"]"}
   ```
 
-  However, it doesn't match any message *without* the `store` attribute key, such as the following:
+  It also matches either of the following message body:
 
   ```
-  "customer_interests": ["baseball", "basketball"]
+  {
+      "store": "fans"
+      "customer_interests": ["baseball", "basketball"]
+  }
   ```
-+ Use `"exists": false` to return incoming messages that *don't* include the specified attribute\.
 
-  The following example shows the effect of using the `exists` operator with a value of `false`:
+  However, it doesn't match any list of message attributes *without* the `store` attribute key, such as the following:
+
+  ```
+  "customer_interests": {"Type": "String.Array", "Value": "[\"baseball\", \"basketball\"]"}
+  ```
+
+  Nor does it match the following message body:
+
+  ```
+  {
+      "customer_interests": ["baseball", "basketball"]
+  }
+  ```
++ Use `"exists": false` to match incoming messages that *don't* include the specified property\.
+
+  For example, the following policy property uses the `exists` operator with a value of `false`:
 
   ```
   "store": [{"exists": false}]
   ```
 
-  It *doesn't* match any message that contains the `store` attribute key, such as the following:
+  It *doesn't* match any list of message attributes that contains the `store` attribute key, such as the following:
 
   ```
-  "store": "fans" 
-  "customer_interests": ["baseball", "basketball"]
+  "store": {"Type": "String", "Value": "fans"}
+  "customer_interests": {"Type": "String.Array", "Value": "[\"baseball\", \"basketball\"]"}
   ```
 
-  However, it matches any messages *without* the `store` attribute key, such as the following:
+  It also doesn’t match the following message body:
 
   ```
-  "customer_interests": ["baseball", "basketball"]
+  {
+      "store": "fans"
+      "customer_interests": ["baseball", "basketball"]
+  }
+  ```
+
+  However, it matches any list of message attributes *without* the `store` attribute key, such as the following:
+
+  ```
+  "customer_interests": {"Type": "String.Array", "Value": "[\"baseball\", \"basketball\"]"}
+  ```
+
+  It also matches the following message body:
+
+  ```
+  "{
+      "customer_interests": ["baseball", "basketball"]
+  }
   ```

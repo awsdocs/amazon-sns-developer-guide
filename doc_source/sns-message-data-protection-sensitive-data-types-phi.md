@@ -35,58 +35,18 @@ The following table lists the keywords that Amazon SNS recognizes for specific c
 ### Data identifier ARNs for protected health information data types \(PHI\)<a name="sns-message-data-protection-phi-arns"></a>
 
 The following lists the data identifier Amazon Resource Names \(ARNs\) that can be used in PHI data protection policies\.
-+ 
 
-  ```
-  arn:aws:dataprotection::aws:data-identifier/DrugEnforcementAgencyNumber-US
-  ```
-+ 
 
-  ```
-  arn:aws:dataprotection::aws:data-identifier/HealthInsuranceCardNumber-EU
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/HealthInsuranceClaimNumber-US
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/HealthInsuranceNumber-FR
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/HealthcareProcedureCode-US
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/NationalInsuranceNumber-GB
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/NationalProviderId-US
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/MedicareBeneficiaryNumber-US
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/NationalDrugCode-US
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/NhsNumber-GB
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/PersonalHealthNumber-CA
-  ```
+| PHI data identifier ARNs | 
+| --- | 
+| arn:aws:dataprotection::aws:data\-identifier/DrugEnforcementAgencyNumber\-US | 
+| arn:aws:dataprotection::aws:data\-identifier/HealthcareProcedureCode\-US | 
+| arn:aws:dataprotection::aws:data\-identifier/HealthInsuranceCardNumber\-EU | 
+| arn:aws:dataprotection::aws:data\-identifier/HealthInsuranceClaimNumber\-US | 
+| arn:aws:dataprotection::aws:data\-identifier/HealthInsuranceNumber\-FR | 
+| arn:aws:dataprotection::aws:data\-identifier/MedicareBeneficiaryNumber\-US | 
+| arn:aws:dataprotection::aws:data\-identifier/NationalDrugCode\-US | 
+| arn:aws:dataprotection::aws:data\-identifier/NationalInsuranceNumber\-GB | 
+| arn:aws:dataprotection::aws:data\-identifier/NationalProviderId\-US | 
+| arn:aws:dataprotection::aws:data\-identifier/NhsNumber\-GB | 
+| arn:aws:dataprotection::aws:data\-identifier/PersonalHealthNumber\-CA | 

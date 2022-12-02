@@ -5,9 +5,10 @@ The following table lists and describes the types of financial information that 
 
 | Detection type | Managed data identifier ID | Keyword required | Additional information | Countries and regions | 
 | --- | --- | --- | --- | --- | 
-|  Bank account number  |  BankAccountNumber  |  Yes, see [Keywords for bank account numbers](#sns-managed-data-identifiers-bank-keywords)\.  |  This includes: International Bank Account Numbers \(IBANs\) that consist of up to 34 alphanumeric characters, including elements such as country code\.  |  France, Germany, Italy, Spain, UK  | 
+|  Bank account number  |  BankAccountNumber BankAccountNumber\-US  |  Yes, see [Keywords for bank account numbers](#sns-managed-data-identifiers-bank-keywords)\.  |  This includes: International Bank Account Numbers \(IBANs\) that consist of up to 34 alphanumeric characters, including elements such as country code\.  |  France, Germany, Italy, Spain, UK  | 
 |  Credit card expiration date  |  CreditCardExpiration  |  exp d, exp m, exp y, expiration, expiry  |  –  |  Any  | 
-|  Credit card number  |  CreditCardNumber  |  account number, american express, amex, bank card, card, card num, card number, cc \#, ccn, check card, credit, credit card\#, dankort, debit, debit card, diners club, discover, electron, japanese card bureau, jcb, mastercard, mc, pan, payment account number, payment card number, pcn, union pay, visa  |  Detection requires the data to be a 13–19 digit sequence that adheres to the Luhn check formula, and uses a standard card number prefix for any of the following types of credit cards: American Express, Dankort, Diner’s Club, Discover, Electron, Japanese Card Bureau \(JCB\), Mastercard, UnionPay, and Visa \(superscript link below 1\)\.  |  Any  | 
+| Credit card magnetic strip data | CreditCardMagneticStripe | Yes, including: card data, iso7813, mag, magstripe, stripe, swipe\. | This includes tracks 1 and 2\. | Any | 
+|  Credit card number  |  CreditCardNumber  |  account number, american express, amex, bank card, card, card num, card number, cc \#, ccn, check card, credit, credit card\#, dankort, debit, debit card, diners club, discover, electron, elo verification code, japanese card bureau, jcb, mastercard, mc, pan, payment account number, payment card number, pcn, union pay, visa  |  Detection requires the data to be a 13–19 digit sequence that adheres to the Luhn check formula, and uses a standard card number prefix for any of the following types of credit cards: American Express, Dankort, Diner’s Club, Discover, Electron, Japanese Card Bureau \(JCB\), Mastercard, UnionPay, and Visa \(superscript link below 1\)\.  |  Any  | 
 |  Credit card verification code  |  CreditCardSecurityCode  |  card id, card identification code, card identification number, card security code, card validation code, card validation number, card verification data, card verification value, cvc, cvc2, cvv, cvv2, elo verification code  |  –  |  Any  | 
 
 1. <a name="sns-managed-data-identifiers-cc-exceptions"></a>Amazon SNS doesn't report occurrences of the following sequences, which credit card issuers have reserved for public testing:
@@ -26,52 +27,21 @@ Use the following keywords to detect International Bank Account Numbers \(IBANs\
 |  Italy  |  account code, account number, accountno\#, accountnumber\#, bban, codice bancario, conto bancario, customer account id, customer account number, customer bank account id, iban, numero di conto  | 
 |  Spain  |  account code, account number, accountno\#, accountnumber\#, bban, código cuenta, código cuenta bancaria, cuenta cliente id, customer account ID, customer account number, customer bank account id, iban, número cuenta bancaria cliente, número cuenta cliente  | 
 |  UK  |  account code, account number, accountno\#, accountnumber\#, bban, customer account id, customer account number, customer bank account id, iban, sepa  | 
+| US | bank account, bank acct, checking account, checking acct, deposit account, deposit acct, savings account, savings acct, chequing account, chequing acct | 
 
 ### Data identifier ARNs for financial data types<a name="sns-message-data-protection-financial-arns"></a>
 
 The following lists the Amazon Resource Names \(ARNs\) for the data identifiers that you can add to your data protection policies\.
-+ 
 
-  ```
-  arn:aws:dataprotection::aws:data-identifier/BankAccountNumber-DE
-  ```
-+ 
 
-  ```
-  arn:aws:dataprotection::aws:data-identifier/BankAccountNumber-ES
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/BankAccountNumber-FR
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/BankAccountNumber-GB
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/BankAccountNumber-IT
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/BankAccountNumber-US
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/CreditCardExpiration
-  ```
-+ 
-
-  ```
-  arn:aws:dataprotection::aws:data-identifier/CreditCardNumber
-  ```
-+ 
-
-  ```
-  arn:aws:davtaprotection::aws:data-identifier/CreditCardSecurityCode
-  ```
+| Financial data identifier ARNs | 
+| --- | 
+| arn:aws:dataprotection::aws:data\-identifier/BankAccountNumber\-DE | 
+| arn:aws:dataprotection::aws:data\-identifier/BankAccountNumber\-ES | 
+| arn:aws:dataprotection::aws:data\-identifier/BankAccountNumber\-FR | 
+| arn:aws:dataprotection::aws:data\-identifier/BankAccountNumber\-GB | 
+| arn:aws:dataprotection::aws:data\-identifier/BankAccountNumber\-IT | 
+| arn:aws:dataprotection::aws:data\-identifier/BankAccountNumber\-US | 
+| arn:aws:dataprotection::aws:data\-identifier/CreditCardExpiration | 
+| arn:aws:dataprotection::aws:data\-identifier/CreditCardNumber | 
+| arn:aws:dataprotection::aws:data\-identifier/CreditCardSecurityCode | 

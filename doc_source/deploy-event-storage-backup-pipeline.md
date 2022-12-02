@@ -55,7 +55,9 @@ For each deployment, the application name must be unique\. If you reuse an appli
 
    1. \(Optional\) For **StreamPrefix**, enter the string prefix to name files stored in the S3 backup bucket\. If you don't enter a value, no prefix is used\.
 
-   1. \(Optional\) For **SubscriptionFilterPolicy**, enter the Amazon SNS subscription filter policy, in JSON format, to be used for filtering incoming events\. The filter policy decides which events are stored in the S3 backup bucket\. If you don't enter a value, no filtering is used \(all events are stored\)\.
+   1. \(Optional\) For **SubscriptionFilterPolicy**, enter the Amazon SNS subscription filter policy, in JSON format, to be used for filtering incoming events\. The filter policy decides which events are indexed in the OpenSearch Service index\. If you don't enter a value, no filtering is used \(all events are indexed\)\.
+
+   1. \(Optional\) For **SubscriptionFilterPolicyScope**, enter the string `MessageBody` or `MessageAttributes` to enable payload\-based or attribute\-based message filtering\. 
 
    1. Choose **I acknowledge that this app creates custom IAM roles, resource policies and deploys nested applications\.** and then choose **Deploy**\.
 

@@ -1,6 +1,6 @@
 # Applying a subscription filter policy<a name="message-filtering-apply"></a>
 
-You can apply a filter policy to an Amazon SNS subscription using the Amazon SNS console\. Or, to apply policies programmatically, you can use the Amazon SNS API, the AWS Command Line Interface \(AWS CLI\), or any AWS SDK that supports Amazon SNS\.
+You can apply a filter policy to an Amazon SNS subscription using the Amazon SNS console\. Or, to apply policies programmatically, you can use the Amazon SNS API, the AWS Command Line Interface \(AWS CLI\), or any AWS SDK that supports Amazon SNS\. You can also use AWS CloudFormation\.
 
 **Important**  
 AWS services such as IAM and Amazon SNS use a distributed computing model called eventual consistency\. Additions or changes to a subscription filter policy require up to 15 minutes to fully take effect\. 
@@ -15,6 +15,8 @@ AWS services such as IAM and Amazon SNS use a distributed computing model called
 
 1. On the **Edit** page, expand the **Subscription filter policy** section\.
 
+1. Choose between **attribute\-based filtering** or **payload\-based filtering**\.
+
 1. In the **JSON editor** field, provide the **JSON body** of your filter policy\.
 
 1. Choose **Save changes**\.
@@ -23,15 +25,19 @@ AWS services such as IAM and Amazon SNS use a distributed computing model called
 
 ## AWS CLI<a name="message-filtering-apply-cli"></a>
 
-To apply a filter policy with the AWS Command Line Interface \(AWS CLI\), use the [https://docs.aws.amazon.com/cli/latest/reference/sns/set-subscription-attributes.html](https://docs.aws.amazon.com/cli/latest/reference/sns/set-subscription-attributes.html) command, as shown in the following example: 
+To apply a filter policy with the AWS Command Line Interface \(AWS CLI\), use the [https://docs.aws.amazon.com/cli/latest/reference/sns/set-subscription-attributes.html](https://docs.aws.amazon.com/cli/latest/reference/sns/set-subscription-attributes.html) command, as shown in the following example\. For the `--attribute-name` option, specify `FilterPolicy`\. For `--attribute-value`, specify your **JSON policy**\. 
 
 ```
 $ aws sns set-subscription-attributes --subscription-arn arn:aws:sns: ... --attribute-name FilterPolicy --attribute-value '{"store":["example_corp"],"event":["order_placed"]}'
 ```
 
-For the `--attribute-name` option, specify `FilterPolicy`\. For `--attribute-value`, specify your JSON policy\. 
-
 To provide valid JSON for your policy, enclose the attribute names and values in double quotes\. You must also enclose the entire policy argument in quotes\. To avoid escaping quotes, you can use single quotes to enclose the policy and double quotes to enclose the JSON names and values, as shown in the above example\.
+
+If you want to switch from attribute\-based \(default\) to payload\-based message filtering, you can use the [set\-subscription\-attributes](https://docs.aws.amazon.com/cli/latest/reference/sns/set-subscription-attributes.html) command as well\. For the `--attribute-name` option, specify `FilterPolicyScope`\. For `--attribute-value`, specify `MessageBody`\. 
+
+```
+$ aws sns set-subscription-attributes --subscription-arn arn:aws:sns: ... --attribute-name FilterPolicyScope --attribute-value MessageBody
+```
 
 To verify that your filter policy was applied, use the `get-subscription-attributes` command\. The attributes in the terminal output should show your filter policy for the `FilterPolicy` key, as shown in the following example:
 
@@ -45,6 +51,7 @@ $ aws sns get-subscription-attributes --subscription-arn arn:aws:sns: ...
         "EffectiveDeliveryPolicy": "delivery policy . . .",
         "ConfirmationWasAuthenticated": "true", 
         "FilterPolicy": "{\"store\": [\"example_corp\"], \"event\": [\"order_placed\"]}", 
+        "FilterPolicyScope": "MessageAttributes",
         "Owner": "111122223333", 
         "SubscriptionArn": "arn:aws:sns: . . .", 
         "TopicArn": "arn:aws:sns: . . ."
@@ -63,7 +70,7 @@ If you are using the SDK for Java 2\.x example, the class `SNSMessageFilterPolic
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/sns#readme)\. 
   
 
 ```
@@ -109,7 +116,7 @@ If you are using the SDK for Java 2\.x example, the class `SNSMessageFilterPolic
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/sns#code-examples)\. 
   
 
 ```
@@ -147,6 +154,8 @@ class SnsWrapper:
 ## Amazon SNS API<a name="message-filtering-apply-api"></a>
 
 To apply a filter policy with the Amazon SNS API, make a request to the [https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html](https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html) action\. Set the `AttributeName` parameter to `FilterPolicy`, and set the `AttributeValue` parameter to your filter policy JSON\.
+
+If you want to switch from attribute\-based \(default\) to payload\-based message filtering, you can use the [https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html](https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html) action as well\. Set the `AttributeName` parameter to `FilterPolicyScope`, and set the `AttributeValue` parameter to `MessageBody`\.
 
 ## AWS CloudFormation<a name="message-filtering-apply-cloudformation"></a>
 
