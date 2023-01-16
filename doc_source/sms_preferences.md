@@ -28,7 +28,7 @@ These preferences take effect for every SMS message that you send from your acco
 
    1. \(Optional\) For **Account spend limit**, enter the amount \(in USD\) that you want to spend on SMS messages each calendar month\.
 **Important**  
-By default, the spend quota is set to 1\.00 USD\. If you want to raise the service quota, [submit a request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\.
+By default, the spend quota is set to 1\.000 USD\. If you want to raise the service quota, [submit a request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns)\.
 If the amount set in the console exceeds your service quota, Amazon SNS stops publishing SMS messages\.
 Because Amazon SNS is a distributed system, it stops sending SMS messages within minutes of the spend quota being exceeded\. During this interval, if you continue to send SMS messages, you might incur costs that exceed your quota\.
 
