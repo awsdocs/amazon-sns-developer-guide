@@ -186,7 +186,7 @@ You can use Amazon SNS to send SMS messages to the following countries and regio
 | Netherlands | NL | 31 | Yes | Yes | Yes | Yes | 
 | Netherlands Antilles | AN | 599 | No | No | Yes | No | 
 | New Caledonia | NC | 687 | No | No | Yes | No | 
-| New Zealand | NZ | 64 | Yes | No | No | Yes | 
+| New Zealand | NZ | 64 | Yes[6](#sms-support-note-6) | No | No | Yes | 
 | Nicaragua | NI | 505 | No | No | No | No | 
 | Niger | NE | 227 | No | No | Yes | No | 
 | Nigeria | NG | 234 | No | No | Yes | No | 
@@ -289,3 +289,5 @@ In order to send messages to China, you must first register your templates throu
 1. <a name="sms-support-note-5"></a>Amazon SNS can send SMS traffic to Singapore using a Sender ID that has been registered on the Singapore SMS Sender ID Registry \(SSIR\), a registry created by the [Info\-communications Media Development Authority \(IMDA\)](https://www.imda.gov.sg/) of Singapore\. For more information on requirements to use a Singapore Sender ID, see [SMS requirements for Singapore](channels-sms-singapore-requirements.md)\.
 
    You can also send SMS traffic in Singapore using unregistered Sender IDs or alternative origination identity types such as Short Codes or Long Codes\.
+   
+1. <a name="sms-support-note-6"></a>SMS messages without a dedicated short code are delivered on a best-effort basis in New Zealand. To improve likelihood of delivery please apply for a [short code from support](channels-sms-awssupport-short-code.md)\.
