@@ -1,3 +1,0 @@
-# Publishing to a topic<a name="mobile-push-send-topicmobile"></a>
-
-You can also use Amazon SNS to send messages to mobile endpoints subscribed to a topic\. The concept is the same as subscribing other endpoint types, such as Amazon SQS, HTTP/S, email, and SMS, to a topic, as described in [What is Amazon SNS?](welcome.md)\. The difference is that Amazon SNS communicates through notification services like Apple Push Notification Service \(APNS\) and Google Firebase Cloud Messaging \(FCM\)\. Through the notifications service, the subscribed mobile endpoints receive notifications sent to the topic\. 
